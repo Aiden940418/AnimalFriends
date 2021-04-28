@@ -13,7 +13,6 @@
 <body>
 
 <a href="main.do">home</a>
-<a href="hello.do">hello</a>
-
+이걸 추가했습니다. 
 </body>
 </html>
