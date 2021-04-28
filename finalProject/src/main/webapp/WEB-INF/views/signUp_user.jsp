@@ -178,7 +178,7 @@ select {
         <!-- header -->
         <div id="header">
             <img src="resources/images/logo2.jpeg" id="logo">
-        </div>
+
 
 
         <!-- wrapper -->
@@ -288,11 +288,13 @@ select {
                 
 
             </div> 
+            
             <!-- content-->
 
         </div> 
         <!-- wrapper -->
     <script src="index.jsp"></script>
+            </div>
     </body>
     
       <!-- 여기는 footer -->
