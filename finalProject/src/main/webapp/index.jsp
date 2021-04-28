@@ -13,7 +13,6 @@
 <body>
 
 <a href="main.do">home</a>
-<a href="hello.do">hello</a>
 
 </body>
 </html>
