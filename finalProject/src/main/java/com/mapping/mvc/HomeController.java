@@ -1,4 +1,4 @@
-package com.anif.mvc;
+package com.mapping.mvc;
 
 import java.text.DateFormat;
 import java.util.Date;
