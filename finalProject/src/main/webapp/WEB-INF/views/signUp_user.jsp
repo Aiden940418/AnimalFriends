@@ -203,7 +203,7 @@ select {
                     </h3>
                     <span class="box int_id">
                         <input type="text" id="mId" class="int" maxlength="20">
-                    
+                    	<input type="button" id="mIdChk" value="중복체크">
                     </span>
                     <span class="error_next_box"></span>
                 </div>

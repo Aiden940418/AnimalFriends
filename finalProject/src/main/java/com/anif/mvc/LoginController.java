@@ -35,7 +35,7 @@ public class LoginController {
 		 
 		 
 		 
-		 return "signUp_user";
+		 return "signUp_user2";
 		 
 	 }
 	 
