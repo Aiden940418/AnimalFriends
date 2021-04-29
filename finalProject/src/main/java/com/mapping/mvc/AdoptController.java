@@ -1,4 +1,4 @@
-package com.anif.mvc;
+package com.mapping.mvc;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
