@@ -1,4 +1,4 @@
-package com.mapping.mvc;
+package com.anif.mvc;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -80,11 +80,7 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
-	public String login(Model model) {
-		return "login";
-	}
-	
+
 	
 
 	

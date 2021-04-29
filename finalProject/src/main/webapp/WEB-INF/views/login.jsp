@@ -20,6 +20,66 @@
 	
 	}
 </style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+function login() {
+	
+	var mId = $("#userId").val().trim();
+	var mPw = $("#userPw").val().trim();
+	console.log(mId+ "/"+ mPw);
+	
+	
+var loginVal= {
+		"mId":mId,
+		"mPw":mPw
+};
+
+
+
+
+
+
+//ajax를 통해 로그인 처리 
+
+
+if(mId == null || mId =="" || mPw ==null || mPw =="") {
+	
+	alert("ID 및 PW를 확인해 주세요");
+	
+}else{
+	
+	$.ajax({
+		
+		
+		type:"post",
+		url:"ajaxlogin.do",
+		data: JSON.stringify(loginVal),
+		contentType:"application/json",
+		dataType:"json",
+		success:function(msg) {
+			
+			if(msg.check == true) {
+			location.href="main.do";
+			
+			}else{
+				alert("아이디 및 비밀번호가 틀렸습니다. ");
+			}
+		},
+		
+		error:function() {
+			alert("통신실패");	
+		}
+	});
+}
+
+}
+
+
+
+
+
+</script>
+
   <style type="text/css">
 
   :root{
@@ -176,6 +236,7 @@
   </style>
 </head>
 <body>
+
 	<div class="main-container">
 		<div class="main-wrap">
 		<header>
@@ -184,21 +245,21 @@
 			</div>
 		</header>
 		<br>
-		<section class="login-input-section-wrap">
+		
+				<section class="login-input-section-wrap">
 			<div class="login-input-wrap">	
-				<input placeholder="Username" type="text"></input>
+				<input placeholder="UserId" type="text" id="userId" name="mId"></input>
 			</div>
 			<div class="login-input-wrap password-wrap">	
-				<input placeholder="Password" type="password"></input>
+				<input placeholder="Password" type="password" id="userPw" name="mPw"></input>
 			</div>
 			<div class="login-button-wrap">
-				<button>로그인</button>
+				<button type="submit" onclick="login();">로그인</button>
 			</div>
-			<div class="login-stay-sign-in">
-				<i class="far fa-check-circle"></i>
-				<span>자동 로그인</span>
-			</div>
+	
 		</section>
+		
+	
 		<section class="Easy-sgin-in-wrap">
 			<h2>간편 로그인</h2>
 			<ul class="sign-button-list">
