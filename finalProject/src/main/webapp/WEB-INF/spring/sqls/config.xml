@@ -6,7 +6,7 @@
  <configuration>
   
   	<typeAliases>
-  	<typeAlias type="com.anif.mvc.dto.MemberDto" alias="memberDto" />
+  	<typeAlias type="com.anif.mvc.member.dto.MemberDto" alias="memberDto" />
   	
   	</typeAliases>
   	
