@@ -1,4 +1,4 @@
-package com.mapping.mvc;
+package com.anif.mvc;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,6 +39,26 @@ public class LoginController {
 		 
 	 }
 	 
+	 
+	 
+	@RequestMapping(value="/signUp.do", method = RequestMethod.GET) 
+	
+	public String signUp(MemberDto dto){
+		
+		int res = 0;
+		
+		res = biz.signUp(dto);
+		
+		if(res>0) {
+			
+			return "redirect:loginForm.do";
+			
+		}else {
+			return "redirect:signUpForm.do";
+		}
+		
+		
+	}
 	 
 		@RequestMapping(value = "/loginForm.do", method = RequestMethod.GET)
 		public String login(Model model) {
