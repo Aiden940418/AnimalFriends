@@ -59,6 +59,33 @@ public class LoginController {
 		
 		
 	}
+	
+	@RequestMapping
+	public String idChk(String mId) {
+		
+		
+		return null;
+	}
+	
+	@RequestMapping(value="/signUps.do", method = RequestMethod.GET) 
+	
+	public String signUps(MemberDto dto){
+		
+		int res = 0;
+		
+		res = biz.signUp(dto);
+		
+		if(res>0) {
+			
+			return "redirect:loginForm.do";
+			
+		}else {
+			return "redirect:signUpForm.do";
+		}
+		
+		
+	}
+	 
 	 
 		@RequestMapping(value = "/loginForm.do", method = RequestMethod.GET)
 		public String login(Model model) {
