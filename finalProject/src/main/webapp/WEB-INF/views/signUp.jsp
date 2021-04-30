@@ -160,16 +160,18 @@ function execPostCode() {
 				<input type="radio" name="mRole" value="2" class="ms-4">보호소회원			
 			
 			</div>
-			
-			<form action="signUp.do" method="post">
-			
-			
-			
 			<br>
 			<br>
 			
 			<div id="iMember">
+			
+			<form action="signUp.do" method="GET">
+				<input type="hidden" name="mRole" value="1">
+				<input type="hidden" name="mJoinYn" value="Y">
+
+			
 			<table style="margin-left:440px">
+						
 				<tr>
 				<th>아이디</th>
 				<td><input class=""type="text"  name="mId" style="width:300px; height:40px">
@@ -225,17 +227,29 @@ function execPostCode() {
 				
 				<tr>
 				<th>전화번호</th>
-				<td><input type="text"  name="mAddr3" style="width:300px; height:40px"></td>
+				<td><input type="text"  name="mPhone" style="width:300px; height:40px"></td>
 				
 				</tr>
 			
-					
+				
 			
 			</table>
 			
+			<div class="container mt-5">
+			
+			<button class="btn-outline-success" type="submit" value="가입하기">가입하기</button>
+			<button class="btn-outline-success" type="button" value="뒤로가기" onclick="location.href='loginForm.do'">뒤로가기</button>
+			
+			
+			</div> 
+				</form>
 			</div>
 			
+			
 			<div id="sMember" style="display:none;">
+			<form action="signUp.do" method="POST">
+				<input type="hidden" name="mRole" value="1">
+				<input type="hidden" name="mJoinYn" value="Y">
 			
 				<table style="margin-left:440px">
 				<tr>
@@ -312,10 +326,6 @@ function execPostCode() {
 			
 			</table>
 			
-			</div>
-			
-			
-			
 			<div class="container mt-5">
 			
 			<button class="btn-outline-success" type="submit" value="가입하기">가입하기</button>
@@ -323,8 +333,15 @@ function execPostCode() {
 			
 			
 			</div> 
-			
 			</form>
+			
+			</div>
+			
+			
+			
+
+			
+
 			</div>
 			
 </html>
