@@ -15,7 +15,7 @@
 		<div class="row">
 
 			<div class="row my-4" style="text-align: center;">
-				<h1>공지사항</h1>
+				<h1>QnA</h1>
 
 			</div>
 
@@ -37,13 +37,20 @@
 								id="" readonly></textarea></td>
 					</tr>
 					<tr>
-						<td colspan="3"><input type="button" value="수정하기"
-							class=" ms-2 btn btn-primary my-1"
-							onclick="location.href='adminNoticeUpdate.do'"
-							style="width: 90px; float: right;"> <input type="button"
-							value="목록으로" class="btn btn-primary my-1"
+						<td colspan="3">
+						<input type="button"
+							value="답변하기" class="ms-2 btn btn-outline-success my-1"
 							onclick="location.href='adminNoticeList.do'"
-							style="width: 90px; float: right;"></td>
+							style="width: 90px; float: right;"> 
+						<input type="button" value="수정하기"
+							class="ms-2 btn btn-outline-success my-1"
+							onclick="location.href='adminNoticeUpdate.do'"
+							style="width: 90px; float: right;"> 
+						<input type="button"
+							value="목록으로" class="btn btn-outline-success my-1"
+							onclick="location.href='adminNoticeList.do'"
+							style="width: 90px; float: right;">
+						</td>
 
 					</tr>
 

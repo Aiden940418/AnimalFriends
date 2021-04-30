@@ -107,6 +107,12 @@ public class MypageController {
 		return "/mypage/mypage_noticeDetail";
 	}
 	
+	@RequestMapping("/myNoticeUpdate.do")
+	public String myNoticeUpdate() {
+		
+		return "/mypage/mypage_noticeUpdate";
+	}
+	
 	    
 	
 	
