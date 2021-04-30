@@ -24,8 +24,26 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 
+
+
+
+$(function(){
+
+	//비밀번호 확인
+		$('#pw4').blur(function(){
+		   if($('#pw3').val() != $('#pw4').val()){
+		    	if($('#pw4').val()!=''){
+			    alert("비밀번호가 일치하지 않습니다.");
+		    	    $('#pw4').val('');
+		          $('#pw4').focus();
+		       }
+		    }
+		})  	   
+	});
+
 				
 $(function(){
+	
 
 	//비밀번호 확인
 		$('#pw2').blur(function(){
@@ -37,6 +55,28 @@ $(function(){
 		       }
 		    }
 		})  	   
+	});
+	
+	$(function(){
+	
+	$('input[type=radio][name=mRole]').on('click',function(){
+		
+		var chkValue = $('input[type=radio][name=mRole]:checked').val();
+		
+		
+		if(chkValue == '1') {
+			$('#iMember').css('display','block');
+			$('#sMember').css('display','none');
+			
+			
+		}else {
+			
+			$('#iMember').css('display','none');
+			$('#sMember').css('display','block');
+			$('#mAddr1').val('');
+		}
+		
+	})
 	});
 
 </script>
@@ -90,6 +130,7 @@ function execPostCode() {
 }
 
 
+	
 
 </script>
   <head>
@@ -115,17 +156,19 @@ function execPostCode() {
             
        <!-- 회원선택 -->
             <div class="container mt-3" style="font-size:30px;">
-				<input type="radio" name="iMember" value="iMember" >일반회원
-				<input type="radio" name="sMember" value="sMember" class="ms-4">보호소회원			
+				<input type="radio" name="mRole" value="1" checked="checked">일반회원
+				<input type="radio" name="mRole" value="2" class="ms-4">보호소회원			
 			
 			</div>
 			
-			<form name="" action="">
+			<form action="signUp.do" method="post">
 			
 			
 			
 			<br>
 			<br>
+			
+			<div id="iMember">
 			<table style="margin-left:440px">
 				<tr>
 				<th>아이디</th>
@@ -160,7 +203,7 @@ function execPostCode() {
 				
 				<tr>
 				<th>주소</th>
-				<td><input type="text"  name="mAddr1" style="width:100px; height:40px">
+				<td><input type="text" id="mAddr1"	  name="mAddr1" style="width:100px; height:40px">
 				<input class="btn-outline-success" type="button" name="idCheck" value="주소검색"
 				onclick="execPostCode();"
 				
@@ -189,6 +232,88 @@ function execPostCode() {
 					
 			
 			</table>
+			
+			</div>
+			
+			<div id="sMember" style="display:none;">
+			
+				<table style="margin-left:440px">
+				<tr>
+				<th>아이디</th>
+				<td><input class=""type="text"  name="mId" style="width:300px; height:40px">
+				</td>
+				<td><input class="btn-outline-success" type="button" name="idCheck" value="중복체크" style="font-size:20px">
+				</td>
+				</tr>
+				
+				<tr>
+				<th>비밀번호</th>
+				<td><input type="password"  name="mPw3" id="pw" style="width:300px; height:40px">
+				</td>
+				</tr>
+				
+				<tr>
+				<th>비밀번호 확인</th>
+				<td><input type="password"  id="pw4" style="width:300px; height:40px"></td>
+				</tr>
+				
+				<tr>
+				<th>대표자명</th>
+				<td><input type="text"  name="mName" 	style="width:300px; height:40px">
+				</td>
+				</tr>
+				
+				<tr>
+				<th>보호소이름</th>
+				<td><input type="text"  name="mNick" style="width:300px; height:40px">
+				</td>
+				</tr>
+				
+				<tr>
+				<th>보호소 주소</th>
+				<td><input type="text"  name="mAddr1" style="width:100px; height:40px">
+				<input class="btn-outline-success" type="button" name="idCheck" value="주소검색"
+				onclick="execPostCode();" style="font-size:20px">
+				</td>
+				
+				</tr>
+				
+				<tr>
+				<th>기본주소</th>
+				<td><input type="text"  name="mAddr2" style="width:300px; height:40px"></td>
+				</tr>
+				
+				<tr>
+				<th>상세주소</th>
+				<td><input type="text"  name="mAddr3" style="width:300px; height:40px"></td>
+				</tr>
+				
+				<tr>
+				<th>전화번호</th>
+				<td><input type="text"  name="mAddr3" style="width:300px; height:40px"></td>
+				
+				</tr>
+				
+				<tr>
+				<th>사업자번호</th>
+				<td><input type="text"  id="sBisNum" name="sBisNum" style="width:300px; height:40px"></td>
+				
+				</tr>
+				
+				<tr>
+				<th>판매업번호</th>
+				<td><input type="text"  id="sSellNum" name="sSellNum" style="width:300px; height:40px"></td>
+				
+				</tr>
+				
+				
+			
+					
+			
+			</table>
+			
+			</div>
+			
 			
 			
 			<div class="container mt-5">

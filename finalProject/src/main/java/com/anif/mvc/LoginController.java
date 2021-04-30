@@ -29,13 +29,13 @@ public class LoginController {
 		
 	 
 	 
-	 @RequestMapping("/register.do")
+	 @RequestMapping("/signUpForm.do")
 	 public String register(Model model) {
 		 
 		 
 		 
 		 
-		 return "signUp_user2";
+		 return "signUp";
 		 
 	 }
 	 
