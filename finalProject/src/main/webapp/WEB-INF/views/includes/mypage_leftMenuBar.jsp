@@ -102,7 +102,7 @@
                 <li class="nav-item"><a class="nav-link active left" href="myGoodsBuyList.do">구매 내역</a></li><br>
                 <li class="nav-item"><a class="nav-link active left" href="myCartList.do">나의 장바구니</a></li><br>
                 <li class="nav-item"><a class="nav-link active left" href="myMemberModityPw.do">회원정보 수정</a></li><br>
-                <li class="nav-item"><a class="nav-link active left" href="myNoticeList.do">공지사항</a></li><br>
+                <li class="nav-item"><a class="nav-link active left" href="myNoticeList.do">QnA</a></li><br>
             </ul>
         </div>
     </div>

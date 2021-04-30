@@ -3,55 +3,57 @@
 
 <!-- header -->
 <%@ include file="../includes/header.jsp"%>
+<!-- leftmenubar -->
+<%@ include file="../includes/mypage_leftMenuBar.jsp"%>
+
+<!-- 내용 시작 부분 -->
+<div class="contentDiv">
+
+	<div class="container">
+		<div class="row">
+
+			<div class="row my-4" style="text-align: center;">
+				<h1>QnA</h1>
+
+			</div>
+
+			<div>
+				<table class="table"
+					style="width: 55%; margin-left: auto; margin-right: auto;">
+					<tr>
+						<td style="text-align: center;"><h3>제목이 들어갈 공간</h3></td>
+					</tr>
 
 
-<div class="my-4" style="text-align: center;">
-	<h1>공지사항</h1>
+					<tr style="text-align: left;">
+						<td>등록일:&nbsp;</td>
+					</tr>
+
+
+					<tr>
+						<td><textarea rows="20" cols="100" class="form-control my-1"
+								id="" readonly></textarea></td>
+					</tr>
+					<tr>
+						<td colspan="3">
+						<input type="button" value="수정하기"
+							class="ms-2 btn btn-outline-success my-1"
+							onclick="location.href='myNoticeUpdate.do'"
+							style="width: 90px; float: right;"> 
+						<input type="button"
+							value="목록으로" class="btn btn-outline-success my-1"
+							onclick="location.href='adminNoticeList.do'"
+							style="width: 90px; float: right;">
+						</td>
+
+					</tr>
+
+				</table>
+
+			</div>
+		</div>
+		<!-- footer -->
+		<%@ include file="../includes/footer.jsp"%>
+	</div>
 
 </div>
-
-<div>
-	<table class="table" style="width: 40%; margin-left: auto; margin-right: auto;">
-		<tr>
-			<td style="text-align:center;"><h3>제목이 들어갈 공간</h3></td>
-		</tr>
-
-		
-		<tr style="text-align: left;">
-			<td>등록일:&nbsp;</td>
-		</tr>
-
-
-		<tr>
-			<td><textarea rows="20" cols="100" class="form-control my-1" id="" readonly></textarea></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<input type="button" value="목록으로"
-				class="btn btn-primary my-1" onclick="location.href='mypage_noticeList.jsp'"
-				style="width: 90px; float: right;">
-				
-				
-			</td>
-
-		</tr>
-
-	</table>
-	
-</div>
-<!-- 화면 구성을 위해 넣어둔 여백으로 추후 삭제하면 됨 -->
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<%@ include file="../includes/footer.jsp"%>
