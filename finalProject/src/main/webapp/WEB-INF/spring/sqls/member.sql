@@ -1,9 +1,7 @@
 drop table MEMBER;
 DROP SEQUENCE MNO;
 
-
 CREATE SEQUENCE MNO NOCACHE;
-
 
 CREATE TABLE MEMBER (
 
@@ -21,13 +19,10 @@ CREATE TABLE MEMBER (
     
     CONSTRAINT MJOINYN_CHK CHECK(MJOINYN IN('Y','N'))
 
-
-
 );
 
 
 DROP TABLE SMEMBER;
-
 
 CREATE TABLE SMEMBER(
 
@@ -37,8 +32,12 @@ CREATE TABLE SMEMBER(
     
     foreign key(SNO) references MEMBER(MNO)
 
+);
 
-
+INSERT INTO MEMBER VALUES(
+MNO.NEXTVAL,1,'Y','admin','1234','1234','서울시','아파트','관리자','관리자','01088349078'
 );
 
 commit;
+
+SELECT * FROM MEMBER;
