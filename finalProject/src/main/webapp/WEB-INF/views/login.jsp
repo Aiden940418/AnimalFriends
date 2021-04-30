@@ -268,7 +268,7 @@ if(mId == null || mId =="" || mPw ==null || mPw =="") {
 			</ul>
 			<div>			
 				<span class="forget-msg">비밀번호를 잊으셨습니까? | </span>
-				<span class="register"><a href="register.do">회원가입</a></span>
+				<span class="register"><a href="signUpForm.do">회원가입</a></span>
 			</div>
 		</section>
 		</div>

@@ -1,6 +1,6 @@
-package com.anif.mvc.biz;
+package com.anif.mvc.member.biz;
 
-import com.anif.mvc.dto.MemberDto;
+import com.anif.mvc.member.dto.MemberDto;
 
 public interface MemberBiz {
 	

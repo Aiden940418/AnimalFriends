@@ -1,6 +1,6 @@
-package com.anif.mvc.dao;
+package com.anif.mvc.member.dao;
 
-import com.anif.mvc.dto.MemberDto;
+import com.anif.mvc.member.dto.MemberDto;
 
 public interface MemberDao {
 	

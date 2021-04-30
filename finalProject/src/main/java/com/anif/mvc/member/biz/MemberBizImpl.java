@@ -1,10 +1,10 @@
-package com.anif.mvc.biz;
+package com.anif.mvc.member.biz;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.anif.mvc.dao.MemberDao;
-import com.anif.mvc.dto.MemberDto;
+import com.anif.mvc.member.dao.MemberDao;
+import com.anif.mvc.member.dto.MemberDto;
 
 
 @Service

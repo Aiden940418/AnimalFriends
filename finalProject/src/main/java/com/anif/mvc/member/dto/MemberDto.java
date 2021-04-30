@@ -1,4 +1,4 @@
-package com.anif.mvc.dto;
+package com.anif.mvc.member.dto;
 
 public class MemberDto {
 	

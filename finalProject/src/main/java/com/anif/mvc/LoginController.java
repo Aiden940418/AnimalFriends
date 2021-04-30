@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.anif.mvc.biz.MemberBiz;
-import com.anif.mvc.dto.MemberDto;
+import com.anif.mvc.member.biz.MemberBiz;
+import com.anif.mvc.member.dto.MemberDto;
 
 @Controller
 public class LoginController {
@@ -29,13 +29,13 @@ public class LoginController {
 		
 	 
 	 
-	 @RequestMapping("/register.do")
+	 @RequestMapping("/signUpForm.do")
 	 public String register(Model model) {
 		 
 		 
 		 
 		 
-		 return "signUp_user";
+		 return "signUp";
 		 
 	 }
 	 
