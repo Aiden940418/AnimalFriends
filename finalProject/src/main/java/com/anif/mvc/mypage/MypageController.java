@@ -1,4 +1,4 @@
-package com.anif.mvc;
+package com.anif.mvc.mypage;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
