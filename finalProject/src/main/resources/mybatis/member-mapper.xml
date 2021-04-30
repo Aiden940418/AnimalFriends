@@ -7,5 +7,31 @@
   
     <mapper namespace="member">
     
+
+      <select id="login" parameterType="memberDto" resultType="memberDto">
+  
+  	SELECT *
+  	FROM MEMBER
+  	WHERE MID = #{mId}
+  	AND MPW = #{mPw}
+  
+  </select>
+  
+<!-- 
+  
+  	<insert id="signUp" parameterType="memberDto">
+  	
+  	
+  	INSERT INTO MEMBER
+  	VALUES(MNO.NEXTVAL, #{mId}, #{mPw}, #{mName), #{mAddr1}, #{mAddr2}, #{mAddr3}, #{mPhone} )
+  	
+  	
+  	</insert>
+  
+ -->
+  
+  
+  
+  
     </mapper>
   
