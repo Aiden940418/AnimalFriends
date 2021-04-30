@@ -38,9 +38,7 @@
 		</div>
 		<br>
 		<div class="row">
-
 			<br>
-
 			<table class="table text-center table-hover table-striped">
 				<thead class="table-dark">
 					<tr>
@@ -69,6 +67,8 @@
 
 		</div>
 	</div>
+	<!-- footer -->
+	<%@ include file="../includes/footer.jsp"%>
 </div>
 
 <br>
@@ -86,5 +86,3 @@
 <br>
 <br>
 <br>
-<!-- footer -->
-<%@ include file="../includes/footer.jsp"%>
