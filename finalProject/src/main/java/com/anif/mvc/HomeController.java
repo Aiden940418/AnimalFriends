@@ -80,11 +80,7 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
-	public String login(Model model) {
-		return "login";
-	}
-	
+
 	
 
 	
