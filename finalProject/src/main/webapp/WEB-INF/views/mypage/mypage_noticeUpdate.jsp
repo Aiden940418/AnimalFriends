@@ -7,7 +7,7 @@
 <!-- header -->
 <%@ include file="../includes/header.jsp"%>
 <!-- leftmenubar -->
-<%@ include file="../includes/admin_leftMenuBar.jsp"%>
+<%@ include file="../includes/mypage_leftMenuBar.jsp"%>
 <!-- page -->
 <div class="contentDiv">
 
