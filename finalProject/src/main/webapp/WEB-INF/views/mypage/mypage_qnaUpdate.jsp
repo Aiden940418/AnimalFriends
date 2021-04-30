@@ -7,7 +7,7 @@
 <!-- header -->
 <%@ include file="../includes/header.jsp"%>
 <!-- leftmenubar -->
-<%@ include file="../includes/admin_leftMenuBar.jsp"%>
+<%@ include file="../includes/mypage_leftMenuBar.jsp"%>
 <!-- page -->
 <div class="contentDiv">
 
@@ -46,7 +46,7 @@
 						<tr>
 							<td colspan="2"><input type="button" value="취소"
 								class="btn btn-outline-success my-1"
-								onclick="location.href='adminNoticeDetail.do'"
+								onclick="location.href='myQnaList.do'"
 								style="width: 90px; float: right;"> <input type="submit"
 								value="수정" class="btn btn-outline-success mx-3 my-1"
 								style="width: 90px; float: right;"></td>

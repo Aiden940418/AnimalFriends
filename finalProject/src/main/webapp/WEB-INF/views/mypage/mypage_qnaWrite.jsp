@@ -7,17 +7,19 @@
 <!-- header -->
 <%@ include file="../includes/header.jsp"%>
 <!-- leftmenubar -->
-<%@ include file="../includes/mypage_leftMenuBar.jsp"%>
+<%@ include file="../includes/admin_leftMenuBar.jsp"%>
 <!-- page -->
 <div class="contentDiv">
 
 	<div class="container">
-		<div class="row">
-			<div class="row my-4" style="text-align: center;">
-				<h1>QnA 수정</h1>
 
+		<div class="row">
+			<!-- title -->
+			<div class="row my-4" style="text-align: center;">
+				<h1>QnA 등록</h1>
 			</div>
 
+			<!-- form -->
 			<div style="margin: auto; text-align: center;">
 				<form action="" style="display: inline-block;">
 					<table>
@@ -30,7 +32,7 @@
 
 						<tr>
 							<th style="vertical-align: top;"><button type="button"
-									class="btn btn-outline-success mx-3 my-1"
+									class="btn btn-outline-success	 mx-3 my-1"
 									style="width: 130px; pointer-events: none;">내용</button></th>
 							<td><textarea rows="20" cols="100" class="form-control my-1"
 									id=""></textarea></td>
@@ -40,15 +42,14 @@
 							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
 									style="width: 130px; pointer-events: none;">이미지</button></th>
 							<td><input type="text" class="form-control my-1" id=""
-								size="100" placeholder="이미지를 등록해주세요." readonly></td>
+								size="100" placeholder="이미지를 등록해주세요."></td>
 						</tr>
 
 						<tr>
 							<td colspan="2"><input type="button" value="취소"
-								class="btn btn-outline-success my-1"
-								onclick="location.href='adminNoticeDetail.do'"
+								class="btn btn-outline-success my-1" onclick="location.href='myQnaList.do'"
 								style="width: 90px; float: right;"> <input type="submit"
-								value="수정" class="btn btn-outline-success mx-3 my-1"
+								value="작성" class="btn btn-outline-success mx-3 my-1"
 								style="width: 90px; float: right;"></td>
 
 						</tr>

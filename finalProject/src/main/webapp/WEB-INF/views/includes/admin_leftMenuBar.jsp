@@ -95,7 +95,7 @@
                 <li class="nav-item"><a class="nav-link active left" href="adminGoodsList.do">GOODS 관리</a></li><br>
                 <li class="nav-item"><a class="nav-link active left" href="adminDiary.do">입양일기 관리</a></li><br>
                 <li class="nav-item"><a class="nav-link active left" href="adminUserList.do">회원 관리</a></li><br>
-                <li class="nav-item"><a class="nav-link active left" href="adminNoticeList.do">QnA</a></li><br>
+                <li class="nav-item"><a class="nav-link active left" href="adminQnaList.do">QnA</a></li><br>
             </ul>
         </div>
     </div>
