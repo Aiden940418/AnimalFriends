@@ -17,7 +17,7 @@
   
   </select>
   
-
+<!-- 
   
   	<insert id="signUp" parameterType="memberDto">
   	
@@ -28,7 +28,8 @@
   	
   	</insert>
   
- 
+ -->
+  
   
   
   

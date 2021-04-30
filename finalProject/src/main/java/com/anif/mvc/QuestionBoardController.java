@@ -1,4 +1,4 @@
-package com.anif.mvc.questionBoard;
+package com.anif.mvc;
 
 public class QuestionBoardController {
 

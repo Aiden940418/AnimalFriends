@@ -1,4 +1,4 @@
-package com.anif.mvc.member;
+package com.anif.mvc;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.anif.mvc.biz.MemberBiz;
-import com.anif.mvc.dto.MemberDto;
+import com.anif.mvc.member.biz.MemberBiz;
+import com.anif.mvc.member.dto.MemberDto;
 
 @Controller
 public class LoginController {

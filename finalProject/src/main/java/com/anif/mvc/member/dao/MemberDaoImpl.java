@@ -1,11 +1,11 @@
-package com.anif.mvc.dao;
+package com.anif.mvc.member.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.anif.mvc.member.dto.MemberDto;
+
 import org.mybatis.spring.SqlSessionTemplate;
-
-
-import com.anif.mvc.dto.MemberDto;
 
 
 @Repository
