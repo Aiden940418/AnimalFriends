@@ -42,42 +42,7 @@ public class AdminController {
 	}
 	
 	
-	//관리자 공지사항
-	
-	@RequestMapping("/adminNoticeList.do")
-	public String adminNoticeList(Model model) {
-		
-		return "admin/admin_noticeList";
-	}
-	
-	//관리자 공지사항 detail
 
-	@RequestMapping("/adminNoticeDetail.do")
-	public String adminNoticeDetail(Model model) {
-		
-		return "admin/admin_noticeDetail";
-	}
-	
-	
-	
-	//관리자 공지사항 등록 
-	@RequestMapping("/noticeWrite.do")
-	public String noticeWrite(Model model) {
-		
-		
-		return "admin/admin_noticeWrite";
-		
-	}
-	
-	
-	//관리자 공지사항 수정 
-	@RequestMapping("/adminNoticeUpdate.do")
-	public String adminNoticeUpdate(Model model) {
-		
-		return "admin/admin_noticeUpdate";
-	
-	
-	}
 	
 	
 	//관리자 굿즈 목록
@@ -112,6 +77,43 @@ public class AdminController {
 	public String adminGoodsUpdate() {
 		
 		return "admin/admin_goodsUpdate";
+	}
+	
+	//관리자 qna
+	
+	@RequestMapping("/adminQnaList.do")
+	public String adminQnaList(Model model) {
+		
+		return "admin/admin_qnaList";
+	}
+	
+	//관리자 qna detail
+
+	@RequestMapping("/adminQnaDetail.do")
+	public String adminQnaDetail(Model model) {
+		
+		return "admin/admin_qnaDetail";
+	}
+	
+	
+	
+	//관리자 qna 등록 
+	@RequestMapping("/adminQnaWrite.do")
+	public String adminQnaWrite(Model model) {
+		
+		
+		return "admin/admin_qnaWrite";
+		
+	}
+	
+	
+	//관리자 qna 수정 
+	@RequestMapping("/adminQnaUpdate.do")
+	public String adminQnaUpdate(Model model) {
+		
+		return "admin/admin_qnaUpdate";
+	
+	
 	}
 	
 	
