@@ -29,7 +29,7 @@
 					<li><a class="dropdown-item" href="#">경기</a></li>
 				</ul>
 			</div>
-			<div class="btn-group ">
+			<div class="btn-group">
 				<button type="button"
 					class="btn btn-info text-white dropdown-toggle mt-3"
 					data-bs-toggle="dropdown" aria-expanded="false">동물 종류</button>

@@ -38,11 +38,11 @@
 						<td colspan="3">
 						<input type="button" value="수정하기"
 							class="ms-2 btn btn-outline-success my-1"
-							onclick="location.href='myNoticeUpdate.do'"
+							onclick="location.href='myQnaUpdate.do'"
 							style="width: 90px; float: right;"> 
 						<input type="button"
 							value="목록으로" class="btn btn-outline-success my-1"
-							onclick="location.href='adminNoticeList.do'"
+							onclick="location.href='myQnaList.do'"
 							style="width: 90px; float: right;">
 						</td>
 

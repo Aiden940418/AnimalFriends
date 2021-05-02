@@ -64,7 +64,7 @@
             </li>
           </ul>
           <form class="d-flex">
-          <a class="btn btn-outline-success" href="loginForm.do" role="button">로그인</a>
+          <a class="btn btn-outline-success mx-2" href="loginForm.do" role="button">로그인</a>
           <a class="btn btn-outline-success" href="mydiary.do" role="button">마이페이지</a>
           </form>
         </div>
