@@ -26,13 +26,13 @@ public class LoginController {
 	 
 	 
 	 
-	 @RequestMapping("/register.do")
-	 public String register(Model model) {
+	 @RequestMapping("/signUpForm.do")
+	 public String signUpForm(MemberDto dto) {
 		 
 		 
 		 
 		 
-		 return "signUp_user";
+		 return "signUp";
 		 
 	 }
 	 
@@ -77,7 +77,7 @@ public class LoginController {
 			return "redirect:loginForm.do";
 			
 		}else {
-			return "redirect:signUpForm.do";
+			return "redirect:signUp.do";
 		}
 		
 		
@@ -85,7 +85,7 @@ public class LoginController {
 	 
 	 
 		@RequestMapping(value = "/loginForm.do", method = RequestMethod.GET)
-		public String login(Model model) {
+		public String login(MemberDto dto) {
 			return "login";
 		}
 		

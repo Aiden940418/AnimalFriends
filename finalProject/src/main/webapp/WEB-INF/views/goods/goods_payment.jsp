@@ -37,11 +37,11 @@
 		<p>
 			<br>
 		</p>
-		<input type="button" value="주문내역 조회" class="btn btn-primary"
-			onclick="location.href='mypageMygoodsBuyList.jsp'"
-			style="width: 200px; margin-left: 50px; margin-right: 75px;">
-		<input type="button" value="쇼핑하러 가기" class="btn btn-primary"
-			onclick="location.href='goods.do'" style="width: 200px; margin-left: 75px;">
+		<input type="button" value="주문내역 조회" class="btn btn-outline-success mt-4"
+			onclick="location.href='myGoodsBuyList.do'"
+			style="width: 200px; margin-left: 50px; margin-right: 30px;">
+		<input type="button" value="쇼핑하러 가기" class="btn btn-outline-success mt-4"
+			onclick="location.href='goods.do'" style="width: 200px; margin-left: 30px;">
 		<p>
 			<br>
 		</p>
