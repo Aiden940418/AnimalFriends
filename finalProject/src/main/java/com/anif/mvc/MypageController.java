@@ -150,10 +150,28 @@ public class MypageController {
 		}
 	}
 	
-	@RequestMapping("/myQnaUpdate.do")
-	public String myQnaUpdate() {
+	@RequestMapping("/myQnaUpdateForm.do")
+	public String myQnaUpdateForm(Model model, int qno) {
+		logger.info("QnA UPDATE FORM");
 		
-		return "/mypage/mypage_qnaUpdate";
+		model.addAttribute("dto", biz.selectOne(qno));
+
+		return "/mypage/mypage_qnaUpdateForm";
+	}
+	
+	@RequestMapping("/myQnaUpdateRes.do")
+	public String myQnaUpdateRes(QnaBoardDto dto) {
+		logger.info("QnA UPDATE RESULT");
+		
+		int res = biz.update(dto);
+		
+		if(res>0) {
+			return "redirect:myQnaDetail.do?qno="+dto.getQno();
+		}else {
+			return "redirect:myQnaUpdateForm.do?myno="+dto.getQno();
+		}
+		
+		
 	}
 	
 	//QnA End
