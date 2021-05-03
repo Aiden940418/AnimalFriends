@@ -18,7 +18,10 @@
   		WHERE QNO=#{qno}
   	</select>
   
-  	
+  	<delete id="delete" parameterType="int">
+  		DELETE FROM QUESTIONBOARD
+  		WHERE QNO = #{qno}
+  	</delete>
   	
   	
   
