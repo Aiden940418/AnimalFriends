@@ -1,5 +1,9 @@
 package com.anif.mvc;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -136,18 +140,27 @@ public class MypageController {
 	}
 	
 	@RequestMapping("/myQnaWriteRes.do")
-	public String myQnaWriteRes(QnaBoardDto dto, HttpSession session) {
-		// System.out.println(dto.toString());
+	public String myQnaWriteRes(QnaBoardDto dto, HttpSession session, Model model) throws IOException {
 		logger.info("QnA INSERT");
-		MemberDto memberDto = (MemberDto) session.getAttribute("login");
 		
-		int res = biz.insert(dto, memberDto.getmNo());
+		//현재 로그인 되어있는 계정의 회원번호를 가져와서 dto에 세팅해주기
+//		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+//		dto.setMno(memberDto.getmNo());
+		
+		//현재 로그인 기능 합치기 전이므로 테스트로 세션 회원 작성하겠음
+		dto.setMno(1);
+		
+		int res = biz.insert(dto);
 
 		if (res > 0) { // 글 insert 성공 시
-			return "redirect:myQnaList.do";
-		} else {
-			return "redirect:myQnaWriteForm.do";
+			model.addAttribute("msg", "글 등록 성공!");
+			model.addAttribute("url", "/myQnaList.do");
+		} else {  //글 insert 실패 시
+			model.addAttribute("msg", "글 등록 실패!");
+			model.addAttribute("url", "/myQnaWriteForm.do");
 		}
+		
+		return "/mypage/alertPage";
 	}
 	
 	@RequestMapping("/myQnaUpdate.do")

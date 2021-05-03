@@ -26,10 +26,8 @@ public class QnaBoardBizImpl implements QnaBoardBiz{
 	}
 
 	@Override
-	public int insert(QnaBoardDto dto, int mno) {
-		
-		
-		return 0;
+	public int insert(QnaBoardDto dto) {
+		return dao.insert(dto);
 	}
 
 	@Override

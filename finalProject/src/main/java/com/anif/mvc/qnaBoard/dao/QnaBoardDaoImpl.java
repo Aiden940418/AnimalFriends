@@ -46,9 +46,16 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 	
 	@Override
 	public int insert(QnaBoardDto dto) {
+		int res = 0;
 		
+		try {
+			res = sqlSession.insert(NAMESPACE + "insert", dto);
+		} catch (Exception e) {
+			System.out.println("[error] : QnA insert");
+			e.printStackTrace();
+		}
 		
-		return 0;
+		return res;
 	}
 
 	@Override

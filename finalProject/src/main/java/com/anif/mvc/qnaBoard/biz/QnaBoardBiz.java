@@ -8,7 +8,7 @@ public interface QnaBoardBiz {
 	
 	public List<QnaBoardDto> selectList();
 	public QnaBoardDto selectOne(int qno);
-	public int insert(QnaBoardDto dto, int mno);
+	public int insert(QnaBoardDto dto);
 	public int update(QnaBoardDto dto);
 	public int delete(int qno);
 

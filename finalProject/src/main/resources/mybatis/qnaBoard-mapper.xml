@@ -18,6 +18,13 @@
   		WHERE QNO=#{qno}
   	</select>
   
+  	<insert id="insert" parameterType="qnaBoardDto">
+  		INSERT INTO QUESTIONBOARD
+  		VALUES (QNOSEQ.NEXTVAL, QGROUPNOSEQ.NEXTVAL, 1, 0, #{qctgy}, #{qtitle}, #{qcontent}, #{mno}, SYSDATE)
+  	</insert>
+  	<!-- 참고로 마이페이지에서 글을 insert 하는 경우에, 답글은 작성할 수 없으니 문의글 insert 하는 쿼리만 있으면 된다. -->
+  	<!-- 답글 작성 쿼리는 이후에 admin의 qnaBoard 쪽에서 작성해야 됨 -->
+  	
   	
   	
   	
