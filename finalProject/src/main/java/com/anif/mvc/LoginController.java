@@ -3,12 +3,13 @@ package com.anif.mvc;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +23,8 @@ public class LoginController {
 	
 	 private Logger logger = LoggerFactory.getLogger(LoginController.class);
 	 
+	 
+	 @Autowired
 	 private MemberBiz biz;
 	 
 	 
@@ -83,6 +86,11 @@ public class LoginController {
 		
 	}
 	 
+
+		
+		
+	
+	
 	 
 		@RequestMapping(value = "/loginForm.do")
 		public String login(MemberDto dto) {
@@ -91,11 +99,20 @@ public class LoginController {
 		
 		
 		
-		@RequestMapping(value="/ajaxlogin.do",method=RequestMethod.POST)
+		@RequestMapping(value="/logout.do")
+		public String logout(HttpSession session, HttpServletResponse response) {
+			
+			
+			session.invalidate();
+			
+			return "main";
+			
+		}
+		
+		@RequestMapping(value="/login.do",method=RequestMethod.POST)
 		@ResponseBody
 		public Map<String, Boolean> ajaxLogin(HttpSession session, @RequestBody MemberDto dto) {
-			//데이터를 json으로 받는거였는데 memberdto로 자바객체 전환이 필요하다 -> RequestBody를 달아준다 
-			//Request 반대는 response 바디도 있다--> 자바 객체를 json으로 바인딩 하겠따! 그래서 뭘! 
+	 
 			
 			
 			logger.info("LOGIN");
@@ -109,6 +126,8 @@ public class LoginController {
 				session.setAttribute("login", res);
 				
 				check=true;
+				
+				
 				
 			}
 			
@@ -125,6 +144,10 @@ public class LoginController {
 			
 			return map;
 		}
+		
+		
+		
+	
 	
 	
 }
