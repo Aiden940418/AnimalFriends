@@ -93,21 +93,34 @@ public class MypageController {
 	}
 	
 	
+	//QnA Start
 	
-	@RequestMapping("/myNoticeList.do")
-	public String myNoticeList() {
+	@RequestMapping("/myQnaList.do")
+	public String myQnaList() {
 		
-		return "/mypage/mypage_noticeList";
+		return "/mypage/mypage_qnaList";
 	}
 	
 	
-	@RequestMapping("/myNoticeDetail.do")
-	public String myNoticeDetail() {
+	@RequestMapping("/myQnaDetail.do")
+	public String myQnaDetail() {
 		
-		return "/mypage/mypage_noticeDetail";
+		return "/mypage/mypage_qnaDetail";
 	}
 	
-	    
+	@RequestMapping("/myQnaWrite.do")
+	public String myQnaWrite() {
+		
+		return "/mypage/mypage_qnaWrite";
+	}
+	
+	@RequestMapping("/myQnaUpdate.do")
+	public String myQnaUpdate() {
+		
+		return "/mypage/mypage_qnaUpdate";
+	}
+	
+	//QnA End
 	
 	
 	

@@ -18,10 +18,14 @@
      <result property="mArrd3" column="MADDR3"/>
      <result property="mName" column="MNAME"/>
      <result property="mNick" column="MNICK" />     
-     <result property="mPhone" column="MPHONE"/>     
+     <result property="mPhone" column="MPHONE"/>
+     <result property="sBisNum" column="SBISNUM" />
+     <result property="sSellNum" column="SSELLNUM" />
+        
   	</resultMap>
     
     
+
 
    <select id="login" parameterType="memberDto" resultType="memberDto">
   
@@ -41,8 +45,37 @@
   	
   	
   	</insert>
+  	
+  	
+  	<insert id="signUpS" parameterType="memberDto">
+  	
+  	
+  	INSERT ALL
+  	
+  	INTO MEMBER
+  	VALUES(MNO.NEXTVAL, #{mRole}, #{mJoinYn}, #{mId}, #{mPw},#{mAddr1}, #{mAddr2}, #{mAddr3},#{mName},#{mNick}, #{mPhone} )
+  	
+  	INTO SMEMBER
+  	VALUES(#{sBisNum}, #{sSellNum})
+  	
+  	
+  	
+  	
+  	</insert>
   
   
+  
+  <!-- 
+  	<select id="idChk" parameterType="String">
+  	
+  	SELECT COUNT(*) 
+  	FROM MEMBER
+  	WHERE MID = #{mId}
+  	
+  	
+  	</select>
+
+   -->
   
   
   

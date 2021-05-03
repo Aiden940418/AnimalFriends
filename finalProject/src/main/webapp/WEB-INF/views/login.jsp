@@ -22,6 +22,10 @@
 </style>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
+
+
+
+
 function login() {
 	
 	var mId = $("#userId").val().trim();
@@ -52,7 +56,7 @@ if(mId == null || mId =="" || mPw ==null || mPw =="") {
 		
 		
 		type:"post",
-		url:"ajaxlogin.do",
+		url:"login.do",
 		data: JSON.stringify(loginVal),
 		contentType:"application/json",
 		dataType:"json",
