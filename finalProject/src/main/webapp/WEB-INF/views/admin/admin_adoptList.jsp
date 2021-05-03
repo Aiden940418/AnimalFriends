@@ -123,7 +123,6 @@
 	</div>
 </div>
 </div>
-</div>
 
 <div class="container">
 	<nav aria-label="Page navigation example ">
@@ -139,10 +138,9 @@
 			</a></li>
 		</ul>
 	</nav>
-</div>
-		<!-- footer -->
+			<!-- footer -->
 		<%@ include file="../includes/footer.jsp"%>
-	</div>
-
 </div>
+
+
 </html>

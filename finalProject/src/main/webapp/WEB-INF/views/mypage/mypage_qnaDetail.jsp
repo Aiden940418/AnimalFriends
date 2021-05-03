@@ -1,21 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<style type="text/css">
-</style>
+
 <!-- header -->
 <%@ include file="../includes/header.jsp"%>
 <!-- leftmenubar -->
-<%@ include file="../includes/admin_leftMenuBar.jsp"%>
-<!-- page -->
+<%@ include file="../includes/mypage_leftMenuBar.jsp"%>
+
+<!-- 내용 시작 부분 -->
 <div class="contentDiv">
 
 	<div class="container">
 		<div class="row">
 
 			<div class="row my-4" style="text-align: center;">
-				<h1>공지사항</h1>
+				<h1>QnA</h1>
 
 			</div>
 
@@ -37,13 +35,16 @@
 								id="" readonly></textarea></td>
 					</tr>
 					<tr>
-						<td colspan="3"><input type="button" value="수정하기"
-							class=" ms-2 btn btn-primary my-1"
-							onclick="location.href='adminNoticeUpdate.do'"
-							style="width: 90px; float: right;"> <input type="button"
-							value="목록으로" class="btn btn-primary my-1"
-							onclick="location.href='adminNoticeList.do'"
-							style="width: 90px; float: right;"></td>
+						<td colspan="3">
+						<input type="button" value="수정하기"
+							class="ms-2 btn btn-outline-success my-1"
+							onclick="location.href='myQnaUpdate.do'"
+							style="width: 90px; float: right;"> 
+						<input type="button"
+							value="목록으로" class="btn btn-outline-success my-1"
+							onclick="location.href='myQnaList.do'"
+							style="width: 90px; float: right;">
+						</td>
 
 					</tr>
 
@@ -56,4 +57,3 @@
 	</div>
 
 </div>
-</html>

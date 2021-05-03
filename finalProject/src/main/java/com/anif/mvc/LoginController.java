@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,14 +22,12 @@ public class LoginController {
 	
 	 private Logger logger = LoggerFactory.getLogger(LoginController.class);
 	 
-
-		@Autowired
-		private MemberBiz biz;
-		
+	 private MemberBiz biz;
+	 
 	 
 	 
 	 @RequestMapping("/signUpForm.do")
-	 public String register(Model model) {
+	 public String signUpForm(MemberDto dto) {
 		 
 		 
 		 
@@ -40,8 +37,55 @@ public class LoginController {
 	 }
 	 
 	 
-		@RequestMapping(value = "/loginForm.do", method = RequestMethod.GET)
-		public String login(Model model) {
+	 
+	@RequestMapping(value="/signUp.do", method = RequestMethod.GET) 
+	
+	public String signUp(MemberDto dto){
+		
+		int res = 0;
+		
+		res = biz.signUp(dto);
+		
+		if(res>0) {
+			
+			return "redirect:loginForm.do";
+			
+		}else {
+			return "redirect:signUpForm.do";
+		}
+		
+		
+	}
+
+//	@RequestMapping
+//	public String idChk(String mId) {
+//		
+//		
+//		return null;
+//	}
+//	
+	@RequestMapping(value="/signUps.do", method = RequestMethod.GET) 
+	
+	public String signUps(MemberDto dto){
+		
+		int res = 0;
+		
+		res = biz.signUp(dto);
+		
+		if(res>0) {
+			
+			return "redirect:loginForm.do";
+			
+		}else {
+			return "redirect:signUp.do";
+		}
+		
+		
+	}
+	 
+	 
+		@RequestMapping(value = "/loginForm.do")
+		public String login(MemberDto dto) {
 			return "login";
 		}
 		

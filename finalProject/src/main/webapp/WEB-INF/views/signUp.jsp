@@ -7,6 +7,28 @@
 
 <style type="text/css">
 
+
+	.id_input_re_1 {
+	
+		color : green;
+		display: none;
+		
+		
+		
+	
+	}
+	
+	
+	
+	
+	.id_input_re_2 {
+		color:red;
+		display:none;
+		
+	
+	
+	}
+
 </style>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Yeon+Sung&display=swap');
@@ -19,11 +41,82 @@
 	color: #696767;
 	
 	}
+	
+	
+	
+	
 </style>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 
+
+
+
+function idChk() {
+	
+	$.ajax({
+		
+		url : "idChk.do",
+		type : post,
+		dataType : "json",
+		data : {"mId" : $("#mId").val()},
+		success : function(count){
+			if(count==1) {
+				alert("중복된 아이디입니다.");
+				
+			}else if(count==0) {
+				$("#idChk").attr("value","Y");
+				alert("사용가능한 아이디입니다.")
+			}
+			
+		}
+		
+		
+	})
+	
+	
+	
+	
+	
+	
+	
+	
+}
+
+function DosignUp() {
+	
+	var mId = $('#mId').val();
+	var mPw = $('#mPw').val();
+	var mName = $('#mName').val();
+	var mNick = $('#mNick').val();
+	var mAddr1 = $('#mAddr1').val();
+	var mAddr2 = $('#mAddr2').val();
+	var mAddr3 = $('#mAddr3').val();
+	var mPhone = $('#mPhone').val();
+
+	if(mId.length == 0) {
+		alert("아이디를 입력해주세요");
+		$('#mId').focus();
+		return false;
+	}
+	
+	if(mPw.length==0) {
+		alert("비밀번호를 입력해주세요");
+		$('#mId').focus();
+		return false;
+	}
+	
+	
+	
+	
+	if(confirm("회원가입 하시겠습니까?")){
+	 	alert("회원가입을 축하합니다.");
+	 	return true;
+	 	
+	}
+	
+}
 
 
 
@@ -160,21 +253,27 @@ function execPostCode() {
 				<input type="radio" name="mRole" value="2" class="ms-4">보호소회원			
 			
 			</div>
-			
-			<form action="signUp.do" method="post">
-			
-			
-			
 			<br>
 			<br>
 			
 			<div id="iMember">
+			
+			<form action="signUp.do" method="GET">
+				<input type="hidden" name="mRole" value="1">
+				<input type="hidden" name="mJoinYn" value="Y">
+
+			
 			<table style="margin-left:440px">
+						
 				<tr>
 				<th>아이디</th>
 				<td><input class=""type="text"  name="mId" style="width:300px; height:40px">
 				</td>
-				<td><input class="btn-outline-success" type="button" name="idCheck" value="중복체크" style="font-size:20px">
+				<td><button class="btn-outline-success" type="button" id="idCheck" value="Y" style="font-size:20px">중복확인</button>
+				</td>
+				<td>
+					<span class="id_input_re_1">사용 가능한 아이디입니다.</span>
+					<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
 				</td>
 				</tr>
 				
@@ -225,17 +324,29 @@ function execPostCode() {
 				
 				<tr>
 				<th>전화번호</th>
-				<td><input type="text"  name="mAddr3" style="width:300px; height:40px"></td>
+				<td><input type="text"  name="mPhone" style="width:300px; height:40px"></td>
 				
 				</tr>
 			
-					
+				
 			
 			</table>
 			
+			<div class="container mt-5">
+			
+			<button class="btn-outline-success" type="submit" value="가입하기" onclick="DosignUp();">가입하기</button>
+			<button class="btn-outline-success" type="button" value="뒤로가기" onclick="location.href='loginForm.do'">뒤로가기</button>
+			
+			
+			</div> 
+				</form>
 			</div>
 			
+			
 			<div id="sMember" style="display:none;">
+			<form action="signUps.do" method="GET">
+				<input type="hidden" name="mRole" value="2">
+				<input type="hidden" name="mJoinYn" value="Y">
 			
 				<table style="margin-left:440px">
 				<tr>
@@ -248,7 +359,7 @@ function execPostCode() {
 				
 				<tr>
 				<th>비밀번호</th>
-				<td><input type="password"  name="mPw3" id="pw" style="width:300px; height:40px">
+				<td><input type="password"  name="mPw" id="pw3" style="width:300px; height:40px">
 				</td>
 				</tr>
 				
@@ -290,7 +401,7 @@ function execPostCode() {
 				
 				<tr>
 				<th>전화번호</th>
-				<td><input type="text"  name="mAddr3" style="width:300px; height:40px"></td>
+				<td><input type="text"  name="mPhone" style="width:300px; height:40px"></td>
 				
 				</tr>
 				
@@ -312,19 +423,22 @@ function execPostCode() {
 			
 			</table>
 			
-			</div>
-			
-			
-			
 			<div class="container mt-5">
 			
-			<button class="btn-outline-success" type="submit" value="가입하기">가입하기</button>
+			<button class="btn-outline-success" type="submit" value="가입하기" onclick="DosignUp();">가입하기</button>
 			<button class="btn-outline-success" type="button" value="뒤로가기" onclick="location.href='loginForm.do'">뒤로가기</button>
 			
 			
 			</div> 
-			
 			</form>
+			
+			</div>
+			
+			
+			
+
+			
+
 			</div>
 			
 </html>
