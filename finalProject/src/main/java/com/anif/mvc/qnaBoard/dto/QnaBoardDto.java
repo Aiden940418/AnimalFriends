@@ -13,13 +13,16 @@ public class QnaBoardDto {
 	private String qcontent;	//문의 글 내용
 	private int mno;			//작성자 (회원 번호)
 	private Date qdate;			//작성일 
+	private String qdateToChar; //작성일 포맷 변환 (select 시에만 사용될듯)
 	
 	
 	public QnaBoardDto() {
 		super();
 	}
+
+
 	public QnaBoardDto(int qno, int qgroupno, int qgroupsq, int qtitletab, String qctgy, String qtitle, String qcontent,
-			int mno, Date qdate) {
+			int mno, Date qdate, String qdateToChar) {
 		super();
 		this.qno = qno;
 		this.qgroupno = qgroupno;
@@ -30,6 +33,7 @@ public class QnaBoardDto {
 		this.qcontent = qcontent;
 		this.mno = mno;
 		this.qdate = qdate;
+		this.qdateToChar = qdateToChar;
 	}
 
 
@@ -89,12 +93,25 @@ public class QnaBoardDto {
 	}
 	
 	
+	
+	public String getQdateToChar() {
+		return qdateToChar;
+	}
+
+
+	public void setQdateToChar(String qdateToChar) {
+		this.qdateToChar = qdateToChar;
+	}
+
+
 	@Override
 	public String toString() {
 		return "QnaBoardDto [qno=" + qno + ", qgroupno=" + qgroupno + ", qgroupsq=" + qgroupsq + ", qtitletab="
 				+ qtitletab + ", qctgy=" + qctgy + ", qtitle=" + qtitle + ", qcontent=" + qcontent + ", mno=" + mno
-				+ ", qdate=" + qdate + "]";
+				+ ", qdate=" + qdate + ", qdateToChar=" + qdateToChar + "]";
 	}
+
+
 	
 
 }

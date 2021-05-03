@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<!-- JSTL 사용위한 코드 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <!-- header -->
@@ -33,13 +37,13 @@
 
 			<div class="btn-group float-end">
 				<button type="button" class="btn btn-outline-success mt-3 "
-					onclick="location.href='myQnaWrite.do'">글쓰기</button>
+					onclick="location.href='myQnaWriteForm.do'">글쓰기</button>
 			</div>
 		</div>
 		<br>
 		<div class="row">
 			<br>
-			<table class="table text-center table-hover table-striped">
+			<table class="table text-center table-hover table-striped" style="font-size:14pt;">
 				<thead class="table-dark">
 					<tr>
 						<th style="width: 10%;">번호</th>
@@ -49,18 +53,30 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>2</td>
-						<td>입양공고</td>
-						<td><a href="myQnaDetail.do">입양절차는 어떤 식으로 이루어지나요?</a></td>
-						<td>2021-04-15</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>굿즈</td>
-						<td><a href="myQnaDetail.do">굿즈관련 문의 드립니다!</a></td>
-						<td>2021-04-14</td>
-					</tr>
+
+					<c:choose>
+						<c:when test="${empty list }">
+							<tr>
+								<td colspan="4" align="left">작성된 글이 없습니다.</td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${list}" var="dto" varStatus="status">
+								<tr>
+									<td>${fn:length(list)-status.index}</td> <!-- 글 순서 번호 차례대로 띄우기 위한 코드 -->
+									<td>${dto.qctgy}</td>
+									<td>
+										<c:forEach begin="1" end="${dto.qtitletab }">
+	                               	 		<ion-icon name="return-down-forward-outline"></ion-icon>
+	                            		</c:forEach> 
+                           				<a href="myQnaDetail.do?qno=${dto.qno}">${dto.qtitle}</a>
+									</td>
+									<td>${dto.qdateToChar}</td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+						
+					</c:choose>
 
 				</tbody>
 			</table>

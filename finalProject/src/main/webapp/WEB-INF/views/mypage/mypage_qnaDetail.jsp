@@ -21,18 +21,21 @@
 				<table class="table"
 					style="width: 55%; margin-left: auto; margin-right: auto;">
 					<tr>
-						<td style="text-align: center;"><h3>제목이 들어갈 공간</h3></td>
+						<td style="text-align: center;"><h3>${dto.qtitle }</h3></td>
 					</tr>
 
 
-					<tr style="text-align: left;">
-						<td>등록일:&nbsp;</td>
+					<tr style="text-align: left; font-size: 14pt;">
+						<td>등록일 : ${dto.qdateToChar }</td>
 					</tr>
 
 
 					<tr>
-						<td><textarea rows="20" cols="100" class="form-control my-1"
-								id="" readonly></textarea></td>
+						<td>
+							<textarea rows="20" cols="100" class="form-control my-1" id="" readonly style="font-size:16pt;">
+								${dto.qcontent }
+							</textarea>
+						</td>
 					</tr>
 					<tr>
 						<td colspan="3">
