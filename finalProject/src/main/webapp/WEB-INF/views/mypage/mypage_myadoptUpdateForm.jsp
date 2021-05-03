@@ -8,7 +8,6 @@
 	<!-- leftMenuBar -->
 	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>	
 	<!-- 페이지 내용 부분 -->
-	
 	<div class="contentDiv">
 		
 		
@@ -134,7 +133,7 @@
 				
 				<div>
 					<button type="submit" class="btn btn-outline-success">완료</button>&nbsp;&nbsp;&nbsp;&nbsp;
-					<button type="reset" class="btn btn-outline-success" onclick="location.href='myadoptList.do'">취소</button>
+					<button type="reset" class="btn btn-outline-success" onclick="location.href='myAdoptList.do'">취소</button>
 				</div>
 				
 				

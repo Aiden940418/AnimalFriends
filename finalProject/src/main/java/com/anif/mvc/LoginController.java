@@ -31,10 +31,7 @@ public class LoginController {
 	 
 	 @RequestMapping("/signUpForm.do")
 	 public String signUpForm(MemberDto dto) {
-		 
-		 
-		 
-		 
+		
 		 return "signUp";
 		 
 	 }
