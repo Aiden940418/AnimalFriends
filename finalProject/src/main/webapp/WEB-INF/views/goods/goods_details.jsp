@@ -3,7 +3,7 @@
  <%@ include file="../includes/header.jsp" %>   
 
 <div class="container text mt-5 ms-5">
-<a href="goods.do" class="btn btn-outline-primary">목록으로</a>
+<a href="goods.do" class="btn btn-outline-success">목록으로</a>
 </div>
 <hr>
 
@@ -23,7 +23,7 @@
    				
 				   				<!-- dropDown1-start -->
 				<div class="dropdown ms-5 mt-4">
-				 <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+				 <a class="btn btn-outline-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
 				    ----수량선택----
 				  </a>
 				
@@ -37,8 +37,8 @@
 <!-- dropDown1-end -->
    				<br>
    				<br>
-   				<a href="goodsPurchase.do" class="btn btn-outline-primary btn-lg">-----결제하기----</a>
-   				<a href="mypageMygoodsBuyList.do" class="btn btn-outline-primary btn-lg ms-3">-----찜하기----</a>
+   				<a href="goodsPurchase.do" class="btn btn-outline-success btn-lg">-----결제하기----</a>
+   				<a href="myGoodsBuyList.do" class="btn btn-outline-success btn-lg ms-3">-----장바구니----</a>
    				
    				</div>
    				</div>
@@ -50,10 +50,10 @@
 	<div class="container mt-5 text-center	">
 	
 
-<a href="#.detail" class="btn btn-outline-primary ms-5">--------상세보기---------</a>
-<a href="#" class="btn btn-outline-primary ms-5">--------리뷰보기---------</a>
-<a href="#" class="btn btn-outline-primary ms-5">---------Q&A---------</a>	
-<a href="#" class="btn btn-outline-primary ms-5">--------업체소개---------</a>	
+<a href="#.detail" class="btn btn-outline-success ms-5">--------상세보기---------</a>
+<a href="#" class="btn btn-outline-success ms-5">--------리뷰보기---------</a>
+<a href="#" class="btn btn-outline-success ms-5">---------Q&A---------</a>	
+<a href="#" class="btn btn-outline-success ms-5">--------업체소개---------</a>	
 	
 	
 	
