@@ -64,6 +64,8 @@
   	</insert>
   
   
+  
+  <!-- 
   	<select id="idChk" parameterType="String">
   	
   	SELECT COUNT(*) 
@@ -73,7 +75,7 @@
   	
   	</select>
 
-  
+   -->
   
   
   

@@ -9,7 +9,7 @@ public interface MemberBiz {
 	
 	public int signUps(MemberDto dto);
 	
-	public int idChk(String mId);
+//	public int idChk(String mId);
 	
 	public MemberDto login(MemberDto dto);
 

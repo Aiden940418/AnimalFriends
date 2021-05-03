@@ -70,21 +70,21 @@ public class MemberDaoImpl implements MemberDao {
 
 
 
-	@Override
-	public int idChk(String mId) {
-
-		int count = 0;
-		
-		try {
-			count = sqlSession.selectOne(NAMESPACE+"idChk",mId);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return count;
-	}
-	
-	
+//	@Override
+//	public int idChk(String mId) {
+//
+//		int count = 0;
+//		
+//		try {
+//			count = sqlSession.selectOne(NAMESPACE+"idChk",mId);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return count;
+//	}
+//	
+//	
 	
 	
 	

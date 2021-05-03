@@ -56,14 +56,14 @@ public class LoginController {
 		
 		
 	}
-	
-	@RequestMapping
-	public String idChk(String mId) {
-		
-		
-		return null;
-	}
-	
+
+//	@RequestMapping
+//	public String idChk(String mId) {
+//		
+//		
+//		return null;
+//	}
+//	
 	@RequestMapping(value="/signUps.do", method = RequestMethod.GET) 
 	
 	public String signUps(MemberDto dto){
@@ -84,7 +84,7 @@ public class LoginController {
 	}
 	 
 	 
-		@RequestMapping(value = "/loginForm.do", method = RequestMethod.GET)
+		@RequestMapping(value = "/loginForm.do")
 		public String login(MemberDto dto) {
 			return "login";
 		}
