@@ -21,5 +21,14 @@ public class AdoptController {
 		return "adopt/adopt_detail2";
 		
 	}
+	
+	
+	@RequestMapping("/myAdoptWriteForm.do")
+	public String myAdoptWriteForm() {
+		
+		return "mypage/mypage_myadoptWriteForm";
+	}
+	
+	
 
 }
