@@ -3,6 +3,7 @@ package com.anif.mvc;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -85,6 +86,11 @@ public class LoginController {
 		
 	}
 	 
+
+		
+		
+	
+	
 	 
 		@RequestMapping(value = "/loginForm.do")
 		public String login(MemberDto dto) {
@@ -92,6 +98,16 @@ public class LoginController {
 		}
 		
 		
+		
+		@RequestMapping(value="/logout.do")
+		public String logout(HttpSession session, HttpServletResponse response) {
+			
+			
+			session.invalidate();
+			
+			return "main";
+			
+		}
 		
 		@RequestMapping(value="/login.do",method=RequestMethod.POST)
 		@ResponseBody
@@ -111,6 +127,8 @@ public class LoginController {
 				
 				check=true;
 				
+				
+				
 			}
 			
 			
@@ -126,6 +144,10 @@ public class LoginController {
 			
 			return map;
 		}
+		
+		
+		
+	
 	
 	
 }
