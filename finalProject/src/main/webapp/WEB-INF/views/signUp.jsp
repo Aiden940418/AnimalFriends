@@ -84,7 +84,7 @@ function idChk() {
 	
 }
 
-function DosignUp() {
+/* function DosignUp() {
 	
 	var mId = $('#mId').val();
 	var mPw = $('#mPw').val();
@@ -117,7 +117,7 @@ function DosignUp() {
 	}
 	
 }
-
+ */
 
 
 $(function(){
@@ -425,7 +425,7 @@ function execPostCode() {
 			
 			<div class="container mt-5">
 			
-			<button class="btn-outline-success" type="submit" value="가입하기" onclick="DosignUp();">가입하기</button>
+			<button class="btn-outline-success" type="submit" value="가입하기">가입하기</button>
 			<button class="btn-outline-success" type="button" value="뒤로가기" onclick="location.href='loginForm.do'">뒤로가기</button>
 			
 			

@@ -56,7 +56,7 @@ if(mId == null || mId =="" || mPw ==null || mPw =="") {
 		
 		
 		type:"post",
-		url:"ajaxlogin.do",
+		url:"login.do",
 		data: JSON.stringify(loginVal),
 		contentType:"application/json",
 		dataType:"json",
