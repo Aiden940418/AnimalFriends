@@ -20,12 +20,12 @@ public class AdoptBizImpl implements AdoptBiz {
 
 	@Override
 	public int myadoptUpdate(AdoptDto dto) {
-		return myadoptUpdate(dto);
+		return dao.myadoptUpdate(dto);
 	}
 
 	@Override
 	public AdoptDto adoptDetail(int aNo) {
-		return adoptDetail(aNo);
+		return dao.adoptDetail(aNo);
 	}
 	
 	

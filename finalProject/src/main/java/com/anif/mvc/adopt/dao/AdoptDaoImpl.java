@@ -31,7 +31,6 @@ public class AdoptDaoImpl implements AdoptDao {
 		try {
 			res = sqlSession.insert(NAMESPACE+"myadoptWrite",dto);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return res;
