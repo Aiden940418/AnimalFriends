@@ -1,10 +1,10 @@
-package com.anif.mvc.qnaBoard.dto;
+package com.anif.mvc.qnaBoardAdmin.dto;
 
 import java.util.Date;
 
-public class QnaBoardDto {
+public class QnaBoardAdminDto {
 	
-	private int qno;			//문의게시판 글 고유번호 (PK)
+	private int qno;			//문의게시판 글 번호
 	private int qgroupno;		//문의 글 그룹 번호
 	private int qgroupsq;		//글 그룹 시퀀스
 	private int qtitletab;  	//제목 공백
@@ -15,14 +15,14 @@ public class QnaBoardDto {
 	private Date qdate;			//작성일 
 	private String qdateToChar; //작성일 포맷 변환 (select 시에만 사용될듯)
 	private String mnick;       //작성자 닉네임
-	private int rnum;			//페이지에 보이는 글 번호
 	
 	
-	public QnaBoardDto() {
+	public QnaBoardAdminDto() {
 		super();
 	}
-	public QnaBoardDto(int qno, int qgroupno, int qgroupsq, int qtitletab, String qctgy, String qtitle, String qcontent,
-			int mno, Date qdate, String qdateToChar, String mnick, int rnum) {
+
+	public QnaBoardAdminDto(int qno, int qgroupno, int qgroupsq, int qtitletab, String qctgy, String qtitle, String qcontent,
+			int mno, Date qdate, String qdateToChar, String mnick) {
 		super();
 		this.qno = qno;
 		this.qgroupno = qgroupno;
@@ -35,7 +35,6 @@ public class QnaBoardDto {
 		this.qdate = qdate;
 		this.qdateToChar = qdateToChar;
 		this.mnick = mnick;
-		this.rnum = rnum;
 	}
 
 
@@ -105,11 +104,14 @@ public class QnaBoardDto {
 	public void setMnick(String mnick) {
 		this.mnick = mnick;
 	}
-	public int getRnum() {
-		return rnum;
-	}
-	public void setRnum(int rnum) {
-		this.rnum = rnum;
+
+	
+	
+	@Override
+	public String toString() {
+		return "QnaBoardDto [qno=" + qno + ", qgroupno=" + qgroupno + ", qgroupsq=" + qgroupsq + ", qtitletab="
+				+ qtitletab + ", qctgy=" + qctgy + ", qtitle=" + qtitle + ", qcontent=" + qcontent + ", mno=" + mno
+				+ ", qdate=" + qdate + ", qdateToChar=" + qdateToChar + ", mnick=" + mnick + "]";
 	}
 
 	

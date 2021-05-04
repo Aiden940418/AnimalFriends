@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="qnaBoard">
+
+	<select id="selectList" resultType="qnaBoardDto" parameterType="com.anif.mvc.common.pagination.Criteria">
+		SELECT *
+		FROM (
+			SELECT QNO, QGROUPNO, QGROUPSQ, QTITLETAB, QCTGY, QTITLE, MNO,
+				TO_CHAR(QDATE, 'yyyy-mm-dd hh:mm') AS qdateToChar, MNICK,
+				ROW_NUMBER() OVER(ORDER BY QNO DESC) AS RNUM
+			FROM QUESTIONBOARD JOIN MEMBER USING(MNO)) QB
+			WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY QGROUPNO DESC, QGROUPSQ ASC
+  	</select> 
+  	<select id="listCount" resultType="int">
+  	<![CDATA[
+		SELECT COUNT(QNO)
+		FROM QUESTIONBOARD
+		WHERE QNO > 0
+	]]>
+  	</select>
+  	
+   
+
+  	<select id="selectOne" parameterType="int" resultType="qnaBoardDto">
+  		SELECT QNO, QGROUPNO, QGROUPSQ, QTITLETAB, QCTGY, QTITLE, QCONTENT, MNO, 
+  				TO_CHAR(QDATE, 'yyyy-mm-dd hh:mm:ss') AS qdateToChar, MNICK
+  		FROM QUESTIONBOARD
+  		JOIN MEMBER USING(MNO)
+  		WHERE QNO=#{qno}
+  	</select>
+  
+
+  	<insert id="insert" parameterType="qnaBoardDto">
+  		INSERT INTO QUESTIONBOARD
+  		VALUES (QNOSEQ.NEXTVAL, QGROUPNOSEQ.NEXTVAL, 1, 0, #{qctgy}, #{qtitle}, #{qcontent}, #{mno}, SYSDATE)
+  	</insert>
+  	<!-- 참고로 마이페이지에서 글을 insert 하는 경우에, 답글은 작성할 수 없으니 문의글 insert 하는 쿼리만 있으면 된다. -->
+  	<!-- 답글 작성 쿼리는 이후에 admin의 qnaBoard 쪽에서 작성해야 됨 -->
+  	
+
+  	<update id="update" parameterType="qnaBoardDto">
+		UPDATE QUESTIONBOARD
+		SET QTITLE = #{qtitle}, QCONTENT = #{qcontent}
+		WHERE QNO = #{qno}
+	</update>
+
+
+  	<delete id="delete" parameterType="int">
+  		DELETE FROM QUESTIONBOARD
+  		WHERE QNO = #{qno}
+  	</delete>
+  	
+
+
+
+
+</mapper>
