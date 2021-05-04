@@ -18,27 +18,29 @@
 			</div>
 
 			<div>
-				<table class="table"
-					style="width: 55%; margin-left: auto; margin-right: auto;">
+				<table class="table" style="width: 55%; margin-left: auto; margin-right: auto;">
 					<tr>
-						<td style="text-align: center;"><h3>${dto.qtitle }</h3></td>
+						<td style="text-align: center;" colspan="2"><h3>${dto.qtitle }</h3></td>
 					</tr>
 
-
-					<tr style="text-align: left; font-size: 14pt;">
-						<td>등록일 : ${dto.qdateToChar }</td>
+					<tr style="font-size: 14pt;">
+						<td style="text-align: left; ">
+							글쓴이 : ${dto.mnick }
+						</td>
+						<td style="text-align: right; ">
+							등록일 : ${dto.qdateToChar }
+						</td>
 					</tr>
 
-
 					<tr>
-						<td>
+						<td colspan="2">
 							<textarea rows="20" cols="100" class="form-control my-1" id="" readonly style="font-size:16pt;">
 								${dto.qcontent }
 							</textarea>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="3">
+						<td colspan="4">
 						<input type="button" value="삭제하기"
 							class="ms-2 btn btn-outline-success my-1"
 							onclick="location.href='myQnaDelete.do?qno='+${dto.qno}"

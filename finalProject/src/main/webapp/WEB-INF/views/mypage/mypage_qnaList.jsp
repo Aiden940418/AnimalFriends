@@ -47,8 +47,9 @@
 				<thead class="table-dark">
 					<tr>
 						<th style="width: 10%;">번호</th>
-						<th style="width: 10%;">카테고리</th>
-						<th style="width: 60%;">제목</th>
+						<th style="width: 15%;">카테고리</th>
+						<th style="width: 45%;">제목</th>
+						<th style="width: 10%;">글쓴이</th>
 						<th style="width: 20%;">날짜</th>
 					</tr>
 				</thead>
@@ -71,6 +72,7 @@
 	                            		</c:forEach> 
                            				<a href="myQnaDetail.do?qno=${dto.qno}">${dto.qtitle}</a>
 									</td>
+									<td>${dto.mnick}</td>
 									<td>${dto.qdateToChar}</td>
 								</tr>
 							</c:forEach>
