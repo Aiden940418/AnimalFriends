@@ -17,7 +17,7 @@ public class MemberDto {
 	private int sNo; //회원번호(보호소번호 FK)
 	private String sBisNum; //보호소회원사업자번호 
 	private String sSellNum; //보호소 
-	private String mphone;
+	private String mPhone;
 	
 	
 	
@@ -30,7 +30,7 @@ public class MemberDto {
 
 	
 	public MemberDto(int mNo, String mRole, String mJoinYn, String mId, String mPw, String mAddr1, String mAddr2,
-			String mAddr3, String mName, String mNick, int sNo, String sBisNum, String sSellNum, String mphone) {
+			String mAddr3, String mName, String mNick, int sNo, String sBisNum, String sSellNum, String mPhone) {
 		super();
 		this.mNo = mNo;
 		this.mRole = mRole;
@@ -45,7 +45,7 @@ public class MemberDto {
 		this.sNo = sNo;
 		this.sBisNum = sBisNum;
 		this.sSellNum = sSellNum;
-		this.mphone = mphone;
+		this.mPhone = mPhone;
 	}
 
 
@@ -183,13 +183,13 @@ public class MemberDto {
 		this.sSellNum = sSellNum;
 	}
 	
-	public String getMphone() {
-		return mphone;
+	public String getmPhone() {
+		return mPhone;
 	}
 
 
-	public void setMphone(String mphone) {
-		this.mphone = mphone;
+	public void setmPhone(String mPhone) {
+		this.mPhone = mPhone;
 	}
 
 	

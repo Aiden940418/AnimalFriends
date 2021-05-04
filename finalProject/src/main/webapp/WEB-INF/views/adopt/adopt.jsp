@@ -32,7 +32,7 @@
 
 
 	<div class="btn-group float-end">
-		<button type="button" class="btn btn-outline-success mt-3 ">나의
+		<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='myAdoptList.do'">나의
 			입양공고 보기</button>
 	</div>
 </div>

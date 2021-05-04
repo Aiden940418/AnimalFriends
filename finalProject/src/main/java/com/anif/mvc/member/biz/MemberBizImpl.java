@@ -26,4 +26,17 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.login(dto);
 	}
 
+	@Override
+	public int signUps(MemberDto dto) {
+
+
+		return dao.signUps(dto);
+	}
+//
+//	@Override
+//	public int idChk(String mId) {
+//
+//		return dao.idChk(mId);
+//	}
+
 }

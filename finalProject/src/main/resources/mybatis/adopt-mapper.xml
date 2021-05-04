@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="adopt">
+  	
+   <resultMap type="adoptDto" id="adoptMap"> <!-- 아까 정해준 별칭 boardDto  -->
+     <result property="aNo" column="ANO"/>
+     <result property="aMNo" column="AMNO"/>
+     <result property="aArea" column="AAREA"/>
+     <result property="aType" column="ATYPE"/>
+     <result property="aTitle" column="ATITLE"/>
+     <result property="aDate" column="ADATE"/>
+     <result property="aCount" column="ACOUNT"/>
+     <result property="anmName" column="ANMNAME"/>
+     <result property="anmAge" column="ANMAGE" />
+     <result property="anmBreed" column="ANMBREED"/>
+     <result property="anmGender" column="ANMGENDER"/>
+     <result property="anmVcnYn" column="ANMVCNYN"/>
+     <result property="anmNtrYn" column="ANMNTRYN"/>
+     <result property="aPhone" column="APHONE"/>
+     <result property="aMemo" column="AMEMO"/>
+     </resultMap>
+     
+    <select id="adoptDetail" parameterType="adoptDto" resultType="adoptDto">
+  
+  	SELECT ANO, MNO, AAREA, ATYPE, ATITLE, ADATE, ACOUNT, ANMNAME, ANMAGE, ANMBREED, ANMGENDER, ANMVCNYN, ANMNTRYN, APHONE, AMEMO
+  	FROM ADOPT
+  	WHERE MID = #{mId}
+  	AND MPW = #{mPw}
+  
+  </select>
+  
+  <insert id="myadoptWrite" parameterType="adoptDto">
+  	
+  	INSERT INTO ADOPT
+  	VALUES(ANO.NEXTVAL, #{aMNo}, #{aArea}, #{aType}, #{aTitle}, SYSDATE, 12 ,#{anmName}, #{anmAge}, #{anmBreed},
+  	#{anmGender}, #{anmVcnYn}, #{anmNtrYn}, #{aPhone}, #{aMemo}  )
+  	
+  </insert>
+  	
+  	
+  <update id="myadoptUpdate"  parameterType="adoptDto">
+     UPDATE ADOPT
+     SET AAREA=#{aArea} , ATYPE=#{aType}, ATITLE=#{aTitle}, ADATE=#{aDate}, ACOUNT=#{aCount}, ANMBREED=#{anmBreed},ANMGENDER=#{anmGender}, ANMVCNYN=#{anmVcnYn}, ANMNTRYN=#{anmNtrYn}, APHONE=#{aPhone}, AMEMO=#{aMemo}
+     WHERE MYNO = #{aNo}
+  
+  </update>
+  	
+  
+  
+  
+  
+  
+  </mapper>
