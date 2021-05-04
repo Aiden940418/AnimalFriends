@@ -45,12 +45,7 @@ public class HomeController {
 		return "main";
 	}
 	
-	
-	@RequestMapping(value = "/adopt.do", method = RequestMethod.GET)
-	public String adopt(Model model) {
-		return "adopt/adopt";
-	}
-	
+
 	
 	@RequestMapping(value = "/shelter.do", method = RequestMethod.GET)
 	public String shelter(Model model) {

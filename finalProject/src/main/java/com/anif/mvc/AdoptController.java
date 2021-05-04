@@ -1,5 +1,7 @@
 package com.anif.mvc;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +21,25 @@ public class AdoptController {
 
 	private Logger logger = LoggerFactory.getLogger(AdoptController.class);
 
+	
+	// 입양공고 목록보기 
+	@RequestMapping(value = "/adopt.do")
+	public String adopt(Model model) {
+		
+		model.addAttribute("list",biz.adoptList());
+		
+		
+		return "adopt/adopt";
+	}
+	
+	
 	// 입양공고 상세보기
 	@RequestMapping(value="adoptDetail.do", method = RequestMethod.GET)
-	public String adoptDetail(AdoptDto dto) {
-
+	public String adoptDetail(Model model, int aNo) {
+		
+		
+		model.addAttribute("dto",biz.adoptDetail(aNo));
+		
 		return "adopt/adopt_detail2";
 
 	}

@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <%@ include file="../includes/header.jsp"%>
+
  <title>입양공고상세</title>
 
 <style type="text/css">
 
-.wrap {
+	.wrap {
 	
-	top: 50%;
-	left: 50%;
+	top:50;
+	}
 
-	text-align: center;
-}
 
 a {
 	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
@@ -54,7 +55,7 @@ a.button:hover {
 	<br>
 	</div>
 	<div class="container text-center mt-5">
-		<h1>글 제목</h1><br>
+		<h1>${dto.aTitle }</h1><br>
 		
 		</div>
 		<div class="container" style="margin-left:250px;">
@@ -76,7 +77,8 @@ a.button:hover {
 		<!-- 본문내용 시작 -->
 	
 		<div class="container text-center mt-5">
-		<textarea class="container text-center display-7 "style=";outline:none; resize: none; border:none" readonly="readonly" rows="7px">오래전 할머니께서 키우시던 강아지의 새끼를 분양받아서 키우다가 개인사정으로 새로운 주인을 찾고 있어요.
+		<textarea class="container text-center display-7 "style=";outline:none; resize: none; border:none" readonly="readonly" rows="7px">
+		${dto.aMemo }
 		</textarea>
 		</div>
 		
@@ -92,27 +94,27 @@ a.button:hover {
 
 			<tr>
 			<th align="left">나  이</th>
-			<td>15</td>
+			<td>${dto.anmAge}</td>
 			</tr>
 			<tr>
 			<th align=left>품  종</th>
-			<td>비숑</td>
+			<td>${dto.anmBreed}</td>
 			</tr>
 			<tr>
 			<th align=left>성  별</th>
-			<td>수컷</td>
+			<td>${dto.anmGender}</td>
 			</tr>
 			<tr>
 			<th>예방접종 여부(Y/N)</th>
-			<td> Y </td>
+			<td>${dto.anmVcnYn }</td>
 			</tr>
 			<tr>
 			<th>중성화 여부(Y/N)</th>
-			<td> Y </td>
+			<td>${dto.anmNtrYn }</td>
 			</tr>
 			<tr>
 			<th>연락처</th>
-			<td>010-1234-1234</td>
+			<td>${dto.aPhone }</td>
 			
 			 
 		

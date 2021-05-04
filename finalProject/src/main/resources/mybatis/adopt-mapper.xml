@@ -24,12 +24,21 @@
      <result property="aMemo" column="AMEMO"/>
      </resultMap>
      
+     
+     
+     <select id="adoptList" resultMap="adoptMap">
+     
+     
+  	SELECT ANO, AMNO, AAREA, ATYPE, ATITLE, ADATE, ACOUNT, ANMNAME, ANMAGE, ANMBREED, ANMGENDER, ANMVCNYN, ANMNTRYN, APHONE, AMEMO
+    FROM ADOPT
+     
+     </select>
+     
     <select id="adoptDetail" parameterType="adoptDto" resultType="adoptDto">
   
-  	SELECT ANO, MNO, AAREA, ATYPE, ATITLE, ADATE, ACOUNT, ANMNAME, ANMAGE, ANMBREED, ANMGENDER, ANMVCNYN, ANMNTRYN, APHONE, AMEMO
+  	SELECT ANO, AMNO, AAREA, ATYPE, ATITLE, ADATE, ACOUNT, ANMNAME, ANMAGE, ANMBREED, ANMGENDER, ANMVCNYN, ANMNTRYN, APHONE, AMEMO
   	FROM ADOPT
-  	WHERE MID = #{mId}
-  	AND MPW = #{mPw}
+  	WHERE ANO = #{aNo}
   
   </select>
   
