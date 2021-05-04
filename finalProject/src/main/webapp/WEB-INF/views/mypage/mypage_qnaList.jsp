@@ -22,8 +22,9 @@
 		<!-- 카테고리 드롭다운 부분 -->
 
 		<div class="container">
-			<div class="btn-group">
-				<button type="button"
+			
+				<!-- 카테고리 분류 선택 버튼 (추후에) -->
+				<!-- <button type="button"
 					class="btn btn-outline-success dropdown-toggle mt-3"
 					data-bs-toggle="dropdown" aria-expanded="false">카테고리 선택</button>
 				<ul class="dropdown-menu">
@@ -31,25 +32,26 @@
 					<li><a class="dropdown-item" href="#">입양일기</a></li>
 					<li><a class="dropdown-item" href="#">굿즈</a></li>
 					<li><a class="dropdown-item" href="#">사이트 이용</a></li>
-				</ul>
-			</div>
-
-			<div class="btn-group float-end">
-				<button type="button" class="btn btn-outline-success mt-3 "
-					onclick="location.href='myQnaWriteForm.do'">글쓰기</button>
+				</ul> --> 
+			<div class="position-relative">
+				<div class="btn-group position-absolute top-0 end-0">
+					<button type="button" class="btn btn-outline-success mt-3 "
+						onclick="location.href='myQnaWriteForm.do'">글쓰기</button>
+				</div>
 			</div>
 		</div>
 		<br>
+		
 		<div class="row">
 			<br>
-			<table class="table text-center table-hover table-striped" style="font-size:14pt;">
+			<table class="table text-center table-hover table-striped mt-5" style="font-size:14pt;">
 				<thead class="table-dark">
 					<tr>
-						<th style="width: 10%;">번호</th>
-						<th style="width: 15%;">카테고리</th>
-						<th style="width: 45%;">제목</th>
-						<th style="width: 10%;">글쓴이</th>
-						<th style="width: 20%;">날짜</th>
+						<!-- <th style="width: 10%;">번호</th> -->
+						<th style="width: 20%;">카테고리</th>
+						<th style="width: 40%;">제목</th>
+						<th style="width: 15%;">글쓴이</th>
+						<th style="width: 25%;">날짜</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -63,7 +65,7 @@
 						<c:otherwise>
 							<c:forEach items="${list}" var="dto" varStatus="status">
 								<tr>
-									<td>${fn:length(list)-status.index}</td> <!-- 글 순서 번호 차례대로 띄우기 위한 코드 -->
+									<%-- <td>${listCount - dto.rnum}</td> --%> <!-- 글 순서 번호 차례대로 띄우기 위한 코드 -->
 									<td>${dto.qctgy}</td>
 									<td>
 										<c:forEach begin="1" end="${dto.qtitletab }">
@@ -99,35 +101,6 @@
 
   				</ul>
  			</nav>
-			</div>
-
-
-
-			<!-- 페이징 코드 -->
-			<style type="text/css">  /* li태그를 가로로 정렬하는 스타일 지정 */
-				li {
-					list-style: none;
-					float: left;
-					padding: 6px;
-				}
-			</style>
-			<div>
-				<ul>
-					<c:if test="${pageMaker.prev}">
-						<li><a
-							href="myQnaList.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
-					</c:if>
-
-					<c:forEach begin="${pageMaker.startPage}"
-						end="${pageMaker.endPage}" var="idx">
-						<li><a href="myQnaList.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
-					</c:forEach>
-
-					<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-						<li><a
-							href="myQnaList.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
-					</c:if>
-				</ul>
 			</div>
 
 

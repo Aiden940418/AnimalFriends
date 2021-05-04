@@ -98,7 +98,7 @@ Resources
 
 <!-- dropDown1-start -->
 <div class="container dropdown ms-5 mt-4">
-  <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+  <a class="btn btn-outline-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
     상품카테고리
   </a>
 
@@ -168,7 +168,7 @@ Resources
                                  </div>
                <div class="card-footer">
                   <a href="goodsDetails.do" class="btn btn-outline-success">구매하기</a>
-                  <a href="#" class="btn btn-outline-success">찜하기</a>
+                  <a href="#" class="btn btn-outline-success">장바구니</a>
                   
               </div>
               </div>
@@ -185,7 +185,7 @@ Resources
                 
              <div class="card-footer">
                   <a href="goodsDetails.do" class="btn btn-outline-success">구매하기</a>
-                  <a href="#" class="btn btn-outline-success">찜하기</a>
+                  <a href="#" class="btn btn-outline-success">장바구니</a>
                   
               </div>
 					
@@ -207,7 +207,7 @@ Resources
                 </div>
                <div class="card-footer">
                   <a href="goodsDetails.do" class="btn btn-outline-success">구매하기</a>
-                  <a href="#" class="btn btn-outline-success">찜하기</a>
+                  <a href="#" class="btn btn-outline-success">장바구니</a>
                   
               </div>
 
@@ -224,7 +224,7 @@ Resources
                                  </div>
                <div class="card-footer">
                   <a href="goodsDetails.do" class="btn btn-outline-success">구매하기</a>
-                  <a href="#" class="btn btn-outline-success">찜하기</a>
+                  <a href="#" class="btn btn-outline-success">장바구니</a>
                   
               </div>
               </div>
