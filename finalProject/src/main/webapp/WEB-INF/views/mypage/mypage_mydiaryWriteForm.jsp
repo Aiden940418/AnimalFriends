@@ -12,6 +12,7 @@
 			<h1>나의 입양일기 작성</h1>
 			<br>
 
+
 		</div>
 		<div class="container">
 		<div style="margin-top: 50px; margin-left: 250px; width: 700px;">

@@ -31,20 +31,6 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 		return list;
 	}
 	
-/*	@Override
-	public List<QnaBoardDto> selectList(Criteria cri) {
-		List<QnaBoardDto> list = new ArrayList<QnaBoardDto>();
-
-		try {
-			list = sqlSession.selectList(NAMESPACE + "selectList");
-		} catch (Exception e) {
-			System.out.println("[error] : QnA select list");
-			e.printStackTrace();
-		}
-
-		return list;
-	}
-*/	
 	
 	@Override
 	public int listCount() {

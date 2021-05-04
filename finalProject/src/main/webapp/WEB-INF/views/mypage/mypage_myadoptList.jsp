@@ -16,7 +16,7 @@
 		</div>
 		
 		<div class="text-right ms-5">
-			<button type="button" class="btn btn-outline-success" onclick="location.href='mypage_myadoptWriteForm.jsp'">입양 공고 등록</button>
+			<button type="button" class="btn btn-outline-success" onclick="location.href='myAdoptWriteForm.do'">입양 공고 등록</button>
 		</div>
 		
 		<!-- 세로줄 -->

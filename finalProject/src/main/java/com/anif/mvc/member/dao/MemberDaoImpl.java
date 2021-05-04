@@ -49,8 +49,42 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return res;
 	}
-	
-	
+
+
+
+	@Override
+	public int signUps(MemberDto dto) {
+		
+		
+		int res = 0;
+		
+		
+		try {
+			res = sqlSession.insert(NAMESPACE+"signUps",dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+
+
+//	@Override
+//	public int idChk(String mId) {
+//
+//		int count = 0;
+//		
+//		try {
+//			count = sqlSession.selectOne(NAMESPACE+"idChk",mId);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return count;
+//	}
+//	
+//	
 	
 	
 	

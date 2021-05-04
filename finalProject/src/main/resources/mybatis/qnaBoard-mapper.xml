@@ -10,7 +10,7 @@
 		SELECT *
 		FROM (
 			SELECT QNO, QGROUPNO, QGROUPSQ, QTITLETAB, QCTGY, QTITLE, MNO,
-				TO_CHAR(QDATE, 'yyyy-mm-dd hh:mm') AS qdateToChar, MNICK,
+				TO_CHAR(QDATE, 'YYYY-MM-DD HH24:MI') AS qdateToChar, MNICK,
 				ROW_NUMBER() OVER(ORDER BY QNO DESC) AS RNUM
 			FROM QUESTIONBOARD JOIN MEMBER USING(MNO)) QB
 			WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
@@ -28,7 +28,7 @@
 
   	<select id="selectOne" parameterType="int" resultType="qnaBoardDto">
   		SELECT QNO, QGROUPNO, QGROUPSQ, QTITLETAB, QCTGY, QTITLE, QCONTENT, MNO, 
-  				TO_CHAR(QDATE, 'yyyy-mm-dd hh:mm:ss') AS qdateToChar, MNICK
+  				TO_CHAR(QDATE, 'YYYY-MM-DD HH24:MI') AS qdateToChar, MNICK
   		FROM QUESTIONBOARD
   		JOIN MEMBER USING(MNO)
   		WHERE QNO=#{qno}

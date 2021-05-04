@@ -41,3 +41,7 @@ MNO.NEXTVAL,1,'Y','admin','1234','1234','서울시','아파트','관리자','관
 COMMIT
 
 SELECT * FROM MEMBER;
+
+
+DELETE FROM MEMBER
+WHERE MID = 123 AND MNO = 2;

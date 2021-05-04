@@ -105,8 +105,8 @@
   	<br>
        <div class="container text-center">
        
-	<button type="button" class="btn btn-primary btn-lg" onclick="location.href='goodsPayment.do'">결제하기</button>
-   	<button type="button" class="btn btn-primary btn-lg" onclick="location.href='goodsDetails.do'">구매취소</button>
+	<button type="button" class="btn btn-outline-success btn-lg" onclick="location.href='goodsPayment.do'">결제하기</button>
+   	<button type="button" class="btn btn-outline-success btn-lg" onclick="location.href='goodsDetails.do'">구매취소</button>
        
        
   
