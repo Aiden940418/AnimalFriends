@@ -26,6 +26,7 @@ public class AdoptController {
 		return "adopt/adopt_detail2";
 
 	}
+	// 입양공고작성 가져오기
 	@RequestMapping(value="myAdoptWriteForm.do")
 	public String myadoptWriteForm() {
 		return "mypage/mypage_myadoptWriteForm";
@@ -45,6 +46,11 @@ public class AdoptController {
 		}
 
 	}
+	@RequestMapping(value="myAdoptUpdateForm.do")
+	public String myadoptUpdateForm() {
+		return "mypage/mypage_myadoptUpdateForm";
+	}
+
 
 	// 입양공고 수정
 	@RequestMapping(value="myAdoptUpdateForm.do", method = RequestMethod.GET)
