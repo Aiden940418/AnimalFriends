@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.qnaBoard.dto.QnaBoardDto;
 
 @Repository
@@ -17,7 +18,21 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 
 
 	@Override
-	public List<QnaBoardDto> selectList() {
+	public List<QnaBoardDto> selectList(Criteria cri) {
+		List<QnaBoardDto> list = new ArrayList<QnaBoardDto>();
+
+		try {
+			list = sqlSession.selectList(NAMESPACE + "selectList" , cri);
+		} catch (Exception e) {
+			System.out.println("[error] : QnA select list");
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
+/*	@Override
+	public List<QnaBoardDto> selectList(Criteria cri) {
 		List<QnaBoardDto> list = new ArrayList<QnaBoardDto>();
 
 		try {
@@ -28,6 +43,20 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 		}
 
 		return list;
+	}
+*/	
+	
+	@Override
+	public int listCount() {
+		int cnt = 0;
+		try {
+			cnt = sqlSession.selectOne(NAMESPACE + "listCount");
+		} catch (Exception e) {
+			System.out.println("[error] : QnA select list");
+			e.printStackTrace();
+		}
+		
+		return cnt;
 	}
 
 	@Override
@@ -85,5 +114,7 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 		
 		return res;
 	}
+
+
 
 }

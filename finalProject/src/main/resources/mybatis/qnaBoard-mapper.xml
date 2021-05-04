@@ -6,14 +6,28 @@
 
 <mapper namespace="qnaBoard">
 
-	<select id="selectList" resultType="qnaBoardDto">
-		SELECT QNO, QGROUPNO, QGROUPSQ, QTITLETAB, QCTGY, QTITLE, MNO,
-				TO_CHAR(QDATE, 'yyyy-mm-dd hh:mm') AS qdateToChar, MNICK
-		FROM QUESTIONBOARD
-		JOIN MEMBER USING(MNO)
+	<select id="selectList" resultType="qnaBoardDto" parameterType="com.anif.mvc.common.pagination.Criteria">
+		SELECT *
+		FROM (
+			SELECT QNO, QGROUPNO, QGROUPSQ, QTITLETAB, QCTGY, QTITLE, MNO,
+				TO_CHAR(QDATE, 'yyyy-mm-dd hh:mm') AS qdateToChar, MNICK,
+				ROW_NUMBER() OVER(ORDER BY QNO DESC) AS RNUM
+			FROM QUESTIONBOARD JOIN MEMBER USING(MNO)) QB
+			WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
 		ORDER BY QGROUPNO DESC, QGROUPSQ ASC
   	</select>
-  
+  	
+   
+   <select id="listCount" resultType="int">
+	<![CDATA[
+		SELECT COUNT(QNO)
+		  FROM QUESTIONBOARD
+		 WHERE QNO > 0
+	]]>
+	</select>
+   
+   
+   
 
   	<select id="selectOne" parameterType="int" resultType="qnaBoardDto">
   		SELECT QNO, QGROUPNO, QGROUPSQ, QTITLETAB, QCTGY, QTITLE, QCONTENT, MNO, 

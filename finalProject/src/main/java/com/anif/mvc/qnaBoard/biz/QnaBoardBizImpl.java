@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.qnaBoard.dao.QnaBoardDao;
 import com.anif.mvc.qnaBoard.dto.QnaBoardDto;
 
@@ -14,10 +15,14 @@ public class QnaBoardBizImpl implements QnaBoardBiz{
 	@Autowired
 	private QnaBoardDao dao;
 	
+	@Override
+	public List<QnaBoardDto> selectList(Criteria cri) {
+		return dao.selectList(cri);
+	}
 
 	@Override
-	public List<QnaBoardDto> selectList() {
-		return dao.selectList();
+	public int listCount() {
+		return dao.listCount();
 	}
 
 	@Override
@@ -41,6 +46,7 @@ public class QnaBoardBizImpl implements QnaBoardBiz{
 	public int delete(int qno) {
 		return dao.delete(qno);
 	}
+
 
 
 }
