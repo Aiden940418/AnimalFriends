@@ -62,10 +62,13 @@
             <li class="nav-item" style="font-size:20px;">
               <a class="nav-link" href="diary.do">입양일기</a>
             </li>
-            
+           
+           <c:if test="${login.mRole == 1 }">
             <li class="nav-item" style="font-size:20px;">
               <a class="nav-link" href="admin.do">관리자</a>
             </li>
+            
+            </c:if>
           </ul>
           <div id="loginBtn">
           
