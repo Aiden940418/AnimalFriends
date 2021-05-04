@@ -48,17 +48,6 @@ public class QnaBoardBizImpl implements QnaBoardBiz{
 	}
 
 	
-	
-	
-	@Override
-	public List<QnaBoardDto> list(Criteria cri) {
-		return dao.list(cri);
-	}
-
-	@Override
-	public int listCount() {
-		return dao.listCount();
-	}
 
 
 

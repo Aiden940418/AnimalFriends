@@ -14,7 +14,5 @@ public interface QnaBoardBiz {
 	public int update(QnaBoardDto dto);
 	public int delete(int qno);
 	
-	public List<QnaBoardDto> list(Criteria cri);
-	public int listCount();
 
 }
