@@ -1,9 +1,7 @@
 package com.anif.mvc;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -12,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.anif.mvc.member.dto.MemberDto;
+import com.anif.mvc.common.pagination.Criteria;
+import com.anif.mvc.common.pagination.PageMaker;
 import com.anif.mvc.qnaBoard.biz.QnaBoardBiz;
 import com.anif.mvc.qnaBoard.dto.QnaBoardDto;
 
@@ -127,15 +125,16 @@ public class MypageController {
 	
 	//페이징 적용한 Select List - 여기다가 각자 페이징 구현해보기
 	@RequestMapping("/myQnaList.do")
-	public String myQnaList(Model model) {
+	public String myQnaList(Model model, Criteria cri) {
 		logger.info("QnA SELECT LIST");
 		
+		model.addAttribute("list", biz.selectList(cri));
 		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(biz.listCount());
 		
-		model.addAttribute("list", biz.selectList());
-		
-		
-		
+		model.addAttribute("pageMaker", pageMaker);
 		
 		return "/mypage/mypage_qnaList";
 	}

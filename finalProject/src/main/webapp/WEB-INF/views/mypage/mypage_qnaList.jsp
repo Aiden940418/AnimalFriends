@@ -5,7 +5,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-
 <!-- header -->
 <%@ include file="../includes/header.jsp"%>
 
@@ -82,6 +81,26 @@
 
 				</tbody>
 			</table>
+			<!-- 페이징 부분 -->
+
+			<div>
+			<nav aria-label="Page navigation example">
+ 				 <ul class="pagination justify-content-center">
+  					
+    				<li class="page-item"><a class="page-link" href="myQnaList.do${pageMaker.makeQuery(pageMaker.startPage)}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+
+
+   				 <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+    				<li class="page-item"><a class="page-link" href="myQnaList.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
+   				 </c:forEach>
+
+
+   				 	<li class="page-item"><a class="page-link" href="myQnaList.do${pageMaker.makeQuery(pageMaker.endPage)}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+
+  				</ul>
+ 			</nav>
+			</div>
+
 
 		</div>
 	</div>
