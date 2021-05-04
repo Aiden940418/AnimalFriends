@@ -116,5 +116,4 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 	}
 
 
-
 }

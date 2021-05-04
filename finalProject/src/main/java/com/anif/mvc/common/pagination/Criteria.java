@@ -1,6 +1,7 @@
 package com.anif.mvc.common.pagination;
 
 public class Criteria {
+	
 	private int page;
 	private int perPageNum;
 	private int rowStart;
@@ -54,5 +55,6 @@ public class Criteria {
 		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + ", rowStart=" + rowStart + ", rowEnd=" + rowEnd
 				+ "]";
 	}
+	
 	
 }
