@@ -8,11 +8,13 @@
 
 <style type="text/css">
 
-	.wrap {
+.wrap {
 	
-	top:50;
-	}
+	top: 50%;
+	left: 50%;
 
+	text-align: center;
+}
 
 a {
 	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
