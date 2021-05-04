@@ -45,7 +45,7 @@
 							style="width: 90px; float: right;"> 
 						<input type="button" value="수정하기"
 							class="ms-2 btn btn-outline-success my-1"
-							onclick="location.href='myQnaUpdate.do'"
+							onclick="location.href='myQnaUpdateForm.do?qno=${dto.qno}'"
 							style="width: 90px; float: right;"> 
 						<input type="button"
 							value="목록으로" class="btn btn-outline-success my-1"

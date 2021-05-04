@@ -33,8 +33,8 @@ public class QnaBoardBizImpl implements QnaBoardBiz{
 	@Override
 	public int update(QnaBoardDto dto) {
 
-		
-		return 0;
+		return dao.update(dto);
+
 	}
 
 	@Override
