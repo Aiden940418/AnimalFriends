@@ -6,15 +6,32 @@
   
   <mapper namespace="adopt">
   
+   ANO NUMBER PRIMARY KEY,
+    AMNO NUMBER NOT NULL,
+    AAREA VARCHAR2(1000) NOT NULL,
+    ATYPE VARCHAR2(1000) NOT NULL,
+    ATITLE VARCHAR2(1000) NOT NULL,
+    ADATE DATE NOT NULL,
+    ACOUNT NUMBER NULL,
+    ANMNAME VARCHAR2(1000) NOT NULL,
+    ANMAGE NUMBER NOT NULL,
+    ANMBREED VARCHAR2(1000) NOT NULL,
+    ANMGENDER VARCHAR2(10) NOT NULL,
+    ANMVCNYN VARCHAR2(2) NOT NULL,
+    ANMNTRYN VARCHAR2(2) NOT NULL,
+    APHONE VARCHAR2(1000) NULL,
+    AMEMO VARCHAR2(1000) NULL,
+  
    <resultMap type="adoptDto" id="adoptMap"> <!-- 아까 정해준 별칭 boardDto  -->
      <result property="aNo" column="ANO"/>
-     <result property="mNo" column="MNO"/>
+     <result property="aMNo" column="AMNO"/>
      <result property="aArea" column="AAREA"/>
      <result property="aType" column="ATYPE"/>
      <result property="aTitle" column="ATITLE"/>
      <result property="aDate" column="ADATE"/>
      <result property="aCount" column="ACOUNT"/>
      <result property="anmName" column="ANMNAME"/>
+     <result property="anmAge" column="ANMAGE" />
      <result property="anmBreed" column="ANMBREED"/>
      <result property="anmGender" column="ANMGENDER"/>
      <result property="anmVcnYn" column="ANMVCNYN"/>
@@ -25,7 +42,7 @@
      
     <select id="adoptDetail" parameterType="adoptDto" resultType="adoptDto">
   
-  	SELECT ANO, MNO, AAREA, ATYPE, ATITLE, ADATE, ACOUNT, ANMNAME, ANMBREED, ANMGENDER, ANMVCNYN, ANMNTRYN, APHONE, AMEMO
+  	SELECT ANO, MNO, AAREA, ATYPE, ATITLE, ADATE, ACOUNT, ANMNAME, ANMAGE, ANMBREED, ANMGENDER, ANMVCNYN, ANMNTRYN, APHONE, AMEMO
   	FROM ADOPT
   	WHERE MID = #{mId}
   	AND MPW = #{mPw}
@@ -35,7 +52,8 @@
   <insert id="myadoptWrite" parameterType="adoptDto">
   	
   	INSERT INTO ADOPT
-  	VALUES(ANO.NEXTVAL, #{mNo}, #{aArea}, #{aType}, #{aTitle},#{aDate}, #{aCount}, #{anmName},#{anmBreed},#{anmGender}, #{anmVcnYn}, #{anmNtrYn}, #{aPhone}, #{aMemo}  )
+  	VALUES(ANO.NEXTVAL, #{aMNo}, #{aArea}, #{aType}, #{aTitle}, SYSDATE, 12 ,#{anmName}, #{anmAge}, #{anmBreed},
+  	#{anmGender}, #{anmVcnYn}, #{anmNtrYn}, #{aPhone}, #{aMemo}  )
   	
   </insert>
   	
