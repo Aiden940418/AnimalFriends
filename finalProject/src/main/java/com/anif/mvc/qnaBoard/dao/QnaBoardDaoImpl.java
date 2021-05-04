@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.qnaBoard.dto.QnaBoardDto;
 
 @Repository
@@ -84,6 +85,21 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 		}
 		
 		return res;
+	}
+
+	
+	
+	
+	
+	
+	@Override
+	public List<QnaBoardDto> list(Criteria cri) {
+		return sqlSession.selectList(NAMESPACE + "listPage", cri);
+	}
+
+	@Override
+	public int listCount() {
+		return sqlSession.selectOne(NAMESPACE + "listCount");
 	}
 
 }

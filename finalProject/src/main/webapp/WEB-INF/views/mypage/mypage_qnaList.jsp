@@ -83,6 +83,37 @@
 				</tbody>
 			</table>
 
+
+			<!-- 페이징 코드 -->
+			<style type="text/css">  /* li태그를 가로로 정렬하는 스타일 지정 */
+				li {
+					list-style: none;
+					float: left;
+					padding: 6px;
+				}
+			</style>
+			<div>
+				<ul>
+					<c:if test="${pageMaker.prev}">
+						<li><a
+							href="myQnaList.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
+					</c:if>
+
+					<c:forEach begin="${pageMaker.startPage}"
+						end="${pageMaker.endPage}" var="idx">
+						<li><a href="myQnaList.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
+					</c:forEach>
+
+					<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+						<li><a
+							href="myQnaList.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
+					</c:if>
+				</ul>
+			</div>
+
+
+
+
 		</div>
 	</div>
 	<!-- footer -->
