@@ -70,13 +70,16 @@
           <div id="loginBtn">
           
           <c:if test="${login == null }">
+
           <a class="btn btn-outline-success mx-2" href="loginForm.do" id="loginBtn" role="button">로그인</a>
           </c:if>
           <c:if test="${login !=null }">
+          <label>${{login.mNick}}님 로그인 되었습니다.</label>
           <a class="btn btn-outline-success mx-2" href="logout.do" id="logoutBtn" role="button">로그아웃</a>
           </c:if>
+          <c:if test="${login !=null }">
           <a class="btn btn-outline-success" href="mydiary.do" role="button">마이페이지</a>
-          
+          </c:if>
          </div>
         </div>
       </div>
