@@ -2,21 +2,33 @@ package com.anif.mvc.qnaBoardAdmin.biz;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.anif.mvc.common.pagination.Criteria;
+import com.anif.mvc.qnaBoardAdmin.dao.QnaBoardAdminDao;
 import com.anif.mvc.qnaBoardAdmin.dto.QnaBoardAdminDto;
 
+@Service
 public class QnaBoardAdminBizImpl implements QnaBoardAdminBiz{
 
+	@Autowired
+	private QnaBoardAdminDao dao;
+	
+	
 	@Override
-	public List<QnaBoardAdminDto> selectList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<QnaBoardAdminDto> selectList(Criteria cri) {
+		return dao.selectList(cri);
+	}
+
+	@Override
+	public int listCount() {
+		return dao.listCount();
 	}
 
 	@Override
 	public QnaBoardAdminDto selectOne(int qno) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectOne(qno);
 	}
 
 	@Override
@@ -37,17 +49,6 @@ public class QnaBoardAdminBizImpl implements QnaBoardAdminBiz{
 		return 0;
 	}
 
-	@Override
-	public List<QnaBoardAdminDto> list(Criteria cri) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int listCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 
 }

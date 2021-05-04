@@ -20,32 +20,36 @@
 			</div>
 
 			<div>
-				<table class="table"
-					style="width: 55%; margin-left: auto; margin-right: auto;">
+				<table class="table" style="width: 55%; margin-left: auto; margin-right: auto;">
 					<tr>
-						<td style="text-align: center;"><h3>제목이 들어갈 공간</h3></td>
+						<td style="text-align: center;" colspan="2"><h3>${dto.qtitle }</h3></td>
 					</tr>
 
-
-					<tr style="text-align: left;">
-						<td>등록일:&nbsp;</td>
+					<tr style="font-size: 14pt;">
+						<td style="text-align: left; ">
+							글쓴이 : ${dto.mnick }
+						</td>
+						<td style="text-align: right; ">
+							등록일 : ${dto.qdateToChar }
+						</td>
 					</tr>
 
-
 					<tr>
-						<td><textarea rows="20" cols="100" class="form-control my-1"
-								id="" readonly></textarea></td>
+						<td colspan="2">
+							<textarea rows="20" cols="100" class="form-control my-1" id="" readonly style="font-size:16pt;">
+								${dto.qcontent }
+							</textarea>
+						</td>
 					</tr>
 					<tr>
-						<td colspan="3">
-						<input type="button"
-							value="답변하기" class="ms-2 btn btn-outline-success my-1"
-							onclick="location.href='adminQnaList.do'"
+						<td colspan="4">
+						<input type="button" value="삭제하기"
+							class="ms-2 btn btn-outline-success my-1"
+							onclick="location.href='adminQnaDelete.do?qno='+${dto.qno}"
 							style="width: 90px; float: right;"> 
-							<!-- 답변 글쓰기로 수정 필요 -->
 						<input type="button" value="수정하기"
 							class="ms-2 btn btn-outline-success my-1"
-							onclick="location.href='adminQnaUpdate.do'"
+							onclick="location.href='adminQnaUpdateForm.do?qno=${dto.qno}'"
 							style="width: 90px; float: right;"> 
 						<input type="button"
 							value="목록으로" class="btn btn-outline-success my-1"
