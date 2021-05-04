@@ -5,23 +5,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="adopt">
-  
-   ANO NUMBER PRIMARY KEY,
-    AMNO NUMBER NOT NULL,
-    AAREA VARCHAR2(1000) NOT NULL,
-    ATYPE VARCHAR2(1000) NOT NULL,
-    ATITLE VARCHAR2(1000) NOT NULL,
-    ADATE DATE NOT NULL,
-    ACOUNT NUMBER NULL,
-    ANMNAME VARCHAR2(1000) NOT NULL,
-    ANMAGE NUMBER NOT NULL,
-    ANMBREED VARCHAR2(1000) NOT NULL,
-    ANMGENDER VARCHAR2(10) NOT NULL,
-    ANMVCNYN VARCHAR2(2) NOT NULL,
-    ANMNTRYN VARCHAR2(2) NOT NULL,
-    APHONE VARCHAR2(1000) NULL,
-    AMEMO VARCHAR2(1000) NULL,
-  
+  	
    <resultMap type="adoptDto" id="adoptMap"> <!-- 아까 정해준 별칭 boardDto  -->
      <result property="aNo" column="ANO"/>
      <result property="aMNo" column="AMNO"/>
