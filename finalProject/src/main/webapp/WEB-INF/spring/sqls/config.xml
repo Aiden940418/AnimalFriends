@@ -10,6 +10,8 @@
   	<typeAlias type="com.anif.mvc.adopt.dto.AdoptDto" alias="adoptDto"/>
   	<typeAlias type="com.anif.mvc.qnaBoard.dto.QnaBoardDto" alias="qnaBoardDto" />
   	<typeAlias type="com.anif.mvc.qnaBoardAdmin.dto.QnaBoardAdminDto" alias="qnaBoardAdminDto" />
+  	<typeAlias type="com.anif.mvc.common.pagination.Criteria" alias="Criteria" />
+  	
   	</typeAliases>
   	
   	

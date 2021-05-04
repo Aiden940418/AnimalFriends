@@ -6,7 +6,7 @@
 
 <mapper namespace="qnaBoard">
 
-	<select id="selectList" resultType="qnaBoardDto" parameterType="com.anif.mvc.common.pagination.Criteria">
+	<select id="selectList" resultType="qnaBoardDto" parameterType="Criteria">
 		SELECT *
 		FROM (
 			SELECT QNO, QGROUPNO, QGROUPSQ, QTITLETAB, QCTGY, QTITLE, MNO,

@@ -33,8 +33,12 @@ public class QnaBoardAdminBizImpl implements QnaBoardAdminBiz{
 
 	@Override
 	public int insert(QnaBoardAdminDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.insert(dto);
+	}
+	
+	@Override
+	public int insertAnswer(QnaBoardAdminDto dto) {
+		return dao.insertAnswer(dto);
 	}
 
 	@Override
@@ -48,6 +52,8 @@ public class QnaBoardAdminBizImpl implements QnaBoardAdminBiz{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
 
 
 
