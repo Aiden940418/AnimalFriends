@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.qnaBoard.biz.QnaBoardBiz;
@@ -115,10 +116,26 @@ public class MypageController {
 	
 	//QnA Start
 	
+	//페이징 적용 전 Select List
+//	@RequestMapping("/myQnaList.do")
+//	public String myQnaList(Model model) {
+//		logger.info("QnA SELECT LIST");
+//		model.addAttribute("list", biz.selectList());
+//		
+//		return "/mypage/mypage_qnaList";
+//	}
+	
+	//페이징 적용한 Select List - 여기다가 각자 페이징 구현해보기
 	@RequestMapping("/myQnaList.do")
 	public String myQnaList(Model model) {
 		logger.info("QnA SELECT LIST");
+		
+		
+		
 		model.addAttribute("list", biz.selectList());
+		
+		
+		
 		
 		return "/mypage/mypage_qnaList";
 	}

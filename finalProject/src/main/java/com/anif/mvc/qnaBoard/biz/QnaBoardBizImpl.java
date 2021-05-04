@@ -42,4 +42,5 @@ public class QnaBoardBizImpl implements QnaBoardBiz{
 		return dao.delete(qno);
 	}
 
+
 }
