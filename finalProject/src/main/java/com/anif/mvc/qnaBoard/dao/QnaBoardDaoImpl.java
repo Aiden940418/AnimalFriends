@@ -46,9 +46,16 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 
 	@Override
 	public int insert(QnaBoardDto dto) {
-
-
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE + "insert", dto);
+		} catch (Exception e) {
+			System.out.println("[error] : QnA insert");
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 	@Override
@@ -67,9 +74,16 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 
 	@Override
 	public int delete(int qno) {
-
-
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE + "delete", qno);
+		} catch (Exception e) {
+			System.out.println("[error] : QnA delete");
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 }
