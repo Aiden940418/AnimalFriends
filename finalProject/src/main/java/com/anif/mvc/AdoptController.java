@@ -46,10 +46,10 @@ public class AdoptController {
 		}
 
 	}
-	@RequestMapping(value="myAdoptUpdateForm.do")
-	public String myadoptUpdateForm() {
-		return "mypage/mypage_myadoptUpdateForm";
-	}
+//	@RequestMapping(value="myAdoptUpdateForm.do")
+//	public String myadoptUpdateForm() {
+//		return "mypage/mypage_myadoptUpdateForm";
+//	}
 
 
 	// 입양공고 수정
