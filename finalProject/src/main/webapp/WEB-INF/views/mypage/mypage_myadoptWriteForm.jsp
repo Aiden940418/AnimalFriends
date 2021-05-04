@@ -19,7 +19,7 @@
 		
 		
 		<div>
-			<form>
+			<form >
 				<div class="form-group">
 					<label>제목</label>
 					<textarea class="form-control" name="title" rows="1" style="resize: none;" placeholder="제목을 입력해주세요"></textarea>

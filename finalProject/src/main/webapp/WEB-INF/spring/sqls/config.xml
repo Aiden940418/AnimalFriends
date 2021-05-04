@@ -7,7 +7,7 @@
   
   	<typeAliases>
   	<typeAlias type="com.anif.mvc.member.dto.MemberDto" alias="memberDto" />
-  	
+  	<typeAlias type="com.anif.mvc.adopt.dto.AdoptDto" alias="adoptDto"/>
   	</typeAliases>
   	
   	
