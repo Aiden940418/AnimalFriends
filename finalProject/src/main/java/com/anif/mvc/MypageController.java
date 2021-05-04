@@ -136,9 +136,11 @@ public class MypageController {
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(biz.listCount());
+		int listCount = biz.listCount();
+		pageMaker.setTotalCount(listCount);
 		
 		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("listCount", listCount);
 		
 		return "/mypage/mypage_qnaList";
 	}
