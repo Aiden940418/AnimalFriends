@@ -47,6 +47,19 @@ public class QnaBoardBizImpl implements QnaBoardBiz{
 		return dao.delete(qno);
 	}
 
+	
+	
+	
+	@Override
+	public List<QnaBoardDto> list(Criteria cri) {
+		return dao.list(cri);
+	}
+
+	@Override
+	public int listCount() {
+		return dao.listCount();
+	}
+
 
 
 }

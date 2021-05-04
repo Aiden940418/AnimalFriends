@@ -15,18 +15,15 @@
 			FROM QUESTIONBOARD JOIN MEMBER USING(MNO)) QB
 			WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
 		ORDER BY QGROUPNO DESC, QGROUPSQ ASC
+  	</select> 
+  	<select id="listCount" resultType="int">
+  	<![CDATA[
+		SELECT COUNT(QNO)
+		FROM QUESTIONBOARD
+		WHERE QNO > 0
+	]]>
   	</select>
   	
-   
-   <select id="listCount" resultType="int">
-	<![CDATA[
-		SELECT COUNT(QNO)
-		  FROM QUESTIONBOARD
-		 WHERE QNO > 0
-	]]>
-	</select>
-   
-   
    
 
   	<select id="selectOne" parameterType="int" resultType="qnaBoardDto">

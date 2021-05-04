@@ -15,5 +15,8 @@ public interface QnaBoardDao {
 	public int insert(QnaBoardDto dto);
 	public int update(QnaBoardDto dto);
 	public int delete(int qno);
+	
+	public List<QnaBoardDto> list(Criteria cri);
+	public int listCount();
 
 }
