@@ -26,6 +26,10 @@
   	<!-- 답글 작성 쿼리는 이후에 admin의 qnaBoard 쪽에서 작성해야 됨 -->
   	
   	
+  	<delete id="delete" parameterType="int">
+  		DELETE FROM QUESTIONBOARD
+  		WHERE QNO = #{qno}
+  	</delete>
   	
   	
   

@@ -169,6 +169,20 @@ public class MypageController {
 		return "/mypage/mypage_qnaUpdate";
 	}
 	
+	@RequestMapping("/myQnaDelete.do")
+	public String myQnaDelete(int qno) {
+		logger.info("QnA DELETE");
+		
+		int res = biz.delete(qno);
+		
+		if(res>0) {
+			return "redirect:myQnaList.do"; 
+		}else {
+			return "redirect:myQnaDetail.do?qno="+qno;
+		}
+		
+	}
+	
 	//QnA End
 	
 	

@@ -39,9 +39,7 @@ public class QnaBoardBizImpl implements QnaBoardBiz{
 
 	@Override
 	public int delete(int qno) {
-
-		
-		return 0;
+		return dao.delete(qno);
 	}
 
 }
