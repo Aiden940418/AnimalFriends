@@ -166,11 +166,10 @@ public class MypageController {
 		logger.info("QnA INSERT");
 		
 		//현재 로그인 되어있는 계정의 회원번호를 가져와서 dto에 세팅해주기
-//		MemberDto memberDto = (MemberDto) session.getAttribute("login");
-//		dto.setMno(memberDto.getmNo());
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		dto.setMno(memberDto.getmNo());
 		
 		//현재 로그인 기능 합치기 전이므로 테스트로 세션 회원 작성하겠음
-		dto.setMno(1);
 		
 		int res = biz.insert(dto);
 
