@@ -14,15 +14,15 @@ public class QnaBoardDto {
 	private int mno;			//작성자 (회원 번호)
 	private Date qdate;			//작성일 
 	private String qdateToChar; //작성일 포맷 변환 (select 시에만 사용될듯)
+	private String mnick;       //작성자 닉네임
 	
 	
 	public QnaBoardDto() {
 		super();
 	}
 
-
 	public QnaBoardDto(int qno, int qgroupno, int qgroupsq, int qtitletab, String qctgy, String qtitle, String qcontent,
-			int mno, Date qdate, String qdateToChar) {
+			int mno, Date qdate, String qdateToChar, String mnick) {
 		super();
 		this.qno = qno;
 		this.qgroupno = qgroupno;
@@ -34,6 +34,7 @@ public class QnaBoardDto {
 		this.mno = mno;
 		this.qdate = qdate;
 		this.qdateToChar = qdateToChar;
+		this.mnick = mnick;
 	}
 
 
@@ -91,26 +92,27 @@ public class QnaBoardDto {
 	public void setQdate(Date qdate) {
 		this.qdate = qdate;
 	}
-	
-	
-	
 	public String getQdateToChar() {
 		return qdateToChar;
 	}
-
-
 	public void setQdateToChar(String qdateToChar) {
 		this.qdateToChar = qdateToChar;
 	}
+	public String getMnick() {
+		return mnick;
+	}
+	public void setMnick(String mnick) {
+		this.mnick = mnick;
+	}
 
-
+	
+	
 	@Override
 	public String toString() {
 		return "QnaBoardDto [qno=" + qno + ", qgroupno=" + qgroupno + ", qgroupsq=" + qgroupsq + ", qtitletab="
 				+ qtitletab + ", qctgy=" + qctgy + ", qtitle=" + qtitle + ", qcontent=" + qcontent + ", mno=" + mno
-				+ ", qdate=" + qdate + ", qdateToChar=" + qdateToChar + "]";
+				+ ", qdate=" + qdate + ", qdateToChar=" + qdateToChar + ", mnick=" + mnick + "]";
 	}
-
 
 	
 
