@@ -4,9 +4,6 @@
 <!-- JSTL 사용위한 코드 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<style type="text/css">
-			li {list-style: none; float: left; padding: 6px;}
-		</style>
 
 <!-- header -->
 <%@ include file="../includes/header.jsp"%>
@@ -90,15 +87,15 @@
 			<nav aria-label="Page navigation example">
  		 <ul class="pagination">
     <c:if test="${pageMaker.prev}"> 
-    	<li class="page-item"><a href="myQnaList.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
+    	<li class="page-item"><a class="page-link" href="myQnaList.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
  	</c:if>
 
     <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-    	<li class="page-item"><a href="myQnaList.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
+    	<li class="page-item"><a class="page-link" href="myQnaList.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
     </c:forEach>
 
     <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-    	<li class="page-item"><a href="myQnaList.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
+    	<li class="page-item"><a class="page-link" href="myQnaList.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
     </c:if> 
   </ul>
   </nav>
