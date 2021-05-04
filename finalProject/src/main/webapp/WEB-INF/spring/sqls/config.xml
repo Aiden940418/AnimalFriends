@@ -14,6 +14,8 @@
   	<!-- 프로퍼티즈 에서 디벨로먼트 어셈블리 가면 경로가 잡혀있는걸 확인 할 수있디ㅏ. -->
   	<mappers>
   		<mapper resource="/mybatis/member-mapper.xml"/>
+  		<mapper resource="/mybatis/adopt-mapper.xml"/>
+  	
   	
   	</mappers>
   

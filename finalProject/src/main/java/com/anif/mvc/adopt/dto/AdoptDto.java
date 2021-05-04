@@ -7,7 +7,7 @@ public class AdoptDto {
 
 		
 		private int aNo;
-		private String mNo;
+		private String aMNo;
 		private String aArea;
 		private String aType;
 		private String aTitle;
@@ -30,12 +30,12 @@ public class AdoptDto {
 
 
 
-		public AdoptDto(int aNo, String mNo, String aArea, String aType, String aTitle, Date aDate, int aCount,
+		public AdoptDto(int aNo, String aMNo, String aArea, String aType, String aTitle, Date aDate, int aCount,
 				String anmName, int anmAge, String anmBreed, String anmGender, String anmVcnYn, String anmNtrYn,
 				String aPhone, String aMemo) {
 			super();
 			this.aNo = aNo;
-			this.mNo = mNo;
+			this.aMNo = aMNo;
 			this.aArea = aArea;
 			this.aType = aType;
 			this.aTitle = aTitle;
@@ -65,14 +65,14 @@ public class AdoptDto {
 
 
 
-		public String getmNo() {
-			return mNo;
+		public String getaMNo() {
+			return aMNo;
 		}
 
 
 
-		public void setmNo(String mNo) {
-			this.mNo = mNo;
+		public void setaMNo(String aMNo) {
+			this.aMNo = aMNo;
 		}
 
 

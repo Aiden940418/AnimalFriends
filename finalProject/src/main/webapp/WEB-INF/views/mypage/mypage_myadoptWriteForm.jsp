@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 
 	
 	<!-- header -->
@@ -17,47 +19,34 @@
 			<h1>입양 공고 등록</h1>
 			<br>
 		
-		
-		<div>
-			<form >
-				<div class="form-group">
-					<label>제목</label>
-					<textarea class="form-control" name="title" rows="1" style="resize: none;" placeholder="제목을 입력해주세요"></textarea>
-				</div>
 				<br>
 
-	<div class="container">
-
-		<div class="row">
-			<!-- title -->
-			<div class="row my-4" style="text-align: center;">
-				<h1>입양 등록</h1>
-			</div>
-
-			<!-- form -->
-			<div style="margin: auto; text-align: center;">
-				<form action="" style="display: inline-block;">
+				<div class="container text-center">
+				
+				<form action="myAdoptWriteRes.do" method="GET">
+						<input type="hidden" name="aMNo" value="${login.mNo}">
+			
 					<table>
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width:100px; pointer-events: none;">제목</button></th>
-							<td><input type="text" class="form-control my-1" id=""
+							<td><input type="text" class="form-control my-1" name="aTitle"
 								style="width:500px; margin:10px;"></td>
 						</tr>
 						
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width:100px; pointer-events: none;">지역설정</button></th>
-							<td><select class="form-control ms-2" style="width:200px">
-						<option>서울동부</option>
-						<option>서울서부</option>
-						<option>서울남부</option>
-						<option>서울북부</option>
-						<option>경기인천</option>
-						<option>강원도</option>
-						<option>충청도</option>
-						<option>경상도</option>
-						<option>전라도</option>
+							<td><select name="aArea" class="form-control ms-2" style="width:200px">
+						<option value="서울동부">서울동부</option>
+						<option value="서울서부">서울서부</option>
+						<option value="서울남부">서울남부</option>
+						<option value="서울북부">서울북부</option>
+						<option value="경기인천">경기인천</option>
+						<option value="강원도">강원도</option>
+						<option value="충청도">충청도</option>
+						<option value="경상도">경상도</option>
+						<option value="전라도">전라도</option>
 						
 					</select></td>
 						</tr>
@@ -66,12 +55,12 @@
 						<tr>
 							<th><button type="button" class="btn btn-outline-success mt-1"
 									style="width:100px; pointer-events: none;">동물 종</button></th>
-							<td><select class="form-control ms-2 mt-2" style="width:200px">
-						<option>강아지</option>
-						<option>고양이</option>
-						<option>도마뱀</option>
-						<option>거북이</option>
-						<option>기타</option>
+							<td><select name="aType" class="form-control ms-2 mt-2" style="width:200px">
+						<option value="강아지">강아지</option>
+						<option value="고양이">고양이</option>
+						<option value="도마뱀">도마뱀</option>
+						<option value="거북이">거북이</option>
+						<option value="기타">기타</option>
 
 						
 					</select></td>
@@ -80,15 +69,23 @@
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width:100px; pointer-events: none;">동물이름</button></th>
-							<td><input type="text" class="form-control my-1" name="goods_sellNum"
+							<td><input type="text" class="form-control my-1" name="anmName" id="anmName"
 								style="width:500px; margin:10px;" placeholder="동물 이름을 입력해주세요"></td>
 						</tr>
 						
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width:100px; pointer-events: none;">동물품종</button></th>
-							<td><input type="text" class="form-control my-1" name="goods_sellNum"
+							<td><input type="text" class="form-control my-1" name="anmBreed" id="anmBreed"
 								style="width:500px; margin:10px;" placeholder="동물 품종을 입력해주세요"></td>
+						</tr>
+						
+						
+						<tr>
+							<th><button type="button" class="btn btn-outline-success"
+									style="width:100px; pointer-events: none;">동물나이</button></th>
+							<td><input type="text" class="form-control my-1" name="anmAge" id="anmAge"
+								style="width:500px; margin:10px;" placeholder="동물 나이를 입력해주세요"></td>
 						</tr>
 						
 
@@ -102,9 +99,9 @@
 							<label class="btn btn-secondary"> 
 							
 								<input type="radio"
-								name="options" id="option3" autocomplete="off"> 암
+								name="anmGender" value="암컷" autocomplete="off"> 암
 								<input type="radio"
-								name="options" id="option3" autocomplete="off"> 수
+								name="anmGender" value="수컷" autocomplete="off"> 수
 								
 								</label>
 								</div>
@@ -119,11 +116,10 @@
 							<label class="btn btn-secondary"> 
 							
 								<input type="radio"
-								name="options" id="option3" autocomplete="off"> Y
+								name="anmVcnYn" value="Y" autocomplete="off"> Y
 								<input type="radio"
-								name="options" id="option3" autocomplete="off"> N
-								<input type="radio"
-								name="options" id="option3" autocomplete="off"> 알수없음 
+								name="anmVcnYn" value="N" autocomplete="off"> N
+	
 								
 								
 								</label>
@@ -140,12 +136,10 @@
 							<label class="btn btn-secondary"> 
 							
 								<input type="radio"
-								name="options" id="option3" autocomplete="off"> Y
+								name="anmNtrYn" value="Y" autocomplete="off"> Y
 								<input type="radio"
-								name="options" id="option3" autocomplete="off"> N
-								<input type="radio"
-								name="options" id="option3" autocomplete="off"> 알수없음 
-								
+								name="anmNtrYn" value="N" autocomplete="off"> N
+
 								
 								</label>
 								</div>
@@ -156,8 +150,8 @@
 							<th style="vertical-align: top;"><button type="button" class="btn btn-outline-success"
 									style="width:100px; pointer-events: none;">연락처</button></th>
 							<td>
-							<input type="text" class="form-control my-1" name="goods_sellNum"
-								style="width:500px; margin:10px;" placeholder="입양문의시 연락처(잠실)">
+							<input type="text" class="form-control my-1" name="aPhone"
+								style="width:500px; margin:10px;" placeholder="입양문의시 연락처(선택)">
 							
 								</td>
 						</tr>
@@ -166,16 +160,17 @@
 						<tr>
 							<th><button class="btn btn-outline-success"
 									style="width:100px; pointer-events: none;">이미지</button></th>
-							<td><input type="file" class="form-control my-1" name="goods_name"
+							<td><input type="file" class="form-control my-1"
 								style="width:500px;margin:10px;" placeholder="이미지를 등록해주세요."></td>
 						</tr>
+
+						
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
-									style="width:100px; pointer-events: none;">동물품종</button></th>
-							<td><input type="text" class="form-control my-1" name="goods_sellNum"
-								style="width:500px; margin:10px;" placeholder="동물 품종을 입력해주세요"></td>
-						</tr>
-						
+								style="width:100px; pointer-events: none;">메모</button>
+								</th>
+						<td><input type="text" style=" margin:10px; width:500px; height:200px; margin-right:100px; " 
+						name="aMemo"></td>
 				
 						
 
@@ -192,15 +187,16 @@
 						
 						
 						
-			
 					</table>
-				</form>
+					
+					</form>
+</div>
 			</div>
 		</div>
 	
 
-	</div>
-	</div>
+	
+	
 	
 
 	<br><br><br>
