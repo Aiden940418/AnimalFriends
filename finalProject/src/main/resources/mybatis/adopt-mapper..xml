@@ -32,7 +32,7 @@
   
   </select>
   
-  <insert id="myadoptWrite" parameterType="memberDto">
+  <insert id="myadoptWrite" parameterType="adoptDto">
   	
   	INSERT INTO ADOPT
   	VALUES(ANO.NEXTVAL, #{mNo}, #{aArea}, #{aType}, #{aTitle},#{aDate}, #{aCount}, #{anmName},#{anmBreed},#{anmGender}, #{anmVcnYn}, #{anmNtrYn}, #{aPhone}, #{aMemo}  )

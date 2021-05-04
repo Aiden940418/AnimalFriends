@@ -10,6 +10,21 @@
 	<!-- 페이지 내용 부분 -->
 	
 	<div class="contentDiv">
+		
+		
+		 <div class="container mt-5 text-center">
+		
+			<h1>입양 공고 등록</h1>
+			<br>
+		
+		
+		<div>
+			<form >
+				<div class="form-group">
+					<label>제목</label>
+					<textarea class="form-control" name="title" rows="1" style="resize: none;" placeholder="제목을 입력해주세요"></textarea>
+				</div>
+				<br>
 
 	<div class="container">
 

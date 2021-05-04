@@ -30,7 +30,7 @@
 				댓글 개수 : <br> 등록 날짜 : &nbsp;&nbsp;&nbsp;조회수 :
 			</div>
 			<div style="float: right; margin-right: 200px;">
-				<button type="button" class="btn btn-outline-success">수정</button>
+				<button type="button" class="btn btn-outline-success" onclick="location.href='myAdoptUpdateForm.do'">수정</button>
 				<button type="button" class="btn btn-outline-success">목록으로</button>
 			</div>
 		</div>
