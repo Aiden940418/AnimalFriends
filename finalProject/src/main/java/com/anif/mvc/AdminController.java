@@ -2,15 +2,23 @@ package com.anif.mvc;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.anif.mvc.common.pagination.Criteria;
+import com.anif.mvc.common.pagination.PageMaker;
+import com.anif.mvc.qnaBoardAdmin.biz.QnaBoardAdminBiz;
 
 @Controller
 public class AdminController {
 
 	
 	private Logger logger = LoggerFactory.getLogger(AdminController.class);
+	
+	@Autowired
+	private QnaBoardAdminBiz biz;
 
 	
 	//adminAdopt
@@ -79,18 +87,32 @@ public class AdminController {
 		return "admin/admin_goodsUpdate";
 	}
 	
+	
 	//관리자 qna
 	
 	@RequestMapping("/adminQnaList.do")
-	public String adminQnaList(Model model) {
+	public String adminQnaList(Model model, Criteria cri) {
+		logger.info("QnA Admin SELECT LIST");
+		
+		model.addAttribute("list", biz.selectList(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		int listCount = biz.listCount();
+		pageMaker.setTotalCount(listCount);
+		
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("listCount", listCount);
 		
 		return "admin/admin_qnaList";
 	}
 	
+	
 	//관리자 qna detail
-
 	@RequestMapping("/adminQnaDetail.do")
-	public String adminQnaDetail(Model model) {
+	public String adminQnaDetail(Model model, int qno) {
+		logger.info("QnA Admin SELECT ONE");
+		model.addAttribute("dto", biz.selectOne(qno));
 		
 		return "admin/admin_qnaDetail";
 	}

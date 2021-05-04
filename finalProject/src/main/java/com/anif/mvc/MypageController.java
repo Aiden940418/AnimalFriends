@@ -118,16 +118,7 @@ public class MypageController {
 	
 	//QnA Start
 	
-	//페이징 적용 전 Select List
-//	@RequestMapping("/myQnaList.do")
-//	public String myQnaList(Model model) {
-//		logger.info("QnA SELECT LIST");
-//		model.addAttribute("list", biz.selectList());
-//		
-//		return "/mypage/mypage_qnaList";
-//	}
-	
-	//페이징 적용한 Select List - 여기다가 각자 페이징 구현해보기
+	//페이징 적용한 Select List
 	@RequestMapping("/myQnaList.do")
 	public String myQnaList(Model model, Criteria cri) {
 		logger.info("QnA SELECT LIST");
