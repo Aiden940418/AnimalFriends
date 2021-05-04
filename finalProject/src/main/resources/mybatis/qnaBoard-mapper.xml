@@ -28,7 +28,7 @@
 
   	<select id="selectOne" parameterType="int" resultType="qnaBoardDto">
   		SELECT QNO, QGROUPNO, QGROUPSQ, QTITLETAB, QCTGY, QTITLE, QCONTENT, MNO, 
-  				TO_CHAR(QDATE, 'YYYY-MM-DD HH24:MI') AS qdateToChar, MNICK
+  				TO_CHAR(QDATE, 'YYYY-MM-DD HH24:MI:SS') AS qdateToChar, MNICK
   		FROM QUESTIONBOARD
   		JOIN MEMBER USING(MNO)
   		WHERE QNO=#{qno}
