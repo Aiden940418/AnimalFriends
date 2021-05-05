@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
 import com.anif.mvc.qnaBoardAdmin.biz.QnaBoardAdminBiz;
+import com.anif.mvc.qnaBoardAdmin.dto.QnaBoardAdminDto;
 
 @Controller
 public class AdminController {
@@ -129,14 +130,48 @@ public class AdminController {
 	}
 	
 	
-	//관리자 qna 수정 
-	@RequestMapping("/adminQnaUpdate.do")
-	public String adminQnaUpdate(Model model) {
+	//관리자 qna 수정폼
+	@RequestMapping("/adminQnaUpdateForm.do")
+	public String adminQnaUpdateForm(Model model, int qno) {
+		logger.info("QnA Admin UPDATE FORM");
 		
-		return "admin/admin_qnaUpdate";
-	
+		model.addAttribute("dto", biz.selectOne(qno));
+
+		return "admin/admin_qnaUpdateForm";
 	
 	}
+	
+	//관리자 qna 수정결과
+	@RequestMapping("/adminQnaUpdateRes.do")
+	public String adminQnaUpdateRes(QnaBoardAdminDto dto) {
+		logger.info("QnA Admin UPDATE RESULT");
+		
+		int res = biz.update(dto);
+		
+		if(res>0) {
+			return "redirect:adminQnaDetail.do?qno="+dto.getQno();
+		}else {
+			return "redirect:adminQnaUpdateForm.do?qno="+dto.getQno();
+		}
+		
+	}
+	
+	//관리자 qna 삭제
+	@RequestMapping("/adminQnaDelete.do")
+	public String adminQnaDelete(int qno) {
+		logger.info("QnA Admin DELETE");
+		
+		int res = biz.delete(qno);
+		
+		if(res>0) {
+			return "redirect:adminQnaList.do"; 
+		}else {
+			return "redirect:adminQnaDetail.do?qno="+qno;
+		}
+		
+	}
+	
+	
 	
 	
 	

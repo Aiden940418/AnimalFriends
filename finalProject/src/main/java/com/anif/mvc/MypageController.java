@@ -191,7 +191,7 @@ public class MypageController {
 		if(res>0) {
 			return "redirect:myQnaDetail.do?qno="+dto.getQno();
 		}else {
-			return "redirect:myQnaUpdateForm.do?myno="+dto.getQno();
+			return "redirect:myQnaUpdateForm.do?qno="+dto.getQno();
 		}
 		
 		

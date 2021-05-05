@@ -32,6 +32,18 @@
   		JOIN MEMBER USING(MNO)
   		WHERE QNO=#{qno}
   	</select>
+  	
+  	<update id="update" parameterType="qnaBoardAdminDto">
+		UPDATE QUESTIONBOARD
+		SET QTITLE = #{qtitle}, QCONTENT = #{qcontent}
+		WHERE QNO = #{qno}
+	</update>
+
+
+  	<delete id="delete" parameterType="int">
+  		DELETE FROM QUESTIONBOARD
+  		WHERE QNO = #{qno}
+  	</delete>
   
   
   

@@ -16,19 +16,19 @@ public class QnaBoardAdminDaoImpl implements QnaBoardAdminDao{
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
-	
+
+
 	@Override
 	public List<QnaBoardAdminDto> selectList(Criteria cri) {
 		List<QnaBoardAdminDto> list = new ArrayList<QnaBoardAdminDto>();
-		
+
 		try {
 			list = sqlSession.selectList(NAMESPACE + "selectList" , cri);
 		} catch (Exception e) {
 			System.out.println("[error] : QnA Admin select list");
 			e.printStackTrace();
 		}
-		
+
 		return list;
 	}
 
@@ -41,7 +41,7 @@ public class QnaBoardAdminDaoImpl implements QnaBoardAdminDao{
 			System.out.println("[error] : QnA Admin select list");
 			e.printStackTrace();
 		}
-		
+
 		return cnt;
 	}
 
@@ -61,20 +61,35 @@ public class QnaBoardAdminDaoImpl implements QnaBoardAdminDao{
 
 	@Override
 	public int insert(QnaBoardAdminDto dto) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int update(QnaBoardAdminDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+
+		try {
+			res = sqlSession.update(NAMESPACE + "update", dto);
+		} catch (Exception e) {
+			System.out.println("[error] : QnA Admin update");
+			e.printStackTrace();
+		}
+
+		return res;
 	}
 
 	@Override
 	public int delete(int qno) {
-		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+
+		try {
+			res = sqlSession.delete(NAMESPACE + "delete", qno);
+		} catch (Exception e) {
+			System.out.println("[error] : QnA Admin delete");
+			e.printStackTrace();
+		}
+
+		return res;
 	}
 
 
