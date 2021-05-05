@@ -1,5 +1,7 @@
 package com.anif.mvc.adopt.biz;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,20 @@ public class AdoptBizImpl implements AdoptBiz {
 	@Autowired
 	private AdoptDao dao;
 
+	
+
+	@Override
+	public List<AdoptDto> adoptList() {
+
+		return dao.adoptList();
+	}
+
+
+	@Override
+	public AdoptDto adoptDetail(int aNo) {
+		return dao.adoptDetail(aNo);
+	}
+
 
 	@Override
 	public int myadoptWrite(AdoptDto dto) {
@@ -23,11 +39,6 @@ public class AdoptBizImpl implements AdoptBiz {
 		return dao.myadoptUpdate(dto);
 	}
 
-	@Override
-	public AdoptDto adoptDetail(int aNo) {
-		return dao.adoptDetail(aNo);
-	}
-	
 	
 	
 

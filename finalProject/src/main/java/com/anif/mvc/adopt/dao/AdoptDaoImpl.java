@@ -1,5 +1,8 @@
 package com.anif.mvc.adopt.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,6 +14,26 @@ public class AdoptDaoImpl implements AdoptDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
+	
+	
+	
+	@Override
+	public List<AdoptDto> adoptList() {
+
+		List<AdoptDto> list = new ArrayList<AdoptDto>();
+			
+			
+		try {
+			list = sqlSession.selectList(NAMESPACE+"adoptList");
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	
 	@Override
 	public AdoptDto adoptDetail(int aNo) {
 		AdoptDto res = null;
@@ -46,7 +69,8 @@ public class AdoptDaoImpl implements AdoptDao {
 		}
 		return res;
 	}
-	
+
+
 	
 	
 
