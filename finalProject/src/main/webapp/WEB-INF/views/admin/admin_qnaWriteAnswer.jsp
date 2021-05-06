@@ -21,7 +21,8 @@
 
 			<!-- form -->
 			<div style="margin: auto; text-align: center;">
-				<form action="adminQnaWriteRes.do" style="display: inline-block;">
+				<form action="adminAWriteRes.do" style="display: inline-block;">
+				<input type="hidden" name="qno" value="${answerQno}">  
 					<table>
 						<tr>
 							<th><button type="button"

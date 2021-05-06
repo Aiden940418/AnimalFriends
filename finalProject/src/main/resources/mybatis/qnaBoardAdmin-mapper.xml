@@ -6,6 +6,7 @@
   
   <mapper namespace="qnaBoardAdmin">
   
+  	<!-- 글 목록 조회 시 사용하는 쿼리 -->
   	<select id="selectList" resultType="qnaBoardAdminDto" parameterType="com.anif.mvc.common.pagination.Criteria">
 		SELECT *
 		FROM (
@@ -16,6 +17,8 @@
 			WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
 		ORDER BY QGROUPNO DESC, QGROUPSQ ASC
   	</select> 
+  	
+  	<!-- 글 목록 조회 시 전체 글 갯수를 조회하여 페이징에 사용하는 쿼리 -->
   	<select id="listCount" resultType="int">
   	<![CDATA[
 		SELECT COUNT(QNO)
@@ -24,7 +27,7 @@
 	]]>
   	</select>
   
-  
+  	<!-- 글 상세 조회 시 사용하는 쿼리 -->
   	<select id="selectOne" parameterType="int" resultType="qnaBoardAdminDto">
   		SELECT QNO, QGROUPNO, QGROUPSQ, QTITLETAB, QCTGY, QTITLE, QCONTENT, MNO, 
   				TO_CHAR(QDATE, 'YYYY-MM-DD HH24:MI:SS') AS qdateToChar, MNICK
@@ -47,6 +50,26 @@
   
   
   
+
+	<!-- 글쓰기 시 사용하는 insert 쿼리 -->  	
+  	<insert id="insert" parameterType="qnaBoardAdminDto">
+  		INSERT INTO QUESTIONBOARD
+  		VALUES (QNOSEQ.NEXTVAL, QGROUPNOSEQ.NEXTVAL, 1, 0, #{qctgy}, #{qtitle}, #{qcontent}, #{mno}, SYSDATE)
+  	</insert>
+  	
+  	<!-- 답변 글 작성 시 사용하는 insert 쿼리 -->
+  	<insert id="insertAnswer" parameterType="qnaBoardAdminDto">
+  		INSERT INTO QUESTIONBOARD
+  		VALUES (QNOSEQ.NEXTVAL, 
+  				(SELECT QGROUPNO FROM QUESTIONBOARD WHERE QNO=#{qno}), 
+  				(SELECT QGROUPSQ FROM QUESTIONBOARD WHERE QNO=#{qno})+1, 
+  				(SELECT QTITLETAB FROM QUESTIONBOARD WHERE QNO=#{qno})+1, 
+  				#{qctgy}, 
+  				#{qtitle}, 
+  				#{qcontent}, 
+  				#{mno}, 
+  				SYSDATE)
+  	</insert>
   
   
   

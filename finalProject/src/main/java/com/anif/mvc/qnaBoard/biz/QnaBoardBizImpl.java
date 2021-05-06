@@ -11,10 +11,10 @@ import com.anif.mvc.qnaBoard.dto.QnaBoardDto;
 
 @Service
 public class QnaBoardBizImpl implements QnaBoardBiz{
-	
+
 	@Autowired
 	private QnaBoardDao dao;
-	
+
 	@Override
 	public List<QnaBoardDto> selectList(Criteria cri) {
 		return dao.selectList(cri);
@@ -46,8 +46,6 @@ public class QnaBoardBizImpl implements QnaBoardBiz{
 	public int delete(int qno) {
 		return dao.delete(qno);
 	}
-
-
 
 
 }

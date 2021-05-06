@@ -3,12 +3,12 @@ package com.anif.mvc.qnaBoardAdmin.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.anif.mvc.common.pagination.Criteria;
-import com.anif.mvc.qnaBoard.dto.QnaBoardDto;
 import com.anif.mvc.qnaBoardAdmin.dto.QnaBoardAdminDto;
 
 @Repository
@@ -61,8 +61,32 @@ public class QnaBoardAdminDaoImpl implements QnaBoardAdminDao{
 
 	@Override
 	public int insert(QnaBoardAdminDto dto) {
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE + "insert", dto);
+		} catch (Exception e) {
+			System.out.println("[error] : QnA Admin insert");
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
+	
+	@Override
+	public int insertAnswer(QnaBoardAdminDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE + "insertAnswer", dto);
+		} catch (Exception e) {
+			System.out.println("[error] : QnA Admin Answer insert");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
 
 	@Override
 	public int update(QnaBoardAdminDto dto) {
@@ -91,6 +115,7 @@ public class QnaBoardAdminDaoImpl implements QnaBoardAdminDao{
 
 		return res;
 	}
+
 
 
 
