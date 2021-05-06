@@ -12,6 +12,6 @@ public interface QnaBoardBiz {
 	public QnaBoardDto selectOne(int qno);
 	public int insert(QnaBoardDto dto);
 	public int update(QnaBoardDto dto);
-	public int delete(int qno);
+	public int delete(int qgroupno);
 
 }
