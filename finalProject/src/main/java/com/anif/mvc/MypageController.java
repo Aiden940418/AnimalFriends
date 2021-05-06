@@ -198,10 +198,10 @@ public class MypageController {
 	}
 	
 	@RequestMapping("/myQnaDelete.do")
-	public String myQnaDelete(int qno) {
+	public String myQnaDelete(int qno, int qgroupno) {
 		logger.info("QnA DELETE");
 		
-		int res = biz.delete(qno);
+		int res = biz.delete(qgroupno);
 		
 		if(res>0) {
 			return "redirect:myQnaList.do"; 
