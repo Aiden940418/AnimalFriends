@@ -52,72 +52,7 @@
 
 
 
-
-function idChk() {
-	
-	$.ajax({
-		
-		url : "idChk.do",
-		type : post,
-		dataType : "json",
-		data : {"mId" : $("#mId").val()},
-		success : function(count){
-			if(count==1) {
-				alert("중복된 아이디입니다.");
-				
-			}else if(count==0) {
-				$("#idChk").attr("value","Y");
-				alert("사용가능한 아이디입니다.")
-			}
-			
-		}
-		
-		
-	})
-	
-	
-	
-	
-	
-	
-	
-	
-}
-
-/* function DosignUp() {
-	
-	var mId = $('#mId').val();
-	var mPw = $('#mPw').val();
-	var mName = $('#mName').val();
-	var mNick = $('#mNick').val();
-	var mAddr1 = $('#mAddr1').val();
-	var mAddr2 = $('#mAddr2').val();
-	var mAddr3 = $('#mAddr3').val();
-	var mPhone = $('#mPhone').val();
-
-	if(mId.length == 0) {
-		alert("아이디를 입력해주세요");
-		$('#mId').focus();
-		return false;
-	}
-	
-	if(mPw.length==0) {
-		alert("비밀번호를 입력해주세요");
-		$('#mId').focus();
-		return false;
-	}
-	
-	
-	
-	
-	if(confirm("회원가입 하시겠습니까?")){
-	 	alert("회원가입을 축하합니다.");
-	 	return true;
-	 	
-	}
-	
-}
- */
+$('#idChk')
 
 
 $(function(){
@@ -267,9 +202,9 @@ function execPostCode() {
 						
 				<tr>
 				<th>아이디</th>
-				<td><input class=""type="text"  name="mId" style="width:300px; height:40px">
+				<td><input id="mId"type="text"  name="mId" style="width:300px; height:40px">
 				</td>
-				<td><button class="btn-outline-success" type="button" id="idCheck" value="Y" style="font-size:20px">중복확인</button>
+				<td><button class="btn-outline-success" type="button" id="idChk" value="Y" style="font-size:20px" onclick="idChk();">중복확인</button>
 				</td>
 				<td>
 					<span class="id_input_re_1">사용 가능한 아이디입니다.</span>
@@ -279,7 +214,7 @@ function execPostCode() {
 				
 				<tr>
 				<th>비밀번호</th>
-				<td><input type="password"  name="mPw" id="pw" style="width:300px; height:40px">
+				<td><input class="mPw" type="password"  name="mPw" id="pw" style="width:300px; height:40px">
 				</td>
 				</tr>
 				

@@ -230,6 +230,10 @@ public class AdoptDto {
 		public void setaMemo(String aMemo) {
 			this.aMemo = aMemo;
 		}
+
+
+
+
 		
 		
 		

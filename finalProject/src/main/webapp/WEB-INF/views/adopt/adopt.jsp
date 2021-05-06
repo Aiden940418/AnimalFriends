@@ -30,25 +30,28 @@
 			<li><a class="dropdown-item" href="#">고양이</a></li>
 		</ul>
 	</div>
-	
+	<c:if test="${login != null }">
 	<div class="btn-group float-end">
-		<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='myAdoptList.do'">나의
+		<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='myAdoptList.do?mNo=${login.mNo}'">나의
 			입양공고 보기</button>
 	</div>
+	</c:if>
 	
 	<c:choose>
 		<c:when test="${empty list }">
 		
-			<h1> 왜 비어있노</h1>
 			
 		</c:when>
+	
+	
 		
 		<c:otherwise>
+		
+
+		<div class="container mt-5" >
+			<div class="row">
 	<c:forEach items="${list}" var="dto">
-		<div class="container mt-5">		
-
-
-
+					<div class="col-sm mt-5">
 			<div class="card h-100" style="width:350px;">
 				<a href="#"><img src="resources/images/adopt_dog1.png" class="card-img-top"
 					alt="..."></a>
@@ -57,12 +60,22 @@
 					<p class="card-text">${dto.aMemo}</p>
 				</div>
 			</div>
-		</div>
+			</div>
+			
+							</c:forEach>
+			
+			</div>
+			
+		
+		
+	</div>
 
 
-	</c:forEach>
+	
 	</c:otherwise>
+	
 	</c:choose>
+
 
 
 

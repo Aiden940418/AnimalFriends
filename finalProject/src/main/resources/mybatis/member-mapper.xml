@@ -65,17 +65,20 @@
   
   
   
-  <!-- 
-  	<select id="idChk" parameterType="String">
+  
+  	<select id="idChk" parameterType="memberDto">
   	
-  	SELECT COUNT(*) 
+  	SELECT MID
   	FROM MEMBER
   	WHERE MID = #{mId}
   	
   	
   	</select>
+  	
+  	
+  	
 
-   -->
+   
    
     
    
