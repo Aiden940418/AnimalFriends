@@ -30,10 +30,16 @@ public class XMLController {
         
         spec += "serviceKey="+serviceKey + numOfRows;
         
+        //resultXML = apiSerializer.receiveToString(spec);
         resultXML = apiSerializer.receiveXmlToJson(spec);
         
         return resultXML;
     }
+	
+	
+	
+	
+	
 	
 	
 	
