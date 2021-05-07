@@ -17,7 +17,7 @@ public class XMLController {
 	private APISerializer apiSerializer;
 	
 	
-	@RequestMapping(value = "/zipXML.do", method = RequestMethod.GET, produces = "application/xml; charset=utf-8;")
+	@RequestMapping(value = "/zipXML.do", method = RequestMethod.POST, produces = "application/xml; charset=utf-8;")
     @ResponseBody
     public String zipXML() throws Exception{
         String resultXML = null;
