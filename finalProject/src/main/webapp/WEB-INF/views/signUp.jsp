@@ -50,10 +50,69 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 
+$("#idChk").click(function(){
+ 
+ var query = { mId : $("#mId").val()};
+ 
+
+ 
+ $.ajax({
+  url : "idChk.do",
+  type : "post",
+  data : query,
+
+  success : function(data) {
+  
+   if(data == 1) {
+    $(".result .msg").text("사용 불가");
+    $(".result .msg").attr("style", "color:#f00");    
+   } else {
+    $(".result .msg").text("사용 가능");
+    $(".result .msg").attr("style", "color:#00f");
+   }
+  }
+ });  // ajax 끝
+});
 
 
-$('#idChk')
 
+/* $('#idChk').click(function(){
+	
+		var query = {mId : $("#mId").val()};
+		
+		
+		$.ajax({
+			
+			
+			url: "idChk.do",
+			type: "post",
+			data : query,
+			success : function(data){
+				
+				
+				if(data==1) {
+					
+					$(".result .msg").text("사용불가");
+					$(".result .msg").attr("style", "color:#f00")
+					
+				}else {
+					
+					$(".result .msg").text("사용가능");
+					$(".result .msg").attr("style", "color:#00f")
+				}
+			}
+			
+			
+			
+			
+		});
+	
+	
+	
+	
+	
+});
+ */
 
 $(function(){
 
@@ -202,13 +261,16 @@ function execPostCode() {
 						
 				<tr>
 				<th>아이디</th>
-				<td><input id="mId"type="text"  name="mId" style="width:300px; height:40px">
+				<td><input id="mId" type="text"  name="mId" style="width:300px; height:40px">
 				</td>
-				<td><button class="btn-outline-success" type="button" id="idChk" value="Y" style="font-size:20px" onclick="idChk();">중복확인</button>
+				<td><input class="idChk btn btn-outline-success" type="button" name="idChk" id="idChk" style="font-size:20px" value="중복확인">
 				</td>
 				<td>
-					<span class="id_input_re_1">사용 가능한 아이디입니다.</span>
-					<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
+				<p class="result">
+					<span class="msg">아이디를 확인해주세요.</span>
+				
+				</p>
+		
 				</td>
 				</tr>
 				
@@ -286,9 +348,14 @@ function execPostCode() {
 				<table style="margin-left:440px">
 				<tr>
 				<th>아이디</th>
-				<td><input class=""type="text"  name="mId" style="width:300px; height:40px">
+				<td><input class="mId"type="text"  name="mId" style="width:300px; height:40px">
 				</td>
-				<td><input class="btn-outline-success" type="button" name="idCheck" value="중복체크" style="font-size:20px">
+				<td><input class="idChk btn-outline-success" type="button" name="idChk" value="중복체크" style="font-size:20px">
+				</td>
+				<td>
+				<p class="result">
+				<span class="msg">아이디를 확인해주세요.</span>
+				</p>
 				</td>
 				</tr>
 				
