@@ -85,6 +85,58 @@
 		});
 		
 		
+		function find() {
+			//선택한 시/도 + 시/군/구 값
+	        var area = $('#locationSelectBtn').attr('data-siordo');
+	        
+	        area += '&nbsp;' ;
+	        
+	        if(area.indexOf("서울")> -1 ){
+	        	//조건 : 만약 '서울'이 포함되어 있다면 -> '구' value 더하기 실행
+	        	area += $('#guSelectBtn').attr('data-guselect');
+	        	
+	        }else{
+	        	//조건 : 만약 '서울'이 포함되어 있지 않다면(경기도) -> '시/군' value 더하기 실행
+	        	area += $('#siSelectBtn').attr('data-siselect');
+	        }
+	        
+	        
+	        
+	        // 혹은
+	        // var area = $('#locationSelectBtn').data('siordo');
+	    }
+		
+			//지역별 드롭다운 선택 시 value 가져오는 function들
+			// 1.서울시/경기도 선택
+		 $('#locationSelect li > a').on('click', function () {
+		        $('#locationSelectBtn').text($(this).text());
+		        var area = $(this).attr('value');
+		        console.log('선택된 값: ' + area);
+
+		        $('#locationSelectBtn').attr('data-siordo', area);
+		    });   
+		
+			// 2.구 선택
+		 $('#guSelect li > a').on('click', function () {
+		        $('#guSelectBtn').text($(this).text());
+		        var area = $(this).attr('value');
+		        console.log('선택된 값: ' + area);
+
+		        $('#guSelectBtn').attr('data-guselect', area);
+		    });   
+		
+			// 3.시/군 선택
+		 $('#siSelect li > a').on('click', function () {
+		        $('#siSelectBtn').text($(this).text());
+		        var area = $(this).attr('value');
+		        console.log('선택된 값: ' + area);
+
+		        $('#siSelectBtn').attr('data-siselect', area);
+		    });   
+		
+		
+		
+		
 		
 		
 	});
@@ -123,82 +175,82 @@
 				<div class="dropdown mt-2 col">
 					<a class="btn btn-success dropdown-toggle" role="button"
 						id="locationSelectBtn" data-bs-toggle="dropdown"
-						aria-expanded="false">지역 선택</a>
+						aria-expanded="false" data-siordo="">지역 선택</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="locationSelect">
-						<li><a class="dropdown-item" href="javascript:seoulSelect();">서울시</a></li>
-						<li><a class="dropdown-item" href="javascript:gyeonggiSelect();">경기도</a></li>
+						<li><a class="dropdown-item" href="javascript:seoulSelect();" value="서울특별시">서울시</a></li>
+						<li><a class="dropdown-item" href="javascript:gyeonggiSelect();" value="경기도">경기도</a></li>
 					</ul>
 				</div>
 				
 				<div class="dropdown mt-2 col" id="seoulSelect">
 					<a class="btn btn-success dropdown-toggle" href="#" role="button"
 						id="guSelectBtn" data-bs-toggle="dropdown"
-						aria-expanded="false"> 구 선택 </a>
+						aria-expanded="false" data-guselect=""> 구 선택 </a>
 					<ul class="dropdown-menu locationSelect" id="guSelect" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">강남구 </a></li>
-						<li><a class="dropdown-item" href="#">강동구 </a></li>
-						<li><a class="dropdown-item" href="#">강북구 </a></li>
-						<li><a class="dropdown-item" href="#">강서구 </a></li>
-						<li><a class="dropdown-item" href="#">관악구 </a></li>
-						<li><a class="dropdown-item" href="#">광진구 </a></li>
-						<li><a class="dropdown-item" href="#">구로구 </a></li>
-						<li><a class="dropdown-item" href="#">금천구 </a></li>
-						<li><a class="dropdown-item" href="#">노원구 </a></li>
-						<li><a class="dropdown-item" href="#">도봉구</a></li>
-						<li><a class="dropdown-item" href="#">동대문구 </a></li>
-						<li><a class="dropdown-item" href="#">동작구 </a></li>
-						<li><a class="dropdown-item" href="#">마포구</a></li>
-						<li><a class="dropdown-item" href="#">서대문구 </a></li>
-						<li><a class="dropdown-item" href="#">서초구 </a></li>
-						<li><a class="dropdown-item" href="#">성동구 </a></li>
-						<li><a class="dropdown-item" href="#">성북구 </a></li>
-						<li><a class="dropdown-item" href="#">송파구 </a></li>
-						<li><a class="dropdown-item" href="#">양천구 </a></li>
-						<li><a class="dropdown-item" href="#">영등포구 </a></li>
-						<li><a class="dropdown-item" href="#">용산구 </a></li>
-						<li><a class="dropdown-item" href="#">은평구 </a></li>
-						<li><a class="dropdown-item" href="#">종로구 </a></li>
-						<li><a class="dropdown-item" href="#">중구 </a></li>
-						<li><a class="dropdown-item" href="#">중랑구 </a></li>
+						<li><a class="dropdown-item" href="#" value="강남구">강남구 </a></li>
+						<li><a class="dropdown-item" href="#" value="강동구">강동구 </a></li>
+						<li><a class="dropdown-item" href="#" value="강북구">강북구 </a></li>
+						<li><a class="dropdown-item" href="#" value="강서구">강서구 </a></li>
+						<li><a class="dropdown-item" href="#" value="관악구">관악구 </a></li>
+						<li><a class="dropdown-item" href="#" value="광진구">광진구 </a></li>
+						<li><a class="dropdown-item" href="#" value="구로구">구로구 </a></li>
+						<li><a class="dropdown-item" href="#" value="금천구">금천구 </a></li>
+						<li><a class="dropdown-item" href="#" value="노원구">노원구 </a></li>
+						<li><a class="dropdown-item" href="#" value="도봉구">도봉구</a></li>
+						<li><a class="dropdown-item" href="#" value="동대문구">동대문구 </a></li>
+						<li><a class="dropdown-item" href="#" value="동작구">동작구 </a></li>
+						<li><a class="dropdown-item" href="#" value="마포구">마포구</a></li>
+						<li><a class="dropdown-item" href="#" value="서대문구">서대문구 </a></li>
+						<li><a class="dropdown-item" href="#" value="서초구">서초구 </a></li>
+						<li><a class="dropdown-item" href="#" value="성동구">성동구 </a></li>
+						<li><a class="dropdown-item" href="#" value="성북구">성북구 </a></li>
+						<li><a class="dropdown-item" href="#" value="송파구">송파구 </a></li>
+						<li><a class="dropdown-item" href="#" value="양천구">양천구 </a></li>
+						<li><a class="dropdown-item" href="#" value="영등포구">영등포구 </a></li>
+						<li><a class="dropdown-item" href="#" value="용산구">용산구 </a></li>
+						<li><a class="dropdown-item" href="#" value="은평구">은평구 </a></li>
+						<li><a class="dropdown-item" href="#" value="종로구">종로구 </a></li>
+						<li><a class="dropdown-item" href="#" value="중구">중구 </a></li>
+						<li><a class="dropdown-item" href="#" value="중랑구">중랑구 </a></li>
 					</ul>
 				</div>
 				
 				<div class="dropdown mt-2 col" id="gyeonggiSelect">
 					<a class="btn btn-success dropdown-toggle" href="#" role="button"
 						id="siSelectBtn" data-bs-toggle="dropdown"
-						aria-expanded="false"> 시 선택 </a>
+						aria-expanded="false" data-siselect=""> 시 선택 </a>
 					<ul class="dropdown-menu locationSelect" id="siSelect" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">가평군 </a></li>
-						<li><a class="dropdown-item" href="#">고양시 </a></li>
-						<li><a class="dropdown-item" href="#">과천시 </a></li>
-						<li><a class="dropdown-item" href="#">광명시 </a></li>
-						<li><a class="dropdown-item" href="#">광주시 </a></li>
-						<li><a class="dropdown-item" href="#">구리시 </a></li>
-						<li><a class="dropdown-item" href="#">군포시 </a></li>
-						<li><a class="dropdown-item" href="#">김포시 </a></li>
-						<li><a class="dropdown-item" href="#">남양주시 </a></li>
-						<li><a class="dropdown-item" href="#">동두천시 </a></li>
-						<li><a class="dropdown-item" href="#">부천시 </a></li>
-						<li><a class="dropdown-item" href="#">성남시 </a></li>
-						<li><a class="dropdown-item" href="#">수원시 </a></li>
-						<li><a class="dropdown-item" href="#">시흥시 </a></li>
-						<li><a class="dropdown-item" href="#">안산시 </a></li>
-						<li><a class="dropdown-item" href="#">안성시</a></li>
-						<li><a class="dropdown-item" href="#">안양시 </a></li>
-						<li><a class="dropdown-item" href="#">양주시 </a></li>
-						<li><a class="dropdown-item" href="#">양평군 </a></li>
-						<li><a class="dropdown-item" href="#">여주시</a></li>
-						<li><a class="dropdown-item" href="#">연천군 </a></li>
-						<li><a class="dropdown-item" href="#">오산시 </a></li>
-						<li><a class="dropdown-item" href="#">용인시 </a></li>
-						<li><a class="dropdown-item" href="#">의왕시 </a></li>
-						<li><a class="dropdown-item" href="#">의정부시 </a></li>
-						<li><a class="dropdown-item" href="#">이천시 </a></li>
-						<li><a class="dropdown-item" href="#">파주시</a></li>
-						<li><a class="dropdown-item" href="#">평택시 </a></li>
-						<li><a class="dropdown-item" href="#">포천시</a></li>
-						<li><a class="dropdown-item" href="#">하남시 </a></li>
-						<li><a class="dropdown-item" href="#">화성시 </a></li>
+						<li><a class="dropdown-item" href="#" value="가평군">가평군 </a></li>
+						<li><a class="dropdown-item" href="#" value="고양시">고양시 </a></li>
+						<li><a class="dropdown-item" href="#" value="과천시">과천시 </a></li>
+						<li><a class="dropdown-item" href="#" value="광명시">광명시 </a></li>
+						<li><a class="dropdown-item" href="#" value="광주시">광주시 </a></li>
+						<li><a class="dropdown-item" href="#" value="구리시">구리시 </a></li>
+						<li><a class="dropdown-item" href="#" value="군포시">군포시 </a></li>
+						<li><a class="dropdown-item" href="#" value="김포시">김포시 </a></li>
+						<li><a class="dropdown-item" href="#" value="남양주시">남양주시 </a></li>
+						<li><a class="dropdown-item" href="#" value="동두천시">동두천시 </a></li>
+						<li><a class="dropdown-item" href="#" value="부천시">부천시 </a></li>
+						<li><a class="dropdown-item" href="#" value="성남시 ">성남시 </a></li>
+						<li><a class="dropdown-item" href="#" value="수원시">수원시 </a></li>
+						<li><a class="dropdown-item" href="#" value="시흥시">시흥시 </a></li>
+						<li><a class="dropdown-item" href="#" value="안산시">안산시 </a></li>
+						<li><a class="dropdown-item" href="#" value="안성시">안성시</a></li>
+						<li><a class="dropdown-item" href="#" value="안양시">안양시 </a></li>
+						<li><a class="dropdown-item" href="#" value="양주시">양주시 </a></li>
+						<li><a class="dropdown-item" href="#" value="양평군">양평군 </a></li>
+						<li><a class="dropdown-item" href="#" value="여주시">여주시</a></li>
+						<li><a class="dropdown-item" href="#" value="연천군">연천군 </a></li>
+						<li><a class="dropdown-item" href="#" value="오산시">오산시 </a></li>
+						<li><a class="dropdown-item" href="#" value="용인시">용인시 </a></li>
+						<li><a class="dropdown-item" href="#" value="의왕시">의왕시 </a></li>
+						<li><a class="dropdown-item" href="#" value="의정부시">의정부시 </a></li>
+						<li><a class="dropdown-item" href="#" value="이천시">이천시 </a></li>
+						<li><a class="dropdown-item" href="#" value="파주시">파주시</a></li>
+						<li><a class="dropdown-item" href="#" value="평택시">평택시 </a></li>
+						<li><a class="dropdown-item" href="#" value="포천시">포천시</a></li>
+						<li><a class="dropdown-item" href="#" value="하남시">하남시 </a></li>
+						<li><a class="dropdown-item" href="#" value="화성시">화성시 </a></li>
 					</ul>
 				</div>
 				
