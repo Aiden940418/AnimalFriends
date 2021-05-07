@@ -36,7 +36,6 @@ public class MemberBizImpl implements MemberBiz {
 
 	@Override
 	public MemberDto idChk(String mId) {
-		// TODO Auto-generated method stub
 		return dao.idChk(mId);
 	}
 

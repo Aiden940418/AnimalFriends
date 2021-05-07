@@ -66,7 +66,7 @@
   
   
   
-  	<select id="idChk" parameterType="memberDto">
+  	<select id="idChk" resultType="memberDto">
   	
   	SELECT MID
   	FROM MEMBER
