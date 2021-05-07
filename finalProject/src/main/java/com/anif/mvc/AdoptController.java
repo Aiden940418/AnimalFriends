@@ -2,6 +2,8 @@ package com.anif.mvc;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.anif.mvc.adopt.biz.AdoptBiz;
 import com.anif.mvc.adopt.dto.AdoptDto;
+import com.anif.mvc.member.dto.MemberDto;
 
 @Controller
 public class AdoptController {
@@ -64,13 +67,16 @@ public class AdoptController {
 	
 	// 입양공고 등록
 	@RequestMapping(value="myAdoptWriteRes.do", method = RequestMethod.GET)
-	public String myadoptWrite(AdoptDto dto) {
+	public String myadoptWrite(AdoptDto dto,HttpSession session) {
+		
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+
 		
 		int res = biz.myadoptWrite(dto);
 
 		if (res > 0) {
 
-			return "redirect:myAdoptList.do";
+			return "redirect:myAdoptList.do?mNo="+memberDto.getmNo();
 		} else {
 			return "redirect:myAdoptWriteForm.do";
 		}
@@ -88,7 +94,6 @@ public class AdoptController {
 	@RequestMapping(value="myAdoptUpdateRes.do", method = RequestMethod.GET)
 	public String adoptUpdateRes(AdoptDto dto) {
 		
-		System.out.println(dto.getaNo());
 
 		int res = biz.myAdoptUpdate(dto);
 
@@ -110,7 +115,8 @@ public class AdoptController {
 	@RequestMapping("/myAdoptList.do")
 	public String myAdoptList(Model model, int mNo) {
 		
-		
+
+
 	model.addAttribute("list",biz.myAdoptList(mNo));
 		
 		
@@ -123,18 +129,21 @@ public class AdoptController {
 	
 	//나의 입양공고 삭제
 	
-	@RequestMapping("/myAdoptDelete")
-	public String myAdoptDelete(int aNo) {
+	@RequestMapping("/myAdoptDelete.do")
+	public String myAdoptDelete(int aNo,HttpSession session) {
+		
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		
 		
 		
 		int res = biz.myAdoptDelete(aNo);
 		
 		if(res>0) {
-			return "redirect:myAdoptList.do";
+			return "redirect:myAdoptList.do?mNo="+memberDto.getmNo();
 			
 		}else {
 					
-			return "redirect:myAdoptDetail.do";
+			return "redirect:myAdoptDetail.do?aNo="+aNo;
 			
 		}
 		
