@@ -40,8 +40,21 @@ public class AdoptController {
 		
 		model.addAttribute("dto",biz.adoptDetail(aNo));
 		
-		return "adopt/adopt_detail2";
+		return "adopt/adopt_detail";
 
+	}
+	
+	
+	//나의 입양공고 상세보기 
+	
+	@RequestMapping(value="myAdoptDetail.do", method = RequestMethod.GET)
+	public String myAdoptDerail(Model model, int aNo) {
+		
+		model.addAttribute("dto",biz.adoptDetail(aNo));
+		
+		
+		return "mypage/mypage_myadoptDetail";
+		
 	}
 	// 입양공고작성 가져오기
 	@RequestMapping(value="myAdoptWriteForm.do")
@@ -57,28 +70,32 @@ public class AdoptController {
 
 		if (res > 0) {
 
-			return "redirect:adopt.do";
+			return "redirect:myAdoptList.do";
 		} else {
 			return "redirect:myAdoptWriteForm.do";
 		}
 
 	}
-//	@RequestMapping(value="myAdoptUpdateForm.do")
-//	public String myadoptUpdateForm() {
-//		return "mypage/mypage_myadoptUpdateForm";
-//	}
-
-
-	// 입양공고 수정
 	@RequestMapping(value="myAdoptUpdateForm.do", method = RequestMethod.GET)
-	public String updateForm(AdoptDto dto) {
+	public String myadoptUpdateForm(Model model, int aNo) {
 		
-		int res = biz.myadoptUpdate(dto);
+		model.addAttribute("dto",biz.myAdoptDetail(aNo));
+		return "mypage/mypage_myadoptUpdateForm";
+	}
+
+
+	 //입양공고 수정
+	@RequestMapping(value="myAdoptUpdateRes.do", method = RequestMethod.GET)
+	public String adoptUpdateRes(AdoptDto dto) {
+		
+		System.out.println(dto.getaNo());
+
+		int res = biz.myAdoptUpdate(dto);
 
 		if (res > 0) {
-			return "redirect:adopt.do";
+			return "redirect:myAdoptDetail.do?aNo="+dto.getaNo();
 		} else {
-			return "redirect:myAdoptUpdateForm.do";
+			return "redirect:myAdoptUpdateForm.do?aNo="+dto.getaNo();
 		}
 		
 	
@@ -88,6 +105,44 @@ public class AdoptController {
 	
 	
 	
-	// 입양공고 삭제
+	//나의 입양공고 보기 
+	
+	@RequestMapping("/myAdoptList.do")
+	public String myAdoptList(Model model, int mNo) {
+		
+		
+	model.addAttribute("list",biz.myAdoptList(mNo));
+		
+		
+		
+		
+		return "mypage/mypage_myadoptList";
+	}
+	
+
+	
+	//나의 입양공고 삭제
+	
+	@RequestMapping("/myAdoptDelete")
+	public String myAdoptDelete(int aNo) {
+		
+		
+		int res = biz.myAdoptDelete(aNo);
+		
+		if(res>0) {
+			return "redirect:myAdoptList.do";
+			
+		}else {
+					
+			return "redirect:myAdoptDetail.do";
+			
+		}
+		
+		
+		
+		
+	}
+	
+
 
 }

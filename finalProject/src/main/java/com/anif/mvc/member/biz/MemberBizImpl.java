@@ -32,11 +32,12 @@ public class MemberBizImpl implements MemberBiz {
 
 		return dao.signUps(dto);
 	}
-//
-//	@Override
-//	public int idChk(String mId) {
-//
-//		return dao.idChk(mId);
-//	}
+
+
+	@Override
+	public MemberDto idChk(String mId) {
+		// TODO Auto-generated method stub
+		return dao.idChk(mId);
+	}
 
 }

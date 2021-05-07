@@ -28,6 +28,7 @@ public class LoginController {
 	 private MemberBiz biz;
 	 
 	 
+	 //회원가입 페이지로 이동 
 	 
 	 @RequestMapping("/signUpForm.do")
 	 public String signUpForm(MemberDto dto) {
@@ -37,6 +38,8 @@ public class LoginController {
 	 }
 	 
 	 
+	 
+	 //회원가입 버튼 누르면 실행
 	 
 	@RequestMapping(value="/signUp.do", method = RequestMethod.GET) 
 	
@@ -57,13 +60,11 @@ public class LoginController {
 		
 	}
 
-//	@RequestMapping
-//	public String idChk(String mId) {
-//		
-//		
-//		return null;
-//	}
-//	
+
+	
+	
+	
+	//기업회원가입
 	@RequestMapping(value="/signUps.do", method = RequestMethod.GET) 
 	
 	public String signUps(MemberDto dto){
@@ -88,6 +89,7 @@ public class LoginController {
 		
 	
 	
+	// login 버튼 누르면 login 페이지로 이동 
 	 
 		@RequestMapping(value = "/loginForm.do")
 		public String login(MemberDto dto) {
@@ -95,6 +97,8 @@ public class LoginController {
 		}
 		
 		
+		
+	// logout버튼 누르면 session 초기화 
 		
 		@RequestMapping(value="/logout.do")
 		public String logout(HttpSession session, HttpServletResponse response) {
@@ -105,6 +109,9 @@ public class LoginController {
 			return "main";
 			
 		}
+		
+		
+		//login에 아이디랑 비밀번호 입력하여 로그인하는 controller 
 		
 		@RequestMapping(value="/login.do",method=RequestMethod.POST)
 		@ResponseBody

@@ -14,7 +14,7 @@ public interface MemberDao {
 	public int signUps(MemberDto dto);
 	
 	
-//	public int idChk(String mId);
+	public MemberDto idChk(String mId);
 	
 	public MemberDto login(MemberDto dto);
 	

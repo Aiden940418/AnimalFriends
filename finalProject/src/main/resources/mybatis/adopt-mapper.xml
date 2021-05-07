@@ -26,6 +26,8 @@
      
      
      
+     <!-- 전체 입양공고 리스트  -->
+     
      <select id="adoptList" resultMap="adoptMap">
      
      
@@ -33,6 +35,9 @@
     FROM ADOPT
      
      </select>
+     
+     
+     <!--  전체 입양공고 디테일(상세)  -->
      
     <select id="adoptDetail" parameterType="adoptDto" resultType="adoptDto">
   
@@ -42,6 +47,32 @@
   
   </select>
   
+    	
+    	
+   <!--  나의 입양공고 전체리스트업 -->
+   
+  	<select id="myAdoptList" parameterType="int" resultMap="adoptMap" >
+  	
+  	SELECT *
+  	FROM ADOPT
+  	WHERE AMNO = #{mNo}
+  	
+  	</select>
+  
+  <!--  나의 입양공고 상세보기  -->
+  
+   <select id="myAdoptDetail" parameterType="adoptDto" resultType="adoptDto">
+   
+    SELECT ANO, AMNO, AAREA, ATYPE, ATITLE, ADATE, ACOUNT, ANMNAME, ANMAGE, ANMBREED, ANMGENDER, ANMVCNYN, ANMNTRYN, APHONE, AMEMO
+  	FROM ADOPT
+  	WHERE ANO = #{aNo}
+  	
+   </select>
+  
+  
+  
+  <!--  나의 입양공고 작성하기  -->
+  
   <insert id="myadoptWrite" parameterType="adoptDto">
   	
   	INSERT INTO ADOPT
@@ -49,14 +80,31 @@
   	#{anmGender}, #{anmVcnYn}, #{anmNtrYn}, #{aPhone}, #{aMemo}  )
   	
   </insert>
+  
+  
+  <!-- 나의 입양공고 수정  -->
   	
   	
-  <update id="myadoptUpdate"  parameterType="adoptDto">
+  <update id="myAdoptUpdate"  parameterType="adoptDto">
      UPDATE ADOPT
-     SET AAREA=#{aArea} , ATYPE=#{aType}, ATITLE=#{aTitle}, ADATE=#{aDate}, ACOUNT=#{aCount}, ANMBREED=#{anmBreed},ANMGENDER=#{anmGender}, ANMVCNYN=#{anmVcnYn}, ANMNTRYN=#{anmNtrYn}, APHONE=#{aPhone}, AMEMO=#{aMemo}
-     WHERE MYNO = #{aNo}
+     SET ATITLE=#{aTitle}, ANMNAME=#{anmName}, ANMBREED=#{anmBreed}, ANMAGE=#{anmAge}, APHONE=#{aPhone}, AMEMO=#{aMemo}
+     WHERE ANO = #{aNo}
   
   </update>
+  	
+  	
+  	<!-- 나의 입양공고 삭제 -->
+  	
+  	
+  	<delete id="myAdoptDelete" parameterType="int">
+  	
+  	DELETE FROM ADOPT
+  	WHERE ANO = #{aNo}
+  	
+  	
+  	
+  	
+  	</delete>
   	
   
   
