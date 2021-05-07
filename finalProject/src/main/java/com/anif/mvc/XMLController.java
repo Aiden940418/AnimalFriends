@@ -30,28 +30,14 @@ public class XMLController {
         
         spec += "serviceKey="+serviceKey + numOfRows;
         
-        resultXML = apiSerializer.receiveToString(spec);
+        //resultXML = apiSerializer.receiveToString(spec);
+        resultXML = apiSerializer.receiveXmlToJson(spec);
         
         return resultXML;
     }
 	
 	
 	
-	//ajax-json 응답
-    @RequestMapping(value = "jsonList1.do", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    @ResponseBody
-    public String jsonList1(HttpServletRequest req) throws Exception{
-        String result = null;
-        
-        String cp = req.getContextPath();
-        String spec = req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort()+cp;
-        spec+="/xml/guestXML.xml";
-        
-        //XML을 JSON으로 변환하여 반환
-        result = apiSerializer.receiveXmlToJson(spec);
-        
-        return result;
-    }
 	
 	
 	

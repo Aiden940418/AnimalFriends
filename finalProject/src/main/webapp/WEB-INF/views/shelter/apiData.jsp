@@ -14,7 +14,7 @@
 			$.ajax({
 				url : "zipXML.do",
 				method : "GET",
-				dataType : "xml",
+				dataType : "json",
 				data : {
 					
 				},
@@ -43,41 +43,6 @@
 		
 	});
 	
-	
-	
-	/* 
-	//json 형태	
-	$(function(){
-	    $("#btnXmlOk2").click(function(){
-	        //ajaxFun(url,"get","json",query, fn);
-	        $.ajax({
-				url : "jsonList1.do",
-				method : "GET",
-				dataType : "json",
-				data : {
-					
-				},
-			}).done(function(data) {
-				console.log(data);
-				printResult(data);
-				
-			});
-	    });
-	    
-	    function printResult(data) {
-			var out = " ajax 데이터 테스트 : ";
-			
-			$(data).find("item").each(function() {
-				var item = $(this);
-				var carenm = item.find("carenm").text();
-				
-				out += carenm + "<br>";
-			});
-			$("#resultDiv").html(out);
-		}
-	    
-	});
- */
 	
 	
 	
