@@ -13,14 +13,13 @@
 		$("#btnXmlOk2").click(function() {
 			$.ajax({
 				url : "zipXML.do",
-				method : "GET",
+				method : "POST",
 				dataType : "json",
 				data : {
 					
 				},
 			}).done(function(data) {
 				
-				console.log(data);
 				printResult(data);
 				
 			});
@@ -29,16 +28,26 @@
 		});
 		
 		function printResult(data) {
-			var out = " ajax 데이터 테스트 : ";
+			console.log(data);
 			
-			$(data).find("item").each(function() {
-				var item = $(this);
-				var carenm = item.find("carenm").text();
+			for(var i=0; i<243; i++){
 				
-				out += carenm + "<br>";
-			});
+				var item = data.response.body.items.item[i];
+				
+				if( item.careAddr == "서울" ){
+					$("#resultDiv").append(data.response.body.items.item[i].careNm);
+					$("#resultDiv").append("<br>");
+					$("#resultDiv").append(data.response.body.items.item[i].careAddr);
+					$("#resultDiv").append("<br>");
+					$("#resultDiv").append(data.response.body.items.item[i].saveTrgtAnimal);
+					$("#resultDiv").append("<br>");
+					$("#resultDiv").append("========================");
+					$("#resultDiv").append("<br>");
+				}
+				
+				
+			}
 			
-			$("#resultDiv").html(out);
 		}
 		
 	});
