@@ -135,31 +135,31 @@
 						id="guSelectBtn" data-bs-toggle="dropdown"
 						aria-expanded="false"> 구 선택 </a>
 					<ul class="dropdown-menu locationSelect" id="guSelect" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">종로구</a></li>
-						<li><a class="dropdown-item" href="#">중구</a></li>
-						<li><a class="dropdown-item" href="#">용산구</a></li>
-						<li><a class="dropdown-item" href="#">성동구</a></li>
-						<li><a class="dropdown-item" href="#">광진구</a></li>
-						<li><a class="dropdown-item" href="#">동대문구</a></li>
-						<li><a class="dropdown-item" href="#">중랑구</a></li>
-						<li><a class="dropdown-item" href="#">성북구</a></li>
-						<li><a class="dropdown-item" href="#">강북구</a></li>
+						<li><a class="dropdown-item" href="#">강남구 </a></li>
+						<li><a class="dropdown-item" href="#">강동구 </a></li>
+						<li><a class="dropdown-item" href="#">강북구 </a></li>
+						<li><a class="dropdown-item" href="#">강서구 </a></li>
+						<li><a class="dropdown-item" href="#">관악구 </a></li>
+						<li><a class="dropdown-item" href="#">광진구 </a></li>
+						<li><a class="dropdown-item" href="#">구로구 </a></li>
+						<li><a class="dropdown-item" href="#">금천구 </a></li>
+						<li><a class="dropdown-item" href="#">노원구 </a></li>
 						<li><a class="dropdown-item" href="#">도봉구</a></li>
-						<li><a class="dropdown-item" href="#">노원구</a></li>
-						<li><a class="dropdown-item" href="#">은평구</a></li>
-						<li><a class="dropdown-item" href="#">서대문구</a></li>
+						<li><a class="dropdown-item" href="#">동대문구 </a></li>
+						<li><a class="dropdown-item" href="#">동작구 </a></li>
 						<li><a class="dropdown-item" href="#">마포구</a></li>
-						<li><a class="dropdown-item" href="#">양천구</a></li>
-						<li><a class="dropdown-item" href="#">강서구</a></li>
-						<li><a class="dropdown-item" href="#">구로구</a></li>
-						<li><a class="dropdown-item" href="#">금천구</a></li>
-						<li><a class="dropdown-item" href="#">영등포구</a></li>
-						<li><a class="dropdown-item" href="#">동작구</a></li>
-						<li><a class="dropdown-item" href="#">관악구</a></li>
-						<li><a class="dropdown-item" href="#">서초구</a></li>
-						<li><a class="dropdown-item" href="#">강남구</a></li>
-						<li><a class="dropdown-item" href="#">송파구</a></li>
-						<li><a class="dropdown-item" href="#">강동구</a></li>
+						<li><a class="dropdown-item" href="#">서대문구 </a></li>
+						<li><a class="dropdown-item" href="#">서초구 </a></li>
+						<li><a class="dropdown-item" href="#">성동구 </a></li>
+						<li><a class="dropdown-item" href="#">성북구 </a></li>
+						<li><a class="dropdown-item" href="#">송파구 </a></li>
+						<li><a class="dropdown-item" href="#">양천구 </a></li>
+						<li><a class="dropdown-item" href="#">영등포구 </a></li>
+						<li><a class="dropdown-item" href="#">용산구 </a></li>
+						<li><a class="dropdown-item" href="#">은평구 </a></li>
+						<li><a class="dropdown-item" href="#">종로구 </a></li>
+						<li><a class="dropdown-item" href="#">중구 </a></li>
+						<li><a class="dropdown-item" href="#">중랑구 </a></li>
 					</ul>
 				</div>
 				
@@ -168,37 +168,37 @@
 						id="siSelectBtn" data-bs-toggle="dropdown"
 						aria-expanded="false"> 시 선택 </a>
 					<ul class="dropdown-menu locationSelect" id="siSelect" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">수원시</a></li>
-						<li><a class="dropdown-item" href="#">성남시</a></li>
-						<li><a class="dropdown-item" href="#">안양시</a></li>
-						<li><a class="dropdown-item" href="#">안산시</a></li>
-						<li><a class="dropdown-item" href="#">용인시</a></li>
-						<li><a class="dropdown-item" href="#">부천시</a></li>
-						<li><a class="dropdown-item" href="#">광명시</a></li>
-						<li><a class="dropdown-item" href="#">평택시</a></li>
-						<li><a class="dropdown-item" href="#">과천시</a></li>
-						<li><a class="dropdown-item" href="#">오산시</a></li>
-						<li><a class="dropdown-item" href="#">시흥시</a></li>
-						<li><a class="dropdown-item" href="#">군포시</a></li>
-						<li><a class="dropdown-item" href="#">의왕시</a></li>
-						<li><a class="dropdown-item" href="#">하남시</a></li>
-						<li><a class="dropdown-item" href="#">이천시</a></li>
+						<li><a class="dropdown-item" href="#">가평군 </a></li>
+						<li><a class="dropdown-item" href="#">고양시 </a></li>
+						<li><a class="dropdown-item" href="#">과천시 </a></li>
+						<li><a class="dropdown-item" href="#">광명시 </a></li>
+						<li><a class="dropdown-item" href="#">광주시 </a></li>
+						<li><a class="dropdown-item" href="#">구리시 </a></li>
+						<li><a class="dropdown-item" href="#">군포시 </a></li>
+						<li><a class="dropdown-item" href="#">김포시 </a></li>
+						<li><a class="dropdown-item" href="#">남양주시 </a></li>
+						<li><a class="dropdown-item" href="#">동두천시 </a></li>
+						<li><a class="dropdown-item" href="#">부천시 </a></li>
+						<li><a class="dropdown-item" href="#">성남시 </a></li>
+						<li><a class="dropdown-item" href="#">수원시 </a></li>
+						<li><a class="dropdown-item" href="#">시흥시 </a></li>
+						<li><a class="dropdown-item" href="#">안산시 </a></li>
 						<li><a class="dropdown-item" href="#">안성시</a></li>
-						<li><a class="dropdown-item" href="#">김포시</a></li>
-						<li><a class="dropdown-item" href="#">화성시</a></li>
-						<li><a class="dropdown-item" href="#">광주시</a></li>
+						<li><a class="dropdown-item" href="#">안양시 </a></li>
+						<li><a class="dropdown-item" href="#">양주시 </a></li>
+						<li><a class="dropdown-item" href="#">양평군 </a></li>
 						<li><a class="dropdown-item" href="#">여주시</a></li>
-						<li><a class="dropdown-item" href="#">양평군</a></li>
-						<li><a class="dropdown-item" href="#">고양시</a></li>
-						<li><a class="dropdown-item" href="#">의정부시</a></li>
-						<li><a class="dropdown-item" href="#">동두천시</a></li>
-						<li><a class="dropdown-item" href="#">구리시</a></li>
-						<li><a class="dropdown-item" href="#">남양주시</a></li>
+						<li><a class="dropdown-item" href="#">연천군 </a></li>
+						<li><a class="dropdown-item" href="#">오산시 </a></li>
+						<li><a class="dropdown-item" href="#">용인시 </a></li>
+						<li><a class="dropdown-item" href="#">의왕시 </a></li>
+						<li><a class="dropdown-item" href="#">의정부시 </a></li>
+						<li><a class="dropdown-item" href="#">이천시 </a></li>
 						<li><a class="dropdown-item" href="#">파주시</a></li>
-						<li><a class="dropdown-item" href="#">양주시</a></li>
+						<li><a class="dropdown-item" href="#">평택시 </a></li>
 						<li><a class="dropdown-item" href="#">포천시</a></li>
-						<li><a class="dropdown-item" href="#">연천군</a></li>
-						<li><a class="dropdown-item" href="#">가평군</a></li>
+						<li><a class="dropdown-item" href="#">하남시 </a></li>
+						<li><a class="dropdown-item" href="#">화성시 </a></li>
 					</ul>
 				</div>
 				
