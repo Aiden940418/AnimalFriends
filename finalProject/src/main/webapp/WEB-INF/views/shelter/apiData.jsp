@@ -34,16 +34,14 @@
 				
 				var item = data.response.body.items.item[i];
 				
-				if( item.careAddr == "서울" ){
-					$("#resultDiv").append(data.response.body.items.item[i].careNm);
-					$("#resultDiv").append("<br>");
-					$("#resultDiv").append(data.response.body.items.item[i].careAddr);
-					$("#resultDiv").append("<br>");
-					$("#resultDiv").append(data.response.body.items.item[i].saveTrgtAnimal);
-					$("#resultDiv").append("<br>");
-					$("#resultDiv").append("========================");
-					$("#resultDiv").append("<br>");
-				}
+				$("#resultDiv").append(data.response.body.items.item[i].careNm);
+				$("#resultDiv").append("<br>");
+				$("#resultDiv").append(data.response.body.items.item[i].careAddr);
+				$("#resultDiv").append("<br>");
+				$("#resultDiv").append(data.response.body.items.item[i].saveTrgtAnimal);
+				$("#resultDiv").append("<br>");
+				$("#resultDiv").append("========================");
+				$("#resultDiv").append("<br>");
 				
 				
 			}
