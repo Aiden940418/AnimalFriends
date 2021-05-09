@@ -28,6 +28,9 @@
 <!-- 제이쿼리 사용 위한 코드 -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
+
+	var itemArr = new Array();
+	
 	$(function () {
 		$("#seoulSelect").show();
 		$("#gyeonggiSelect").hide();
@@ -71,14 +74,59 @@
 			for(var i=0; i<243; i++){
 				
 				var item = data.response.body.items.item[i];
-				var aTag = "<a href='#' style='text-decoration: none; color:black;'>";
+				//var aTag = "<a href='#' style='text-decoration: none; color:black;'>";
+				var aTag = "<a id='"+ i +"' href='#' style='text-decoration: none; color:black;'>";
 				
-				$("#shelterListUl").append("<li>" + aTag + item.careNm + "<br>" + item.careAddr +
-											 +"</a></li>" + "<hr>");
+				$("#shelterListUl").append("<li>" + aTag + item.careNm + "<br>" + item.careAddr 
+											 + "</a></li>" + "<hr>");
 				
+				
+				itemArr[i] = item;
+				//console.log(itemArr[i]);
 			}
-			
 		}
+		
+		//동적으로 추가된 li태그들(보호시설 리스트들)에 이벤트 바인딩
+		$("ul").on("click", "li", function() {
+			console.log($(this).children().attr('id'));
+			var selectedItemId = $(this).children().attr('id');
+			
+			//console.log(itemArr[selectedItemId]);
+			//console.log(itemArr[selectedItemId].careAddr);
+			var selectedAddr = itemArr[selectedItemId].careAddr;
+			var selectedCareNm = itemArr[selectedItemId].careNm;
+			var selectedCareTel = itemArr[selectedItemId].careTel;
+			
+			
+			
+			// 주소로 좌표를 검색합니다
+			geocoder.addressSearch( selectedAddr, function(result, status) {
+			
+			    // 정상적으로 검색이 완료됐으면 
+			     if (status === kakao.maps.services.Status.OK) {
+		
+			        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		
+			        // 결과값으로 받은 위치를 마커로 표시합니다
+			        var marker = new kakao.maps.Marker({
+			            map: map,
+			            position: coords
+			        });
+		
+			        // 인포윈도우로 장소에 대한 설명을 표시합니다
+			        var infowindow = new kakao.maps.InfoWindow({
+			            content: '<div style="width:300px;text-align:center;padding:6px 0;">'
+			            			+ selectedCareNm +"<br>"+ selectedAddr +"<br>"+ selectedCareTel + '</div>'
+			        });
+			        infowindow.open(map, marker);
+		
+			        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+			        map.setCenter(coords);
+			    }
+			});
+			
+		});
+		
 		
 		
 		
@@ -265,9 +313,9 @@
 		        });
 	
 		        // 인포윈도우로 장소에 대한 설명을 표시합니다
-		        var infowindow = new kakao.maps.InfoWindow({
+		        /* var infowindow = new kakao.maps.InfoWindow({
 		            content: '<div style="width:150px;text-align:center;padding:6px 0;">여기에 설명</div>'
-		        });
+		        }); */
 		        infowindow.open(map, marker);
 	
 		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
