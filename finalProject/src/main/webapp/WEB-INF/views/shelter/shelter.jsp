@@ -60,7 +60,6 @@ button {
 }
 
 /*검색결과 스크롤 만들기*/
-
 #resultArea {
 	overflow-y: scroll;
 }
@@ -75,27 +74,27 @@ button {
 
 		/* 콤보박스 선택 시 버튼에 표시되는 텍스트 변경되도록 자바스크립트 처리 */
 		$('#locationSelect li > a').on('click', function() {
-			// 버튼에 선택된 항목 텍스트 넣기 
+			// 서울시/경기도 버튼
 			$('#locationSelectBtn').text($(this).text());
 
-			// 선택된 항목 값(value) 얻기
-			//alert($(this).attr('value'));
 		});
+		
 		$('#guSelect li > a').on('click', function() {
-			// 버튼에 선택된 항목 텍스트 넣기 
+			// 구(서울시) 버튼
 			$('#guSelectBtn').text($(this).text());
 		});
+		
 		$('#siSelect li > a').on('click', function() {
-			// 버튼에 선택된 항목 텍스트 넣기 
+			// 시/군 버튼
 			$('#siSelectBtn').text($(this).text());
 		});
 
-		//지역별 드롭다운 선택 시 value 가져오는 function들
+		/* 지역별 드롭다운 선택 시 value 가져오는 function들 */
 		// 1.서울시/경기도 선택
 		$('#locationSelect li > a').on('click', function() {
 			$('#locationSelectBtn').text($(this).text());
 			var area = $(this).attr('value');
-			console.log('선택된 값: ' + area);
+			//console.log('선택된 값: ' + area);
 
 			$('#locationSelectBtn').attr('data-siordo', area);
 		});
@@ -104,7 +103,7 @@ button {
 		$('#guSelect li > a').on('click', function() {
 			$('#guSelectBtn').text($(this).text());
 			var area = $(this).attr('value');
-			console.log('선택된 값: ' + area);
+			//console.log('선택된 값: ' + area);
 
 			$('#guSelectBtn').attr('data-guselect', area);
 		});
@@ -113,11 +112,12 @@ button {
 		$('#siSelect li > a').on('click', function() {
 			$('#siSelectBtn').text($(this).text());
 			var area = $(this).attr('value');
-			console.log('선택된 값: ' + area);
+			//console.log('선택된 값: ' + area);
 
 			$('#siSelectBtn').attr('data-siselect', area);
 		});
-
+		
+		/* 검색 버튼 누를 시 json 받아와서 검색 메소드(find(data)) 실행 */
 		$("#okBtn").click(function() {
 			$.ajax({
 				url : "zipXML.do",
@@ -133,63 +133,57 @@ button {
 			});
 
 		});
-
+		
+		/* 검색 메소드 */
 		function find(data) {
 
-			//변수 searchArea(검색어)에 선택한 시/도 + 시/군/구 값
+			/* 변수 searchArea(검색어) =  선택한 시/도 + 시/군/구 값 */
 			var searchArea = $('#locationSelectBtn').attr('data-siordo');
 
 			searchArea += ' ';
 
 			if (searchArea.indexOf("서울") > -1) {
-				//조건 : 만약 '서울'이 포함되어 있다면 -> '구' value 더하기 실행
+				//조건 : 만약 '서울'이 포함되어 있다면 -> '구' value 더하기
 				searchArea += $('#guSelectBtn').attr('data-guselect');
 
 			} else {
-				//조건 : 만약 '서울'이 포함되어 있지 않다면(경기도) -> '시/군' value 더하기 실행
+				//조건 : 만약 '서울'이 포함되어 있지 않다면(경기도) -> '시/군' value 더하기
 				searchArea += $('#siSelectBtn').attr('data-siselect');
 			}
-			//검색어 준비 완료.
 
-			/* console.log(data); */
-				//결과 출력 창을 깨끗이 비움
-				$("#resultArea").empty();
+			//이전 결과가 남아있을 수 있는 출력 창(#resultArea)을 깨끗이 비움
+			$("#resultArea").empty();
+				
 			for (var i = 0; i < 243; i++) {
 
 				var item = data.response.body.items.item[i];
 
-			/* console.log(item.careAddr); */
 				if (item.careAddr.indexOf(searchArea) > -1) {
 
 					//이름에 a태그를 걸어서 위도랑 경도 값을 전송? 구현 필요..
 					$("#resultArea").append(
-							data.response.body.items.item[i].careNm);
-					$("#resultArea").append("<br>");
+							"<li>"+data.response.body.items.item[i].careNm);
 					$("#resultArea").append(
 							"주소: " + data.response.body.items.item[i].careAddr);
 					$("#resultArea").append("<br>");
 					if (data.response.body.items.item[i].saveTrgtAnimal == null) {
-
+						//구조대상동물에 값이 없으면 출력 자체를 하지 않음
 					} else {
+						
+						/* $("#resultDiv").append("구조동물: "+data.response.body.items.item[i].saveTrgtAnimal); 
+						구분자(+)를 기준으로 쪼개 배열에 담고, .를 더하여 출력하는 조건반복문  */
 						$("#resultArea").append("구조동물: ");
 						var textarr = data.response.body.items.item[i].saveTrgtAnimal
 								.split("+");
 						for (var j = 0; j < textarr.length; j++) {
 							$("#resultArea").append(textarr[j] + ". ");
 						}
-
-						/* $("#resultDiv").append("구조동물: "+data.response.body.items.item[i].saveTrgtAnimal); 
-							구분자를 .로 변경하여 출력하는 조건반복문
-						 */
 					}
-
+					$("#resultArea").append("<br>"+"</li>");
 					$("#resultArea").append("<hr>");
 				}
 
 			}
-
-			// 혹은
-			// var searchArea = $('#locationSelectBtn').data('siordo');
 		}
 
 	});
@@ -308,14 +302,14 @@ button {
 				<div class="dropdown my-2 col text-left">
 					<a class="btn btn-success" role="button" id="okBtn"
 						data-bs-toggle="dropdown" aria-expanded="false">검색</a>
-					<!-- 실행할 자바스크립트 -->
 				</div>
 
 				<hr>
 			</div>
 
-			<!-- 결과 출력할 부분 -->
-			<div class="row mt-1" id="resultArea" style="height: 620px; padding:10px;"></div>
+			<!-- 결과 출력할 div -->
+			<div class="row mt-1" id="resultArea" style="height: 620px; padding:10px;">
+			</div>
 
 		</div>
 
