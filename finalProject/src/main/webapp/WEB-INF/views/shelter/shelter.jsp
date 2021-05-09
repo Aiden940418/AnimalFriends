@@ -64,6 +64,10 @@
 	
 	}
 	
+	#resultArea{
+		overflow-y: scroll;
+	}
+	
 </style>
 
 <!-- 제이쿼리 사용 위한 코드 -->
@@ -265,7 +269,7 @@
 			<!-- 카테고리 선택 부분 -->
 			<div class="row">
 			
-				<div class="dropdown mt-2 col">
+				<div class="dropdown my-2 col text-left">
 					<a class="btn btn-success dropdown-toggle" role="button"
 						id="locationSelectBtn" data-bs-toggle="dropdown"
 						aria-expanded="false" data-siordo="">지역 선택</a>
@@ -275,7 +279,7 @@
 					</ul>
 				</div>
 				
-				<div class="dropdown mt-2 col" id="seoulSelect">
+				<div class="dropdown my-2 col text-left" id="seoulSelect">
 					<a class="btn btn-success dropdown-toggle" href="#" role="button"
 						id="guSelectBtn" data-bs-toggle="dropdown"
 						aria-expanded="false" data-guselect=""> 구 선택 </a>
@@ -308,7 +312,7 @@
 					</ul>
 				</div>
 				
-				<div class="dropdown mt-2 col" id="gyeonggiSelect">
+				<div class="dropdown my-2 col text-left" id="gyeonggiSelect">
 					<a class="btn btn-success dropdown-toggle" href="#" role="button"
 						id="siSelectBtn" data-bs-toggle="dropdown"
 						aria-expanded="false" data-siselect=""> 시 선택 </a>
@@ -347,16 +351,21 @@
 					</ul>
 				</div>
 				
-				<div class="dropdown mt-2 col">
+				<div class="dropdown my-2 col text-left">
 					<a class="btn btn-success" role="button"
 						id="okBtn" data-bs-toggle="dropdown"
 						aria-expanded="false">검색</a>
 						<!-- 실행할 자바스크립트 -->
 				</div>
 				
-				
+				<hr>
 			</div> 
 			
+			<!-- 결과 출력할 부분 -->
+			<div class="row w-100" id="resultArea">
+			
+			
+			</div>
 			
 		</div>
 	
