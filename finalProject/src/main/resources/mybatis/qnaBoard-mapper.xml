@@ -6,7 +6,7 @@
 
 <mapper namespace="qnaBoard">
 
-	<select id="selectList" resultType="qnaBoardDto" parameterType="com.anif.mvc.common.pagination.Criteria">
+	<select id="selectList" resultType="qnaBoardDto" parameterType="Criteria">
 		SELECT *
 		FROM (
 			SELECT QNO, QGROUPNO, QGROUPSQ, QTITLETAB, QCTGY, QTITLE, MNO,
@@ -28,7 +28,7 @@
 
   	<select id="selectOne" parameterType="int" resultType="qnaBoardDto">
   		SELECT QNO, QGROUPNO, QGROUPSQ, QTITLETAB, QCTGY, QTITLE, QCONTENT, MNO, 
-  				TO_CHAR(QDATE, 'YYYY-MM-DD HH24:MI') AS qdateToChar, MNICK
+  				TO_CHAR(QDATE, 'YYYY-MM-DD HH24:MI:SS') AS qdateToChar, MNICK
   		FROM QUESTIONBOARD
   		JOIN MEMBER USING(MNO)
   		WHERE QNO=#{qno}
@@ -52,7 +52,7 @@
 
   	<delete id="delete" parameterType="int">
   		DELETE FROM QUESTIONBOARD
-  		WHERE QNO = #{qno}
+  		WHERE QGROUPNO = #{qgroupno}
   	</delete>
   	
 
