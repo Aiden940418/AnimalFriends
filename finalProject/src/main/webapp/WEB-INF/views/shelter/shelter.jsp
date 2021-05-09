@@ -58,6 +58,12 @@
   		overflow-y: scroll;
 	}
 	
+	/*검색결과 스크롤 만들기*/
+	#resultDiv{
+		overflow-y: scroll;
+	
+	}
+	
 </style>
 
 <!-- 제이쿼리 사용 위한 코드 -->
@@ -67,7 +73,7 @@
 		$("#seoulSelect").show();
 		$("#gyeonggiSelect").hide();
 		
-		/* 콤보박스 선택 시 버튼의 텍스트 변경되도록 자바스크립트 처리 */
+		/* 콤보박스 선택 시 버튼에 표시되는 텍스트 변경되도록 자바스크립트 처리 */
 		$('#locationSelect li > a').on('click', function() {
 		    // 버튼에 선택된 항목 텍스트 넣기 
 		    $('#locationSelectBtn').text($(this).text());
@@ -85,26 +91,7 @@
 		});
 		
 		
-		function find() {
-			//선택한 시/도 + 시/군/구 값
-	        var area = $('#locationSelectBtn').attr('data-siordo');
-	        
-	        area += '&nbsp;' ;
-	        
-	        if(area.indexOf("서울")> -1 ){
-	        	//조건 : 만약 '서울'이 포함되어 있다면 -> '구' value 더하기 실행
-	        	area += $('#guSelectBtn').attr('data-guselect');
-	        	
-	        }else{
-	        	//조건 : 만약 '서울'이 포함되어 있지 않다면(경기도) -> '시/군' value 더하기 실행
-	        	area += $('#siSelectBtn').attr('data-siselect');
-	        }
-	        
-	        
-	        
-	        // 혹은
-	        // var area = $('#locationSelectBtn').data('siordo');
-	    }
+		
 		
 			//지역별 드롭다운 선택 시 value 가져오는 function들
 			// 1.서울시/경기도 선택
@@ -116,7 +103,7 @@
 		        $('#locationSelectBtn').attr('data-siordo', area);
 		    });   
 		
-			// 2.구 선택
+			// 2-A.구 선택(서울시)
 		 $('#guSelect li > a').on('click', function () {
 		        $('#guSelectBtn').text($(this).text());
 		        var area = $(this).attr('value');
@@ -125,7 +112,7 @@
 		        $('#guSelectBtn').attr('data-guselect', area);
 		    });   
 		
-			// 3.시/군 선택
+			// 2-B.시/군 선택(경기도)
 		 $('#siSelect li > a').on('click', function () {
 		        $('#siSelectBtn').text($(this).text());
 		        var area = $(this).attr('value');
@@ -135,12 +122,118 @@
 		    });   
 		
 		
+		 $("#okBtn").click(function() {
+				$.ajax({
+					url : "zipXML.do",
+					method : "POST",
+					dataType : "json",
+					data : {
+						
+					},
+				}).done(function(data) {
+					
+					find(data);
+					
+				});
+				
+				
+			});	
+			
+			
+			
+			
+		 function find(data) {
+			 
+				
+				//변수 searchArea(검색어)에 선택한 시/도 + 시/군/구 값
+		        var searchArea = $('#locationSelectBtn').attr('data-siordo');
+		        
+		        searchArea += ' ' ;
+		        
+		        if(searchArea.indexOf("서울")> -1 ){
+		        	//조건 : 만약 '서울'이 포함되어 있다면 -> '구' value 더하기 실행
+		        	searchArea += $('#guSelectBtn').attr('data-guselect');
+		        	
+		        }else{
+		        	//조건 : 만약 '서울'이 포함되어 있지 않다면(경기도) -> '시/군' value 더하기 실행
+		        	searchArea += $('#siSelectBtn').attr('data-siselect');
+		        }
+		        //검색어 준비 완료.
+		        
+		        /* console.log(data); */
+				
+				for(var i=0; i<243; i++){
+					
+					var item = data.response.body.items.item[i];
+					
+					console.log(item.careAddr);
+					 if( item.careAddr.indexOf(searchArea)> -1 ){
+						 
+						 //이름에 a태그를 걸어서 위도랑 경도 값을 전송? 구현 필요..
+						$("#resultDiv").append(data.response.body.items.item[i].careNm);
+						$("#resultDiv").append("<br>");
+						$("#resultDiv").append("주소: "+data.response.body.items.item[i].careAddr);
+						$("#resultDiv").append("<br>");
+						if(data.response.body.items.item[i].saveTrgtAnimal == null){
+							
+						}else{
+							$("#resultDiv").append("구조동물: ");
+							var textarr = data.response.body.items.item[i].saveTrgtAnimal.split("+");
+							for(var j=0; j<textarr.length; j++){
+								$("#resultDiv").append(textarr[j]+". ");
+							}
+							
+							/* $("#resultDiv").append("구조동물: "+data.response.body.items.item[i].saveTrgtAnimal); 
+								구분자를 .로 변경하여 출력하는 조건반복문
+							*/
+						}
+						
+						$("#resultDiv").append("<hr>");
+						}
+					
+					
+				}
+		        
+		        
+		        
+		    
+		        
+		        
+		        
+		        // 혹은
+		        // var searchArea = $('#locationSelectBtn').data('siordo');
+		    }
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		
 		
 		
 		
 	});
 	
+	//서울시/경기도 선택 시 버튼 보여주는 용도
 	function seoulSelect() {
 		$("#seoulSelect").show();
 		$("#gyeonggiSelect").hide();
@@ -167,7 +260,7 @@
 
 	<div class="row">
 		<!-- 좌측 카테고리 선택 및 검색 영역 -->
-		<div class="col-4 border border-dark rounded" style="height: 700px;">
+		<div class="col-4 border border-dark rounded" id="resultDiv" style="height: 700px;">
 			
 			<!-- 카테고리 선택 부분 -->
 			<div class="row">
@@ -254,7 +347,16 @@
 					</ul>
 				</div>
 				
+				<div class="dropdown mt-2 col">
+					<a class="btn btn-success" role="button"
+						id="okBtn" data-bs-toggle="dropdown"
+						aria-expanded="false">검색</a>
+						<!-- 실행할 자바스크립트 -->
+				</div>
+				
+				
 			</div> 
+			
 			
 		</div>
 	
