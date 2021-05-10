@@ -5,16 +5,17 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.anif.mvc.goods.dto.GoodsDto;
 
-@Service
+@Repository
 public class GoodsDaoImpl implements GoodsDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-
+ 
 	
 	//전체 굿즈 리스트
 	@Override
@@ -24,8 +25,9 @@ public class GoodsDaoImpl implements GoodsDao {
 		
 		try {
 			list = sqlSession.selectList(NAMESPACE+"goodsList");
+			System.out.println(list.toString());
 		} catch (Exception e) {
-			System.out.println("[error]: select list" );
+			System.out.println("[error: select list" );
 			e.printStackTrace();
 		}		
 		return list;

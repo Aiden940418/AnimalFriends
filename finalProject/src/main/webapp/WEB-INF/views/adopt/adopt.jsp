@@ -3,6 +3,7 @@
 <%@ include file="../includes/header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
  <title>입양공고</title>
 
 <div class="container text-center">

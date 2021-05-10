@@ -1,5 +1,7 @@
 package com.anif.mvc;
 
+import java.io.Console;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.anif.mvc.goods.biz.GoodsBiz;
+import com.anif.mvc.goods.dto.GoodsDto;
 
 @Controller
 public class GoodsController {
@@ -21,6 +24,9 @@ public class GoodsController {
 	//굿즈 목록 보기
 	@RequestMapping(value = "/goodsList.do")
 	public String goods(Model model) {
+		
+		
+		logger.info("goodsList실행입니다.");
 		
 		model.addAttribute("list",biz.goodsList());
 		return "goods/goods";
