@@ -104,16 +104,7 @@ public class MypageController {
 	
 	//QnA Start
 	
-	//페이징 적용 전 Select List
-//	@RequestMapping("/myQnaList.do")
-//	public String myQnaList(Model model) {
-//		logger.info("QnA SELECT LIST");
-//		model.addAttribute("list", biz.selectList());
-//		
-//		return "/mypage/mypage_qnaList";
-//	}
-	
-	//페이징 적용한 Select List - 여기다가 각자 페이징 구현해보기
+	//페이징 적용한 Select List
 	@RequestMapping("/myQnaList.do")
 	public String myQnaList(Model model, Criteria cri) {
 		logger.info("QnA SELECT LIST");
@@ -155,8 +146,6 @@ public class MypageController {
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
 		dto.setMno(memberDto.getmNo());
 		
-		//현재 로그인 기능 합치기 전이므로 테스트로 세션 회원 작성하겠음
-		
 		int res = biz.insert(dto);
 
 		if (res > 0) { // 글 insert 성공 시
@@ -188,17 +177,17 @@ public class MypageController {
 		if(res>0) {
 			return "redirect:myQnaDetail.do?qno="+dto.getQno();
 		}else {
-			return "redirect:myQnaUpdateForm.do?myno="+dto.getQno();
+			return "redirect:myQnaUpdateForm.do?qno="+dto.getQno();
 		}
 		
 		
 	}
 	
 	@RequestMapping("/myQnaDelete.do")
-	public String myQnaDelete(int qno) {
+	public String myQnaDelete(int qno, int qgroupno) {
 		logger.info("QnA DELETE");
 		
-		int res = biz.delete(qno);
+		int res = biz.delete(qgroupno);
 		
 		if(res>0) {
 			return "redirect:myQnaList.do"; 

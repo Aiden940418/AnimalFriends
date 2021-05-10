@@ -3,7 +3,7 @@ package com.anif.mvc.qnaBoardAdmin.dto;
 import java.util.Date;
 
 public class QnaBoardAdminDto {
-	
+
 	private int qno;			//문의게시판 글 번호
 	private int qgroupno;		//문의 글 그룹 번호
 	private int qgroupsq;		//글 그룹 시퀀스

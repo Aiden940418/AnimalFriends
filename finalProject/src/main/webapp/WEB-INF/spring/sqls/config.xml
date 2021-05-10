@@ -8,7 +8,12 @@
   	<typeAliases>
   	<typeAlias type="com.anif.mvc.member.dto.MemberDto" alias="memberDto" />
   	<typeAlias type="com.anif.mvc.adopt.dto.AdoptDto" alias="adoptDto"/>
+  	<typeAlias type="com.anif.mvc.goods.dto.GoodsDto" alias="goodsDto"/>
   	<typeAlias type="com.anif.mvc.qnaBoard.dto.QnaBoardDto" alias="qnaBoardDto" />
+  	<typeAlias type="com.anif.mvc.qnaBoardAdmin.dto.QnaBoardAdminDto" alias="qnaBoardAdminDto" />
+  	<typeAlias type="com.anif.mvc.common.pagination.Criteria" alias="Criteria" />
+  	
+  	
   	</typeAliases>
   	
   	
@@ -17,7 +22,9 @@
   	<mappers>
   		<mapper resource="/mybatis/member-mapper.xml"/>
   		<mapper resource="/mybatis/adopt-mapper.xml"/>
+  		<mapper resource="/mybatis/goods-mapper.xml"/>
   		<mapper resource="/mybatis/qnaBoard-mapper.xml"/>
+  		<mapper resource="/mybatis/qnaBoardAdmin-mapper.xml"/>
   		
   	</mappers>
   

@@ -215,6 +215,17 @@
 			
 			<!-- 첨부파일 END -->
 
+			
+		<!-- api json 사용 위한 디펜던시 추가 -->
+		<dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180813</version>
+        </dependency>
+		
+		
+		
+
 
 
 

@@ -32,8 +32,8 @@
 	</div>
 	<c:if test="${login != null }">
 	<div class="btn-group float-end">
-		<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='myAdoptList.do?mNo=${login.mNo}'">나의
-			입양공고 보기</button>
+		<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='myAdoptList.do?mNo=${login.mNo}'">
+		나의 입양공고 보기</button>
 	</div>
 	</c:if>
 	

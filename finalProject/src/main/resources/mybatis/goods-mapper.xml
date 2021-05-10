@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="goods">
+  
+  <resultMap type="goodsDto" id="goodsMap">
+  	<result property="gNo" column="GNO"/>
+  	<result property="gCtgy" column="GCTGY"/>
+  	<result property="gName" column="GNAME"/>
+  	<result property="gPrice" column="GPRICE"/>
+  	<result property="gStock" column="GSTOCK"/>
+  	<result property="gCount" column="GCOUNT"/>
+  	<result property="gDate" column="GDATE"/>
+  	<result property="gOrNo" column="GORNO"/>
+  	<result property="gOrStatus" column="GORSTATUS"/>
+  	<result property="gOrTotalP" column="GORTOTALP"/>
+  	<result property="mNo" column="MNO"/>
+  	<result property="gOrDetailNo" column="GORDETAILNO"/>
+  	<result property="gQut" column="GQUT"/>
+  	<result property="gOrPrice" column="GORPRICE"/>
+  </resultMap>
+ 
+     <!-- 전체 굿즈 리스트  -->
+     <select id="goodsList" resultMap="goodsMap">
+  		SELECT GNO, GCTGY, GNAME, GPRICE, GSTOCK, GDATE, GCOUNT, GORNO, 
+  		   	   GORSTATUS, GORTOTALP, MNO, GORDETAILNO, GQUT, GORPRICE
+    	FROM GOODS
+     </select>
+     
+     <!-- 전체 굿즈 리스트 상세 -->
+     <select id="goodsDetail" parameterType="goodsDto" resultType="goodsDto">
+  		SELECT GNO, GCTGY, GNAME, GPRICE, GSTOCK, GDATE, GCOUNT, GORNO, 
+  		   	   GORSTATUS, GORTOTALP, MNO, GORDETAILNO, GQUT, GORPRICE
+    	FROM GOODS
+    	WHERE GNO = #{gNo}
+     </select>
+     
+ 
+ 
+ 
+ 
+ 
+ 
+  </mapper>
+
+
+	
