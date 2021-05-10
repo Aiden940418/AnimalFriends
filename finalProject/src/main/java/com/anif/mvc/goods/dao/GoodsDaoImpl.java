@@ -25,7 +25,7 @@ public class GoodsDaoImpl implements GoodsDao {
 		try {
 			list = sqlSession.selectList(NAMESPACE+"goodsList");
 		} catch (Exception e) {
-			System.out.println("[error: select list" );
+			System.out.println("[error]: select list" );
 			e.printStackTrace();
 		}		
 		return list;
