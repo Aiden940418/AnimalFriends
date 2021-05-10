@@ -19,16 +19,16 @@ public class GoodsController {
 	private Logger logger = LoggerFactory.getLogger(GoodsController.class);
 	
 	//굿즈 목록 보기
-	@RequestMapping(value = "/goods.do")
+	@RequestMapping(value = "/goodsList.do")
 	public String goods(Model model) {
 		
-		model.addAttribute("goods",biz.goodsList());
+		model.addAttribute("list",biz.goodsList());
 		return "goods/goods";
 	}
 	
 	
 	//굿즈 상세보기
-	@RequestMapping(value = "goodsDetails.do",method = RequestMethod.GET)
+	@RequestMapping(value = "/goodsDetails.do",method = RequestMethod.GET)
 	public String goodsDetail(Model model, int gNo) {
 		
 		model.addAttribute("dto",biz.goodsDetail(gNo));

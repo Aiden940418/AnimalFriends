@@ -52,11 +52,7 @@ public class HomeController {
 		return "shelter/shelter";
 	}
 	
-	@RequestMapping(value = "/goods.do", method = RequestMethod.GET)
-	public String goods(Model model) {
-		return "goods/goods";
-	}
-	
+
 	
 	@RequestMapping(value = "/diary.do", method = RequestMethod.GET)
 	public String diary(Model model) {

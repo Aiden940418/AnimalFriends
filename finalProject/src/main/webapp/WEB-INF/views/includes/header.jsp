@@ -56,7 +56,7 @@
               <a class="nav-link" href="shelter.do">동물보호시설</a>
             </li>
             <li class="nav-item" style="font-size:20px;">
-              <a class="nav-link" href="goods.do">GOODS</a>
+              <a class="nav-link" href="goodsList.do">GOODS</a>
             </li>
 
             <li class="nav-item" style="font-size:20px;">

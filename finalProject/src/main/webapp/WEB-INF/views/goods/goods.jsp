@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../includes/header.jsp" %>   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- 
+
  
  <style type="text/css">
  
@@ -128,7 +128,7 @@ Resources
 
 
 	<c:choose>
-		<c:when test="${empty goods }">
+		<c:when test="${empty list}">
 		
 		<h2>등록된 글이 없습니다. </h2>
 		</c:when>
@@ -142,7 +142,7 @@ Resources
             <div class="col">
               <div class="card">
               
-          <c:forEach items="${goods}" var="dto">
+          <c:forEach items="${list}" var="dto">
                 <h3 class="card-header">
                   <a href="goodsDetails.do?gNo=${dto.gNo}">${dto.gName}dfds${login.mId}</a>
                 </h3>
