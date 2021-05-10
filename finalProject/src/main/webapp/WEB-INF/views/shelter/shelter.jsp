@@ -2,83 +2,35 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../includes/header.jsp"%>
 
+<!-- 아이콘 사용 위한 코드 -->
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
 
 
 <style type="text/css">
-h1 {
-	text-align: center;
-	margin-top:20px;
-    margin-bottom:50px;
-	margin-top: 20px;
-	}
-
-
+	h1 {
+		text-align: center;
+		margin-top:20px;
+	    margin-bottom:50px;
+		margin-top: 20px;
+		}
+	
 	/* 콤보박스 스크롤 만들기 */
 	#guSelect {
-  		height:150px;
-  		overflow-y: scroll;
-	}
-	#siSelect {
-  		height:150px;
-  		overflow-y: scroll;
+		height: 150px;
+		overflow-y: scroll;
 	}
 	
-	margin-top: 20px;
-	margin-bottom: 50px;
-}
-
-.container_map {
-	align-items: center;
-	text-align: center;
-	display: table;
-	margin: auto;
-}
-
-h1 {
-	margin-top: 20px;
-}
-
-.search-box {
-	height: 40px;
-	width: 600px;
-	border: 1px solid #1b5ac2;
-	background: #ffffff;
-}
-
-input {
-	font-size: 12px;
-	width: 400px;
-	padding: 10px;
-	border: 0px;
-	outline: none;
-	float: left;
-}
-
-button {
-	width: 50px;
-	height: 100%;
-	border: 0px;
-	background: #007bff;
-	outline: none;
-	float: right;
-	color: #ffffff;
-}
-
-/* 콤보박스 스크롤 만들기 */
-#guSelect {
-	height: 150px;
-	overflow-y: scroll;
-}
-
-#siSelect {
-	height: 150px;
-	overflow-y: scroll;
-}
-
-/*검색결과 스크롤 만들기*/
-#resultArea {
-	overflow-y: scroll;
-}
+	#siSelect {
+		height: 150px;
+		overflow-y: scroll;
+	}
+	
+	/*검색결과 스크롤 만들기*/
+	#resultAreaDiv {
+		overflow-y: scroll;
+	}
+	
 </style>
 
 <!-- 제이쿼리 사용 위한 코드 -->
@@ -153,86 +105,7 @@ button {
 
 		});
 		
-		
-		//보호시설 리스트 출력 위한 ajax
-		$.ajax({
-			url : "zipXML.do",
-			method : "POST",
-			dataType : "json",
-			data : {
-				
-			},
-		}).done(function(data) {
-			
-			printResult(data);
-			
-		});
-		//ajax 통신 성공 후 화면 출력 위한 함수
-		function printResult(data) {
-			//console.log(data);
-			
-			for(var i=0; i<243; i++){
-				
-				var item = data.response.body.items.item[i];
-				//var aTag = "<a href='#' style='text-decoration: none; color:black;'>";
-				var aTag = "<a id='"+ i +"' href='#' style='text-decoration: none; color:black;'>";
-				
-				$("#shelterListUl").append("<li>" + aTag + item.careNm + "<br>" + item.careAddr 
-											 + "</a></li>" + "<hr>");
-				
-				
-				itemArr[i] = item;
-				//console.log(itemArr[i]);
-			}
-		}
-		
-		//동적으로 추가된 li태그들(보호시설 리스트들)에 이벤트 바인딩
-		$("ul").on("click", "li", function() {
-			console.log($(this).children().attr('id'));
-			var selectedItemId = $(this).children().attr('id');
-			
-			//console.log(itemArr[selectedItemId]);
-			//console.log(itemArr[selectedItemId].careAddr);
-			var selectedAddr = itemArr[selectedItemId].careAddr;
-			var selectedCareNm = itemArr[selectedItemId].careNm;
-			var selectedCareTel = itemArr[selectedItemId].careTel;
-			
-			
-			
-			// 주소로 좌표를 검색합니다
-			geocoder.addressSearch( selectedAddr, function(result, status) {
-			
-			    // 정상적으로 검색이 완료됐으면 
-			     if (status === kakao.maps.services.Status.OK) {
-		
-			        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-		
-			        // 결과값으로 받은 위치를 마커로 표시합니다
-			        var marker = new kakao.maps.Marker({
-			            map: map,
-			            position: coords
-			        });
-		
-			        // 인포윈도우로 장소에 대한 설명을 표시합니다
-			        var infowindow = new kakao.maps.InfoWindow({
-			            content: '<div style="width:300px;text-align:center;padding:6px 0;">'
-			            			+ selectedCareNm +"<br>"+ selectedAddr +"<br>"+ selectedCareTel + '</div>'
-			        });
-			        infowindow.open(map, marker);
-		
-			        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-			        map.setCenter(coords);
-			    }
-			});
-			
-		});
-		
-		
-		
-		
-	});
-	
-	//카테고리 서울, 경기 선택 시 버튼 숨겼다 보여주기 하기위한 자바스크립트
+		//카테고리 서울, 경기 선택 시 버튼 숨겼다 보여주기 하기위한 자바스크립트
 		/* 검색 메소드 */
 		function find(data) {
 
@@ -258,19 +131,12 @@ button {
 				var item = data.response.body.items.item[i];
 
 				if (item.careAddr.indexOf(searchArea) > -1) {
-
-					//이름에 a태그를 걸어서 위도랑 경도 값을 전송? 구현 필요..
-					$("#resultArea").append(
-							"<li>"+data.response.body.items.item[i].careNm);
-					$("#resultArea").append(
-							"주소: " + data.response.body.items.item[i].careAddr);
-					$("#resultArea").append("<br>");
-					if (data.response.body.items.item[i].saveTrgtAnimal == null) {
-						//구조대상동물에 값이 없으면 출력 자체를 하지 않음
-					} else {
-						
-						/* $("#resultDiv").append("구조동물: "+data.response.body.items.item[i].saveTrgtAnimal); 
-						구분자(+)를 기준으로 쪼개 배열에 담고, .를 더하여 출력하는 조건반복문  */
+					
+					var aTag = "<a id='"+ i +"' href='#' style='text-decoration: none; color:black;'>";
+					
+					$("#resultArea").append("<li>" + aTag + item.careNm + "<br>" + "주소: " + item.careAddr + "<br>");
+					if(item.saveTrgtAnimal == null){
+					}else{
 						$("#resultArea").append("구조동물: ");
 						var textarr = data.response.body.items.item[i].saveTrgtAnimal
 								.split("+");
@@ -278,14 +144,69 @@ button {
 							$("#resultArea").append(textarr[j] + ". ");
 						}
 					}
-					$("#resultArea").append("<br>"+"</li>");
+					
+					$("#resultArea").append("</a></li>");
 					$("#resultArea").append("<hr>");
 				}
 
+				//item 배열에 api로 받아온 데이터 json객체 하나씩 넣기
+				itemArr[i] = item;
 			}
 		}
-
+		
+		
+		//동적으로 추가된 li태그들(보호시설 리스트들)에 이벤트 바인딩
+		$("ul").on("click", "li", function() {
+			var selectedItemId = $(this).children().attr('id');
+			
+			var selectedAddr = itemArr[selectedItemId].careAddr;
+			var selectedCareNm = itemArr[selectedItemId].careNm;
+			var selectedCareTel = itemArr[selectedItemId].careTel;
+			var selectedSaveTrgtAnimal = itemArr[selectedItemId].saveTrgtAnimal;
+			
+			
+			
+			// 주소로 좌표를 검색합니다
+			geocoder.addressSearch( selectedAddr, function(result, status) {
+			
+			    // 정상적으로 검색이 완료됐으면 
+			     if (status === kakao.maps.services.Status.OK) {
+		
+			        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		
+			        // 결과값으로 받은 위치를 마커로 표시합니다
+			        var marker = new kakao.maps.Marker({
+			            map: map,
+			            position: coords
+			        });
+		
+			        // 인포윈도우로 장소에 대한 설명을 표시합니다
+			        if(selectedSaveTrgtAnimal == null){
+			        	var infowindow = new kakao.maps.InfoWindow({
+			        		content: '<div style="width:300px;text-align:center;padding:6px 0;">'
+			            			+ selectedCareNm +"<br>"+ selectedAddr +"<br>"+ selectedCareTel + '</div>'
+			        	});
+			        } else{
+			        	var infowindow = new kakao.maps.InfoWindow({
+			        		content: '<div style="width:300px;text-align:center;padding:6px 0;">'
+		            			+ selectedCareNm +"<br>"+ selectedAddr +"<br>"+ selectedCareTel + "<br>구조대상동물 : " 
+		            			+ selectedSaveTrgtAnimal + '</div>'
+			        	});
+			        	
+			        }
+			        infowindow.open(map, marker);
+		
+			        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+			        map.setCenter(coords);
+			    }
+			});
+			
+		});
+		
 	});
+	
+		
+
 
 	//서울시/경기도 선택 시 버튼 보여주는 용도
 	function seoulSelect() {
@@ -311,14 +232,15 @@ button {
 	<h1>동물 보호소 찾기</h1>
 
 	<div class="row">
+	
 		<!-- 좌측 카테고리 선택 및 검색 영역 -->
-		<div class="col-4 border border-dark rounded" id="resultDiv"
+		<div class="col-4 border border-3 rounded" id="resultDiv"
 			style="height: 700px;">
 
 			<!-- 카테고리 선택 부분 -->
 			<div class="row">
 
-				<div class="dropdown my-2 col text-left">
+				<div class="dropdown my-2 col text-left btn-group">
 					<a class="btn btn-success dropdown-toggle" role="button"
 						id="locationSelectBtn" data-bs-toggle="dropdown"
 						aria-expanded="false" data-siordo="">지역 선택</a>
@@ -331,7 +253,7 @@ button {
 					</ul>
 				</div>
 
-				<div class="dropdown my-2 col text-left" id="seoulSelect">
+				<div class="dropdown my-2 col text-left btn-group" id="seoulSelect">
 					<a class="btn btn-success dropdown-toggle" href="#" role="button"
 						id="guSelectBtn" data-bs-toggle="dropdown" aria-expanded="false"
 						data-guselect=""> 구 선택 </a>
@@ -365,7 +287,7 @@ button {
 					</ul>
 				</div>
 
-				<div class="dropdown my-2 col text-left" id="gyeonggiSelect">
+				<div class="dropdown my-2 col text-left btn-group" id="gyeonggiSelect">
 					<a class="btn btn-success dropdown-toggle" href="#" role="button"
 						id="siSelectBtn" data-bs-toggle="dropdown" aria-expanded="false"
 						data-siselect=""> 시 선택 </a>
@@ -405,66 +327,47 @@ button {
 					</ul>
 				</div>
 				
-			</div> 
-			
-			<hr>  <!-- 구분선 -->
-			
-			<!-- 보호시설 리스트 출력 부분 -->
-			<div id="shelterListDiv" style="overflow: scroll; height: 600px;">
-				<ul id="shelterListUl">
-				</ul>
 				
+				<!-- 검색버튼 -->
+				<div class="dropdown my-2 col text-left">
+					<a class="btn btn-outline-success" role="button" id="okBtn"
+						data-bs-toggle="dropdown" aria-expanded="false">
+						<ion-icon name="search-outline" style="font-size:17pt;"></ion-icon>
+						</a>
+				</div>
 				
 			</div>
+
+			<hr>  <!-- 구분선 -->
 			
 			
+			<!-- 보호시설 리스트 출력할 div -->
+			<div class="row mt-1" id="resultAreaDiv" style="height: 600px; padding:10px;">
+				<ul id="resultArea"></ul>
+			</div>
 			
 			
 			
 		</div>
 	
 	
-	<!-- 지도 시작 -->
-	<!-- 지도 화면 띄우는 영역 div -->
+		<!-- 지도 시작 -->
+		<!-- 지도 화면 띄우는 영역 div -->
 		<div id="map" class="col-8" ></div>
 		
 
-				<div class="dropdown my-2 col text-left">
-					<a class="btn btn-success" role="button" id="okBtn"
-						data-bs-toggle="dropdown" aria-expanded="false">검색</a>
-				</div>
-
-				<hr>
-			</div>
-
-			<!-- 결과 출력할 div -->
-			<div class="row mt-1" id="resultArea" style="height: 620px; padding:10px;">
-			</div>
-
-		</div>
-
-		<!-- 지도 시작 -->
-		<!-- 지도 화면 띄우는 영역 div -->
-		<div id="map" class="col-8"></div>
+				
 
 	</div>
+</div>
+
+
 
 	<!-- 카카오 지도 api 사용 위한 script 코드 -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3fdd8e02dcb3d23798f0ddaa0d9352bf&libraries=services,clusterer,drawing"></script>
 	
 	<!-- 지도 부분 -->
 	<script type="text/javascript">
-		/* var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-		var options = { //지도를 생성할 때 필요한 기본 옵션
-			center : new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-			level : 3
-		//지도의 레벨(확대, 축소 정도)
-		};
-
-		var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴 */
-		
-		
-		
 		
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = {
@@ -492,11 +395,6 @@ button {
 		            position: coords
 		        });
 	
-		        // 인포윈도우로 장소에 대한 설명을 표시합니다
-		        /* var infowindow = new kakao.maps.InfoWindow({
-		            content: '<div style="width:150px;text-align:center;padding:6px 0;">여기에 설명</div>'
-		        }); */
-		        infowindow.open(map, marker);
 	
 		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 		        map.setCenter(coords);
