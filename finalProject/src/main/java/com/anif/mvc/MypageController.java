@@ -95,7 +95,7 @@ public class MypageController {
 	
 	
 	@RequestMapping("/myMemberModityPw.do")
-	public String myMemberModityPw() {
+	public String myMemberModityPw(mPw) {
 		
 		
 		return "mypage/mypage_memberModifyPWCheck";

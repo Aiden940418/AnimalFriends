@@ -12,6 +12,8 @@ public interface MemberBiz {
 	public MemberDto idChk(String mId);
 	
 	public MemberDto login(MemberDto dto);
+	
+	public MemberDto pwChk(int mNo);
 
 
 }

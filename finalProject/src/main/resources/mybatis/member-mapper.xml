@@ -4,28 +4,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  
-    <mapper namespace="member">
-    
-     <resultMap type="memberDto" id="memberMap"> <!-- 아까 정해준 별칭 boardDto  -->
-     <result property="mNo" column="MNO"/>
-     <result property="mRole" column="MROLE"/>
-     <result property="mJoinYn" column="MJOINYN" />
-     <result property="mId" column="MID"/>
-     <result property="mPw" column="MPW"/>
-     <result property="mArrd1" column="MADDR1"/>
-     <result property="mArrd2" column="MADDR2"/>
-     <result property="mArrd3" column="MADDR3"/>
-     <result property="mName" column="MNAME"/>
-     <result property="mNick" column="MNICK" />     
-     <result property="mPhone" column="MPHONE"/>
-     <result property="sBisNum" column="SBISNUM" />
-     <result property="sSellNum" column="SSELLNUM" />
-        
-  	</resultMap>
-    
-    
 
+   
+   
+  
+  
+  
+    <mapper>
+    
+    
+    
+    
 
    <select id="login" parameterType="memberDto" resultType="memberDto">
   
@@ -75,6 +64,18 @@
   	
   	</select>
   	
+  	
+  	
+  	
+  	<select id="pwChk" parameterType="int">
+  	
+  	SELECT COUNT(*)
+  	FROM MEMBER
+  	WHERE MPW = #{mPw} AND MNO = #{mNo}
+  	
+  	
+  	
+  	</select>
   	
   	
 

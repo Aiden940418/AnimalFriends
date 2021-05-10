@@ -2,6 +2,9 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+	
+	
 
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
@@ -31,6 +34,7 @@
 			<param-value>
 				/WEB-INF/spring/appServlet/servlet-context.xml
 				/WEB-INF/spring/appServlet/aop-context.xml
+				/WEB-INF/spring/appServlet/context-common.xml
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>

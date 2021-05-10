@@ -152,7 +152,8 @@ a.button:hover {
 		<!-- 댓글 태그 종료 -->
 		
 		
-		<div class="container text-center mt-5">
+		<div class="container text-center mt-5">	
+	
 		댓글 남기는 태그 
 		</div>
 		

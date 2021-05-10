@@ -39,4 +39,12 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.idChk(mId);
 	}
 
+	@Override
+	public MemberDto pwChk(int mNo) {
+
+		
+		
+		return dao.pwChk(mNo);
+	}
+
 }

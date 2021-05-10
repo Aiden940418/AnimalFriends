@@ -77,6 +77,18 @@ public class MemberDaoImpl implements MemberDao {
 		return sqlSession.selectOne(NAMESPACE+"idChk",mId);
 
 	}
+
+
+
+	@Override
+	public MemberDto pwChk(int mNo) {
+		
+		
+		MemberDto res = null;
+		
+		res = sqlSession.selectOne(NAMESPACE+"pwChk",mNo);
+		return res;
+	}
 	
 	
 	

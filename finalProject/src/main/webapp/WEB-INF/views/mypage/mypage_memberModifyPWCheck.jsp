@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,6 +32,11 @@
 		<br><br><br><br><br><br><br>
 		
 		<!-- 비밀번호 입력, 버튼 부분(container, row div class 사용하여 가로 배치) -->
+		
+		<form action="myMemberModityPw.do" method="POST">
+		
+			<input type="hidden" value="${login.mNo}">
+			
 		<div class="container" style="margin-left: 300px;">
 			<div class="row"  style="width: 700px;">
 			
@@ -36,17 +44,18 @@
 					<span class="input-group-text" id="inputGroup-sizing-default">
 						<ion-icon name="key-outline" style="font-size:25px;"></ion-icon>
 					</span>
-					<input type="password" class="form-control"
+					<input name="mPw"type="password" class="form-control"
 						aria-label="Sizing example input"
 						aria-describedby="inputGroup-sizing-default">
 				</div>
 				
 				<div class="col">
-					<button type="button" class="btn btn-secondary">확인</button>
+					<button type="submit" class="btn btn-secondary">확인</button>
 				</div>
 	
 			</div>
 		</div>
+		 </form>
 
 
 
