@@ -22,7 +22,7 @@ public class GoodsController {
 	@RequestMapping(value = "/goods.do")
 	public String goods(Model model) {
 		
-		model.addAttribute("list",biz.goodsList());
+		model.addAttribute("goods",biz.goodsList());
 		return "goods/goods";
 	}
 	
