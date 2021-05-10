@@ -34,14 +34,16 @@
 				
 				var item = data.response.body.items.item[i];
 				
-				 if( item.careAddr.indexOf("대구")> -1 ){
+				 if( item.careAddr.indexOf("대구광역시")> -1 ){
+					 
+					 //이름에 a태그를 걸어서 위도랑 경도 값을 전송?
 					$("#resultDiv").append(data.response.body.items.item[i].careNm);
 					$("#resultDiv").append("<br>");
 					$("#resultDiv").append(data.response.body.items.item[i].careAddr);
 					$("#resultDiv").append("<br>");
 					$("#resultDiv").append(data.response.body.items.item[i].saveTrgtAnimal);
 					$("#resultDiv").append("<br>");
-					$("#resultDiv").append("========================");
+					$("#resultDiv").append("<hr>");
 					$("#resultDiv").append("<br>");
 					}
 				
