@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ include file="../includes/header.jsp" %>   
+<%@ include file="../includes/header.jsp" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
  
  <style type="text/css">
  
@@ -124,8 +126,6 @@ Resources
 </div>
 <!-- dropDown2-end -->
 
-
-
        <div class="container mt-5 text-center">
         <div class="row">
             <div class="col">
@@ -150,8 +150,9 @@ Resources
               <div class="button">
               	<span>장바구니</span>
               </div>
-	</div>
-	</div>
+			</div>
+		</div>
+
 	
               </div>
             </div>
@@ -163,7 +164,7 @@ Resources
                 <div class="card-body">
                   <p class="card-text">
                  	<img style="width:400px;height:200;" src="resources/images/adopt_dog3.jpeg" class="img-thumbnail" alt="...">
-                  Price:
+                  ${dto.gPrice}
                   </p>
                                  </div>
                <div class="card-footer">
