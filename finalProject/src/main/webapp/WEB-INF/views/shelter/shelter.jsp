@@ -9,45 +9,10 @@
 	text-align: center;
 	margin-top:20px;
     margin-bottom:50px;
-	}
-
-	.container_map{
-	 align-items:center;
-	 text-align: center;
-	display: table;
-    margin: auto;
-	}
-	h1{
 	margin-top: 20px;
 	}
-	.search-box{
-	height: 40px;
-	width: 600px;
-	border: 1px solid #1b5ac2;
-	background: #ffffff;
 
-	}
-	
-	input{
-	font-size: 12px;
-	width: 400px;
-	padding: 10px;
-	border: 0px;
-	outline: none;
-	float: left;
-	}
-	
-	button{
-	width: 50px;
-	height: 100%;
-	border: 0px;
-	background: #007bff;
-	outline: none;
-	float: right;
-	color: #ffffff;
-	}
 
-	
 	/* 콤보박스 스크롤 만들기 */
 	#guSelect {
   		height:150px;
@@ -63,6 +28,9 @@
 <!-- 제이쿼리 사용 위한 코드 -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
+
+	var itemArr = new Array();
+	
 	$(function () {
 		$("#seoulSelect").show();
 		$("#gyeonggiSelect").hide();
@@ -86,9 +54,85 @@
 		
 		
 		
+		//보호시설 리스트 출력 위한 ajax
+		$.ajax({
+			url : "zipXML.do",
+			method : "POST",
+			dataType : "json",
+			data : {
+				
+			},
+		}).done(function(data) {
+			
+			printResult(data);
+			
+		});
+		//ajax 통신 성공 후 화면 출력 위한 함수
+		function printResult(data) {
+			//console.log(data);
+			
+			for(var i=0; i<243; i++){
+				
+				var item = data.response.body.items.item[i];
+				//var aTag = "<a href='#' style='text-decoration: none; color:black;'>";
+				var aTag = "<a id='"+ i +"' href='#' style='text-decoration: none; color:black;'>";
+				
+				$("#shelterListUl").append("<li>" + aTag + item.careNm + "<br>" + item.careAddr 
+											 + "</a></li>" + "<hr>");
+				
+				
+				itemArr[i] = item;
+				//console.log(itemArr[i]);
+			}
+		}
+		
+		//동적으로 추가된 li태그들(보호시설 리스트들)에 이벤트 바인딩
+		$("ul").on("click", "li", function() {
+			console.log($(this).children().attr('id'));
+			var selectedItemId = $(this).children().attr('id');
+			
+			//console.log(itemArr[selectedItemId]);
+			//console.log(itemArr[selectedItemId].careAddr);
+			var selectedAddr = itemArr[selectedItemId].careAddr;
+			var selectedCareNm = itemArr[selectedItemId].careNm;
+			var selectedCareTel = itemArr[selectedItemId].careTel;
+			
+			
+			
+			// 주소로 좌표를 검색합니다
+			geocoder.addressSearch( selectedAddr, function(result, status) {
+			
+			    // 정상적으로 검색이 완료됐으면 
+			     if (status === kakao.maps.services.Status.OK) {
+		
+			        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		
+			        // 결과값으로 받은 위치를 마커로 표시합니다
+			        var marker = new kakao.maps.Marker({
+			            map: map,
+			            position: coords
+			        });
+		
+			        // 인포윈도우로 장소에 대한 설명을 표시합니다
+			        var infowindow = new kakao.maps.InfoWindow({
+			            content: '<div style="width:300px;text-align:center;padding:6px 0;">'
+			            			+ selectedCareNm +"<br>"+ selectedAddr +"<br>"+ selectedCareTel + '</div>'
+			        });
+			        infowindow.open(map, marker);
+		
+			        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+			        map.setCenter(coords);
+			    }
+			});
+			
+		});
+		
+		
+		
 		
 	});
 	
+	//카테고리 서울, 경기 선택 시 버튼 숨겼다 보여주기 하기위한 자바스크립트
 	function seoulSelect() {
 		$("#seoulSelect").show();
 		$("#gyeonggiSelect").hide();
@@ -97,8 +141,6 @@
 		$("#seoulSelect").hide();
 		$("#gyeonggiSelect").show();
 	}
-	
-	
 	
 	
 	
@@ -204,7 +246,22 @@
 				
 			</div> 
 			
+			<hr>  <!-- 구분선 -->
+			
+			<!-- 보호시설 리스트 출력 부분 -->
+			<div id="shelterListDiv" style="overflow: scroll; height: 600px;">
+				<ul id="shelterListUl">
+				</ul>
+				
+				
+			</div>
+			
+			
+			
+			
+			
 		</div>
+	
 	
 	<!-- 지도 시작 -->
 	<!-- 지도 화면 띄우는 영역 div -->
@@ -213,20 +270,59 @@
 	</div>
 	
 	<!-- 카카오 지도 api 사용 위한 script 코드 -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3fdd8e02dcb3d23798f0ddaa0d9352bf&libraries=LIBRARY"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3fdd8e02dcb3d23798f0ddaa0d9352bf&libraries=services"></script>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3fdd8e02dcb3d23798f0ddaa0d9352bf&libraries=services,clusterer,drawing"></script>
 	
 	<!-- 지도 부분 -->
 	<script type="text/javascript">
-		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+		/* var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 		var options = { //지도를 생성할 때 필요한 기본 옵션
 			center : new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
 			level : 3
 		//지도의 레벨(확대, 축소 정도)
 		};
 
-		var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+		var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴 */
+		
+		
+		
+		
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = {
+	        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };  
+
+		// 지도를 생성합니다    
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+	
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new kakao.maps.services.Geocoder();
+	
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch('서울시', function(result, status) {
+	
+		    // 정상적으로 검색이 완료됐으면 
+		     if (status === kakao.maps.services.Status.OK) {
+	
+		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	
+		        // 결과값으로 받은 위치를 마커로 표시합니다
+		        var marker = new kakao.maps.Marker({
+		            map: map,
+		            position: coords
+		        });
+	
+		        // 인포윈도우로 장소에 대한 설명을 표시합니다
+		        /* var infowindow = new kakao.maps.InfoWindow({
+		            content: '<div style="width:150px;text-align:center;padding:6px 0;">여기에 설명</div>'
+		        }); */
+		        infowindow.open(map, marker);
+	
+		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		        map.setCenter(coords);
+		    }
+		});    
+		
 	</script>
 	
 	
