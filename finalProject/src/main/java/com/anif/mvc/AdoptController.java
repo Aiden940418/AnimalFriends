@@ -25,6 +25,8 @@ public class AdoptController {
 
 	@Autowired
 	private AdoptBiz biz;
+	
+	@Autowired
 	private ACommentBiz abiz;
 
 	private Logger logger = LoggerFactory.getLogger(AdoptController.class);
@@ -43,14 +45,14 @@ public class AdoptController {
 	
 	// 입양공고 상세보기
 	@RequestMapping(value="adoptDetail.do", method = RequestMethod.GET)
-	public String adoptDetail(ACommentDto acDto, Model model, int aNo) {
+	public String adoptDetail(Model model, int aNo) {
 		
 		
 		model.addAttribute("dto",biz.adoptDetail(aNo));
 		
 		
-		List<ACommentDto> replyList = abiz.aCommentList(aNo);
-		model.addAttribute("replyList", replyList);
+		//ist<ACommentDto> replyList = abiz.aCommentList(aNo);
+		model.addAttribute("reply", abiz.aCommentList(aNo));
 
 		
 		return "adopt/adopt_detail";

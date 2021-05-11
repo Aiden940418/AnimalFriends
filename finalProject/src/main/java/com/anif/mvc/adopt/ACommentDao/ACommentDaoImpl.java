@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.anif.mvc.adopt.ACommentDto.ACommentDto;
@@ -11,7 +12,7 @@ import com.anif.mvc.adopt.ACommentDto.ACommentDto;
 @Repository
 public class ACommentDaoImpl implements ACommentDao {
 	
-	
+	@Autowired
 	private SqlSessionTemplate sqlSession;
 
 	@Override
@@ -19,13 +20,14 @@ public class ACommentDaoImpl implements ACommentDao {
 		
 
 
-		List<ACommentDto> list = new ArrayList<ACommentDto>(aNo);
+		List<ACommentDto> list = new ArrayList<ACommentDto>();
 		
 		
 		try {
-		list = sqlSession.selectList(NAMESPACE+"aCommentList"+aNo);
+		list = sqlSession.selectList(NAMESPACE+"aCommentList",aNo);
 		
-		System.out.println(list.toString());
+		System.out.println(list.toString()+"댓글");
+		
 		
 		} catch (Exception e) {
 			System.out.println("[error: select list" );

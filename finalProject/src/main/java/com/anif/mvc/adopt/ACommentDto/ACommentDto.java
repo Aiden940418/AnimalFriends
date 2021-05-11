@@ -33,6 +33,9 @@ public class ACommentDto {
 
 
 
+
+
+
 	public int getaComNo() {
 		return aComNo;
 	}
@@ -102,5 +105,11 @@ public class ACommentDto {
 	
 	
 	
+	
+	@Override
+	public String toString() {
+		return "ACommentDto [aComNo=" + aComNo + ", aNo=" + aNo + ", writer=" + writer + ", aComContent=" + aComContent
+				+ ", aComDate=" + aComDate + "]";
+	}
 	
 }

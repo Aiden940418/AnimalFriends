@@ -13,7 +13,7 @@
   
   SELECT *
   FROM ADOPTCOMMENT
-  WEHRE ANO = #{aNo}
+  WHERE ANO = #{aNo}
   
   
   
