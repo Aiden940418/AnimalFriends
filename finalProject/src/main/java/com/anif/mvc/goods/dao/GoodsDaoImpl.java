@@ -48,12 +48,13 @@ public class GoodsDaoImpl implements GoodsDao {
 	
 	//관리자 페이지에서 굿즈 리스트
 	@Override
-	public List<GoodsDto> adminGoodsList(int mNo) {
+	public List<GoodsDto> adminGoodsList() {
 		
 		List<GoodsDto> list = new ArrayList<GoodsDto>();
 		
 		try {
 			list = sqlSession.selectList(NAMESPACE+"adminGoodsList");
+			System.out.println(list.toString());
 		} catch (Exception e) {
 			System.out.println("[error]: select list" );
 			e.printStackTrace();

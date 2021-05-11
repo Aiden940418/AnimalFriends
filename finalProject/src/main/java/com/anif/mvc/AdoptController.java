@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.anif.mvc.adopt.biz.AdoptBiz;
 import com.anif.mvc.adopt.dto.AdoptDto;
@@ -47,22 +48,11 @@ public class AdoptController {
 
 	}
 	
-	//나의 입양공고 보기 
-	
-	@RequestMapping("/myAdoptList.do")
-	public String myAdoptList(Model model, int mNo) {
-		
-		model.addAttribute("list",biz.myAdoptList(mNo));
-		
-		
-		return "mypage/mypage_myadoptList";
-	}
-	
 	
 	//나의 입양공고 상세보기 
 	
 	@RequestMapping(value="myAdoptDetail.do", method = RequestMethod.GET)
-	public String myAdoptDetail(Model model, int aNo) {
+	public String myAdoptDerail(Model model, int aNo) {
 		
 		model.addAttribute("dto",biz.adoptDetail(aNo));
 		
@@ -78,10 +68,10 @@ public class AdoptController {
 	
 	// 입양공고 등록
 	@RequestMapping(value="myAdoptWriteRes.do", method = RequestMethod.GET)
-	public String myadoptWrite(AdoptDto dto,HttpSession session) {
+	public String myadoptWrite(AdoptDto dto,HttpSession session, MultipartHttpServletRequest mpRequest) {
 		
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
-
+		
 		
 		int res = biz.myadoptWrite(dto);
 
@@ -117,6 +107,26 @@ public class AdoptController {
 	
 	
 	}
+	
+	
+	
+	
+	//나의 입양공고 보기 
+	
+	@RequestMapping("/myAdoptList.do")
+	public String myAdoptList(Model model, int mNo) {
+		
+
+
+	model.addAttribute("list",biz.myAdoptList(mNo));
+		
+		
+		
+		
+		return "mypage/mypage_myadoptList";
+	}
+	
+
 	
 	//나의 입양공고 삭제
 	

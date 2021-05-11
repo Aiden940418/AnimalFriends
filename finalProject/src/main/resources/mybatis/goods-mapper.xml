@@ -21,10 +21,9 @@
      </select>
      
      <!-- 관리자 굿즈 리스트  -->
-     <select id="adminGoodsList" parameterType="int" resultType="goodsDto">
+     <select id="adminGoodsList" resultType="goodsDto">
   		SELECT *
     	FROM GOODS
-    	WHERE GNO = #{mNo}
      </select>
      
      <!-- 관리자 굿즈 리스트  상세-->

@@ -13,7 +13,7 @@ public interface GoodsBiz {
 	public GoodsDto goodsDetail(int gNo);
 	
 	//관리자 페이지에서 굿즈 리스트
-	public List<GoodsDto> adminGoodsList(int mNo);
+	public List<GoodsDto> adminGoodsList();
 	
 	//관리자 페이지에서 굿즈 리스트 상세
 	public GoodsDto adminGoodsDetail(int gNo);

@@ -29,8 +29,8 @@ public class GoodsBizImpl implements GoodsBiz {
 	
 	//관리자 페이지에서 굿즈 리스트
 	@Override
-	public List<GoodsDto> adminGoodsList(int mNo) {
-		return dao.adminGoodsList(mNo);
+	public List<GoodsDto> adminGoodsList() {
+		return dao.adminGoodsList();
 	}
 	
 	//관리자 페이지에서 굿즈 리스트 상세

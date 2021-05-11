@@ -53,119 +53,49 @@
 	</div>
 	<!-- dropDown2-end -->
 
-	<div class="container mt-5 text-center">
-		<div class="row">
-			<div class="col">
-				<div class="card">
-					<h3 class="card-header">
-						<input type="checkbox">&nbsp; <a href="adminGoodsDetail.do?gNo=${dto.gNo}">상품제목</a>
-					</h3>
-					<div class="card-body">
-						<p class="card-text">
-							<img
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo9Y9gGygW0yzjifJLzMSsVt3S6gu72pPaOvSINq1sRrT9Ggw11HIlo7DIR6OydWo9k6GExIyx&usqp=CAc"
-								class="img-thumbnail" alt="GOODS_Pic"> Price:
-						</p>
-					</div>
-					<div class="card-footer">
-						<a href="#" class="btn btn-outline-success">구매하기</a> 
-						<a href="#" class="btn btn-outline-success">장바구니</a>
+	<c:choose>
+		<c:when test="${empty list}">
+		
+		<h2>등록된 글이 없습니다. </h2>
+		</c:when>
+	
+	
+		<c:otherwise>
+		
+		
 
-					</div>
+          
+            <div class="col">
+              <div class="card">
+              
+          <c:forEach items="${list}" var="dto">
+                <h3 class="card-header">
+                  <a href="goodsDetails.do?gNo=${dto.gNo}">${dto.gName}</a>
+                </h3>
+                <div class="card-body">
+                  <p class="card-text">
+                 	<img style="width:400px;height:200;" src="resources/images/adopt_dog3.jpeg" class="img-thumbnail" alt="...">
+                  ${dto.gPrice}
+                  </p>
+                </div>
+               <div class="card-footer">
+                  <a href="goodsDetails.do" class="btn btn-outline-success">구매하기</a>
+                  <a href="#" class="btn btn-outline-success">장바구니</a>
+                  
 
-				</div>
+                  
+              </div>
+              
+                        </c:forEach>
+              
+              </div>
+              
+            </div>
+    </c:otherwise>
+
+	</c:choose>
+				
 			</div>
-			<div class="col">
-				<div class="card">
-					<h3 class="card-header">
-						<input type="checkbox">&nbsp; 상품이름
-					</h3>
-					<div class="card-body">
-						<p class="card-text">
-							<img
-								src="https://shop-phinf.pstatic.net/20190110_250/sihek_1547110084456dWx3y_JPEG/70417244050682055_563191345.jpg?type=m510"
-								class="img-thumbnail" alt="..."> Price:
-						</p>
-					</div>
-					<div class="card-footer">
-						<a href="#" class="btn btn-outline-success">구매하기</a> <a href="#"
-							class="btn btn-outline-success">장바구니</a>
-
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card">
-					<h3 class="card-header">
-						<input type="checkbox">&nbsp; 상품내용
-					</h3>
-					<div class="card-body">
-						<p class="card-text"></p>
-					</div>
-
-					<div class="card-footer">
-						<a href="#" class="btn btn-outline-success">구매하기</a> <a href="#"
-							class="btn btn-outline-success">장바구니</a>
-
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="container mt-5 text-center">
-		<div class="row">
-			<div class="col">
-				<div class="card">
-					<h3 class="card-header">
-						<input type="checkbox">&nbsp; 상품내용
-					</h3>
-					<div class="card-body">
-						<p class="card-text"></p>
-					</div>
-					<div class="card-footer">
-						<a href="#" class="btn btn-outline-success">구매하기</a> <a href="#"
-							class="btn btn-outline-success">장바구니</a>
-
-					</div>
-
-				</div>
-			</div>
-			<div class="col">
-				<div class="card">
-					<h3 class="card-header">
-						<input type="checkbox">&nbsp; 상품이름
-					</h3>
-					<div class="card-body">
-						<p class="card-text"></p>
-					</div>
-					<div class="card-footer">
-						<a href="#" class="btn btn-outline-success">구매하기</a> <a href="#"
-							class="btn btn-outline-success">장바구니</a>
-
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card">
-					<h3 class="card-header">
-						<input type="checkbox">&nbsp; 상품내용
-					</h3>
-					<div class="card-body">
-						<p class="card-text"></p>
-					</div>
-
-					<div class="card-footer">
-						<a href="#" class="btn btn-outline-success">구매하기</a> <a href="#"
-							class="btn btn-outline-success">장바구니</a>
-
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
 	<!-- footer -->
 	<%@ include file="../includes/footer.jsp"%>
 </div>

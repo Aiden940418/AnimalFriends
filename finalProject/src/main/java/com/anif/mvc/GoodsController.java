@@ -38,9 +38,9 @@ public class GoodsController {
 	
 	//관리자 페이지에서 굿즈 리스트
 	@RequestMapping(value = "/admingoodsList.do")
-	public String admingoods(Model model, int mNo) {
+	public String admingoods(Model model) {
 		
-		model.addAttribute("list",biz.adminGoodsList(mNo));
+		model.addAttribute("list",biz.adminGoodsList());
 		return "admin/admin_goodsList";
 		
 		
