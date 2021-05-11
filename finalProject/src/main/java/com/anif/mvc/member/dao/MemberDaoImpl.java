@@ -71,10 +71,12 @@ public class MemberDaoImpl implements MemberDao {
 
 
 	@Override
-	public MemberDto idChk(String mId) {
+	public int idChk(MemberDto dto) {
 
 		
-		return sqlSession.selectOne(NAMESPACE+"idChk",mId);
+		int result = sqlSession.selectOne(NAMESPACE+"idChk",dto);
+		
+		return result;
 
 	}
 

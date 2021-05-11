@@ -154,22 +154,13 @@ public class LoginController {
 		// 회원 확인
 		@ResponseBody
 		@RequestMapping(value = "/idChk.do", method = RequestMethod.POST)
-		public int postIdCheck(HttpServletRequest req) throws Exception {
-		 logger.info("post idCheck");
-		 
-		 String mId = req.getParameter("mId");
-		 MemberDto idChk =  biz.idChk(mId);
-		 
-		 int result = 0;
-		 
-		 if(idChk != null) {
-		  result = 1;
+		public int idCheck(MemberDto dto) throws Exception {
 		
-	
-	
-	
-}
+			
+			logger.info("idCheck");
 		 
+		 int result = biz.idChk(dto);
+
 		 return result;
 		 
 		}

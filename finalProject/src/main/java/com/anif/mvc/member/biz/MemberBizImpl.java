@@ -35,8 +35,9 @@ public class MemberBizImpl implements MemberBiz {
 
 
 	@Override
-	public MemberDto idChk(String mId) {
-		return dao.idChk(mId);
+	public int idChk(MemberDto dto) {
+		int result = dao.idChk(dto);
+		return result;
 	}
 
 	@Override

@@ -66,9 +66,9 @@
   
   
   
-  	<select id="idChk" resultType="memberDto">
+  	<select id="idChk" resultType="int">
   	
-  	SELECT MID
+  	SELECT COUNT(*)
   	FROM MEMBER
   	WHERE MID = #{mId}
   	
