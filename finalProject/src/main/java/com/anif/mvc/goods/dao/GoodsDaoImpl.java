@@ -33,7 +33,7 @@ public class GoodsDaoImpl implements GoodsDao {
 		return list;
 	}
 
-
+	//굿즈 상세보기
 	@Override
 	public GoodsDto goodsDetail(int gNo) {
 		GoodsDto res = null;
@@ -44,6 +44,37 @@ public class GoodsDaoImpl implements GoodsDao {
 			e.printStackTrace();
 		}
 		
+		return res;
+	}
+
+	
+	//관리자 페이지에서 굿즈 리스트
+	@Override
+	public List<GoodsDto> adminGoodsList() {
+		
+		List<GoodsDto> list = new ArrayList<GoodsDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"adminGoodsList");
+			System.out.println(list.toString());
+		} catch (Exception e) {
+			System.out.println("[error]: select list" );
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	//관리자 페이지에서 굿즈 리스트 상세
+	@Override
+	public GoodsDto adminGoodsDetail(int gNo) {
+		
+		GoodsDto res = null; 
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"adminGoodsDetail",gNo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return res;
 	}
 	

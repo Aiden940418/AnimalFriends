@@ -3,7 +3,7 @@
  <%@ include file="../includes/header.jsp" %>   
 
 <div class="container text mt-5 ms-5">
-<a href="goods.do" class="btn btn-outline-success">목록으로</a>
+<a href="goodsList.do" class="btn btn-outline-success">목록으로</a>
 </div>
 <hr>
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.anif.mvc.adopt.biz.AdoptBiz;
 import com.anif.mvc.adopt.dto.AdoptDto;
@@ -67,10 +68,10 @@ public class AdoptController {
 	
 	// 입양공고 등록
 	@RequestMapping(value="myAdoptWriteRes.do", method = RequestMethod.GET)
-	public String myadoptWrite(AdoptDto dto,HttpSession session) {
+	public String myadoptWrite(AdoptDto dto,HttpSession session, MultipartHttpServletRequest mpRequest) {
 		
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
-
+		
 		
 		int res = biz.myadoptWrite(dto);
 

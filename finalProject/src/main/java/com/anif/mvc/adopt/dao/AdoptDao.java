@@ -1,6 +1,7 @@
 package com.anif.mvc.adopt.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.anif.mvc.adopt.dto.AdoptDto;
 
@@ -8,6 +9,9 @@ public interface AdoptDao {
 	
 	
 	String NAMESPACE = "adopt.";
+	
+
+	
 	
 
 	

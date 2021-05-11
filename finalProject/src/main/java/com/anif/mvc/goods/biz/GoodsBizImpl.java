@@ -14,15 +14,33 @@ public class GoodsBizImpl implements GoodsBiz {
 	@Autowired
 	private GoodsDao dao;
 
-	//전체 입양공고 리스트 
+	//전체 굿즈 리스트 
 	@Override
 	public List<GoodsDto> goodsList() {
 
 		return dao.goodsList();
 	}
-
+	
+	//굿즈 상세보기
 	@Override
 	public GoodsDto goodsDetail(int gNo) {
 		return dao.goodsDetail(gNo);
 	}
+	
+	//관리자 페이지에서 굿즈 리스트
+	@Override
+	public List<GoodsDto> adminGoodsList() {
+		return dao.adminGoodsList();
+	}
+	
+	//관리자 페이지에서 굿즈 리스트 상세
+	@Override
+	public GoodsDto adminGoodsDetail(int gNo) {
+		return dao.adminGoodsDetail(gNo);
+		}
+
+
+
+
+
 }
