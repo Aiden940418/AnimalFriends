@@ -38,6 +38,10 @@ INSERT INTO MEMBER VALUES(
 MNO.NEXTVAL,1,'Y','admin','1234','1234','서울시','아파트','관리자','관리자','01088349078'
 );
 
+INSERT INTO MEMBER VALUES(
+MNO.NEXTVAL,1,'Y','user1','1234','11111','경기도 구리시','**아파트','이순신','거북선대왕','010-1234-1234'
+);
+
 COMMIT
 
 SELECT * FROM MEMBER;

@@ -7,7 +7,7 @@
 <html lang="en">
 
 <script type="text/javascript">
-
+	
 
 
 
@@ -18,7 +18,7 @@
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Yeon+Sung&display=swap');
-
+	
 
 	.navbar, .container, .wrap
 	, .thumnailright , .footer {
@@ -27,6 +27,8 @@
 	color: #696767;
 	
 	}
+	
+	
 </style>
   <head>
     <!-- Required meta tags -->
@@ -38,7 +40,7 @@
 
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light" 	style="background-color: #EBEBEB;">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="nav"	style="background-color: #EBEBEB;">
       <div class="container-fluid">
         <a class="navbar-brand ms-4" href="logo.do"><img src="resources/images/logo.png" style="width:70px; height:70px;"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -15,6 +15,7 @@
 </style>
  
     <!-- 메인 작성 -->
+    <div class="container">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -23,7 +24,7 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="resources/images/main_image1.jpeg" class="d-block w-100" alt="...">
+            <img src="resources/images/main_image1.jpeg" class="d-block w-100"  alt="...">
             <div class="carousel-caption d-none d-md-block ">
               <h1>사지말고 입양하세요</h1>
               <p><h1>더이상 사지 말고 입양하세요!!</h1></p>
@@ -52,6 +53,7 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
+      </div>
       </div>
 
 
