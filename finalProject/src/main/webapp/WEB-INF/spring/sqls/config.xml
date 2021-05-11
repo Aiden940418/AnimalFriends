@@ -12,6 +12,9 @@
   	<typeAlias type="com.anif.mvc.qnaBoard.dto.QnaBoardDto" alias="qnaBoardDto" />
   	<typeAlias type="com.anif.mvc.qnaBoardAdmin.dto.QnaBoardAdminDto" alias="qnaBoardAdminDto" />
   	<typeAlias type="com.anif.mvc.common.pagination.Criteria" alias="Criteria" />
+  	<typeAlias type="com.anif.mvc.adopt.ACommentDto.ACommentDto" alias="aCommentDto" />
+  	
+  
   	
   	
   	
@@ -26,6 +29,8 @@
   		<mapper resource="/mybatis/goods-mapper.xml"/>
   		<mapper resource="/mybatis/qnaBoard-mapper.xml"/>
   		<mapper resource="/mybatis/qnaBoardAdmin-mapper.xml"/>
+  		<mapper resource="/mybatis/aComment-mapper.xml"/>
+  		
   		
   	</mappers>
   

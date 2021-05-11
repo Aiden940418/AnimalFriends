@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.anif.mvc.adopt.ACommentBiz.ACommentBiz;
+import com.anif.mvc.adopt.ACommentDto.ACommentDto;
 import com.anif.mvc.adopt.biz.AdoptBiz;
 import com.anif.mvc.adopt.dto.AdoptDto;
 import com.anif.mvc.member.dto.MemberDto;
@@ -22,6 +24,7 @@ public class AdoptController {
 
 	@Autowired
 	private AdoptBiz biz;
+	private ACommentBiz abiz;
 
 	private Logger logger = LoggerFactory.getLogger(AdoptController.class);
 
@@ -39,10 +42,15 @@ public class AdoptController {
 	
 	// 입양공고 상세보기
 	@RequestMapping(value="adoptDetail.do", method = RequestMethod.GET)
-	public String adoptDetail(Model model, int aNo) {
+	public String adoptDetail(ACommentDto acDto, Model model, int aNo) {
 		
 		
 		model.addAttribute("dto",biz.adoptDetail(aNo));
+		
+		
+		List<ACommentDto> replyList = abiz.aCommentList(acDto.getaNo());
+		model.addAttribute("replyList", replyList);
+
 		
 		return "adopt/adopt_detail";
 
@@ -68,7 +76,7 @@ public class AdoptController {
 	
 	// 입양공고 등록
 	@RequestMapping(value="myAdoptWriteRes.do", method = RequestMethod.GET)
-	public String myadoptWrite(AdoptDto dto,HttpSession session, MultipartHttpServletRequest mpRequest) {
+	public String myadoptWrite(AdoptDto dto,HttpSession session) {
 		
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
 		

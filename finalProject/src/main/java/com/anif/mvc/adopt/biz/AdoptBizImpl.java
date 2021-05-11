@@ -8,7 +8,6 @@ import javax.annotation.Resource;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.anif.mvc.adopt.dao.AdoptDao;
 import com.anif.mvc.adopt.dto.AdoptDto;

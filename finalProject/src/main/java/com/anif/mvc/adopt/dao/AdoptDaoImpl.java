@@ -26,6 +26,7 @@ public class AdoptDaoImpl implements AdoptDao {
 			
 		try {
 			list = sqlSession.selectList(NAMESPACE+"adoptList");
+			
 		} catch (Exception e) {
 			System.out.println("[error: select list" );
 			e.printStackTrace();
@@ -42,6 +43,7 @@ public class AdoptDaoImpl implements AdoptDao {
 		
 		try {
 			res = sqlSession.selectOne(NAMESPACE+"adoptDetail",aNo);
+			System.out.println(res);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

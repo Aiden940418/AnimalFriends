@@ -15,7 +15,7 @@ public interface AdoptBiz {
 	public AdoptDto adoptDetail(int aNo);
 	
 	//나의 입양공고 올리기 
-	public int myadoptWrite(AdoptDto dto, MultipartHttpServletRequest mpRequest);
+	public int myadoptWrite(AdoptDto dto);
 
 	
 	//내가 올린 공고 수정 
