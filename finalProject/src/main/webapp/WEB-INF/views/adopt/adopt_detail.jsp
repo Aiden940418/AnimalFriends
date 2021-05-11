@@ -92,7 +92,7 @@ a.button:hover {
 		<div class="container text-center">
 		<table align="center">
 		
-		<h2>${dto.anmName }의 신상정보</h2>
+		<h2>${dto.anmName } ${reply.aComContent}의 신상정보</h2>
 
 			<tr>
 			<th align="left">나  이</th>
@@ -156,9 +156,7 @@ a.button:hover {
 	
 		댓글 남기는 태그
 		
-		${reply.writer} 
-		
-		${reply.aComContent} 
+	
 
 		</div>
 		

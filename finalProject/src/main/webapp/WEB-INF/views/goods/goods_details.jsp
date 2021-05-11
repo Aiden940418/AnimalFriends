@@ -17,9 +17,9 @@
 <img src="https://shop-phinf.pstatic.net/20190110_250/sihek_1547110084456dWx3y_JPEG/70417244050682055_563191345.jpg?type=m510" class="rounded float-start mt-4 ms-5" alt="...">
  
  				<div>
- 				<h1 class="display-4">상품제목</h1>
- 				<div class="text-left">상품가격</div>
- 				<textarea rows="8" cols="40">설명을 입력해주세용</textarea><br>
+ 				<h1 class="display-4">${dto.gName }</h1>
+ 				<div class="text-left">상품가격:${dto.gPrice }</div>
+ 				<textarea rows="8" cols="40">상품설명</textarea><br>
    				
 				   				<!-- dropDown1-start -->
 				<div class="dropdown ms-5 mt-4">

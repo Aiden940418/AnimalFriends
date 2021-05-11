@@ -137,19 +137,21 @@ Resources
 		<c:otherwise>
 		
 		
-
-          
-            <div class="col">
-              <div class="card">
+				
+          	<div class="container mt-5 text-center">
+            <div class="row">
+              
               
           <c:forEach items="${list}" var="dto">
-                <h3 class="card-header">
+          		<div class="col-sm mt-5">
+          		<div class="card h-100 ms-5" style="width:430px;">
+          
+                <h3 class="card-header text-center ">
                   <a href="goodsDetails.do?gNo=${dto.gNo}">${dto.gName}</a>
                 </h3>
-                <div class="card-body">
-                  <p class="card-text">
+                <div class="card-body text-center">
                  	<img style="width:400px;height:200;" src="resources/images/adopt_dog3.jpeg" class="img-thumbnail" alt="...">
-                  ${dto.gPrice}
+                <p class="container mt-2">상품가격:${dto.gPrice}
                   </p>
                 </div>
                <div class="card-footer">
@@ -159,9 +161,12 @@ Resources
 
                   
               </div>
+              </div>
+              </div>
               
                         </c:forEach>
               
+              </div>
               </div>
               
             </div>

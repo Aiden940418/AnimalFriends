@@ -57,25 +57,8 @@ public class AdminController {
 	}
 	
 	
+	
 
-	
-	
-	//관리자 굿즈 목록
-	@RequestMapping("/adminGoodsList.do")
-	public String adminGoodsList(Model model) {
-		
-		return "admin/admin_goodsList";
-	}
-	
-	
-	//관리자 굿즈 상세보기 
-	
-	@RequestMapping("/adminGoodsDetail.do")
-	public String adminGoodsDetail(Model model) {
-		
-		return "admin/admin_goodsdetail";
-	}
-	
 	
 	//관리자 굿즈 등록 
 	@RequestMapping("/adminGoodsWrite.do")

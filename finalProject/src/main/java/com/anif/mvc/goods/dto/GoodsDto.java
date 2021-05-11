@@ -124,6 +124,13 @@ public class GoodsDto {
 	public void setgOrPrice(int gOrPrice) {
 		this.gOrPrice = gOrPrice;
 	}
+	@Override
+	public String toString() {
+		return "GoodsDto [gNo=" + gNo + ", gCtgy=" + gCtgy + ", gName=" + gName + ", gPrice=" + gPrice + ", gStock="
+				+ gStock + ", gCount=" + gCount + ", gDate=" + gDate + ", gOrNo=" + gOrNo + ", gOrStatus=" + gOrStatus
+				+ ", gOrTotalP=" + gOrTotalP + ", mNo=" + mNo + ", gOrDetailNo=" + gOrDetailNo + ", gQut=" + gQut
+				+ ", gOrPrice=" + gOrPrice + "]";
+	}
 	
 	
 	
