@@ -47,11 +47,22 @@ public class AdoptController {
 
 	}
 	
+	//나의 입양공고 보기 
+	
+	@RequestMapping("/myAdoptList.do")
+	public String myAdoptList(Model model, int mNo) {
+		
+		model.addAttribute("list",biz.myAdoptList(mNo));
+		
+		
+		return "mypage/mypage_myadoptList";
+	}
+	
 	
 	//나의 입양공고 상세보기 
 	
 	@RequestMapping(value="myAdoptDetail.do", method = RequestMethod.GET)
-	public String myAdoptDerail(Model model, int aNo) {
+	public String myAdoptDetail(Model model, int aNo) {
 		
 		model.addAttribute("dto",biz.adoptDetail(aNo));
 		
@@ -106,26 +117,6 @@ public class AdoptController {
 	
 	
 	}
-	
-	
-	
-	
-	//나의 입양공고 보기 
-	
-	@RequestMapping("/myAdoptList.do")
-	public String myAdoptList(Model model, int mNo) {
-		
-
-
-	model.addAttribute("list",biz.myAdoptList(mNo));
-		
-		
-		
-		
-		return "mypage/mypage_myadoptList";
-	}
-	
-
 	
 	//나의 입양공고 삭제
 	

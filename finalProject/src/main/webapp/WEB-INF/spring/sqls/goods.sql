@@ -17,7 +17,7 @@ CREATE TABLE GOODS (
 SELECT*FROM GOODS;
 
 INSERT INTO GOODS
-VALUES (1, '과자', '고구마', 3000, '5', '2', SYSDATE)
+VALUES (GNO.NEXTVAL, '과자', '고구마', 3000, '5', '2', SYSDATE);
 
 
 --굿즈 주문

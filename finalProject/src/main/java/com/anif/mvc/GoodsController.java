@@ -36,6 +36,30 @@ public class GoodsController {
 		return "goods/goods_details";
 	}
 	
+	//관리자 페이지에서 굿즈 리스트
+	@RequestMapping(value = "/admingoodsList.do")
+	public String admingoods(Model model, int mNo) {
+		
+		model.addAttribute("list",biz.adminGoodsList(mNo));
+		return "admin/admin_goodsList";
+		
+		
+	}
+	
+	//관리자 페이지에서 굿즈 리스트 상세
+	@RequestMapping(value = "/adminGoodsDetail.do", method = RequestMethod.GET)
+	public String adminGoodsDetail(Model model, int gNo) {
+		
+		model.addAttribute("dto",biz.adminGoodsDetail(gNo));
+		return "admin/admin_goodsDetail";
+	}
+	
+	
+	
+	
+	
+	
+	
 	//관리자 페이지에 굿즈 상품등록
 /*	@RequestMapping(value = "admin_goodsWrite.do")
 	public String admin_goodsWrite() {

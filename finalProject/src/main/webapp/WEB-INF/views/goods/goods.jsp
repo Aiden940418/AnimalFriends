@@ -144,7 +144,7 @@ Resources
               
           <c:forEach items="${list}" var="dto">
                 <h3 class="card-header">
-                  <a href="goodsDetails.do?gNo=${dto.gNo}">${dto.gName}dfds${login.mId}</a>
+                  <a href="goodsDetails.do?gNo=${dto.gNo}">${dto.gName}</a>
                 </h3>
                 <div class="card-body">
                   <p class="card-text">

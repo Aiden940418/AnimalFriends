@@ -58,13 +58,13 @@
 			<div class="col">
 				<div class="card">
 					<h3 class="card-header">
-						<input type="checkbox">&nbsp; 상품제목
+						<input type="checkbox">&nbsp; <a href="adminGoodsDetail.do?gNo=${dto.gNo}">상품제목</a>
 					</h3>
 					<div class="card-body">
 						<p class="card-text">
 							<img
 								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo9Y9gGygW0yzjifJLzMSsVt3S6gu72pPaOvSINq1sRrT9Ggw11HIlo7DIR6OydWo9k6GExIyx&usqp=CAc"
-								class="img-thumbnail" alt="GOODS_Pic" onclick="location.href='adminGoodsDetail.do'"> Price:
+								class="img-thumbnail" alt="GOODS_Pic"> Price:
 						</p>
 					</div>
 					<div class="card-footer">
