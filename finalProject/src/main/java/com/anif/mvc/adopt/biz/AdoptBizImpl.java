@@ -2,8 +2,12 @@ package com.anif.mvc.adopt.biz;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.anif.mvc.adopt.dao.AdoptDao;
 import com.anif.mvc.adopt.dto.AdoptDto;
@@ -11,6 +15,10 @@ import com.anif.mvc.adopt.dto.AdoptDto;
 @Service
 public class AdoptBizImpl implements AdoptBiz {
 
+	@Resource(name="fileUtils")
+	
+	private FileUtils fileUtils;
+	
 	@Autowired
 	private AdoptDao dao;
 
@@ -31,7 +39,7 @@ public class AdoptBizImpl implements AdoptBiz {
 
 	//나의 입양공고 작성 
 	@Override
-	public int myadoptWrite(AdoptDto dto) {
+	public int myadoptWrite(AdoptDto dto, MultipartHttpServletRequest mpRequest) {
 		return dao.myadoptWrite(dto);
 	}
 

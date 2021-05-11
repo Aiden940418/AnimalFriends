@@ -2,6 +2,8 @@ package com.anif.mvc.adopt.biz;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.anif.mvc.adopt.dto.AdoptDto;
 
 public interface AdoptBiz {
@@ -13,7 +15,7 @@ public interface AdoptBiz {
 	public AdoptDto adoptDetail(int aNo);
 	
 	//나의 입양공고 올리기 
-	public int myadoptWrite(AdoptDto dto);
+	public int myadoptWrite(AdoptDto dto, MultipartHttpServletRequest mpRequest);
 
 	
 	//내가 올린 공고 수정 
