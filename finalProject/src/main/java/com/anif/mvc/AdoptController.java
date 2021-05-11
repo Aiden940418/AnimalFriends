@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -48,7 +49,7 @@ public class AdoptController {
 		model.addAttribute("dto",biz.adoptDetail(aNo));
 		
 		
-		List<ACommentDto> replyList = abiz.aCommentList(acDto.getaNo());
+		List<ACommentDto> replyList = abiz.aCommentList(aNo);
 		model.addAttribute("replyList", replyList);
 
 		

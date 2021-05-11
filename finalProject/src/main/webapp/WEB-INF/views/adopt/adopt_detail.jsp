@@ -155,8 +155,7 @@ a.button:hover {
 		<div class="container text-center mt-5">	
 	
 		댓글 남기는 태그 
-		
-		${com.aComConent }
+
 		</div>
 		
 
