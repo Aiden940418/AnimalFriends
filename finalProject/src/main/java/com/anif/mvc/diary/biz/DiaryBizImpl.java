@@ -20,4 +20,10 @@ public class DiaryBizImpl implements DiaryBiz{
 		return dao.selectList();
 	}
 
+
+	@Override
+	public DiaryDto diaryListScroll(int number) {
+		return dao.diaryListScroll(number);
+	}
+
 }

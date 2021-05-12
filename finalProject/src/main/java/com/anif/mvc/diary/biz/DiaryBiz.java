@@ -7,5 +7,7 @@ import com.anif.mvc.diary.dto.DiaryDto;
 public interface DiaryBiz {
 	
 	public List<DiaryDto> selectList();
+	
+	public DiaryDto diaryListScroll(int number);
 
 }
