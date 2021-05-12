@@ -22,8 +22,8 @@ public class DiaryBizImpl implements DiaryBiz{
 
 
 	@Override
-	public DiaryDto diaryListScroll(int number) {
-		return dao.diaryListScroll(number);
+	public List<DiaryDto> diaryListScroll(int startNumber, int endNumber) {
+		return dao.diaryListScroll(startNumber, endNumber);
 	}
 
 }

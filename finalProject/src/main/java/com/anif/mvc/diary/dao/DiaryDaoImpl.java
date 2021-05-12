@@ -1,11 +1,14 @@
 package com.anif.mvc.diary.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.anif.mvc.diary.dto.DiaryDto;
 
 @Repository
@@ -31,16 +34,20 @@ public class DiaryDaoImpl implements DiaryDao{
 
 
 	@Override
-	public DiaryDto diaryListScroll(int number) {
-		DiaryDto dto = new DiaryDto();
+	public List<DiaryDto> diaryListScroll(int startNumber, int endNumber) {
+		Map<String, Integer> numberMap = new HashMap<String, Integer>();
+		numberMap.put("startNumber", startNumber);
+		numberMap.put("endNumber", endNumber);
+		
+		List<DiaryDto> list = new ArrayList<DiaryDto>();
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE + "diaryListScroll", number);
+			list = sqlSession.selectList(NAMESPACE + "diaryListScroll", numberMap);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return dto;
+		return list;
 	}
 	
 	
