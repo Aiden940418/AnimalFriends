@@ -44,10 +44,27 @@ public class DiaryDaoImpl implements DiaryDao{
 		try {
 			list = sqlSession.selectList(NAMESPACE + "diaryListScroll", numberMap);
 		} catch (Exception e) {
+			System.out.println("[error] : Diary diaryListScroll");
 			e.printStackTrace();
 		}
 		
 		return list;
+	}
+
+	
+	//입양일기 등록(insert)
+	@Override
+	public int insert(DiaryDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE + "insert", dto);
+		} catch (Exception e) {
+			System.out.println("[error] : Diary insert");
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 	
 	
