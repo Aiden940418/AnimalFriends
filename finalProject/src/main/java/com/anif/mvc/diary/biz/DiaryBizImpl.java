@@ -26,4 +26,10 @@ public class DiaryBizImpl implements DiaryBiz{
 		return dao.diaryListScroll(startNumber, endNumber);
 	}
 
+
+	@Override
+	public int insert(DiaryDto dto) {
+		return dao.insert(dto);
+	}
+
 }
