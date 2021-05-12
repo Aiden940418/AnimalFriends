@@ -7,17 +7,40 @@
   <mapper namespace="aComment">
   
   
+  <resultMap type="aCommentDto" id="aCommentMap">
+  
+  
+     <result property="aComNo" column="ACOMNO"/>
+     <result property="writer" column="WRITER" />
+  	 <result property="aNo" column="ANO" />
+  	 <result property="aComContent" column="ACOMCONTENT"/>
+  	<result property="aComDate" column="ACOMDATE"/>
+  
+  
+  
+  </resultMap>
   
   
   <select id="aCommentList" parameterType="int" resultType="aCommentDto">
-  
-  SELECT *
+  SELECT ACOMNO , WRITER, ANO, ACOMCONTENT, ACOMDATE) 
   FROM ADOPTCOMMENT
   WHERE ANO = #{aNo}
   
   
   
   </select>
+  
+  <insert id="aCommentInsert" parameterType="aCommentDto" >
+  
+  INSERT INTO ADOPTCOMMENT VALUES(
+  
+  ACOMNO.NEXTVAL,#{writer},#{aNo},#{aComContent},SYSDATE
+  
+  
+  )
+  
+  
+  </insert>
   
   
   

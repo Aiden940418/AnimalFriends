@@ -18,7 +18,7 @@
 	<div class="contentDiv">
 	
 		<!-- 상단 제목부분 -->
-		<div style="margin-left: 550px;">
+		<div class="container text-center mt-5">
 			<h1>회원 정보 수정</h1>
 			<br>
 		</div>
@@ -38,49 +38,49 @@
 				</div>
 				<br>
 				
-				<div style="width: 700px;">
+				<div style="width: 500px;">
 					<label>아이디</label>
-					<textarea class="form-control" name="title" rows="1" style="resize: none;" placeholder="내용을 입력해주세요"></textarea>
+					<textarea class="form-control" name="title" rows="1" style="resize: none;" readonly="readonly">${login.mId }</textarea>
 				</div>
 				<br>
 				
-				<div style="width: 700px;">
+				<div style="width: 500px;">
 					<label>비밀번호</label>
 					<textarea class="form-control" name="title" rows="1" style="resize: none;" placeholder="내용을 입력해주세요"></textarea>
 				</div>
 				<br>
 				
-				<div style="width: 700px;">
+				<div style="width: 500px;">
 					<label>이름</label>
-					<textarea class="form-control" name="title" rows="1" style="resize: none;" placeholder="내용을 입력해주세요"></textarea>
+					<textarea class="form-control" name="title" rows="1" style="resize: none;" readonly="readonly">${login.mName }</textarea>
 				</div>
 				<br>
 				
-				<div class="row">
-					<div style="max-width: 610px;" class="col">
+				
+				<div style="width: 500px;">
 						<label>닉네임</label>
-						<textarea class="form-control" name="title" rows="1" style="resize: none;" placeholder="내용을 입력해주세요"></textarea>
-					</div>
-					<div class="col">
-						<button type="button" class="btn btn-secondary" style="margin-top: 25px;">중복확인</button>
-					</div>
+						<textarea class="form-control" name="title" rows="1" style="resize: none;" >${login.mNick }</textarea>
+				</div>
+
 				</div>
 				<br>
 				
-				<div style="width: 700px;">
-					<label>이메일</label>
-					<textarea class="form-control" name="title" rows="1" style="resize: none;" placeholder="내용을 입력해주세요"></textarea>
-				</div>
-				<br>
+
 				
-				<div style="width: 700px;">
+				<div style="width: 500px;">
 					<label>전화번호</label>
+					<textarea class="form-control" name="title" rows="1" style="resize: none;" >${login.mPhone }</textarea>
+				</div>
+				<br>
+				
+				<div style="width: 300px;">
+					<label>주소</label>
 					<textarea class="form-control" name="title" rows="1" style="resize: none;" placeholder="내용을 입력해주세요"></textarea>
 				</div>
 				<br>
 				
-				<div style="width: 700px;">
-					<label>주소</label>
+				<div style="width: 300px;">
+					<label>상세주소</label>
 					<textarea class="form-control" name="title" rows="1" style="resize: none;" placeholder="내용을 입력해주세요"></textarea>
 				</div>
 				<br>

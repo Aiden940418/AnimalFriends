@@ -166,6 +166,20 @@ public class LoginController {
 		}
 		
 		
+		@RequestMapping(value="/pwChk.do", method = RequestMethod.POST)
+		public String pwCheck(String mId, String mPw) {
+			
+			logger.info("passwordCheck");
+			boolean result = biz.pwChk(mId, mPw);
+			if(result) {
+				return "mypage/mypage_memberModify";
+			}else {
+				return "mypage/mypage_memberModifyPWCheck";
+			}
+			
+		}
+		
+		
 		
 }
 

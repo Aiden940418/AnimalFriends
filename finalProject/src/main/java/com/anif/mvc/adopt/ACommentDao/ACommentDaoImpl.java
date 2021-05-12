@@ -36,6 +36,24 @@ public class ACommentDaoImpl implements ACommentDao {
 		
 		return list;
 	}
+
+	@Override
+	public int aCommentInsert(ACommentDto comDto) {
+
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE+"aCommentInsert",comDto);
+		} catch (Exception e) {
+			System.out.println("[error: insert comments" );
+
+			e.printStackTrace();
+		}
+		
+		
+		
+		return res;
+	}
 	
 	
 

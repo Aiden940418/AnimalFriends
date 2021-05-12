@@ -78,11 +78,11 @@
   	
   	
   	
-  	<select id="pwChk" parameterType="int">
+  	<select id="pwChk" resultType="int">
   	
   	SELECT COUNT(*)
   	FROM MEMBER
-  	WHERE MPW = #{mPw} AND MNO = #{mNo}
+  	WHERE MPW = #{mPw} AND MID = #{mId}
   	
   	
   	

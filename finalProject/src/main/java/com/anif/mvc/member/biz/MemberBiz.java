@@ -13,7 +13,7 @@ public interface MemberBiz {
 	
 	public MemberDto login(MemberDto dto);
 	
-	public MemberDto pwChk(int mNo);
+	public boolean pwChk(String mId, String mPw);
 
 
 }

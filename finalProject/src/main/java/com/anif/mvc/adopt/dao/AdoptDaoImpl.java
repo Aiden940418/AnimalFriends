@@ -85,7 +85,7 @@ public class AdoptDaoImpl implements AdoptDao {
 	@Override
 	public List<AdoptDto> myAdoptList(int mNo) {
 
-		List<AdoptDto> list = new ArrayList<AdoptDto>(mNo);
+		List<AdoptDto> list = new ArrayList<AdoptDto>();
 		
 		
 		try {
@@ -131,6 +131,15 @@ public class AdoptDaoImpl implements AdoptDao {
 		}
 		
 		return res;
+	}
+
+	
+	//view Cont 메소드 
+
+	@Override
+	public void viewCount(int aNo) {
+		sqlSession.update(NAMESPACE+"viewCount",aNo);
+		
 	}
 
 	

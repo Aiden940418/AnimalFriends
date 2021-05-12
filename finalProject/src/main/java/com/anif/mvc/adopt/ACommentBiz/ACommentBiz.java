@@ -9,4 +9,7 @@ public interface ACommentBiz {
 	
 	public List<ACommentDto> aCommentList(int aNo);
 
+	
+	public int aCommentInsert(ACommentDto comDto);
+	
 }

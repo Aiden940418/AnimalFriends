@@ -21,19 +21,19 @@
 
 			<!-- form -->
 			<div style="margin: auto; text-align: center;">
-				<form action="" style="display: inline-block;">
+				<form action="goodWriteForm.do" method="get" style="display: inline-block;">
 					<table>
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width:100px; pointer-events: none;">상품명</button></th>
-							<td><input type="text" class="form-control my-1" id=""
+							<td><input type="text" class="form-control my-1" name ="gName"
 								style="width:500px; margin:10px;"></td>
 						</tr>
 						
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width:100px; pointer-events: none;">가격</button></th>
-							<td><input type="text" class="form-control my-1" id=""
+							<td><input type="text" class="form-control my-1" name="gPrice"
 								style="width:500px;margin:10px;"></td>
 						</tr>
 						
@@ -48,7 +48,7 @@
 						<tr>
 							<th><button class="btn btn-outline-success"
 									style="width:100px; pointer-events: none;">이미지</button></th>
-							<td><input type="file" class="form-control my-1" name="goods_name"
+							<td><input type="file" class="form-control my-1" 
 								style="width:500px;margin:10px;" placeholder="이미지를 등록해주세요."></td>
 						</tr>
 						<tr>

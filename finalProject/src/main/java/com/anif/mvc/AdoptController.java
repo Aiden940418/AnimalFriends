@@ -47,12 +47,20 @@ public class AdoptController {
 	@RequestMapping(value="adoptDetail.do", method = RequestMethod.GET)
 	public String adoptDetail(Model model, int aNo) {
 		
+		//카운트 
 		
+		biz.viewCount(aNo);
+		
+		
+		//입양공고 detail
 		model.addAttribute("dto",biz.adoptDetail(aNo));
 		
 		
-		//ist<ACommentDto> replyList = abiz.aCommentList(aNo);
-		model.addAttribute("reply", abiz.aCommentList(aNo));
+		//입양공고 댓글 
+		List<ACommentDto> replyList = abiz.aCommentList(aNo);
+		
+		model.addAttribute("reply", replyList);
+
 
 		
 		return "adopt/adopt_detail";
@@ -65,8 +73,18 @@ public class AdoptController {
 	@RequestMapping(value="myAdoptDetail.do", method = RequestMethod.GET)
 	public String myAdoptDerail(Model model, int aNo) {
 		
+		//카운트 
+		
+		biz.viewCount(aNo);
+		
+		//나의 입양공고 불러오기 
+		
 		model.addAttribute("dto",biz.adoptDetail(aNo));
 		
+		//입양공고 댓글 
+		List<ACommentDto> replyList = abiz.aCommentList(aNo);
+		
+		model.addAttribute("reply", replyList);
 		
 		return "mypage/mypage_myadoptDetail";
 		
@@ -160,6 +178,27 @@ public class AdoptController {
 		}
 		
 		
+		
+		
+	}
+	
+	
+	
+	//ADOPT COMMENT INSERT
+	
+	
+	@RequestMapping(value="/aCommentInsert.do", method= RequestMethod.GET)
+	public String aCommentInsert(ACommentDto comDto) {
+		
+		int res = abiz.aCommentInsert(comDto);
+		
+		if(res>0) {
+			return "redirect:adoptDetail.do?aNo="+comDto.getaNo();
+		}else {
+
+			return "redirect:adoptDetail.do?aNo="+comDto.getaNo();
+
+		}
 		
 		
 	}

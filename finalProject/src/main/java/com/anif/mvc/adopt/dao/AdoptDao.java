@@ -39,6 +39,10 @@ public interface AdoptDao {
 	public int myAdoptDelete(int aNo);
 	
 	
+	//조회수
+	public void viewCount(int aNo);
+	
+	
 	
 	
 

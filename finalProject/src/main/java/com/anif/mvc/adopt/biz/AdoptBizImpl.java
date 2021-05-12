@@ -70,6 +70,12 @@ public class AdoptBizImpl implements AdoptBiz {
 		return dao.myAdoptDelete(aNo);
 	}
 
+	@Override
+	public void viewCount(int aNo) {
+
+		dao.viewCount(aNo);
+	}
+
 	
 	
 

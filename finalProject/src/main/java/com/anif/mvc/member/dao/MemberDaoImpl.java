@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.anif.mvc.member.dto.MemberDto;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 
@@ -83,13 +86,18 @@ public class MemberDaoImpl implements MemberDao {
 
 
 	@Override
-	public MemberDto pwChk(int mNo) {
+	public boolean pwChk(String mId, String mPw) {
 		
+		boolean result = false;
+		Map<String, String> map = new HashMap<String,String>();
+		map.put("mId", mId);
+		map.put("mPw", mPw);
 		
-		MemberDto res = null;
+		int count = sqlSession.selectOne(NAMESPACE+"pwChk",map);
 		
-		res = sqlSession.selectOne(NAMESPACE+"pwChk",mNo);
-		return res;
+		if(count==1) result = true;
+
+		return result;
 	}
 	
 	
