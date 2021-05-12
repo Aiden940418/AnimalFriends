@@ -23,7 +23,7 @@
   	</select>
   
   
-  	<select id="diaryListScroll" resultType="diaryDto" parameterType="int">
+  	<select id="diaryListScroll" resultType="diaryDto" parameterType="hashMap">
 		SELECT *
 		FROM (
 				SELECT ROW_NUMBER() OVER (ORDER BY DDATE DESC) NUM, DNO, MNO, DCONTENT,
@@ -31,7 +31,7 @@
 				FROM DIARY A JOIN MEMBER USING(MNO)
 				ORDER BY DDATE DESC
 			)
-		WHERE NUM=#{number}
+		WHERE NUM BETWEEN #{startNumber} AND #{endNumber}
 		ORDER BY NUM
   	</select>
   

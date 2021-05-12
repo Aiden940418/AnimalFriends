@@ -8,6 +8,6 @@ public interface DiaryBiz {
 	
 	public List<DiaryDto> selectList();
 	
-	public DiaryDto diaryListScroll(int number);
+	public List<DiaryDto> diaryListScroll(int startNumber, int endNumber);
 
 }

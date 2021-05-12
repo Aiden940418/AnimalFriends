@@ -1,5 +1,6 @@
 package com.anif.mvc;
 
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -38,14 +39,18 @@ public class DiaryController {
 	//무한스크롤 관련 컨트롤러 메소드
 	@RequestMapping(value = "/diaryListScroll.do", method = RequestMethod.GET)
 	@ResponseBody
-	public DiaryDto diaryListScroll(@RequestParam Map<String, String> number) {
+	public List<DiaryDto> diaryListScroll(@RequestParam Map<String, String> number) {
 		
-		int number2 = Integer.parseInt(number.get("number"));
+		int startNumber = Integer.parseInt(number.get("startNumber"));
+		int endNumber = Integer.parseInt(number.get("endNumber"));
 		
-		DiaryDto dto = biz.diaryListScroll(number2);
+		List<DiaryDto> list = biz.diaryListScroll(startNumber, endNumber);
 		
-		return dto; 
+		return list; 
 	}
+	
+	
+	
 	
 	
 	
