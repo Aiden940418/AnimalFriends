@@ -1,18 +1,22 @@
 package com.anif.mvc;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
 
@@ -91,7 +95,26 @@ public class UploadImgController {
 		
 	}
 	
-	
+	@RequestMapping(value="download.do")
+	@ResponseBody
+	public byte[] fileDown(HttpServletRequest request, HttpServletResponse response, String name) throws IOException {
+		
+		String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/storage");
+		
+		File file = new File(path+"/"+name); //path는 저장 경로, name은 파일 이름을 가져온다
+		
+		byte[] bytes = FileCopyUtils.copyToByteArray(file); //bytes에 file를 복사해서 가져옴
+		
+		String fn = new String(file.getName());
+		
+		//attachment:다운로드시 무조건 파일 다운로드 상자가 뜨도록 만듬
+		response.setHeader("Content-Disposition", "attachment;finale=\""+fn+"\"");
+		
+		response.setContentLength(bytes.length);
+		response.setContentType("image/jpeg");
+		
+		return bytes;
+	}
 	
 	
 	

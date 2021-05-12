@@ -9,7 +9,7 @@
 <body>
 	<h3>file: ${fileobj.name }</h3>
 	 
-	 <form action="download" method="post">
+	 <form action="download.do" method="post">
 	 	<input type="hidden" name="name" value="${fileobj.name }" >
 	 	<input type="submit" value="download" >
 	 </form>

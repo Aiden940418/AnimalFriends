@@ -72,7 +72,7 @@ a.button:hover {
 		<!-- image추가 시작 -->
 		<div class="container text-center">
 		
-			<img src="resources/images/adopt_cat1.jpeg" width="600px" height="600px">
+			<img src="E:/GitHub/FinalPJ/finalProject_KW/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/finalProject/storage/logo_수정전.png" width="600px" height="600px">
 		</div>
 		<!-- image추가 끝 -->
 	
@@ -92,7 +92,7 @@ a.button:hover {
 		<div class="container text-center">
 		<table align="center">
 		
-		<h2>${dto.anmName } ${reply.aComContent}의 신상정보</h2>
+		<h2>${dto.anmName } 의 신상정보</h2>
 
 			<tr>
 			<th align="left">나  이</th>
