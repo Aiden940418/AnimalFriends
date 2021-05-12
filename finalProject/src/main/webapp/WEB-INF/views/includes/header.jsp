@@ -62,7 +62,7 @@
             </li>
 
             <li class="nav-item" style="font-size:20px;">
-              <a class="nav-link" href="diary.do">입양일기</a>
+              <a class="nav-link" href="diaryList.do">입양일기</a>
             </li>
            
            <c:if test="${login.mRole == 1 }">
