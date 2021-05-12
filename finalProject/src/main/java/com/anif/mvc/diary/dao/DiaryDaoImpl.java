@@ -29,4 +29,22 @@ public class DiaryDaoImpl implements DiaryDao{
 		return list;
 	}
 
+
+	@Override
+	public DiaryDto diaryListScroll(int number) {
+		DiaryDto dto = new DiaryDto();
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE + "diaryListScroll", number);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+	
+	
+	
+	
+
 }
