@@ -145,10 +145,10 @@ a.button:hover {
 	
 	
 		<form action="aCommentInsert.do" method="GET">
-		
-			<input type="hidden" name="writer" value="${login.mNick}">
 			<input type="hidden" name="aNo" value="${dto.aNo}">
-
+			<input type="hidden" name="writer" value="${login.mNick}">
+	
+ 
 			
 		<h3>Comments</h3>
 

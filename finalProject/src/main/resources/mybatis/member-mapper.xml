@@ -88,6 +88,15 @@
   	
   	</select>
   	
+  	<update id="memberUpdate" parameterType="memberDto">
+  	
+  	UPDATE MEMBER SET MNICK = #{mNick}, MPHONE = #{mPhone}
+  	WHERE MNO = #{mNo}
+  	
+  	
+  	</update>
+  	
+  	
   	
 
    
