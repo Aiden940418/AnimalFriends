@@ -64,7 +64,8 @@
 	    });
 	}
 	
-	function scrollPrint(result) {
+function scrollPrint(result) {
+		
 		var addHtml = "<div class=\"row\">\r\n" + 
 		"		\r\n" + 
 		"			<div class=\"col-2\"></div> <!-- 좌우 간격 맞추기 용도 -->\r\n" + 
@@ -73,7 +74,7 @@
 		"				\r\n" + 
 		"					<!-- 입양일기 카드(박스) 부분 -->\r\n" + 
 		"					<div class=\"card border-success mb-3 text-dark\" style=\"width: 800px;\">\r\n" + 
-		"						<div class=\"card-header bg-transparent border-success\">${dto.mnick}</div>\r\n" + 
+		"						<div class=\"card-header bg-transparent border-success\">"+result.mnick+"</div>\r\n" + 
 		"						\r\n" + 
 		"						<img class=\"card-img-top\" src=\"resources/images/adopt_cat1.jpeg\">\r\n" + 
 		"						\r\n" + 
@@ -95,8 +96,8 @@
 		"						</ul>\r\n" + 
 		"						\r\n" + 
 		"						<div class=\"card-body text-dark\" style=\"height: 100px;\">\r\n" + 
-		"							<h5 class=\"card-title\">${dto.dcontent }</h5>\r\n" + 
-		"							<p class=\"card-text\">${dto.ddateToChar }</p>\r\n" + 
+		"							<h5 class=\"card-title\">"+result.dcontent+"</h5>\r\n" + 
+		"							<p class=\"card-text\">"+result.ddateToChar+"</p>\r\n" + 
 		"						</div>\r\n" + 
 		"						\r\n" + 
 		"						<div class=\"card-footer bg-transparent border-success\">\r\n" + 
