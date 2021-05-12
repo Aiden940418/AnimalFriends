@@ -10,4 +10,6 @@ public interface DiaryDao {
 	
 	public List<DiaryDto> selectList();
 
+	public DiaryDto diaryListScroll(int number);
+
 }
