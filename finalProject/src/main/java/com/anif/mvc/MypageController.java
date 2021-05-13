@@ -1,7 +1,9 @@
 package com.anif.mvc;
 
+import java.io.File;
 import java.io.IOException;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -10,11 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
 import com.anif.mvc.diary.biz.DiaryBiz;
 import com.anif.mvc.diary.dto.DiaryDto;
+import com.anif.mvc.diary.imgUpload.UploadFileUtils;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.qnaBoard.biz.QnaBoardBiz;
 import com.anif.mvc.qnaBoard.dto.QnaBoardDto;
@@ -27,8 +31,13 @@ public class MypageController {
 	
 	@Autowired
 	private QnaBoardBiz biz;
+	
 	@Autowired
 	private DiaryBiz diaryBiz;
+	
+	@Resource(name="uploadPath")
+	private String uploadPath;
+	
 	
 	
 	
@@ -68,12 +77,27 @@ public class MypageController {
 	}
 	
 	@RequestMapping("/mydiaryWriteRes.do")
-	public String mydiaryWriteRes(DiaryDto dto, HttpSession session, Model model) {
+	public String mydiaryWriteRes(DiaryDto dto, MultipartFile file, HttpSession session, Model model) throws IOException, Exception {
 		logger.info("My Diary INSERT");
 		
+
 		//현재 로그인 되어있는 계정의 회원번호를 가져와서 dto에 세팅해주기
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
 		dto.setMno(memberDto.getmNo());
+		
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+		
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+		
+		dto.setDiaryImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		dto.setDiaryThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+	
 		
 		int res = diaryBiz.insert(dto);
 
