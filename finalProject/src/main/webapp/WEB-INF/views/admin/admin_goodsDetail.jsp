@@ -25,7 +25,7 @@
 		<div class="text mt-5 ms-5" >
 			<div id=button>
 			<a href="adminGoodsUpdateForm.do?gNo=${dto.gNo}" class="btn btn-outline-success">수정</a>&nbsp;
-			<a href="" class="btn btn-outline-success">삭제</a>&nbsp;
+			<a href="adminGoodsDelete.do?gNo=${dto.gNo }" class="btn btn-outline-success">삭제</a>&nbsp;
 			<a href="adminGoodsList.do" class="btn btn-outline-success">목록</a>&nbsp;&nbsp;
 			</div>
 

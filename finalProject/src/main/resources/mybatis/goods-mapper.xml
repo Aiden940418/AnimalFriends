@@ -47,7 +47,11 @@
      	WHERE GNO = #{gNo}
      </update>
      
- 
+     <!-- 관리자 굿즈 리스트 삭제-->
+ 	 <delete id="adminGoodsDelete" parameterType="int">
+ 	 	DELETE FROM GOODS
+ 	 	WHERE GNO = #{gNo}
+ 	 </delete>
  
  
  
