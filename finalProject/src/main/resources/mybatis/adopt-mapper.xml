@@ -37,6 +37,17 @@
      </select>
      
      
+     <!--조회수(ACOUNT 관련  -->
+     
+     <update id="viewCount">
+     
+     	UPDATE ADOPT
+     	SET ACOUNT = ACOUNT +1
+     	WHERE ANO = #{ANO}
+     
+     
+     </update>
+     
      <!--  전체 입양공고 디테일(상세)  -->
      
     <select id="adoptDetail" parameterType="adoptDto" resultType="adoptDto">

@@ -11,5 +11,10 @@ public interface ACommentDao {
 	
 	public List<ACommentDto> aCommentList(int aNo);
 	
+	public int aCommentInsert(ACommentDto comDto);
+	
+	public int aCommentDelete(ACommentDto comDto);
+	
+	
 
 }

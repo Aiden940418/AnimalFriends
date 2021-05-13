@@ -48,9 +48,9 @@
 
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
-									style="width: 100px; pointer-events: none;">가격</button></th>
-							<td><input type="text" class="form-control my-1"
-								name="gPrice" style="width: 500px; margin: 10px;"></td>
+									style="width:100px; pointer-events: none;">가격</button></th>
+							<td><input type="text" class="form-control my-1" name="gPrice"
+								style="width:500px;margin:10px;"></td>
 						</tr>
 
 

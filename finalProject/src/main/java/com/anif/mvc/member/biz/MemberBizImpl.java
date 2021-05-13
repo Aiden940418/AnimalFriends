@@ -41,11 +41,10 @@ public class MemberBizImpl implements MemberBiz {
 	}
 
 	@Override
-	public MemberDto pwChk(int mNo) {
+	public boolean pwChk(String mId, String mPw) {
 
 		
-		
-		return dao.pwChk(mNo);
+		return dao.pwChk(mId, mPw);
 	}
 
 }
