@@ -1,7 +1,9 @@
 package com.anif.mvc;
 
+import java.io.File;
 import java.io.IOException;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -10,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.anif.mvc.common.image.UploadFileUtils;
 import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
 import com.anif.mvc.diary.biz.DiaryBiz;
@@ -30,7 +35,8 @@ public class MypageController {
 	@Autowired
 	private DiaryBiz diaryBiz;
 	
-	
+	@Resource(name="uploadPath")
+	private String uploadPath;
 	
 	@RequestMapping("/chattingList.do")
 	public String chatList() {
@@ -68,9 +74,22 @@ public class MypageController {
 	}
 	
 	@RequestMapping("/mydiaryWriteRes.do")
-	public String mydiaryWriteRes(DiaryDto dto, HttpSession session, Model model) {
+	public String mydiaryWriteRes(DiaryDto dto, HttpSession session, @RequestParam(value = "file", required = false) MultipartFile file, Model model) throws IOException, Exception {
 		logger.info("My Diary INSERT");
+
+		//이미지 업로드를 위한 코드
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
 		
+		if(file != null) {
+			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+		
+		dto.setDiaryImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		dto.setDiaryThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 		//현재 로그인 되어있는 계정의 회원번호를 가져와서 dto에 세팅해주기
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
 		dto.setMno(memberDto.getmNo());

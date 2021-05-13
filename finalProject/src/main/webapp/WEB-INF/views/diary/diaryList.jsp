@@ -148,7 +148,7 @@
 					<div class="card border-success mb-3 text-dark" style="width: 800px;">
 						<div class="card-header bg-transparent border-success">${dto.mnick}</div>
 						
-						<img class="card-img-top" src="resources/images/adopt_cat1.jpeg">
+						<img class="card-img-top" src="resources/${dto.diaryImg }">
 						
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item">
