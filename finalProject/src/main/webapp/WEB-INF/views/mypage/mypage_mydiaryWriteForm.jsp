@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+
 	<!-- header -->
 	<%@ include file="../includes/header.jsp" %>
-	
 	<!-- leftMenuBar -->
 	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>	
 	
@@ -31,47 +31,45 @@
 			</div>
 			<!-- form -->
 			<div style="margin: auto; text-align: center;">
-				
-				<form action="mydiaryWriteRes.do" style="display: inline-block;" method="post" enctype="multipart/form-data" >
+				<form action="mydiaryWriteRes.do" method="post" style="display: inline-block;" enctype="multipart/form-data">
+				<input type="hidden" name="diaryThumbImg" value="aaa.jpg">
 					<table>
 
 						<tr>
-							<th>
-							<button type="button"
-									class="btn btn-outline-success mx-3 my-1"
-									style="width: 130px; pointer-events: none;">사진</button>
-							</th>
-							<td>
-								<!-- <div class="inputArea"> -->
-									<input type="file" id="diaryImg" name="file" class="form-control my-1" />								
-									
-									
-								<!-- </div> -->
+							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
+									style="width: 130px; pointer-events: none;">이미지</button></th>
+							<td><input type="file" class="form-control my-1" id="diaryImg" name="file"
+								size="100" placeholder="이미지를 등록해주세요."></td>
+						</tr>
+						<tr>
+							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
+									style="width: 130px; pointer-events: none;">이미지 미리보기</button></th>
+							<td id="select_img" style="table-layout:auto; text-algin:center;">
+									<img src=""/>
+							
 							</td>
-						 </tr>
-						 <tr>
-						 	<th><button type="button"
-									class="btn btn-outline-success mx-3 my-1"
-									style="width: 130px; pointer-events: none;">미리보기</button></th>
-						 	<td><div class="select_img">
-										<img src="" />
-									</div>
-
-									<script>
-									  $("#diaryImg").change(function(){
-									   if(this.files && this.files[0]) {
-									    var reader = new FileReader;
-									    reader.onload = function(data) {
-									     $(".select_img img").attr("src", data.target.result).width(500);        
-									    }
-									    reader.readAsDataURL(this.files[0]);
-									   }
-									  });
-									 </script>
-								<%=request.getRealPath("/") %>		 
-							</td>
-						 </tr>
-						 <tr>
+							
+						</tr>
+						<tr>
+							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
+									style="width: 130px; pointer-events: none;">이미지 경로(임시)</button></th>
+							<td><%=request.getRealPath("/") %></td>
+						</tr>
+			
+						<script>
+								  $("#diaryImg").change(function(){
+								   if(this.files && this.files[0]) {
+								    var reader = new FileReader;
+								    reader.onload = function(data) {
+								     	$("#select_img img").attr("src", data.target.result).width(300);        
+								    }
+								    reader.readAsDataURL(this.files[0]);
+								   }
+								  });
+						</script>
+						
+						
+						<tr>
 							<th style="vertical-align: top;"><button type="button"
 									class="btn btn-outline-success	 mx-3 my-1"
 									style="width: 130px; pointer-events: none;">내용</button>
@@ -92,6 +90,15 @@
 					</table>
 				</form>
 			</div>
+
+
+				
+
+				
+
+
+
+
 		</div>
 		<!-- footer -->
 		<%@ include file="../includes/footer.jsp"%>

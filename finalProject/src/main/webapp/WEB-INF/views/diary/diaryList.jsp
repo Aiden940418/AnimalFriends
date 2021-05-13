@@ -77,7 +77,7 @@
 						"<div class='col ms-4 my-3'>"+
 							"<div class='card border-success mb-3 text-dark' style='width: 800px;'>"+
 								"<div class='card-header bg-transparent border-success'>"+result[i].mnick+"</div>"+
-									"<img class='card-img-top' src='resources/images/adopt_cat1.jpeg'>"+
+									"<img class='card-img-top' src='resources/" + result[i].diaryImg + "'>"+
 									"<ul class='list-group list-group-flush'>"+
 										"<li class='list-group-item'>"+
 											"<div class='row'>"+
@@ -148,6 +148,7 @@
 					<div class="card border-success mb-3 text-dark" style="width: 800px;">
 						<div class="card-header bg-transparent border-success">${dto.mnick}</div>
 						
+						<!-- 입양일기 이미지(서버에 업로드된 이미지 화면출력) -->
 						<img class="card-img-top" src="resources/${dto.diaryImg }">
 						
 						<ul class="list-group list-group-flush">
