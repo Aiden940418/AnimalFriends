@@ -87,7 +87,7 @@
   <insert id="myadoptWrite" parameterType="adoptDto">
   	
   	INSERT INTO ADOPT
-  	VALUES(ANO.NEXTVAL, #{aMNo}, #{aArea}, #{aType}, #{aTitle}, SYSDATE, 12 ,#{anmName}, #{anmAge}, #{anmBreed},
+  	VALUES(ANO.NEXTVAL, #{aMNo}, #{aArea}, #{aType}, #{aTitle}, SYSDATE, 0,#{anmName}, #{anmAge}, #{anmBreed},
   	#{anmGender}, #{anmVcnYn}, #{anmNtrYn}, #{aPhone}, #{aMemo}  )
   	
   </insert>

@@ -183,17 +183,30 @@
 			        // 인포윈도우로 장소에 대한 설명을 표시합니다
 			        if(selectedSaveTrgtAnimal == null){
 			        	var infowindow = new kakao.maps.InfoWindow({
-			        		content: '<div style="width:300px;text-align:center;padding:6px 0;">'
-			            			+ selectedCareNm +"<br>"+ selectedAddr +"<br>"+ selectedCareTel + '</div>'
-			        	});
-			        } else{
-			        	var infowindow = new kakao.maps.InfoWindow({
-			        		content: '<div style="width:300px;text-align:center;padding:6px 0;">'
-		            			+ selectedCareNm +"<br>"+ selectedAddr +"<br>"+ selectedCareTel + "<br>구조대상동물 : " 
-		            			+ selectedSaveTrgtAnimal + '</div>'
+			        		/* content: '<div style="width:350px;text-align:center;padding:6px 0;">'
+			            			+ selectedCareNm +"<br>"+ selectedAddr +"<br>Tel. "+ selectedCareTel + '</div>' */
+			            	content:'<div class="card text-white bg-success" style="width: 370px;; text-align:center; padding:10px 0;">'+
+						        	 '<div class="card-body">'+
+						        	  '<h5 class="card-title">'+selectedCareNm+'</h5>'+
+						        	  '<p class="card-text">'+selectedAddr+"<br>Tel. "+selectedCareTel+'</p>'+
+						        	 '</div>'+
+						        	'</div>'
 			        	});
 			        	
-			        }
+			        } else {
+			        	var infowindow = new kakao.maps.InfoWindow({
+			        		content:'<div class="card text-white bg-success" style="width: 370px;; text-align:center; padding:10px 0;">'+
+				        	 '<div class="card-body">'+
+				        	  '<h5 class="card-title">'+selectedCareNm+'</h5>'+
+				        	  '<p class="card-text">'+selectedAddr+"<br>Tel. "+selectedCareTel+ "<br>구조대상동물 : "+ selectedSaveTrgtAnimal+'</p>'+
+				        	 '</div>'+
+				        	'</div>'
+			        	
+			        	});
+			        	
+			        }	
+			        	
+			        
 			        infowindow.open(map, marker);
 		
 			        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
@@ -229,7 +242,7 @@
 <div class="container">
 
 
-	<h1>동물 보호소 찾기</h1>
+	<h1 class="mt-5">동물 보호소 찾기</h1>
 
 	<div class="row">
 	
@@ -240,7 +253,7 @@
 			<!-- 카테고리 선택 부분 -->
 			<div class="row">
 
-				<div class="dropdown my-2 col text-left btn-group">
+				<div class="dropdown ms-5 mt-3 col text-left btn-group">
 					<a class="btn btn-success dropdown-toggle" role="button"
 						id="locationSelectBtn" data-bs-toggle="dropdown"
 						aria-expanded="false" data-siordo="">지역 선택</a>
@@ -253,41 +266,28 @@
 					</ul>
 				</div>
 
-				<div class="dropdown my-2 col text-left btn-group" id="seoulSelect">
+				<div class="dropdown ms-auto mt-auto col text-left btn-group" id="seoulSelect">
 					<a class="btn btn-success dropdown-toggle" href="#" role="button"
 						id="guSelectBtn" data-bs-toggle="dropdown" aria-expanded="false"
 						data-guselect=""> 구 선택 </a>
 					<ul class="dropdown-menu locationSelect" id="guSelect"
 						aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#" value="강남구">강남구 </a></li>
 						<li><a class="dropdown-item" href="#" value="강동구">강동구 </a></li>
-						<li><a class="dropdown-item" href="#" value="강북구">강북구 </a></li>
-						<li><a class="dropdown-item" href="#" value="강서구">강서구 </a></li>
 						<li><a class="dropdown-item" href="#" value="관악구">관악구 </a></li>
 						<li><a class="dropdown-item" href="#" value="광진구">광진구 </a></li>
-						<li><a class="dropdown-item" href="#" value="구로구">구로구 </a></li>
-						<li><a class="dropdown-item" href="#" value="금천구">금천구 </a></li>
 						<li><a class="dropdown-item" href="#" value="노원구">노원구 </a></li>
 						<li><a class="dropdown-item" href="#" value="도봉구">도봉구</a></li>
 						<li><a class="dropdown-item" href="#" value="동대문구">동대문구 </a></li>
-						<li><a class="dropdown-item" href="#" value="동작구">동작구 </a></li>
 						<li><a class="dropdown-item" href="#" value="마포구">마포구</a></li>
-						<li><a class="dropdown-item" href="#" value="서대문구">서대문구 </a></li>
 						<li><a class="dropdown-item" href="#" value="서초구">서초구 </a></li>
 						<li><a class="dropdown-item" href="#" value="성동구">성동구 </a></li>
-						<li><a class="dropdown-item" href="#" value="성북구">성북구 </a></li>
-						<li><a class="dropdown-item" href="#" value="송파구">송파구 </a></li>
 						<li><a class="dropdown-item" href="#" value="양천구">양천구 </a></li>
 						<li><a class="dropdown-item" href="#" value="영등포구">영등포구 </a></li>
 						<li><a class="dropdown-item" href="#" value="용산구">용산구 </a></li>
-						<li><a class="dropdown-item" href="#" value="은평구">은평구 </a></li>
-						<li><a class="dropdown-item" href="#" value="종로구">종로구 </a></li>
-						<li><a class="dropdown-item" href="#" value="중구">중구 </a></li>
-						<li><a class="dropdown-item" href="#" value="중랑구">중랑구 </a></li>
 					</ul>
 				</div>
 
-				<div class="dropdown my-2 col text-left btn-group" id="gyeonggiSelect">
+				<div class="dropdown ms-auto mt-auto col text-left btn-group" id="gyeonggiSelect">
 					<a class="btn btn-success dropdown-toggle" href="#" role="button"
 						id="siSelectBtn" data-bs-toggle="dropdown" aria-expanded="false"
 						data-siselect=""> 시 선택 </a>
@@ -295,44 +295,27 @@
 						aria-labelledby="dropdownMenuLink">
 						<li><a class="dropdown-item" href="#" value="가평군">가평군 </a></li>
 						<li><a class="dropdown-item" href="#" value="고양시">고양시 </a></li>
-						<li><a class="dropdown-item" href="#" value="과천시">과천시 </a></li>
-						<li><a class="dropdown-item" href="#" value="광명시">광명시 </a></li>
 						<li><a class="dropdown-item" href="#" value="광주시">광주시 </a></li>
-						<li><a class="dropdown-item" href="#" value="구리시">구리시 </a></li>
-						<li><a class="dropdown-item" href="#" value="군포시">군포시 </a></li>
-						<li><a class="dropdown-item" href="#" value="김포시">김포시 </a></li>
-						<li><a class="dropdown-item" href="#" value="남양주시">남양주시 </a></li>
-						<li><a class="dropdown-item" href="#" value="동두천시">동두천시 </a></li>
 						<li><a class="dropdown-item" href="#" value="부천시">부천시 </a></li>
 						<li><a class="dropdown-item" href="#" value="성남시 ">성남시 </a></li>
 						<li><a class="dropdown-item" href="#" value="수원시">수원시 </a></li>
 						<li><a class="dropdown-item" href="#" value="시흥시">시흥시 </a></li>
 						<li><a class="dropdown-item" href="#" value="안산시">안산시 </a></li>
-						<li><a class="dropdown-item" href="#" value="안성시">안성시</a></li>
-						<li><a class="dropdown-item" href="#" value="안양시">안양시 </a></li>
 						<li><a class="dropdown-item" href="#" value="양주시">양주시 </a></li>
 						<li><a class="dropdown-item" href="#" value="양평군">양평군 </a></li>
-						<li><a class="dropdown-item" href="#" value="여주시">여주시</a></li>
-						<li><a class="dropdown-item" href="#" value="연천군">연천군 </a></li>
-						<li><a class="dropdown-item" href="#" value="오산시">오산시 </a></li>
 						<li><a class="dropdown-item" href="#" value="용인시">용인시 </a></li>
-						<li><a class="dropdown-item" href="#" value="의왕시">의왕시 </a></li>
-						<li><a class="dropdown-item" href="#" value="의정부시">의정부시 </a></li>
-						<li><a class="dropdown-item" href="#" value="이천시">이천시 </a></li>
 						<li><a class="dropdown-item" href="#" value="파주시">파주시</a></li>
 						<li><a class="dropdown-item" href="#" value="평택시">평택시 </a></li>
-						<li><a class="dropdown-item" href="#" value="포천시">포천시</a></li>
 						<li><a class="dropdown-item" href="#" value="하남시">하남시 </a></li>
-						<li><a class="dropdown-item" href="#" value="화성시">화성시 </a></li>
 					</ul>
 				</div>
 				
 				
 				<!-- 검색버튼 -->
-				<div class="dropdown my-2 col text-left">
+				<div class="dropdown ms-auto mt-auto col text-left">
 					<a class="btn btn-outline-success" role="button" id="okBtn"
 						data-bs-toggle="dropdown" aria-expanded="false">
-						<ion-icon name="search-outline" style="font-size:17pt;"></ion-icon>
+						<ion-icon name="search-outline" style="font-size:15pt;"></ion-icon>
 						</a>
 				</div>
 				
@@ -342,7 +325,7 @@
 			
 			
 			<!-- 보호시설 리스트 출력할 div -->
-			<div class="row mt-1" id="resultAreaDiv" style="height: 600px; padding:10px;">
+			<div class="row mt-1 ms-2" id="resultAreaDiv" style="height: 600px; padding:10px;">
 				<ul id="resultArea"></ul>
 			</div>
 			
@@ -353,7 +336,7 @@
 	
 		<!-- 지도 시작 -->
 		<!-- 지도 화면 띄우는 영역 div -->
-		<div id="map" class="col-8" ></div>
+		<div id="map" class="col-8 border border-2 rounded" ></div>
 		
 
 				

@@ -193,8 +193,10 @@ public class AdoptController {
 	public String aCommentInsert(ACommentDto comDto) {
 		
 		int res = abiz.aCommentInsert(comDto);
+
 		
 		if(res>0) {
+			abiz.replyCnt(comDto.getaNo());
 			return "redirect:adoptDetail.do?aNo="+comDto.getaNo();
 		}else {
 

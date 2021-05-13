@@ -15,6 +15,7 @@
   	 <result property="aNo" column="ANO" />
   	 <result property="aComContent" column="ACOMCONTENT"/>
   	<result property="aComDate" column="ACOMDATE"/>
+  	<result property="aComCnt" column="ACOMCNT" />
   
   
   
@@ -22,7 +23,7 @@
   
   
   <select id="aCommentList" parameterType="int" resultType="aCommentDto">
-  SELECT ACOMNO , WRITER, ANO, ACOMCONTENT, to_char(ACOMDATE, 'YYYYMMDD')
+  SELECT ACOMNO , WRITER, ANO, ACOMCONTENT, ACOMDATE, ACOMCNT
   FROM ADOPTCOMMENT
   WHERE ANO = #{aNo}
   
@@ -34,13 +35,22 @@
   
   INSERT INTO ADOPTCOMMENT VALUES(
   
-  ACOMNO.NEXTVAL,#{writer},#{aNo},#{aComContent},to_char(SYSDATE, 'YYYYMMDD')
+  ACOMNO.NEXTVAL,#{aNo},#{writer},#{aComContent},SYSDATE,0
   
   
   )
   
   
   </insert>
+  
+       <update id="replyCount">
+     
+     	UPDATE ADOPTCOMMENT
+     	SET ACOMCNT = ACOMCNT +1
+     	WHERE ANO = #{ANO}
+     
+     
+    	 </update>
   
   
   

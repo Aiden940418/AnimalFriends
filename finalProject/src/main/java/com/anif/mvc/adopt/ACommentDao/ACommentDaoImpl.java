@@ -41,9 +41,11 @@ public class ACommentDaoImpl implements ACommentDao {
 	public int aCommentInsert(ACommentDto comDto) {
 
 		int res = 0;
-		
+		System.out.println(comDto.toString());
 		try {
 			res = sqlSession.insert(NAMESPACE+"aCommentInsert",comDto);
+			
+			
 		} catch (Exception e) {
 			System.out.println("[error: insert comments" );
 
@@ -71,8 +73,15 @@ public class ACommentDaoImpl implements ACommentDao {
 		return res;
 		
 		
-	};
-	
+	}
+
+	//view Cont 메소드 
+
+	@Override
+	public void replyCnt(int aNo) {
+		sqlSession.update(NAMESPACE+"replyCnt",aNo);
+		
+	}
 	
 
 }
