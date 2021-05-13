@@ -15,6 +15,11 @@
 </script>
 
 
+<!-- ionicons 사용 위한 코드 -->
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+<!-- 제이쿼리 사용 위한 코드 -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Yeon+Sung&display=swap');
@@ -38,7 +43,7 @@
 
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light" 	style="background-color: #EBEBEB;">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #EBEBEB;">
       <div class="container-fluid">
         <a class="navbar-brand ms-4" href="logo.do"><img src="resources/images/logo.png" style="width:70px; height:70px;"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +65,7 @@
             </li>
 
             <li class="nav-item" style="font-size:20px;">
-              <a class="nav-link" href="diary.do">입양일기</a>
+              <a class="nav-link" href="diaryList.do">입양일기</a>
             </li>
            
            <c:if test="${login.mRole == 1 }">

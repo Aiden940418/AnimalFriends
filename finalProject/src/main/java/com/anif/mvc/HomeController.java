@@ -54,10 +54,7 @@ public class HomeController {
 	
 
 	
-	@RequestMapping(value = "/diary.do", method = RequestMethod.GET)
-	public String diary(Model model) {
-		return "diary/diary";
-	}
+	
 	
 	@RequestMapping(value = "/admin.do", method = RequestMethod.GET)
 	public String admin_diary(Model model) {
