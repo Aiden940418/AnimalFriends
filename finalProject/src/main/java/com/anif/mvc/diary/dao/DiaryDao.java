@@ -11,5 +11,7 @@ public interface DiaryDao {
 	public List<DiaryDto> selectList();
 
 	public List<DiaryDto> diaryListScroll(int startNumber, int endNumber);
+	
+	public int insert(DiaryDto dto);
 
 }
