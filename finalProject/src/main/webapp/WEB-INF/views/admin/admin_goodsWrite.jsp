@@ -21,7 +21,7 @@
 
 			<!-- form -->
 			<div style="margin: auto; text-align: center; display: inline-block">
-				<form action="adminGoodsWriteRes.do" method="GET">
+				<form action="adminGoodsWriteRes.do" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="mNo" value="${login.mNo}">
 
 					<table>
@@ -66,10 +66,38 @@
 						<tr>
 							<th><button class="btn btn-outline-success"
 									style="width: 100px; pointer-events: none;">이미지</button></th>
-							<td><input type="file" class="form-control my-1"
-								name="goods_name" style="width: 500px; margin: 10px;"
+							<td><input type="file" class="form-control my-1" name="file"
+								id="gImg" style="width: 500px; margin: 10px;"
 								placeholder="이미지를 등록해주세요."></td>
 						</tr>
+						
+						<tr>
+							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
+									style="width: 130px; pointer-events: none;">이미지 미리보기</button></th>
+							<td id="select_img" style="table-layout:auto; text-algin:center;">
+									<img src=""/>
+							
+							</td>
+							
+						</tr>
+						<tr>
+							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
+									style="width: 130px; pointer-events: none;">이미지 경로(임시)</button></th>
+							<td><%=request.getRealPath("/") %></td>
+						</tr>
+						
+						<script>
+								  $("#gImg").change(function(){
+								   if(this.files && this.files[0]) {
+								    var reader = new FileReader;
+								    reader.onload = function(data) {
+								     	$("#select_img img").attr("src", data.target.result).width(300);        
+								    }
+								    reader.readAsDataURL(this.files[0]);
+								   }
+								  });
+						</script>
+						
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width: 100px; pointer-events: none;">판매수량</button></th>
