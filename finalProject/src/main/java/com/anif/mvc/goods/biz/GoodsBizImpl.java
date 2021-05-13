@@ -50,6 +50,11 @@ public class GoodsBizImpl implements GoodsBiz {
 		return dao.adminGoodsUpdate(dto);
 	}
 
+	@Override
+	public int adminGoodsDelete(int gNo) {
+		return dao.adminGoodsDelete(gNo);
+	}
+
 
 
 

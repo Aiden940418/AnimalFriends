@@ -25,6 +25,9 @@ public interface GoodsDao {
 
 	//관리자 페이지에서 굿즈 수정
 	public int adminGoodsUpdate(GoodsDto dto);
+
+	//관리자 페이지에서 굿즈 삭제
+	public int adminGoodsDelete(int gNo);
 	
 	
 

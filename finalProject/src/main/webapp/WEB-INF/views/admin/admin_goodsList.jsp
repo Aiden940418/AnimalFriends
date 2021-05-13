@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <style type="text/css">
 .card-body{
 	font-size: 20px;
@@ -45,6 +46,7 @@ zoom: 1.5;
 		<a class="btn btn-outline-success dropdown-toggle" href="#"
 			role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
 			aria-expanded="false"> 상품카테고리 </a>
+			
 
 		<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 			<li><a class="dropdown-item" href="#">가방</a></li>
@@ -55,11 +57,18 @@ zoom: 1.5;
 		<div class="btn-group float-end me-4">
 			<button type="button" class="btn btn-outline-success"
 				style="margin-right: 20px; margin-left:30px;">선택한 항목 삭제</button>
+
+				
 				<button type="button" class="btn btn-outline-success"
 				onclick="location.href='adminGoodsWriteForm.do'">--상품 등록--</button>
 				
 		</div>
-	</div>
+		<br><br>
+				  <div class="allCheck" >
+   					<input type="checkbox" name="allCheck" id="allCheck" /><label for="allCheck">&nbsp;전체 선택</label> 
+
+  				  </div> 
+		
 	<!-- dropDown2-end -->
 	
 		<c:choose>
@@ -75,18 +84,19 @@ zoom: 1.5;
 				
           	<div class="container mt-5">
             <div class="row">
-              
+           
+
               
           <c:forEach items="${list}" var="dto">
           		<div class="col-sm mt-5  text-center" >
-          		<div class="card h-100 ms-5 text-center" style="width:430px;">
+          		<div class="card h-100 ms-5 text-center" style="width:430px; margin-top: -30px;" >
           
                 <h3 class="card-header">
                     <input type="checkbox" id="cb1">
     				<label for="cb1"></label>
                 </h3>
                 <div class="card-body text-center">
-                 	<img style="width:400px;height:200;" src="resources/images/adopt_dog3.jpeg" class="img-thumbnail" alt="...">
+                 	<img style="width:400px;height:200; " src="resources/images/adopt_dog3.jpeg" class="img-thumbnail" alt="...">
                  	
                 <a href="adminGoodsDetail.do?gNo=${dto.gNo}">${dto.gName}</a>
                 <p class="container mt-1" >상품가격:${dto.gPrice}</p>

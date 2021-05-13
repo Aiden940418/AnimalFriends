@@ -105,6 +105,20 @@ public class GoodsDaoImpl implements GoodsDao {
 		return res;
 	}
 	
+	//관리자 페이지에서 굿즈 삭제
+	@Override
+	public int adminGoodsDelete(int gNo) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE+"adminGoodsDelete",gNo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+		
+		
+	}
 	
 
 

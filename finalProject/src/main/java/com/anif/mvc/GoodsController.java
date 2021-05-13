@@ -108,7 +108,21 @@ public class GoodsController {
 		}
 	}
 	
-	
+	//관리자 굿즈 삭제
+	@RequestMapping("/adminGoodsDelete.do")
+	public String adminGoodsDelete(int gNo,HttpSession session) {
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		
+		int res = biz.adminGoodsDelete(gNo);
+		
+		if(res>0) {
+			return "redirect:adminGoodsList.do?gNo="+memberDto.getmNo();
+		}else
+		
+		return "redirect:adminGoodsDetail.do?gNo="+gNo;
+		
+		
+	}
 	
 	
 	
