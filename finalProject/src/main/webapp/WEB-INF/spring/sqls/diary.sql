@@ -25,4 +25,6 @@ VALUES(DNOSEQ.NEXTVAL, 2, '무한스크롤 테스트용 입양일기 글', SYSDA
 
 SELECT * 
 FROM DIARY;
+
+
 COMMIT;

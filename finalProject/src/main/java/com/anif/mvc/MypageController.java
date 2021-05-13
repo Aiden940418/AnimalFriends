@@ -3,6 +3,7 @@ package com.anif.mvc;
 import java.io.File;
 import java.io.IOException;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -34,8 +35,8 @@ public class MypageController {
 	@Autowired
 	private DiaryBiz diaryBiz;
 	
-	@Autowired
-	@Qualifier("uploadPath")
+
+	@Resource(name="uploadPath")
 	private String uploadPath;  //이미지 업로드 화면출력 관련 
 	
 	
