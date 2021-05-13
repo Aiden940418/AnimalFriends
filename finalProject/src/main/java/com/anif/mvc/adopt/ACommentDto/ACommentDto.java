@@ -10,6 +10,7 @@ public class ACommentDto {
 	private String writer; // adopt writer(login.mNick)
 	private String aComContent; // adopt content 
 	private Date aComDate; // adopt insertDate 
+	private int aComCnt; // adopt reply count
 	
 	
 	
@@ -21,17 +22,15 @@ public class ACommentDto {
 
 
 
-	public ACommentDto(int aComNo, int aNo, String writer, String aComContent, Date aComDate) {
+	public ACommentDto(int aComNo, int aNo, String writer, String aComContent, Date aComDate, int aComCnt) {
 		super();
 		this.aComNo = aComNo;
 		this.aNo = aNo;
 		this.writer = writer;
 		this.aComContent = aComContent;
 		this.aComDate = aComDate;
+		this.aComCnt = aComCnt;
 	}
-
-
-
 
 
 
@@ -102,14 +101,30 @@ public class ACommentDto {
 	public void setaComDate(Date aComDate) {
 		this.aComDate = aComDate;
 	}
-	
-	
-	
-	
+
+
+
+
+	public int getaComCnt() {
+		return aComCnt;
+	}
+
+
+
+
+	public void setaComCnt(int aComCnt) {
+		this.aComCnt = aComCnt;
+	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "ACommentDto [aComNo=" + aComNo + ", aNo=" + aNo + ", writer=" + writer + ", aComContent=" + aComContent
-				+ ", aComDate=" + aComDate + "]";
+				+ ", aComDate=" + aComDate + ", aComCnt=" + aComCnt + "]";
 	}
-	
+
+
+
 }

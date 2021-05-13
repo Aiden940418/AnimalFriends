@@ -15,6 +15,8 @@ public interface ACommentDao {
 	
 	public int aCommentDelete(ACommentDto comDto);
 	
+	public void replyCnt(int aNo);
+	
 	
 
 }

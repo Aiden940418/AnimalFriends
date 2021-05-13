@@ -37,6 +37,15 @@ public class ACommentBizImpl implements ACommentBiz{
 	
 		return dao.aCommentDelete(comDto);
 	}
+
+
+	//view Cont 메소드 
+
+	@Override
+	public void replyCnt(int aNo) {
+		dao.replyCnt(aNo);
+		
+	}
 	
 	
 	

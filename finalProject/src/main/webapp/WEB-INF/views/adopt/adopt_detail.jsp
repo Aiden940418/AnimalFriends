@@ -64,7 +64,7 @@ a.button:hover {
 		</div>
 		<div class="container" style="margin-left:250px;">
 		<span>등록날짜:&nbsp;${dto.aDate }&nbsp;&nbsp;&nbsp;</span><span>조회수:&nbsp;${dto.aCount}&nbsp;&nbsp;&nbsp;&nbsp;</span>
-   		<span>댓글 개수:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+   		<span>댓글 개수:&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		</div>
 	
 		<br>
@@ -148,6 +148,7 @@ a.button:hover {
 			<input type="hidden" name="aNo" value="${dto.aNo}">
 			<input type="hidden" name="writer" value="${login.mNick}">
 	
+		<h3>${dto.aNo } ${login.mNick }</h3>
  
 			
 		<h3>Comments</h3>
