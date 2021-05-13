@@ -23,8 +23,8 @@
 			<div style="margin: auto; text-align: center; display: inline-block">
 				<form action="adminGoodsUpdateRes.do" method="GET">
 					<input type="hidden" name="gNo" value="${dto.gNo}">
-					
 					<table>
+					<!-- 
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width: 100px; pointer-events: none; ">동물 종</button></th>
@@ -38,7 +38,7 @@
 									
 							</select></td>
 						</tr>					
-					
+					 -->
 					
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
@@ -50,7 +50,7 @@
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width:100px; pointer-events: none;">가격</button></th>
-							<td><input type="text" class="form-control my-1" name="gPrice"
+							<td><input value= "${dto.gPrice }" type="text" class="form-control my-1" name="gPrice"
 								style="width:500px;margin:10px;"></td>
 						</tr>
 						
@@ -71,7 +71,7 @@
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width:100px; pointer-events: none;">판매수량</button></th>
-							<td><input type="text" class="form-control my-1" name="goods_sellNum"
+							<td><input value= "${dto.gCount }" type="text" class="form-control my-1" name="goods_sellNum"
 								style="width:500px; margin:10px;"></td>
 						</tr>
 						
