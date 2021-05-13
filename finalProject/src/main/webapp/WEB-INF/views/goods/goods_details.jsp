@@ -19,7 +19,7 @@
  				<div>
  				<h1 class="display-4">${dto.gName }</h1>
  				<div class="text-left">상품가격:${dto.gPrice }</div>
- 				<textarea rows="8" cols="40">상품설명</textarea><br>
+ 				<textarea rows="8" cols="40" readonly>${dto.gContent }</textarea><br>
    				
 				   				<!-- dropDown1-start -->
 				<div class="dropdown ms-5 mt-4">

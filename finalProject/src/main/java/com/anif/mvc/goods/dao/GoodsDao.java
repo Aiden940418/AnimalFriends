@@ -19,6 +19,12 @@ public interface GoodsDao {
 	
 	//관리자 페이지에서 굿즈 리스트 상세
 	public GoodsDto adminGoodsDetail(int gNo);
+
+	//관리자 페이지에서 굿즈 등록
+	public int adminGoodsWrite(GoodsDto dto);
+
+	//관리자 페이지에서 굿즈 수정
+	public int adminGoodsUpdate(GoodsDto dto);
 	
 	
 

@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <!DOCTYPE html>
 <html>
 <style type="text/css">
+#button{
+  float: right;
+  
+}
 </style>
 <!-- header -->
 <%@ include file="../includes/header.jsp"%>
@@ -11,15 +17,17 @@
 <!-- page -->
 
 
+
 <div class="contentDiv">
 
 	<div class="container">
 
-		<div class="text mt-5 ms-5">
-
-			<a href="adminGoodsUpdate.do" class="btn btn-outline-success">수정</a> <a href=""
-				class="btn btn-outline-success">삭제</a> <a href="goods.jsp"
-				class="btn btn-outline-success">목록</a>
+		<div class="text mt-5 ms-5" >
+			<div id=button>
+			<a href="adminGoodsUpdateForm.do?gNo=${dto.gNo}" class="btn btn-outline-success">수정</a>&nbsp;
+			<a href="" class="btn btn-outline-success">삭제</a>&nbsp;
+			<a href="adminGoodsList.do" class="btn btn-outline-success">목록</a>&nbsp;&nbsp;
+			</div>
 
 		</div>
 		<hr>
@@ -35,9 +43,9 @@
 									src="https://shop-phinf.pstatic.net/20190110_250/sihek_1547110084456dWx3y_JPEG/70417244050682055_563191345.jpg?type=m510"
 									class="rounded float-start mt-4 ms-5" alt="...">
 							<div>
-								<h1 class="display-4">상품제목</h1>
-								<div class="text-left">상품가격</div>
-								<textarea rows="8" cols="40">설명을 입력해주세용</textarea>
+								<h1 class="display-4">${dto.gName }</h1>
+								<div class="text-left">${dto.gPrice }</div>
+								<textarea rows="8" cols="40" readonly>${dto.gContent }</textarea>
 								<br>
 
 								<!-- dropDown1-start -->
@@ -65,6 +73,7 @@
 							<br> <br>
 							<hr>
 							<div class="container mt-5 text-center	">
+							
 
 
 								<a href="#.detail" class="btn btn-outline-success ms-5">--------상세보기---------</a>
@@ -78,6 +87,7 @@
 
 							<div>
 								<h1 id="detail" class="detail display-4 mt-5">상세보기</h1>
+									${dto.gContent }
 								<br> <br> <br> <br> <br> <br> <br>
 								<br> <br> <br> <br> <br> <br> <br>
 								<br>
