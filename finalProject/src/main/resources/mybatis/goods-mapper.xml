@@ -37,7 +37,7 @@
      <insert id="adminGoodsWrite" parameterType="GoodsDto" >
      	INSERT INTO GOODS
      	VALUES(GNO.NEXTVAL,#{gCtgy}, #{gName}, #{gPrice},
-     		   #{gContent}, #{gStock},#{gCount},SYSDATE)
+     		   #{gContent}, #{gStock},#{gCount},SYSDATE, #{gImg}, #{gThumbImg} )
      </insert>
           
      <!-- 관리자 굿즈 리스트  수정-->

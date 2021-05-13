@@ -14,7 +14,8 @@
 
                 <div class="card-body">
                   <p class="card-text">
-<img src="https://shop-phinf.pstatic.net/20190110_250/sihek_1547110084456dWx3y_JPEG/70417244050682055_563191345.jpg?type=m510" class="rounded float-start mt-4 ms-5" alt="...">
+                 <!-- 굿즈 이미지(서버에 업로드된 이미지 화면출력) -->
+			<img src="resources/${dto.gImg}" class="rounded float-start mt-4 ms-5">
  
  				<div>
  				<h1 class="display-4">${dto.gName }</h1>
