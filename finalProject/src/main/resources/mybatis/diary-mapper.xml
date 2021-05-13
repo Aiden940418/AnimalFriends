@@ -32,7 +32,8 @@
   
   
   	<insert id="insert" parameterType="diaryDto">
-  		
+  		INSERT INTO DIARY
+		VALUES(DNOSEQ.NEXTVAL, #{mno}, #{dcontent}, SYSDATE, #{diaryImg}, #{diaryThumbImg})
   	</insert>
   
   

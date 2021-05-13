@@ -20,6 +20,7 @@
 			<!-- form -->
 			<div style="margin: auto; text-align: center;">
 				<form action="mydiaryWriteRes.do" style="display: inline-block;">
+				<input type="hidden" name="diaryThumbImg" value="aaa.jpg">
 					<table>
 
 						<tr>
