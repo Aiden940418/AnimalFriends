@@ -85,7 +85,9 @@
     top: 0;
     transition: all ease-in-out .35s;
   }
-
+  p {
+  	font-size: 13pt;
+  }
 
 
 Resources

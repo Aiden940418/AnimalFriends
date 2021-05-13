@@ -2,6 +2,8 @@ package com.anif.mvc;
 
 import java.io.Console;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.anif.mvc.goods.biz.GoodsBiz;
 import com.anif.mvc.goods.dto.GoodsDto;
+import com.anif.mvc.member.dto.MemberDto;
 
 @Controller
 public class GoodsController {
@@ -55,25 +58,64 @@ public class GoodsController {
 	}
 	
 	//관리자 페이지에서 굿즈 리스트 상세
-	@RequestMapping(value = "/adminGoodsDetail.do", method = RequestMethod.GET)
+	@RequestMapping(value = "adminGoodsDetail.do", method = RequestMethod.GET)
 	public String adminGoodsDetail(Model model, int gNo) {
 		
 		model.addAttribute("dto",biz.adminGoodsDetail(gNo));
 		return "admin/admin_goodsDetail";
 	}
 	
-	
-	
-	
-	
-	
-	
-	//관리자 페이지에 굿즈 상품등록
-/*	@RequestMapping(value = "admin_goodsWrite.do")
-	public String admin_goodsWrite() {
-		return "admin/admin_goods
+	//관리자 페이지에 굿즈 상품등록 가져오기
+	@RequestMapping(value = "adminGoodsWriteForm.do")
+	public String adminGoodsWriteForm() {
+		return "admin/admin_goodsWrite";
+		
 	}
-	*/
+
+	//관리자 페이지에 굿즈 상품등록
+	@RequestMapping(value = "adminGoodsWriteRes.do", method = RequestMethod.GET)
+	public String admin_goodsWrite(GoodsDto dto, HttpSession session) {
+		MemberDto memberDto = (MemberDto) session.getAttribute("login"); 
+		
+		int res = biz.adminGoodsWrite(dto);
+		
+		if(res>0) {
+			return "redirect:adminGoodsList.do?mNo="+memberDto.getmNo();
+		}else {
+			return "redirect:adminGoodsWriteForm.do";
+		}
+		
+		
+	}
+	//관리자 굿즈 수정 가져오기
+	@RequestMapping(value = "adminGoodsUpdateForm.do",method = RequestMethod.GET)
+	public String adminGoodsUpdateForm(Model model, int gNo) {		
+
+	model.addAttribute("dto",biz.adminGoodsDetail(gNo));
+		return "admin/admin_goodsUpdate";
+	}
+	
+	//관리자 굿즈 수정 
+	@RequestMapping(value = "adminGoodsUpdateRes.do",method = RequestMethod.GET)
+	public String adminGoodsUpdate(GoodsDto dto) {
+
+		int res = biz.adminGoodsUpdate(dto);
+		
+		if(res > 0) {
+			return "redirect:adminGoodsDetail.do?gNo="+dto.getgNo();
+		}else {
+			return "redirect:adminGoodsUpdateForm.do?gNo="+dto.getgNo();
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

@@ -94,6 +94,8 @@ public class AdoptController {
 		}
 
 	}
+	
+	 //입양공고 수정 가져오기
 	@RequestMapping(value="myAdoptUpdateForm.do", method = RequestMethod.GET)
 	public String myadoptUpdateForm(Model model, int aNo) {
 		
@@ -102,7 +104,7 @@ public class AdoptController {
 	}
 
 
-	 //입양공고 수정
+	 //입양공고 수정 등록
 	@RequestMapping(value="myAdoptUpdateRes.do", method = RequestMethod.GET)
 	public String adoptUpdateRes(AdoptDto dto) {
 		
