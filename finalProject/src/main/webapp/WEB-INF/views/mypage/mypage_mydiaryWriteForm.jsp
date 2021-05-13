@@ -33,33 +33,36 @@
 						<tr>
 							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
 									style="width: 130px; pointer-events: none;">이미지</button></th>
-							<td><input type="file" class="form-control my-1" id="file" name="file"
-								size="100"></td>
+							<td><input type="file" class="form-control my-1" id="diaryImg" name="file"
+								size="100" placeholder="이미지를 등록해주세요."></td>
 						</tr>
-						
 						<tr>
-							<td>	
-								<div>
-									<div class="select_img"> <!-- 선택한 이미지 보여주기 -->
-										<img src="" />
-									</div>
-									<script>
-										//선택한 이미지 보여주기
-										$("#file").change(
-											function() {
-												if (this.files && this.files[0]) {
-													var reader = new FileReader;
-													reader.onload = function(data) {
-														$(".select_img img").attr("src", data.target.result).width(200);
-													}
-													reader.readAsDataURL(this.files[0]);
-											}
-										});
-									</script>
-									<%=request.getRealPath("/") %>
-								</div>
+							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
+									style="width: 130px; pointer-events: none;">이미지 미리보기</button></th>
+							<td id="select_img" style="table-layout:auto; text-algin:center;">
+									<img src=""/>
+							
 							</td>
+							
 						</tr>
+						<tr>
+							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
+									style="width: 130px; pointer-events: none;">이미지 경로(임시)</button></th>
+							<td><%=request.getRealPath("/") %></td>
+						</tr>
+			
+						<script>
+								  $("#diaryImg").change(function(){
+								   if(this.files && this.files[0]) {
+								    var reader = new FileReader;
+								    reader.onload = function(data) {
+								     	$("#select_img img").attr("src", data.target.result).width(300);        
+								    }
+								    reader.readAsDataURL(this.files[0]);
+								   }
+								  });
+						</script>
+						
 						
 						<tr>
 							<th style="vertical-align: top;"><button type="button"
