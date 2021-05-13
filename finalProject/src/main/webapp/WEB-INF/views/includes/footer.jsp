@@ -1,9 +1,8 @@
     <!-- footer -->
     <br>
-    <hr>
     
     <footer>
-    <div class="footer text-center">
+    <div class="container navbar-fixed-bottom mt-5" style="text-align:center;">
         <p>
             @ 2017-2019 Companny, Inc - Private - Terms
         </p>
