@@ -30,6 +30,13 @@ public class ACommentBizImpl implements ACommentBiz{
 	public int aCommentInsert(ACommentDto comDto) {
 		return dao.aCommentInsert(comDto);
 	}
+
+
+	@Override
+	public int aCommentDelete(ACommentDto comDto) {
+	
+		return dao.aCommentDelete(comDto);
+	}
 	
 	
 	

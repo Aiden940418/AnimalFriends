@@ -12,4 +12,8 @@ public interface ACommentBiz {
 	
 	public int aCommentInsert(ACommentDto comDto);
 	
+	
+	public int aCommentDelete(ACommentDto comDto);
+	
+	
 }

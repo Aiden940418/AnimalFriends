@@ -13,5 +13,8 @@ public interface ACommentDao {
 	
 	public int aCommentInsert(ACommentDto comDto);
 	
+	public int aCommentDelete(ACommentDto comDto);
+	
+	
 
 }

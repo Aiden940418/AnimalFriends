@@ -56,5 +56,23 @@ public class ACommentDaoImpl implements ACommentDao {
 	}
 	
 	
+	public int aCommentDelete(ACommentDto comDto) {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE+"aCommentDelte",comDto);
+		} catch (Exception e) {
+			System.out.println("[error: delete comments");
+			e.printStackTrace();
+		}
+		
+		
+		return res;
+		
+		
+	};
+	
+	
 
 }

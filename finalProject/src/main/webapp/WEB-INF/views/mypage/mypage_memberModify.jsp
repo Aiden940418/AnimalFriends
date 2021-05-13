@@ -9,8 +9,27 @@
 
 <!-- 우편번호 검색하는 로직  -->
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+	
+	$('input[type=button][name=addrbtn]').on('click',function(){
+		
+    	if($('#mAddr1').val() !=''){
+	    	    $('#mAddr1').val('');
+	    	    $('#mAddr3').val('');
+	    	    
+	
+	}
+	
+	</script>
+
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+
+
+
 
 
 function execPostCode() {
@@ -93,7 +112,7 @@ function execPostCode() {
 				
 				<tr>
 				<th>비밀번호</th>
-				<td><input class="mPw" type="password"  name="mPw" id="pw" style="width:300px; height:40px">
+				<td><input class="mPw" type="password"  name="mPw" id="pw" style="width:300px; height:40px" value="{login.mPw}" readonly="readonly">
 				</td>
 				</tr>
 	
@@ -112,7 +131,7 @@ function execPostCode() {
 				<tr>
 				<th>주소</th>
 				<td><input type="text" id="mAddr1"	  name="mAddr1" value="${login.mAddr1}" style="width:100px; height:40px">
-				<input class="btn btn-outline-success" type="button" name="idCheck" value="주소검색"
+				<input class="btn btn-outline-success" type="button" name="addrbtn" value="주소검색"
 				onclick="execPostCode();"
 				style="font-size:20px">
 				</td>
@@ -135,11 +154,16 @@ function execPostCode() {
 				
 				</tr>
 			
-				
 			
 			</table>
 			
 			</div>
+			
+			<div class="container text-center mt-5" style="margin-left:120px;">
+			<button type="submit">완료</button>
+					<button type="button">취소</button>
+			</div>
+			
 			</div>
 	
 	

@@ -28,16 +28,7 @@ public class AdminController {
 	private QnaBoardAdminBiz biz;
 
 	
-	//adminAdopt
-	
-	@RequestMapping("/adminAdopt.do")
-	public String adminAdopt(Model model) {
-		
-		
-		
-		return "admin/admin_adoptList";
-	}
-	
+
 	
 	//관리자 유저리스트 	
 	@RequestMapping("/adminUserList.do")

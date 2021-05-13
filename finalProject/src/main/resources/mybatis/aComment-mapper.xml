@@ -44,4 +44,17 @@
   
   
   
+  <!-- comment delete -->
+  
+  <delete id="aCommentDelete" parameterType="aCommentDto">
+  
+  
+  DELETE FROM ADOPTCOMMENT
+  WHERE ACOMNO = #{aComNo) AND WRITER=#{WRITER} 
+  
+  
+  </delete>
+  
+  
+  
   </mapper>

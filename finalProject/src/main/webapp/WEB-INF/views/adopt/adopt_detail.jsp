@@ -184,7 +184,7 @@ a.button:hover {
 				<th style="width:50px;">${com.writer }</th>
 				<td style="width:400px">${com.aComContent }</td>
 				<td>${com.aComDate}</td>
-				<td><button value="삭제">삭제</button>
+				<td><button value="삭제" onclick="location.href='aCommentDelete.do?aComNo=${com.aComNo}&writer=${login.mNick}'">삭제</button>
 				</tr>
 			
 			</table>
