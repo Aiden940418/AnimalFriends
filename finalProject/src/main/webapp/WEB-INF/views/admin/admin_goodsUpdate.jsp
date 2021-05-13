@@ -27,16 +27,9 @@
 					<table>
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
-									style="width: 100px; pointer-events: none; ">동물 종</button></th>
-							<td><select name="gCtgy" class="form-control ms-2"
-								style="width: 70px ">
-									<option value="강아지">강아지</option>
-									<option value="고양이">고양이</option>
-									<option value="도마뱀">도마뱀</option>
-									<option value="거북이">거북이</option>
-									<option value="기타">기타</option>
-									
-							</select></td>
+									style="width: 100px; pointer-events: none; ">카테고리</button></th>
+							<td><input type="text" class="form-control my-1" name="gCtgy" value="${dto.gCtgy }"
+								readonly="readonly" style="width:500px;margin:10px;"></td>
 						</tr>					
 					
 					
@@ -50,7 +43,7 @@
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width:100px; pointer-events: none;">가격</button></th>
-							<td><input type="text" class="form-control my-1" name="gPrice"
+							<td><input type="text" class="form-control my-1" name="gPrice" value="${dto.gPrice }"
 								style="width:500px;margin:10px;"></td>
 						</tr>
 						
@@ -59,7 +52,7 @@
 							<th style="vertical-align: top;"><button type="button" class="btn btn-outline-success"
 									style="width:100px; pointer-events: none;">상품소개</button></th>
 							<td><textarea rows="20" cols="50" class="form-control my-1"
-									name="gContent" style=" width:500px; height:300px; resize:none; margin:10px;"></textarea></td>
+									name="gContent" style=" width:500px; height:300px; resize:none; margin:10px;" value="${dto.gContent }"></textarea></td>
 						</tr>
 
 						<tr>
@@ -70,8 +63,8 @@
 						</tr>
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
-									style="width:100px; pointer-events: none;">판매수량</button></th>
-							<td><input type="text" class="form-control my-1" name="goods_sellNum"
+									style="width:100px; pointer-events: none;">재고수량</button></th>
+							<td><input type="text" class="form-control my-1" name="gStock" value="${dto.gStock}"
 								style="width:500px; margin:10px;"></td>
 						</tr>
 						
