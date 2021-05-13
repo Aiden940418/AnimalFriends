@@ -74,15 +74,15 @@ public class MypageController {
 		//현재 로그인 되어있는 계정의 회원번호를 가져와서 dto에 세팅해주기
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
 		dto.setMno(memberDto.getmNo());
-				
+		
 		int res = diaryBiz.insert(dto);
 
 		if (res > 0) { // 글 insert 성공 시
 			model.addAttribute("msg", "글 등록 성공!");
-			model.addAttribute("url", "/myQnaList.do");
+			model.addAttribute("url", "/diaryList.do");
 		} else {  //글 insert 실패 시
 			model.addAttribute("msg", "글 등록 실패!");
-			model.addAttribute("url", "/myQnaWriteForm.do");
+			model.addAttribute("url", "/mydiaryWriteForm.do");
 		}
 		
 		return "/mypage/alertPage";
