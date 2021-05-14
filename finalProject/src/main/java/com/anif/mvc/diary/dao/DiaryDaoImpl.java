@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.anif.mvc.diary.dto.DiaryDto;
+import com.anif.mvc.diary.dto.DiaryReplyDto;
 
 @Repository
 public class DiaryDaoImpl implements DiaryDao{
@@ -65,6 +66,23 @@ public class DiaryDaoImpl implements DiaryDao{
 		}
 		
 		return res;
+	}
+
+	
+	
+	//댓글, 댓글의 답글 관련
+	@Override
+	public List<DiaryReplyDto> DRselectList(int dno) {
+		List<DiaryReplyDto> list = new ArrayList<DiaryReplyDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE + "DRselectList", dno);
+		} catch (Exception e) {
+			System.out.println("[error] : DRselectList");
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 	
 	

@@ -55,8 +55,6 @@
   		WHERE QGROUPNO = #{qgroupno}
   	</delete>
   	
-
-
-
+  	
 
 </mapper>
