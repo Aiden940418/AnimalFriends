@@ -99,6 +99,16 @@ public class MemberDaoImpl implements MemberDao {
 
 		return result;
 	}
+
+
+
+	@Override
+	public int memberUpdate(MemberDto dto) {
+		
+		int res = sqlSession.update(NAMESPACE+"memberUpdate",dto);
+		
+		return res;
+	}
 	
 	
 	

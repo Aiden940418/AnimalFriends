@@ -15,7 +15,7 @@
                 <div class="card-body">
                   <p class="card-text">
                  <!-- 굿즈 이미지(서버에 업로드된 이미지 화면출력) -->
-			<img src="resources/${dto.gImg}" class="rounded float-start mt-4 ms-5">
+			<img src="resources/${dto.gImg}" class="rounded float-start mt-4 ms-5" style="width:550px; height:400px">
  
  				<div>
  				<h1 class="display-4">${dto.gName }</h1>
@@ -23,23 +23,25 @@
  				<textarea rows="8" cols="40" readonly>${dto.gContent }</textarea><br>
    				
 				   				<!-- dropDown1-start -->
-				<div class="dropdown ms-5 mt-4">
-				 <a class="btn btn-outline-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-				    ----수량선택----
-				  </a>
+				<div class="container dropdown ms-5 mt-4">
+
 				
-				  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-				    <li><a class="dropdown-item" href="#">1</a></li>
-				    <li><a class="dropdown-item" href="#">2</a></li>
-				    <li><a class="dropdown-item" href="#">3</a></li>
-				  </ul>
+					 <button type="button" class="btn btn-outline-success"
+							style="width:100px; pointer-events: none;">수량선택</button>
+					<select name="aArea" class="form-control ms-2" style="width:200px" name="수량선택" style="margin-left:300px">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
 
 
 <!-- dropDown1-end -->
    				<br>
    				<br>
-   				<a href="goodsPurchase.do" class="btn btn-outline-success btn-lg">-----결제하기----</a>
-   				<a href="myGoodsBuyList.do" class="btn btn-outline-success btn-lg ms-3">-----장바구니----</a>
+   				<a href="goodsPurchase.do" class="btn btn-outline-success btn-lg" style="width:200px">결제하기</a>
+   				<a href="myGoodsBuyList.do" class="btn btn-outline-success btn-lg ms-3"style="width:200px">장바구니</a>
    				
    				</div>
    				</div>
@@ -51,10 +53,10 @@
 	<div class="container mt-5 text-center	">
 	
 
-<a href="#.detail" class="btn btn-outline-success ms-5">--------상세보기---------</a>
-<a href="#" class="btn btn-outline-success ms-5">--------리뷰보기---------</a>
-<a href="#" class="btn btn-outline-success ms-5">---------Q&A---------</a>	
-<a href="#" class="btn btn-outline-success ms-5">--------업체소개---------</a>	
+<a href="#.detail" class="btn btn-outline-success ms-5"style="width:200px">상세보기</a>
+<a href="#" class="btn btn-outline-success ms-5"style="width:200px">리뷰보기</a>
+<a href="#" class="btn btn-outline-success ms-5"style="width:200px">Q&A</a>	
+<a href="#" class="btn btn-outline-success ms-5"style="width:200px">업체소개</a>	
 	
 	
 	

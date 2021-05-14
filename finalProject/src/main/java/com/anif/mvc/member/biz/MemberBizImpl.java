@@ -47,4 +47,9 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.pwChk(mId, mPw);
 	}
 
+	@Override
+	public int memberUpdate(MemberDto dto) {
+		return dao.memberUpdate(dto);
+	}
+
 }

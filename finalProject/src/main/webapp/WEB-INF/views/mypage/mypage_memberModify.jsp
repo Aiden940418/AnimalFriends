@@ -101,24 +101,28 @@ function execPostCode() {
 		
 		<!-- 회원정보 수정 폼 -->
 		<div class="container" style="margin-left: 350px;">
+		
+		<form action="memberUpdate.do" method="POST">
+		
+			<input type="hidden" name="mNo" value="${login.mNo}">
 			<table>
 						
 				<tr>
 				<th>아이디</th>
-				<td><input id="mId" type="text"  name="mId" style="width:300px; height:40px" readonly="readonly" value="${login.mId}">
+				<td><input id="mId" type="text"  style="width:300px; height:40px" readonly="readonly" value="${login.mId}">
 				</td>
 				
 				</tr>
 				
 				<tr>
 				<th>비밀번호</th>
-				<td><input class="mPw" type="password"  name="mPw" id="pw" style="width:300px; height:40px" value="{login.mPw}" readonly="readonly">
+				<td><input class="mPw" type="password" id="pw" style="width:300px; height:40px" value="{login.mPw}" readonly="readonly">
 				</td>
 				</tr>
 	
 				<tr>
 				<th>이름</th>
-				<td><input type="text"  id="mName" name="mName" value="${login.mName}" readonly="readonly"style="width:300px; height:40px">
+				<td><input type="text"  id="mName"  value="${login.mName}" readonly="readonly"style="width:300px; height:40px">
 				</td>
 				</tr>
 				
@@ -140,7 +144,7 @@ function execPostCode() {
 				
 				<tr>
 				<th>기본주소</th>
-				<td><input type="text"  id="mAddr2" name="mAddr2" value="${login.mAddr2 }"style="width:300px; height:40px"></td>
+				<td><input type="text"  id="mAddr2" name="mAddr2" value="${login.mAddr2}"style="width:300px; height:40px"></td>
 				</tr>
 				
 				<tr>
@@ -156,14 +160,17 @@ function execPostCode() {
 			
 			
 			</table>
-			
-			</div>
-			
-			<div class="container text-center mt-5" style="margin-left:120px;">
+			<div class="container text-center mt-5" style="margin-right:600px;">
 			<button type="submit">완료</button>
-					<button type="button">취소</button>
+			<button type="button">취소</button>
+			</div>
+				</form>	
+			
 			</div>
 			
+	
+
+				
 			</div>
 	
 	

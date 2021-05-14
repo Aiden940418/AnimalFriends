@@ -180,6 +180,26 @@ public class LoginController {
 		}
 		
 		
+		//회원정보 수정 
+		
+		@RequestMapping(value="/memberUpdate.do", method = RequestMethod.POST)
+		public String memberUpdate(MemberDto dto, HttpSession session) {
+			
+			int res = biz.memberUpdate(dto);
+			
+			session.invalidate();
+			
+			if(res > 0) {
+				
+				return "redirect:loginForm.do";
+				
+			}else {
+			return "mypage/mypage_memberModify";
+			
+		}
+		
+		
+}
 		
 }
 

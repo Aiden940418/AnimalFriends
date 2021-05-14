@@ -21,22 +21,22 @@
 		
 				<br>
 
-				<div class="container text-center">
+				<div class="container text-center" style="margin-left:130px">
 				
-				<form action="myAdoptWriteRes.do" method="GET">
-						<input type="hidden" name="aMNo" value="${login.mNo}">
+				<form action="myAdoptWriteRes.do" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="aMNo" value="${login.mNo}" >
 			
 					<table>
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
-									style="width:100px; pointer-events: none;">제목</button></th>
+									style="width:130px; pointer-events: none;">제목</button></th>
 							<td><input type="text" class="form-control my-1" name="aTitle"
 								style="width:500px; margin:10px;"></td>
 						</tr>
 						
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
-									style="width:100px; pointer-events: none;">지역설정</button></th>
+									style="width:130px; pointer-events: none;">지역설정</button></th>
 							<td><select name="aArea" class="form-control ms-2" style="width:200px">
 						<option value="서울동부">서울동부</option>
 						<option value="서울서부">서울서부</option>
@@ -54,7 +54,7 @@
 						
 						<tr>
 							<th><button type="button" class="btn btn-outline-success mt-1"
-									style="width:100px; pointer-events: none;">동물 종</button></th>
+									style="width:130px; pointer-events: none;">동물 종</button></th>
 							<td><select name="aType" class="form-control ms-2 mt-2" style="width:200px">
 						<option value="강아지">강아지</option>
 						<option value="고양이">고양이</option>
@@ -68,14 +68,14 @@
 						
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
-									style="width:100px; pointer-events: none;">동물이름</button></th>
+									style="width:130px; pointer-events: none;">동물이름</button></th>
 							<td><input type="text" class="form-control my-1" name="anmName" id="anmName"
 								style="width:500px; margin:10px;" placeholder="동물 이름을 입력해주세요"></td>
 						</tr>
 						
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
-									style="width:100px; pointer-events: none;">동물품종</button></th>
+									style="width:130px; pointer-events: none;">동물품종</button></th>
 							<td><input type="text" class="form-control my-1" name="anmBreed" id="anmBreed"
 								style="width:500px; margin:10px;" placeholder="동물 품종을 입력해주세요"></td>
 						</tr>
@@ -83,7 +83,7 @@
 						
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
-									style="width:100px; pointer-events: none;">동물나이</button></th>
+									style="width:130px; pointer-events: none;">동물나이</button></th>
 							<td><input type="text" class="form-control my-1" name="anmAge" id="anmAge"
 								style="width:500px; margin:10px;" placeholder="동물 나이를 입력해주세요"></td>
 						</tr>
@@ -93,10 +93,10 @@
 
 						<tr>
 							<th style="vertical-align: top;"><button type="button" class="btn btn-outline-success"
-									style="width:100px; pointer-events: none;">동물 성별</button></th>
+									style="width:130px; pointer-events: none;">동물 성별</button></th>
 							<td>
-							<div class="btn-group btn-group-toggle" data-toggle="buttons" style="width:100px; margin-right:400px">
-							<label class="btn btn-secondary"> 
+							<div class="btn-group btn-group-toggle" data-toggle="buttons" style="width:500px; margin-right:400px">
+							<label class="btn "> 
 							
 								<input type="radio"
 								name="anmGender" value="암컷" autocomplete="off"> 암
@@ -110,10 +110,10 @@
 						
 						<tr>
 							<th style="vertical-align: top;"><button type="button" class="btn btn-outline-success"
-									style="width:100px; pointer-events: none;">예방 접종</button></th>
+									style="width:130px; pointer-events: none;">예방 접종</button></th>
 							<td>
-							<div class="btn-group btn-group-toggle" data-toggle="buttons" style="width:200px; margin-right:400px">
-							<label class="btn btn-secondary"> 
+							<div class="btn-group btn-group-toggle" data-toggle="buttons" style="width:500px; margin-right:400px">
+							<label class="btn"> 
 							
 								<input type="radio"
 								name="anmVcnYn" value="Y" autocomplete="off"> Y
@@ -130,10 +130,10 @@
 						
 						<tr>
 							<th style="vertical-align: top;"><button type="button" class="btn btn-outline-success"
-									style="width:100px; pointer-events: none;">중성화 여부 </button></th>
+									style="width:130px; pointer-events: none;">중성화 여부 </button></th>
 							<td>
-							<div class="btn-group btn-group-toggle" data-toggle="buttons" style="width:200px; margin-right:400px">
-							<label class="btn btn-secondary"> 
+							<div class="btn-group btn-group-toggle" data-toggle="buttons" style="width:500px; margin-right:400px">
+							<label class="btn"> 
 							
 								<input type="radio"
 								name="anmNtrYn" value="Y" autocomplete="off"> Y
@@ -148,7 +148,7 @@
 
 						<tr>
 							<th style="vertical-align: top;"><button type="button" class="btn btn-outline-success"
-									style="width:100px; pointer-events: none;">연락처</button></th>
+									style="width:130px; pointer-events: none;">연락처</button></th>
 							<td>
 							<input type="text" class="form-control my-1" name="aPhone"
 								style="width:500px; margin:10px;" placeholder="입양문의시 연락처(선택)">
@@ -159,27 +159,50 @@
 
 						<tr>
 							<th><button class="btn btn-outline-success"
-									style="width:100px; pointer-events: none;">이미지</button></th>
-							<td><input type="file" class="form-control my-1"
-								style="width:500px;margin:10px;" placeholder="이미지를 등록해주세요."></td>
+									style="width:130px; pointer-events: none;">이미지</button></th>
+							<td><input type="file" class="form-control my-1" name="file"
+								id="aImg"style="width:500px;margin:10px;" placeholder="이미지를 등록해주세요."></td>
 						</tr>
+										
+						<tr>
+							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
+									style="width: 130px; pointer-events: none;">이미지 미리보기</button></th>
+							<td id="select_img" style="table-layout:auto; float: left; text-algin:center;" >
+									<img src=""/>
+							
+							</td>
+							
+						</tr>
+				
+						<script>
+								  $("#aImg").change(function(){
+								   if(this.files && this.files[0]) {
+								    var reader = new FileReader;
+								    reader.onload = function(data) {
+								     	$("#select_img img").attr("src", data.target.result).width(300);        
+								    }
+								    reader.readAsDataURL(this.files[0]);
+								   }
+								  });
+						</script>
+						
 
 						
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
-								style="width:100px; pointer-events: none;">메모</button>
+								style="width:130px; pointer-events: none;">메모</button>
 								</th>
-						<td><input type="text" style=" margin:10px; width:500px; height:200px; margin-right:100px; " 
+						<td><input type="text" style=" margin:10px; width:500px; height:200px; margin-right:400px; " 
 						name="aMemo"></td>
 				
 						
 
 						<tr>
-							<td colspan="2"><button class="btn btn-outline-success"
-									onclick="location.href='adminGoodsDetail.do'" style="width:100px; pointer-events: none;float: right;margin:10px;">취소</button>
+							<td colspan="2"><button class="btn btn-outline-success mt-5"
+									onclick="location.href='adminGoodsDetail.do'" style="width:130px; pointer-events: none;float: right;margin-right:300px;">취소</button>
 							 <input type="submit"
-								value="작성" class="btn btn-outline-success"
-								style="width: 100px; float: right; margin:10px;"></td>
+								value="작성" class="btn btn-outline-success mt-5"
+								style="width:130px; float:right; margin-right:10px;"></td>
 
 						</tr>
 						

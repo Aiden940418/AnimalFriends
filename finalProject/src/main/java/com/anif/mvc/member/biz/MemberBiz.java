@@ -14,6 +14,8 @@ public interface MemberBiz {
 	public MemberDto login(MemberDto dto);
 	
 	public boolean pwChk(String mId, String mPw);
+	
+	public int memberUpdate(MemberDto dto);
 
 
 }

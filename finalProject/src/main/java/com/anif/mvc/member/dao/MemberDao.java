@@ -21,6 +21,7 @@ public interface MemberDao {
 	
 	public boolean pwChk(String mId,  String mPw);
 	
+	public int memberUpdate(MemberDto dto);
 	
 	
 	
