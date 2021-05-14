@@ -2,13 +2,17 @@
     pageEncoding="UTF-8"%>
 
 
-
-
-<!-- header -->
+	<!-- header -->
 	<%@ include file="../includes/header.jsp" %>
-	
 	<!-- leftMenuBar -->
 	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>	
+	
+	
+	
+	
+	
+	
+	
 	<!-- 페이지 내용 부분 -->
 	<div class="contentDiv">
 		
@@ -33,7 +37,7 @@
 						</tr>
 						<tr>
 							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
-									style="width: 130px; pointer-events: none;">이미지 예시</button></th>
+									style="width: 130px; pointer-events: none;">이미지 미리보기</button></th>
 							<td id="select_img" style="table-layout:auto; text-algin:center;">
 									<img src=""/>
 							
@@ -42,7 +46,7 @@
 						</tr>
 						<tr>
 							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
-									style="width: 130px; pointer-events: none;">Image Path</button></th>
+									style="width: 130px; pointer-events: none;">이미지 경로(임시)</button></th>
 							<td><%=request.getRealPath("/") %></td>
 						</tr>
 			
@@ -51,7 +55,7 @@
 								   if(this.files && this.files[0]) {
 								    var reader = new FileReader;
 								    reader.onload = function(data) {
-								     $("#select_img img").attr("src", data.target.result).width(500);        
+								     	$("#select_img img").attr("src", data.target.result).width(300);        
 								    }
 								    reader.readAsDataURL(this.files[0]);
 								   }
@@ -79,6 +83,15 @@
 					</table>
 				</form>
 			</div>
+
+
+				
+
+				
+
+
+
+
 		</div>
 		<!-- footer -->
 		<%@ include file="../includes/footer.jsp"%>

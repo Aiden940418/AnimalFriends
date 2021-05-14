@@ -16,6 +16,11 @@
 </script>
 
 
+<!-- ionicons 사용 위한 코드 -->
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+<!-- 제이쿼리 사용 위한 코드 -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Yeon+Sung&display=swap');

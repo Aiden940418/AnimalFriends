@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ import com.anif.mvc.diary.imgUpload.UploadFileUtils;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.qnaBoard.biz.QnaBoardBiz;
 import com.anif.mvc.qnaBoard.dto.QnaBoardDto;
+import com.anif.mvc.utils.UploadFileUtils;
 
 @Controller
 public class MypageController {
@@ -76,7 +78,7 @@ public class MypageController {
 		return "mypage/mypage_mydiaryWriteForm";
 	}
 	
-	@RequestMapping("/mydiaryWriteRes.do")
+	@RequestMapping(value = "/mydiaryWriteRes.do")
 	public String mydiaryWriteRes(DiaryDto dto, MultipartFile file, HttpSession session, Model model) throws IOException, Exception {
 		logger.info("My Diary INSERT");
 		
