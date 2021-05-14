@@ -116,6 +116,59 @@
 	}
 	
 	
+
+$(document).on("click", '#replyBtn', function getReplyList() {
+		var id = $(this).val();
+		console.log(id);
+		
+		var diaryVal = {
+				"dno":id
+		};
+		
+		var html = "<div class='replys'>";
+
+		$.ajax({
+			type:"post",
+			url:"DRselectList.do",
+			data:JSON.stringify(diaryVal),
+			contentType:"application/json",
+			dataType:"json",
+			success:function(replyList){
+				console.log(replyList);
+				
+				for(var i = 0 ; i < replyList.length; i++){
+					var nick = replyList[i].mnick;
+					var content = replyList[i].drcontent;
+					var date = replyList[i].drdateToChar;
+					console.log(nick);
+					console.log(content);
+					console.log(date);
+					html += nick+": "+content+" /"+date+"<hr>";
+					
+					
+				}
+				html += "</div>";
+				console.log(html);
+				//화면에 뿌려지지가 않는다...
+				$(this).parent().append(html);
+				
+				
+			},
+			error:function(){
+				alert("댓글 ajax 불러오기 실패..");
+			}
+			
+		});
+		
+		
+		
+		
+});
+	
+	
+	
+	
+	
 </script>
 
 
@@ -174,14 +227,16 @@
 						</div>
 						
 						<div class="card-footer bg-transparent border-success">
-							<form action="">
+							<!--등록 박스랑 버튼 임시 주석처리 <form action="">
 								<input type="text" style="width: 700px; height: 38px;">
 								<button type="submit" class="btn btn-outline-success ms-1 float-end">등록</button>
-							</form>
+							</form> -->
 							
 							<!-- 댓글 리스트 부분 -->
 							<div id="replyList">
-								
+								<div class="d-grid gap-2">
+								<button class="btn btn-success" id="replyBtn" type="button" value="${dto.dno }" >댓글 보기</button>
+								</div>
 							</div>
 							
 						</div>

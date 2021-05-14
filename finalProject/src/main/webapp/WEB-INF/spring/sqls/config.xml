@@ -13,6 +13,7 @@
   	<typeAlias type="com.anif.mvc.common.pagination.Criteria" alias="Criteria" />
   	<typeAlias type="com.anif.mvc.diary.dto.DiaryDto" alias="diaryDto"/>
   	<typeAlias type="com.anif.mvc.diary.dto.LikeTableDto" alias="likeTableDto"/>
+  	<typeAlias type="com.anif.mvc.diary.dto.DiaryReplyDto" alias="DiaryReplyDto"/>
   	
   	</typeAliases>
   	
