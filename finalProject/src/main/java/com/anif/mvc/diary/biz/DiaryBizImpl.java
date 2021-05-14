@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.anif.mvc.diary.dao.DiaryDao;
 import com.anif.mvc.diary.dto.DiaryDto;
+import com.anif.mvc.diary.dto.DiaryReplyDto;
 
 @Service
 public class DiaryBizImpl implements DiaryBiz{
@@ -30,6 +31,14 @@ public class DiaryBizImpl implements DiaryBiz{
 	@Override
 	public int insert(DiaryDto dto) {
 		return dao.insert(dto);
+	}
+
+
+	
+	//댓글, 댓글의 답글 관련
+	@Override
+	public List<DiaryReplyDto> DRselectList(int dno) {
+		return dao.DRselectList(dno);
 	}
 
 }

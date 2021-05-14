@@ -178,7 +178,12 @@
 								<input type="text" style="width: 700px; height: 38px;">
 								<button type="submit" class="btn btn-outline-success ms-1 float-end">등록</button>
 							</form>
-							<br>여기에 댓글<br>여기에 댓글<br>여기에 댓글<br>여기에 댓글<br>
+							
+							<!-- 댓글 리스트 부분 -->
+							<div id="replyList">
+								
+							</div>
+							
 						</div>
 					</div>
 				

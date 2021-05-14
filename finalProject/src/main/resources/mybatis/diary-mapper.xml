@@ -41,4 +41,23 @@
   
   
   
+  
+  	<!-- 댓글, 댓글의 답글 관련 -->
+  	<select id="DRselectList" parameterType="int" resultType="DiaryReplyDto">
+  		SELECT DRNO, DNO, DRGROUPNO, DRTITLETAB, DRGROUPSQ, MNO, DRCONTENT, 
+        		TO_CHAR(DRDATE, 'YYYY-MM-DD HH24:MI') AS drdateToChar, MNICK
+		FROM DIARYREPLY DR
+		JOIN MEMBER USING(MNO)
+		WHERE DNO=#{dno}
+		ORDER BY DRGROUPNO ASC, DRGROUPSQ ASC
+  	</select>
+  
+  
+  
+  
+  
+  
+  
+  
+  
   </mapper>

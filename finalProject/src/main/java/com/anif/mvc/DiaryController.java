@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.anif.mvc.diary.biz.DiaryBiz;
 import com.anif.mvc.diary.dto.DiaryDto;
+import com.anif.mvc.diary.dto.DiaryReplyDto;
 
 @Controller
 public class DiaryController {
@@ -48,6 +49,15 @@ public class DiaryController {
 		
 		return list; 
 	}
+	
+	
+	
+	//댓글, 댓글의 답글 관련
+	//@RequestMapping("/DRselectList.do")
+//	public Map DRselectList(Map<String, String> dto){
+//		
+//		
+//	}
 	
 	
 	
