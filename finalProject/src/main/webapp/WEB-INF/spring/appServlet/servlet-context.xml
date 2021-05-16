@@ -43,7 +43,6 @@
 	<!-- 업로드 경로 설정 (긴 경로를 uploadPath라는 이름으로 간소화 시킴) -->
 	<beans:bean class="java.lang.String" id="uploadPath">
 		<beans:constructor-arg value="C:\Users\user\Documents\GitHub\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\finalProject\resources" />
-		
 	</beans:bean>
 
 	<!-- 일반 파일 업로드 경로 -->
