@@ -191,6 +191,8 @@ public class LoginController {
 			
 			if(res > 0) {
 				
+				
+				
 				return "redirect:loginForm.do";
 				
 			}else {
@@ -200,6 +202,12 @@ public class LoginController {
 		
 		
 }
+		
+		
+	@RequestMapping(value="/kakalogin.do")	
+	public String kakaoLogin() {
+		return "main";
+	}
 		
 }
 

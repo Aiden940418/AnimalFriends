@@ -225,7 +225,6 @@ public class AdoptController {
 
 		
 		if(res>0) {
-			abiz.replyCnt(comDto.getaNo());
 			return "redirect:adoptDetail.do?aNo="+comDto.getaNo();
 		}else {
 

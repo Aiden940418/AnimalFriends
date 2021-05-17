@@ -17,9 +17,10 @@
 	<!-- 페이지 내용 부분 -->
 	<div class="contentDiv">
 		
+		<div class="container">
 		<!-- 상단 제목부분 -->
-		<div style="margin-left: 550px;">
-			<h1>나의 장바구니</h1>
+		<div class="container text-center mt-5">
+			<h1>${login.mNick}님 장바구니</h1>
 			<br>
 		</div>
 		<br>
@@ -46,142 +47,19 @@
 								내용 : <br>
 								가격 : <br>
 							</p>
+					<button class="ms-4">주문하기</button><button class="ms-4">삭제</button>
 						</div>
 					</div>
 				</div>
 				
-				<!-- 카드 박스 (체크박스 포함) -->
-				<div class="col-sm">
-					<!-- 체크박스 -->
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value=""
-							id="flexCheckDefault"> <label class="form-check-label"
-							for="flexCheckDefault">CheckBox</label>
-					</div>
-					<!-- 카드 부분 -->
-					<div class="card" style="width: 15rem; margin-top: 20px;">
-						<img class="card-img-top"
-							src="resources/images/goods.png" alt="Card image cap">
-						<div class="card-body">
-							<p class="card-text">
-								상품명 : <br> 
-								내용 : <br>
-								가격 : <br>
-							</p>
-						</div>
-					</div>
-				</div>
+			
+				<!--  카드박스 끝 -->
 				
-				<!-- 카드 박스 (체크박스 포함) -->
-				<div class="col-sm">
-					<!-- 체크박스 -->
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value=""
-							id="flexCheckDefault"> <label class="form-check-label"
-							for="flexCheckDefault">CheckBox</label>
-					</div>
-					<!-- 카드 부분 -->
-					<div class="card" style="width: 15rem; margin-top: 20px;">
-						<img class="card-img-top"
-							src="resources/images/goods.png" alt="Card image cap">
-						<div class="card-body">
-							<p class="card-text">
-								상품명 : <br> 
-								내용 : <br>
-								가격 : <br>
-							</p>
-						</div>
-					</div>
-				</div>
 				
-				<!-- 카드 박스 (체크박스 포함) -->
-				<div class="col-sm">
-					<!-- 체크박스 -->
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value=""
-							id="flexCheckDefault"> <label class="form-check-label"
-							for="flexCheckDefault">CheckBox</label>
-					</div>
-					<!-- 카드 부분 -->
-					<div class="card" style="width: 15rem; margin-top: 20px;">
-						<img class="card-img-top"
-							src="resources/images/goods.png" alt="Card image cap">
-						<div class="card-body">
-							<p class="card-text">
-								상품명 : <br> 
-								내용 : <br>
-								가격 : <br>
-							</p>
-						</div>
-					</div>
+				<div>
+
 				</div>
-				
-				<!-- 카드 박스 (체크박스 포함) -->
-				<div class="col-sm">
-					<!-- 체크박스 -->
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value=""
-							id="flexCheckDefault"> <label class="form-check-label"
-							for="flexCheckDefault">CheckBox</label>
-					</div>
-					<!-- 카드 부분 -->
-					<div class="card" style="width: 15rem; margin-top: 20px;">
-						<img class="card-img-top"
-							src="resources/images/goods.png" alt="Card image cap">
-						<div class="card-body">
-							<p class="card-text">
-								상품명 : <br> 
-								내용 : <br>
-								가격 : <br>
-							</p>
-						</div>
-					</div>
-				</div>
-				
-				<!-- 카드 박스 (체크박스 포함) -->
-				<div class="col-sm">
-					<!-- 체크박스 -->
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value=""
-							id="flexCheckDefault"> <label class="form-check-label"
-							for="flexCheckDefault">CheckBox</label>
-					</div>
-					<!-- 카드 부분 -->
-					<div class="card" style="width: 15rem; margin-top: 20px;">
-						<img class="card-img-top"
-							src="resources/images/goods.png" alt="Card image cap">
-						<div class="card-body">
-							<p class="card-text">
-								상품명 : <br> 
-								내용 : <br>
-								가격 : <br>
-							</p>
-						</div>
-					</div>
-				</div>
-				
-				<!-- 카드 박스 (체크박스 포함) -->
-				<div class="col-sm">
-					<!-- 체크박스 -->
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value=""
-							id="flexCheckDefault"> <label class="form-check-label"
-							for="flexCheckDefault">CheckBox</label>
-					</div>
-					<!-- 카드 부분 -->
-					<div class="card" style="width: 15rem; margin-top: 20px;">
-						<img class="card-img-top"
-							src="resources/images/goods.png" alt="Card image cap">
-						<div class="card-body">
-							<p class="card-text">
-								상품명 : <br> 
-								내용 : <br>
-								가격 : <br>
-							</p>
-						</div>
-					</div>
-				</div>
-				
+			
 	
 	
 	
@@ -191,6 +69,8 @@
 	
 	
 	
+	
+	</div>
 	
 	</div>
 	

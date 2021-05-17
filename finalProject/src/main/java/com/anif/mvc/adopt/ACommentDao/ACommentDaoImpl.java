@@ -75,13 +75,13 @@ public class ACommentDaoImpl implements ACommentDao {
 		
 	}
 
-	//view Cont 메소드 
-
-	@Override
-	public void replyCnt(int aNo) {
-		sqlSession.update(NAMESPACE+"replyCnt",aNo);
-		
-	}
+//	//view Cont 메소드 
+//
+//	@Override
+//	//public void replyCnt(int aNo) {
+//		sqlSession.update(NAMESPACE+"replyCnt",aNo);
+//		
+//	}
 	
 
 }

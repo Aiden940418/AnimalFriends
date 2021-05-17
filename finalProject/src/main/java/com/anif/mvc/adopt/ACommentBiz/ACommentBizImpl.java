@@ -39,15 +39,15 @@ public class ACommentBizImpl implements ACommentBiz{
 	}
 
 
-	//view Cont 메소드 
-
-	@Override
-	public void replyCnt(int aNo) {
-		dao.replyCnt(aNo);
-		
-	}
-	
-	
+//	//view Cont 메소드 
+//
+//	@Override
+//	public void replyCnt(int aNo) {
+//		dao.replyCnt(aNo);
+//		
+//	}
+//	
+//	
 	
 
 }
