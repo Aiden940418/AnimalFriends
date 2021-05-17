@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,11 +54,22 @@ public class DiaryController {
 	
 	
 	//댓글, 댓글의 답글 관련
-	//@RequestMapping("/DRselectList.do")
-//	public Map DRselectList(Map<String, String> dto){
-//		
-//		
-//	}
+	@ResponseBody
+	@RequestMapping(value = "/DRselectList.do", method = RequestMethod.POST)
+	public List<DiaryReplyDto> DRselectList(@RequestBody DiaryReplyDto dto){
+		System.out.println(dto);
+		logger.info("Diary Reply SELECT LIST");
+		
+		List<DiaryReplyDto> list = null;
+		list = biz.DRselectList(dto.getDno());
+		
+		System.out.println(list);
+		
+		
+		return list;
+		
+		
+	}
 	
 	
 	

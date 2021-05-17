@@ -99,11 +99,15 @@
 						"</div>"+
 						
 						"<div class='card-footer bg-transparent border-success'>"+
-							"<form action=''>"+
-								"<input type='text' style='width: 700px; height: 38px;'>"+
-								"<button type='submit' class='btn btn-outline-success ms-1 float-end'>"+"등록"+"</button>"+
-							"</form>"+
-							"<br>여기에 댓글<br>여기에 댓글<br>여기에 댓글<br>여기에 댓글<br>"+
+							//댓글 입력란 삭제
+							"<div id='replyListBox'>"+
+							"<div id='"+result[i].dno+"'>"+
+								"<div class='d-grid gap-2'>"+
+								"<button class='btn btn-success' id='replyBtn' type='button' value='"+result[i].dno+"'>"+
+								"댓글 보기</button>"+
+								"</div>"+
+							"</div>"+
+						"</div>"+
 						"</div>"+
 					"</div>"+
 					
@@ -117,12 +121,82 @@
 	}
 	
 	
+
+$(document).on("click", '#replyBtn', function getReplyList() {
+		
+		var id = $(this).val();
+		console.log(id);
+		
+		var diaryVal = {
+				"dno":id
+		};
+		
+		var html = "<div class='replys'>";
+
+		$.ajax({
+			type:"post",
+			url:"DRselectList.do",
+			data:JSON.stringify(diaryVal),
+			contentType:"application/json",
+			dataType:"json",
+			success:function(replyList){
+				
+				//댓글이 없다면 없다는 문구 출력				
+				if(replyList.length == 0){
+					
+					html += "<p style='text-align:center; font-size:14pt;'>" +
+							"-----아직 덧글이 없습니다. 제일 먼저 댓글을 작성해 보세요!-----" +
+							"</p>";
+				
+					}else{
+
+				//댓글이 있다면 반복문을 통해서 내용을 추가		
+				for(var i = 0 ; i < replyList.length; i++){
+					//변수 선언
+					var nick = "";
+					
+					//만약 답글이라면 공백과 화살표 기호를 추가
+					if(replyList[i].drtitletab!=0){
+						nick = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+						"<ion-icon name='return-down-forward-outline'></ion-icon>";
+					}
+					
+						nick += replyList[i].mnick;
+					var content = replyList[i].drcontent;
+					var date = replyList[i].drdateToChar;
+					//console.log(nick);
+					//console.log(content);
+					//console.log(date);
+					
+					//출력 형식(수정 예정)
+					html += nick+": "+content+" /"+date+"<hr>";
+					
+				}
+					}
+				
+				html += "<form action=''>"+
+						"<input type='text' style='width: 700px; height: 38px;'>"+
+						"<button type='submit' class='btn btn-outline-success ms-1 float-end'>등록</button>"+
+						"</form>";
+				html += "</div>";
+				//console.log(html);
+
+				//버튼을 지우고(div 위치를 바꿔서 변경 가능) 댓글을 append한다.
+				$('#' + id).empty();
+				$('#' + id).append(html);
+				
+			},
+			error:function(){
+				alert("댓글 ajax 불러오기 실패..");
+			}
+		});
+});
+	
+	
+	
+	
+	
 </script>
-
-
-
-
-
 
 </head>
 <body>
@@ -175,14 +249,18 @@
 						</div>
 						
 						<div class="card-footer bg-transparent border-success">
-							<form action="">
+							<!--등록 박스랑 버튼 임시 주석처리 <form action="">
 								<input type="text" style="width: 700px; height: 38px;">
 								<button type="submit" class="btn btn-outline-success ms-1 float-end">등록</button>
-							</form>
+							</form> -->
 							
 							<!-- 댓글 리스트 부분 -->
-							<div id="replyList">
-								
+							<div id="replyListBox">
+								<div id="${dto.dno }">
+									<div class="d-grid gap-2">
+									<button class="btn btn-success" id="replyBtn" type="button" value="${dto.dno }">댓글 보기</button>
+								</div>
+							</div>
 							</div>
 							
 						</div>

@@ -206,15 +206,14 @@
             <version>20180813</version>
         </dependency>
 
-
-
-		<!-- 이미지 업로드 관련 디펜던시 추가 -->
+		<!-- 이미지 업로드에 필요한 디펜던시 추가 -->
 		<!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
 		<dependency>
 			<groupId>net.coobird</groupId>
 			<artifactId>thumbnailator</artifactId>
 			<version>0.4.8</version>
 		</dependency>
+	
 		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>

@@ -13,8 +13,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.anif.mvc.common.image.UploadFileUtils;
 import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
 import com.anif.mvc.diary.biz.DiaryBiz;
@@ -23,7 +25,6 @@ import com.anif.mvc.diary.imgUpload.UploadFileUtils;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.qnaBoard.biz.QnaBoardBiz;
 import com.anif.mvc.qnaBoard.dto.QnaBoardDto;
-import com.anif.mvc.utils.UploadFileUtils;
 
 @Controller
 public class MypageController {
@@ -39,9 +40,6 @@ public class MypageController {
 	
 	@Resource(name="uploadPath")
 	private String uploadPath;
-	
-	
-	
 	
 	@RequestMapping("/chattingList.do")
 	public String chatList() {
@@ -78,8 +76,8 @@ public class MypageController {
 		return "mypage/mypage_mydiaryWriteForm";
 	}
 	
-	@RequestMapping(value = "/mydiaryWriteRes.do")
-	public String mydiaryWriteRes(DiaryDto dto, MultipartFile file, HttpSession session, Model model) throws IOException, Exception {
+	@RequestMapping("/mydiaryWriteRes.do")
+	public String mydiaryWriteRes(DiaryDto dto, HttpSession session, @RequestParam(value = "file", required = false) MultipartFile file, Model model) throws IOException, Exception {
 		logger.info("My Diary INSERT");
 		
 

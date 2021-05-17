@@ -36,24 +36,24 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.anif.mvc" />
+	<context:component-scan base-package="com.anif.mvc.common.image" />
 
 
-
-
-	<!-- 업로드 경로 설정 (긴 경로를 uploadPath라는 이름으로 간소화 시킴) -->
+	
+	<!-- 업로드 패스 설정 -->
 	<beans:bean class="java.lang.String" id="uploadPath">
-		<beans:constructor-arg value="C:\Users\user\Documents\GitHub\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\finalProject\resources" />
+		<beans:constructor-arg
+			value="C:\Users\GwonGyeongJae\Documents\GitHub\finalProject\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\finalProject\resources" />
 	</beans:bean>
 
 	<!-- 일반 파일 업로드 경로 -->
-	<resources mapping="/imgUpload/**" location="/resources/imgUpload/" />
+	<resources mapping="/imgUpload/**"
+		location="/resources/imgUpload/" />
 
-	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+	<beans:bean
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		id="multipartResolver">
 		<beans:property name="maxUploadSize" value="52428800" /> <!-- 50메가 제한 -->
 	</beans:bean>
-	
-	
-	
-	
 	
 </beans:beans>

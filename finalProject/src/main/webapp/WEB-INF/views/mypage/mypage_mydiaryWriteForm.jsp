@@ -7,7 +7,13 @@
 	<!-- leftMenuBar -->
 	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>	
 	
-	
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<style type="text/css">
+	/* .select_img img {
+		margin:20px 0;
+	} */
+
+</style>
 	
 	
 	
@@ -23,7 +29,6 @@
 			<div class="row my-4" style="text-align: center;">
 				<h1>나의 입양일기 작성</h1>
 			</div>
-
 			<!-- form -->
 			<div style="margin: auto; text-align: center;">
 				<form action="mydiaryWriteRes.do" style="display: inline-block;" method="post" enctype="multipart/form-data">
@@ -66,7 +71,8 @@
 						<tr>
 							<th style="vertical-align: top;"><button type="button"
 									class="btn btn-outline-success	 mx-3 my-1"
-									style="width: 130px; pointer-events: none;">내용</button></th>
+									style="width: 130px; pointer-events: none;">내용</button>
+							</th>
 							<td><textarea rows="10" cols="100" class="form-control my-1"
 									id="" name="dcontent"></textarea></td>
 						</tr>
@@ -97,3 +103,4 @@
 		<%@ include file="../includes/footer.jsp"%>
 	</div>
 	</div>
+	
