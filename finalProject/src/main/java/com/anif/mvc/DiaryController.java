@@ -77,8 +77,6 @@ public class DiaryController {
 		System.out.println(dto);
 		logger.info("Diary Reply INSERT");
 		
-		
-		
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
 		dto.setMno(memberDto.getmNo());
 		System.out.println("작성자 설정 한 dto: "+dto);
@@ -87,6 +85,39 @@ public class DiaryController {
 		
 		return res;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/DRdelete.do", method = RequestMethod.POST)
+	public int DRdelete(@RequestBody DiaryReplyDto dto, HttpSession session){
+		System.out.println(dto);
+		logger.info("Diary Reply DELETE");
+		
+		int res = 0;
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		DiaryReplyDto originReplyDto = biz.DRselectOne(dto.getDrno());
+		
+		
+		if(originReplyDto.getMno()==memberDto.getmNo()) {
+			//댓글의 mno와(작성자) 로그인 한 사람의 mno가 같다면 삭제
+			res = biz.DRdelete(dto.getDrno());
+			
+			if(res>0) {
+				//댓글 삭제가 성공했다면 dno값을 넘겨준다 (어차피 0보다 클거고, 댓글 목록 재조회해야하니까)
+				return originReplyDto.getDno();
+			}
+			
+		}else{
+			//댓글의 mno와(작성자) 로그인 한 사람의 mno가 같다면 반려
+			return 0;
+		}
+		
+		return res;
+	}
+	
+	
+	
+	
+	
 	
 	
 	

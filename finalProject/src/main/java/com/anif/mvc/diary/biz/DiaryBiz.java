@@ -19,4 +19,8 @@ public interface DiaryBiz {
 
 	public int DRinsert(DiaryReplyDto dto);
 
+	public DiaryReplyDto DRselectOne(int drno);
+
+	public int DRdelete(int drno);
+
 }

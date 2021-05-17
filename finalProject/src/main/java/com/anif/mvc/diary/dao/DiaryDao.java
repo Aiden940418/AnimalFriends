@@ -20,5 +20,9 @@ public interface DiaryDao {
 	public List<DiaryReplyDto> DRselectList(int dno);
 
 	public int DRinsert(DiaryReplyDto dto);
+
+	public DiaryReplyDto DRselectOne(int drno);
+
+	public int DRdelete(int drno);
 	
 }
