@@ -4,7 +4,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="adopt">
+  <mapper namespace="cart">
   	
   	
   	
@@ -12,13 +12,38 @@
   	
   	INSERT INTO CART VALUES(
   	
-  	CARTNO.NEXTVAL, #{mNO}, #{gNO}, #{cartStock}
+  	CARTNO.NEXTVAL, #{mNo}, #{gNo}, #{cartStock}, SYSDATE
   	
   	
-  	);
-  	
+  	)
   	
   	</insert>
+  	
+  	
+  	
+  				 	 
+	<select id="cartList" resultType="cartListDto">
+			 select
+			     row_number() over(order by c.cartNO desc) as num,
+			     c.CARTNO, c.MNO, c.gNO, c.CARTSTOCK, c.CARTDATE,
+			     g.gNAME, g.gPRICE, g.gImg
+			 from cart c
+			     inner join goods g
+			         on c.gNo = g.gNo   
+			     where c.mNo = #{mNo}
+	</select>
+	
+	
+	<!-- 카트 삭제  -->
+	
+	
+	<delete id="deleteCart">
+		delete cart
+		where cartNo = #{cartNo} and mNo = #{mNo}
+		
+	
+	
+	</delete>
   	
   	
   	

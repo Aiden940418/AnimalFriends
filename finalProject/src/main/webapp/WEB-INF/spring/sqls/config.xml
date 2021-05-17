@@ -14,6 +14,7 @@
   	<typeAlias type="com.anif.mvc.common.pagination.Criteria" alias="Criteria" />
   	<typeAlias type="com.anif.mvc.adopt.ACommentDto.ACommentDto" alias="aCommentDto" />
   	<typeAlias type="com.anif.mvc.goods.dto.CartDto" alias="cartDto" />
+  	  	<typeAlias type="com.anif.mvc.goods.dto.CartListDto" alias="cartListDto" />
   	
   
   	

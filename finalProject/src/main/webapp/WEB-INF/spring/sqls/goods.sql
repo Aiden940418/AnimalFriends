@@ -89,7 +89,8 @@ COMMIT
 -------------------------------------------------------------------------
 DROP TABLE CART;
 
-CREATE SEQUENCE CARTSEQ;
+DROP SEQUENCE CARTNO;
+CREATE SEQUENCE CARTNO;
 
 CREATE TABLE CART (
 
@@ -112,4 +113,7 @@ alter table CART
 alter table CART
     ADD CONSTRAINT CART_GNO FOREIGN KEY(GNO) REFERENCES GOODS(GNO);
     
+
+
+
 

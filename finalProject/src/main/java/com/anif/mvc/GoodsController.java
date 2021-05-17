@@ -3,6 +3,7 @@ package com.anif.mvc;
 import java.io.Console;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -14,10 +15,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.anif.mvc.diary.dto.DiaryDto;
+import com.anif.mvc.goods.biz.CartBiz;
 import com.anif.mvc.goods.biz.GoodsBiz;
+import com.anif.mvc.goods.dto.CartDto;
+import com.anif.mvc.goods.dto.CartListDto;
 import com.anif.mvc.goods.dto.GoodsDto;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.utils.UploadFileUtils;
@@ -27,6 +33,8 @@ public class GoodsController {
 	
 	@Autowired
 	private GoodsBiz biz;
+	@Autowired
+	private CartBiz cartBiz;
 	
 
 	@Resource(name="uploadPath")
@@ -157,11 +165,87 @@ public class GoodsController {
 	}
 	
 	
+	//카트에 담기
 	
 	
+	@ResponseBody
+	@RequestMapping(value = "/addCart.do",method= RequestMethod.POST)
+	public int addCart(CartDto cart, HttpSession session) {
+		
+		
+		int result = 0;
+		
+		MemberDto member = (MemberDto)session.getAttribute("login");
+
+		if(member != null) {
+		
+		cartBiz.addCart(cart);
+		
+		result =1;
+		
+		
+		
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping(value="/cartList.do", method = RequestMethod.GET)
+	public String cartList(HttpSession session, Model model, int mNo) {
+	
+		logger.info("cart List");
+		
+		
+		
+		List<CartListDto> cartList = cartBiz.cartList(mNo);
+		
+		
+		model.addAttribute("cartList",cartList);
+		
+	
+		return "mypage/mypage_mycartList";
+	}
 	
 	
+	//카트 삭제 
 	
+	
+	@ResponseBody 
+	@RequestMapping(value="/deleteCart.do", method= RequestMethod.POST)
+	public int deleteCart(HttpSession session, @RequestParam(value= "chbox[]") List<String> chArr, 
+			CartDto cart) {
+		
+		logger.info("delete Cart");
+
+		
+		
+		MemberDto member = (MemberDto)session.getAttribute("login");
+		int mNo = member.getmNo();
+		
+		
+		int result = 0;
+		int cartNo = 0;
+		
+		
+		if(member != null) {
+			
+			cart.setmNo(mNo);
+			
+			
+			for(String i : chArr) {
+				cartNo = Integer.parseInt(i);
+				cart.setCartNo(cartNo);
+				
+				cartBiz.deleteCart(cart);
+				
+			}
+			result = 1;
+			
+			
+		}
+		
+		return result;
+	}
 	
 	
 	

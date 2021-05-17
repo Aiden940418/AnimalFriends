@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ include file="../includes/header.jsp" %>   
+ 
+ 
+ 
+ 
 
 <div class="container text mt-5 ms-5">
 <a href="goodsList.do" class="btn btn-outline-success">목록으로</a>
@@ -15,6 +19,7 @@
                 <div class="card-body">
                   <p class="card-text">
                  <!-- 굿즈 이미지(서버에 업로드된 이미지 화면출력) -->
+
 			<img src="resources/${dto.gImg}" class="rounded float-start mt-4 ms-5" style="width:550px; height:400px">
  
  				<div>
@@ -28,25 +33,59 @@
 				
 					 <button type="button" class="btn btn-outline-success"
 							style="width:100px; pointer-events: none;">수량선택</button>
-					<select name="aArea" class="form-control ms-2" style="width:200px" name="수량선택" style="margin-left:300px">
+					<select id="cartStock" class="form-control ms-2" style="width:200px" name="수량선택" style="margin-left:300px">
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
 						<option value="4">4</option>
 						<option value="5">5</option>
 					</select>
+					
+				<input type="hidden" id="mNo" name="mNo" value="${login.mNo}">
+                <input type="hidden" id="gNo" name="gNo" value="${dto.gNo}">
+                 
 
 
 <!-- dropDown1-end -->
    				<br>
    				<br>
    				<a href="goodsPurchase.do" class="btn btn-outline-success btn-lg" style="width:200px">결제하기</a>
-   				<a href="myGoodsBuyList.do" class="btn btn-outline-success btn-lg ms-3"style="width:200px">장바구니</a>
+   				<a href="" class="btn btn-outline-success btn-lg ms-3"style="width:200px" id="addCart_btn">장바구니</a>
    				
    				</div>
    				</div>
    
-                
+   
+  <script>
+  $("#addCart_btn").click(function(){
+   var mNo = $("#mNo").val();
+   var gNo = $("#gNo").val();
+   var cartStock = $("#cartStock").val();
+      
+   var data = {
+	 mNo : mNo,	   
+     gNo : gNo,
+     cartStock : cartStock
+     };
+   
+   $.ajax({
+    url : "addCart.do",
+    type : "post",
+    data : data,
+    success : function(result){
+    	
+   if(result ==1) { 
+     alert("카트 담기 성공");
+   }else {
+	  alert("회원만 사용 할 수 있습니다.");
+   }
+    },
+    error : function(){
+     alert("카트담기 실패");
+    }
+   });
+  });
+ </script>
 <br>            
 <br>
 <hr>
