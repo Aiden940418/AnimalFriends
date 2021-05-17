@@ -3,6 +3,8 @@ package com.anif.mvc;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.anif.mvc.diary.biz.DiaryBiz;
 import com.anif.mvc.diary.dto.DiaryDto;
 import com.anif.mvc.diary.dto.DiaryReplyDto;
+import com.anif.mvc.member.dto.MemberDto;
 
 @Controller
 public class DiaryController {
@@ -65,14 +68,25 @@ public class DiaryController {
 		
 		System.out.println(list);
 		
-		
 		return list;
-		
-		
 	}
 	
-	
-	
+	@ResponseBody
+	@RequestMapping(value = "/DRwrite.do", method = RequestMethod.POST)
+	public int DRwrite(@RequestBody DiaryReplyDto dto, HttpSession session){
+		System.out.println(dto);
+		logger.info("Diary Reply INSERT");
+		
+		
+		
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		dto.setMno(memberDto.getmNo());
+		System.out.println("작성자 설정 한 dto: "+dto);
+		
+		int res = biz.DRinsert(dto);
+		
+		return res;
+	}
 	
 	
 	

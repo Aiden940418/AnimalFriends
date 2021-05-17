@@ -17,4 +17,6 @@ public interface DiaryBiz {
 	//댓글, 댓글의 답글 관련
 	public List<DiaryReplyDto> DRselectList(int dno);
 
+	public int DRinsert(DiaryReplyDto dto);
+
 }

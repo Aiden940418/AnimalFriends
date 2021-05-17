@@ -10,6 +10,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+
+
 <title>Insert title here</title>
 
 <!-- ionicons 사용 위한 코드 -->
@@ -120,8 +123,111 @@
 		}
 	}
 	
-	
+	$(document).on("click", '#replySubmit', function insertReply(){
+		//클릭한 버튼의 이전 요소인 input의 value를 content로 설정
+		var drcontent = $(this).prev().val();
+		console.log(drcontent);
+		
+		var dno = $(this).val();
+		console.log("dno: "+dno);
+		
+		//작성자 mno는 컨트롤러에서 처리해주려 함	
+		
+		var replyVal = {
+			"dno" : dno,
+			"drcontent" : drcontent
+		};
+		
+		$.ajax({
+			type:"post",
+			url:"DRwrite.do",
+			data:JSON.stringify(replyVal),
+			contentType:"application/json",
+			dataType:"json",
+			success:  function(res){
+				if ( res > 0 ){
+					alert("댓글 등록 완료!");
+					//그냥 새로고침을 하던지
+					//location.reload();
+					//$('#' + dno).load(window.location.href + dno);
+					//재호출을 해 ajax를.. 통째로 가져오는 것보다 효율적인 방법이 있긴 하겠지만 아직 모르니.. 
+					
+					var diaryVal = {
+							"dno":dno
+					};
+					
+					var html = "<div class='replys'>";
 
+					$.ajax({
+						type:"post",
+						url:"DRselectList.do",
+						data:JSON.stringify(diaryVal),
+						contentType:"application/json",
+						dataType:"json",
+						success:function(replyList){
+							
+							//댓글이 없다면 없다는 문구 출력				
+							if(replyList.length == 0){
+								
+								html += "<p style='text-align:center; font-size:14pt;'>" +
+										"-----아직 덧글이 없습니다. 제일 먼저 댓글을 작성해 보세요!-----" +
+										"</p>";
+							
+								}else{
+
+							//댓글이 있다면 반복문을 통해서 내용을 추가		
+							for(var i = 0 ; i < replyList.length; i++){
+								//변수 선언
+								var nick = "";
+								
+								//만약 답글이라면 공백과 화살표 기호를 추가
+								if(replyList[i].drtitletab!=0){
+									nick = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+									"<ion-icon name='return-down-forward-outline'></ion-icon>";
+								}
+								
+									nick += replyList[i].mnick;
+								var content = replyList[i].drcontent;
+								var date = replyList[i].drdateToChar;
+								//console.log(nick);
+								//console.log(content);
+								//console.log(date);
+								
+								//출력 형식(수정 예정)
+								html += nick+": "+content+" /"+date+"<hr>";
+								
+							}
+								}
+							
+							html += "<input type='text' style='width: 700px; height: 38px;'>"+
+									"<button type='submit' class='btn btn-outline-success ms-1 float-end' id='replySubmit' value='"+dno+"'>등록</button>"	;
+							html += "</div>";
+							//console.log(html);
+
+							//버튼을 지우고(div 위치를 바꿔서 변경 가능) 댓글을 append한다.
+							$('#' + dno).empty();
+							$('#' + dno).append(html); 
+							
+						},
+						error:function(){
+							alert("댓글 ajax 불러오기 실패..");
+						}
+					});
+					
+					
+					
+				}else{
+					alert("댓글 등록 실패!");
+				}
+			} 
+			,
+			error:function(){
+				alert("댓글 등록 ajax 실패");
+			}
+
+		
+		});
+	});
 $(document).on("click", '#replyBtn', function getReplyList() {
 		
 		var id = $(this).val();
@@ -174,10 +280,8 @@ $(document).on("click", '#replyBtn', function getReplyList() {
 				}
 					}
 				
-				html += "<form action=''>"+
-						"<input type='text' style='width: 700px; height: 38px;'>"+
-						"<button type='submit' class='btn btn-outline-success ms-1 float-end'>등록</button>"+
-						"</form>";
+				html += "<input type='text' style='width: 700px; height: 38px;'>"+
+						"<button type='submit' class='btn btn-outline-success ms-1 float-end' id='replySubmit' value='"+id+"'>등록</button>"	;
 				html += "</div>";
 				//console.log(html);
 
@@ -192,11 +296,16 @@ $(document).on("click", '#replyBtn', function getReplyList() {
 		});
 });
 	
+
+	
+	
 	
 	
 	
 	
 </script>
+
+
 
 </head>
 <body>
