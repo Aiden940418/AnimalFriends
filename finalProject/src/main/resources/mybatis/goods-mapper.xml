@@ -52,6 +52,28 @@
  	 	DELETE FROM GOODS
  	 	WHERE GNO = #{gNo}
  	 </delete>
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 <!-- 장바구니 담기 -->
+ 	 
+ 	 
+ 	 <insert id="addCart">
+ 	 
+ 	 INSERT INTO GOODSORDERS VALUES( GORNO.NEXTVAL, 'ready',null, #{mNo} );
+ 	 
+ 	 
+ 	 
+ 	 </insert>
+ 	 
+ 	 
+ 	 <insert id="addCartList">
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 </insert>
  
  
  

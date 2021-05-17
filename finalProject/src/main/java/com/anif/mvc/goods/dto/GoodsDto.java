@@ -19,6 +19,9 @@ public class GoodsDto {
 	private String gThumbImg;
 	
 	
+
+	
+	
 	public GoodsDto() {
 		super();
 	}
