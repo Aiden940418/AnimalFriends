@@ -53,7 +53,10 @@
   	</select>
   
   
-  
+  	<insert id="DRinsert" parameterType="DiaryReplyDto">
+  		INSERT INTO DIARYREPLY
+		VALUES(DRNOSEQ.NEXTVAL, #{dno}, DRGROUPNOSEQ.NEXTVAL, 0, 0, #{mno}, #{drcontent}, SYSDATE)
+  	</insert>
   
   
   
