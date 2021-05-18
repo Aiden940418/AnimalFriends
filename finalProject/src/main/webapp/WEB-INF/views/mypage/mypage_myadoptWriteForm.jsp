@@ -205,9 +205,6 @@
 								style="width:130px; float:right; margin-right:10px;"></td>
 
 						</tr>
-						<tr>
-							<td><a href="form.do">파일 업로드 test</a></td>
-						</tr>
 						
 		
 						

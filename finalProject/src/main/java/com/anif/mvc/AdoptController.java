@@ -126,7 +126,7 @@ public class AdoptController {
 		dto.setaImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		dto.setaThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 		
-		
+		System.out.println(memberDto.getmNo());
 		
 		int res = biz.myadoptWrite(dto);
 
