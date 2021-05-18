@@ -26,6 +26,7 @@
 						<p class="card-text">결제 수단 : </p>
 						<p class="card-text">결제 금액 : </p>
 						<p class="card-text">배송 상태 : </p>
+						<a>상품평쓰기</a>
 						</p>
 					</div>
 				</div>
