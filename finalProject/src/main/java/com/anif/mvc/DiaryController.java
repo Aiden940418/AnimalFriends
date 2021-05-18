@@ -97,7 +97,7 @@ public class DiaryController {
 		DiaryReplyDto originReplyDto = biz.DRselectOne(dto.getDrno());
 		
 		
-		if(originReplyDto.getMno()==memberDto.getmNo()) {
+		if( originReplyDto.getMno() == memberDto.getmNo() ) {
 			//댓글의 mno와(작성자) 로그인 한 사람의 mno가 같다면 삭제
 			res = biz.DRdelete(dto.getDrno());
 			

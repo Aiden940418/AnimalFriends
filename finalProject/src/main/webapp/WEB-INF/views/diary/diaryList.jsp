@@ -166,7 +166,7 @@ function getReplyList(id) {
 					var nick = "";
 					
 					//만약 답글이라면 공백과 화살표 기호를 추가
-					if(replyList[i].drtitletab!=0){
+					if(replyList[i].drtitletab != 0){
 						nick = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
 						"<ion-icon name='return-down-forward-outline'></ion-icon>";
 					}
@@ -174,8 +174,10 @@ function getReplyList(id) {
 						nick += replyList[i].mnick;
 					var content = replyList[i].drcontent;
 					var date = replyList[i].drdateToChar;
-					var repBtn = "<button class='btn btn-success float-end' id='newRepBtn' type='button' value='"+replyList[i].drgroupno+"'>답글</button>";
-					var delBtn = "<button class='btn btn-outline-success float-end' id='delBtn' type='button' value='"+replyList[i].drno+"'>삭제</button>";
+					var repBtn = "<button class='btn btn-success float-end' id='newRepBtn' type='button' value='"+
+									replyList[i].drgroupno+"'>답글</button>";
+					var delBtn = "<button class='btn btn-outline-success float-end' id='delBtn' type='button' value='"+
+									replyList[i].drno+"'>삭제</button>";
 					//console.log(nick);
 					//console.log(content);
 					//console.log(date);
