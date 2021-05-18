@@ -37,7 +37,7 @@ console.log(Kakao.isInitialized());
 <script type="text/javascript">
   function loginWithKakao() {
     Kakao.Auth.authorize({
-      redirectUri: 'https://developers.kakao.com/tool/demo/oauth'
+      redirectUri: 'http://localhost:8787/mvc/main.do'
     })
   }
   // 아래는 데모를 위한 UI 코드입니다.
@@ -59,7 +59,7 @@ console.log(Kakao.isInitialized());
     const value = "; " + document.cookie;
     const parts = value.split("; " + name + "=");
     if (parts.length === 2) return parts.pop().split(";").shift();
-    
+   
     
   }
   </script>

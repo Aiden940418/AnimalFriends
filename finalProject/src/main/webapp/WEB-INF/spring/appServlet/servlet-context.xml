@@ -30,6 +30,7 @@
 	<beans:bean class="java.lang.String" id="uploadPath">
 		<beans:constructor-arg value="E:\GitHub\FinalPJ\finalProject_KW\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\finalProject\resources" />
 		
+
 	</beans:bean>
 
 	<!-- 일반 파일 업로드 경로 -->

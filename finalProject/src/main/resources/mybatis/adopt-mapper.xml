@@ -22,26 +22,42 @@
      <result property="anmNtrYn" column="ANMNTRYN"/>
      <result property="aPhone" column="APHONE"/>
      <result property="aMemo" column="AMEMO"/>
+    <result property="aImg" column="AIMG" />
+    <result property="aThumbImg" column="ATHUMBIMG"/> 
+
+	
+	
      </resultMap>
      
      
      
      <!-- 전체 입양공고 리스트  -->
      
-     <select id="adoptList" resultMap="adoptMap">
+     <select id="adoptList" resultType="adoptDto">
      
      
-  	SELECT ANO, AMNO, AAREA, ATYPE, ATITLE, ADATE, ACOUNT, ANMNAME, ANMAGE, ANMBREED, ANMGENDER, ANMVCNYN, ANMNTRYN, APHONE, AMEMO
+  	SELECT *
     FROM ADOPT
      
      </select>
      
      
+     <!--조회수(ACOUNT 관련  -->
+     
+     <update id="viewCount">
+     
+     	UPDATE ADOPT
+     	SET ACOUNT = ACOUNT +1
+     	WHERE ANO = #{ANO}
+     
+     
+     </update>
+     
      <!--  전체 입양공고 디테일(상세)  -->
      
     <select id="adoptDetail" parameterType="adoptDto" resultType="adoptDto">
   
-  	SELECT ANO, AMNO, AAREA, ATYPE, ATITLE, ADATE, ACOUNT, ANMNAME, ANMAGE, ANMBREED, ANMGENDER, ANMVCNYN, ANMNTRYN, APHONE, AMEMO
+  	SELECT *
   	FROM ADOPT
   	WHERE ANO = #{aNo}
   
@@ -51,7 +67,7 @@
     	
    <!--  나의 입양공고 전체리스트업 -->
    
-  	<select id="myAdoptList" parameterType="int" resultMap="adoptMap" >
+  	<select id="myAdoptList" parameterType="int" resultType="adoptDto" >
   	
   	SELECT *
   	FROM ADOPT
@@ -76,8 +92,8 @@
   <insert id="myadoptWrite" parameterType="adoptDto">
   	
   	INSERT INTO ADOPT
-  	VALUES(ANO.NEXTVAL, #{aMNo}, #{aArea}, #{aType}, #{aTitle}, SYSDATE, 12 ,#{anmName}, #{anmAge}, #{anmBreed},
-  	#{anmGender}, #{anmVcnYn}, #{anmNtrYn}, #{aPhone}, #{aMemo}  )
+  	VALUES(ANO.NEXTVAL, #{aMNo}, #{aArea}, #{aType}, #{aTitle}, SYSDATE, 0,#{anmName}, #{anmAge}, #{anmBreed},
+  	#{anmGender}, #{anmVcnYn}, #{anmNtrYn}, #{aPhone}, #{aMemo}, #{aImg}, #{aThumbImg}  )
   	
   </insert>
   

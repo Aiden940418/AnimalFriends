@@ -35,16 +35,21 @@ public class MemberBizImpl implements MemberBiz {
 
 
 	@Override
-	public MemberDto idChk(String mId) {
-		return dao.idChk(mId);
+	public int idChk(MemberDto dto) {
+		int result = dao.idChk(dto);
+		return result;
 	}
 
 	@Override
-	public MemberDto pwChk(int mNo) {
+	public boolean pwChk(String mId, String mPw) {
 
 		
-		
-		return dao.pwChk(mNo);
+		return dao.pwChk(mId, mPw);
+	}
+
+	@Override
+	public int memberUpdate(MemberDto dto) {
+		return dao.memberUpdate(dto);
 	}
 
 }

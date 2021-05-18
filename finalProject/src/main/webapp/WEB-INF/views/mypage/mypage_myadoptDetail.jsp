@@ -72,7 +72,7 @@
 		
 		</div>
 		<div class="container" style="margin-left:250px;">
-		<span>등록날짜:&nbsp;${dto.aDate}&nbsp;&nbsp;&nbsp;&nbsp;</span><span>조회수:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<span>등록날짜:&nbsp;${dto.aDate}&nbsp;&nbsp;&nbsp;&nbsp;</span><span>조회수:&nbsp;${dto.aCount}&nbsp;&nbsp;&nbsp;</span>
    		<span>댓글 개수:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		</div>
 	
@@ -83,7 +83,7 @@
 		<!-- image추가 시작 -->
 		<div class="container text-center">
 		
-			<img src="resources/images/adopt_cat1.jpeg" width="600px" height="600px">
+			<img src="resources/${dto.aImg }" width="600px" height="600px">
 		</div>
 		<!-- image추가 끝 -->
 	
@@ -162,11 +162,42 @@
 		<!-- 댓글 태그 종료 -->
 		
 		
-		<div class="container text-center mt-5">
-		댓글 남기는 태그 
-		</div>
-		</div>
 
+		
+		<div class="container text-center mt-4">	
+		
+	<c:choose>
+			<c:when test="${empty reply}">
+				<h3>작성된 댓글이 없습니다.</h3>
+		
+			
+			</c:when>
+	
+			<c:otherwise>
+			
+			<c:forEach items="${reply}" var="com">
+			
+			<table class="mt-2" style="margin-left:300px;">
+
+			
+				<tr>
+				<th style="width:50px;">${com.writer }</th>
+				<td style="width:400px">${com.aComContent }</td>
+				<td>${com.aComDate}</td>
+				<td><button value="삭제">삭제</button>
+				</tr>
+			
+			</table>
+
+
+			</c:forEach>
+			</c:otherwise>
+
+		
+	</c:choose>
+		</div>
+		
+		
 	
 
 	<br><br><br>

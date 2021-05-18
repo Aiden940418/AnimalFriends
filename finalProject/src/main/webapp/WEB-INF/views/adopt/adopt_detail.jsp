@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 	
 <%@ include file="../includes/header.jsp"%>
 
@@ -61,8 +63,8 @@ a.button:hover {
 		
 		</div>
 		<div class="container" style="margin-left:250px;">
-		<span>등록날짜:&nbsp;${dto.aDate }&nbsp;&nbsp;&nbsp;</span><span>조회수:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-   		<span>댓글 개수:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<span>등록날짜:&nbsp;${dto.aDate }&nbsp;&nbsp;&nbsp;</span><span>조회수:&nbsp;${dto.aCount}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+   		<span>댓글 개수:&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		</div>
 	
 		<br>
@@ -72,7 +74,7 @@ a.button:hover {
 		<!-- image추가 시작 -->
 		<div class="container text-center">
 		
-			<img src="E:/GitHub/FinalPJ/finalProject_KW/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/finalProject/storage/logo_수정전.png" width="600px" height="600px">
+			<img src="resources/${dto.aImg}" width="600px" height="600px">
 		</div>
 		<!-- image추가 끝 -->
 	
@@ -92,7 +94,7 @@ a.button:hover {
 		<div class="container text-center">
 		<table align="center">
 		
-		<h2>${dto.anmName } 의 신상정보</h2>
+		<h2>${dto.anmName}의 신상정보</h2>
 
 			<tr>
 			<th align="left">나  이</th>
@@ -141,23 +143,58 @@ a.button:hover {
 		
 		<div class="container mt-2" style="margin-left:360px"> 
 	
+	
+		<form action="aCommentInsert.do" method="GET">
+			<input type="hidden" name="aNo" value="${dto.aNo}">
+			<input type="hidden" name="writer" value="${login.mNick}">
+	
+ 
+			
 		<h3>Comments</h3>
+
 		
-		<input class="mt-2" type="text" style="width:650px; height:50px;"><input class="btn btn-outline-success ms-2" type="submit" value="전송">
+		<input class="mt-2" type="text" style="width:650px; height:50px;" name="aComContent">
+		<input class="btn btn-outline-success ms-2" type="submit" value="전송">
 		
 	
+		</form>
 		</div>
 		
 		
 		<!-- 댓글 태그 종료 -->
 		
 		
-		<div class="container text-center mt-5">	
-	
-		댓글 남기는 태그
+		<div class="container text-center mt-4">	
 		
+	<c:choose>
+			<c:when test="${empty reply}">
+				<h3>작성된 댓글이 없습니다.</h3>
+		
+			
+			</c:when>
 	
+			<c:otherwise>
+			
+			<c:forEach items="${reply}" var="com">
+			
+			<table class="mt-2" style="margin-left:300px;">
 
+			
+				<tr>
+				<th style="width:50px;">${com.writer }</th>
+				<td style="width:400px">${com.aComContent }</td>
+				<td>${com.aComDate}</td>
+				<td><button value="삭제" onclick="location.href='aCommentDelete.do?aComNo=${com.aComNo}&writer=${login.mNick}'">삭제</button>
+				</tr>
+			
+			</table>
+
+
+			</c:forEach>
+			</c:otherwise>
+
+		
+	</c:choose>
 		</div>
 		
 

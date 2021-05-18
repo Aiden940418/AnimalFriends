@@ -22,6 +22,11 @@ public class AdoptDto {
 		private String aPhone;
 		private String aMemo;
 		
+		//이미지관련 
+		
+		//이미지 관련
+		private String aImg;
+		private String aThumbImg;
 		
 		
 		public AdoptDto() {
@@ -30,9 +35,12 @@ public class AdoptDto {
 
 
 
+
+
+
 		public AdoptDto(int aNo, String aMNo, String aArea, String aType, String aTitle, Date aDate, int aCount,
 				String anmName, int anmAge, String anmBreed, String anmGender, String anmVcnYn, String anmNtrYn,
-				String aPhone, String aMemo) {
+				String aPhone, String aMemo, String aImg, String aThumbImg) {
 			super();
 			this.aNo = aNo;
 			this.aMNo = aMNo;
@@ -49,6 +57,8 @@ public class AdoptDto {
 			this.anmNtrYn = anmNtrYn;
 			this.aPhone = aPhone;
 			this.aMemo = aMemo;
+			this.aImg = aImg;
+			this.aThumbImg = aThumbImg;
 		}
 
 
@@ -229,6 +239,42 @@ public class AdoptDto {
 
 		public void setaMemo(String aMemo) {
 			this.aMemo = aMemo;
+		}
+
+
+
+
+
+
+		public String getaImg() {
+			return aImg;
+		}
+
+
+
+
+
+
+		public void setaImg(String aImg) {
+			this.aImg = aImg;
+		}
+
+
+
+
+
+
+		public String getaThumbImg() {
+			return aThumbImg;
+		}
+
+
+
+
+
+
+		public void setaThumbImg(String aThumbImg) {
+			this.aThumbImg = aThumbImg;
 		}
 
 

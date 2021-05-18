@@ -36,7 +36,52 @@ public class ACommentDaoImpl implements ACommentDao {
 		
 		return list;
 	}
+
+	@Override
+	public int aCommentInsert(ACommentDto comDto) {
+
+		int res = 0;
+		System.out.println(comDto.toString());
+		try {
+			res = sqlSession.insert(NAMESPACE+"aCommentInsert",comDto);
+			
+			
+		} catch (Exception e) {
+			System.out.println("[error: insert comments" );
+
+			e.printStackTrace();
+		}
+		
+		
+		
+		return res;
+	}
 	
+	
+	public int aCommentDelete(ACommentDto comDto) {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE+"aCommentDelte",comDto);
+		} catch (Exception e) {
+			System.out.println("[error: delete comments");
+			e.printStackTrace();
+		}
+		
+		
+		return res;
+		
+		
+	}
+
+//	//view Cont 메소드 
+//
+//	@Override
+//	//public void replyCnt(int aNo) {
+//		sqlSession.update(NAMESPACE+"replyCnt",aNo);
+//		
+//	}
 	
 
 }

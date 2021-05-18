@@ -78,6 +78,49 @@ public class GoodsDaoImpl implements GoodsDao {
 		return res;
 	}
 	
+	//관리자 페이지에서 굿즈 등록
+	@Override
+	public int adminGoodsWrite(GoodsDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE+"adminGoodsWrite",dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	//관리자 페이지에서 굿즈 수정
+	@Override
+	public int adminGoodsUpdate(GoodsDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE+"adminGoodsUpdate",dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	//관리자 페이지에서 굿즈 삭제
+	@Override
+	public int adminGoodsDelete(int gNo) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE+"adminGoodsDelete",gNo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+		
+		
+	}
+	
+
 
 	
 

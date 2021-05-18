@@ -9,11 +9,13 @@ public interface MemberBiz {
 	
 	public int signUps(MemberDto dto);
 	
-	public MemberDto idChk(String mId);
+	public int idChk(MemberDto dto);
 	
 	public MemberDto login(MemberDto dto);
 	
-	public MemberDto pwChk(int mNo);
+	public boolean pwChk(String mId, String mPw);
+	
+	public int memberUpdate(MemberDto dto);
 
 
 }

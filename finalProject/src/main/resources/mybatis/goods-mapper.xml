@@ -33,10 +33,42 @@
     	WHERE GNO = #{gNo}
      </select>
      
+     <!-- 관리자 굿즈 리스트  등록-->
+     <insert id="adminGoodsWrite" parameterType="GoodsDto" >
+     	INSERT INTO GOODS
+     	VALUES(GNO.NEXTVAL,#{gCtgy}, #{gName}, #{gPrice},
+     		   #{gContent}, #{gStock},#{gCount},SYSDATE, #{gImg}, #{gThumbImg} )
+     </insert>
+          
+     <!-- 관리자 굿즈 리스트  수정-->
+     <update id="adminGoodsUpdate" parameterType="GoodsDto">
+     	UPDATE GOODS
+     	SET GNAME = #{gName}, GPRICE=#{gPrice}, GCONTENT=#{gContent}, GSTOCK=#{gStock}
+     	WHERE GNO = #{gNo}
+     </update>
      
-     
- 
- 
+     <!-- 관리자 굿즈 리스트 삭제-->
+ 	 <delete id="adminGoodsDelete" parameterType="int">
+ 	 	DELETE FROM GOODS
+ 	 	WHERE GNO = #{gNo}
+ 	 </delete>
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 <!-- 장바구니 담기 -->
+ 	 
+ 	 
+ 	 <insert id="addCart">
+ 	 
+ 	 INSERT INTO GOODSORDERS VALUES( GORNO.NEXTVAL, 'ready',null, #{mNo} );
+ 	 
+ 	 
+ 	 
+ 	 </insert>
+
+
+			 
  
  
  

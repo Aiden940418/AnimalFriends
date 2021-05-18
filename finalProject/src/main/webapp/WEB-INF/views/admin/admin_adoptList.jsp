@@ -49,80 +49,48 @@
 </div>
 
 
-<div class="container mt-5">
-	<div class="row">
-		<div class="col">
-			<div class="card" style="">
+	<c:choose>
+		<c:when test="${empty list }">
+		
+		<작성된 글이 없습니다>
+		
+			
+		</c:when>
+	
+	
+		
+		<c:otherwise>
+		
+
+		<div class="container mt-5 ms-5" >
+			<div class="row">
+	<c:forEach items="${list}" var="dto">
+					<div class="col-sm mt-5">
+			<div class="card h-100" style="width:350px;">
 				<a href="#"><img src="resources/images/adopt_dog1.png" class="card-img-top"
 					alt="..."></a>
 				<div class="card-body">
-					<h5 class="card-title"><input type="checkbox">&nbsp;코코를 안아주세요</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
+					<h5 class="card-title"><a href="adminAdoptDetail.do?aNo=${dto.aNo}">${dto.aTitle}</a></h5>
+					<p class="card-text">${dto.aMemo}</p>
 				</div>
 			</div>
-		</div>
-		<div class="col">
-			<div class="card" style="">
-				<a href=""><img src="resources/images/adopt_dog2.jpeg" class="card-img-top"
-					alt="..."></a>
-				<div class="card-body">
-					<h5 class="card-title"><input type="checkbox">&nbsp;사랑이를 부탁해</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-				</div>
 			</div>
-		</div>
-		<div class="col">
-			<div class="card" style="">
-				<a href=""><img src="resources/images/adopt_cat1.jpeg" class="card-img-top"
-					alt="..."></a>
-				<div class="card-body">
-					<h5 class="card-title"><input type="checkbox">&nbsp;크롱이에요</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-				</div>
+			
+							</c:forEach>
+			
 			</div>
-		</div>
+			
+		
+		
 	</div>
 
-	<div class="row mt-5">
-		<div class="col">
-			<div class="card" style="">
-				<a href=""><img src="resources/images/adopt_dog3.jpeg" class="card-img-top"
-					alt="..."></a>
-				<div class="card-body">
-					<h5 class="card-title"><input type="checkbox">&nbsp;망고입니다.</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-				</div>
-			</div>
-		</div>
-		<div class="col">
-			<div class="card" style="">
-				<a href=""><img src="resources/images/adopt_cat2.jpeg" class="card-img-top"
-					alt="..."></a>
-				<div class="card-body">
-					<h5 class="card-title"><input type="checkbox">&nbsp;토토</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-				</div>
-			</div>
-		</div>
-		<div class="col">
-			<div class="card" style="">
-				<a href=""><img src="resources/images/adopt_cat3.jpeg" class="card-img-top"
-					alt="..."></a>
-				<div class="card-body">
-					<h5 class="card-title"><input type="checkbox">&nbsp;쿠키와 함께해주세요</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
+
+	
+	</c:otherwise>
+	
+	</c:choose>
+
+
 
 <div class="container">
 	<nav aria-label="Page navigation example ">
@@ -140,6 +108,7 @@
 	</nav>
 			<!-- footer -->
 		<%@ include file="../includes/footer.jsp"%>
+</div>
 </div>
 
 

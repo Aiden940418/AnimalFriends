@@ -85,7 +85,9 @@
     top: 0;
     transition: all ease-in-out .35s;
   }
-
+  p {
+  	font-size: 13pt;
+  }
 
 
 Resources
@@ -138,19 +140,19 @@ Resources
 		
 		
 				
-          	<div class="container mt-5 text-center">
+          	<div class="container mt-5 text-center ms-5">
             <div class="row">
               
               
           <c:forEach items="${list}" var="dto">
-          		<div class="col-sm mt-5">
-          		<div class="card h-100 ms-5" style="width:430px;">
+          		<div class="col-sm mt-5 ms-5">
+          		<div class="card h-100 " style="width:550px;">
           
                 <h3 class="card-header text-center ">
                   <a href="goodsDetails.do?gNo=${dto.gNo}">${dto.gName}</a>
                 </h3>
-                <div class="card-body text-center">
-                 	<img style="width:400px;height:200;" src="resources/images/adopt_dog3.jpeg" class="img-thumbnail" alt="...">
+                <div class="card-body text-cente">
+                 	<img style="width:400px;height:100;" src="resources/${dto.gImg}" class="img-thumbnail" alt="...">
                 <p class="container mt-2">상품가격:${dto.gPrice}
                   </p>
                 </div>

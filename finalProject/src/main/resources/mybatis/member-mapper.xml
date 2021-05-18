@@ -66,9 +66,9 @@
   
   
   
-  	<select id="idChk" resultType="memberDto">
+  	<select id="idChk" resultType="int">
   	
-  	SELECT MID
+  	SELECT COUNT(*)
   	FROM MEMBER
   	WHERE MID = #{mId}
   	
@@ -78,15 +78,24 @@
   	
   	
   	
-  	<select id="pwChk" parameterType="int">
+  	<select id="pwChk" resultType="int">
   	
   	SELECT COUNT(*)
   	FROM MEMBER
-  	WHERE MPW = #{mPw} AND MNO = #{mNo}
+  	WHERE MPW = #{mPw} AND MID = #{mId}
   	
   	
   	
   	</select>
+  	
+  	<update id="memberUpdate" parameterType="memberDto">
+  	
+  	UPDATE MEMBER SET MNICK = #{mNick}, MPHONE = #{mPhone}, MADDR1 = #{mAddr1}, MADDR2 = #{mAddr2}, MADDR3 = #{mAddr3}
+  	WHERE MNO = #{mNo}
+  	
+  	
+  	</update>
+  	
   	
   	
 

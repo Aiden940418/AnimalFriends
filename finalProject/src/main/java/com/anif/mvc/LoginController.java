@@ -154,27 +154,60 @@ public class LoginController {
 		// 회원 확인
 		@ResponseBody
 		@RequestMapping(value = "/idChk.do", method = RequestMethod.POST)
-		public int postIdCheck(HttpServletRequest req) throws Exception {
-		 logger.info("post idCheck");
-		 
-		 String mId = req.getParameter("mId");
-		 MemberDto idChk =  biz.idChk(mId);
-		 
-		 int result = 0;
-		 
-		 if(idChk != null) {
-		  result = 1;
+		public int idCheck(MemberDto dto) throws Exception {
 		
-	
-	
-	
-}
+			
+			logger.info("idCheck");
 		 
+		 int result = biz.idChk(dto);
+
 		 return result;
 		 
 		}
 		
 		
+		@RequestMapping(value="/pwChk.do", method = RequestMethod.POST)
+		public String pwCheck(String mId, String mPw) {
+			
+			logger.info("passwordCheck");
+			boolean result = biz.pwChk(mId, mPw);
+			if(result) {
+				return "mypage/mypage_memberModify";
+			}else {
+				return "mypage/mypage_memberModifyPWCheck";
+			}
+			
+		}
+		
+		
+		//회원정보 수정 
+		
+		@RequestMapping(value="/memberUpdate.do", method = RequestMethod.POST)
+		public String memberUpdate(MemberDto dto, HttpSession session) {
+			
+			int res = biz.memberUpdate(dto);
+			
+			session.invalidate();
+			
+			if(res > 0) {
+				
+				
+				
+				return "redirect:loginForm.do";
+				
+			}else {
+			return "mypage/mypage_memberModify";
+			
+		}
+		
+		
+}
+		
+		
+	@RequestMapping(value="/kakalogin.do")	
+	public String kakaoLogin() {
+		return "main";
+	}
 		
 }
 

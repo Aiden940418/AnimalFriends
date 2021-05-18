@@ -28,16 +28,7 @@ public class AdminController {
 	private QnaBoardAdminBiz biz;
 
 	
-	//adminAdopt
-	
-	@RequestMapping("/adminAdopt.do")
-	public String adminAdopt(Model model) {
-		
-		
-		
-		return "admin/admin_adoptList";
-	}
-	
+
 	
 	//관리자 유저리스트 	
 	@RequestMapping("/adminUserList.do")
@@ -60,22 +51,14 @@ public class AdminController {
 	
 
 	
-	//관리자 굿즈 등록 
+/*	관리자 굿즈 등록 
 	@RequestMapping("/adminGoodsWrite.do")
 	public String adminGoodsWrite(Model model) {
 		
 		return "admin/admin_goodsWrite";
 	}
+*/	
 	
-	
-	//관리자 굿즈 수정 
-	
-	
-	@RequestMapping("/adminGoodsUpdate.do")
-	public String adminGoodsUpdate() {
-		
-		return "admin/admin_goodsUpdate";
-	}
 	
 	//Admin QnA Start
 	

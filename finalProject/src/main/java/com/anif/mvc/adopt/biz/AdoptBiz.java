@@ -32,6 +32,8 @@ public interface AdoptBiz {
 	public int myAdoptDelete(int aNo);
 	
 	
+	//카운트 
+	public void viewCount(int aNo);
 	
 	
 
