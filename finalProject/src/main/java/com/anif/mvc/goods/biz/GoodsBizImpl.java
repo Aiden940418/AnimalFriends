@@ -44,15 +44,20 @@ public class GoodsBizImpl implements GoodsBiz {
 	public int adminGoodsWrite(GoodsDto dto) {
 		return dao.adminGoodsWrite(dto);
 	}
-
+	//관리자 페이지에서 굿즈 수정
 	@Override
 	public int adminGoodsUpdate(GoodsDto dto) {
 		return dao.adminGoodsUpdate(dto);
 	}
-
+	//관리자 페이지에서 굿즈 삭제
 	@Override
 	public int adminGoodsDelete(int gNo) {
 		return dao.adminGoodsDelete(gNo);
+	}
+	//관리자 페이지에서 굿즈 다중 삭제
+	@Override
+	public int multiDeleteGoods(GoodsDto dto) {
+		return dao.multiDeleteGoods(dto);
 	}
 
 

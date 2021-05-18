@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -23,6 +25,7 @@ import com.anif.mvc.adopt.ACommentDto.ACommentDto;
 import com.anif.mvc.adopt.biz.AdoptBiz;
 import com.anif.mvc.adopt.dto.AdoptDto;
 import com.anif.mvc.diary.dto.DiaryDto;
+import com.anif.mvc.goods.dto.GoodsDto;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.utils.UploadFileUtils;
 
@@ -215,6 +218,41 @@ public class AdoptController {
 		
 		
 	}
+	//관리자 입양공고 다중삭제
+	@ResponseBody 
+	@RequestMapping(value="/multiDeleteAdopt.do", method= RequestMethod.POST)
+	public int multiDeleteAdopt(HttpSession session, @RequestParam(value= "chbox[]") List<String> chArr, 
+			AdoptDto dto) {
+		
+		logger.info("delete Adopt");
+		
+		MemberDto member = (MemberDto)session.getAttribute("login");
+		
+		
+		int result = 0;
+		int aNo = 0;
+		
+		if(member != null) {
+			
+			for(String i : chArr) {
+				aNo = Integer.parseInt(i);
+				dto.setaNo(aNo);
+				
+				biz.multiDeleteAdopt(dto);
+				
+			}
+			result = 1;
+			
+			
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
+	
 	
 	
 	

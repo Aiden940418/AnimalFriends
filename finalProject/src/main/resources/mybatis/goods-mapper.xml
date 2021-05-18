@@ -53,6 +53,13 @@
  	 	WHERE GNO = #{gNo}
  	 </delete>
  	 
+ 	 <!-- 관리자 굿즈 리스트 다중 삭제-->
+ 	 <delete id="multiDeleteGoods" >
+ 	 	DELETE FROM GOODS
+ 	 	WHERE GNO = #{gNo}
+ 	 </delete>
+ 	 
+ 	 
  	 
  	 
  	 

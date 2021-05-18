@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.anif.mvc.adopt.dto.AdoptDto;
+import com.anif.mvc.goods.dto.GoodsDto;
 
 public interface AdoptDao {
 	
@@ -35,6 +36,9 @@ public interface AdoptDao {
 	
 	//내가 올린 공고 삭제 
 	public int myAdoptDelete(int aNo);
+	
+	//관리자 페이지에서 공고 다중 삭제
+	public int multiDeleteAdopt(AdoptDto dto);
 	
 	
 	//조회수

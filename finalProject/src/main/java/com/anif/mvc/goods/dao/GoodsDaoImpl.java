@@ -119,6 +119,18 @@ public class GoodsDaoImpl implements GoodsDao {
 		
 		
 	}
+	//관리자 페이지에서 굿즈 다중 삭제
+	@Override
+	public int multiDeleteGoods(GoodsDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE+"multiDeleteGoods",dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
 	
 
 

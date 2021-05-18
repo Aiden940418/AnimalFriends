@@ -75,6 +75,12 @@ public class AdoptBizImpl implements AdoptBiz {
 
 		dao.viewCount(aNo);
 	}
+	
+	//관리자 페이지에서 입양공고 다중 삭제
+	@Override
+	public int multiDeleteAdopt(AdoptDto dto) {
+		return dao.multiDeleteAdopt(dto);
+	}
 
 	
 	
