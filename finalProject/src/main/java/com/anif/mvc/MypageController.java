@@ -20,7 +20,6 @@ import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
 import com.anif.mvc.diary.biz.DiaryBiz;
 import com.anif.mvc.diary.dto.DiaryDto;
-import com.anif.mvc.diary.imgUpload.UploadFileUtils;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.qnaBoard.biz.QnaBoardBiz;
 import com.anif.mvc.qnaBoard.dto.QnaBoardDto;
