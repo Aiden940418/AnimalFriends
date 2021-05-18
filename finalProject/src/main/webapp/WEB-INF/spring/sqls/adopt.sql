@@ -36,7 +36,6 @@ CREATE TABLE ADOPT(
  
  
 
- 
 
 );
 

@@ -10,12 +10,6 @@ public class ACommentDto {
 	private String writer; // adopt writer(login.mNick)
 	private String aComContent; // adopt content 
 	private Date aComDate; // adopt insertDate 
-	private int aComCnt; // adopt reply count
-	
-	
-	//이미지 관련
-	private String aImg;
-	private String aThumbImg;
 	
 	
 	
@@ -23,20 +17,16 @@ public class ACommentDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
-	public ACommentDto(int aComNo, int aNo, String writer, String aComContent, Date aComDate, int aComCnt, String aImg,
-			String aThumbImg) {
+
+
+
+	public ACommentDto(int aComNo, int aNo, String writer, String aComContent, Date aComDate) {
 		super();
 		this.aComNo = aComNo;
 		this.aNo = aNo;
 		this.writer = writer;
 		this.aComContent = aComContent;
 		this.aComDate = aComDate;
-		this.aComCnt = aComCnt;
-		this.aImg = aImg;
-		this.aThumbImg = aThumbImg;
 	}
 
 
@@ -101,52 +91,15 @@ public class ACommentDto {
 
 
 
-	public int getaComCnt() {
-		return aComCnt;
-	}
-
-
-
-	public void setaComCnt(int aComCnt) {
-		this.aComCnt = aComCnt;
-	}
-
-
-
-	public String getaImg() {
-		return aImg;
-	}
-
-
-
-	public void setaImg(String aImg) {
-		this.aImg = aImg;
-	}
-
-
-
-	public String getaThumbImg() {
-		return aThumbImg;
-	}
-
-
-
-	public void setaThumbImg(String aThumbImg) {
-		this.aThumbImg = aThumbImg;
-	}
-
-
-
 	@Override
 	public String toString() {
 		return "ACommentDto [aComNo=" + aComNo + ", aNo=" + aNo + ", writer=" + writer + ", aComContent=" + aComContent
-				+ ", aComDate=" + aComDate + ", aComCnt=" + aComCnt + ", aImg=" + aImg + ", aThumbImg=" + aThumbImg
-				+ "]";
+				+ ", aComDate=" + aComDate + "]";
 	}
 	
 	
 	
-	
-	
-	
+
+
+
 }
