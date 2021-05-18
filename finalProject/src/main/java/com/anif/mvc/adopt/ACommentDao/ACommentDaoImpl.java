@@ -63,9 +63,9 @@ public class ACommentDaoImpl implements ACommentDao {
 		int res = 0;
 		
 		try {
-			res = sqlSession.delete(NAMESPACE+"aCommentDelte",comDto);
+			res = sqlSession.delete(NAMESPACE+"aCommentDelete",comDto);
 		} catch (Exception e) {
-			System.out.println("[error: delete comments");
+			System.out.println("[error: delete comments]");
 			e.printStackTrace();
 		}
 		
@@ -75,13 +75,7 @@ public class ACommentDaoImpl implements ACommentDao {
 		
 	}
 
-//	//view Cont 메소드 
-//
-//	@Override
-//	//public void replyCnt(int aNo) {
-//		sqlSession.update(NAMESPACE+"replyCnt",aNo);
-//		
-//	}
+
 	
 
 }

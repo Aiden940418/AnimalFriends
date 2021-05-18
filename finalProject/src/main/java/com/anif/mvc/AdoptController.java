@@ -126,13 +126,12 @@ public class AdoptController {
 		dto.setaImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		dto.setaThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 		
-		System.out.println(memberDto.getmNo());
 		
 		int res = biz.myadoptWrite(dto);
 
 		if (res > 0) { // 글 insert 성공 시
 			model.addAttribute("msg", "글 등록 성공!");
-			model.addAttribute("url", "/myAdoptList.do?mNo=memberDto.getmNo();");
+			model.addAttribute("url", "/myAdoptList.do");
 		} else {  //글 insert 실패 시
 			model.addAttribute("msg", "글 등록 실패!");
 			model.addAttribute("url", "/myAdoptWriteForm.do");
@@ -174,8 +173,12 @@ public class AdoptController {
 	//나의 입양공고 보기 
 	
 	@RequestMapping("/myAdoptList.do")
-	public String myAdoptList(Model model, int mNo) {
+	public String myAdoptList(Model model, HttpSession session) {
 		
+
+	MemberDto memberDto = (MemberDto) session.getAttribute("login");
+	
+	int mNo = memberDto.getmNo();
 
 
 	model.addAttribute("list",biz.myAdoptList(mNo));
@@ -243,7 +246,10 @@ public class AdoptController {
 	public String aCommentDelete(ACommentDto comDto) {
 		
 		
+		
 		int res = abiz.aCommentDelete(comDto);
+		
+		
 		
 		if(res>0) {
 			
