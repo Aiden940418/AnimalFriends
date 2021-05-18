@@ -184,12 +184,177 @@
 				
 						</div>
 					</div>
+					
+					<c:set var="sum" value="${sum + (cartList.gPrice * cartList.cartStock) }" />
 								</c:forEach>
 					
+					
+					
+					<div class="listResult">
+					
+						<div class="sum"> 
+						
+							총 합계 : <fmt:formatNumber pattern="###,###,###" value="${sum }"/>원 
+						</div>
+						
+					<div class="orderOpen">
+					
+						<button type="button" class="orderOpen_btn">주문 정보 입력</button>
+						
+						
+						<script>
+						$(".orderOpen_btn").click(function(){
+						
+							$(".orderInfo").slideDown();
+							$(".orderOpen_btn").slideUp();
+							
+							
+						});
+						
+						
+						
+						
+						
+						</script>
+					</div>
+					
+					
+					</div>
 				</div>
-				
+				</div>
 	
 				<!--  카드박스 끝 -->
+			<div class="orderInfo" style="display:none;">	
+				
+			<h1 class="display-7 mt-5 ms-5">주문 정보 입력</h1><button id="init_btn">정보초기화</button>
+         
+         				<script>				
+         				
+         				$("#init_btn").click(function(){
+						
+							$("#orderName").val() == "";
+							
+							
+						});
+         				
+         				
+         				
+         				</script>
+       	         <div class="container " style="font-size:30px;">
+			
+			
+				</div>
+ 			  
+
+ 			  
+ 			  
+ 			  
+ 			  
+ 			  
+       
+              <div class="ms-5 container mt-2 boarder=1" id="sameAddr" >
+       		  <table>
+		        <tr>
+		        <th>구매자 이름</th>
+		        <td><input type="text" id="orderName"name="orderName" style="width:300px; height:40px" value="${login.mName }"></td>
+		        </tr>
+		        
+		        <tr>
+		        <th>배송 받는 사람</th>
+		        <td><input type="text" name="real_name" style="width:300px; height:40px"value="${login.mName }" ></td>
+		        </tr>
+		        
+				<tr>
+				<th>주소</th>
+				<td><input type="text" id="mAddr1"	  name="mAddr1" style="width:100px; height:40px" value="${login.mAddr1 }">
+				<input class="btn btn-outline-success" type="button" name="idCheck" value="주소검색"
+				onclick="execPostCode();"
+				
+				
+				 style="font-size:20px">
+				</td>
+				
+				</tr>
+				
+				<tr>
+				<th>기본주소</th>
+				<td><input type="text"  id="mAddr2"	 name="mAddr2" style="width:300px; height:40px" value="${login.mAddr2 }"></td>
+				</tr>
+				
+				<tr>
+				<th>상세주소</th>
+				<td><input type="text"  id="mAddr3"	  name="mAddr3" style="width:300px; height:40px" value="${login.mAddr3 }"></td>
+				</tr>
+		        
+		        <tr>
+		        <th>연락처</th>
+		        <td><input type="text" name="real_name" style="width:300px; height:40px"value="${login.mPhone}"></td>
+		        </tr>
+		        
+		        <tr>
+		        <th>이메일</th>
+		        <td><input type="text" name="real_name" style="width:300px; height:40px"></td>
+		        </tr>
+		        
+		        
+		        <tr>
+		        <th>배송 요청</th>
+		        <td><input type="text" name="real_name" style="width:300px; height:40px"></td>
+		        </tr>
+		        </table>
+
+      	
+         
+       			
+		         <br>
+		         
+	<!-- 	         <hr>
+		        <h1 class="display-8 mt-4 ms-5">결제 정보</h1>
+		        <div class="ms-5 mt-3">
+		        <form method="get" action="">
+		        
+		        <label><input type="radio" name="card" value="payByCard">카드결제</label>
+		        <label><input type="radio" name="cash" value="payByCash">무통장입금</label><br>
+		         <br>
+		        <label>카드선택 </label>
+		 		<select id="cardCompany" name="cardName">
+				    <option value="BC">비씨카드</option>
+				    <option value="hyundea">현대카드</option>
+				    <option value="nh">농협카드</option>
+				    <option value="lotte">롯데카드</option>
+					<option value="woori">우리카드</option>
+				</select>
+		         
+         
+         
+         
+         
+         </form>
+         </div> -->
+    
+  
+  	<br>
+  	<br>
+       <div class="container text-center">
+       
+	<button type="button" class="btn btn-outline-success btn-lg" onclick="location.href='goodsPayment.do'">결제하기</button>
+   	<button type="button" class="btn btn-outline-success btn-lg" id="cancel_btn">취소</button>
+   	
+								<script>
+								$("#cancel_btn").click(function(){
+									
+								 $(".orderInfo").slideUp();
+								 $(".orderOpne_btn").slideDown();
+								});      
+								</script>
+       
+       
+       </div>
+      
+      </div>
+      
+      
+      
 				
 				
 		
@@ -197,7 +362,7 @@
 	
 	
 	
-			</div>
+			
 		</div>
 	
 	
