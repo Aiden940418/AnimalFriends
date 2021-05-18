@@ -43,15 +43,7 @@
   
   </insert>
   
-       <update id="replyCount">
-     
-     	UPDATE ADOPTCOMMENT
-     	SET ACOMCNT = ACOMCNT +1
-     	WHERE ANO = #{ANO}
-     
-     
-    	 </update>
-  
+
   
   
   <!-- comment delete -->

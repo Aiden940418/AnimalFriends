@@ -42,7 +42,7 @@
 	<c:forEach items="${list}" var="dto">
 					<div class="col-sm mt-5">
 			<div class="card h-100" style="width:350px;">
-				<a href="#"><img src="resources/images/adopt_dog1.png" class="card-img-top"
+				<a href="#"><img src="resources/${dto.aThumbImg }" class="card-img-top"
 					alt="..."></a>
 				<div class="card-body">
 					<h5 class="card-title"><a href="myAdoptDetail.do?aNo=${dto.aNo}">${dto.aTitle}</a></h5>

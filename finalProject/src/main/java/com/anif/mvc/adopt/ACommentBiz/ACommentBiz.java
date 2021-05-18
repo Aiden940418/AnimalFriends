@@ -16,6 +16,6 @@ public interface ACommentBiz {
 	public int aCommentDelete(ACommentDto comDto);
 	
 
-	public void replyCnt (int aNo);
+//	public void replyCnt (int aNo);
 	
 }

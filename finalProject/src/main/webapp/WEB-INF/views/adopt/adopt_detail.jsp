@@ -74,7 +74,7 @@ a.button:hover {
 		<!-- image추가 시작 -->
 		<div class="container text-center">
 		
-			<img src="resources/images/adopt_cat1.jpeg" width="600px" height="600px">
+			<img src="resources/${dto.aImg}" width="600px" height="600px">
 		</div>
 		<!-- image추가 끝 -->
 	
@@ -148,7 +148,6 @@ a.button:hover {
 			<input type="hidden" name="aNo" value="${dto.aNo}">
 			<input type="hidden" name="writer" value="${login.mNick}">
 	
-		<h3>${dto.aNo } ${login.mNick }</h3>
  
 			
 		<h3>Comments</h3>
@@ -178,7 +177,7 @@ a.button:hover {
 			
 			<c:forEach items="${reply}" var="com">
 			
-			<table class="mt-2" style="margin-left:350px;">
+			<table class="mt-2" style="margin-left:300px;">
 
 			
 				<tr>

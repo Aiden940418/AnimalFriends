@@ -96,7 +96,7 @@ zoom: 1.5;
     				<label for="cb1"></label>
                 </h3>
                 <div class="card-body text-center">
-                 	<img style="width:400px;height:200; " src="resources/images/adopt_dog3.jpeg" class="img-thumbnail" alt="...">
+                 	<img style="width:400px;height:200; " src="resources/${dto.gThumbImg}" class="img-thumbnail" alt="...">
                  	
                 <a href="adminGoodsDetail.do?gNo=${dto.gNo}">${dto.gName}</a>
                 <p class="container mt-1" >상품가격:${dto.gPrice}</p>

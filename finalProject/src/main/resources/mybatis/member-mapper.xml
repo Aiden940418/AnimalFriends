@@ -90,7 +90,7 @@
   	
   	<update id="memberUpdate" parameterType="memberDto">
   	
-  	UPDATE MEMBER SET MNICK = #{mNick}, MPHONE = #{mPhone}
+  	UPDATE MEMBER SET MNICK = #{mNick}, MPHONE = #{mPhone}, MADDR1 = #{mAddr1}, MADDR2 = #{mAddr2}, MADDR3 = #{mAddr3}
   	WHERE MNO = #{mNo}
   	
   	

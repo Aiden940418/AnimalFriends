@@ -11,13 +11,14 @@
 <!-- page -->
 <div class="contentDiv">
 
-	<div class="container">
 
 		<div class="row">
 			<!-- title -->
-			<div class="row my-4" style="text-align: center;">
+			<div class="container row my-4 mt-5 text-center" >
 				<h1>상품 등록</h1>
 			</div>
+				<div class="container text-center" style="margin-left:100px">
+			
 
 			<!-- form -->
 			<div style="margin: auto; text-align: center; display: inline-block">
@@ -27,28 +28,26 @@
 					<table>
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
-									style="width: 100px; pointer-events: none; ">동물 종</button></th>
-							<td><select name="gCtgy" class="form-control ms-2"
-								style="width: 70px ">
-									<option value="강아지">강아지</option>
-									<option value="고양이">고양이</option>
-									<option value="도마뱀">도마뱀</option>
-									<option value="거북이">거북이</option>
-									<option value="기타">기타</option>
+									style="width: 130px; pointer-events: none; ">상품종류</button></th>
+							<td><select name="gCtgy" class="form-control ms-2 text-center"
+								style="width: 100px ">
+									<option value="강아지">옷</option>
+									<option value="고양이">가방</option>
+									<option value="도마뱀">케이스</option>
 									
 							</select></td>
 						</tr>
 
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
-									style="width: 100px; pointer-events: none;">상품명</button></th>
+									style="width: 130px; pointer-events: none;">상품명</button></th>
 							<td><input type="text" class="form-control my-1"
 								name="gName" style="width: 500px; margin: 10px;"></td>
 						</tr>
 
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
-									style="width:100px; pointer-events: none;">가격</button></th>
+									style="width:130px; pointer-events: none;">가격</button></th>
 							<td><input type="text" class="form-control my-1" name="gPrice"
 								style="width:500px;margin:10px;"></td>
 						</tr>
@@ -57,7 +56,7 @@
 						<tr>
 							<th style="vertical-align: top;"><button type="button"
 									class="btn btn-outline-success"
-									style="width: 100px; pointer-events: none;">상품소개</button></th>
+									style="width: 130px; pointer-events: none;">상품소개</button></th>
 							<td><textarea rows="20" cols="50" class="form-control my-1"
 									name="gContent"
 									style="width: 500px; height: 300px; resize: none; margin: 10px;"></textarea></td>
@@ -65,7 +64,7 @@
 
 						<tr>
 							<th><button class="btn btn-outline-success"
-									style="width: 100px; pointer-events: none;">이미지</button></th>
+									style="width: 130px; pointer-events: none;">이미지</button></th>
 							<td><input type="file" class="form-control my-1" name="file"
 								id="gImg" style="width: 500px; margin: 10px;"
 								placeholder="이미지를 등록해주세요."></td>
@@ -74,8 +73,8 @@
 						<tr>
 							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
 									style="width: 130px; pointer-events: none;">이미지 미리보기</button></th>
-							<td id="select_img" style="table-layout:auto; text-algin:center;">
-									<img src=""/>
+							<td id="select_img" style="aglin:left;">
+							<img src=""/>
 							
 							</td>
 							
@@ -91,7 +90,7 @@
 								   if(this.files && this.files[0]) {
 								    var reader = new FileReader;
 								    reader.onload = function(data) {
-								     	$("#select_img img").attr("src", data.target.result).width(300);        
+								     	$("#select_img img").attr("src", data.target.result).width(400);        
 								    }
 								    reader.readAsDataURL(this.files[0]);
 								   }
@@ -100,7 +99,7 @@
 						
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
-									style="width: 100px; pointer-events: none;">판매수량</button></th>
+									style="width: 130px; pointer-events: none;">판매수량</button></th>
 							<td><input type="text" class="form-control my-1"
 								name="goods_sellNum" style="width: 500px; margin: 10px;"></td>
 						</tr>

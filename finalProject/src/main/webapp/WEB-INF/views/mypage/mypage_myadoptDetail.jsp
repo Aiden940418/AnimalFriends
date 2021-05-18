@@ -83,7 +83,7 @@
 		<!-- image추가 시작 -->
 		<div class="container text-center">
 		
-			<img src="resources/images/adopt_cat1.jpeg" width="600px" height="600px">
+			<img src="resources/${dto.aImg }" width="600px" height="600px">
 		</div>
 		<!-- image추가 끝 -->
 	
