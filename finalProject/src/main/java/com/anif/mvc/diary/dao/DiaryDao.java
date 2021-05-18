@@ -24,5 +24,7 @@ public interface DiaryDao {
 	public DiaryReplyDto DRselectOne(int drno);
 
 	public int DRdelete(int drno);
+
+	public int DRanswerInsert(DiaryReplyDto dto);
 	
 }

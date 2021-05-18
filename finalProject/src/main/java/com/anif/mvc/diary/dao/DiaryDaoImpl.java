@@ -130,6 +130,21 @@ public class DiaryDaoImpl implements DiaryDao{
 		
 		return res;
 	}
+
+
+	@Override
+	public int DRanswerInsert(DiaryReplyDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE + "DRanswerInsert", dto);
+		} catch (Exception e) {
+			System.out.println("[error] : DRanswerInsert");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
 	
 	
 	

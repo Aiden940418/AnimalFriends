@@ -71,6 +71,7 @@ public class DiaryController {
 		return list;
 	}
 	
+	//댓글 등록
 	@ResponseBody
 	@RequestMapping(value = "/DRwrite.do", method = RequestMethod.POST)
 	public int DRwrite(@RequestBody DiaryReplyDto dto, HttpSession session){
@@ -86,6 +87,7 @@ public class DiaryController {
 		return res;
 	}
 	
+	//댓글 삭제
 	@ResponseBody
 	@RequestMapping(value = "/DRdelete.do", method = RequestMethod.POST)
 	public int DRdelete(@RequestBody DiaryReplyDto dto, HttpSession session){
@@ -113,6 +115,37 @@ public class DiaryController {
 		
 		return res;
 	}
+	
+	
+	//답글 등록
+	@RequestMapping(value = "/DRanswerWrite.do", method = RequestMethod.POST)
+	@ResponseBody
+	public int DRanswerWrite(@RequestBody DiaryReplyDto dto, HttpSession session) {
+		logger.info("Diary Reply DRanswerWrite");
+		
+		//작성자 mno 를 댓글dto에 세팅해주기
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		dto.setMno(memberDto.getmNo());
+		
+		int res = biz.DRanswerInsert(dto);
+		
+		//본 글의 dno 를 조회해서 화면의 ajax로 리턴, 화면에서 getReplyList(dno) 실행
+		DiaryReplyDto originReplyDto = biz.DRselectOne(dto.getDrno());
+		if(res>0) {
+			return originReplyDto.getDno();
+		}else {
+			return 0;
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

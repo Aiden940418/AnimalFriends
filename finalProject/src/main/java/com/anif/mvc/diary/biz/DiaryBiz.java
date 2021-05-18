@@ -23,4 +23,6 @@ public interface DiaryBiz {
 
 	public int DRdelete(int drno);
 
+	public int DRanswerInsert(DiaryReplyDto dto);
+
 }

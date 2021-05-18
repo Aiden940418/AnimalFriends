@@ -38,6 +38,8 @@
 	var startNumber = 4;
 	var endNumber = 6;
 	
+
+	
 	$(function(){
 	    $(window).scroll(function(){
 	        
@@ -155,39 +157,43 @@ function getReplyList(id) {
 				if(replyList.length == 0){
 					
 					html += "<p style='text-align:center; font-size:14pt;'>" +
-							"-----아직 덧글이 없습니다. 제일 먼저 댓글을 작성해 보세요!-----" +
+							"-----아직 댓글이 없습니다. 제일 먼저 댓글을 작성해 보세요!-----" +
 							"</p>";
 				
 					}else{
 
-				//댓글이 있다면 반복문을 통해서 내용을 추가		
-				for(var i = 0 ; i < replyList.length; i++){
-					//변수 선언
-					var nick = "";
-					
-					//만약 답글이라면 공백과 화살표 기호를 추가
-					if(replyList[i].drtitletab != 0){
-						nick = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
-						"<ion-icon name='return-down-forward-outline'></ion-icon>";
-					}
-					
-						nick += replyList[i].mnick;
-					var content = replyList[i].drcontent;
-					var date = replyList[i].drdateToChar;
-					var repBtn = "<button class='btn btn-success float-end' id='newRepBtn' type='button' value='"+
-									replyList[i].drgroupno+"'>답글</button>";
-					var delBtn = "<button class='btn btn-outline-success float-end' id='delBtn' type='button' value='"+
-									replyList[i].drno+"'>삭제</button>";
-					//console.log(nick);
-					//console.log(content);
-					//console.log(date);
-					
-					//출력 형식(수정 예정)
-					html += nick + ": " + content+" /"+ date + delBtn + repBtn + "<hr>";
-					
-				}
+						//댓글이 있다면 반복문을 통해서 내용을 추가		
+						for(var i = 0 ; i < replyList.length; i++){
+							//변수 선언
+							var nick = "";
+							
+							//만약 답글이라면 공백과 화살표 기호를 추가
+							if(replyList[i].drtitletab != 0){
+								nick = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+								"<ion-icon name='return-down-forward-outline'></ion-icon>";
+							}
+							
+								nick += replyList[i].mnick;
+								var content = replyList[i].drcontent;
+			                    var date = replyList[i].drdateToChar;
+			                    var repBtn = "<button class='btn btn-success float-end mx-1' id='newRepBtn' type='button' value='"+
+			                                    replyList[i].drno+"'>답글</button>";
+			                    var delBtn = "<button class='btn btn-outline-success float-end' id='delBtn' type='button' value='"+
+			                                    replyList[i].drno+"'>삭제</button>";
+			                    var answerInputDiv = "<div id='answerInputDiv"+replyList[i].drno+"' style='text-align:left; display:none;'>"+
+			                                          "<input type='text' style='width: 550px; height: 30px;'>"+
+			                                           "<button class='btn btn-outline-success ms-1' id='answerSubmit' value='"+replyList[i].drno+"'>등록</button>"+
+			                                             "</div>";
+							
+				    		
+							//출력 형식(수정 예정)
+							html += nick + ": " + content+" ("+ date + delBtn + repBtn + ")<br>" + answerInputDiv + "<hr>";
+							
+							
+						}
 					}
 				
+				//댓글 등록 입력창 및 댓글 등록 버튼
 				html += "<input type='text' style='width: 700px; height: 38px;'>"+
 						"<button type='submit' class='btn btn-outline-success ms-1 float-end' id='replySubmit' value='"+id+"'>등록</button>"	;
 				html += "</div>";
@@ -248,6 +254,7 @@ $(document).on("click", '#replySubmit', function insertReply(){
 	});
 });
 
+
 //댓글 삭제(delete)	
 $(document).on("click", '#delBtn', function deleteReply(){
 	//클릭한 버튼의  value를 drno로 설정
@@ -284,14 +291,50 @@ $(document).on("click", '#delBtn', function deleteReply(){
 
 	
 	});
+});
+
+
+
+
+//답글 등록 입력창 토글(answerInput)	
+$(document).on("click", '#newRepBtn', function answerInput(){
+	var drno = $(this).val();
+	$("#answerInputDiv"+drno).toggle();
+});
+
+//답글 등록 버튼 클릭 (답글 insert)
+$(document).on("click", '#answerSubmit', function answerSubmit(){
+	var drno = $(this).val();
+	var drcontent = $(this).prev().val();
 	
+	var answerSubmitVal = {
+				"drno" : drno, 
+				"drcontent" : drcontent
+			};
+							
 	
-	
-	
-	
-	
-	
-	
+	$.ajax({
+		type: "POST", 
+		url: "DRanswerWrite.do", 
+		data: JSON.stringify(answerSubmitVal), 
+		contentType:"application/json",
+		dataType: 'json', 
+		success:  function(res){
+
+            if ( res > 0 ){
+                alert("답글 등록 완료!");
+
+                getReplyList(res);
+
+            }else{
+                alert("답글 등록 실패!");
+            }
+        },
+        error:function(){
+            alert("답글 등록 ajax 실패");
+        }
+		
+	});
 	
 	
 });
