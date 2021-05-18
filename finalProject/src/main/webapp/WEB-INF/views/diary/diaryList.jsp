@@ -167,7 +167,7 @@ function getReplyList(id) {
 					var nick = "";
 					
 					//만약 답글이라면 공백과 화살표 기호를 추가
-					if(replyList[i].drtitletab!=0){
+					if(replyList[i].drtitletab != 0){
 						nick = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
 						"<ion-icon name='return-down-forward-outline'></ion-icon>";
 					}
@@ -175,12 +175,16 @@ function getReplyList(id) {
 						nick += replyList[i].mnick;
 					var content = replyList[i].drcontent;
 					var date = replyList[i].drdateToChar;
+					var repBtn = "<button class='btn btn-success float-end' id='newRepBtn' type='button' value='"+
+									replyList[i].drgroupno+"'>답글</button>";
+					var delBtn = "<button class='btn btn-outline-success float-end' id='delBtn' type='button' value='"+
+									replyList[i].drno+"'>삭제</button>";
 					//console.log(nick);
 					//console.log(content);
 					//console.log(date);
 					
 					//출력 형식(수정 예정)
-					html += nick+": "+content+" /"+date+"<hr>";
+					html += nick + ": " + content+" /"+ date + delBtn + repBtn + "<hr>";
 					
 				}
 					}
@@ -245,8 +249,53 @@ $(document).on("click", '#replySubmit', function insertReply(){
 	});
 });
 
+//댓글 삭제(delete)	
+$(document).on("click", '#delBtn', function deleteReply(){
+	//클릭한 버튼의  value를 drno로 설정
+	var drno = $(this).val(); 
+	console.log(drno);
 	
+	//작성자 mno는 컨트롤러에서 처리해주려 함	
+	
+	var delReplyVal = {
+		"drno" : drno
+	};
+	
+	$.ajax({
+		type:"post",
+		url:"DRdelete.do",
+		data:JSON.stringify(delReplyVal),
+		contentType:"application/json",
+		dataType:"json",
+		success:  function(res){
+			
+			if ( res > 0 ){
+				alert("댓글 삭제 완료!");
+				
+				//컨트롤러에서 dno를 리턴값으로 넘겨받고 조회
+				getReplyList(res);
+				
+			}else{
+				alert("댓글 삭제 실패! 작성자 본인만 삭제할 수 있습니다.");
+			}
+		},
+		error:function(){
+			alert("댓글 삭제 ajax 실패");
+		}
 
+	
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+});
 	
 	
 	

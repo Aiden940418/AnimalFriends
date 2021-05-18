@@ -99,6 +99,37 @@ public class DiaryDaoImpl implements DiaryDao{
 		
 		return res;
 	}
+
+
+	@Override
+	public DiaryReplyDto DRselectOne(int drno) {
+		DiaryReplyDto dto = null;
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE + "DRselectOne", drno);
+		} catch (Exception e) {
+			System.out.println("[error] : DRselectOne");
+			e.printStackTrace();
+		}
+
+		return dto;
+	}
+
+
+	@Override
+	public int DRdelete(int drno) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE + "DRdelete", drno);
+		} catch (Exception e) {
+			System.out.println("[error] : DRdelete");
+			e.printStackTrace();
+		}
+		
+		
+		return res;
+	}
 	
 	
 	

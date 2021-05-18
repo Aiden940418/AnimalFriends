@@ -55,9 +55,18 @@
 		VALUES(DRNOSEQ.NEXTVAL, #{dno}, DRGROUPNOSEQ.NEXTVAL, 0, 0, #{mno}, #{drcontent}, SYSDATE)
   	</insert>
   
+  	<select id="DRselectOne" parameterType="int" resultType="DiaryReplyDto">
+  		SELECT DRNO, DNO, DRGROUPNO, DRTITLETAB, DRGROUPSQ, MNO, DRCONTENT, 
+        		TO_CHAR(DRDATE, 'YYYY-MM-DD HH24:MI') AS drdateToChar, MNICK
+		FROM DIARYREPLY DR
+		JOIN MEMBER USING(MNO)
+		WHERE DRNO=#{drno}
+  	</select>
   
-  
-  
+  	<delete id="DRdelete" parameterType="int">
+  		DELETE FROM DIARYREPLY
+  		WHERE DRNO = #{drno}
+  	</delete>
   
   
   </mapper>
