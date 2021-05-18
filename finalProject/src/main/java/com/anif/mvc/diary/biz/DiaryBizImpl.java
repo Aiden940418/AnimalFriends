@@ -59,4 +59,10 @@ public class DiaryBizImpl implements DiaryBiz{
 		return dao.DRdelete(drno);
 	}
 
+
+	@Override
+	public int DRanswerInsert(DiaryReplyDto dto) {
+		return dao.DRanswerInsert(dto);
+	}
+
 }

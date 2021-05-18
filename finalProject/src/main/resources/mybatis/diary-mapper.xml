@@ -67,6 +67,20 @@
   		DELETE FROM DIARYREPLY
   		WHERE DRNO = #{drno}
   	</delete>
+  	
+  	<!-- 댓글 답글 등록 insert -->
+  	<insert id="DRanswerInsert" parameterType="DiaryReplyDto">
+  		INSERT INTO DIARYREPLY
+  		VALUES(DRNOSEQ.NEXTVAL, 
+			(SELECT DNO FROM DIARYREPLY WHERE DRNO=#{drno}), 
+  			(SELECT DRGROUPNO FROM DIARYREPLY WHERE DRNO=#{drno}), 
+  			1, 
+  			(SELECT DRGROUPSQ FROM DIARYREPLY WHERE DRNO=#{drno})+1, 
+  			#{mno}, 
+  			#{drcontent}, 
+  			SYSDATE
+  		)
+  	</insert>
   
   
   </mapper>
