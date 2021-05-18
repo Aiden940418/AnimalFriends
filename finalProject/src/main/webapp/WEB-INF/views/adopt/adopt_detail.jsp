@@ -146,15 +146,23 @@ a.button:hover {
 	
 		<form action="aCommentInsert.do" method="GET">
 			<input type="hidden" name="aNo" value="${dto.aNo}">
-			<input type="hidden" name="writer" value="${login.mNick}">
-	
+			<input type="hidden" name="writer" id="writer" value="${login.mNick}">
+		<div></div>
  
 			
 		<h3>Comments</h3>
 
 		
-		<input class="mt-2" type="text" style="width:650px; height:50px;" name="aComContent">
-		<input class="btn btn-outline-success ms-2" type="submit" value="전송">
+		<input class="mt-2" type="text" style="width:650px; height:50px;margin-left:230px;" name="aComContent">
+		<input class="btn btn-outline-success ms-2" type="submit" value="전송" onclick="checkLogin();">
+		<script type="text/javascript">
+			  function checkLogin() {
+				  if($("#writer").val() == "") {
+					  alert("로그인이 필요한 기능입니다!");
+					  location.href = 'loginForm.do';
+				  }
+			  }
+		</script>
 		
 	
 		</form>
@@ -186,7 +194,13 @@ a.button:hover {
 				<td>${com.aComDate}</td>
 				
 		
-				<td><button value="삭제" onclick="location.href='aCommentDelete.do?aComNo=${com.aComNo}&writer=${login.mNick}&aNo=${com.aNo}'">삭제</button>
+				<td>
+					<c:set var ="mNick" value="${login.mNick }"/>
+					<c:set var ="comNick" value="${com.writer}"/>
+					<c:if test="${mNick == comNick}">
+					<button value="삭제" onclick="location.href='aCommentDelete.do?aComNo=${com.aComNo}&writer=${login.mNick}&aNo=${com.aNo}'">삭제</button>
+					</c:if>
+				</td>
 				</tr>
 			
 			</table>

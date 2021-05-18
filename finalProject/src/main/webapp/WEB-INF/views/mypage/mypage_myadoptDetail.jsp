@@ -147,20 +147,11 @@
 		<!--  1:1 채팅 요청 종료 -->
 		<hr>
 		
-		<!-- 댓글 태그  -->
-		
-		<div class="container mt-2" style="margin-left:230px"> 
-	
-		<h3>Comments</h3>
-		
-		<input class="mt-2" type="text" style="width:650px; height:50px;"><input class="btn btn-outline-success ms-2" type="submit" value="전송">
-		
-	
-		</div>
-		
 		
 		<!-- 댓글 태그 종료 -->
 		
+		<div class="container mt-2" style="margin-left:400px"> 
+		<h3>Comments</h3>
 		
 
 		
@@ -177,7 +168,7 @@
 			
 			<c:forEach items="${reply}" var="com">
 			
-			<table class="mt-2" style="margin-left:300px;">
+			<table class="mt-2" style="margin-left:70px;">
 
 			
 				<tr>
@@ -197,7 +188,7 @@
 	</c:choose>
 		</div>
 		
-		
+		</div>
 	
 
 	<br><br><br>
