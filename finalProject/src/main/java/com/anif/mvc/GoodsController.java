@@ -164,10 +164,45 @@ public class GoodsController {
 		
 	}
 	
+	//관리자 굿즈 다중 삭제
+	@ResponseBody 
+	@RequestMapping(value="/multiDeleteGoods.do", method= RequestMethod.POST)
+	public int multiDeleteGoods(HttpSession session, @RequestParam(value= "chbox[]") List<String> chArr, 
+			GoodsDto dto) {
+		
+		logger.info("delete Goods");
+
+		
+		
+		MemberDto member = (MemberDto)session.getAttribute("login");
+		
+		
+		int result = 0;
+		int gNo = 0;
+		
+		if(member != null) {
+			
+			for(String i : chArr) {
+				gNo = Integer.parseInt(i);
+				dto.setgNo(gNo);
+				
+				biz.multiDeleteGoods(dto);
+				
+			}
+			result = 1;
+			
+			
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
+	
 	
 	//카트에 담기
-	
-	
 	@ResponseBody
 	@RequestMapping(value = "/addCart.do",method= RequestMethod.POST)
 	public int addCart(CartDto cart, HttpSession session) {
@@ -208,8 +243,6 @@ public class GoodsController {
 	
 	
 	//카트 삭제 
-	
-	
 	@ResponseBody 
 	@RequestMapping(value="/deleteCart.do", method= RequestMethod.POST)
 	public int deleteCart(HttpSession session, @RequestParam(value= "chbox[]") List<String> chArr, 

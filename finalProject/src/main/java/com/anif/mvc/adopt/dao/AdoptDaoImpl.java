@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.anif.mvc.adopt.dto.AdoptDto;
+import com.anif.mvc.goods.dto.GoodsDto;
 
 @Repository
 public class AdoptDaoImpl implements AdoptDao {
@@ -132,6 +133,22 @@ public class AdoptDaoImpl implements AdoptDao {
 		
 		return res;
 	}
+	//관리자 페이지에서 굿즈 다중 삭제
+	@Override
+	public int multiDeleteAdopt(AdoptDto dto) {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE+"multiDeleteAdopt",dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	
+	
 
 	
 	//view Cont 메소드 
@@ -141,6 +158,8 @@ public class AdoptDaoImpl implements AdoptDao {
 		sqlSession.update(NAMESPACE+"viewCount",aNo);
 		
 	}
+
+
 
 	
 	
