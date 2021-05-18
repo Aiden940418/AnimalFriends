@@ -51,7 +51,7 @@
   
   
   DELETE FROM ADOPTCOMMENT
-  WHERE ACOMNO = #{aComNo) AND WRITER=#{WRITER} 
+  WHERE ACOMNO = #{aComNo} AND WRITER=#{writer} 
   
   
   </delete>
