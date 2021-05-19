@@ -145,6 +145,37 @@ public class DiaryDaoImpl implements DiaryDao{
 		
 		return res;
 	}
+
+	
+	//마이페이지 나의 입양일기 selectList (로그인 한 회원의 작성글만 조회)
+	@Override
+	public List<DiaryDto> myDiarySelectList(int mNo) {
+		List<DiaryDto> list = new ArrayList<DiaryDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE + "myDiarySelectList", mNo);
+		} catch (Exception e) {
+			System.out.println("[error] : myDiarySelectList");
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+
+	@Override
+	public int myDiaryDelete(int dno) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE + "myDiaryDelete", dno);
+		} catch (Exception e) {
+			System.out.println("[error] : myDiaryDelete");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
 	
 	
 	

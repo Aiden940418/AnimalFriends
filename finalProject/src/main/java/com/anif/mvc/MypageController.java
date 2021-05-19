@@ -52,21 +52,28 @@ public class MypageController {
 		return "mypage/mypage_chattingDetail";
 	}
 	
-	// Diary Start 
 	
+	// Diary Start 
 	@RequestMapping("/mydiary.do")
-	public String myDiary() {
+	public String myDiary(Model model, HttpSession session) {
+		logger.info("Mypage Mydiary SELECT LIST");
 		
+		//현재 로그인 되어있는 계정의 회원번호를 가져오기
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		int mNo = memberDto.getmNo();
+		
+		model.addAttribute("memberDto", memberDto); 
+		model.addAttribute("list", diaryBiz.myDiarySelectList(mNo)); 
 		
 		return "mypage/mypage_mydiary";
 	}
 	
 	
-	@RequestMapping("/mydiaryDetail.do")
-	public String mydiaryDetail() {
-		
-		return "mypage/mypage_mydiaryDetail";
-	}
+//	@RequestMapping("/mydiaryDetail.do")
+//	public String mydiaryDetail() {
+//		
+//		return "mypage/mypage_mydiaryDetail";
+//	}
 	
 	@RequestMapping("/mydiaryWriteForm.do")
 	public String mydiaryWriteForm() {
@@ -99,7 +106,8 @@ public class MypageController {
 
 		if (res > 0) { // 글 insert 성공 시
 			model.addAttribute("msg", "글 등록 성공!");
-			model.addAttribute("url", "/diaryList.do");
+			//model.addAttribute("url", "/diaryList.do");
+			model.addAttribute("url", "/mydiary.do");
 		} else {  //글 insert 실패 시
 			model.addAttribute("msg", "글 등록 실패!");
 			model.addAttribute("url", "/mydiaryWriteForm.do");
@@ -111,6 +119,23 @@ public class MypageController {
 	@RequestMapping("/mydiaryUpdateForm.do")
 	public String mydiaryUpdateForm() {
 		return "mypage/mypage_mydiaryUpdateForm";
+	}
+	
+	@RequestMapping("/myDiaryDelete.do")
+	public String myDiaryDelete(Model model, int dno) {
+		logger.info("My Diary DELETE");
+		
+		int res = diaryBiz.myDiaryDelete(dno);
+		
+		if (res > 0) { // 글 insert 성공 시
+			model.addAttribute("msg", "글 삭제 성공!");
+			model.addAttribute("url", "/mydiary.do");
+		} else {  //글 insert 실패 시
+			model.addAttribute("msg", "글 삭제 실패!");
+			model.addAttribute("url", "/mydiary.do");
+		}
+		
+		return "/mypage/alertPage";
 	}
 	
 	
