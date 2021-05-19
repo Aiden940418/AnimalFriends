@@ -99,7 +99,7 @@
 							</td>
 						</tr>
 
-						<!-- 제품점수 라디오 버튼 -->
+						<!-- 제품점수 체크박스 버튼 -->
 						<tr>
 							<th style="vertical-align: top;">
 								<button type="button" class="btn btn-outline-success"
