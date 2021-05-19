@@ -65,4 +65,10 @@ public class DiaryBizImpl implements DiaryBiz{
 		return dao.DRanswerInsert(dto);
 	}
 
+
+	@Override
+	public List<DiaryDto> selectMyList(int getmNo) {
+		return dao.selectMyList(getmNo);
+	}
+
 }

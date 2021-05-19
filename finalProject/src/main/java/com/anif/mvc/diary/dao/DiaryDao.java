@@ -26,5 +26,7 @@ public interface DiaryDao {
 	public int DRdelete(int drno);
 
 	public int DRanswerInsert(DiaryReplyDto dto);
+
+	public List<DiaryDto> selectMyList(int getmNo);
 	
 }

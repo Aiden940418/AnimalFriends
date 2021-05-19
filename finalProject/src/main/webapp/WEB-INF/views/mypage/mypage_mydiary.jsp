@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
+<!-- JSTL 사용위한 코드 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
 
 	
@@ -18,9 +19,9 @@
 				<ion-icon name="person-circle-outline" id="profileIcon"></ion-icon>
 			</div>
 			<div>
-				<label>UserID</label>
+				<label>UserID: ${login.mId }</label>
 				<br> 
-				<label>UserNickName</label>
+				<label>UserNickName: ${login.mNick }</label>
 			</div>
 			<div style="float: right; margin-right: 200px;">
 				<button type="button" class="btn btn-secondary">팔로워</button>
@@ -44,93 +45,32 @@
 		<div class="container">
 			<div class="row">
 			
-				<div class="col-sm">
-					<div class="card" style="width: 18rem; margin-top: 20px;">
-						<img class="card-img-top"
-							src="resources/images/adopt_dog1.png" alt="Card image cap">
-						<div class="card-body">
-							<p class="card-text"><a href="mydiaryDetail.do">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</a></p>
-						</div>
-					</div>
-				</div>
+				
+				
+				
+				
+				<c:forEach items="${list }" var="dto">
+				
+				
 				
 				<div class="col-sm">
 					<div class="card" style="width: 18rem; margin-top: 20px;">
 						<img class="card-img-top"
-							src="resources/images/adopt_dog1.png" alt="Card image cap">
+							src="resources/${dto.diaryImg }" >
 						<div class="card-body">
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
+							<p class="card-text">${dto.dcontent }</p>
 						</div>
 					</div>
 				</div>
 				
-				<div class="col-sm">
-					<div class="card" style="width: 18rem; margin-top: 20px;">
-						<img class="card-img-top"
-							src="resources/images/adopt_dog1.png" alt="Card image cap">
-						<div class="card-body">
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-sm">
-					<div class="card" style="width: 18rem; margin-top: 20px;">
-						<img class="card-img-top"
-							src="resources/images/adopt_dog1.png" alt="Card image cap">
-						<div class="card-body">
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-sm">
-					<div class="card" style="width: 18rem; margin-top: 20px;">
-						<img class="card-img-top"
-							src="resources/images/adopt_dog1.png" alt="Card image cap">
-						<div class="card-body">
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-sm">
-					<div class="card" style="width: 18rem; margin-top: 20px;">
-						<img class="card-img-top"
-							src="resources/images/adopt_dog1.png" alt="Card image cap">
-						<div class="card-body">
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-sm">
-					<div class="card" style="width: 18rem; margin-top: 20px;">
-						<img class="card-img-top"
-							src="resources/images/adopt_dog1.png" alt="Card image cap">
-						<div class="card-body">
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-sm">
-					<div class="card" style="width: 18rem; margin-top: 20px;">
-						<img class="card-img-top"
-							src="resources/images/adopt_dog1.png" alt="Card image cap">
-						<div class="card-body">
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
-						</div>
-					</div>
-				</div>
+
+			
+
+				</c:forEach>
+
+
+
+
 				
 			</div>
 		</div>

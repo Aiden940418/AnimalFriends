@@ -25,4 +25,6 @@ public interface DiaryBiz {
 
 	public int DRanswerInsert(DiaryReplyDto dto);
 
+	public List<DiaryDto> selectMyList(int getmNo);
+
 }

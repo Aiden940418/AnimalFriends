@@ -145,6 +145,21 @@ public class DiaryDaoImpl implements DiaryDao{
 		
 		return res;
 	}
+
+
+	@Override
+	public List<DiaryDto> selectMyList(int getmNo) {
+		List<DiaryDto> list = new ArrayList<DiaryDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE + "selectMyList", getmNo);
+		} catch (Exception e) {
+			System.out.println("[error] : MyDiary select list");
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 	
 	
 	

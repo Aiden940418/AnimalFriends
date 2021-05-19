@@ -54,8 +54,15 @@ public class MypageController {
 	
 	// Diary Start 
 	
+	//마이페이지 입양일기 리스트
 	@RequestMapping("/mydiary.do")
-	public String myDiary() {
+	public String myDiary(HttpSession session, Model model) {
+		logger.info("My Diary SELECT LIST");
+		//화면에 아이디랑 닉네임 띄우려고 모델에 로그인 정보 세팅해줌
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		model.addAttribute("login", memberDto);
+
+		model.addAttribute("list", diaryBiz.selectMyList(memberDto.getmNo()));
 		
 		
 		return "mypage/mypage_mydiary";
