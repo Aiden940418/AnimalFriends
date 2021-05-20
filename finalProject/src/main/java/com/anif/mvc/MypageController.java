@@ -119,10 +119,12 @@ public class MypageController {
 		return "/mypage/alertPage";
 	}
 	
-	@RequestMapping("/mydiaryUpdateForm.do")
-	public String mydiaryUpdateForm() {
-		return "mypage/mypage_mydiaryUpdateForm";
-	}
+	
+//	@RequestMapping("/mydiaryUpdateForm.do")
+//	public String mydiaryUpdateForm() {
+//		return "mypage/mypage_mydiaryUpdateForm";
+//	}
+	
 	
 	@RequestMapping("/myDiaryDelete.do")
 	public String myDiaryDelete(Model model, int dno) {

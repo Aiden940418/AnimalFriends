@@ -26,4 +26,8 @@ public interface DiaryDao {
 	public List<DiaryDto> myDiarySelectList(int mNo);
 	public int myDiaryDelete(int dno);
 	
+	//관리자페이지 입양일기 관리 관련
+	public List<DiaryDto> adminDiarySelectList();
+	public int adminDiaryDelete(int dno);
+	
 }
