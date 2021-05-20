@@ -52,6 +52,46 @@
 	        }
 	    })
 	    
+	    
+	    //글이 길면 더보기 해주는 기능 (위치에 맞는 클래스에 각각 box 와 content 추가해줘야 됨)
+	    /* $('.box').each(function(){
+            var content = $(this).children('.content');
+            var content_txt = content.text();
+            var content_txt_short = content_txt.substring(0,50)+"...";
+            var btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
+
+            
+            $(this).append(btn_more);
+            
+            if(content_txt.length >= 50){
+                content.html(content_txt_short)
+                
+            }else{
+                btn_more.hide()
+            }
+            
+            btn_more.click(toggle_content);
+
+            function toggle_content(){
+                if($(this).hasClass('short')){
+                    // 접기 상태
+                    $(this).html('더보기');
+                    content.html(content_txt_short)
+                    $(this).removeClass('short');
+                }else{
+                    // 더보기 상태
+                    $(this).html('접기');
+                    content.html(content_txt);
+                    $(this).addClass('short');
+
+                }
+            }
+        }); */
+	    
+	    
+	    
+	    
+	    
 	})
 	
 	var fetchList = function(){
@@ -98,7 +138,7 @@
 											"</div>"+
 										"</li>"+
 									"</ul>"+
-						"<div class='card-body text-dark' style='height: 100px;'>"+
+						"<div class='card-body text-dark' style=''>"+
 							"<h5 class='card-title'>"+result[i].dcontent+"</h5>"+
 							"<p class='card-text'>"+result[i].ddateToChar+"</p>"+
 						"</div>"+
@@ -394,16 +434,18 @@ $(document).on("click", '#answerSubmit', function answerSubmit(){
 							</li>
 						</ul>
 						
-						<div class="card-body text-dark" style="height: 100px;">
+						<!-- ... 더보기 적용하려면 밑의 코드 쓰세요 -->
+						<%-- <div class="card-body text-dark box" style="">
+							<h5 class="card-title content">${dto.dcontent }</h5>
+						</div>
+							<p class="card-text">&nbsp;&nbsp;&nbsp;${dto.ddateToChar }</p> --%>
+							
+						<div class="card-body text-dark" style="">
 							<h5 class="card-title">${dto.dcontent }</h5>
 							<p class="card-text">${dto.ddateToChar }</p>
 						</div>
 						
 						<div class="card-footer bg-transparent border-success">
-							<!--등록 박스랑 버튼 임시 주석처리 <form action="">
-								<input type="text" style="width: 700px; height: 38px;">
-								<button type="submit" class="btn btn-outline-success ms-1 float-end">등록</button>
-							</form> -->
 							
 							<!-- 댓글 리스트 부분 -->
 							<div id="replyListBox">

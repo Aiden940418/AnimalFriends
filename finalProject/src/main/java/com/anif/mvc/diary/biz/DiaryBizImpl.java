@@ -67,15 +67,14 @@ public class DiaryBizImpl implements DiaryBiz{
 
 
 	@Override
-	public List<DiaryDto> MyDselectList() {
-		return dao.MyDselectList();
+	public List<DiaryDto> myDiarySelectList(int mNo) {
+		return dao.myDiarySelectList(mNo);
 	}
 
 
-	//마이페이지_마이 다이어리 삭제
 	@Override
-	public int MyDRdelete(Integer dno) {
-		return dao.MyDRdelete(dno);
+	public int myDiaryDelete(int dno) {
+		return dao.myDiaryDelete(dno);
 	}
 
 }
