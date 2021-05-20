@@ -65,4 +65,17 @@ public class DiaryBizImpl implements DiaryBiz{
 		return dao.DRanswerInsert(dto);
 	}
 
+
+	@Override
+	public List<DiaryDto> MyDselectList() {
+		return dao.MyDselectList();
+	}
+
+
+	//마이페이지_마이 다이어리 삭제
+	@Override
+	public int MyDRdelete(Integer dno) {
+		return dao.MyDRdelete(dno);
+	}
+
 }

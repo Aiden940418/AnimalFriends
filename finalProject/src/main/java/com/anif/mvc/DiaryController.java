@@ -3,6 +3,7 @@ package com.anif.mvc;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -139,7 +140,23 @@ public class DiaryController {
 		
 	}
 	
-	
+	//마이페이지_나의 입양일기_삭제
+	@ResponseBody
+	@RequestMapping(value = "/MyDRdelete.do", method = RequestMethod.POST)
+	public String MyDRdelete(@RequestParam(value="valueArr[]") List<Integer> valueArr){
+		logger.info("MyDiary DELETE");
+		System.out.println(valueArr);
+
+			
+		for(int i = 0; i < valueArr.size(); i++) {
+			
+			System.out.println(valueArr.get(i));
+			
+			biz.MyDRdelete(valueArr.get(i));
+		}
+		
+		return String.valueOf(valueArr);
+	}
 	
 	
 	

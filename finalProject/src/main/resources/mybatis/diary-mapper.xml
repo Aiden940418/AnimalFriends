@@ -81,6 +81,20 @@
   			SYSDATE
   		)
   	</insert>
-  
+  	
+  	<!-- 마이페이지_나의 입양일기 전체 리스트 -->
+  	<select id="MyDselectList" resultType="diaryDto">
+		SELECT DNO, MNO, DCONTENT,DDATE, TO_CHAR(DDATE, 'YYYY-MM-DD HH24:MI') AS ddateToChar, MNICK, DIARYIMG, DIARYTHUMBIMG
+		FROM DIARY JOIN MEMBER USING(MNO)
+		ORDER BY DDATE DESC
+  	</select>
+  	
+  	<delete id="MyDRdelete" parameterType="int">
+  		DELETE FROM DIARY
+  		WHERE DNO = #{dno}
+  	</delete>
+  	
+  	
+  	
   
   </mapper>

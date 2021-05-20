@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -55,9 +56,12 @@ public class MypageController {
 	
 	// Diary Start 
 	
-	@RequestMapping("/mydiary.do")
-	public String myDiary() {
+	@RequestMapping(value = "/mydiary.do", method = RequestMethod.GET)
+	public String myDiary(Model model) {
 		
+		logger.info("MyDiary SELECT LIST");
+		
+		model.addAttribute("list", diaryBiz.MyDselectList());
 		
 		return "mypage/mypage_mydiary";
 	}
