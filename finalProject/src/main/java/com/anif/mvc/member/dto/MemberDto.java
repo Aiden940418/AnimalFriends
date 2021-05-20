@@ -14,23 +14,21 @@ public class MemberDto {
 	private String mAddr3; //상세주소 
 	private String mName; //회원이름 
 	private String mNick; //회원닉네임 
-	private int sNo; //회원번호(보호소번호 FK)
-	private String sBisNum; //보호소회원사업자번호 
-	private String sSellNum; //보호소 
 	private String mPhone;
+	private String sBisNum; //보호소회원사업자번호 
+	private String sSellNum; //보호소
 	
 	
 	
-
-	//생성자 
 	public MemberDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	
+
+
 	public MemberDto(int mNo, String mRole, String mJoinYn, String mId, String mPw, String mAddr1, String mAddr2,
-			String mAddr3, String mName, String mNick, String sBisNum, String sSellNum, String mPhone) {
+			String mAddr3, String mName, String mNick, String mPhone, String sBisNum, String sSellNum) {
 		super();
 		this.mNo = mNo;
 		this.mRole = mRole;
@@ -42,20 +40,17 @@ public class MemberDto {
 		this.mAddr3 = mAddr3;
 		this.mName = mName;
 		this.mNick = mNick;
+		this.mPhone = mPhone;
 		this.sBisNum = sBisNum;
 		this.sSellNum = sSellNum;
-		this.mPhone = mPhone;
 	}
 
 
-
-
-	
-	//getter setter 
 
 	public int getmNo() {
 		return mNo;
 	}
+
 
 
 	public void setmNo(int mNo) {
@@ -63,9 +58,11 @@ public class MemberDto {
 	}
 
 
+
 	public String getmRole() {
 		return mRole;
 	}
+
 
 
 	public void setmRole(String mRole) {
@@ -73,9 +70,11 @@ public class MemberDto {
 	}
 
 
+
 	public String getmJoinYn() {
 		return mJoinYn;
 	}
+
 
 
 	public void setmJoinYn(String mJoinYn) {
@@ -83,9 +82,11 @@ public class MemberDto {
 	}
 
 
+
 	public String getmId() {
 		return mId;
 	}
+
 
 
 	public void setmId(String mId) {
@@ -93,9 +94,11 @@ public class MemberDto {
 	}
 
 
+
 	public String getmPw() {
 		return mPw;
 	}
+
 
 
 	public void setmPw(String mPw) {
@@ -103,9 +106,11 @@ public class MemberDto {
 	}
 
 
+
 	public String getmAddr1() {
 		return mAddr1;
 	}
+
 
 
 	public void setmAddr1(String mAddr1) {
@@ -113,9 +118,11 @@ public class MemberDto {
 	}
 
 
+
 	public String getmAddr2() {
 		return mAddr2;
 	}
+
 
 
 	public void setmAddr2(String mAddr2) {
@@ -123,9 +130,11 @@ public class MemberDto {
 	}
 
 
+
 	public String getmAddr3() {
 		return mAddr3;
 	}
+
 
 
 	public void setmAddr3(String mAddr3) {
@@ -133,9 +142,11 @@ public class MemberDto {
 	}
 
 
+
 	public String getmName() {
 		return mName;
 	}
+
 
 
 	public void setmName(String mName) {
@@ -143,9 +154,11 @@ public class MemberDto {
 	}
 
 
+
 	public String getmNick() {
 		return mNick;
 	}
+
 
 
 	public void setmNick(String mNick) {
@@ -153,9 +166,23 @@ public class MemberDto {
 	}
 
 
+
+	public String getmPhone() {
+		return mPhone;
+	}
+
+
+
+	public void setmPhone(String mPhone) {
+		this.mPhone = mPhone;
+	}
+
+
+
 	public String getsBisNum() {
 		return sBisNum;
 	}
+
 
 
 	public void setsBisNum(String sBisNum) {
@@ -163,28 +190,30 @@ public class MemberDto {
 	}
 
 
+
 	public String getsSellNum() {
 		return sSellNum;
 	}
 
 
+
 	public void setsSellNum(String sSellNum) {
 		this.sSellNum = sSellNum;
 	}
-	
-	public String getmPhone() {
-		return mPhone;
+
+
+
+	@Override
+	public String toString() {
+		return "MemberDto [mNo=" + mNo + ", mRole=" + mRole + ", mJoinYn=" + mJoinYn + ", mId=" + mId + ", mPw=" + mPw
+				+ ", mAddr1=" + mAddr1 + ", mAddr2=" + mAddr2 + ", mAddr3=" + mAddr3 + ", mName=" + mName + ", mNick="
+				+ mNick + ", mPhone=" + mPhone + ", sBisNum=" + sBisNum + ", sSellNum=" + sSellNum + "]";
 	}
-
-
-	public void setmPhone(String mPhone) {
-		this.mPhone = mPhone;
-	}
-
-	
-
 	
 	
+	
+
+
 	
 
 }

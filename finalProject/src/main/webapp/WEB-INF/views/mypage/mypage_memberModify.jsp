@@ -23,23 +23,7 @@
 	
 	}   	
 	</script>
-	<script>
-	(function(){
-		
-		
-		var mRole = ("#mRole").val();
-		
-		if(meRole == 1 ) {
-		
-		$("#iMember").slideDown();
-		
-		
-		}
-	});
 	
-	
-	
-	</script>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -121,7 +105,7 @@ function execPostCode() {
 					<c:if test="${mRole == 1}">
 		<div class="container" id="iMember" style="margin-left: 350px; ">
 		
-		<form action="memberUpdate.do" method="GET">
+		<form action="memberUpdate.do" method="POST">
 					
 			<table>
 						
@@ -189,11 +173,11 @@ function execPostCode() {
 			<c:set var ="mRole" value="${login.mRole}"/>
 					<c:if test="${mRole != 1}">
 			<div class="container" id="sMember" style="margin-left: 350px; ">
-				<form action="memberUpdate.do" method="GET">
+				<form action="memberUpdate.do" method="POST">
 			
 				
 				<table>
-								<tr>
+				<tr>
 				<th>아이디</th>
 				<td><input id="mId" type="text"  style="width:300px; height:40px" readonly="readonly" value="${login.mId}">
 				</td>

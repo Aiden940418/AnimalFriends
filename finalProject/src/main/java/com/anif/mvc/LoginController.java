@@ -66,13 +66,13 @@ public class LoginController {
 	
 	
 	//기업회원가입
-	@RequestMapping(value="/signUps.do", method = RequestMethod.GET) 
+	@RequestMapping(value="/signUpSmember.do", method = RequestMethod.GET) 
 	
-	public String signUps(MemberDto dto){
+	public String signUpSmember(MemberDto dto){
 		
 		int res = 0;
 		
-		res = biz.signUps(dto);
+		res = biz.signUpSmember(dto);
 		
 		if(res>0) {
 			

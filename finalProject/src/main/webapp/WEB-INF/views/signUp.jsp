@@ -299,9 +299,9 @@ function execPostCode() {
 			
 			
 		<!--  일반회원 가입 form -->
-		<form action="signUp.do" method="GET">
 		
 			<div id="iMember">
+			<form action="signUp.do" method="GET">
 			
 				<input type="hidden" name="mRole" value="1">
 				<input type="hidden" name="mJoinYn" value="Y">
@@ -378,13 +378,15 @@ function execPostCode() {
 			<button class="btn btn-outline-success" type="button" value="뒤로가기" onclick="location.href='loginForm.do'">뒤로가기</button>
 			
 			
-			</div> 
 			</div>
-			</form>
+				</form> 
+			</div>
+
 			
 		
-		<form action="signUps.do" method="GET">
 			<div id="sMember" style="display:none;">
+			<form action="signUpSmember.do" method="GET">
+			
 				<input type="hidden" name="mRole" value="2">
 				<input type="hidden" name="mJoinYn" value="Y">
 			
@@ -471,9 +473,9 @@ function execPostCode() {
 			
 			</div> 
 
-			
+				</form>
 			</div>
-			</form>
+		
 			
 			
 			

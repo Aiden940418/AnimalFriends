@@ -59,14 +59,14 @@ public class MemberDaoImpl implements MemberDao {
 
 
 	@Override
-	public int signUps(MemberDto dto) {
+	public int signUpSmember(MemberDto dto) {
 		
 		
 		int res = 0;
 		
 		
 		try {
-			res = sqlSession.insert(NAMESPACE+"signUps",dto);
+			res = sqlSession.insert(NAMESPACE+"signUpSmember",dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

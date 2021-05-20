@@ -13,7 +13,7 @@ public interface MemberDao {
 	
 	public int signUp(MemberDto dto);
 	
-	public int signUps(MemberDto dto);
+	public int signUpSmember(MemberDto dto);
 	
 	
 	public int idChk(MemberDto dto);

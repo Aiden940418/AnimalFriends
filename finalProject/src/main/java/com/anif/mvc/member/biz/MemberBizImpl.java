@@ -29,10 +29,10 @@ public class MemberBizImpl implements MemberBiz {
 	}
 
 	@Override
-	public int signUps(MemberDto dto) {
+	public int signUpSmember(MemberDto dto) {
 
 
-		return dao.signUps(dto);
+		return dao.signUpSmember(dto);
 	}
 
 
