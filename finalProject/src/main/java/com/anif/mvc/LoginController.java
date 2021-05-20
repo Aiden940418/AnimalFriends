@@ -72,7 +72,7 @@ public class LoginController {
 		
 		int res = 0;
 		
-		res = biz.signUp(dto);
+		res = biz.signUps(dto);
 		
 		if(res>0) {
 			
