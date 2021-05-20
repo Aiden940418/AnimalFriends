@@ -3,6 +3,8 @@ package com.anif.mvc;
 import java.io.Console;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -25,6 +27,8 @@ import com.anif.mvc.goods.biz.GoodsBiz;
 import com.anif.mvc.goods.dto.CartDto;
 import com.anif.mvc.goods.dto.CartListDto;
 import com.anif.mvc.goods.dto.GoodsDto;
+import com.anif.mvc.goods.dto.GoodsOrderDto;
+import com.anif.mvc.goods.dto.OrderDetailDto;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.utils.UploadFileUtils;
 
@@ -281,6 +285,60 @@ public class GoodsController {
 	}
 	
 	
+	// 주문
+	@RequestMapping(value = "/goodsOrder.do", method = RequestMethod.POST)
+	public String order(HttpSession session, GoodsOrderDto order, OrderDetailDto orderDetail, int mNo) throws Exception {
+	
+		
+		logger.info("order");
+	 
+	 MemberDto member = (MemberDto)session.getAttribute("login");  
+	 
+	 Calendar cal = Calendar.getInstance();
+	 int year = cal.get(Calendar.YEAR);
+	 String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
+	 String ymd = ym +  new DecimalFormat("00").format(cal.get(Calendar.DATE));
+	 String subNum = "";
+	 
+	 for(int i = 1; i <= 6; i ++) {
+	  subNum += (int)(Math.random() * 10);
+	 }
+	 
+	 String orderId = ymd + "_" + subNum;
+	 
+	 order.setOrderId(orderId);
+	 order.setmNo(mNo);
+	  
+	 cartBiz.orderInfo(order);
+	 
+	 orderDetail.setOrderId(orderId);   
+	 System.out.println(orderId);
+	 cartBiz.orderInfo_Details(orderDetail);
+	 
+	 cartBiz.cartAllDelete(mNo);
+	 
+	 return "mypage/mypage_mygoodsBuyList";  
+	}
+	
+	
+	
+	// 주문 목록
+	@RequestMapping(value = "/orderList.do", method = RequestMethod.GET)
+	public String getOrderList(HttpSession session, GoodsOrderDto order, Model model) throws Exception {
+	 logger.info("get order list");
+	 
+	 MemberDto member = (MemberDto)session.getAttribute("login");
+	 int mNo = member.getmNo();
+	 
+	 order.setmNo(mNo);
+	 
+	 
+	 List<GoodsOrderDto> orderList = cartBiz.orderList(order);
+	 
+	 model.addAttribute("orderList", orderList);
+	 
+	 return "mypage/mypage_mygoodsBuyList";
+	}
 	
 	
 	@RequestMapping("/goodsPayment.do")

@@ -55,8 +55,8 @@ public class MemberBizImpl implements MemberBiz {
 	}
 
 	@Override
-	public List<MemberDto> userList(MemberDto dto) {
-		return dao.userList(dto);
+	public List<MemberDto> userList() {
+		return dao.userList();
 	}
 
 }

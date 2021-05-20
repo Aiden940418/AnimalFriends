@@ -44,7 +44,51 @@
 	
 	
 	</delete>
+	
+	
+		 <!-- 주문하기  -->
+
+
+
+	<insert id="orderInfo">
+	
+	INSERT INTO GOODSORDER VALUES(
+	
+	 #{orderId}, #{mNo}, #{orderName}, #{orderAddr1}, #{orderAddr2}, #{orderAddr3}, #{orderPhone}, #{amount}, SYSDATE
+	
+	
+	
+	)
+	
+	</insert>
+	
+	
+	<!-- 주문 상세  -->
+	<insert id="orderInfo_Details">
+ insert into order_details(orderDetailsNum, orderId, gNo, cartStock)
+     select order_details_seq.nextval, #{orderId}, gNo, cartStock
+         from cart   
+</insert> 
+	
+
+
+
+
+	<!-- 카트 비우기 -->
+	<delete id="cartAllDelete">
+ 	DELETE CART
+     WHERE MNO = #{MNO}
+	</delete>
   	
+  	
+  	
+  	<!-- 특정 유저의 주문 목록 -->
+<select id="orderList" resultType="GoodsOrderDto">
+ select
+     orderId, mNo, orderName, orderAddr1, orderAddr2, orderAddr3, orderPhone, amount, orderDate
+ from goodsorder 
+     where mNo = #{mNo}
+</select>
   	
   	
  </mapper>

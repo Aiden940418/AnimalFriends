@@ -131,12 +131,6 @@ public class MypageController {
 	
 
 	
-	@RequestMapping("/myGoodsBuyList.do")
-	public String myGoodsBuyList() {
-		
-		return "mypage/mypage_mygoodsBuyList";
-	}
-	
 
 	
 	

@@ -116,7 +116,7 @@ public class MemberDaoImpl implements MemberDao {
 
 
 	@Override
-	public List<MemberDto> userList(MemberDto dto) {
+	public List<MemberDto> userList() {
 		List<MemberDto> list = new ArrayList<MemberDto>();
 		
 		

@@ -92,17 +92,7 @@
 						<td>${dto.mAddr1 }${dto.mAddr2 }${dto.mAddr3 }</td>
 						<td>${dto.mJoinYn }</td>
 					</tr>
-					<tr>
-						<td><input type="checkbox"></td>
-						<td>2</td>
-						<td>일반 회원</td>
-						<td>user2</td>
-						<td>최사용</td>
-						<td>010-4321-8765</td>
-						<td>yanadu@korea.net</td>
-						<td>경기도 광주시 어딘가</td>
-						<td>탈퇴</td>
-					</tr>
+	
 
 				</tbody>
 			</table>
