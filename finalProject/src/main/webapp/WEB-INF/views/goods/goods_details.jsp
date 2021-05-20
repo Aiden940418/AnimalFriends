@@ -93,7 +93,7 @@
 	
 
 <a href="#.detail" class="btn btn-outline-success ms-5"style="width:200px">상세보기</a>
-<a href="#" class="btn btn-outline-success ms-5"style="width:200px">리뷰보기</a>
+<a href="#review" class="btn btn-outline-success ms-5"style="width:200px">리뷰보기</a>
 <a href="#" class="btn btn-outline-success ms-5"style="width:200px">Q&A</a>	
 <a href="#" class="btn btn-outline-success ms-5"style="width:200px">업체소개</a>	
 	
@@ -126,7 +126,7 @@
 	<div>
 		<hr>
 	
-	<h1 class="display-3 mt-5 text">리뷰보기</h1>
+	<h1 class="display-3 mt-5 text" id="review">리뷰보기</h1>
 		<table class="table text-center table-hover" >
 		<thead class="table-white">
 			<tr>
@@ -138,7 +138,7 @@
 		<tbody>
 			<tr>
 				<td>aiden</td>
-				<td>맛있어요!!!!</td>
+				<td><a href="reviewDetails.do">맛있어요!!!!</a></td>
 				<td>2021-04-13</td>
 			</tr>
 
