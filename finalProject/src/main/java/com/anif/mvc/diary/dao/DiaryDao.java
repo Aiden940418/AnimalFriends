@@ -30,4 +30,8 @@ public interface DiaryDao {
 	public List<DiaryDto> adminDiarySelectList();
 	public int adminDiaryDelete(int dno);
 	
+	//좋아요 관련
+	public int likeOrNot(DiaryDto dto);
+	public DiaryDto selectOne(int dno);
+	
 }

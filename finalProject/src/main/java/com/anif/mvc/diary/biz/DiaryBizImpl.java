@@ -89,4 +89,16 @@ public class DiaryBizImpl implements DiaryBiz{
 		return dao.adminDiaryDelete(dno);
 	}
 
+
+	@Override
+	public int likeOrNot(DiaryDto dto) {
+		return dao.likeOrNot(dto);
+	}
+
+
+	@Override
+	public DiaryDto selectOne(int dno) {
+		return dao.selectOne(dno);
+	}
+
 }

@@ -340,11 +340,76 @@ $(document).on("click", '#answerSubmit', function answerSubmit(){
 	
 });
 	
+//좋아요 버튼 누를 시	
+$(document).on("click", '#likeBtn', function likeOrNot(){	
+	var dno = $(this).attr("value");
+	console.log(dno);
+	var dnoVal = {
+			"dno" : dno 
+		};
+	
+	$.ajax({
+		type: "POST", 
+		url: "likeOrNot.do", 
+		data: JSON.stringify(dnoVal), 
+		contentType:"application/json",
+		dataType: 'json', 
+		success:  function(res){
+            if ( res > 0 ){
+
+                getLikeCnt(dno);
+
+            }
+        },
+        error:function(){
+            alert("좋아요 ajax 실패");
+        }
+		
+	});
 	
 	
 	
 	
 	
+	
+	
+	
+});	
+
+function getLikeCnt(dno) {
+
+	var dnoVal = {
+			"dno" : dno 
+		};
+	
+	$.ajax({
+		type: "POST", 
+		url: "diarySelectOne.do", 
+		data: JSON.stringify(dnoVal), 
+		contentType:"application/json",
+		dataType: 'json', 
+		success:  function(likeCnt){
+		console.log(likeCnt);
+			
+		var html = "좋아요 "+likeCnt+"개"
+		
+		var tagName = 'like'+dno;
+		$('#' + tagName).empty();
+		$('#' + tagName).append(html);
+		
+		},
+        error:function(){
+            alert("좋아요 수 ajax 실패");
+        }
+		
+	});
+	
+	
+	
+}
+
+
+
 </script>
 
 
@@ -380,10 +445,10 @@ $(document).on("click", '#answerSubmit', function answerSubmit(){
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item">
 								<div class="row">
-									<div class="col">
-										<ion-icon name="heart-outline" style="font-size:25px;"></ion-icon>
-										<ion-icon name="heart" style="font-size:25px;"></ion-icon>
-										좋아요
+									<div class="col" id="likeBtn" name="likeBtn${dto.dno }" value="${dto.dno }">
+										<!-- <ion-icon name="heart-outline" style="font-size:25px;"></ion-icon> -->
+										<ion-icon name="heart" style="font-size:25px;" ></ion-icon>
+										<span id="like${dto.dno }">좋아요 ${dto.diaryLikeCnt }개</span>
 									</div>
 									<div class="col text-end">
 										<ion-icon name="person-add-outline" style="font-size:25px;"></ion-icon>

@@ -140,9 +140,42 @@ public class DiaryController {
 	}
 	
 	
+	//좋아요 수, 좋아요 증가, 감소
+		@RequestMapping(value = "/likeOrNot.do", method = RequestMethod.POST)
+		@ResponseBody
+		public int likeOrNot(@RequestBody DiaryDto dto, HttpSession session) {
+			logger.info("Diary likeOrNot");
+			
+			//작성자 mno 를 댓글dto에 세팅해주기
+			//like테이블도 조회하기 위함
+			MemberDto memberDto = (MemberDto) session.getAttribute("login");
+			dto.setMno(memberDto.getmNo());
+			
+			int res = biz.likeOrNot(dto);
+			//본 글의 dno 를 조회해서 화면의 ajax로 리턴, 화면에서 getLikeCnt(dno) 실행
+			if(res>0) {
+				return dto.getDno();
+			}else {
+				return 0;
+			}
+			
+		}
 	
-	
-	
+	//
+		@ResponseBody
+		@RequestMapping(value = "/diarySelectOne.do", method = RequestMethod.POST)
+		public int diarySelectOne(@RequestBody DiaryReplyDto dto, Model model){
+			System.out.println(dto);
+			logger.info("Diary SELECT ONE");
+			
+			DiaryDto diarydto = biz.selectOne(dto.getDno());
+			
+			
+			model.addAttribute("oneDto", diarydto);
+			
+			
+			return diarydto.getDiaryLikeCnt();
+		}
 	
 	
 	
