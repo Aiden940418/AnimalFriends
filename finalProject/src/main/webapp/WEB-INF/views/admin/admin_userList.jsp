@@ -40,7 +40,26 @@
 			<button type="button" class="btn btn-outline-success mb-3 mx-2"
 				style="width: 150px;">선택회원 탈퇴</button>
 		</div>
-				 	<div class="allCheck" >
+		  
+   				
+		<br> <br> <br>
+		<!-- table -->
+		<div class="row">
+			<table class="table text-center table-hover"
+				style="margin-left: auto; marin-right: auto;">
+				<thead class="table-dark">
+					<tr>
+						<th><input type="checkbox"  name="allCheck" id="allCheck"/></th>
+						<th>번호</th>
+						<th>회원유형</th>
+						<th>아이디</th>
+						<th>이름</th>
+						<th>연락처</th>
+						<th>주소</th>
+						<th>가입여부</th>
+					</tr>
+				</thead>
+				<div class="allCheck" >
 					<script>
 					$("#allCheck").click(function() {
 						
@@ -58,29 +77,10 @@
 					
 					
 					</script>
-  				  </div> 		  
-   				
-		<br> <br> <br>
-		<!-- table -->
-		<div class="row">
-			<br>
-			<table class="table text-center table-hover"
-				style="margin-left: auto; marin-right: auto;">
-				<thead class="table-dark">
-					<tr>
-						<th><input type="checkbox"  name="allCheck" id="allCheck"/></th>
-						
-						<th>번호</th>
-						<th>회원유형</th>
-						<th>아이디</th>
-						<th>이름</th>
-						<th>연락처</th>
-						<th>이메일</th>
-						<th>주소</th>
-						<th>가입여부</th>
-					</tr>
-					
-				</thead>
+  				  </div> 
+				
+				
+				
 				<tbody>
 					<c:choose>
 						<c:when test="${empty list }">

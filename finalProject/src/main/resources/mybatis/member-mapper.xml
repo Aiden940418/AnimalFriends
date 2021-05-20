@@ -95,7 +95,11 @@
   	SELECT * FROM MEMBER
   	
   	</select>
-
+  	
+  	<select id="sMemberList" resultType="memberDto">
+  	SELECT * FROM MEMBER
+  	WHERE MJOINYN_CHK
+  	</select>
    
    
     
