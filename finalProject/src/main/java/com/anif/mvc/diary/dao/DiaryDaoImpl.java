@@ -176,6 +176,37 @@ public class DiaryDaoImpl implements DiaryDao{
 		
 		return res;
 	}
+
+
+	//관리자 페이지 입양일기 관리 리스트 조회
+	@Override
+	public List<DiaryDto> adminDiarySelectList() {
+		List<DiaryDto> list = new ArrayList<DiaryDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE + "adminDiarySelectList");
+		} catch (Exception e) {
+			System.out.println("[error] : adminDiarySelectList");
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	//관리자 페이지 입양일기 관리 삭제
+	@Override
+	public int adminDiaryDelete(int dno) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE + "adminDiaryDelete", dno);
+		} catch (Exception e) {
+			System.out.println("[error] : adminDiaryDelete");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
 	
 	
 	

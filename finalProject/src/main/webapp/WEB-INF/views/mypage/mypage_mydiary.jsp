@@ -108,19 +108,20 @@
 				<c:forEach items="${list }" var="dto">		
 					<!-- 글 박스 카드 -->
 					<div class="col-sm">
-						<div class="card" style="width: 18rem; margin-top: 20px;">
-							<img class="card-img-top"
-								src="resources/${dto.diaryImg }" alt="Card image cap">
-							<div class="card-body box">
-								<p class="card-text content">${dto.dcontent }</p>
-							</div>
-							<p class="card-text">&nbsp;&nbsp;&nbsp;작성일 [ ${dto.ddateToChar } ]</p>
-								
-							<div class="text-end mb-2">
-								<button class="btn btn-outline-success" id="deleteBtn" value="${dto.dno }">글 삭제</button>&nbsp;&nbsp;
-							</div>
-						</div>
-					</div>
+                        <div class="card text-center" style="width: 22rem; margin-top: 20px;">
+                            <img class="card-img-top"
+                                src="resources/${dto.diaryImg }" alt="Card image cap">
+                            <div class="card-body box">
+                                <p class="card-text content">${dto.dcontent }</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">작성일 [ ${dto.ddateToChar } ]</li>
+                             </ul>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-success" id="deleteBtn" value="${dto.dno }">글 삭제</button>
+                            </div>
+                        </div>
+                    </div>
 				</c:forEach>	
 				
 				

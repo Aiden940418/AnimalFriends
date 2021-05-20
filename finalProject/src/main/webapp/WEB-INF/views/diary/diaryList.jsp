@@ -52,47 +52,8 @@
 	        }
 	    })
 	    
-	    
-	    //글이 길면 더보기 해주는 기능 (위치에 맞는 클래스에 각각 box 와 content 추가해줘야 됨)
-	    /* $('.box').each(function(){
-            var content = $(this).children('.content');
-            var content_txt = content.text();
-            var content_txt_short = content_txt.substring(0,50)+"...";
-            var btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
-
-            
-            $(this).append(btn_more);
-            
-            if(content_txt.length >= 50){
-                content.html(content_txt_short)
-                
-            }else{
-                btn_more.hide()
-            }
-            
-            btn_more.click(toggle_content);
-
-            function toggle_content(){
-                if($(this).hasClass('short')){
-                    // 접기 상태
-                    $(this).html('더보기');
-                    content.html(content_txt_short)
-                    $(this).removeClass('short');
-                }else{
-                    // 더보기 상태
-                    $(this).html('접기');
-                    content.html(content_txt);
-                    $(this).addClass('short');
-
-                }
-            }
-        }); */
-	    
-	    
-	    
-	    
-	    
 	})
+	
 	
 	var fetchList = function(){
 	    if(isEnd == true){
@@ -432,7 +393,6 @@ $(document).on("click", '#answerSubmit', function answerSubmit(){
 								</div>
 							</li>
 						</ul>
-						
 							
 						<div class="card-body text-dark" style="">
 							<h5 class="card-title">${dto.dcontent }</h5>
