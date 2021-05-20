@@ -104,6 +104,15 @@
   	</delete>
   	
   	
+  	<!-- 좋아요 -->
+  	
+  	<insert id="insertLike" parameterType="int">
+  		INSERT INTO DIARY
+  		VALUES (LIKENOSEQ.NEXTVAL, #{dno}, #{mno}, Y)
+  	
+  	
+  	</insert>
+  	
   	
   	
   	

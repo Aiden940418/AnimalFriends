@@ -381,7 +381,47 @@ $(document).on("click", '#answerSubmit', function answerSubmit(){
 });
 	
 	
+$(document).on("click", '#like_btn', function likesubmit(){
+	var dno = $(this).val(); 
+	console.log(dno);
 	
+	var likeVal = {
+			"dno" : drno, 
+		};
+						
+	
+	$.ajax({
+	    type: "POST",
+	    url: "like.do",
+	    data: JSON.stringify(likeVal),
+		contentType:"application/json",
+	    dataType: "json",
+	    success: function(data) {
+	      var msg = '';
+	      var like_img = '';
+	      msg += data.msg;
+	      alert(msg);
+	      
+	      if(data.like_check == 0){
+	        like_img = "./images/dislike.png";
+	      } else {
+	        like_img = "./images/like.png";
+	      }      
+	      $('#like_img', frm_read).attr('src', like_img);
+	      $('#like_cnt').html(data.like_cnt);
+	      $('#like_check').html(data.like_check);
+	    },
+	    error: function(request, status, error){
+	      alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    }
+	  });
+	
+
+
+});
+
+
+
 	
 	
 	
@@ -421,9 +461,9 @@ $(document).on("click", '#answerSubmit', function answerSubmit(){
 							<li class="list-group-item">
 								<div class="row">
 									<div class="col">
-										<ion-icon name="heart-outline" style="font-size:25px;"></ion-icon>
-										<ion-icon name="heart" style="font-size:25px;"></ion-icon>
-										좋아요
+									 	<button type="button" id="like_btn"class="btn btn-outline-success" value="${dto.dno }">
+										  좋아요 <span class="badge rounded-pill bg-success">4</span>
+										</button>
 									</div>
 									<div class="col text-end">
 										<ion-icon name="person-add-outline" style="font-size:25px;"></ion-icon>

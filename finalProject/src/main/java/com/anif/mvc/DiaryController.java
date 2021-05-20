@@ -31,6 +31,7 @@ public class DiaryController {
 	@Autowired
 	private DiaryBiz biz;
 	
+	
 	@RequestMapping(value = "/diaryList.do", method = RequestMethod.GET)
 	public String diary(Model model) {
 		logger.info("Diary SELECT LIST");
@@ -140,26 +141,21 @@ public class DiaryController {
 		
 	}
 	
-	//마이페이지_나의 입양일기_삭제
+	
 	@ResponseBody
-	@RequestMapping(value = "/MyDRdelete.do", method = RequestMethod.POST)
-	public String MyDRdelete(@RequestParam(value="valueArr[]") List<Integer> valueArr){
-		logger.info("MyDiary DELETE");
-		System.out.println(valueArr);
-
-			
-		for(int i = 0; i < valueArr.size(); i++) {
-			
-			System.out.println(valueArr.get(i));
-			
-			biz.MyDRdelete(valueArr.get(i));
-		}
+	@RequestMapping(value="/like.do", method=RequestMethod.POST)
+	public int like(@RequestBody DiaryDto dto, HttpSession session){
+		logger.info("like ");
 		
-		return String.valueOf(valueArr);
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		dto.setMno(memberDto.getmNo());
+		
+		int res = biz.likeinsert(dto.);
+		
+		
+		
+		return 0;
 	}
-	
-	
-	
 	
 	
 	

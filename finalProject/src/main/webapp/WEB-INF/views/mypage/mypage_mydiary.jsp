@@ -93,7 +93,7 @@
 		</div>
 		
 		<!-- 세로줄 -->
-		<div style="border-bottom: groove; margin-top: 80px; margin-left: 25px; margin-right: 92px;">
+		<div style="border-bottom: groove; margin-top: 80px; margin-left: 25px; margin-right: 95px;">
 		</div>
 		
 		<!-- + 아이콘 -->
@@ -101,12 +101,6 @@
 			<a href="mydiaryWriteForm.do" style="color: black;">
 				<ion-icon name="add-circle-outline" style="font-size:60px;"></ion-icon>
 			</a>
-			<button class="btn btn-success" id="DrSelectToggle" type="button" value="" >선택</button>
-			<button class="btn btn-success" id="DrSelectDelete" type="button" value="" >삭제</button>
-			
-			<input type="checkbox" name="allCheck" class="btn-check all_ck" id="All_Ck" autocomplete="off">
-			<label class="btn btn-outline-success all_ck" for="All_Ck">모두 선택</label>			
-			
 		</div>
 		
 		
@@ -118,16 +112,17 @@
 				<c:forEach items="${list }" var="dto">		
 					<!-- 글 박스 카드 -->
 					<div class="col-sm">
-						<div class="card" style="width: 18rem; margin-top: 20px;">
+						<div class="card text-center" style="width: 20rem; margin-top: 20px;">
 							<img class="card-img-top"
 								src="resources/${dto.diaryImg }" alt="Card image cap">
 							<div class="card-body box">
 								<p class="card-text content">${dto.dcontent }</p>
 							</div>
-							<p class="card-text">&nbsp;&nbsp;&nbsp;작성일 [ ${dto.ddateToChar } ]</p>
-								
-							<div class="text-end mb-2">
-								<button class="btn btn-outline-success" id="deleteBtn" value="${dto.dno }">글 삭제</button>&nbsp;&nbsp;
+							<ul class="list-group list-group-flush">
+							    <li class="list-group-item">작성일 [ ${dto.ddateToChar } ]</li>
+							 </ul>
+							<div class="d-grid gap-2">
+								<button class="btn btn-outline-success" id="deleteBtn" value="${dto.dno }">글 삭제</button>
 							</div>
 						</div>
 					</div>
