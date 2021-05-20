@@ -122,6 +122,9 @@ public class LoginController {
 			if(res != null) {
 				session.setAttribute("login", res);
 				
+				//세션 지속시간 짧아서 불편해서 임시로 10시간으로 늘렸습니다. by 김성민
+				session.setMaxInactiveInterval(60*60*10);
+
 				check=true;
 				
 				

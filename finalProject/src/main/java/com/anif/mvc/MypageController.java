@@ -52,28 +52,28 @@ public class MypageController {
 		return "mypage/mypage_chattingDetail";
 	}
 	
-	// Diary Start 
 	
-	//마이페이지 입양일기 리스트
+	// Diary Start 
 	@RequestMapping("/mydiary.do")
-	public String myDiary(HttpSession session, Model model) {
-		logger.info("My Diary SELECT LIST");
-		//화면에 아이디랑 닉네임 띄우려고 모델에 로그인 정보 세팅해줌
-		MemberDto memberDto = (MemberDto) session.getAttribute("login");
-		model.addAttribute("login", memberDto);
-
-		model.addAttribute("list", diaryBiz.selectMyList(memberDto.getmNo()));
+	public String myDiary(Model model, HttpSession session) {
+		logger.info("Mypage Mydiary SELECT LIST");
 		
+		//현재 로그인 되어있는 계정의 회원번호를 가져오기
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		int mNo = memberDto.getmNo();
+		
+		model.addAttribute("memberDto", memberDto); 
+		model.addAttribute("list", diaryBiz.myDiarySelectList(mNo)); 
 		
 		return "mypage/mypage_mydiary";
 	}
 	
 	
-	@RequestMapping("/mydiaryDetail.do")
-	public String mydiaryDetail() {
-		
-		return "mypage/mypage_mydiaryDetail";
-	}
+//	@RequestMapping("/mydiaryDetail.do")
+//	public String mydiaryDetail() {
+//		
+//		return "mypage/mypage_mydiaryDetail";
+//	}
 	
 	@RequestMapping("/mydiaryWriteForm.do")
 	public String mydiaryWriteForm() {
@@ -106,7 +106,8 @@ public class MypageController {
 
 		if (res > 0) { // 글 insert 성공 시
 			model.addAttribute("msg", "글 등록 성공!");
-			model.addAttribute("url", "/diaryList.do");
+			//model.addAttribute("url", "/diaryList.do");
+			model.addAttribute("url", "/mydiary.do");
 		} else {  //글 insert 실패 시
 			model.addAttribute("msg", "글 등록 실패!");
 			model.addAttribute("url", "/mydiaryWriteForm.do");
@@ -118,6 +119,23 @@ public class MypageController {
 	@RequestMapping("/mydiaryUpdateForm.do")
 	public String mydiaryUpdateForm() {
 		return "mypage/mypage_mydiaryUpdateForm";
+	}
+	
+	@RequestMapping("/myDiaryDelete.do")
+	public String myDiaryDelete(Model model, int dno) {
+		logger.info("My Diary DELETE");
+		
+		int res = diaryBiz.myDiaryDelete(dno);
+		
+		if (res > 0) { // 글 insert 성공 시
+			model.addAttribute("msg", "글 삭제 성공!");
+			model.addAttribute("url", "/mydiary.do");
+		} else {  //글 insert 실패 시
+			model.addAttribute("msg", "글 삭제 실패!");
+			model.addAttribute("url", "/mydiary.do");
+		}
+		
+		return "/mypage/alertPage";
 	}
 	
 	

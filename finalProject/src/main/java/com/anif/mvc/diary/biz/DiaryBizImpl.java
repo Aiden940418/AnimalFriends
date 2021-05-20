@@ -67,8 +67,14 @@ public class DiaryBizImpl implements DiaryBiz{
 
 
 	@Override
-	public List<DiaryDto> selectMyList(int getmNo) {
-		return dao.selectMyList(getmNo);
+	public List<DiaryDto> myDiarySelectList(int mNo) {
+		return dao.myDiarySelectList(mNo);
+	}
+
+
+	@Override
+	public int myDiaryDelete(int dno) {
+		return dao.myDiaryDelete(dno);
 	}
 
 }
