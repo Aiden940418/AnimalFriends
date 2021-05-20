@@ -36,7 +36,7 @@ INSERT INTO MEMBER VALUES(
 MNO.NEXTVAL,3,'Y','admin','1234','1234','서울시','아파트','관리자','관리자','01088349078','23241213','213213213'
 );
 
-
+UPDATE MEMBER SET MROLE='3' ;
 
 
 commit

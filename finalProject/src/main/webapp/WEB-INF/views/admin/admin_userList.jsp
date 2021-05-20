@@ -40,37 +40,36 @@
 			<button type="button" class="btn btn-outline-success mb-3 mx-2"
 				style="width: 150px;">선택회원 탈퇴</button>
 		</div>
+				 	<div class="allCheck" >
+					<script>
+					$("#allCheck").click(function() {
+						
+						var chk = $("#allCheck").prop("checked");
+						
+						if(chk) {
+							$(".chBox").prop("checked", true);
+							
+						}else {
+							$(".chBox").prop("checked", false);
+						}
+						
+					});
+					
+					
+					
+					</script>
+  				  </div> 		  
+   				
 		<br> <br> <br>
-
 		<!-- table -->
-		
-		<c:choose>
-		<c:when test="${empty list }">
-		
-		<작성된 글이 없습니다>
-		
-			
-		</c:when>
-	
-	
-		
-		<c:otherwise>
-		
-		
-		
-		
-		
 		<div class="row">
-			<c:forEach items="${list}" var="dto">
-		
-
 			<br>
-
 			<table class="table text-center table-hover"
 				style="margin-left: auto; marin-right: auto;">
 				<thead class="table-dark">
 					<tr>
-						<th><input type="checkbox"></th>
+						<th><input type="checkbox"  name="allCheck" id="allCheck"/></th>
+						
 						<th>번호</th>
 						<th>회원유형</th>
 						<th>아이디</th>
@@ -80,45 +79,40 @@
 						<th>주소</th>
 						<th>가입여부</th>
 					</tr>
+					
 				</thead>
 				<tbody>
-					<tr>
-						<td><input type="checkbox"></td>
-						<td>${dto.mNo }</td>
-						<td>${dto.mRole }</td>
-						<td>${dto.mId }</td>
-						<td>${dto.mName }</td>
-						<td>${dto.mPhone }</td>
-						<td>${dto.mAddr1 }${dto.mAddr2 }${dto.mAddr3 }</td>
-						<td>${dto.mJoinYn }</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox"></td>
-						<td>2</td>
-						<td>일반 회원</td>
-						<td>user2</td>
-						<td>최사용</td>
-						<td>010-4321-8765</td>
-						<td>yanadu@korea.net</td>
-						<td>경기도 광주시 어딘가</td>
-						<td>탈퇴</td>
-					</tr>
+					<c:choose>
+						<c:when test="${empty list }">
+							<작성된 글이 없습니다>
+						</c:when>
 
+						<c:otherwise>
+							<c:forEach items="${list}" var="dto">
+								<tr>
+									<td><input type="checkbox" class="chBox"></td>
+									<td>${dto.mNo }</td>
+									<td>${dto.mRole }</td>
+									<td>${dto.mId }</td>
+									<td>${dto.mName }</td>
+									<td>${dto.mPhone }</td>
+									<td>${dto.mAddr1 }${dto.mAddr2 }${dto.mAddr3 }</td>
+									<td>${dto.mJoinYn }</td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+					<script>
+						$(".chBox").click(function(){
+						$("#allCheck").prop("checked", false);
+							
+						})
+					</script>
 				</tbody>
 			</table>
-			</c:forEach>
-			
-			
 		</div>
-		</c:otherwise>
-		</c:choose>
-		
-		
-		
-		
-		
-
 	</div>
+	
 	<!-- footer -->
 	<%@ include file="../includes/footer.jsp"%>
 </div>

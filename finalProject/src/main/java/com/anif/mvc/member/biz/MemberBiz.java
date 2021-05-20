@@ -19,7 +19,7 @@ public interface MemberBiz {
 	
 	public int memberUpdate(MemberDto dto);
 
-	public List<MemberDto> userList(MemberDto dto);
+	public List<MemberDto> userList();
 
 	
 

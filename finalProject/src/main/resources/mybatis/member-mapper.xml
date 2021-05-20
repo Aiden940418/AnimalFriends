@@ -91,7 +91,7 @@
   	</update>
   	
   	
-  	<select id="userList" parameterType="memberDto">
+  	<select id="userList" resultType="memberDto">
   	SELECT * FROM MEMBER
   	
   	</select>
