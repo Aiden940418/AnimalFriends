@@ -226,26 +226,22 @@ public class DiaryDaoImpl implements DiaryDao{
 		
 		//없거나 N이면 좋아요 수 증가
 		//likeyn이 Y면 좋아요 수 감소
-		System.out.println("%%%%%%%%%%%%%%%"+likeDto);
 		if(likeDto==null) {
 			//좋아요 수 증가, 새로 row insert
 			
 			res1 = sqlSession.update(NAMESPACE + "addLikeCnt", dto);
 			res2 = sqlSession.insert(NAMESPACE + "newLike", dto);
-			System.out.println("@@@@@@@@@@@@@@@@@1번째 실행: "+res1+res2);
 			
 		}else if(likeDto.getLikeyn().equals("N")){
 			//좋아요 수 증가, row update
 			
 			res1 = sqlSession.update(NAMESPACE + "addLikeCnt", dto);
 			res2 = sqlSession.update(NAMESPACE + "addLike", dto);
-			System.out.println("@@@@@@@@@@@@@@@@@2번째 실행: "+res1+res2);
 			
 		}else if(likeDto.getLikeyn().equals("Y")) {
 			//좋아요 수 감소, row update
 			res1 = sqlSession.update(NAMESPACE + "removeLikeCnt", dto);
 			res2 = sqlSession.update(NAMESPACE + "removeLike", dto);
-			System.out.println("@@@@@@@@@@@@@@@@@3번째 실행: "+res1+res2);
 		}
 		
 		

@@ -368,12 +368,6 @@ $(document).on("click", '#likeBtn', function likeOrNot(){
 	});
 	
 	
-	
-	
-	
-	
-	
-	
 });	
 
 function getLikeCnt(dno) {
