@@ -68,7 +68,7 @@
               <a class="nav-link" href="diaryList.do">입양일기</a>
             </li>
            
-           <c:if test="${login.mRole == 1 }">
+           <c:if test="${login.mRole == 3 }">
             <li class="nav-item" style="font-size:20px;">
               <a class="nav-link" href="adminAdopt.do">관리자</a>
             </li>
