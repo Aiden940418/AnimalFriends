@@ -30,7 +30,7 @@ public class MemberDto {
 
 	
 	public MemberDto(int mNo, String mRole, String mJoinYn, String mId, String mPw, String mAddr1, String mAddr2,
-			String mAddr3, String mName, String mNick, int sNo, String sBisNum, String sSellNum, String mPhone) {
+			String mAddr3, String mName, String mNick, String sBisNum, String sSellNum, String mPhone) {
 		super();
 		this.mNo = mNo;
 		this.mRole = mRole;
@@ -42,7 +42,6 @@ public class MemberDto {
 		this.mAddr3 = mAddr3;
 		this.mName = mName;
 		this.mNick = mNick;
-		this.sNo = sNo;
 		this.sBisNum = sBisNum;
 		this.sSellNum = sSellNum;
 		this.mPhone = mPhone;
@@ -151,16 +150,6 @@ public class MemberDto {
 
 	public void setmNick(String mNick) {
 		this.mNick = mNick;
-	}
-
-
-	public int getsNo() {
-		return sNo;
-	}
-
-
-	public void setsNo(int sNo) {
-		this.sNo = sNo;
 	}
 
 

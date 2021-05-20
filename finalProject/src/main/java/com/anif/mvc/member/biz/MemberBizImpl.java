@@ -1,5 +1,7 @@
 package com.anif.mvc.member.biz;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +52,11 @@ public class MemberBizImpl implements MemberBiz {
 	@Override
 	public int memberUpdate(MemberDto dto) {
 		return dao.memberUpdate(dto);
+	}
+
+	@Override
+	public List<MemberDto> userList(MemberDto dto) {
+		return dao.userList(dto);
 	}
 
 }

@@ -3,9 +3,12 @@ package com.anif.mvc.member.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.anif.mvc.adopt.dto.AdoptDto;
 import com.anif.mvc.member.dto.MemberDto;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -108,6 +111,28 @@ public class MemberDaoImpl implements MemberDao {
 		int res = sqlSession.update(NAMESPACE+"memberUpdate",dto);
 		
 		return res;
+	}
+
+
+
+	@Override
+	public List<MemberDto> userList(MemberDto dto) {
+		List<MemberDto> list = new ArrayList<MemberDto>();
+		
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"userList");
+			
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}
+		
+		return list;
+		
+		
+		
+		
 	}
 	
 	
