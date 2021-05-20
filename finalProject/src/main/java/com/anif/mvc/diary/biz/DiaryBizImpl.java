@@ -1,6 +1,7 @@
 package com.anif.mvc.diary.biz;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.anif.mvc.diary.dao.DiaryDao;
 import com.anif.mvc.diary.dto.DiaryDto;
 import com.anif.mvc.diary.dto.DiaryReplyDto;
+import com.anif.mvc.diary.dto.LikeTableDto;
 
 @Service
 public class DiaryBizImpl implements DiaryBiz{
@@ -87,6 +89,37 @@ public class DiaryBizImpl implements DiaryBiz{
 	@Override
 	public int adminDiaryDelete(int dno) {
 		return dao.adminDiaryDelete(dno);
+	}
+
+	
+	//좋아요_여부 검사
+	@Override
+	public int recCheck(Map<String, Object> m) {
+		return dao.recCheck(m);
+	}
+
+	//좋아요_row 추가
+	@Override
+	public int recInsert(Map<String, Object> m) {
+		return dao.recInsert(m);
+	}
+
+	//좋아요_row 삭제
+	@Override
+	public int recDelete(Map<String, Object> m) {
+		return dao.recDelete(m);
+	}
+
+
+	@Override
+	public DiaryDto recCount(int dno) {
+		return dao.recCount(dno);
+	}
+
+
+	@Override
+	public int likeUpdate(Map<String, Object> m) {
+		return dao.likeUpdate(m);
 	}
 
 }

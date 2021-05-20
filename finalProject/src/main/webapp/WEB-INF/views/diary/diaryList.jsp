@@ -347,7 +347,7 @@ $(document).on("click", '#like_btn', function likesubmit(){
 	console.log(dno);
 	
 	var likeVal = {
-			"dno" : drno, 
+			"dno" : dno, 
 		};
 						
 	
@@ -357,30 +357,49 @@ $(document).on("click", '#like_btn', function likesubmit(){
 	    data: JSON.stringify(likeVal),
 		contentType:"application/json",
 	    dataType: "json",
-	    success: function(data) {
-	      var msg = '';
-	      var like_img = '';
-	      msg += data.msg;
-	      alert(msg);
-	      
-	      if(data.like_check == 0){
-	        like_img = "./images/dislike.png";
-	      } else {
-	        like_img = "./images/like.png";
-	      }      
-	      $('#like_img', frm_read).attr('src', like_img);
-	      $('#like_cnt').html(data.like_cnt);
-	      $('#like_check').html(data.like_check);
+	    success: function(res) {
+	    	if ( res > 0 ){
+                alert("좋아요 클릭 완료!");
+				
+                
+                recCount(res);
+
+            }else{
+                alert("실패!");
+            }
 	    },
-	    error: function(request, status, error){
-	      alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    error: function(){
+	      alert("실패!");
 	    }
 	  });
+		
 	
-
 
 });
 
+
+		function recCount(res){
+			console.log(res);
+		
+			var diaryVal = {
+					"dno" : res
+			};
+			
+			$.ajax({
+			    type: "POST",
+			    url: "RecCount.do",
+			    data: JSON.stringify(diaryVal),
+				contentType:"application/json",
+			    dataType: "json",
+			    success: function(res) {
+			        	$(".rec_count").html(res);
+			        }
+				});
+		
+			
+			}
+	
+	
 
 
 	
@@ -422,9 +441,15 @@ $(document).on("click", '#like_btn', function likesubmit(){
 							<li class="list-group-item">
 								<div class="row">
 									<div class="col">
+									
+									<c:if test="${memberDto.mId == null }">
+										좋아요는 <a class="btn btn-outline-success rounded-pill mx-1" href="loginForm.do" id="loginBtn">로그인</a> 후 사용 가능해요!
+									</c:if>
+									<c:if test="${memberDto.mId != null }">
 									 	<button type="button" id="like_btn"class="btn btn-outline-success" value="${dto.dno }">
-										  좋아요 <span class="badge rounded-pill bg-success">4</span>
+										  좋아요 <span class="rec_count badge rounded-pill bg-success"></span>
 										</button>
+									</c:if>
 									</div>
 									<div class="col text-end">
 										<ion-icon name="person-add-outline" style="font-size:25px;"></ion-icon>

@@ -1,9 +1,9 @@
 package com.anif.mvc;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -33,10 +33,14 @@ public class DiaryController {
 	
 	
 	@RequestMapping(value = "/diaryList.do", method = RequestMethod.GET)
-	public String diary(Model model) {
+	public String diary(Model model, HttpSession session) {
 		logger.info("Diary SELECT LIST");
 		
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+
+		
 		model.addAttribute("list", biz.selectList());
+		model.addAttribute("memberDto", memberDto);
 		
 		
 		return "diary/diaryList";
@@ -150,11 +154,52 @@ public class DiaryController {
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
 		dto.setMno(memberDto.getmNo());
 		
-		int res = biz.likeinsert(dto.);
+		
+		Map<String, Object> m = new HashMap<>();
+		m.put("dno", dto.getDno());
+		m.put("mno", dto.getMno());
+		
+		int res = biz.recCheck(m);
+		
+		if(res == 0) {
+			int insert = biz.recInsert(m);
+			int Update = biz.likeUpdate(m); 
+			
+			
+			if(insert > 0 || Update > 0) {
+				System.out.println("좋아요 성공!");
+			}
+			
+			return dto.getDno();
+			
+		}else {
+			int Delete = biz.recDelete(m);
+			int Update = biz.likeUpdate(m); 
+			
+			if(Delete > 0 || Update > 0) {
+				System.out.println("좋아요 취소 성공!");
+			}
+			
+			return dto.getDno();
+			
+		}
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/RecCount.do", method=RequestMethod.POST)
+	public int RecCount(@RequestBody DiaryDto dto, HttpSession session){
+		logger.info("RecCount");
+		System.out.println("RecCount Num: " + dto.getDno());
+	
+		DiaryDto likecnt = biz.recCount(dto.getDno());
+		
+		System.out.println(likecnt.getDiaryLikeCnt());
 		
 		
+		return likecnt.getDiaryLikeCnt();
 		
-		return 0;
+		
 	}
 	
 	

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.anif.mvc.diary.dto.DiaryDto;
 import com.anif.mvc.diary.dto.DiaryReplyDto;
+import com.anif.mvc.diary.dto.LikeTableDto;
 
 @Repository
 public class DiaryDaoImpl implements DiaryDao{
@@ -206,6 +207,87 @@ public class DiaryDaoImpl implements DiaryDao{
 		}
 		
 		return res;
+	}
+
+
+	@Override
+	public int recCheck(Map<String, Object> m) {
+		int res = 0;
+		
+		try {
+			res = (Integer)sqlSession.selectOne(NAMESPACE + "rec_check", m);
+		} catch (Exception e) {
+			System.out.println("[error] : recCheck");
+			e.printStackTrace();		
+		}
+		
+		
+		return res;
+	}
+
+
+	@Override
+	public int recInsert(Map<String, Object> m) {
+		int res = 0;
+		
+		try {
+			res = (Integer)sqlSession.insert(NAMESPACE + "rec_Insert", m);
+		} catch (Exception e) {
+			System.out.println("[error] : recUpdate");
+			e.printStackTrace();		
+		}
+		
+		
+		return res;
+	
+	}
+
+
+	@Override
+	public int recDelete(Map<String, Object> m) {
+		int res = 0;
+		
+		try {
+			res = (Integer)sqlSession.insert(NAMESPACE + "rec_Delete", m);
+		} catch (Exception e) {
+			System.out.println("[error] : recDelete");
+			e.printStackTrace();		
+		}
+		
+		
+		return res;
+	
+	}
+
+
+	@Override
+	public DiaryDto recCount(int dno) {
+		DiaryDto dto = null;
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE + "rec_Count", dno);
+		} catch (Exception e) {
+			System.out.println("[error] : recCount");
+			e.printStackTrace();
+		}
+		
+		return dto;
+		
+	}
+
+
+	@Override
+	public int likeUpdate(Map<String, Object> m) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE + "likeUpdate", m);
+		} catch (Exception e) {
+			System.out.println("[error] : likeUpdate");
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}
 	
 	
