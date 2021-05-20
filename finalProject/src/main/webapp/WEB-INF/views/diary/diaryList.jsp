@@ -433,11 +433,6 @@ $(document).on("click", '#answerSubmit', function answerSubmit(){
 							</li>
 						</ul>
 						
-						<!-- ... 더보기 적용하려면 밑의 코드 쓰세요 -->
-						<%-- <div class="card-body text-dark box" style="">
-							<h5 class="card-title content">${dto.dcontent }</h5>
-						</div>
-							<p class="card-text">&nbsp;&nbsp;&nbsp;${dto.ddateToChar }</p> --%>
 							
 						<div class="card-body text-dark" style="">
 							<h5 class="card-title">${dto.dcontent }</h5>
