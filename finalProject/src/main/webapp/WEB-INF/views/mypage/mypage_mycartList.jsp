@@ -211,8 +211,7 @@
 							
 						});
 						
-						
-						
+
 						
 						
 						</script>
@@ -250,8 +249,7 @@
  			  
  			  
  			  
- 			  
-       
+ 			  	
               <div class="ms-5 container mt-2 boarder=1" id="sameAddr" >
        		  <table>
 		        <tr>

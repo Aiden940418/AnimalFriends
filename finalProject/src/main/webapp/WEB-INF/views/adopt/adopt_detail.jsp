@@ -208,6 +208,12 @@ a.button:hover {
 
 			</c:forEach>
 			</c:otherwise>
+			
+			
+			
+					<c:set var ="mRole" value="${login.mRole}"/>
+					<c:if test="${mRole == 1}">
+					</c:if>
 
 		
 	</c:choose>

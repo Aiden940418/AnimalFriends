@@ -29,7 +29,7 @@
 
    <select id="login" parameterType="memberDto" resultType="memberDto">
   
-  	SELECT MNO, MROLE, MJOINYN, MID, MPW, MADDR1, MADDR2, MADDR3, MNAME, MNICK, MPHONE
+  	SELECT *
   	FROM MEMBER
   	WHERE MID = #{mId}
   	AND MPW = #{mPw}
@@ -41,7 +41,7 @@
   	
   	
   	INSERT INTO MEMBER
-  	VALUES(MNO.NEXTVAL, #{mRole}, #{mJoinYn}, #{mId}, #{mPw},#{mAddr1}, #{mAddr2}, #{mAddr3},#{mName},#{mNick}, #{mPhone} )
+  	VALUES(MNO.NEXTVAL, #{mRole}, #{mJoinYn}, #{mId}, #{mPw},#{mAddr1}, #{mAddr2}, #{mAddr3},#{mName},#{mNick}, #{mPhone}, null, null )
   	
   	
   	</insert>
@@ -50,16 +50,11 @@
   	<insert id="signUpS" parameterType="memberDto">
   	
   	
-  	INSERT ALL
+  	INSERT
   	
   	INTO MEMBER
-  	VALUES(MNO.NEXTVAL, #{mRole}, #{mJoinYn}, #{mId}, #{mPw},#{mAddr1}, #{mAddr2}, #{mAddr3},#{mName},#{mNick}, #{mPhone} )
-  	
-  	INTO SMEMBER
-  	VALUES(#{sBisNum}, #{sSellNum})
-  	
-  	
-  	
+  	VALUES(MNO.NEXTVAL, #{mRole}, #{mJoinYn}, #{mId}, #{mPw},#{mAddr1}, #{mAddr2}, #{mAddr3},#{mName},#{mNick}, #{mPhone}, #{sBisNum}, #{sSellNum})
+  
   	
   	</insert>
   
