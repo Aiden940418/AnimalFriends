@@ -70,7 +70,7 @@
 			<div class="row"  style="width: 400px;">
 				<form action="pwChk.do" method="POST">
 				<input type="hidden" name="mId" value="${login.mId}">
-				
+				<input type="hidden" name="mRole" value="${login.mRole}">
 				<div class="input-group mb-3 col">
 					<span class="input-group-text" id="inputGroup-sizing-default">
 						<ion-icon name="key-outline" style="font-size:25px;"></ion-icon>

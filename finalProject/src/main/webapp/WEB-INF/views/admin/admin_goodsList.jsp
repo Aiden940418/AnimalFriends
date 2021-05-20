@@ -55,19 +55,72 @@ zoom: 1.5;
 		</ul>
 
 		<div class="btn-group float-end me-4">
-			<button type="button" class="btn btn-outline-success"
-				style="margin-right: 20px; margin-left:30px;">선택한 항목 삭제</button>
-
+	
+			<div class="delBtn">
+						<button type="button" id="selectDelete_btn" class="btn btn-outline-success" style="float:right">선택 삭제</button>
+					<script>
+					
+					 $("#selectDelete_btn").click(function(){
+					  var confirm_val = confirm("정말 삭제하시겠습니까?");
+					  
+					  if(confirm_val) {
+					   var checkArr = new Array();
+					   
+					   $("input[class='chBox']:checked").each(function(){
+					    checkArr.push($(this).attr("data-cartNum"));
+					   });
 				
-				<button type="button" class="btn btn-outline-success"
-				onclick="location.href='adminGoodsWriteForm.do'">--상품 등록--</button>
+							
+					   $.ajax({
+						    url : "multiDeleteGoods.do",
+						    type : "post",
+						    data : { chbox : checkArr },
+						    success : function(result){
+						    	
+						    	
+						    	if(result == 1) { 
+						    
+							location.href="adminGoodsList.do";
+
+						     
+						     
+						    	}else {
+						    		
+						    		alert("삭제 오류");
+						    	}
+						    }
+						   });
+						  } 
+						 });
+						</script>
+						</div>
+				
+				<button type="button" class="btn btn-outline-success ms-3"
+				onclick="location.href='adminGoodsWriteForm.do'">상품 등록</button>
 				
 		</div>
 		<br><br>
 				  <div class="allCheck" >
    					<input type="checkbox" name="allCheck" id="allCheck" /><label for="allCheck">&nbsp;전체 선택</label> 
-
+					<script>
+					$("#allCheck").click(function() {
+						
+						var chk = $("#allCheck").prop("checked");
+						
+						if(chk) {
+							$(".chBox").prop("checked", true);
+							
+						}else {
+							$(".chBox").prop("checked", false);
+						}
+						
+					});
+					
+					
+					
+					</script>
   				  </div> 
+  				  
 		
 	<!-- dropDown2-end -->
 	
@@ -91,8 +144,16 @@ zoom: 1.5;
           		<div class="col-sm mt-5  text-center" >
           		<div class="card h-100 ms-5 text-center" style="width:430px; margin-top: -30px;" >
           
-                <h3 class="card-header">
-                    <input type="checkbox" id="cb1">
+                <h3 class="card-header" >
+                    <input type="checkbox" class="chBox" data-cartNum="${ dto.gNo}">
+                    <script>
+						$(".chBox").click(function(){
+						$("#allCheck").prop("checked", false);
+							
+						})
+						
+					
+					</script>
     				<label for="cb1"></label>
                 </h3>
                 <div class="card-body text-center">

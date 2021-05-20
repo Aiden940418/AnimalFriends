@@ -31,6 +31,9 @@ public interface AdoptBiz {
 	//내가 올린 공고 삭제 
 	public int myAdoptDelete(int aNo);
 	
+	//관리자 페이지에서 공고 다중 삭제
+	public int multiDeleteAdopt(AdoptDto dto);
+	
 	
 	//카운트 
 	public void viewCount(int aNo);
