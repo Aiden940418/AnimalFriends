@@ -66,8 +66,6 @@
 	        data : {'startNumber' : startNumber, 
 	        		'endNumber' : endNumber}, 
 	        success: function(result){
-	        	//console.log(result);
-	        	//console.log(result[0]);
 	        	
 	        	scrollPrint(result);
 	        	
@@ -87,14 +85,17 @@
 									"<ul class='list-group list-group-flush'>"+
 										"<li class='list-group-item'>"+
 											"<div class='row'>"+
-												"<div class='col'>"+
-													"<ion-icon name='heart-outline' style='font-size:25px;'></ion-icon>"+
-													"<ion-icon name='heart' style='font-size:25px;'></ion-icon>"+"좋아요"+
-												"</div>"+
-												"<div class='col text-end'>"+
+											"<div class='col' id='likeBtn' name='likeBtn"+result[i].dno+"' value='"+result[i].dno+"'>"+
+											"<button type='button' class='btn btn-success' style='font-size:17px;'>"+
+											"<ion-icon name='heart' style='font-size:21px;'></ion-icon>"+
+											"좋아요 <span class='badge bg-light text-dark' style='font-size:15px;' id='like"+result[i].dno+
+											"'>"+result[i].diaryLikeCnt+"</span>"+
+											"</button>"+
+											"</div>"+
+												/* "<div class='col text-end'>"+
 													"<ion-icon name='person-add-outline' style='font-size:25px;'></ion-icon>"+
 													"<ion-icon name='person-add' style='font-size:25px;'></ion-icon>"+"팔로우"+
-												"</div>"+
+												"</div>"+ */
 											"</div>"+
 										"</li>"+
 									"</ul>"+
@@ -131,7 +132,6 @@
 $(document).on("click", '#replyBtn', function getReplyDno() {
 		
 		var id = $(this).val();
-		console.log(id);
 		
 		getReplyList(id);
 });
@@ -198,7 +198,6 @@ function getReplyList(id) {
 				html += "<input type='text' style='width: 700px; height: 38px;'>"+
 						"<button type='submit' class='btn btn-outline-success ms-1 float-end' id='replySubmit' value='"+id+"'>등록</button>"	;
 				html += "</div>";
-				//console.log(html);
 
 				//버튼을 지우고(div 위치를 바꿔서 변경 가능) 댓글을 append한다.
 				$('#' + id).empty();
@@ -218,10 +217,8 @@ function getReplyList(id) {
 $(document).on("click", '#replySubmit', function insertReply(){
 	//클릭한 버튼의 이전 요소인 input의 value를 content로 설정
 	var drcontent = $(this).prev().val();
-	console.log(drcontent);
 	
 	var dno = $(this).val();
-	console.log("dno: "+dno);
 	
 	//작성자 mno는 컨트롤러에서 처리해주려 함	
 	
@@ -260,7 +257,6 @@ $(document).on("click", '#replySubmit', function insertReply(){
 $(document).on("click", '#delBtn', function deleteReply(){
 	//클릭한 버튼의  value를 drno로 설정
 	var drno = $(this).val(); 
-	console.log(drno);
 	
 	//작성자 mno는 컨트롤러에서 처리해주려 함	
 	
@@ -343,7 +339,6 @@ $(document).on("click", '#answerSubmit', function answerSubmit(){
 //좋아요 버튼 누를 시	
 $(document).on("click", '#likeBtn', function likeOrNot(){	
 	var dno = $(this).attr("value");
-	console.log(dno);
 	var dnoVal = {
 			"dno" : dno 
 		};
@@ -355,11 +350,11 @@ $(document).on("click", '#likeBtn', function likeOrNot(){
 		contentType:"application/json",
 		dataType: 'json', 
 		success:  function(res){
-            if ( res > 0 ){
-
-                getLikeCnt(dno);
-
-            }
+            		
+			var tagName = 'like'+dno;
+			$('#' + tagName).empty();
+			$('#' + tagName).append(res.diaryLikeCnt); 
+                
         },
         error:function(){
             alert("좋아요 ajax 실패");
@@ -369,39 +364,6 @@ $(document).on("click", '#likeBtn', function likeOrNot(){
 	
 	
 });	
-
-function getLikeCnt(dno) {
-
-	var dnoVal = {
-			"dno" : dno 
-		};
-	
-	$.ajax({
-		type: "POST", 
-		url: "diarySelectOne.do", 
-		data: JSON.stringify(dnoVal), 
-		contentType:"application/json",
-		dataType: 'json', 
-		success:  function(likeCnt){
-		console.log(likeCnt);
-			
-		var html = "좋아요 "+likeCnt+"개"
-		
-		var tagName = 'like'+dno;
-		$('#' + tagName).empty();
-		$('#' + tagName).append(html);
-		
-		},
-        error:function(){
-            alert("좋아요 수 ajax 실패");
-        }
-		
-	});
-	
-	
-	
-}
-
 
 
 </script>
@@ -440,15 +402,16 @@ function getLikeCnt(dno) {
 							<li class="list-group-item">
 								<div class="row">
 									<div class="col" id="likeBtn" name="likeBtn${dto.dno }" value="${dto.dno }">
-										<!-- <ion-icon name="heart-outline" style="font-size:25px;"></ion-icon> -->
-										<ion-icon name="heart" style="font-size:25px;" ></ion-icon>
-										<span id="like${dto.dno }">좋아요 ${dto.diaryLikeCnt }개</span>
+										<button type="button" class="btn btn-success" style="font-size:17px;">
+										 <ion-icon name="heart" style="font-size:21px;"></ion-icon>
+										좋아요 <span class="badge bg-light text-dark" style="font-size:15px;" id="like${dto.dno }">${dto.diaryLikeCnt }</span>
+										</button>
 									</div>
-									<div class="col text-end">
+									<!-- <div class="col text-end">
 										<ion-icon name="person-add-outline" style="font-size:25px;"></ion-icon>
 										<ion-icon name="person-add" style="font-size:25px;"></ion-icon>
 										팔로우
-									</div>
+									</div> -->
 								</div>
 							</li>
 						</ul>
