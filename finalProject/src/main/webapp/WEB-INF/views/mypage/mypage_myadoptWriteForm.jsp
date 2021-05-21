@@ -23,8 +23,8 @@
 
 				<div class="container text-center" style="margin-left:130px">
 				
-				<form action="myAdoptWriteRes.do" method="POST" enctype="multipart/form-data">
-						<input type="hidden" name="aMNo" value="${login.mNo}" >
+				<form action="myGoodsReviewWrite.do" method="POST" enctype="multipart/form-data">
+					<input type="hidden" name="aMNo" value="${login.mNo}" >
 			
 					<table>
 						<tr>
@@ -213,7 +213,7 @@
 					</table>
 					
 					</form>
-</div>
+				</div>
 			</div>
 		</div>
 	

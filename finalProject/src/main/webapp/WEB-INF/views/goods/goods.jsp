@@ -149,7 +149,7 @@ Resources
           		<div class="card h-100 " style="width:550px;">
           
                 <h3 class="card-header text-center ">
-                  <a href="goodsDetails.do?gNo=${dto.gNo}">${dto.gName}</a>
+                  	${dto.gName}
                 </h3>
                 <div class="card-body text-cente">
                  	<img style="width:400px;height:100;" src="resources/${dto.gImg}" class="img-thumbnail" alt="...">
@@ -157,7 +157,7 @@ Resources
                   </p>
                 </div>
                <div class="card-footer">
-                  <a href="goodsDetails.do" class="btn btn-outline-success">구매하기</a>
+                  <a href="goodsDetails.do?gNo=${dto.gNo}" class="btn btn-outline-success">구매하기</a>
                   <a href="#" class="btn btn-outline-success">장바구니</a>
                   
 

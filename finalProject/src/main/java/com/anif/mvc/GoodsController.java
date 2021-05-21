@@ -3,6 +3,8 @@ package com.anif.mvc;
 import java.io.Console;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -22,9 +24,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.anif.mvc.diary.dto.DiaryDto;
 import com.anif.mvc.goods.biz.CartBiz;
 import com.anif.mvc.goods.biz.GoodsBiz;
+import com.anif.mvc.goods.biz.ReviewBiz;
 import com.anif.mvc.goods.dto.CartDto;
 import com.anif.mvc.goods.dto.CartListDto;
 import com.anif.mvc.goods.dto.GoodsDto;
+import com.anif.mvc.goods.dto.GoodsOrderDto;
+import com.anif.mvc.goods.dto.OrderDetailDto;
+import com.anif.mvc.goods.dto.ReviewDto;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.utils.UploadFileUtils;
 
@@ -35,6 +41,8 @@ public class GoodsController {
 	private GoodsBiz biz;
 	@Autowired
 	private CartBiz cartBiz;
+	@Autowired
+	private ReviewBiz reviewBiz;
 	
 
 	@Resource(name="uploadPath")
@@ -59,9 +67,14 @@ public class GoodsController {
 	public String goodsDetail(Model model, int gNo) {
 		
 		model.addAttribute("dto",biz.goodsDetail(gNo));
+		model.addAttribute("review",reviewBiz.reviewList(gNo));
 		
 		return "goods/goods_details";
 	}
+	
+	
+	
+	
 	
 	//관리자 페이지에서 굿즈 리스트
 	@RequestMapping(value = "/adminGoodsList.do")
@@ -281,6 +294,60 @@ public class GoodsController {
 	}
 	
 	
+	// 주문
+	@RequestMapping(value = "/goodsOrder.do", method = RequestMethod.POST)
+	public String order(HttpSession session, GoodsOrderDto order, OrderDetailDto orderDetail, int mNo) throws Exception {
+	
+		
+		logger.info("order");
+	 
+	 MemberDto member = (MemberDto)session.getAttribute("login");  
+	 
+	 Calendar cal = Calendar.getInstance();
+	 int year = cal.get(Calendar.YEAR);
+	 String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
+	 String ymd = ym +  new DecimalFormat("00").format(cal.get(Calendar.DATE));
+	 String subNum = "";
+	 
+	 for(int i = 1; i <= 6; i ++) {
+	  subNum += (int)(Math.random() * 10);
+	 }
+	 
+	 String orderId = ymd + "_" + subNum;
+	 
+	 order.setOrderId(orderId);
+	 order.setmNo(mNo);
+	  
+	 cartBiz.orderInfo(order);
+	 
+	 orderDetail.setOrderId(orderId);   
+	 System.out.println(orderId);
+	 cartBiz.orderInfo_Details(orderDetail);
+	 
+	 cartBiz.cartAllDelete(mNo);
+	 
+	 return "mypage/mypage_mygoodsBuyList";  
+	}
+	
+	
+	
+	// 주문 목록
+	@RequestMapping(value = "/orderList.do", method = RequestMethod.GET)
+	public String getOrderList(HttpSession session, GoodsOrderDto order, Model model) throws Exception {
+	 logger.info("get order list");
+	 
+	 MemberDto member = (MemberDto)session.getAttribute("login");
+	 int mNo = member.getmNo();
+	 
+	 order.setmNo(mNo);
+	 
+	 
+	 List<GoodsOrderDto> orderList = cartBiz.orderList(order);
+	 
+	 model.addAttribute("orderList", orderList);
+	 
+	 return "mypage/mypage_mygoodsBuyList";
+	}
 	
 	
 	@RequestMapping("/goodsPayment.do")
@@ -299,10 +366,77 @@ public class GoodsController {
 		return "goods/goods_purchase";
 	}
 	
+	//리뷰 상세보기
+	@RequestMapping(value = "/reviewDetails.do",method = RequestMethod.GET)
+	public String reviewDetail(Model model, int gRewNo) {
+		
+		model.addAttribute("review",reviewBiz.reviewDetail(gRewNo));
+		
+		return "goods/goods_review";
+	}
 	
+	//리뷰등록 가져오기
+	@RequestMapping(value = "/mygoodsReviewWriteForm.do")
+	public String mygoodsReviewWriteForm() {
+		return "mypage/mypage_mygoodsReviewWriteForm";
+	}
 	
+	//리뷰 등록하기
+	@RequestMapping(value = "/mypageReviewWrite.do")
+	public String mypageReviewWrite(ReviewDto dto, MultipartFile file, HttpSession session, Model model) throws IOException, Exception {
+		logger.info("mypageReviewWrite INSERT");
+		
+		//현재 로그인 되어있는 계정의 회원번호를 가져와서 dto에 세팅해주기
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		
+		int res = reviewBiz.mypageReviewWrite(dto);
+
+		if (res > 0) { // 글 insert 성공 시
+			model.addAttribute("msg", "글 등록 성공!");
+			model.addAttribute("url", "/reviewDetails.do?gRewNo=gRewNo();");
+		} else {  //글 insert 실패 시
+			model.addAttribute("msg", "글 등록 실패!");
+			model.addAttribute("url", "/mygoodsReviewWriteForm.do");
+		}
+		
+		return "/mypage/alertPage";
+	}
 	
+	//리뷰 수정 가져오기
+	@RequestMapping(value = "mygoodsRevewUpdateForm.do",method = RequestMethod.GET)
+	public String mygoodsRevewUpdateForm(Model model/*, int gNo*/) {		
+
+		//model.addAttribute("dto",biz.adminGoodsDetail(gNo));
+		return "mypage/mypage_mygoodsReviewUpdateForm";
+	}
 	
+	//리뷰 수정 
+	@RequestMapping(value = "mygoodsUpdateRes.do",method = RequestMethod.GET)
+	public String mygoodsUpdate(ReviewDto dto) {
+
+		int res = reviewBiz.mypageReviewUpdate(dto);
+		
+		if(res > 0) {
+			return "redirect:reviewDetails.do?gRewNo="+dto.getgRewNo();
+		}else {
+			return "redirect:mygoodsRevewUpdateForm.do?gRewNo="+dto.getgRewNo();
+		}
+	}
+	
+	//리뷰 삭제
+	@RequestMapping("/mygoodsReviewDelete.do")
+	public String mygoodsReviewDelete(int gRewNo,HttpSession session) {
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		GoodsDto goodsDto = (GoodsDto) session.getAttribute("goods");
+		
+		int res = reviewBiz.mypageReviewDelete(gRewNo);
+		
+		if(res>0) {
+			return "redirect:goodsList.do?mNo="+memberDto.getmNo();
+		}else {
+			return "redirect:goodsDetails.do?gNo="+goodsDto.getgNo();
+		}
+	}
 	
 	
 

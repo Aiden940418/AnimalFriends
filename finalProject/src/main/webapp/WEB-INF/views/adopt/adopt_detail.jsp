@@ -3,8 +3,8 @@
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-	
 <%@ include file="../includes/header.jsp"%>
+
 
  <title>입양공고상세</title>
 
@@ -153,7 +153,7 @@ a.button:hover {
 		<h3>Comments</h3>
 
 		
-		<input class="mt-2" type="text" style="width:650px; height:50px;margin-left:230px;" name="aComContent">
+		<input class="mt-2" type="text" style="width:650px; height:50px;margin-left:10px;" name="aComContent">
 		<input class="btn btn-outline-success ms-2" type="submit" value="전송" onclick="checkLogin();">
 		<script type="text/javascript">
 			  function checkLogin() {
@@ -209,12 +209,7 @@ a.button:hover {
 			</c:forEach>
 			</c:otherwise>
 			
-			
-			
-					<c:set var ="mRole" value="${login.mRole}"/>
-					<c:if test="${mRole == 1}">
-					</c:if>
-
+		
 		
 	</c:choose>
 		</div>
