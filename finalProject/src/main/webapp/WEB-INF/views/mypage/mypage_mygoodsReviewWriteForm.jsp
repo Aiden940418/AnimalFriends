@@ -34,7 +34,7 @@
 							</th>
 							<td>
 								<input type="text" class="form-control my-1" name="gNo" id="gNo"
-									style="width:500px; margin:10px;" value="1"
+									style="width:500px; margin:10px;" value="${dto.gName }"
 									readonly="readonly">
 							</td>
 						</tr>
