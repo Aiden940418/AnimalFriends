@@ -26,6 +26,14 @@ public interface MemberDao {
 	public int memberUpdate(MemberDto dto);
 
 	public List<MemberDto> userList();
+
+	public List<MemberDto> memberList();
+
+	public List<MemberDto> sMemberList();
+
+	public List<MemberDto> qMemberList();
+	
+	
 	
 	
 	
