@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<!-- JSTL 사용위한 코드 -->
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 	<!-- header -->
 	<%@ include file="../includes/header.jsp" %>
 	
@@ -129,7 +125,14 @@
 				</c:forEach>	
 				
 				
+
 			
+
+
+
+
+
+				
 			</div>
 				
 		</div>

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.anif.mvc.diary.dto.DiaryDto;
 import com.anif.mvc.diary.dto.DiaryReplyDto;
+import com.anif.mvc.diary.dto.LikeTableDto;
 
 @Repository
 public class DiaryDaoImpl implements DiaryDao{
@@ -207,9 +208,60 @@ public class DiaryDaoImpl implements DiaryDao{
 		
 		return res;
 	}
-	
-	
-	
+
+
+	@Override
+	public int likeOrNot(DiaryDto dto) {
+		LikeTableDto likeDto = null;
+		int res1 = 0;
+		int res2 = 0;
+		int Allres = 0;
+		
+		try {
+			likeDto = sqlSession.selectOne(NAMESPACE + "likeOrNot", dto);
+		} catch (Exception e) {
+			System.out.println("[error] : likeOrNot");
+			e.printStackTrace();
+		}
+		
+		//없거나 N이면 좋아요 수 증가
+		//likeyn이 Y면 좋아요 수 감소
+		if(likeDto==null) {
+			//좋아요 수 증가, 새로 row insert
+			
+			res1 = sqlSession.update(NAMESPACE + "addLikeCnt", dto);
+			res2 = sqlSession.insert(NAMESPACE + "newLike", dto);
+			
+		}else if(likeDto.getLikeyn().equals("N")){
+			//좋아요 수 증가, row update
+			
+			res1 = sqlSession.update(NAMESPACE + "addLikeCnt", dto);
+			res2 = sqlSession.update(NAMESPACE + "addLike", dto);
+			
+		}else if(likeDto.getLikeyn().equals("Y")) {
+			//좋아요 수 감소, row update
+			res1 = sqlSession.update(NAMESPACE + "removeLikeCnt", dto);
+			res2 = sqlSession.update(NAMESPACE + "removeLike", dto);
+		}
+		
+		
+		return Allres = (res1>0 && res2>0) ? 1 : 0;
+	}
+
+
+	@Override
+	public DiaryDto selectOne(int dno) {
+		DiaryDto dto = null;
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE + "selectOne", dno);
+		} catch (Exception e) {
+			System.out.println("[error] : Diary SELECT ONE");
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
 	
 
 }
