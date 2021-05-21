@@ -131,10 +131,15 @@
 	
 //'댓글보기' 버튼 클릭 시 클릭된 글의 글번호(dno) 가져오고, getReplyList() 실행 
 $(document).on("click", '#replyBtn', function getReplyDno() {
+	
+	//로그인 했는지 확인하고, 비회원인 경우에는 로그인 창으로 이동
+	isLogin();	
+
 		
-		var id = $(this).val();
+	var id = $(this).val();
 		
-		getReplyList(id);
+	getReplyList(id);
+	
 });
 		
 		
@@ -339,6 +344,11 @@ $(document).on("click", '#answerSubmit', function answerSubmit(){
 	
 //좋아요 버튼 누를 시	
 $(document).on("click", '#likeBtn', function likeOrNot(){	
+	
+	//로그인 했는지 확인하고, 비회원인 경우에는 로그인 창으로 이동
+	isLogin();
+	
+
 	var dno = $(this).attr("value");
 	var dnoVal = {
 			"dno" : dno 
@@ -356,52 +366,28 @@ $(document).on("click", '#likeBtn', function likeOrNot(){
 			$('#' + tagName).empty();
 			$('#' + tagName).append(res.diaryLikeCnt); 
                 
-        },
-        error:function(){
-            alert("좋아요 ajax 실패");
         }
 		
 	});
 	
-	var likeVal = {
-			"dno" : drno, 
-		};
-						
-	
-	$.ajax({
-	    type: "POST",
-	    url: "like.do",
-	    data: JSON.stringify(likeVal),
-		contentType:"application/json",
-	    dataType: "json",
-	    success: function(data) {
-	      var msg = '';
-	      var like_img = '';
-	      msg += data.msg;
-	      alert(msg);
-	      
-	      if(data.like_check == 0){
-	        like_img = "./images/dislike.png";
-	      } else {
-	        like_img = "./images/like.png";
-	      }      
-	      $('#like_img', frm_read).attr('src', like_img);
-	      $('#like_cnt').html(data.like_cnt);
-	      $('#like_check').html(data.like_check);
-	    },
-	    error: function(request, status, error){
-	      alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	    }
-	  });
-	
-
-
-});
-
-
-
-	
 });	
+
+
+//로그인 여부 판단 및 로그인 페이지로 이동시키기
+function isLogin(){
+	
+	var session = '<%=session.getAttribute("login")%>';
+	
+	/* var session = sessionStorage.getItem("login");
+	console.log(session); */
+	
+	if(session=="null"){
+		alert("로그인 후 이용 가능합니다!");
+		location.href="loginForm.do";
+	}
+}
+
+
 
 
 </script>
