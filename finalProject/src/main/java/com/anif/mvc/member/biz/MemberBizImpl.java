@@ -74,4 +74,9 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.qMemberList();
 	}
 
+	@Override
+	public List<MemberDto> iMemberList() {
+		return dao.iMemberList();
+	}
+
 }

@@ -99,6 +99,11 @@
   	SELECT * FROM MEMBER
   	</select>
   	
+  	<select id="iMemberList" resultType="memberDto">
+  	SELECT * FROM MEMBER
+  	WHERE MROLE = '1'
+  	</select>
+  	
   	<select id="sMemberList" resultType="memberDto">
   	SELECT * FROM MEMBER
   	WHERE MROLE = '2'
