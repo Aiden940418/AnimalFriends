@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="review">
+  
+  	<select id="reviewDetail" parameterType="ReviewDto" resultType="reviewDto">
+		SELECT *
+		FROM REVIEW
+		WHERE GREWNO = #{gRewNo}
+  	</select>
+  	
+  	<insert id="mypageReviewWrite" parameterType="ReviewDto">
+  		INSERT INTO REVIEW
+  		VALUES( GREWNO.NEXTVAL, #{gRewWriter}, #{gNo}, #{gRewTitle}, #{gRewContent}, SYSDATE )
+  	</insert>
+  	
+  	<update id="mypageReviewUpdate" parameterType="ReviewDto">
+  		UPDATE REVIEW
+  		SET GREWTITLE = #{gRewTitle}, GREWCONTENT = #{gRewContent}, GREWDATE = SYSDATE
+  		WHERE GREWNO = #{gRewNo}
+  	</update>
+  	
+  	<delete id="mypageReviewDelete" parameterType="int">
+  		DELETE FROM REVIEW
+  		WHERE GREWNO = #{gRewNo}
+  	</delete>
+  	
+  	<select id="reviewList" parameterType="int" resultType="reviewDto">
+  		SELECT *
+  		FROM REVIEW
+  		WHERE GNO = #{gNo}
+  	</select>
+  	
+  </mapper>

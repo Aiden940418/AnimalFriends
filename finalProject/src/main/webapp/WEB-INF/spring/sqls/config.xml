@@ -19,6 +19,7 @@
   	<typeAlias type="com.anif.mvc.goods.dto.OrderDetailDto" alias="OrderDetailDto" />
   	
   	
+  	<typeAlias type="com.anif.mvc.goods.dto.ReviewDto" alias="reviewDto"/>
   
   	
   	
@@ -39,6 +40,7 @@
   		<mapper resource="/mybatis/aComment-mapper.xml"/>
   		<mapper resource="/mybatis/cart-mapper.xml" />
   		<mapper resource="/mybatis/diary-mapper.xml"/>
+  		<mapper resource="/mybatis/review-mapper.xml"/>
   		
   	</mappers>
   
