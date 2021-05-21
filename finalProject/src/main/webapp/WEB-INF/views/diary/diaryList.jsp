@@ -86,9 +86,9 @@
 										"<li class='list-group-item'>"+
 											"<div class='row'>"+
 											"<div class='col' id='likeBtn' name='likeBtn"+result[i].dno+"' value='"+result[i].dno+"'>"+
-											"<button type='button' class='btn btn-success' style='font-size:17px;'>"+
+											"<button type='button' class='btn btn-outline-success' style='font-size:17px;'>"+
 											"<ion-icon name='heart' style='font-size:21px;'></ion-icon>"+
-											"좋아요 <span class='badge bg-light text-dark' style='font-size:15px;' id='like"+result[i].dno+
+											"좋아요 <span class='badge rounded-pill bg-success' style='font-size:15px;' id='like"+result[i].dno+
 											"'>"+result[i].diaryLikeCnt+"</span>"+
 											"</button>"+
 											"</div>"+
@@ -402,9 +402,9 @@ $(document).on("click", '#likeBtn', function likeOrNot(){
 							<li class="list-group-item">
 								<div class="row">
 									<div class="col" id="likeBtn" name="likeBtn${dto.dno }" value="${dto.dno }">
-										<button type="button" class="btn btn-success" style="font-size:17px;">
+										<button type="button" class="btn btn-outline-success" style="font-size:17px;">
 										 <ion-icon name="heart" style="font-size:21px;"></ion-icon>
-										좋아요 <span class="badge bg-light text-dark" style="font-size:15px;" id="like${dto.dno }">${dto.diaryLikeCnt }</span>
+										좋아요 <span class="badge rounded-pill bg-success" style="font-size:15px;" id="like${dto.dno }">${dto.diaryLikeCnt }</span>
 										</button>
 									</div>
 									<!-- <div class="col text-end">
