@@ -120,4 +120,6 @@ SELECT *
 		)
 		WHERE DNO = 3	
 
+
+commit
 		
