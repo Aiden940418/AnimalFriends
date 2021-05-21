@@ -14,13 +14,15 @@ public class DiaryDto {
 	private String diaryImg;		//입양일기에서 사용될 이미지(경로명)
 	private String diaryThumbImg;	//입양일기에서 썸네일 이미지(경로명)
 	
+	private int diaryLikeCnt; 		//입양일기 좋아요 개수 
+	
 	
 	public DiaryDto() {
 		super();
 	}
 	
 	public DiaryDto(int dno, int mno, String dcontent, Date ddate, String ddateToChar, String mnick, String diaryImg,
-			String diaryThumbImg) {
+			String diaryThumbImg, int diaryLikeCnt) {
 		super();
 		this.dno = dno;
 		this.mno = mno;
@@ -30,7 +32,9 @@ public class DiaryDto {
 		this.mnick = mnick;
 		this.diaryImg = diaryImg;
 		this.diaryThumbImg = diaryThumbImg;
+		this.diaryLikeCnt = diaryLikeCnt;
 	}
+
 
 	public int getDno() {
 		return dno;
@@ -85,12 +89,21 @@ public class DiaryDto {
 		this.diaryThumbImg = diaryThumbImg;
 	}
 	
+	
+	public int getDiaryLikeCnt() {
+		return diaryLikeCnt;
+	}
 
+	public void setDiaryLikeCnt(int diaryLikeCnt) {
+		this.diaryLikeCnt = diaryLikeCnt;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "DiaryDto [dno=" + dno + ", mno=" + mno + ", dcontent=" + dcontent + ", ddate=" + ddate
 				+ ", ddateToChar=" + ddateToChar + ", mnick=" + mnick + ", diaryImg=" + diaryImg + ", diaryThumbImg="
-				+ diaryThumbImg + "]";
+				+ diaryThumbImg + ", diaryLikeCnt=" + diaryLikeCnt + "]";
 	}
 
 	
