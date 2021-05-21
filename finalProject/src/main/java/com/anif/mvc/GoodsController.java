@@ -63,9 +63,14 @@ public class GoodsController {
 	public String goodsDetail(Model model, int gNo) {
 		
 		model.addAttribute("dto",biz.goodsDetail(gNo));
+		model.addAttribute("review",reviewBiz.reviewList(gNo));
 		
 		return "goods/goods_details";
 	}
+	
+	
+	
+	
 	
 	//관리자 페이지에서 굿즈 리스트
 	@RequestMapping(value = "/adminGoodsList.do")
@@ -305,9 +310,9 @@ public class GoodsController {
 	
 	//리뷰 상세보기
 	@RequestMapping(value = "/reviewDetails.do",method = RequestMethod.GET)
-	public String reviewDetail(Model model/*, int gRewNo*/) {
+	public String reviewDetail(Model model, int gRewNo) {
 		
-		//model.addAttribute("dto",reviewBiz.reviewDetail(gRewNo));
+		model.addAttribute("review",reviewBiz.reviewDetail(gRewNo));
 		
 		return "goods/goods_review";
 	}
@@ -330,7 +335,7 @@ public class GoodsController {
 
 		if (res > 0) { // 글 insert 성공 시
 			model.addAttribute("msg", "글 등록 성공!");
-			model.addAttribute("url", "/reviewDetails.do?mNo=memberDto.getmNo();");
+			model.addAttribute("url", "/reviewDetails.do?gRewNo=gRewNo();");
 		} else {  //글 insert 실패 시
 			model.addAttribute("msg", "글 등록 실패!");
 			model.addAttribute("url", "/mygoodsReviewWriteForm.do");

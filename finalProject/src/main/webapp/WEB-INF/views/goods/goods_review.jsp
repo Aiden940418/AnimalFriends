@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>  
 
 	<!-- header -->
 	<%@ include file="../includes/header.jsp" %>
@@ -60,11 +61,11 @@
 			<br>
 		</div>
 		<div class="container text-center mt-5">
-			<h1>${dto.aTitle }</h1><br>
+			<h1>${review.gRewTitle }</h1><br>
 		</div>
 		<div class="container" style="margin-left:250px;">
-			<span>등록날짜:&nbsp;${dto.aDate}&nbsp;&nbsp;&nbsp;&nbsp;</span><span>조회수:&nbsp;${dto.aCount}&nbsp;&nbsp;&nbsp;</span>
-	   		<span>작성자:&nbsp;${login.mNick }&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span>등록날짜:&nbsp;${review.gRewDate}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	   		<span>작성자:&nbsp;${review.gRewWriter }&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		</div>
 	
 		<br>
@@ -74,7 +75,7 @@
 	
 		<div class="container text-center mt-5">
 			<textarea class="container text-center display-7 "style=";outline:none; resize: none; 
-			border:none" readonly="readonly" rows="7px">${dto.aMemo }</textarea>
+			border:none" readonly="readonly" rows="7px">${review.gRewContent }</textarea>
 		</div>
 		
 	</div>

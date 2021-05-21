@@ -5,7 +5,7 @@ import java.util.Date;
 public class ReviewDto {
 	
 	private int gRewNo;
-	private int mNo;
+	private String gRewWriter;
 	private int gNo;
 	private String gRewTitle;
 	private String gRewContent;
@@ -15,10 +15,10 @@ public class ReviewDto {
 		super();
 	}
 
-	public ReviewDto(int gRewNo, int mNo, int gNo, String gRewTitle, String gRewContent, Date gRewDate) {
+	public ReviewDto(int gRewNo, String gRewWriter, int gNo, String gRewTitle, String gRewContent, Date gRewDate) {
 		super();
 		this.gRewNo = gRewNo;
-		this.mNo = mNo;
+		this.gRewWriter = gRewWriter;
 		this.gNo = gNo;
 		this.gRewTitle = gRewTitle;
 		this.gRewContent = gRewContent;
@@ -33,12 +33,12 @@ public class ReviewDto {
 		this.gRewNo = gRewNo;
 	}
 
-	public int getmNo() {
-		return mNo;
+	public String getgRewWriter() {
+		return gRewWriter;
 	}
 
-	public void setmNo(int mNo) {
-		this.mNo = mNo;
+	public void setgRewWriter(String gRewWriter) {
+		this.gRewWriter = gRewWriter;
 	}
 
 	public int getgNo() {
@@ -72,6 +72,8 @@ public class ReviewDto {
 	public void setgRewDate(Date gRewDate) {
 		this.gRewDate = gRewDate;
 	}
+
+	
 	
 	
 }

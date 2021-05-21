@@ -22,7 +22,7 @@
 				<!-- 여기서 부터 전송 정보 입력 -->
 				<form action="mypageReviewWrite.do" method="POST" enctype="multipart/form-data">
 					
-					<input type="hidden" name="aMNo" value="${login.mNo}" >
+					<input type="hidden" name="mNo" value="${login.mNo}" >
 			
 					<table>
 						

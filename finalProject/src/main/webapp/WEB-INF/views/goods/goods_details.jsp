@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ include file="../includes/header.jsp" %>   
+ <%@ include file="../includes/header.jsp" %> 
+ <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>  
  
  
  
@@ -136,12 +137,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>aiden</td>
-				<td><a href="reviewDetails.do">맛있어요!!!!</a></td>
-				<td>2021-04-13</td>
-			</tr>
-
+			<c:forEach items="${review}" var="greview">
+				<tr>
+					<td>${greview.gRewWriter}</td>
+					<td> 
+	                     <a href="reviewDetails.do?gRewNo=${greview.gRewNo }">${greview.gRewTitle}</a>
+					</td>
+					<td>${greview.gRewDate}</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 	

@@ -13,7 +13,7 @@
   	
   	<insert id="mypageReviewWrite" parameterType="ReviewDto">
   		INSERT INTO REVIEW
-  		VALUES( GREWNO.NEXTVAL, #{mNo}, #{gNo}, #{gRewTitle}, #{gRewContent}, SYSDATE )
+  		VALUES( GREWNO.NEXTVAL, #{gRewWriter}, #{gNo}, #{gRewTitle}, #{gRewContent}, SYSDATE )
   	</insert>
   	
   	<update id="mypageReviewUpdate" parameterType="ReviewDto">
@@ -26,5 +26,11 @@
   		DELETE FROM REVIEW
   		WHERE GREWNO = #{gRewNo}
   	</delete>
+  	
+  	<select id="reviewList" parameterType="int" resultType="reviewDto">
+  		SELECT *
+  		FROM REVIEW
+  		WHERE GNO = #{gNo}
+  	</select>
   	
   </mapper>

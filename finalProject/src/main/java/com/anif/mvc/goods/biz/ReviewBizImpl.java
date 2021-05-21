@@ -1,5 +1,7 @@
 package com.anif.mvc.goods.biz;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,12 @@ public class ReviewBizImpl implements ReviewBiz{
 	@Override
 	public int mypageReviewDelete(int gRewNo) {
 		return dao.mypageReviewDelete(gRewNo);
+	}
+
+	//리뷰 리스트 보기
+	@Override
+	public List<ReviewDto> reviewList(int gNo) {
+		return dao.reviewList(gNo);
 	}
 
 }
