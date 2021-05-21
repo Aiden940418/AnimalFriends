@@ -20,8 +20,53 @@
 	
 	}
 </style>
+
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+<script>
+Kakao.init('c61ad7e8be237a7bcda1423bc4fa893e');
+Kakao.isInitialized();
+
+
+console.log(Kakao.isInitialized());
+
+
+</script>
+
+
+<script type="text/javascript">
+  function loginWithKakao() {
+    Kakao.Auth.authorize({
+      redirectUri: 'http://localhost:8787/mvc/main.do'
+    })
+  }
+  // 아래는 데모를 위한 UI 코드입니다.
+  displayToken()
+  function displayToken() {
+    const token = getCookie('authorize-access-token')
+    if(token) {
+      Kakao.Auth.setAccessToken(token)
+      Kakao.Auth.getStatusInfo(({ status }) => {
+        if(status === 'connected') {
+          document.getElementById('token-result').innerText = 'login success. token: ' + Kakao.Auth.getAccessToken()
+        } else {
+          Kakao.Auth.setAccessToken(null)
+        }
+      })
+    }
+  }
+  function getCookie(name) {
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+   
+    
+  }
+  </script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
+
+
 
 
 
@@ -265,11 +310,16 @@ if(mId == null || mId =="" || mPw ==null || mPw =="") {
 		
 	
 		<section class="Easy-sgin-in-wrap">
-			<h2>간편 로그인</h2>
-			<ul class="sign-button-list">
-				<li><button><i class="easy-naver"></i><span>네이버 아이디 로그인</span></button></li>
-				<li><button><i class="easy-kakao"></i><span>카카오 아이디 로그인</span></button></li>
-			</ul>
+			
+			<a id="custom-login-btn" href="javascript:loginWithKakao()">
+  <img
+    src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
+    width="222"
+  />
+</a>
+<p id="token-result"></p>
+
+  
 			<div>			
 				<span class="forget-msg">비밀번호를 잊으셨습니까? | </span>
 				<span class="register"><a href="signUpForm.do">회원가입</a></span>

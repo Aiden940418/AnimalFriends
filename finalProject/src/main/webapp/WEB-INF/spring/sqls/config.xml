@@ -8,9 +8,21 @@
   	<typeAliases>
   	<typeAlias type="com.anif.mvc.member.dto.MemberDto" alias="memberDto" />
   	<typeAlias type="com.anif.mvc.adopt.dto.AdoptDto" alias="adoptDto"/>
+  	<typeAlias type="com.anif.mvc.goods.dto.GoodsDto" alias="goodsDto"/>
   	<typeAlias type="com.anif.mvc.qnaBoard.dto.QnaBoardDto" alias="qnaBoardDto" />
   	<typeAlias type="com.anif.mvc.qnaBoardAdmin.dto.QnaBoardAdminDto" alias="qnaBoardAdminDto" />
   	<typeAlias type="com.anif.mvc.common.pagination.Criteria" alias="Criteria" />
+  	<typeAlias type="com.anif.mvc.adopt.ACommentDto.ACommentDto" alias="aCommentDto" />
+  	<typeAlias type="com.anif.mvc.goods.dto.CartDto" alias="cartDto" />
+  	<typeAlias type="com.anif.mvc.goods.dto.CartListDto" alias="cartListDto" />
+  	<typeAlias type="com.anif.mvc.goods.dto.GoodsOrderDto" alias="GoodsOrderDto" />
+  	<typeAlias type="com.anif.mvc.goods.dto.OrderDetailDto" alias="OrderDetailDto" />
+  	
+  	
+  	<typeAlias type="com.anif.mvc.goods.dto.ReviewDto" alias="reviewDto"/>
+  
+  	
+  	
   	<typeAlias type="com.anif.mvc.diary.dto.DiaryDto" alias="diaryDto"/>
   	<typeAlias type="com.anif.mvc.diary.dto.LikeTableDto" alias="likeTableDto"/>
   	<typeAlias type="com.anif.mvc.diary.dto.DiaryReplyDto" alias="DiaryReplyDto"/>
@@ -23,11 +35,16 @@
   	<mappers>
   		<mapper resource="/mybatis/member-mapper.xml"/>
   		<mapper resource="/mybatis/adopt-mapper.xml"/>
+  		<mapper resource="/mybatis/goods-mapper.xml"/>
   		<mapper resource="/mybatis/qnaBoard-mapper.xml"/>
   		<mapper resource="/mybatis/qnaBoardAdmin-mapper.xml"/>
+  		<mapper resource="/mybatis/aComment-mapper.xml"/>
+  		<mapper resource="/mybatis/cart-mapper.xml" />
   		<mapper resource="/mybatis/diary-mapper.xml"/>
+  		<mapper resource="/mybatis/review-mapper.xml"/>
   		
   	</mappers>
   
   </configuration>
   
+

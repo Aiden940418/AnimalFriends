@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="goods">
+ 
+ 
+     <!-- 전체 굿즈 리스트  -->
+     <select id="goodsList" resultType="goodsDto">
+  		SELECT *
+    	FROM GOODS
+     </select>
+     
+     <!-- 전체 굿즈 리스트 상세 -->
+     <select id="goodsDetail" parameterType="goodsDto" resultType="goodsDto">
+  		SELECT *
+    	FROM GOODS
+    	WHERE GNO = #{gNo}
+     </select>
+     
+     <!-- 관리자 굿즈 리스트  -->
+     <select id="adminGoodsList" resultType="goodsDto">
+  		SELECT *
+    	FROM GOODS
+     </select>
+     
+     <!-- 관리자 굿즈 리스트  상세-->
+     <select id="adminGoodsDetail" parameterType="GoodsDto" resultType="goodsDto">
+  		SELECT *
+    	FROM GOODS
+    	WHERE GNO = #{gNo}
+     </select>
+     
+     <!-- 관리자 굿즈 리스트  등록-->
+     <insert id="adminGoodsWrite" parameterType="GoodsDto" >
+     	INSERT INTO GOODS
+     	VALUES(GNO.NEXTVAL,#{gCtgy}, #{gName}, #{gPrice},
+     		   #{gContent}, #{gStock},#{gCount},SYSDATE, #{gImg}, #{gThumbImg} )
+     </insert>
+          
+     <!-- 관리자 굿즈 리스트  수정-->
+     <update id="adminGoodsUpdate" parameterType="GoodsDto">
+     	UPDATE GOODS
+     	SET GNAME = #{gName}, GPRICE=#{gPrice}, GCONTENT=#{gContent}, GSTOCK=#{gStock}
+     	WHERE GNO = #{gNo}
+     </update>
+     
+     <!-- 관리자 굿즈 리스트 삭제-->
+ 	 <delete id="adminGoodsDelete" parameterType="int">
+ 	 	DELETE FROM GOODS
+ 	 	WHERE GNO = #{gNo}
+ 	 </delete>
+ 	 
+ 	 <!-- 관리자 굿즈 리스트 다중 삭제-->
+ 	 <delete id="multiDeleteGoods" >
+ 	 	DELETE FROM GOODS
+ 	 	WHERE GNO = #{gNo}
+ 	 </delete>
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 <!-- 장바구니 담기 -->
+ 	 
+ 	 
+ 	 <insert id="addCart">
+ 	 
+ 	 INSERT INTO GOODSORDERS VALUES( GORNO.NEXTVAL, 'ready',null, #{mNo} );
+ 	 
+ 	 
+ 	 
+ 	 </insert>
+ 	 
+ 	 
+ 
+
+			 
+ 
+ 
+ 
+ 
+  </mapper>
+
+
+	

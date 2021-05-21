@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="aComment">
+  
+  
+  <resultMap type="aCommentDto" id="aCommentMap">
+  
+  
+     <result property="aComNo" column="ACOMNO"/>
+     <result property="writer" column="WRITER" />
+  	 <result property="aNo" column="ANO" />
+  	 <result property="aComContent" column="ACOMCONTENT"/>
+  	<result property="aComDate" column="ACOMDATE"/>
+  
+  
+  
+  </resultMap>
+  
+  
+  <select id="aCommentList" parameterType="int" resultType="aCommentDto">
+  SELECT ACOMNO , WRITER, ANO, ACOMCONTENT, ACOMDATE
+  FROM ADOPTCOMMENT
+  WHERE ANO = #{aNo}
+  
+  
+  
+  </select>
+  
+  <insert id="aCommentInsert" parameterType="aCommentDto" >
+  
+  INSERT INTO ADOPTCOMMENT VALUES(
+  
+  ACOMNO.NEXTVAL,#{aNo},#{writer},#{aComContent},SYSDATE
+  
+  
+  )
+  
+  
+  </insert>
+  
+
+  
+  
+  <!-- comment delete -->
+  
+  <delete id="aCommentDelete" parameterType="aCommentDto">
+  
+  
+  DELETE FROM ADOPTCOMMENT
+  WHERE ACOMNO = #{aComNo} AND WRITER=#{writer} 
+  
+  
+  </delete>
+  
+  
+  
+  </mapper>

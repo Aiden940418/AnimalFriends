@@ -5,31 +5,7 @@
         
 <html lang="en">
 
-<style type="text/css">
 
-
-	.id_input_re_1 {
-	
-		color : green;
-		display: none;
-		
-		
-		
-	
-	}
-	
-	
-	
-	
-	.id_input_re_2 {
-		color:red;
-		display:none;
-		
-	
-	
-	}
-
-</style>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Yeon+Sung&display=swap');
 
@@ -51,75 +27,130 @@
 <script type="text/javascript">
 
 
-
-
-function idChk() {
-	
-	$.ajax({
-		
-		url : "idChk.do",
-		type : post,
-		dataType : "json",
-		data : {"mId" : $("#mId").val()},
-		success : function(count){
-			if(count==1) {
-				alert("중복된 아이디입니다.");
-				
-			}else if(count==0) {
-				$("#idChk").attr("value","Y");
-				alert("사용가능한 아이디입니다.")
+/* 		$("#submit").on("click", function(){
+			if($("#mId").val()==""){
+				alert("아이디를 입력해주세요.");
+				$("#mId").focus();
+				return false;
+			}
+			if($("#pw").val()==""){
+				alert("비밀번호를 입력해주세요.");
+				$("#mPw").focus();
+				return false;
 			}
 			
+			
+			if($("#pw2").val() == "") {
+				alert("비밀번호 확인을 입력 해주세요");
+				$("#pw2").focus();
+				return false;
+			}
+			if($("#mName").val()==""){
+				alert("성명을 입력해주세요.");
+				$("#mName").focus();
+				return false;
+			}
+			
+			if($("#mNick").val()==""){
+				alert("닉네임을 입력해주세요");
+				$("#mName").focus();
+				return false;
+			}
+			
+			if($("#mAddr1").val()==""){
+				alert("주소를 입력해주세요.");
+				$("#mAddr1").focus();
+				return false;
+			}
+			
+			if($("#mAddr2").val()==""){
+				alert("주소를 입력해주세요.");
+				$("#mAddr2").focus();
+				return false;
+			}
+			
+			if($("#mAddr3").val()==""){
+				alert("상세 주소를 입력해주세요.");
+				$("#mAddr3").focus();
+				return false;
+			}
+			
+			if($("#mPhone").val()==""){
+				alert("전화번호를 입력해주세요.");
+				$("#mPhone").focus();
+				return false;
+			}
+			
+			
+			
+			var idChkVal = $("#idChk").val();
+			if(idChkVal == "N"){
+				alert("중복확인 버튼을 눌러주세요.");
+			}else if(idChkVal == "Y"){
+				$("#submit").submit();
+			}
+		});
+	}) */
+
+
+ 
+ 
+ //아이디 중복체크 ajax
+
+function fn_idChk(){
+	$.ajax({
+		url : "idChk.do",
+		type : "post",
+		dataType : "json",
+		data : {"mId" : $("#mId").val()},
+		success : function(data){
+			
+			 if ($("#mId").val() == "") {
+				 alert("아이디를 입력해주세요")
+			 }else if(data == 0) {
+				$("#idChk").attr("value", "Y");
+				alert("사용가능한 아이디입니다.");
+			 }
+				
+			 if(data == 1){
+				alert("중복된 아이디입니다.");
+			}
+
+			
 		}
-		
-		
 	})
-	
-	
-	
-	
-	
-	
-	
-	
-}
+};
 
-/* function DosignUp() {
 	
-	var mId = $('#mId').val();
-	var mPw = $('#mPw').val();
-	var mName = $('#mName').val();
-	var mNick = $('#mNick').val();
-	var mAddr1 = $('#mAddr1').val();
-	var mAddr2 = $('#mAddr2').val();
-	var mAddr3 = $('#mAddr3').val();
-	var mPhone = $('#mPhone').val();
+	//기업회원 아이디 중복체커 ajax
+	
+	function fn_sidChk() {
+		$.ajax({
+		url : "idChk.do",
+		type : "post",
+		dataType : "json",
+		data : {"sId" : $("#sId").val()},
+		success : function(data) {
 
-	if(mId.length == 0) {
-		alert("아이디를 입력해주세요");
-		$('#mId').focus();
-		return false;
-	}
+			if(data == 1) {
+				alert("중복된 아이디입니다. ");
+			}else if(data == 0) {
+				$("#sidChk").attr("value","Y");
+				alert("사용가능한 아이디입니다.");
+				
+			}
+			
+
+		}
+			
+		})
+		
+		
+	};
 	
-	if(mPw.length==0) {
-		alert("비밀번호를 입력해주세요");
-		$('#mId').focus();
-		return false;
-	}
-	
-	
-	
-	
-	if(confirm("회원가입 하시겠습니까?")){
-	 	alert("회원가입을 축하합니다.");
-	 	return true;
-	 	
-	}
-	
-}
- */
 
 
+// 일반회원가입비밀번호 일치 확인 
 $(function(){
 
 	//비밀번호 확인
@@ -133,7 +164,11 @@ $(function(){
 		    }
 		})  	   
 	});
+	
 
+
+
+//기업회원가입 비밀번호 일치 확인 
 				
 $(function(){
 	
@@ -150,6 +185,9 @@ $(function(){
 		})  	   
 	});
 	
+	
+	
+	//라디오버튼 누르면 일반회원과 기업회원 보여지는 로직 
 	$(function(){
 	
 	$('input[type=radio][name=mRole]').on('click',function(){
@@ -174,6 +212,8 @@ $(function(){
 
 </script>
 
+
+<!-- 우편번호 검색하는 로직  -->
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -222,7 +262,7 @@ function execPostCode() {
     }).open();
 }
 
-
+//우편로직 끝 
 	
 
 </script>
@@ -253,33 +293,33 @@ function execPostCode() {
 				<input type="radio" name="mRole" value="2" class="ms-4">보호소회원			
 			
 			</div>
+	<!-- 회원선택 끝 -->
 			<br>
 			<br>
 			
+			
+		<!--  일반회원 가입 form -->
+		
 			<div id="iMember">
-			
 			<form action="signUp.do" method="GET">
+			
 				<input type="hidden" name="mRole" value="1">
 				<input type="hidden" name="mJoinYn" value="Y">
 
 			
-			<table style="margin-left:440px">
+			<table style="margin-left:400px">
 						
 				<tr>
 				<th>아이디</th>
-				<td><input class=""type="text"  name="mId" style="width:300px; height:40px">
+				<td><input id="mId" type="text"  name="mId" style="width:300px; height:40px">
 				</td>
-				<td><button class="btn-outline-success" type="button" id="idCheck" value="Y" style="font-size:20px">중복확인</button>
-				</td>
-				<td>
-					<span class="id_input_re_1">사용 가능한 아이디입니다.</span>
-					<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
+				<td><button class="idChk btn btn-outline-success" onclick="fn_idChk();" value="N"type="button" name="idChk" id="idChk" style="font-size:20px">중복확인</button>
 				</td>
 				</tr>
 				
 				<tr>
 				<th>비밀번호</th>
-				<td><input type="password"  name="mPw" id="pw" style="width:300px; height:40px">
+				<td><input class="mPw" type="password"  name="mPw" id="pw" style="width:300px; height:40px">
 				</td>
 				</tr>
 				
@@ -290,20 +330,20 @@ function execPostCode() {
 				
 				<tr>
 				<th>이름</th>
-				<td><input type="text"  name="mName" 	style="width:300px; height:40px">
+				<td><input type="text"  id="mName" name="mName" 	style="width:300px; height:40px">
 				</td>
 				</tr>
 				
 				<tr>
 				<th>닉네임</th>
-				<td><input type="text"  name="mNick" style="width:300px; height:40px">
+				<td><input type="text" id="mNick"  name="mNick" style="width:300px; height:40px">
 				</td>
 				</tr>
 				
 				<tr>
 				<th>주소</th>
 				<td><input type="text" id="mAddr1"	  name="mAddr1" style="width:100px; height:40px">
-				<input class="btn-outline-success" type="button" name="idCheck" value="주소검색"
+				<input class="btn btn-outline-success" type="button" name="idCheck" value="주소검색"
 				onclick="execPostCode();"
 				
 				
@@ -314,17 +354,17 @@ function execPostCode() {
 				
 				<tr>
 				<th>기본주소</th>
-				<td><input type="text"  name="mAddr2" style="width:300px; height:40px"></td>
+				<td><input type="text"  id="mAddr2"	 name="mAddr2" style="width:300px; height:40px"></td>
 				</tr>
 				
 				<tr>
 				<th>상세주소</th>
-				<td><input type="text"  name="mAddr3" style="width:300px; height:40px"></td>
+				<td><input type="text"  id="mAddr3"	  name="mAddr3" style="width:300px; height:40px"></td>
 				</tr>
 				
 				<tr>
 				<th>전화번호</th>
-				<td><input type="text"  name="mPhone" style="width:300px; height:40px"></td>
+				<td><input type="text" id="mPhone"  name="mPhone" style="width:300px; height:40px"></td>
 				
 				</tr>
 			
@@ -334,26 +374,28 @@ function execPostCode() {
 			
 			<div class="container mt-5">
 			
-			<button class="btn-outline-success" type="submit" value="가입하기" onclick="DosignUp();">가입하기</button>
-			<button class="btn-outline-success" type="button" value="뒤로가기" onclick="location.href='loginForm.do'">뒤로가기</button>
+			<button class="btn btn-outline-success" type="submit" id="submit" value="일반가입하기">일반가입하기</button>
+			<button class="btn btn-outline-success" type="button" value="뒤로가기" onclick="location.href='loginForm.do'">뒤로가기</button>
 			
 			
-			</div> 
-				</form>
 			</div>
+				</form> 
+			</div>
+
 			
-			
+		
 			<div id="sMember" style="display:none;">
-			<form action="signUps.do" method="GET">
+			<form action="signUpSmember.do" method="GET">
+			
 				<input type="hidden" name="mRole" value="2">
 				<input type="hidden" name="mJoinYn" value="Y">
 			
-				<table style="margin-left:440px">
+				<table style="margin-left:400px">
 				<tr>
 				<th>아이디</th>
-				<td><input class=""type="text"  name="mId" style="width:300px; height:40px">
+				<td><input class="mId"type="text" id="sId" name="mId" style="width:300px; height:40px">
 				</td>
-				<td><input class="btn-outline-success" type="button" name="idCheck" value="중복체크" style="font-size:20px">
+				<td><button class="btn btn-outline-success" onclick="fn_sidChk();" id="sidChk" type="button" name="idChk" value="N" style="font-size:20px">중복확인</button>
 				</td>
 				</tr>
 				
@@ -383,7 +425,7 @@ function execPostCode() {
 				<tr>
 				<th>보호소 주소</th>
 				<td><input type="text"  name="mAddr1" style="width:100px; height:40px">
-				<input class="btn-outline-success" type="button" name="idCheck" value="주소검색"
+				<input class="btn btn-outline-success" type="button" name="idCheck" value="주소검색"
 				onclick="execPostCode();" style="font-size:20px">
 				</td>
 				
@@ -425,14 +467,15 @@ function execPostCode() {
 			
 			<div class="container mt-5">
 			
-			<button class="btn-outline-success" type="submit" value="가입하기">가입하기</button>
-			<button class="btn-outline-success" type="button" value="뒤로가기" onclick="location.href='loginForm.do'">뒤로가기</button>
+			<button class="btn btn-outline-success" type="submit" value="보호소가입하기">보호소가입하기</button>
+			<button class="btn btn-outline-success" type="button" value="뒤로가기" onclick="location.href='loginForm.do'">뒤로가기</button>
 			
 			
 			</div> 
-			</form>
-			
+
+				</form>
 			</div>
+		
 			
 			
 			

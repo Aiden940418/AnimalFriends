@@ -20,20 +20,30 @@
 			</div>
 
 			<!-- form -->
-			<div style="margin: auto; text-align: center;">
-				<form action="" style="display: inline-block;">
+			<div style="margin: auto; text-align: center; display: inline-block">
+				<form action="adminGoodsUpdateRes.do" method="GET">
+					<input type="hidden" name="gNo" value="${dto.gNo}">
 					<table>
+					<!-- 
+						<tr>
+							<th><button type="button" class="btn btn-outline-success"
+									style="width: 100px; pointer-events: none; ">카테고리</button></th>
+							<td><input type="text" class="form-control my-1" name="gCtgy" value="${dto.gCtgy }"
+								readonly="readonly" style="width:500px;margin:10px;"></td>
+						</tr>					
+					 -->
+					
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width:100px; pointer-events: none;">상품명</button></th>
-							<td><input type="text" class="form-control my-1" id=""
+							<td><input value= "${dto.gName }" type="text" class="form-control my-1" name="gName"
 								style="width:500px; margin:10px;"></td>
 						</tr>
 						
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width:100px; pointer-events: none;">가격</button></th>
-							<td><input type="text" class="form-control my-1" id=""
+							<td><input type="text" class="form-control my-1" name="gPrice" value="${dto.gPrice }"
 								style="width:500px;margin:10px;"></td>
 						</tr>
 						
@@ -42,7 +52,7 @@
 							<th style="vertical-align: top;"><button type="button" class="btn btn-outline-success"
 									style="width:100px; pointer-events: none;">상품소개</button></th>
 							<td><textarea rows="20" cols="50" class="form-control my-1"
-									id="" style=" width:500px; height:300px; resize:none; margin:10px;"></textarea></td>
+									name="gContent" style=" width:500px; height:300px; resize:none; margin:10px;" value="${dto.gContent }"></textarea></td>
 						</tr>
 
 						<tr>
@@ -53,8 +63,8 @@
 						</tr>
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
-									style="width:100px; pointer-events: none;">판매수량</button></th>
-							<td><input type="text" class="form-control my-1" name="goods_sellNum"
+									style="width:100px; pointer-events: none;">재고수량</button></th>
+							<td><input type="text" class="form-control my-1" name="gStock" value="${dto.gStock}"
 								style="width:500px; margin:10px;"></td>
 						</tr>
 						
@@ -62,11 +72,15 @@
 						
 
 						<tr>
-							<td colspan="2"><button class="btn btn-outline-success"
-									onclick="location.href='adminGoodsDetail.do'" style="width:100px; pointer-events: none;float: right;margin:10px;">취소</button>
+							<td colspan="2">
+								<input type="button" value="취소" class="btn btn-outline-success"
+									onclick="location.href='adminGoodsList.do'" 
+									style="width:100px;float: right;margin:10px;">
+									
 							 <input type="submit"
-								value="작성" class="btn btn-outline-success"
-								style="width: 100px; float: right; margin:10px;"></td>
+								value="수정" class="btn btn-outline-success"
+								style="width: 100px; float: right; margin:10px;">
+							</td>
 
 						</tr>
 					</table>

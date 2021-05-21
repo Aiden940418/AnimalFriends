@@ -20,8 +20,8 @@
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 <!-- 제이쿼리 사용 위한 코드 -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-
+<!-- 하트 아이콘 사용을 위한 코드 -->
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Yeon+Sung&display=swap');
 	
@@ -64,16 +64,16 @@
               <a class="nav-link" href="shelter.do">동물보호시설</a>
             </li>
             <li class="nav-item" style="font-size:20px;">
-              <a class="nav-link" href="goods.do">GOODS</a>
+              <a class="nav-link" href="goodsList.do">GOODS</a>
             </li>
 
             <li class="nav-item" style="font-size:20px;">
               <a class="nav-link" href="diaryList.do">입양일기</a>
             </li>
            
-           <c:if test="${login.mRole == 1 }">
+           <c:if test="${login.mRole == 3 }">
             <li class="nav-item" style="font-size:20px;">
-              <a class="nav-link" href="admin.do">관리자</a>
+              <a class="nav-link" href="adminAdopt.do">관리자</a>
             </li>
             
             </c:if>

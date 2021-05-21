@@ -97,9 +97,9 @@
         	<br><br>
             <ul class="nav flex-column">
                 <li class="nav-item"><a class="nav-link active left" href="mydiary.do">나의 입양일기</a></li> <br>
-                <li class="nav-item"><a class="nav-link active left" href="myAdoptList.do">내가 쓴 입양공고</a></li><br>
-                <li class="nav-item"><a class="nav-link active left" href="myGoodsBuyList.do">구매 내역</a></li><br>
-                <li class="nav-item"><a class="nav-link active left" href="myCartList.do">나의 장바구니</a></li><br>
+                <li class="nav-item"><a class="nav-link active left" href="myAdoptList.do?mNo=${login.mNo}">내가 쓴 입양공고</a></li><br>
+                <li class="nav-item"><a class="nav-link active left" href="orderList.do">구매 내역</a></li><br>
+                <li class="nav-item"><a class="nav-link active left" href="cartList.do?mNo=${login.mNo}">나의 장바구니</a></li><br>
                 <li class="nav-item"><a class="nav-link active left" href="myMemberModityPw.do">회원정보 수정</a></li><br>
                 <li class="nav-item"><a class="nav-link active left" href="myQnaList.do">QnA</a></li><br>
             </ul>

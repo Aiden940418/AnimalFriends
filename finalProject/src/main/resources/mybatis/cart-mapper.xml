@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="cart">
+  	
+  	
+  	
+  	<insert id="addCart">
+  	
+  	INSERT INTO CART VALUES(
+  	
+  	CARTNO.NEXTVAL, #{mNo}, #{gNo}, #{cartStock}, SYSDATE
+  	
+  	
+  	)
+  	
+  	</insert>
+  	
+  	
+  	
+  				 	 
+	<select id="cartList" resultType="cartListDto">
+			 select
+			     row_number() over(order by c.cartNO desc) as num,
+			     c.CARTNO, c.MNO, c.gNO, c.CARTSTOCK, c.CARTDATE,
+			     g.gNAME, g.gPRICE, g.gImg
+			 from cart c
+			     inner join goods g
+			         on c.gNo = g.gNo   
+			     where c.mNo = #{mNo}
+	</select>
+	
+	
+	<!-- 카트 삭제  -->
+	
+	
+	<delete id="deleteCart">
+		delete cart
+		where cartNo = #{cartNo} and mNo = #{mNo}
+		
+	
+	
+	</delete>
+	
+	
+		 <!-- 주문하기  -->
+
+
+
+	<insert id="orderInfo">
+	
+	INSERT INTO GOODSORDER VALUES(
+	
+	 #{orderId}, #{mNo}, #{orderName}, #{orderAddr1}, #{orderAddr2}, #{orderAddr3}, #{orderPhone}, #{amount}, SYSDATE
+	
+	
+	
+	)
+	
+	</insert>
+	
+	
+	<!-- 주문 상세  -->
+	<insert id="orderInfo_Details">
+ insert into order_details(orderDetailsNum, orderId, gNo, cartStock)
+     select order_details_seq.nextval, #{orderId}, gNo, cartStock
+         from cart   
+</insert> 
+	
+
+
+
+
+	<!-- 카트 비우기 -->
+	<delete id="cartAllDelete">
+ 	DELETE CART
+     WHERE MNO = #{MNO}
+	</delete>
+  	
+  	
+  	
+  	<!-- 특정 유저의 주문 목록 -->
+<select id="orderList" resultType="GoodsOrderDto">
+ select
+     orderId, mNo, orderName, orderAddr1, orderAddr2, orderAddr3, orderPhone, amount, orderDate
+ from goodsorder 
+     where mNo = #{mNo}
+</select>
+  	
+  	
+ </mapper>

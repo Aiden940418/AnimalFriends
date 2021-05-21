@@ -31,7 +31,7 @@
 			</div>
 			<!-- form -->
 			<div style="margin: auto; text-align: center;">
-				<form action="mydiaryWriteRes.do" style="display: inline-block;" method="post" enctype="multipart/form-data">
+				<form action="mydiaryWriteRes.do" method="post" style="display: inline-block;" enctype="multipart/form-data">
 					<table>
 
 						<tr>

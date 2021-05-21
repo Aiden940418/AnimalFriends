@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../includes/header.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
  <title>입양공고</title>
 
@@ -29,89 +31,53 @@
 			<li><a class="dropdown-item" href="#">고양이</a></li>
 		</ul>
 	</div>
-
-
+	<c:if test="${login != null }">
 	<div class="btn-group float-end">
-		<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='myAdoptList.do'">나의
-			입양공고 보기</button>
+		<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='myAdoptList.do?mNo=${login.mNo}'">
+		나의 입양공고 보기</button>
 	</div>
-</div>
-
-
-<div class="container mt-5">
-	<div class="row">
-		<div class="col">
-			<div class="card h-100" style="">
-				<a href="#"><img src="resources/images/adopt_dog1.png" class="card-img-top"
-					alt="..."></a>
-				<div class="card-body">
-					<h5 class="card-title"><a href="adoptDetail.do">코코를 안아주세요</a></h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-				</div>
-			</div>
-		</div>
-		<div class="col">
-			<div class="card h-100" style="">
-				<a href=""><img src="resources/images/adopt_dog2.jpeg" class="card-img-top"
-					alt="..."></a>
-				<div class="card-body">
-					<h5 class="card-title">사랑이를 부탁해</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-				</div>
-			</div>
-		</div>
-		<div class="col">
-			<div class="card h-100" style="">
+	</c:if>
+	
+	<c:choose>
+		<c:when test="${empty list }">
+		
 			
-				<a href=""><img src="resources/images/adopt_cat1.jpeg" class="card-img-top"
+		</c:when>
+	
+	
+		
+		<c:otherwise>
+		
+
+		<div class="container mt-5" >
+			<div class="row">
+	<c:forEach items="${list}" var="dto">
+					<div class="col-sm mt-5">
+			<div class="card h-100" style="width:350px;">
+				<a href="#"><img src="resources/${dto.aThumbImg }" class="card-img-top"
 					alt="..."></a>
 				<div class="card-body">
-					<h5 class="card-title">크롱이에요</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
+					<h5 class="card-title"><a href="adoptDetail.do?aNo=${dto.aNo}">${dto.aTitle}</a></h5>
+					<p class="card-text">${dto.aMemo}</p>
 				</div>
 			</div>
-		</div>
+			</div>
+			
+							</c:forEach>
+			
+			</div>
+			
+		
+		
 	</div>
 
-	<div class="row mt-5">
-		<div class="col">
-			<div class="card h-100" style="">
-				<a href=""><img src="resources/images/adopt_dog3.jpeg" class="card-img-top"
-					alt="..."></a>
-				<div class="card-body">
-					<h5 class="card-title">망고입니다.</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-				</div>
-			</div>
-		</div>
-		<div class="col">
-			<div class="card h-100" style="">
-				<a href=""><img src="resources/images/adopt_dog2.jpeg" class="card-img-top"
-					alt="..."></a>
-				<div class="card-body">
-					<h5 class="card-title">토토</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-				</div>
-			</div>
-		</div>
-		<div class="col">
-			<div class="card h-100" style="">
-				<a href=""><img src="resources/images/adopt_cat3.jpeg" class="card-img-top"
-					alt="..."></a>
-				<div class="card-body">
-					<h5 class="card-title">쿠키와 함께해주세요</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+
+	
+	</c:otherwise>
+	
+	</c:choose>
+
+
 
 
 <div class="container">
@@ -130,7 +96,7 @@
 	</nav>
 </div>
 
-
+</div>
 
 
 <%@ include file="../includes/footer.jsp"%>

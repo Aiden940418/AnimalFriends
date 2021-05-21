@@ -3,6 +3,7 @@ package com.anif.mvc;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -28,6 +29,7 @@ public class LoginController {
 	 private MemberBiz biz;
 	 
 	 
+	 //회원가입 페이지로 이동 
 	 
 	 @RequestMapping("/signUpForm.do")
 	 public String signUpForm(MemberDto dto) {
@@ -37,6 +39,8 @@ public class LoginController {
 	 }
 	 
 	 
+	 
+	 //회원가입 버튼 누르면 실행
 	 
 	@RequestMapping(value="/signUp.do", method = RequestMethod.GET) 
 	
@@ -57,20 +61,18 @@ public class LoginController {
 		
 	}
 
-//	@RequestMapping
-//	public String idChk(String mId) {
-//		
-//		
-//		return null;
-//	}
-//	
-	@RequestMapping(value="/signUps.do", method = RequestMethod.GET) 
+
 	
-	public String signUps(MemberDto dto){
+	
+	
+	//기업회원가입
+	@RequestMapping(value="/signUpSmember.do", method = RequestMethod.GET) 
+	
+	public String signUpSmember(MemberDto dto){
 		
 		int res = 0;
 		
-		res = biz.signUp(dto);
+		res = biz.signUpSmember(dto);
 		
 		if(res>0) {
 			
@@ -88,6 +90,7 @@ public class LoginController {
 		
 	
 	
+	// login 버튼 누르면 login 페이지로 이동 
 	 
 		@RequestMapping(value = "/loginForm.do")
 		public String login(MemberDto dto) {
@@ -95,6 +98,8 @@ public class LoginController {
 		}
 		
 		
+		
+	// logout버튼 누르면 session 초기화 
 		
 		@RequestMapping(value="/logout.do")
 		public String logout(HttpSession session, HttpServletResponse response) {
@@ -105,6 +110,9 @@ public class LoginController {
 			return "main";
 			
 		}
+		
+		
+		//login에 아이디랑 비밀번호 입력하여 로그인하는 controller 
 		
 		@RequestMapping(value="/login.do",method=RequestMethod.POST)
 		@ResponseBody
@@ -146,10 +154,64 @@ public class LoginController {
 		}
 		
 		
+		// 회원 확인
+		@ResponseBody
+		@RequestMapping(value = "/idChk.do", method = RequestMethod.POST)
+		public int idCheck(MemberDto dto) throws Exception {
 		
-	
-	
-	
+			
+			logger.info("idCheck");
+		 
+		 int result = biz.idChk(dto);
+
+		 return result;
+		 
+		}
+		
+		
+		@RequestMapping(value="/pwChk.do", method = RequestMethod.POST)
+		public String pwCheck(String mId, String mPw) {
+			
+			logger.info("passwordCheck");
+			boolean result = biz.pwChk(mId, mPw);
+			if(result) {
+				return "mypage/mypage_memberModify";
+			}else {
+				return "mypage/mypage_memberModifyPWCheck";
+			}
+			
+		}
+		
+		
+		//회원정보 수정 
+		
+		@RequestMapping(value="/memberUpdate.do", method = RequestMethod.POST)
+		public String memberUpdate(MemberDto dto, HttpSession session) {
+			
+			int res = biz.memberUpdate(dto);
+			
+			session.invalidate();
+			
+			if(res > 0) {
+				
+				
+				
+				return "redirect:loginForm.do";
+				
+			}else {
+			return "mypage/mypage_memberModify";
+			
+		}
+		
+		
+}
+		
+		
+	@RequestMapping(value="/kakalogin.do")	
+	public String kakaoLogin() {
+		return "main";
+	}
+		
 }
 
 

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ include file="../includes/header.jsp" %>   
+<%@ include file="../includes/header.jsp" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
  
  <style type="text/css">
  
@@ -83,7 +85,9 @@
     top: 0;
     transition: all ease-in-out .35s;
   }
-
+  p {
+  	font-size: 13pt;
+  }
 
 
 Resources
@@ -125,130 +129,51 @@ Resources
 <!-- dropDown2-end -->
 
 
-
-       <div class="container mt-5 text-center">
-        <div class="row">
-            <div class="col">
-              <div class="card">
-                <h3 class="card-header">
-                 상품제목	
+	<c:choose>
+		<c:when test="${empty list}">
+		
+		<h2>등록된 글이 없습니다. </h2>
+		</c:when>
+	
+	
+		<c:otherwise>
+		
+		
+				
+          	<div class="container mt-5 text-center ms-5">
+            <div class="row">
+              
+              
+          <c:forEach items="${list}" var="dto">
+          		<div class="col-sm mt-5 ms-5">
+          		<div class="card h-100 " style="width:550px;">
+          
+                <h3 class="card-header text-center ">
+                  	${dto.gName}
                 </h3>
-                <div class="card-body">
-                  <p class="card-text">
-					<img style="width:400px;height:200;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo9Y9gGygW0yzjifJLzMSsVt3S6gu72pPaOvSINq1sRrT9Ggw11HIlo7DIR6OydWo9k6GExIyx&usqp=CAc" class="img-thumbnail" alt="GOODS_Pic">
-                 Price:
+                <div class="card-body text-cente">
+                 	<img style="width:400px;height:100;" src="resources/${dto.gImg}" class="img-thumbnail" alt="...">
+                <p class="container mt-2">상품가격:${dto.gPrice}
                   </p>
                 </div>
-                
-
-			<div class="dark-button button-wrapper">	
                <div class="card-footer">
-               <div class="button card-footer">
-                  <span>구매하기</span>
+                  <a href="goodsDetails.do?gNo=${dto.gNo}" class="btn btn-outline-success">구매하기</a>
+                  <a href="#" class="btn btn-outline-success">장바구니</a>
+                  
+
+                  
+              </div>
+              </div>
               </div>
               
-              <div class="button">
-              	<span>장바구니</span>
+                        </c:forEach>
+              
               </div>
-	</div>
-	</div>
-	
               </div>
+              
             </div>
-            <div class="col">
-              <div class="card">
-                <h3 class="card-header">
-                  <a href="goodsDetails.do">상품이름</a>
-                </h3>
-                <div class="card-body">
-                  <p class="card-text">
-                 	<img style="width:400px;height:200;" src="resources/images/adopt_dog3.jpeg" class="img-thumbnail" alt="...">
-                  Price:
-                  </p>
-                                 </div>
-               <div class="card-footer">
-                  <a href="goodsDetails.do" class="btn btn-outline-success">구매하기</a>
-                  <a href="#" class="btn btn-outline-success">장바구니</a>
-                  
-              </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <h3 class="card-header">
-                  상품내용
-                </h3>
-                <div class="card-body">
-                	<p class="card-text">
-                	</p>
-                </div>
-                
-             <div class="card-footer">
-                  <a href="goodsDetails.do" class="btn btn-outline-success">구매하기</a>
-                  <a href="#" class="btn btn-outline-success">장바구니</a>
-                  
-              </div>
-					
-				</div>
-				</div>
-				</div>
-				</div>
-				</div>
-		<div class="container mt-5 text-center">
-        <div class="row">
-            <div class="col">
-              <div class="card">
-                <h3 class="card-header">
-                 상품내용
-                </h3>
-                <div class="card-body">
-                  <p class="card-text">
-                  </p>
-                </div>
-               <div class="card-footer">
-                  <a href="goodsDetails.do" class="btn btn-outline-success">구매하기</a>
-                  <a href="#" class="btn btn-outline-success">장바구니</a>
-                  
-              </div>
+    </c:otherwise>
 
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <h3 class="card-header">
-                  상품이름
-                </h3>
-                <div class="card-body">
-                  <p class="card-text">
-                  </p>
-                                 </div>
-               <div class="card-footer">
-                  <a href="goodsDetails.do" class="btn btn-outline-success">구매하기</a>
-                  <a href="#" class="btn btn-outline-success">장바구니</a>
-                  
-              </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <h3 class="card-header">
-                  상품내용
-                </h3>
-                <div class="card-body">
-                	<p class="card-text">
-                	</p>
-                </div>
-                
-             <div class="card-footer">
-                  <a href="goodsDetails.do" class="btn btn-outline-success">구매하기</a>
-                  <a href="#" class="btn btn-outline-success">장바구니</a>
-                  
-              </div>
-					
-				</div>
-				</div>
-				</div>
-				</div>
-				</div>
+	</c:choose>
 				
  <%@ include file="../includes/footer.jsp" %>   

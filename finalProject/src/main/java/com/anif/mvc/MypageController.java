@@ -37,8 +37,11 @@ public class MypageController {
 	@Autowired
 	private DiaryBiz diaryBiz;
 	
+
 	@Resource(name="uploadPath")
-	private String uploadPath;
+	private String uploadPath;  //이미지 업로드 화면출력 관련 
+	
+	
 	
 	@RequestMapping("/chattingList.do")
 	public String chatList() {
@@ -54,6 +57,15 @@ public class MypageController {
 		return "mypage/mypage_chattingDetail";
 	}
 	
+	
+	@RequestMapping("/myCartList.do")
+	public String myCartList() {
+		
+		
+		return "mypage/mypage_mycartList";
+	}
+	
+	// Diary Start 
 	
 	// Diary Start 
 	@RequestMapping("/mydiary.do")
@@ -147,35 +159,7 @@ public class MypageController {
 	// Diary End
 	
 	
-	//Adopt Start 
-	
-	@RequestMapping("/myAdoptList.do")
-	public String myAdoptList() {
-		
-		
-		return "mypage/mypage_myadoptList";
-	}
-	
-	@RequestMapping("/myAdoptUpdateForm.do")
-	public String myAdoptUpdateForm() {
-		
-		return "mypage/mypage_myadoptWriteForm";
-	}
-	
-	
-	//Adopt End 
-	@RequestMapping("/myCartList.do")
-	public String myCartList() {
-		
-		
-		return "mypage/mypage_mycartList";
-	}
-	
-	@RequestMapping("/myGoodsBuyList.do")
-	public String myGoodsBuyList() {
-		
-		return "mypage/mypage_mygoodsBuyList";
-	}
+
 	
 
 	

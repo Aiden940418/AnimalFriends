@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
+import com.anif.mvc.member.biz.MemberBiz;
 import com.anif.mvc.diary.biz.DiaryBiz;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.qnaBoardAdmin.biz.QnaBoardAdminBiz;
@@ -33,18 +34,19 @@ public class AdminController {
 	
 	//adminAdopt
 	
-	@RequestMapping("/adminAdopt.do")
-	public String adminAdopt(Model model) {
-		
-		
-		
-		return "admin/admin_adoptList";
-	}
+	@Autowired
+	private MemberBiz bizM;
+
 	
+
 	
 	//관리자 유저리스트 	
 	@RequestMapping("/adminUserList.do")
 	public String adminUserList(Model model) {
+		
+
+		model.addAttribute("list",bizM.userList());
+
 		
 		return "admin/admin_userList";
 	}
@@ -85,42 +87,17 @@ public class AdminController {
 		return "/mypage/alertPage";
 	}
 	
+	
 
 	
-	
-	//관리자 굿즈 목록
-	@RequestMapping("/adminGoodsList.do")
-	public String adminGoodsList(Model model) {
-		
-		return "admin/admin_goodsList";
-	}
-	
-	
-	//관리자 굿즈 상세보기 
-	
-	@RequestMapping("/adminGoodsDetail.do")
-	public String adminGoodsDetail(Model model) {
-		
-		return "admin/admin_goodsdetail";
-	}
-	
-	
-	//관리자 굿즈 등록 
+/*	관리자 굿즈 등록 
 	@RequestMapping("/adminGoodsWrite.do")
 	public String adminGoodsWrite(Model model) {
 		
 		return "admin/admin_goodsWrite";
 	}
+*/	
 	
-	
-	//관리자 굿즈 수정 
-	
-	
-	@RequestMapping("/adminGoodsUpdate.do")
-	public String adminGoodsUpdate() {
-		
-		return "admin/admin_goodsUpdate";
-	}
 	
 	//Admin QnA Start
 	

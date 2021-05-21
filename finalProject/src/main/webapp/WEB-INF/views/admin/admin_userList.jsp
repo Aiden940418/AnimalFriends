@@ -4,6 +4,75 @@
 <html>
 <style type="text/css">
 </style>
+<!-- 제이쿼리 사용 위한 코드 -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+
+	var itemArr = new Array();
+	
+	$(function () {
+		$("#totalMember").show();
+		$("#member").hide();
+		$("#sMember").hide();
+		$("#qMember").hide();
+		
+		$('#memberSelect li > a').on('click',function(){
+			//회원 선택
+			$('memberSelectBtn').text($(this).text());
+		});
+		
+		/* 회원 선택 시 value 가져오는 function들 */
+		// 유형별 회원 선택
+		$('#memberSelect li > a').on('click',function(){
+			$('#memberSelectBtn').text($(this).text());
+			var mem = $(this).attr('value');
+			
+			
+		})
+	})
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//회원유형 선택 시 버튼 보여주는 용도
+	function totalMember() {
+		$("#totalMember").show();
+		$("#member").hide();
+		$("#sMember").hide();
+		$("#qMember").hide();
+	}
+	function member() {
+		$("#member").show();
+		$("#totalMember").hide();
+		$("#sMember").hide();
+		$("#qMember").hide();
+	}
+	function sMember() {
+		$("#sMember").show();
+		$("#member").hide();
+		$("#totalMember").hide();
+		$("#qMember").hide();
+	}
+	function qMember() {
+		$("#qMember").show();
+		$("#member").hide();
+		$("#sMember").hide();
+		$("#totalMember").hide();
+	}
+
+</script>
+
+
+
 <!-- header -->
 <%@ include file="../includes/header.jsp"%>
 <!-- leftmenubar -->
@@ -21,76 +90,106 @@
 		<!-- button -->
 		<div class="row mt-2" style="float: right;">
 
-			<button type="button"
+		 	<a role="button" id="memberSelectBtn"
 				class="btn btn-outline-success dropdown-toggle mb-3 mx-2"
 				data-bs-toggle="dropdown" aria-expanded="false"
-				style="width: 150px;">회원보기</button>
-			<ul class="dropdown-menu" style="width: 150px;">
-				<li><a class="dropdown-item" href="#">무엇이</a></li>
-				<li><a class="dropdown-item" href="#">들어</a></li>
-				<li><a class="dropdown-item" href="#">갈까</a></li>
-				<li><a class="dropdown-item" href="#">요</a></li>
+				style="width: 150px;">회원보기</a>
+				
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" 
+			id="memberSelect" style="width: 150px;">
+				<li><a class="dropdown-item" href="memberList.do" value="전체회원" >전체회원</a></li>
+				<li><a class="dropdown-item" href="iMemberList.do" value="일반회원">일반회원</a></li>
+				<li><a class="dropdown-item" href="sMemberList.do" value="보호소회원">보호소회원</a></li>
+				<li><a class="dropdown-item" href="qMemberList.do" value="탈퇴회원">탈퇴회원</a></li>
 			</ul>
-
-
+			
+			
+		 
+	<!-- 		<button type="button" class="btn btn-outline-success mb-3 mx-2"
+				style="width: 150px;" onclick="location.href='memberList.do'" >전체 회원</button>
+			
 			<button type="button" class="btn btn-outline-success mb-3 mx-2"
-				style="width: 150px;">탈퇴한 회원</button>
+				style="width: 150px;" onclick="location.href='sMemberList.do'">보호소 회원</button>
+			
 			<button type="button" class="btn btn-outline-success mb-3 mx-2"
-				style="width: 150px;">보호소 회원</button>
+				style="width: 150px;" onclick="location.href='qMemberList.do'">탈퇴한 회원</button>
+	 -->		
 			<button type="button" class="btn btn-outline-success mb-3 mx-2"
-				style="width: 150px;">선택회원 탈퇴</button>
+				style="width: 150px;" onclick="location.href='selectQuit.do'">선택회원 탈퇴</button>
 		</div>
+		  
+   				
 		<br> <br> <br>
-
 		<!-- table -->
 		<div class="row">
-
-			<br>
-
 			<table class="table text-center table-hover"
 				style="margin-left: auto; marin-right: auto;">
 				<thead class="table-dark">
 					<tr>
-						<th><input type="checkbox"></th>
+						<th><input type="checkbox"  name="allCheck" id="allCheck"/></th>
 						<th>번호</th>
 						<th>회원유형</th>
 						<th>아이디</th>
 						<th>이름</th>
 						<th>연락처</th>
-						<th>이메일</th>
 						<th>주소</th>
 						<th>가입여부</th>
 					</tr>
 				</thead>
+				<div class="allCheck" >
+					<script>
+					$("#allCheck").click(function() {
+						
+						var chk = $("#allCheck").prop("checked");
+						
+						if(chk) {
+							$(".chBox").prop("checked", true);
+							
+						}else {
+							$(".chBox").prop("checked", false);
+						}
+						
+					});
+					
+					
+					
+					</script>
+  				  </div> 
+				
+				
+				
 				<tbody>
-					<tr>
-						<td><input type="checkbox"></td>
-						<td>1</td>
-						<td>보호소 회원</td>
-						<td>user1</td>
-						<td>김유저</td>
-						<td>010-1234-5678</td>
-						<td>himduro@korea.com</td>
-						<td>서울시 마포구 구석</td>
-						<td>가입</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox"></td>
-						<td>2</td>
-						<td>일반 회원</td>
-						<td>user2</td>
-						<td>최사용</td>
-						<td>010-4321-8765</td>
-						<td>yanadu@korea.net</td>
-						<td>경기도 광주시 어딘가</td>
-						<td>탈퇴</td>
-					</tr>
+					<c:choose>
+						<c:when test="${empty list }">
+							<작성된 글이 없습니다>
+						</c:when>
 
+						<c:otherwise>
+							<c:forEach items="${list}" var="dto">
+								<tr>
+									<td><input type="checkbox" class="chBox"></td>
+									<td>${dto.mNo }</td>
+									<td>${dto.mRole }</td>
+									<td>${dto.mId }</td>
+									<td>${dto.mName }</td>
+									<td>${dto.mPhone }</td>
+									<td>${dto.mAddr1 }${dto.mAddr2 }${dto.mAddr3 }</td>
+									<td>${dto.mJoinYn }</td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+					<script>
+						$(".chBox").click(function(){
+						$("#allCheck").prop("checked", false);
+							
+						})
+					</script>
 				</tbody>
 			</table>
 		</div>
-
 	</div>
+	
 	<!-- footer -->
 	<%@ include file="../includes/footer.jsp"%>
 </div>

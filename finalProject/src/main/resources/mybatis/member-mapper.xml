@@ -4,8 +4,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  
-    <mapper namespace="member">
+
+       <mapper namespace="member">
     
      <resultMap type="memberDto" id="memberMap"> <!-- 아까 정해준 별칭 boardDto  -->
      <result property="mNo" column="MNO"/>
@@ -24,12 +24,12 @@
         
   	</resultMap>
     
-    
-
+   
+  
 
    <select id="login" parameterType="memberDto" resultType="memberDto">
   
-  	SELECT MNO, MROLE, MJOINYN, MID, MPW, MADDR1, MADDR2, MADDR3, MNAME, MNICK, MPHONE
+  	SELECT MNO, MROLE, MJOINYN, MID, MPW, MADDR1, MADDR2, MADDR3, MNAME, MNICK, MPHONE, SBISNUM, SSELLNUM
   	FROM MEMBER
   	WHERE MID = #{mId}
   	AND MPW = #{mPw}
@@ -41,41 +41,76 @@
   	
   	
   	INSERT INTO MEMBER
-  	VALUES(MNO.NEXTVAL, #{mRole}, #{mJoinYn}, #{mId}, #{mPw},#{mAddr1}, #{mAddr2}, #{mAddr3},#{mName},#{mNick}, #{mPhone} )
+  	VALUES(MNO.NEXTVAL, #{mRole}, #{mJoinYn}, #{mId}, #{mPw},#{mAddr1}, #{mAddr2}, #{mAddr3},#{mName},#{mNick}, #{mPhone}, NULL,NULL )
   	
   	
   	</insert>
   	
   	
-  	<insert id="signUpS" parameterType="memberDto">
+  	<insert id="signUpSmember" parameterType="memberDto">
   	
   	
-  	INSERT ALL
-  	
+  	INSERT
   	INTO MEMBER
-  	VALUES(MNO.NEXTVAL, #{mRole}, #{mJoinYn}, #{mId}, #{mPw},#{mAddr1}, #{mAddr2}, #{mAddr3},#{mName},#{mNick}, #{mPhone} )
-  	
-  	INTO SMEMBER
-  	VALUES(#{sBisNum}, #{sSellNum})
-  	
-  	
+  	VALUES(MNO.NEXTVAL, #{mRole}, #{mJoinYn}, #{mId}, #{mPw},#{mAddr1}, #{mAddr2}, #{mAddr3},#{mName},#{mNick}, #{mPhone}, #{sBisNum},#{sSellNum} )
   	
   	
   	</insert>
   
   
   
-  <!-- 
-  	<select id="idChk" parameterType="String">
+  
+  	<select id="idChk" resultType="int">
   	
-  	SELECT COUNT(*) 
+  	SELECT COUNT(*)
   	FROM MEMBER
   	WHERE MID = #{mId}
   	
   	
   	</select>
-
-   -->
+  	
+  	
+  	
+  	
+  	<select id="pwChk" resultType="int">
+  	
+  	SELECT COUNT(*)
+  	FROM MEMBER
+  	WHERE MPW = #{mPw} AND MID = #{mId}
+  	
+  	
+  	
+  	</select>
+  	
+  	<update id="memberUpdate" parameterType="memberDto">
+  	
+  	UPDATE MEMBER SET MNICK = #{mNick}, MPHONE = #{mPhone}, MADDR1 = #{mAddr1}, MADDR2 = #{mAddr2}, MADDR3 = #{mAddr3}
+  	WHERE MNO = #{mNo}
+  	
+  	
+  	</update>
+  	
+  	
+  	<select id="userList" resultType="memberDto">
+  	SELECT * FROM MEMBER
+  	</select>
+  	
+  	<select id="memberList" resultType="memberDto">
+  	SELECT * FROM MEMBER
+  	</select>
+  	
+  	<select id="sMemberList" resultType="memberDto">
+  	SELECT * FROM MEMBER
+  	WHERE MROLE = '2'
+  	</select>
+  	
+  	<select id="qMemberList" resultType="memberDto">
+  	SELECT * FROM MEMBER
+  	WHERE MJOINYN = 'N'
+  	</select>
+  	
+  	
+   
    
     
    
