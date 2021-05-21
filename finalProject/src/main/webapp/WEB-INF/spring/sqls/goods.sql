@@ -1,4 +1,4 @@
---굿즈
+--굿즈등록 테이블 
 DROP TABLE GOODS;
 DROP SEQUENCE GNO;
 
@@ -65,6 +65,7 @@ commit
 
 ------------------------------------------------------------------------------------------
 
+--굿즈 주문 
 
 DROP TABLE GOODSORDER;
 
@@ -95,7 +96,9 @@ alter table goodsorder
     references member(mno) on delete cascade;
     
     
-    
+
+
+--굿즈 주문 상세(결제완료시에 amount등등 데이터 값 저장 )    
 DROP TABLE ORDER_DETAILS;    
 
 create table ORDER_DETAILS (
@@ -109,6 +112,9 @@ create table ORDER_DETAILS (
 drop sequence order_details_seq;
 create sequence order_details_seq;
 -------------------------------------------------------------------------
+
+
+
 
 --굿즈 리뷰 작성
 DROP TABLE REVIEW;
@@ -127,6 +133,9 @@ CREATE TABLE REVIEW (
 );
     
     
+    
+    
+--굿즈리뷰 더미데이터     
 INSERT INTO REVIEW VALUES( GREWNO.NEXTVAL, '관리자',1,'TEST','TEST',SYSDATE );
     
 SELECT * FROM REVIEW;
@@ -145,12 +154,6 @@ alter table order_details
 
 
 
-
-
-select * from goodsOrder;
-select * from order_details;
-
-select * from goods;
 
 
 

@@ -23,7 +23,7 @@
 
 				<div class="container text-center" style="margin-left:130px">
 				
-				<form action="myGoodsReviewWrite.do" method="POST" enctype="multipart/form-data">
+				<form action="myAdoptWriteRes.do" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="aMNo" value="${login.mNo}" >
 			
 					<table>
@@ -199,7 +199,7 @@
 
 						<tr>
 							<td colspan="2"><button class="btn btn-outline-success mt-5"
-									onclick="location.href='adminGoodsDetail.do'" style="width:130px; pointer-events: none;float: right;margin-right:300px;">취소</button>
+									onclick="location.href='myAdoptDetail.do?aNo=${dto.aNo}'" style="width:130px; pointer-events: none;float: right;margin-right:300px;">취소</button>
 							 <input type="submit"
 								value="작성" class="btn btn-outline-success mt-5"
 								style="width:130px; float:right; margin-right:10px;"></td>
