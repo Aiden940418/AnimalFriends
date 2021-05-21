@@ -28,7 +28,7 @@
 
 	<!-- 업로드 경로 설정 (긴 경로를 uploadPath라는 이름으로 간소화 시킴) -->
 	<beans:bean class="java.lang.String" id="uploadPath">
-		<beans:constructor-arg value="E:\GitHub\FinalPJ\finalProject_KW\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\finalProject\resources" />
+		<beans:constructor-arg value="/Users/kwanyeol/Documents/GitHub/finalProject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/finalProject/resources" />
 		
 
 	</beans:bean>

@@ -1,5 +1,7 @@
 package com.anif.mvc.member.biz;
 
+import java.util.List;
+
 import com.anif.mvc.member.dto.MemberDto;
 
 public interface MemberBiz {
@@ -7,7 +9,7 @@ public interface MemberBiz {
 	
 	public int signUp(MemberDto dto);
 	
-	public int signUps(MemberDto dto);
+	public int signUpSmember(MemberDto dto);
 	
 	public int idChk(MemberDto dto);
 	
@@ -16,6 +18,13 @@ public interface MemberBiz {
 	public boolean pwChk(String mId, String mPw);
 	
 	public int memberUpdate(MemberDto dto);
+
+	public List<MemberDto> userList();
+
+	
+
+
+
 
 
 }

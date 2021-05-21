@@ -15,6 +15,10 @@
   	<typeAlias type="com.anif.mvc.adopt.ACommentDto.ACommentDto" alias="aCommentDto" />
   	<typeAlias type="com.anif.mvc.goods.dto.CartDto" alias="cartDto" />
   	<typeAlias type="com.anif.mvc.goods.dto.CartListDto" alias="cartListDto" />
+  	<typeAlias type="com.anif.mvc.goods.dto.GoodsOrderDto" alias="GoodsOrderDto" />
+  	<typeAlias type="com.anif.mvc.goods.dto.OrderDetailDto" alias="OrderDetailDto" />
+  	
+  	
   	<typeAlias type="com.anif.mvc.goods.dto.ReviewDto" alias="reviewDto"/>
   
   	

@@ -299,9 +299,10 @@ function execPostCode() {
 			
 			
 		<!--  일반회원 가입 form -->
+		
 			<div id="iMember">
-			
 			<form action="signUp.do" method="GET">
+			
 				<input type="hidden" name="mRole" value="1">
 				<input type="hidden" name="mJoinYn" value="Y">
 
@@ -373,17 +374,19 @@ function execPostCode() {
 			
 			<div class="container mt-5">
 			
-			<button class="btn btn-outline-success" type="submit" id="submit" value="가입하기">가입하기</button>
+			<button class="btn btn-outline-success" type="submit" id="submit" value="일반가입하기">일반가입하기</button>
 			<button class="btn btn-outline-success" type="button" value="뒤로가기" onclick="location.href='loginForm.do'">뒤로가기</button>
 			
 			
-			</div> 
-				</form>
 			</div>
+				</form> 
+			</div>
+
 			
-			
+		
 			<div id="sMember" style="display:none;">
-			<form action="signUps.do" method="GET">
+			<form action="signUpSmember.do" method="GET">
+			
 				<input type="hidden" name="mRole" value="2">
 				<input type="hidden" name="mJoinYn" value="Y">
 			
@@ -464,14 +467,15 @@ function execPostCode() {
 			
 			<div class="container mt-5">
 			
-			<button class="btn btn-outline-success" type="submit" value="가입하기">가입하기</button>
+			<button class="btn btn-outline-success" type="submit" value="보호소가입하기">보호소가입하기</button>
 			<button class="btn btn-outline-success" type="button" value="뒤로가기" onclick="location.href='loginForm.do'">뒤로가기</button>
 			
 			
 			</div> 
-			</form>
-			
+
+				</form>
 			</div>
+		
 			
 			
 			

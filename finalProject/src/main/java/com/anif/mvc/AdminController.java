@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
+import com.anif.mvc.member.biz.MemberBiz;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.qnaBoardAdmin.biz.QnaBoardAdminBiz;
 import com.anif.mvc.qnaBoardAdmin.dto.QnaBoardAdminDto;
@@ -26,6 +27,9 @@ public class AdminController {
 	
 	@Autowired
 	private QnaBoardAdminBiz biz;
+	
+	@Autowired
+	private MemberBiz bizM;
 
 	
 
@@ -33,6 +37,10 @@ public class AdminController {
 	//관리자 유저리스트 	
 	@RequestMapping("/adminUserList.do")
 	public String adminUserList(Model model) {
+		
+
+		model.addAttribute("list",bizM.userList());
+
 		
 		return "admin/admin_userList";
 	}

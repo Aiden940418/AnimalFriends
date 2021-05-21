@@ -43,7 +43,26 @@
 		<br> <br> <br>
 
 		<!-- table -->
+		
+		<c:choose>
+		<c:when test="${empty list }">
+		
+		<작성된 글이 없습니다>
+		
+			
+		</c:when>
+	
+	
+		
+		<c:otherwise>
+		
+		
+		
+		
+		
 		<div class="row">
+			<c:forEach items="${list}" var="dto">
+		
 
 			<br>
 
@@ -65,30 +84,29 @@
 				<tbody>
 					<tr>
 						<td><input type="checkbox"></td>
-						<td>1</td>
-						<td>보호소 회원</td>
-						<td>user1</td>
-						<td>김유저</td>
-						<td>010-1234-5678</td>
-						<td>himduro@korea.com</td>
-						<td>서울시 마포구 구석</td>
-						<td>가입</td>
+						<td>${dto.mNo }</td>
+						<td>${dto.mRole }</td>
+						<td>${dto.mId }</td>
+						<td>${dto.mName }</td>
+						<td>${dto.mPhone }</td>
+						<td>${dto.mAddr1 }${dto.mAddr2 }${dto.mAddr3 }</td>
+						<td>${dto.mJoinYn }</td>
 					</tr>
-					<tr>
-						<td><input type="checkbox"></td>
-						<td>2</td>
-						<td>일반 회원</td>
-						<td>user2</td>
-						<td>최사용</td>
-						<td>010-4321-8765</td>
-						<td>yanadu@korea.net</td>
-						<td>경기도 광주시 어딘가</td>
-						<td>탈퇴</td>
-					</tr>
+	
 
 				</tbody>
 			</table>
+			</c:forEach>
+			
+			
 		</div>
+		</c:otherwise>
+		</c:choose>
+		
+		
+		
+		
+		
 
 	</div>
 	<!-- footer -->
