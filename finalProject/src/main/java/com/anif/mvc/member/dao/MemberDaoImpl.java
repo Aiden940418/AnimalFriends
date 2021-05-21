@@ -134,7 +134,61 @@ public class MemberDaoImpl implements MemberDao {
 		
 		
 	}
-	
+
+
+
+	@Override
+	public List<MemberDto> memberList() {
+		
+		List<MemberDto> list = new ArrayList<MemberDto>();
+		
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"memberList");
+			
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+
+
+	@Override
+	public List<MemberDto> sMemberList() {
+		List<MemberDto> list = new ArrayList<MemberDto>();
+		
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"sMemberList");
+			
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+
+
+	@Override
+	public List<MemberDto> qMemberList() {
+		List<MemberDto> list = new ArrayList<MemberDto>();
+		
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"qMemberList");
+			
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 	
 	
 	

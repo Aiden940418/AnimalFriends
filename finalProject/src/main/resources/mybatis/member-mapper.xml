@@ -93,9 +93,23 @@
   	
   	<select id="userList" resultType="memberDto">
   	SELECT * FROM MEMBER
-  	
   	</select>
-
+  	
+  	<select id="memberList" resultType="memberDto">
+  	SELECT * FROM MEMBER
+  	</select>
+  	
+  	<select id="sMemberList" resultType="memberDto">
+  	SELECT * FROM MEMBER
+  	WHERE MROLE = '2'
+  	</select>
+  	
+  	<select id="qMemberList" resultType="memberDto">
+  	SELECT * FROM MEMBER
+  	WHERE MJOINYN = 'N'
+  	</select>
+  	
+  	
    
    
     

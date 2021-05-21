@@ -255,10 +255,13 @@
 
 				<div class="dropdown ms-5 mt-3 col text-left btn-group">
 					<a class="btn btn-success dropdown-toggle" role="button"
+					
 						id="locationSelectBtn" data-bs-toggle="dropdown"
 						aria-expanded="false" data-siordo="">지역 선택</a>
+						
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink"
 						id="locationSelect">
+						
 						<li><a class="dropdown-item" href="javascript:seoulSelect();"
 							value="서울특별시">서울시</a></li>
 						<li><a class="dropdown-item"
