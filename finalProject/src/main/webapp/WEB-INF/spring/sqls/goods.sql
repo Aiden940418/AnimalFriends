@@ -154,4 +154,4 @@ select * from goods;
 
 
 
-commit;
+commit
