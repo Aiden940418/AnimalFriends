@@ -33,7 +33,7 @@
   
   	<insert id="insert" parameterType="diaryDto">
   		INSERT INTO DIARY
-		VALUES(DNOSEQ.NEXTVAL, #{mno}, #{dcontent}, SYSDATE, #{diaryImg}, #{diaryThumbImg}, 0)
+		VALUES(DNOSEQ.NEXTVAL, #{mno}, #{dcontent}, SYSDATE, #{diaryImg}, #{diaryThumbImg})
   	</insert>
   
   
@@ -104,6 +104,14 @@
   	</delete>
   	
   	
+  	<!-- 좋아요 -->
+  	
+  	<insert id="insertLike" parameterType="int">
+  		INSERT INTO DIARY
+  		VALUES (LIKENOSEQ.NEXTVAL, #{dno}, #{mno}, Y)
+  	
+  	
+  	</insert>
   	<!-- 관리자 페이지 입양일기 관리 관련 -->
   	<select id="adminDiarySelectList" resultType="diaryDto">
   		SELECT *
@@ -123,39 +131,6 @@
 		WHERE DNO=#{dno}
   	</delete>
   	
-  	<!-- 좋아요 -->
-  	<select id="rec_check" parameterType="map" resultType="int">
-  		SELECT COUNT(*) 
-  		FROM LIKETABLE 
-  		WHERE DNO = #{dno} AND MNO = #{mno}
-  	</select>
-  	
-  	
-  	<insert id="rec_Insert" parameterType="map">
-  		INSERT INTO LIKETABLE
-  		VALUES (LIKENOSEQ.NEXTVAL, #{dno}, #{mno}, 'Y')
-  	</insert>
-  	
-  	<update id="likeUpdate" parameterType="map">
-		UPDATE DIARY
-		SET DIARYLIKECNT = (SELECT COUNT(DECODE(LIKEYN, 'Y', 1)) DIARYLIKECNT 
-  							FROM LIKETABLE 
-  							WHERE DNO = #{dno})
-  		WHERE DNO = #{dno}
-	</update>
-  	
-  	
-  	<delete id="rec_Delete" parameterType="map">
-		DELETE
-		FROM LIKETABLE
-		WHERE DNO=#{dno} AND MNO = #{mno}
-  	</delete>
-  	
-  	<select id="rec_Count" parameterType="int" resultType="diaryDto">
-  		SELECT DIARYLIKECNT  
-  		FROM DIARY 
-  		WHERE DNO = #{dno}
-  	</select>
   	
   	
   	
