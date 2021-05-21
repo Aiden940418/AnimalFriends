@@ -20,6 +20,9 @@
 <!-- 제이쿼리 사용 위한 코드 -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
+
 <style type="text/css">
 	h1 {
 		text-align: center;
@@ -427,7 +430,9 @@ function isLogin(){
 								<div class="row">
 									<div class="col" id="likeBtn" name="likeBtn${dto.dno }" value="${dto.dno }">
 										<button type="button" class="btn btn-outline-success" style="font-size:17px;">
-										 <ion-icon name="heart" style="font-size:21px;"></ion-icon>
+<!-- 										 <ion-icon name="heart" style="font-size:21px;"></ion-icon>
+-->										 <i class="fas fa-heart fa-sm"></i> 
+ 
 										좋아요 <span class="badge rounded-pill bg-success" style="font-size:15px;" id="like${dto.dno }">${dto.diaryLikeCnt }</span>
 										</button>
 									</div>
