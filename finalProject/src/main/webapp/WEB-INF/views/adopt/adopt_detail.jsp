@@ -133,7 +133,7 @@ a.button:hover {
 		<br>
 		<br>
 			<div class="wrap">
-  		<a href="chattingDetail.do" class="button">1:1채팅 요청</a>
+  		<a href="chattingList.do" class="button">1:1채팅 요청</a>
   		</div>
 
 		<!--  1:1 채팅 요청 종료 -->

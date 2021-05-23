@@ -5,14 +5,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
-		http://www.springframework.org/schema/websocket 
-		http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd"
-	xmlns:websocket="http://www.springframework.org/schema/websocket">
-		
-		
-		
-		
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
@@ -44,20 +37,5 @@
 		id="multipartResolver">
 		<beans:property name="maxUploadSize" value="52428800" /> <!-- 50메가 제한 -->
 	</beans:bean>
-	
-	
-	
-	
-	
-
-    
-<!-- 	 웹 소켓 핸들러 -->
-	
-	<websocket:handlers allowed-origins="*" >
-        <websocket:mapping path="chat.do" handler="myHandler"/>
-        <websocket:sockjs websocket-enabled="true"></websocket:sockjs>
-    </websocket:handlers>
- 
-    <beans:bean id="myHandler" class="com.anif.mvc.HandlerChat"/>
 	
 </beans:beans>

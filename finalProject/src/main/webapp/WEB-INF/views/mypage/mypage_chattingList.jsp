@@ -30,7 +30,6 @@
 		<div class="container text-center">
 		<div class="container text-center" style="border:1px solid; width:700px; height:200px;">
 			<ion-icon name="person-circle-outline" style="font-size:80px; margin-right:200px "></ion-icon>
-			<a href="chat.do">채팅창자세히</a>
 		
 		</div>
 		</div>

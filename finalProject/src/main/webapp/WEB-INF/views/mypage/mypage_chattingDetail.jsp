@@ -52,11 +52,7 @@
 			</div>
 
 
-			<div class="button">
-			
-				<button class="cancle">취소</button>
-				<button class="back">뒤로가기</button>
-			</div>
+
 
 
 
