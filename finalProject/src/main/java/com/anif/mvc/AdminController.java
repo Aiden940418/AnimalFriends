@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
 import com.anif.mvc.member.biz.MemberBiz;
+import com.anif.mvc.diary.biz.DiaryBiz;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.qnaBoardAdmin.biz.QnaBoardAdminBiz;
 import com.anif.mvc.qnaBoardAdmin.dto.QnaBoardAdminDto;
@@ -27,6 +28,11 @@ public class AdminController {
 	
 	@Autowired
 	private QnaBoardAdminBiz biz;
+	@Autowired
+	private DiaryBiz diaryBiz;
+
+	
+	//adminAdopt
 	
 	@Autowired
 	private MemberBiz bizM;
@@ -47,14 +53,39 @@ public class AdminController {
 	
 
 	
-	//관리자 입양일기
-
+	
+	//관리자 입양일기 리스트 조회
 	@RequestMapping("/adminDiary.do")
-	public String adminDiary(Model model) {
+	public String adminDiary(Model model, HttpSession session) {
+		logger.info("Mypage Mydiary SELECT LIST");
+		
+		//현재 로그인 되어있는 계정의 회원번호를 가져오기
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		int mNo = memberDto.getmNo();
+		
+		model.addAttribute("memberDto", memberDto); 
+		model.addAttribute("list", diaryBiz.adminDiarySelectList()); 
 		
 		return "admin/admin_diary";
 	}
 	
+	//관리자 입양일기 삭제
+	@RequestMapping("/adminDiaryDelete.do")
+	public String adminDiaryDelete(Model model, int dno) {
+		logger.info("Admin Diary DELETE");
+		
+		int res = diaryBiz.adminDiaryDelete(dno);
+		
+		if (res > 0) { // 글 insert 성공 시
+			model.addAttribute("msg", "글 삭제 성공!");
+			model.addAttribute("url", "/adminDiary.do");
+		} else {  //글 insert 실패 시
+			model.addAttribute("msg", "글 삭제 실패!");
+			model.addAttribute("url", "/adminDiary.do");
+		}
+		
+		return "/mypage/alertPage";
+	}
 	
 	
 

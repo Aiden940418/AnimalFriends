@@ -21,6 +21,13 @@ public interface MemberBiz {
 
 	public List<MemberDto> userList();
 
+	public List<MemberDto> memberList();
+
+	public List<MemberDto> sMemberList();
+
+	public List<MemberDto> qMemberList();
+
+
 	
 
 

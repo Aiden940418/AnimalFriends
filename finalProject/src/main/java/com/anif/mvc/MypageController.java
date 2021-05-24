@@ -9,12 +9,13 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.anif.mvc.common.image.UploadFileUtils;
 import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
 import com.anif.mvc.diary.biz.DiaryBiz;
@@ -22,7 +23,6 @@ import com.anif.mvc.diary.dto.DiaryDto;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.qnaBoard.biz.QnaBoardBiz;
 import com.anif.mvc.qnaBoard.dto.QnaBoardDto;
-import com.anif.mvc.utils.UploadFileUtils;
 
 @Controller
 public class MypageController {
@@ -65,53 +65,61 @@ public class MypageController {
 	
 	// Diary Start 
 	
+	// Diary Start 
 	@RequestMapping("/mydiary.do")
-	public String myDiary() {
+	public String myDiary(Model model, HttpSession session) {
+		logger.info("Mypage Mydiary SELECT LIST");
 		
+		//현재 로그인 되어있는 계정의 회원번호를 가져오기
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		int mNo = memberDto.getmNo();
+		
+		model.addAttribute("memberDto", memberDto); 
+		model.addAttribute("list", diaryBiz.myDiarySelectList(mNo)); 
 		
 		return "mypage/mypage_mydiary";
 	}
 	
 	
-	@RequestMapping("/mydiaryDetail.do")
-	public String mydiaryDetail() {
-		
-		return "mypage/mypage_mydiaryDetail";
-	}
+//	@RequestMapping("/mydiaryDetail.do")
+//	public String mydiaryDetail() {
+//		
+//		return "mypage/mypage_mydiaryDetail";
+//	}
 	
 	@RequestMapping("/mydiaryWriteForm.do")
 	public String mydiaryWriteForm() {
 		return "mypage/mypage_mydiaryWriteForm";
 	}
 	
-	@RequestMapping(value = "/mydiaryWriteRes.do")
-	public String mydiaryWriteRes(DiaryDto dto, MultipartFile file, HttpSession session, Model model) throws IOException, Exception {
+	@RequestMapping("/mydiaryWriteRes.do")
+	public String mydiaryWriteRes(DiaryDto dto, HttpSession session, @RequestParam(value = "file", required = false) MultipartFile file, Model model) throws IOException, Exception {
 		logger.info("My Diary INSERT");
-		
-		//현재 로그인 되어있는 계정의 회원번호를 가져와서 dto에 세팅해주기
-		MemberDto memberDto = (MemberDto) session.getAttribute("login");
-		dto.setMno(memberDto.getmNo());
-		
-		
-		//이미지 업로드 관련
+
+		//이미지 업로드를 위한 코드
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
+		
 		if(file != null) {
 			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
 		} else {
 			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 		}
+		
 		dto.setDiaryImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		dto.setDiaryThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
-		
+		//현재 로그인 되어있는 계정의 회원번호를 가져와서 dto에 세팅해주기
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		dto.setMno(memberDto.getmNo());
 		
 		
 		int res = diaryBiz.insert(dto);
 
 		if (res > 0) { // 글 insert 성공 시
 			model.addAttribute("msg", "글 등록 성공!");
-			model.addAttribute("url", "/diaryList.do");
+			//model.addAttribute("url", "/diaryList.do");
+			model.addAttribute("url", "/mydiary.do");
 		} else {  //글 insert 실패 시
 			model.addAttribute("msg", "글 등록 실패!");
 			model.addAttribute("url", "/mydiaryWriteForm.do");
@@ -120,9 +128,28 @@ public class MypageController {
 		return "/mypage/alertPage";
 	}
 	
-	@RequestMapping("/mydiaryUpdateForm.do")
-	public String mydiaryUpdateForm() {
-		return "mypage/mypage_mydiaryUpdateForm";
+	
+//	@RequestMapping("/mydiaryUpdateForm.do")
+//	public String mydiaryUpdateForm() {
+//		return "mypage/mypage_mydiaryUpdateForm";
+//	}
+	
+	
+	@RequestMapping("/myDiaryDelete.do")
+	public String myDiaryDelete(Model model, int dno) {
+		logger.info("My Diary DELETE");
+		
+		int res = diaryBiz.myDiaryDelete(dno);
+		
+		if (res > 0) { // 글 insert 성공 시
+			model.addAttribute("msg", "글 삭제 성공!");
+			model.addAttribute("url", "/mydiary.do");
+		} else {  //글 insert 실패 시
+			model.addAttribute("msg", "글 삭제 실패!");
+			model.addAttribute("url", "/mydiary.do");
+		}
+		
+		return "/mypage/alertPage";
 	}
 	
 	

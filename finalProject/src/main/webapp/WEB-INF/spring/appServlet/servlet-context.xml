@@ -6,10 +6,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
 		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/websocket 
+		http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd"
+	xmlns:websocket="http://www.springframework.org/schema/websocket">
+		
+		
+		
+		
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
@@ -23,11 +28,8 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.anif.mvc" />
-
-
-
-
-	<!-- 업로드 경로 설정 (긴 경로를 uploadPath라는 이름으로 간소화 시킴) -->
+	<context:component-scan base-package="com.anif.mvc.common.image" />
+	<!-- 업로드 패스 설정 -->
 	<beans:bean class="java.lang.String" id="uploadPath">
 		<beans:constructor-arg value="E:\GitHub\FinalPJ\finalProject_KW\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\finalProject\resources" />
 		
@@ -35,9 +37,12 @@
 	</beans:bean>
 
 	<!-- 일반 파일 업로드 경로 -->
-	<resources mapping="/imgUpload/**" location="/resources/imgUpload/" />
+	<resources mapping="/imgUpload/**"
+		location="/resources/imgUpload/" />
 
-	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+	<beans:bean
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		id="multipartResolver">
 		<beans:property name="maxUploadSize" value="52428800" /> <!-- 50메가 제한 -->
 	</beans:bean>
 	
@@ -49,5 +54,16 @@
 	<beans:bean id="chattingHandler" class="org.practice.handler.ChattingHandler"/>
 	
 	
+	
+
+    
+<!-- 	 웹 소켓 핸들러 -->
+	
+	<websocket:handlers allowed-origins="*" >
+        <websocket:mapping path="chat.do" handler="myHandler"/>
+        <websocket:sockjs websocket-enabled="true"></websocket:sockjs>
+    </websocket:handlers>
+ 
+    <beans:bean id="myHandler" class="com.anif.mvc.HandlerChat"/>
 	
 </beans:beans>

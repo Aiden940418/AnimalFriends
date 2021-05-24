@@ -2,31 +2,79 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<style type="text/css">
-#profileIcon {
-	font-size: 100px;
-}
-
-.myDiaryIconDiv {
-	float: left;
-}
-</style>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
-
-	.container {
-	font-family: 'Nanum Pen Script', cursive;
-	color: black;
-	font-size: 25px;
-	}
-</style>
-
 
 <!-- header -->
 <%@ include file="../includes/header.jsp"%>
 <!-- leftmenubar -->
 <%@ include file="../includes/admin_leftMenuBar.jsp"%>
+
+<style type="text/css">
+
+
+
+</style>
+
+
+<script>
+	$(document).ready(function(){
+
+        $('.box').each(function(){
+            var content = $(this).children('.content');
+            var content_txt = content.text();
+            var content_txt_short = content_txt.substring(0,50)+"...";
+            var btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
+
+            
+            $(this).append(btn_more);
+            
+            if(content_txt.length >= 50){
+                content.html(content_txt_short)
+                
+            }else{
+                btn_more.hide()
+            }
+            
+            btn_more.click(toggle_content);
+
+            function toggle_content(){
+                if($(this).hasClass('short')){
+                    // 접기 상태
+                    $(this).html('더보기');
+                    content.html(content_txt_short)
+                    $(this).removeClass('short');
+                }else{
+                    // 더보기 상태
+                    $(this).html('접기');
+                    content.html(content_txt);
+                    $(this).addClass('short');
+
+                }
+            }
+        });
+        
+    });
+	
+	
+	$(document).on("click", '#deleteBtn', function adminDiaryDelete(){
+		//삭제 확인 메세지 띄워서 확인
+		var yn = confirm("정말로 글을 삭제하시겠습니까?");
+		
+		if(yn){
+			var dno = $(this).val();
+			
+			location.href="adminDiaryDelete.do?dno="+dno;
+		}else{
+			
+		}
+	});
+	
+	
+	
+	
+</script>
+
+
+
 <!-- 페이지 내용 부분 -->
 <div class="contentDiv">
 
@@ -35,151 +83,42 @@
 			<h1 class="text-center">입양일기 관리</h1>
 		</div>
 
-		<div class="float-end" style="margin-right: 200px;">
-			<button type="button" class="btn btn-outline-success">선택한 항목 삭제</button>
-		</div>
 	</div>
 
-	<!-- 세로줄 -->
+	<!-- 가로줄 -->
 	<div
 		style="border-bottom: groove; margin-top: 80px; margin-left: 20px; margin-right: 50px;">
 	</div>
 
 	<!-- 입양일기 그리드 시작 -->
 	<div class="container">
-		<div class="row">
-
-			<div class="col-sm">
-				<div class="card" style="width: 18rem; margin-top: 20px;">
-					<img class="card-img-top" src="resources/images/adopt_dog1.png"
-						alt="Card image cap">
-					<div class="card-body">
-						<p class="card-text">
-							<input type="checkbox">&nbsp;Some quick example text to
-							build on the card title and make up the bulk of the card's
-							content.
-						</p>
-					</div>
-				</div>
+			<div class="row">
+			
+				<c:forEach items="${list }" var="dto">		
+					<!-- 글 박스 카드 -->
+					<div class="col-sm">
+                        <div class="card text-center" style="width: 22rem; margin-top: 20px;">
+                            <img class="card-img-top"
+                                src="resources/${dto.diaryImg }" alt="Card image cap">
+                            <div class="card-body box">
+                                <p class="card-text content">${dto.dcontent }</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">작성일 [ ${dto.ddateToChar } ]</li>
+                             </ul>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-success" id="deleteBtn" value="${dto.dno }">글 삭제</button>
+                            </div>
+                        </div>
+                    </div>
+				</c:forEach>	
+				
 			</div>
-
-			<div class="col-sm">
-				<div class="card" style="width: 18rem; margin-top: 20px;">
-					<img class="card-img-top" src="resources/images/adopt_dog1.png"
-						alt="Card image cap">
-					<div class="card-body">
-						<p class="card-text">
-							<input type="checkbox">&nbsp;Some quick example text to
-							build on the card title and make up the bulk of the card's
-							content.
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm">
-				<div class="card" style="width: 18rem; margin-top: 20px;">
-					<img class="card-img-top" src="resources/images/adopt_dog1.png"
-						alt="Card image cap">
-					<div class="card-body">
-						<p class="card-text">
-							<input type="checkbox">&nbsp;Some quick example text to
-							build on the card title and make up the bulk of the card's
-							content.
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm">
-				<div class="card" style="width: 18rem; margin-top: 20px;">
-					<img class="card-img-top" src="resources/images/adopt_dog1.png"
-						alt="Card image cap">
-					<div class="card-body">
-						<p class="card-text">
-							<input type="checkbox">&nbsp;Some quick example text to
-							build on the card title and make up the bulk of the card's
-							content.
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm">
-				<div class="card" style="width: 18rem; margin-top: 20px;">
-					<img class="card-img-top" src="resources/images/adopt_dog1.png"
-						alt="Card image cap">
-					<div class="card-body">
-						<p class="card-text">
-							<input type="checkbox">&nbsp;Some quick example text to
-							build on the card title and make up the bulk of the card's
-							content.
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm">
-				<div class="card" style="width: 18rem; margin-top: 20px;">
-					<img class="card-img-top" src="resources/images/adopt_dog1.png"
-						alt="Card image cap">
-					<div class="card-body">
-						<p class="card-text">
-							<input type="checkbox">&nbsp;Some quick example text to
-							build on the card title and make up the bulk of the card's
-							content.
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm">
-				<div class="card" style="width: 18rem; margin-top: 20px;">
-					<img class="card-img-top" src="resources/images/adopt_dog1.png"
-						alt="Card image cap">
-					<div class="card-body">
-						<p class="card-text">
-							<input type="checkbox">&nbsp;Some quick example text to
-							build on the card title and make up the bulk of the card's
-							content.
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm">
-				<div class="card" style="width: 18rem; margin-top: 20px;">
-					<img class="card-img-top" src="resources/images/adopt_dog1.png"
-						alt="Card image cap">
-					<div class="card-body">
-						<p class="card-text">
-							<input type="checkbox">&nbsp;Some quick example text to
-							build on the card title and make up the bulk of the card's
-							content.
-						</p>
-					</div>
-				</div>
-			</div>
-
 		</div>
-	</div>
 	<!-- 입양일기 그리드 끝 -->
 
-	<div class="container">
-		<nav aria-label="Page navigation example ">
-			<ul class="pagination justify-content-center mt-5">
-				<li class="page-item"><a class="page-link" href="#"
-					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-				</a></li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#"
-					aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-				</a></li>
-			</ul>
-		</nav>
-	</div>
+
+
 	<!-- footer -->
 	<%@ include file="../includes/footer.jsp"%>
 </div>
