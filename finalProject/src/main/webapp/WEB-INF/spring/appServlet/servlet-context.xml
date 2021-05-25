@@ -46,24 +46,6 @@
 		<beans:property name="maxUploadSize" value="52428800" /> <!-- 50메가 제한 -->
 	</beans:bean>
 	
-	<websocket:hamdlers>
-		<websocket:mapping handler="chattingHamdler" path="/chatting"/>
-		<websocket:sockjs></websocket:sockjs>
-	</websocket:hamdlers>
 	
-	<beans:bean id="chattingHandler" class="org.practice.handler.ChattingHandler"/>
-	
-	
-	
-
-    
-<!-- 	 웹 소켓 핸들러 -->
-	
-	<websocket:handlers allowed-origins="*" >
-        <websocket:mapping path="chat.do" handler="myHandler"/>
-        <websocket:sockjs websocket-enabled="true"></websocket:sockjs>
-    </websocket:handlers>
- 
-    <beans:bean id="myHandler" class="com.anif.mvc.HandlerChat"/>
 	
 </beans:beans>
