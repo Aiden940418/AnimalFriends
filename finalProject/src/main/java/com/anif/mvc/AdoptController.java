@@ -270,7 +270,6 @@ public class AdoptController {
 		}else {
 
 			return "redirect:adoptDetail.do?aNo="+comDto.getaNo();
-
 		}
 		
 		

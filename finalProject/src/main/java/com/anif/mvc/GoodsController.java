@@ -377,13 +377,15 @@ public class GoodsController {
 	
 	//리뷰등록 가져오기
 	@RequestMapping(value = "/mygoodsReviewWriteForm.do")
-	public String mygoodsReviewWriteForm() {
-		return "mypage/mypage_mygoodsReviewWriteForm";
+	public String mygoodsReviewWriteForm(int gNo) {
+		
+		return "mypage/mypage_mygoodsReviewWriteForm?gNo="+gNo;
+		
 	}
 	
 	//리뷰 등록하기
 	@RequestMapping(value = "/mypageReviewWrite.do")
-	public String mypageReviewWrite(ReviewDto dto, MultipartFile file, HttpSession session, Model model) throws IOException, Exception {
+	public String mypageReviewWrite(ReviewDto dto, HttpSession session, Model model) throws IOException, Exception {
 		logger.info("mypageReviewWrite INSERT");
 		
 		//현재 로그인 되어있는 계정의 회원번호를 가져와서 dto에 세팅해주기

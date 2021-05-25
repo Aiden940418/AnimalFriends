@@ -25,7 +25,7 @@
 						<h5 class="card-title">주문번호 : <a>${orderList.orderId }</a> </h5><br>
 						<p class="card-text">주문자 : ${orderList.orderName }</p>
 						<p class="card-text">결제금액 : <fmt:formatNumber pattern="###,###,###" value="${orderList.amount}" /> 원</p>
-						<a>상품평쓰기</a>
+						<a href="mygoodsReviewWriteForm.do?gNo=${orderList.orderId }">상품평쓰기</a>
 						
 					</div>
 				</div>
