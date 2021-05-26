@@ -31,6 +31,36 @@ public class QnaBoardAdminDaoImpl implements QnaBoardAdminDao{
 
 		return list;
 	}
+	
+	@Override
+	public List<QnaBoardAdminDto> adoptQList() {
+		List<QnaBoardAdminDto> list = new ArrayList<QnaBoardAdminDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE + "adoptQList");
+		} catch (Exception e) {
+			System.out.println("[error] : QnA Admin 입양공고 문의 select list");
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	@Override
+	public List<QnaBoardAdminDto> drQList() {
+		List<QnaBoardAdminDto> list = new ArrayList<QnaBoardAdminDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE + "drQList");
+		} catch (Exception e) {
+			System.out.println("[error] : QnA Admin 입양일기 문의 select list");
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	
 
 	@Override
 	public int listCount() {
@@ -116,6 +146,8 @@ public class QnaBoardAdminDaoImpl implements QnaBoardAdminDao{
 		return res;
 	}
 
+
+	
 
 
 

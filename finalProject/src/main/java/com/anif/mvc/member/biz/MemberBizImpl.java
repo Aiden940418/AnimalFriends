@@ -63,6 +63,11 @@ public class MemberBizImpl implements MemberBiz {
 	public List<MemberDto> memberList() {
 		return dao.memberList();
 	}
+	
+	@Override
+	public List<MemberDto> iMemberList() {
+		return dao.iMemberList();
+	}
 
 	@Override
 	public List<MemberDto> sMemberList() {
@@ -73,5 +78,6 @@ public class MemberBizImpl implements MemberBiz {
 	public List<MemberDto> qMemberList() {
 		return dao.qMemberList();
 	}
+
 
 }

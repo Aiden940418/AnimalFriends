@@ -151,8 +151,6 @@
 						
 					});
 					
-					
-					
 					</script>
   				  </div> 
 				
@@ -161,7 +159,7 @@
 				<tbody>
 					<c:choose>
 						<c:when test="${empty list }">
-							<작성된 글이 없습니다>
+							작성된 글이 없습니다.
 						</c:when>
 
 						<c:otherwise>

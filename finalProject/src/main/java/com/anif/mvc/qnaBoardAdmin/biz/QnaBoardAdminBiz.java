@@ -9,6 +9,8 @@ import com.anif.mvc.qnaBoardAdmin.dto.QnaBoardAdminDto;
 public interface QnaBoardAdminBiz {
 	
 	public List<QnaBoardAdminDto> selectList(Criteria cri);
+	public List<QnaBoardAdminDto> adoptQList();
+	public List<QnaBoardAdminDto> drQList();
 	public int listCount();
 	public QnaBoardAdminDto selectOne(int qno);
 	public int insert(QnaBoardAdminDto dto);

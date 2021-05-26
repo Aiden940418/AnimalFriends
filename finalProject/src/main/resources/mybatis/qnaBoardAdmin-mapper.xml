@@ -18,6 +18,30 @@
 		ORDER BY QGROUPNO DESC, QGROUPSQ ASC
   	</select> 
   	
+  	<select id="adoptQList" resultType="qnaBoardAdminDto">
+		SELECT *
+		FROM (
+				SELECT QNO, QGROUPNO, QGROUPSQ, QTITLETAB, QCTGY, QTITLE, MNO,
+					TO_CHAR(QDATE, 'YYYY-MM-DD HH24:MI') AS qdateToChar, MNICK,
+					ROW_NUMBER() OVER(ORDER BY QNO DESC) AS RNUM
+				FROM QUESTIONBOARD JOIN MEMBER USING(MNO)) QB
+		WHERE QCTGY = '입양공고'
+		ORDER BY QGROUPNO DESC, QGROUPSQ ASC
+  	</select> 
+  	
+  	<select id="drQList" resultType="qnaBoardAdminDto">
+		SELECT *
+		FROM (
+				SELECT QNO, QGROUPNO, QGROUPSQ, QTITLETAB, QCTGY, QTITLE, MNO,
+					TO_CHAR(QDATE, 'YYYY-MM-DD HH24:MI') AS qdateToChar, MNICK,
+					ROW_NUMBER() OVER(ORDER BY QNO DESC) AS RNUM
+				FROM QUESTIONBOARD JOIN MEMBER USING(MNO)) QB
+		WHERE QCTGY = '입양일기'
+		ORDER BY QGROUPNO DESC, QGROUPSQ ASC
+  	</select> 
+  	
+  	
+  	
   	<!-- 글 목록 조회 시 전체 글 갯수를 조회하여 페이징에 사용하는 쿼리 -->
   	<select id="listCount" resultType="int">
   	<![CDATA[

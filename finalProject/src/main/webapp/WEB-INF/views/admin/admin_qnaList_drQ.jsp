@@ -5,6 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+
 <!-- 제이쿼리 사용 위한 코드 -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
@@ -30,10 +31,10 @@
 				<button type="button" id="qctgySelectBtn"class="btn btn-outline-success dropdown-toggle mt-3"
 						data-bs-toggle="dropdown" aria-expanded="false">카테고리 선택</button>
 				<ul class="dropdown-menu" id="qctgySelect">
-					<li><a id="adoptQList"class="dropdown-item" href="adoptQList.do">입양공고</a></li>
-					<li><a id="drQList" class="dropdown-item" href="drQList.do">입양일기</a></li>
-					<li><a id="gdsQList" class="dropdown-item" href="gdsQList.do">굿즈</a></li>
-					<li><a id="usesiteQList" class="dropdown-item" href="usesiteQList.do">사이트 이용</a></li>
+					<li><a class="dropdown-item" href="adoptQList.do">입양공고</a></li>
+					<li><a class="dropdown-item" href="drQList.do">입양일기</a></li>
+					<li><a class="dropdown-item" href="gdsQList.do">굿즈</a></li>
+					<li><a class="dropdown-item" href="usesiteQList.do">사이트 이용</a></li>
 				</ul> 
 			<div>
 				<button type="button" class="btn btn-outline-success"
@@ -85,23 +86,23 @@
 			</table>
 			<!-- 페이징 부분 -->
 
-			<div>
+		<%-- 	<div>
 			<nav aria-label="Page navigation example">
  				 <ul class="pagination justify-content-center">
   					
-    				<li class="page-item"><a class="page-link" href="adminQnaList.do${pageMaker.makeQuery(pageMaker.startPage)}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+    				<li class="page-item"><a class="page-link" href="adoptQList.do${pageMaker.makeQuery(pageMaker.startPage)}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
 
 
    				 <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-    				<li class="page-item"><a class="page-link" href="adminQnaList.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
+    				<li class="page-item"><a class="page-link" href="adoptQList.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
    				 </c:forEach>
 
 
-   				 	<li class="page-item"><a class="page-link" href="adminQnaList.do${pageMaker.makeQuery(pageMaker.endPage)}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+   				 	<li class="page-item"><a class="page-link" href="adoptQList.do${pageMaker.makeQuery(pageMaker.endPage)}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
 
   				</ul>
  			</nav>
-			</div>
+			</div> --%>
 
 
 
@@ -127,4 +128,3 @@
 <br>
 <br>
 <br>
-

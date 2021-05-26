@@ -120,6 +120,31 @@ public class AdminController {
 		return "admin/admin_qnaList";
 	}
 	
+	//Admin qna 카테고리별 리스트_입양공고 문의 관련 
+		@RequestMapping("/adoptQList.do")
+		public String adoptQList(Model model) {
+			logger.info("QnA Admin 입양공고 문의 SELECT LIST");
+			
+			model.addAttribute("list", biz.adoptQList());
+		
+			
+			return "admin/admin_qnaList_adtQ";
+		}
+		
+	//Admin qna 카테고리별 리스트_입양공고 문의 관련 
+		@RequestMapping("/drQList.do")
+		public String drQList(Model model) {
+			logger.info("QnA Admin 입양공고 문의 SELECT LIST");
+					
+			model.addAttribute("list", biz.drQList());
+				
+					
+			return "admin/admin_qnaList_drQ";
+				
+		}
+		
+		
+	
 	
 	//Admin qna detail(selectOne)
 	@RequestMapping("/adminQnaDetail.do")
