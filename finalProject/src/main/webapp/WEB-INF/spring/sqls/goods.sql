@@ -85,10 +85,14 @@ CREATE TABLE GOODSORDER (
 
 
 
-
-
-
 );
+
+--굿즈오더 더미데이터     
+INSERT INTO GOODSORDER VALUES( '2', 1, '관리자', 'TEST', 'TEST', 'TEST', '010-1111-2222', 10000, SYSDATE );
+    
+SELECT * FROM GOODSORDER;
+
+DELETE FROM GOODSORDER WHERE ORDERID = '관리자';
 
 <!-- 이부분 새로추가 -->
 alter table goodsorder 
@@ -105,7 +109,9 @@ alter table goodsorder
 
 
 --굿즈 주문 상세(결제완료시에 amount등등 데이터 값 저장 )    
-DROP TABLE ORDER_DETAILS;    
+DROP TABLE ORDER_DETAILS;  
+
+create sequence order_details_seq;
 
 create table ORDER_DETAILS (
     ORDERDETAILSNUM number       not null,
@@ -115,8 +121,10 @@ create table ORDER_DETAILS (
     primary key(orderDetailsNum)
 );
 
+SELECT * FROM ORDER_DETAILS;
+
 drop sequence order_details_seq;
-create sequence order_details_seq;
+commit
 -------------------------------------------------------------------------
 
 
@@ -142,7 +150,7 @@ CREATE TABLE REVIEW (
     
     
 --굿즈리뷰 더미데이터     
-INSERT INTO REVIEW VALUES( GREWNO.NEXTVAL, '관리자',1,'TEST','TEST',SYSDATE );
+INSERT INTO REVIEW VALUES( GREWNO.NEXTVAL, '관리자',2,'TEST','TEST',SYSDATE );
     
 SELECT * FROM REVIEW;
     

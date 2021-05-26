@@ -52,9 +52,9 @@
 		<div class="container text-center">
 			<h1 class="display-5 mt-5">리뷰 보기 상세</h1><br><hr>
 			
-			<button type="button" class="btn btn-outline-success float-end ms-1" onclick="location.href='myAdoptDelete.do?aNo=${dto.aNo}'">삭제하기</button>
-			<button type="button" class="btn btn-outline-success md-5 float-end ms-1" onclick="location.href='myAdoptUpdateForm.do?aNo=${dto.aNo}'">수정하기</button>
-			<button type="button" class="btn btn-outline-success md-5 float-end " onclick="location.href='myAdoptList.do?mNo=${login.mNo}'">목록보기</button>
+			<button type="button" class="btn btn-outline-success float-end ms-1" onclick="location.href='mygoodsReviewDelete.do?gRewNo=${review.gRewNo}'">삭제하기</button>
+			<button type="button" class="btn btn-outline-success md-5 float-end ms-1" onclick="location.href='mygoodsRevewUpdateForm.do?gRewNo=${review.gRewNo}'">수정하기</button>
+			<button type="button" class="btn btn-outline-success md-5 float-end " onclick="location.href='goodsList.do?mNo=${login.mNo}'">목록보기</button>
 		
 			<!-- header완료 -->
 		
