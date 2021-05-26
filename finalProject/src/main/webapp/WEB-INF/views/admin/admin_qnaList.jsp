@@ -18,7 +18,7 @@
 	#writeBtn {
 		position:absolute;
 		right:15px;
-		top:210px;
+		top:189px;
 		
 	}
 
