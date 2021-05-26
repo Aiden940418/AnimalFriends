@@ -379,7 +379,7 @@ public class GoodsController {
 	@RequestMapping(value = "/mygoodsReviewWriteForm.do")
 	public String mygoodsReviewWriteForm(int gNo) {
 		
-		return "mypage/mypage_mygoodsReviewWriteForm?gNo="+gNo;
+		return "mypage/mypage_mygoodsReviewWriteForm";
 		
 	}
 	

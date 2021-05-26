@@ -103,7 +103,9 @@ alter table goodsorder
 
 
 --굿즈 주문 상세(결제완료시에 amount등등 데이터 값 저장 )    
-DROP TABLE ORDER_DETAILS;    
+DROP TABLE ORDER_DETAILS;  
+
+create sequence order_details_seq;
 
 create table ORDER_DETAILS (
     ORDERDETAILSNUM number       not null,
@@ -113,8 +115,10 @@ create table ORDER_DETAILS (
     primary key(orderDetailsNum)
 );
 
+SELECT * FROM ORDER_DETAILS;
+
 drop sequence order_details_seq;
-create sequence order_details_seq;
+commit
 -------------------------------------------------------------------------
 
 
