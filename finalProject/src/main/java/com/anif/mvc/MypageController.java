@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,6 +21,7 @@ import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
 import com.anif.mvc.diary.biz.DiaryBiz;
 import com.anif.mvc.diary.dto.DiaryDto;
+import com.anif.mvc.member.biz.MemberBiz;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.qnaBoard.biz.QnaBoardBiz;
 import com.anif.mvc.qnaBoard.dto.QnaBoardDto;
@@ -32,9 +34,12 @@ public class MypageController {
 	
 	@Autowired
 	private QnaBoardBiz biz;
+	
 	@Autowired
 	private DiaryBiz diaryBiz;
 	
+	@Autowired
+	private MemberBiz memberBiz;
 
 	@Resource(name="uploadPath")
 	private String uploadPath;  //이미지 업로드 화면출력 관련 
@@ -167,6 +172,35 @@ public class MypageController {
 		
 		return "mypage/mypage_memberModifyPWCheck";
 	}
+	
+	
+	
+	//회원정보 수정 
+	
+	@RequestMapping(value="/memberUpdate.do", method = RequestMethod.POST)
+	public String memberUpdate(Model model, MemberDto dto, HttpSession session) {
+		
+		int res = memberBiz.memberUpdate(dto);
+		
+		System.out.println("회원정보수정" + dto);
+		System.out.println("회원정보수정 " + res);
+		
+		if (res > 0) { // 글 insert 성공 시
+			session.invalidate();
+			model.addAttribute("msg", "회원정보 수정 성공!");
+			model.addAttribute("url", "/loginForm.do");
+		} else {  //글 insert 실패 시
+			model.addAttribute("msg", "회원정보 수정 실패!");
+			model.addAttribute("url", "/main.do");
+		}
+		
+		return "/mypage/alertPage";
+
+	}
+		
+	
+	
+	
 	
 	
 	//QnA Start

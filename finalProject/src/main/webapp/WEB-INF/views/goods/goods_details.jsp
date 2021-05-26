@@ -21,26 +21,32 @@
                   <p class="card-text">
                  <!-- 굿즈 이미지(서버에 업로드된 이미지 화면출력) -->
 
-			<img src="resources/${dto.gImg}" class="rounded float-start mt-4 ms-5" style="width:550px; height:400px">
+			<img src="resources/${dto.gImg}" class="rounded float-start mt-4 ms-5" style="width:550px; height:400px; object-fit:cover;">
  
  				<div>
  				<h1 class="display-4">${dto.gName }</h1>
  				<div class="text-left">상품가격:${dto.gPrice }</div>
- 				<textarea rows="8" cols="40" readonly>${dto.gContent }</textarea><br>
+ 				<textarea class="mt-3" rows="5" cols="50" readonly="readonly" style="border:none; text-align:center;">${dto.gContent } </textarea><br>
    				
-				   				<!-- dropDown1-start -->
+   				
+   				
+   				
+			<!-- dropDown1-start -->
 				<div class="container dropdown ms-5 mt-4">
 
-				
-					 <button type="button" class="btn btn-outline-success"
-							style="width:100px; pointer-events: none;">수량선택</button>
-					<select id="cartStock" class="form-control ms-2" style="width:200px" name="수량선택" style="margin-left:300px">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select>
+		
+					<select id="cartStock" class="form-control ms-2 btn btn-outline-success btn-lg text-center" style="width:120px; text-align-last: center; vertical-align: middle;" name="수량선택">
+						<option value="0" >&nbsp;&nbsp;수량선택</option>
+						<option value="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1개</option>
+						<option value="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2개</option>
+						<option value="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3개</option>
+						<option value="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4개</option>
+						<option value="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5개</option>
+					</select><br>
+					<a href="" class="btn btn-outline-success btn-lg mt-4 "style="width:200px" id="addCart_btn">장바구니</a>
+						</div>
+					
+					
 					
 				<input type="hidden" id="mNo" name="mNo" value="${login.mNo}">
                 <input type="hidden" id="gNo" name="gNo" value="${dto.gNo}">
@@ -50,8 +56,6 @@
 <!-- dropDown1-end -->
    				<br>
    				<br>
-   				<a href="goodsPurchase.do" class="btn btn-outline-success btn-lg" style="width:200px">결제하기</a>
-   				<a href="" class="btn btn-outline-success btn-lg ms-3"style="width:200px" id="addCart_btn">장바구니</a>
    				
    				</div>
    				</div>

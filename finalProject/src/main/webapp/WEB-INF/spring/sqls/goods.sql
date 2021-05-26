@@ -165,6 +165,7 @@ alter table order_details
     
     
 
+select * from goodsorder;
 
 
 
