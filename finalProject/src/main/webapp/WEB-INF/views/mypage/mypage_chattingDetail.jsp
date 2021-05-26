@@ -5,14 +5,91 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<!-- header -->
+<%@ include file="../includes/header.jsp" %>
+<!-- leftMenuBar -->
+<%@ include file="/WEB-INF/views/includes/mypage_leftMenuBar.jsp"%>
+
+<!-- 웹소켓 사용 관련 코드 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.js"></script>
+
+
+<script type="text/javascript">
+
+	var webSocket = {
+		init: function(param) {
+			this._url = param.url;
+			this._initSocket();
+		},
+		sendChat: function() {
+			var msg = $('#message').val();
+			if(msg != ""){
+				var message = {};
+			  	message.msgSenderNo = '${login.mNo}'
+				message.msgContent = $("#message").val()
+			  	message.chatroomId = '${chatRoomNo}'
+			  	message.senderMnick = '${login.mNick}'
+			  	message.writerMno = '${writerMno}'
+			  	message.readerMno = '${readerMno}'
+			  }
+			
+			this._sendMessage(JSON.stringify(message));
+			$('#message').val('');
+			
+		},
+		receiveMessage: function(str) {
+			var msg = JSON.parse(str);
+			
+			//현재 채팅방의 참여자일 때만 append
+			if(msg.msgReceiverNo == '${writerMno}' && msg.msgSenderNo == '${writerMno}') {
+				
+				console.log(msg)
+				$('#divChatData').append('<div>' + msg.senderMnick + " : " + msg.msgContent + '</div>');
+				
+			}else if(msg.msgReceiverNo == '${readerMno}' && msg.msgSenderNo == '${readerMno}'){
+				
+				console.log(msg)
+				$('#divChatData').append('<div>' + msg.senderMnick + " : " + msg.msgContent + '</div>');
+			}
+				
+			
+		},
+		closeMessage: function(str) {
+			$('#divChatData').append('<div>' + '연결 끊김 : ' + str + '</div>');
+		},
+		disconnect: function() {
+			this._socket.close();
+		},
+		_initSocket: function() {
+			this._socket = new SockJS(this._url);
+			this._socket.onmessage = function(evt) {
+				webSocket.receiveMessage(evt.data);
+			};
+			this._socket.onclose = function(evt) {
+				webSocket.closeMessage(evt.data);
+			}
+		},
+		_sendMessage: function(str) {
+			this._socket.send(str);
+		}
+	};
+
+
+	$(document).ready(function() {
+		webSocket.init({ url: '<c:url value="/chat" />' });	
+	});
+	
+	
+	
+	
+</script>
+
+
 </head>
 <body>
 
-	<!-- header -->
-	<%@ include file="../includes/header.jsp" %>
 	
-	<!-- leftMenuBar -->
-	<%@ include file="/WEB-INF/views/includes/mypage_leftMenuBar.jsp"%>
 		
 	<!-- 페이지 내용 부분 -->
 	<div class="contentDiv">
@@ -40,6 +117,25 @@
 				
 				<hr> <!-- 가로선 -->
 				
+				
+				<!-- 채팅창 영역 -->
+				<div style="width: 460px; height: 500px; border: 1px solid black;" >
+					
+					<div style="width: 400px; height: 400px; padding: 10px; border: solid 1px #e1e3e9;">
+						<div id="divChatData"></div>
+					</div>
+					<div style="width: 390px; height: 10%; padding: 10px;">
+						<input type="text" id="message" onkeypress="if(event.keyCode==13){webSocket.sendChat();}" /> 
+						<input type="button" id="btnSend" value="채팅 전송" onclick="webSocket.sendChat()" />
+					</div>
+
+
+
+
+
+				</div>
+				
+				
 				<!-- 메세지 전송 입력 부분 -->
 				<div style="position: absolute; bottom: 0px; width: 470px;">
 					<div class="input-group mb-3">
@@ -51,14 +147,12 @@
 
 			</div>
 
-
-
-
-
-
-
-
 		</div>
+		
+		
+		
+		
+		
 
 	</div>
 	

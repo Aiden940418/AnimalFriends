@@ -49,8 +49,10 @@ public class MypageController {
 	}
 	
 	@RequestMapping("/chattingDetail.do")
-	public String chatDetail() {
-		
+	public String chatDetail(Model model, int chatRoomNo, int writerMno, int readerMno) {
+		model.addAttribute("chatRoomNo", chatRoomNo);
+		model.addAttribute("writerMno", writerMno);
+		model.addAttribute("readerMno", readerMno);
 		
 		return "mypage/mypage_chattingDetail";
 	}
