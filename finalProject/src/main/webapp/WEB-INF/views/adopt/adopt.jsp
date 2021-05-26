@@ -17,7 +17,7 @@
 <button type="button" class="btn btn-outline-success mt-3  ">서울남부</button>
 <button type="button" class="btn btn-outline-success mt-3  ">서울북부</button>
 <button type="button" class="btn btn-outline-success mt-3  ">서울서부</button>
-<button type="button" class="btn btn-outline-success mt-3  ">경기</button>
+<button type="button" class="btn btn-outline-success mt-3  ">경기인천</button>
 
 	<c:if test="${login != null }">
 	<div class="btn-group float-end">
