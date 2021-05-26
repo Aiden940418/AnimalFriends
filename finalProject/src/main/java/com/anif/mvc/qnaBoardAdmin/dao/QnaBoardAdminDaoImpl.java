@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.anif.mvc.common.pagination.Criteria;
+import com.anif.mvc.common.pagination.SearchCriteria;
 import com.anif.mvc.qnaBoardAdmin.dto.QnaBoardAdminDto;
 
 @Repository
@@ -19,11 +20,11 @@ public class QnaBoardAdminDaoImpl implements QnaBoardAdminDao{
 
 
 	@Override
-	public List<QnaBoardAdminDto> selectList(Criteria cri) {
+	public List<QnaBoardAdminDto> selectList(SearchCriteria scri) {
 		List<QnaBoardAdminDto> list = new ArrayList<QnaBoardAdminDto>();
 
 		try {
-			list = sqlSession.selectList(NAMESPACE + "selectList" , cri);
+			list = sqlSession.selectList(NAMESPACE + "selectList" , scri);
 		} catch (Exception e) {
 			System.out.println("[error] : QnA Admin select list");
 			e.printStackTrace();
@@ -32,41 +33,41 @@ public class QnaBoardAdminDaoImpl implements QnaBoardAdminDao{
 		return list;
 	}
 	
-	@Override
-	public List<QnaBoardAdminDto> adoptQList() {
-		List<QnaBoardAdminDto> list = new ArrayList<QnaBoardAdminDto>();
-		
-		try {
-			list = sqlSession.selectList(NAMESPACE + "adoptQList");
-		} catch (Exception e) {
-			System.out.println("[error] : QnA Admin 입양공고 문의 select list");
-			e.printStackTrace();
-		}
-
-		return list;
-	}
-
-	@Override
-	public List<QnaBoardAdminDto> drQList() {
-		List<QnaBoardAdminDto> list = new ArrayList<QnaBoardAdminDto>();
-		
-		try {
-			list = sqlSession.selectList(NAMESPACE + "drQList");
-		} catch (Exception e) {
-			System.out.println("[error] : QnA Admin 입양일기 문의 select list");
-			e.printStackTrace();
-		}
-
-		return list;
-	}
+//	@Override
+//	public List<QnaBoardAdminDto> adoptQList() {
+//		List<QnaBoardAdminDto> list = new ArrayList<QnaBoardAdminDto>();
+//		
+//		try {
+//			list = sqlSession.selectList(NAMESPACE + "adoptQList");
+//		} catch (Exception e) {
+//			System.out.println("[error] : QnA Admin 입양공고 문의 select list");
+//			e.printStackTrace();
+//		}
+//
+//		return list;
+//	}
+//
+//	@Override
+//	public List<QnaBoardAdminDto> drQList() {
+//		List<QnaBoardAdminDto> list = new ArrayList<QnaBoardAdminDto>();
+//		
+//		try {
+//			list = sqlSession.selectList(NAMESPACE + "drQList");
+//		} catch (Exception e) {
+//			System.out.println("[error] : QnA Admin 입양일기 문의 select list");
+//			e.printStackTrace();
+//		}
+//
+//		return list;
+//	}
 
 	
 
 	@Override
-	public int listCount() {
+	public int listCount(SearchCriteria scri) {
 		int cnt = 0;
 		try {
-			cnt = sqlSession.selectOne(NAMESPACE + "listCount");
+			cnt = sqlSession.selectOne(NAMESPACE + "listCount", scri);
 		} catch (Exception e) {
 			System.out.println("[error] : QnA Admin select list");
 			e.printStackTrace();

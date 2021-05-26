@@ -36,4 +36,5 @@
 	<context:component-scan base-package="com.anif.mvc" />
 	<context:component-scan base-package="com.anif.mvc.common.image" />
 	
+	<default-servlet-handler/>
 </beans:beans>
