@@ -3,7 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
@@ -37,5 +39,28 @@
 		id="multipartResolver">
 		<beans:property name="maxUploadSize" value="52428800" /> <!-- 50메가 제한 -->
 	</beans:bean>
+	
+	
+	
+	<!-- 웹소켓 -->
+	<websocket:handlers allowed-origins="*" >
+        <websocket:mapping handler="handlerChat" path="/chat" />
+        <websocket:handshake-interceptors>
+			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
+		</websocket:handshake-interceptors>
+        <websocket:sockjs websocket-enabled="true" />
+    </websocket:handlers>
+    
+    <beans:bean id="handlerChat" class="com.anif.mvc.chatting.HandlerChat" />
+    
+	<!-- 이 코드를 해줘야 정적리소스(html, css, js, 이미지 등) 호출시 디폴트서블릿이 알맞게 수행할 수 있게 된다 -->
+	<default-servlet-handler />
+	
+	
+	
+	
+	
+	
+	
 	
 </beans:beans>

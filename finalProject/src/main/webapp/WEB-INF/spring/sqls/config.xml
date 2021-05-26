@@ -27,6 +27,12 @@
   	<typeAlias type="com.anif.mvc.diary.dto.LikeTableDto" alias="likeTableDto"/>
   	<typeAlias type="com.anif.mvc.diary.dto.DiaryReplyDto" alias="DiaryReplyDto"/>
   	<typeAlias type="com.anif.mvc.diary.dto.LikeTableDto" alias="LikeTableDto"/>
+  	
+  	
+  	
+  	
+  	<typeAlias type="com.anif.mvc.chatting.dto.ChatRoomDto" alias="ChatRoomDto"/>
+      <typeAlias type="com.anif.mvc.chatting.dto.MessageDto" alias="MessageDto"/>
   	</typeAliases>
   	
   	
@@ -42,6 +48,7 @@
   		<mapper resource="/mybatis/cart-mapper.xml" />
   		<mapper resource="/mybatis/diary-mapper.xml"/>
   		<mapper resource="/mybatis/review-mapper.xml"/>
+  		<mapper resource="/mybatis/chat-mapper.xml"/>
   		
   	</mappers>
   

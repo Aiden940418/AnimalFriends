@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="chat">
+  
+	<insert id="createRoom" parameterType="ChatRoomDto">
+		insert into CHATROOM
+		values(CHATROOMID.NEXTVAL, #{readerMno}, #{writerMno})
+	</insert>
+
+
+	<select id="isRoom" resultType="ChatRoomDto">
+		select * 
+		from CHATROOM 
+		WHERE READERMNO = #{readerMno} and WRITERMNO = #{writerMno}
+	</select>
+	  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  
+  </mapper>
