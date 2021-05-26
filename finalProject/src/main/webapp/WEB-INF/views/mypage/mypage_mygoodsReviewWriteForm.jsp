@@ -30,7 +30,7 @@
 						<tr>
 							<th>
 								<button type="button" class="btn btn-outline-success"
-									style="width:130px; pointer-events: none;">제품명</button>
+									style="width:130px; pointer-events: none;">주문번호</button>
 							</th>
 							<td>
 								<input type="text" class="form-control my-1" name="gNo" id="gNo"
