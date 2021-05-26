@@ -90,6 +90,12 @@ CREATE TABLE GOODSORDER (
 
 );
 
+<!-- 이부분 새로추가 -->
+alter table goodsorder 
+    add GNO NUMBER;
+    
+    
+    select * from goodsorder;
 
 alter table goodsorder
     add constraint order_mId foreign key(mno)
@@ -150,8 +156,6 @@ alter table order_details
     references goodsorder(orderId) on delete cascade;
     
     
-
-
 
 
 

@@ -53,7 +53,7 @@
 			<div class="row">
 	<c:forEach items="${list}" var="dto">
 					<div class="col-sm mt-5">
-			<div class="card h-100" style="width:350px;">
+			<div class="card h-100" style="width:550px;">
 				<a href="#"><img src="resources/${dto.aThumbImg }" class="card-img-top"
 					alt="..."></a>
 				<div class="card-body">

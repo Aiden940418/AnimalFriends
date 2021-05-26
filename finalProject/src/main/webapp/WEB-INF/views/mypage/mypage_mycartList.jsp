@@ -119,6 +119,8 @@
 					
 					<!--  cartList start -->
 				<c:forEach items="${cartList}" var="cartList">
+				
+				<input type="hidden" name="cgNo" value="${cartList.gNo }">
 					
 
 					
@@ -144,6 +146,7 @@
 							src="resources/${cartList.gImg }" alt="Card image cap">
 						<div class="card-body">
 							<p class="card-text">
+								
 								상품명 :${cartList.gName } <br> 
 								가격 :
 									<fmt:formatNumber pattern="###,###,###" value="${cartList.gPrice}" />원<br>
@@ -254,6 +257,9 @@
               	<form action="goodsOrder.do" method="post">
               	<input type="hidden" name="amount" value="${sum }">
               	<input type="hidden" name="mNo" value="${login.mNo }">
+             <c:forEach items="${cartList}" var="cartList">
+              	<input type="hidden" name="gNo" value="${cartList.gNo }">
+              	</c:forEach>
        		  <table>
 		        
 		        <tr>
