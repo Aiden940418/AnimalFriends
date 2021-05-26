@@ -57,7 +57,6 @@
 	 #{orderId}, #{mNo}, #{orderName}, #{orderAddr1}, #{orderAddr2}, #{orderAddr3}, #{orderPhone}, #{amount}, SYSDATE, #{gNo}
 	
 	
-	
 	)
 	
 	</insert>

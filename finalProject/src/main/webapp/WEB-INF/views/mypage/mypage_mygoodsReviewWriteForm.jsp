@@ -21,20 +21,18 @@
 				
 				<!-- 여기서 부터 전송 정보 입력 -->
 				<form action="mypageReviewWrite.do" method="POST" enctype="multipart/form-data">
-					
-					<input type="hidden" name="mNo" value="${login.mNo}" >
-			
+					<input type="hidden" name="gRewWriter" value="${login.mNick }">
 					<table>
 						
 						<!-- 제품이름 보여주기 -->
 						<tr>
 							<th>
 								<button type="button" class="btn btn-outline-success"
-									style="width:130px; pointer-events: none;">주문번호</button>
+									style="width:130px; pointer-events: none;">상품번호</button>
 							</th>
 							<td>
-								<input type="text" class="form-control my-1" name="gNo" id="gNo"
-									style="width:500px; margin:10px;" value="${dto.gName }"
+								<input type="text" class="form-control my-1" name="gNo"
+									style="width:500px; margin:10px;" value="${gNo }"
 									readonly="readonly">
 							</td>
 						</tr>
