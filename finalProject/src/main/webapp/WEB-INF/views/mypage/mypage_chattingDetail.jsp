@@ -42,15 +42,15 @@
 			var msg = JSON.parse(str);
 			
 			//현재 채팅방의 참여자일 때만 append
-			if(msg.msgReceiverNo == '${writerMno}' && msg.msgSenderNo == '${writerMno}') {
+			//(메시지 보낸 사람이 reader고, 메시지 받는 사람이 writer) 혹은 (메시지 보낸 사람이 writer고, 메시지 받는 사람이 writer)
+			//	= 메시지를 주고받는 사람이 정확하다면 append
+			if(		 (msg.msgSenderNo == '${readerMno}' && msg.msgReceiverNo == '${writerMno}') 
+													||
+					 (msg.msgReceiverNo == '${writerMno}' && msg.msgSenderNo == '${readerMno}') ) {
 				
-				console.log(msg)
+				console.log(msg);
 				$('#divChatData').append('<div>' + msg.senderMnick + " : " + msg.msgContent + '</div>');
 				
-			}else if(msg.msgReceiverNo == '${readerMno}' && msg.msgSenderNo == '${readerMno}'){
-				
-				console.log(msg)
-				$('#divChatData').append('<div>' + msg.senderMnick + " : " + msg.msgContent + '</div>');
 			}
 				
 			
