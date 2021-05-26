@@ -27,6 +27,7 @@
 						<p class="card-text">결제금액 : <fmt:formatNumber pattern="###,###,###" value="${orderList.amount}" /> 원</p>
 						<a href="mygoodsReviewWriteForm.do?gNo=${orderList.gNo }">상품평쓰기</a>
 						
+						
 					</div>
 				</div>
 				</c:forEach>

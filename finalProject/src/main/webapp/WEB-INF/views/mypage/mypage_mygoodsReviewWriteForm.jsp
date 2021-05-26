@@ -24,20 +24,7 @@
 					<input type="hidden" name="gRewWriter" value="${login.mNick }">
 					<table>
 						
-						<!-- 제품이름 보여주기 -->
-						<tr>
-							<th>
-								<button type="button" class="btn btn-outline-success"
-									style="width:130px; pointer-events: none;">상품번호</button>
-							</th>
-							<td>
-								<input type="text" class="form-control my-1" name="gNo"
-									style="width:500px; margin:10px;" value="${gNo }"
-									readonly="readonly">
-							</td>
-						</tr>
-						
-						<!-- 제목 작성 -->
+		
 						<tr>
 							<th>
 								<button type="button" class="btn btn-outline-success"

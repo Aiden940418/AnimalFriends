@@ -97,41 +97,75 @@
 	<div class="container mt-5 text-center	">
 	
 
-<a href="#.detail" class="btn btn-outline-success ms-5"style="width:200px">상세보기</a>
-<a href="#review" class="btn btn-outline-success ms-5"style="width:200px">리뷰보기</a>
-<a href="#" class="btn btn-outline-success ms-5"style="width:200px">Q&A</a>	
-<a href="#" class="btn btn-outline-success ms-5"style="width:200px">업체소개</a>	
+<button onclick="fnMove();" class="btn btn-outline-success ms-5"style="width:200px;">상세보기 </button>
+
+<script>
+    function fnMove(){
+        var offset = $("#detail").offset();
+        $('html, body').animate({scrollTop : offset.top}, 400);
+    }
+</script>
+
+
+
+
+
+
+<button onclick="reviewMove();" class="btn btn-outline-success ms-5"style="width:200px">리뷰보기</button>
+<script>
+    function reviewMove(){
+        var offset = $("#review").offset();
+        $('html, body').animate({scrollTop : offset.top}, 400);
+    }
+</script>
+<a href="#qna" class="btn btn-outline-success ms-5"style="width:200px">Q&A</a>	
+<a href="#company" class="btn btn-outline-success ms-5"style="width:200px">업체소개</a>	
 	
 	
 	
 	</div>
 	
-	<div>
- 	<h1 id="detail" class="detail display-4 mt-5">상세보기</h1>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	<div id="detail">
+ 	<h1 class="display-4 mt-5">상세보기</h1>
+ 	
+ 	<img src="resources/${dto.gImg}" style="width:1000px; height:700px;">
+ 	
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	
+ 	<br>
+ 	<br>
+ 	
+ 	<br><br>
+ 	
+ 	</div>
+
 	
-	</div>
 	
 	
 	
-	<div>
+	
+	<div id="review">
 		<hr>
-	
-	<h1 class="display-3 mt-5 text" id="review">리뷰보기</h1>
+	<h1 class="display-3 mt-5 text">리뷰보기</h1>
+	</div>
+	<div>
 		<table class="table text-center table-hover" >
 		<thead class="table-white">
 			<tr>
@@ -141,6 +175,18 @@
 			</tr>
 		</thead>
 		<tbody>
+		<c:choose>
+		<c:when test="${empty review}">
+				<tbody>
+		
+			<td colspan="3">작성된 리뷰가 없습니다.</td>
+			
+		
+		</c:when>
+	
+	
+		
+		<c:otherwise>
 			<c:forEach items="${review}" var="greview">
 				<tr>
 					<td>${greview.gRewWriter}</td>
@@ -150,21 +196,40 @@
 					<td>${greview.gRewDate}</td>
 				</tr>
 			</c:forEach>
+			</c:otherwise>
+			</c:choose>
 		</tbody>
 	</table>
 	
 	</div>
 	<hr>
 	
-	<div>
-	<br>
 	
-	<h1 class="display-4 mt-3">Q&A</h1>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+
+	<div>		
+	
+	<hr>
+	
+	<h1 class="display-4 mt-3" id="qna">Q&A</h1>
 		<table class="table text-center table-hover" >
-		<thead class="table-dark">
+		<thead class="table">
 			<tr>
-				<th style="width : 10%;">NO.</th>
-				<th style="width : 70%;">제목</th>
+				<th style="width : 20%;">NO.</th>
+				<th style="width : 60%;">제목</th>
 				<th style="width : 20%;">날짜</th>
 			</tr>
 		</thead>
@@ -184,9 +249,23 @@
 	
 	
 	<div>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
 		<hr>
 	
-	<h1 class="display-4 mt-5">업체소개</h1>
+	<h1 class="display-4 mt-5" id="company">업체소개</h1>
 	
 		<table class="table text-center table-bordered border-primary;
 		"  >
@@ -218,7 +297,6 @@
                 </div>
                 </div>
                 </div>
-              	</div>
 
 
 
