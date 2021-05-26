@@ -66,6 +66,40 @@
 	
 </script>
 
+<style>
+		.myProfileImgDiv {
+				width: 150px;
+				height: 150px; 
+				border-radius: 30%;
+				overflow: hidden;
+				border: 3px	solid #54BD54;
+					
+			}
+	
+		.profile {
+		    width: 100%;
+		    height: 100%;
+		    object-fit: cover;
+		}
+		
+		
+		.contentDiv {
+		
+		font-family: 'Do Hyeon', sans-serif;
+		color: #696767;
+		
+		}
+		
+		#MidMnickDiv {
+			position:relative;
+			top:30px;
+			padding:0px;
+			margin:0px;
+		
+		
+		}
+
+</style>
 
 	
 	
@@ -73,22 +107,32 @@
 	<!-- 페이지 내용 부분 -->
 	<div class="contentDiv">
 	
-		<div style="margin-top: 100px; margin-left: 100px;">
-			<div class="myDiaryIconDiv">
-				<ion-icon name="person-circle-outline" id="profileIcon" style="font-size:70px;"></ion-icon>
+		<div class="row" style="margin-top: 100px; margin-left: 100px;">
+			 <div class="myProfileImgDiv col-6">
+				<img class="profile" src="resources/${prf.profileImg }">
+     						
 			</div>
-			<div>
-				<label>User ID [ ${memberDto.mId } ]</label>
-				<br> 
-				<label>User NickName [ ${memberDto.mNick } ]</label>
+			<div class="col-1 ">
+     			<button type="button" onclick="location.href='/mvc/RgstOrUpdate.do'"class="btn btn-outline-success btn-sm rounded-pill">등록 or 수정</button>
+<!--      			<button type="button" onclick="location.href='/mvc/myDrPrfUpdate.do'"class="btn btn-outline-success btn-sm rounded-pill">수정</button>
+ -->			</div>
+			<div class="col-3" id="MidMnickDiv">
+				<table style="height:100px; font-size:20px;">
+					<tr>
+						<td><label> 나의 ID는? '${memberDto.mId } '</label></td>
+					</tr>
+					<tr>
+						<td><label> 나의 별칭은? '${memberDto.mNick }'</label></td>
+					</tr>
+				</table>
 			</div>
-			<div style="float: right; margin-right: 200px;">
+			<div class="col-2" style="float: right; margin-right: 200px;">
 				<button type="button" class="btn btn-secondary">팔로워</button>
 				<button type="button" class="btn btn-secondary">팔로우</button>
 			</div>
 		</div>
 		
-		<!-- 세로줄 -->
+		<!-- 가로줄 -->
 		<div style="border-bottom: groove; margin-top: 80px; margin-left: 25px; margin-right: 95px;">
 		</div>
 		

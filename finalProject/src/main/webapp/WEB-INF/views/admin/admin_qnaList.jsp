@@ -14,17 +14,6 @@
 <!-- leftmenubar -->
 <%@ include file="../includes/admin_leftMenuBar.jsp"%>
 
-<style>
-	#writeBtn {
-		position:absolute;
-		right:15px;
-		top:189px;
-		
-	}
-
-
-
-</style>
 
 
 
@@ -37,13 +26,11 @@
 			<br>
 		</div>
 		
-			<button id="writeBtn" type="button" class="btn btn-outline-success"
-			 onclick="location.href='adminQnaWriteForm.do'">글쓰기</button>
-			 
 		<div class="row">
-			<br>
+			
+			
 			<form role="form" method="get">
-			<div class="search input-group text-center" style="width:500px">
+			  <div class="search input-group" style="width:500px">
 			    <select class="form-select form-select-sm" style="width:50px" name="searchType">
 			      <option selected>선택</option>
 			      <option value="aQ"<c:out value="${scri.searchType eq 'aQ' ? 'selected' : ''}"/>>입양공고</option>
@@ -62,9 +49,12 @@
 				        });
 				      });   
 				    </script>
+				<button id="writeBtn" type="button" class="btn btn-outline-success"
+			 		onclick="location.href='adminQnaWriteForm.do'">글쓰기</button>
+  			  
   			  </div>
 			<table class="table text-center table-hover table-striped mt-5" style="font-size:14pt;">
-				<thead class="table-dark">
+				<thead class="table-success">
 					<tr>
 						<!-- <th style="width: 10%;">번호</th> -->
 						<th style="width: 20%;">카테고리</th>
