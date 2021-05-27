@@ -22,6 +22,7 @@ zoom: 1.5;
 <div class="container text-center">
 	<h1 class="display-5 mt-5">입양공고 관리</h1>
 </div>
+<hr>
 
 <!-- Example single danger button -->
 <div class="container mt-5">
@@ -118,7 +119,7 @@ zoom: 1.5;
 	<c:choose>
 		<c:when test="${empty list }">
 		
-		<작성된 글이 없습니다>
+		<p>작성된 글이 없습니다</p>
 		
 			
 		</c:when>
@@ -133,16 +134,17 @@ zoom: 1.5;
 	<c:forEach items="${list}" var="dto">
 	
 		<div class="col-sm mt-5">
-			<input type="checkbox" class="chBox" data-cartNum="${ dto.aNo}">
+
+    			<label for="cb1"></label>
+    						<input type="checkbox" class="chBox" data-cartNum="${ dto.aNo}">
             	<script>
 					$(".chBox").click(function(){
 						$("#allCheck").prop("checked", false);							
 							})
 				</script>
-    			<label for="cb1"></label>
-			<div class="card h-100" style="width:350px;">
+			<div class="card h-100 ms-4" style="width:400px;">
 				<a href="#"><img src="resources/images/adopt_dog1.png" class="card-img-top"
-					alt="..."></a>	
+					alt="..."style="width:400px;height:350px; border:none; object-fit:cover;"></a>	
 			<div class="card-body">
 				<h5 class="card-title"><a href="adminAdoptDetail.do?aNo=${dto.aNo}">${dto.aTitle}</a></h5>
 				<p class="card-text">${dto.aMemo}</p>		 

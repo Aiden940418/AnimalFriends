@@ -135,7 +135,7 @@ zoom: 1.5;
 		
 		
 				
-          	<div class="container mt-5">
+          	<div class="container mt-5 ms-2">
             <div class="row">
            
 
@@ -157,9 +157,10 @@ zoom: 1.5;
     				<label for="cb1"></label>
                 </h3>
                 <div class="card-body text-center">
-                 	<img style="width:400px;height:200; " src="resources/${dto.gThumbImg}" class="img-thumbnail" alt="...">
+                 	 <a href="adminGoodsDetail.do?gNo=${dto.gNo}"><img style="width:400px;height:350px; border:none; object-fit:cover;" 
+                 	 src="resources/${dto.gThumbImg}" class="img-thumbnail" alt="..."></a>
                  	
-                <a href="adminGoodsDetail.do?gNo=${dto.gNo}">${dto.gName}</a>
+               ${dto.gName}
                 <p class="container mt-1" >상품가격:${dto.gPrice}</p>
                 </div>
                <!--<div class="card-footer">
