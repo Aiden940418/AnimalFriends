@@ -60,7 +60,7 @@
 					
 						<div class="col">
 							userID2 와의 채팅방<br>
-						<label><a href="chattingDetail.do?chatRoomNo=3">채팅창으로..</a></label>
+						<label><a href="chattingDetail.do?chatRoomNo=2&writerMno=2&readerMno=3">채팅창으로..</a></label>
 							
 							
 						</div>
