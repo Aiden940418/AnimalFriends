@@ -1,56 +1,64 @@
 package com.anif.mvc.chatting.dto;
 
 public class ChatRoomDto {
-	private int chatroomId;			//채팅방 id
-	private int readerMno;			//입양공고 읽고 1:1채팅 건 사용자
-	private int writerMno;			//입양공고 올린 사용자
-	private String readerMnick;			//입양공고 읽고 1:1채팅 건 사용자의 닉네임
-	private String writerMnick;			//입양공고 올린 사용자의 닉네임
+	
+	private int chatroomNo;				//채팅방 번호 (PK)
+	private int chatRequesterNo;		//1:1 채팅 요청자
+	private int chatResponsorNo;		//1:1 채팅 수신자
+	private String chatRequesterMnick;	//1:1 채팅 요청자 닉네임
+	private String chatResponsorMnick;	//1:1 채팅 수신자 닉네임
+	
 	
 	public ChatRoomDto() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-	public ChatRoomDto(int chatroomId, int readerMno, int writerMno, String readerMnick, String writerMnick) {
+	public ChatRoomDto(int chatroomNo, int chatRequesterNo, int chatResponsorNo, String chatRequesterMnick,
+			String chatResponsorMnick) {
 		super();
-		this.chatroomId = chatroomId;
-		this.readerMno = readerMno;
-		this.writerMno = writerMno;
-		this.readerMnick = readerMnick;
-		this.writerMnick = writerMnick;
+		this.chatroomNo = chatroomNo;
+		this.chatRequesterNo = chatRequesterNo;
+		this.chatResponsorNo = chatResponsorNo;
+		this.chatRequesterMnick = chatRequesterMnick;
+		this.chatResponsorMnick = chatResponsorMnick;
 	}
-	public int getChatroomId() {
-		return chatroomId;
+	
+	public int getChatroomNo() {
+		return chatroomNo;
 	}
-	public void setChatroomId(int chatroomId) {
-		this.chatroomId = chatroomId;
+	public void setChatroomNo(int chatroomNo) {
+		this.chatroomNo = chatroomNo;
 	}
-	public int getReaderMno() {
-		return readerMno;
+	public int getChatRequesterNo() {
+		return chatRequesterNo;
 	}
-	public void setReaderMno(int readerMno) {
-		this.readerMno = readerMno;
+	public void setChatRequesterNo(int chatRequesterNo) {
+		this.chatRequesterNo = chatRequesterNo;
 	}
-	public int getWriterMno() {
-		return writerMno;
+	public int getChatResponsorNo() {
+		return chatResponsorNo;
 	}
-	public void setWriterMno(int writerMno) {
-		this.writerMno = writerMno;
+	public void setChatResponsorNo(int chatResponsorNo) {
+		this.chatResponsorNo = chatResponsorNo;
 	}
-	public String getReaderMnick() {
-		return readerMnick;
+	public String getChatRequesterMnick() {
+		return chatRequesterMnick;
 	}
-	public void setReaderMnick(String readerMnick) {
-		this.readerMnick = readerMnick;
+	public void setChatRequesterMnick(String chatRequesterMnick) {
+		this.chatRequesterMnick = chatRequesterMnick;
 	}
-	public String getWriterMnick() {
-		return writerMnick;
+	public String getChatResponsorMnick() {
+		return chatResponsorMnick;
 	}
-	public void setWriterMnick(String writerMnick) {
-		this.writerMnick = writerMnick;
+	public void setChatResponsorMnick(String chatResponsorMnick) {
+		this.chatResponsorMnick = chatResponsorMnick;
 	}
+	
 	@Override
 	public String toString() {
-		return "ChatRoomDto [chatroomId=" + chatroomId + ", readerMno=" + readerMno + ", writerMno=" + writerMno
-				+ ", readerMnick=" + readerMnick + ", writerMnick=" + writerMnick + "]";
+		return "ChatRoomDto [chatroomNo=" + chatroomNo + ", chatRequesterNo=" + chatRequesterNo + ", chatResponsorNo="
+				+ chatResponsorNo + ", chatRequesterMnick=" + chatRequesterMnick + ", chatResponsorMnick="
+				+ chatResponsorMnick + "]";
 	}
+	
 }
