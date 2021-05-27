@@ -126,7 +126,32 @@
  	 </delete>
   	
   
-  
+  	<!--입양공고 지역보기  -->
+  	<select id="totalAreaList" resultType="adoptDto">
+  	SELECT * FROM ADOPT 
+  	</select>
+  	
+  	<select id="seoulEastList" resultType="adoptDto">
+  	SELECT * FROM ADOPT 
+  	WHERE AAREA = '서울동부'
+  	</select>
+  	
+  	  	<select id="seoulWestList" resultType="adoptDto">
+  	SELECT * FROM ADOPT 
+  	WHERE AAREA = '서울서부'
+  	</select>
+  	  	<select id="seoulSouthList" resultType="adoptDto">
+  	SELECT * FROM ADOPT 
+  	WHERE AAREA = '서울남부'
+  	</select>
+  	  	<select id="seoulNorthList" resultType="adoptDto">
+  	SELECT * FROM ADOPT 
+  	WHERE AAREA = '서울북부'
+  	</select>
+  	  	<select id="GyeonggiList" resultType="adoptDto">
+  	SELECT * FROM ADOPT 
+  	WHERE AAREA = '경기인천'
+  	</select>
   
   
   

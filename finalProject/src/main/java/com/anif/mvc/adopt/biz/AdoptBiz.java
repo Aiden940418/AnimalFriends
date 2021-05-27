@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.anif.mvc.adopt.dto.AdoptDto;
+import com.anif.mvc.member.dto.MemberDto;
 
 public interface AdoptBiz {
 
@@ -37,8 +38,25 @@ public interface AdoptBiz {
 	
 	//카운트 
 	public void viewCount(int aNo);
+
+	//입양공고 전체지역 보기
+	public List<AdoptDto> totalAreaList();
 	
+	//입양공고 서울동부 보기
+	public List<AdoptDto> seoulEastList();
+
+	//입양공고 서울서부 보기
+	public List<AdoptDto> seoulWestList();
+
+	//입양공고 서울남부 보기
+	public List<AdoptDto> seoulSouthList();
+
+	//입양공고 서울북부 보기
+	public List<AdoptDto> seoulNorthList();
 	
+	//입양공고 경기인천 보기
+	public List<AdoptDto> GyeonggiList();
+
 
 
 	}

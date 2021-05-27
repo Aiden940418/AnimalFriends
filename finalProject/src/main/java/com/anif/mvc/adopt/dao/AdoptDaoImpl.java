@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.anif.mvc.adopt.dto.AdoptDto;
 import com.anif.mvc.goods.dto.GoodsDto;
+import com.anif.mvc.member.dto.MemberDto;
 
 @Repository
 public class AdoptDaoImpl implements AdoptDao {
@@ -151,12 +152,114 @@ public class AdoptDaoImpl implements AdoptDao {
 	
 
 	
-	//view Cont 메소드 
+	//view Count 메소드 
 
 	@Override
 	public void viewCount(int aNo) {
 		sqlSession.update(NAMESPACE+"viewCount",aNo);
 		
+	}
+
+
+	@Override
+	public List<AdoptDto> totalAreaList() {
+		List<AdoptDto> list = new ArrayList<AdoptDto>();
+		
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"totalAreaList");
+			
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+
+	@Override
+	public List<AdoptDto> seoulEastList() {
+		List<AdoptDto> list = new ArrayList<AdoptDto>();
+		
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"seoulEastList");
+			
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+
+	@Override
+	public List<AdoptDto> seoulWestList() {
+		List<AdoptDto> list = new ArrayList<AdoptDto>();
+		
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"seoulWestList");
+			
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+
+	@Override
+	public List<AdoptDto> seoulSouthList() {
+		List<AdoptDto> list = new ArrayList<AdoptDto>();
+		
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"seoulSouthList");
+			
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+
+	@Override
+	public List<AdoptDto> seoulNorthList() {
+		List<AdoptDto> list = new ArrayList<AdoptDto>();
+		
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"seoulNorthList");
+			
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+
+	@Override
+	public List<AdoptDto> GyeonggiList() {
+		List<AdoptDto> list = new ArrayList<AdoptDto>();
+		
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"GyeonggiList");
+			
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 
 

@@ -81,8 +81,40 @@ public class AdoptBizImpl implements AdoptBiz {
 	public int multiDeleteAdopt(AdoptDto dto) {
 		return dao.multiDeleteAdopt(dto);
 	}
-
 	
+	/*입양공고 지역별 리스트*/
+	
+	//입양공고 전체지역 보기
+	@Override
+	public List<AdoptDto> totalAreaList() {
+		return dao.totalAreaList();
+	}
+
+	@Override
+	public List<AdoptDto> seoulEastList() {
+		return dao.seoulEastList();
+	}
+
+	@Override
+	public List<AdoptDto> seoulWestList() {
+		return dao.seoulWestList();
+	}
+
+	@Override
+	public List<AdoptDto> seoulSouthList() {
+		return dao.seoulSouthList();
+	}
+
+	@Override
+	public List<AdoptDto> seoulNorthList() {
+		return dao.seoulNorthList();
+	}
+
+	@Override
+	public List<AdoptDto> GyeonggiList() {
+		return dao.GyeonggiList();
+	}
+
 	
 
 }

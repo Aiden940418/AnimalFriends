@@ -99,9 +99,9 @@
 			
 			<button type="button" class="btn btn-outline-success mb-3 mx-2"
 				style="width: 150px;" onclick="location.href='qMemberList.do'">탈퇴한 회원</button>
-	 -->		
 			<button type="button" class="btn btn-outline-success mb-3 mx-2"
 				style="width: 150px;" onclick="location.href='selectQuit.do'">선택회원 탈퇴</button>
+	 -->		
 		</div>
 		  
    				
