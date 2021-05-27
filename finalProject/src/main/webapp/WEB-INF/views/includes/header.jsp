@@ -5,9 +5,10 @@
     
 <!doctype html>
 <html lang="en">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script type="text/javascript">
-
+	
 
 
 
@@ -23,7 +24,7 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Yeon+Sung&display=swap');
-
+	
 
 	.navbar, .container, .wrap
 	, .thumnailright , .footer {
@@ -32,6 +33,8 @@
 	color: #696767;
 	
 	}
+	
+	
 </style>
   <head>
     <!-- Required meta tags -->

@@ -11,11 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
-import com.anif.mvc.member.biz.MemberBiz;
+import com.anif.mvc.common.pagination.SearchCriteria;
 import com.anif.mvc.diary.biz.DiaryBiz;
+import com.anif.mvc.member.biz.MemberBiz;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.qnaBoardAdmin.biz.QnaBoardAdminBiz;
 import com.anif.mvc.qnaBoardAdmin.dto.QnaBoardAdminDto;
@@ -103,15 +104,15 @@ public class AdminController {
 	
 	
 	//Admin qna list(selectList)
-	@RequestMapping("/adminQnaList.do")
-	public String adminQnaList(Model model, Criteria cri) {
+	@RequestMapping(value = "/adminQnaList.do", method = RequestMethod.GET)
+	public String adminQnaList(Model model, @ModelAttribute("scri") SearchCriteria scri) {
 		logger.info("QnA Admin SELECT LIST");
 		
-		model.addAttribute("list", biz.selectList(cri));
+		model.addAttribute("list", biz.selectList(scri));
 		
 		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		int listCount = biz.listCount();
+		pageMaker.setCri(scri);
+		int listCount = biz.listCount(scri);
 		pageMaker.setTotalCount(listCount);
 		
 		model.addAttribute("pageMaker", pageMaker);
@@ -119,6 +120,31 @@ public class AdminController {
 		
 		return "admin/admin_qnaList";
 	}
+	
+//	//Admin qna 카테고리별 리스트_입양공고 문의 관련 
+//		@RequestMapping("/adoptQList.do")
+//		public String adoptQList(Model model) {
+//			logger.info("QnA Admin 입양공고 문의 SELECT LIST");
+//			
+//			model.addAttribute("list", biz.adoptQList());
+//		
+//			
+//			return "admin/admin_qnaList_adtQ";
+//		}
+//		
+//	//Admin qna 카테고리별 리스트_입양공고 문의 관련 
+//		@RequestMapping("/drQList.do")
+//		public String drQList(Model model) {
+//			logger.info("QnA Admin 입양공고 문의 SELECT LIST");
+//					
+//			model.addAttribute("list", biz.drQList());
+//				
+//					
+//			return "admin/admin_qnaList_drQ";
+//				
+//		}
+		
+		
 	
 	
 	//Admin qna detail(selectOne)

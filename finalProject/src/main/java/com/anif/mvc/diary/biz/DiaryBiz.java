@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.anif.mvc.diary.dto.DiaryDto;
 import com.anif.mvc.diary.dto.DiaryReplyDto;
+import com.anif.mvc.diary.dto.ProfileImgDto;
 
 public interface DiaryBiz {
 	
@@ -30,6 +31,10 @@ public interface DiaryBiz {
 	//좋아요 관련
 	public int likeOrNot(DiaryDto dto);
 	public DiaryDto selectOne(int dno);
+	
+	//나의 입양일기 프로필 사진
+	public ProfileImgDto profileImgSelect(int mNo);
+	public int myDrPrfRorURes(ProfileImgDto dto);
 	
 	
 }
