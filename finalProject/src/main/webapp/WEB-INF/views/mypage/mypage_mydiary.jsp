@@ -112,7 +112,7 @@
 		 #DRicon {
 			width:100px;
     		position: relative;
-    		left: 1300px;
+    		left: 900px;
  		
 		}
 		
@@ -148,7 +148,7 @@
 				<button type="button" class="btn btn-secondary">팔로우</button>
 			</div> -->
 			<!-- 나의 입양일기 등록( + 아이콘) -->
-			<div id="DRicon" class>
+			<div id="DRicon">
 				<a href="mydiaryWriteForm.do" style="color: black;">
 					<ion-icon name="add-circle-outline" style="font-size:60px;"></ion-icon>
 				</a>
