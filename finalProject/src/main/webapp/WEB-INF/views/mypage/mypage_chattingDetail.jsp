@@ -28,10 +28,10 @@
 				var message = {};
 			  	message.msgSenderNo = '${login.mNo}'
 				message.msgContent = $("#message").val()
-			  	message.chatroomNo = '${chatroomNo}'
+			  	message.chatroomId = '${chatRoomNo}'
 			  	message.senderMnick = '${login.mNick}'
-			  	message.chatRequesterNo = '${chatRequesterNo}'
-			  	message.chatResponsorNo = '${chatResponsorNo}'
+			  	message.writerMno = '${writerMno}'
+			  	message.readerMno = '${readerMno}'
 			  }
 			
 			this._sendMessage(JSON.stringify(message));
@@ -45,9 +45,9 @@
 			//(메시지 보낸 사람이 reader고, 메시지 받는 사람이 writer) 혹은 (메시지 보낸 사람이 writer고, 메시지 받는 사람이 writer)
 			//	= 메시지를 주고받는 사람이 방에 저장된 값들과 일치하다면 append
 			// 결국 roomDto에 담긴 reader, writer와 msgDto에 담긴 sender, receiver의 정보가 잘 짝지어 질 때만 append되는 것  
-			if(		 (msg.msgSenderNo == '${chatRequesterNo}' && msg.msgReceiverNo == '${chatResponsorNo}') 
+			if(		 (msg.msgSenderNo == '${readerMno}' && msg.msgReceiverNo == '${writerMno}') 
 													||
-					 (msg.msgReceiverNo == '${chatRequesterNo}' && msg.msgSenderNo == '${chatResponsorNo}') ) {
+					 (msg.msgReceiverNo == '${readerMno}' && msg.msgSenderNo == '${writerMno}') ) {
 				
 				console.log(msg);
 				$('#divChatData').append('<div>' + msg.senderMnick + " : " + msg.msgContent + '</div>');

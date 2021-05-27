@@ -7,20 +7,20 @@
   
 	<insert id="createRoom" parameterType="ChatRoomDto">
 		INSERT INTO CHATROOM
-		VALUES(CHATROOMNO.NEXTVAL, #{chatRequesterNo}, #{chatResponsorNo}, #{chatRequesterMnick}, #{chatResponsorMnick})
+		VALUES(CHATROOMID.NEXTVAL, #{readerMno}, #{writerMno}, #{readerMnick}, #{writerMnick})
 	</insert>
 
 
 	<select id="isRoom" resultType="ChatRoomDto">
 		select * 
 		from CHATROOM 
-		WHERE CHATREQUESTERNO = #{chatRequesterNo} and CHATRESPONSORNO = #{chatResponsorNo}
+		WHERE READERMNO = #{readerMno} and WRITERMNO = #{writerMno}
 	</select>
 	  	
   	<select id="selectChatroomList" parameterType="int" resultType="ChatRoomDto">
 		SELECT * 
 		FROM CHATROOM 
-		WHERE CHATREQUESTERNO = #{mNo} OR CHATRESPONSORNO = #{mNo}
+		WHERE READERMNO = #{mNo} OR WRITERMNO = #{mNo}
 	</select>
   	
   	

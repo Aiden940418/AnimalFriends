@@ -3,7 +3,6 @@ package com.anif.mvc.chatting.dao;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -29,12 +28,12 @@ public class ChatDaoImpl implements ChatDao{
 		//chatroomDto에 chatroomid, readermno, writermno만 들어간 상태
 		
 		//각각의 mno로 MemberDto를 가져와서
-		MemberDto requesterDto = memberBiz.selectOneMember(chatroomDto.getChatRequesterNo());
-		MemberDto responsorDto = memberBiz.selectOneMember(chatroomDto.getChatResponsorNo());
+		MemberDto readerDto = memberBiz.selectOneMember(chatroomDto.getReaderMno());
+		MemberDto writerDto = memberBiz.selectOneMember(chatroomDto.getWriterMno());
 		
 		//비어있는 chatroomDto의 rederMnick, writerMnick에 set
-		chatroomDto.setChatRequesterMnick(requesterDto.getmNick());
-		chatroomDto.setChatResponsorMnick(responsorDto.getmNick());
+		chatroomDto.setReaderMnick(readerDto.getmNick());
+		chatroomDto.setWriterMnick(writerDto.getmNick());
 		
 		//다 채워진 chatroomDto로 DB에 chatroom 생성
 		try {
@@ -67,15 +66,13 @@ public class ChatDaoImpl implements ChatDao{
 		
 		List<ChatRoomDto> roomDtoList = null;
 		
-		System.out.println("@@@@@@@@@@@@@@@ "+mNo);
-		
 		try {
 			roomDtoList = sqlSession.selectList(namespace+"selectChatroomList", mNo);
 		} catch (Exception e) {
 			System.out.println("[error] : ChatroomList select list");
 			e.printStackTrace();
 		}
-		System.out.println("@@@@@@@@@ roomDtoList : "+roomDtoList.toString());
+		System.out.println(roomDtoList);
 		return roomDtoList;
 	}
 

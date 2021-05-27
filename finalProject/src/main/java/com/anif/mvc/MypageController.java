@@ -57,20 +57,14 @@ public class MypageController {
 		//공고 상세에서 넘어온 정보값을 채팅방을 생성하고 화면 목록에 채팅방 뿌릴 수 있게 해야 함
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
 		System.out.println("공고에서 넘어온 aMno: "+ aMno + " 로그인해서 1:1채팅 걸려는 Mno: "+ memberDto.getmNo());
-		
-		
-		
-		
-		
-		
 		return "mypage/mypage_chattingList";
 	}
 	
 	@RequestMapping("/chattingDetail.do")
-	public String chatDetail(Model model, int chatroomNo, int chatRequesterNo, int chatResponsorNo) {
-		model.addAttribute("chatroomNo", chatroomNo);
-		model.addAttribute("chatRequesterNo", chatRequesterNo);
-		model.addAttribute("chatResponsorNo", chatResponsorNo);
+	public String chatDetail(Model model, int chatRoomNo, int writerMno, int readerMno) {
+		model.addAttribute("chatRoomNo", chatRoomNo);
+		model.addAttribute("writerMno", writerMno);
+		model.addAttribute("readerMno", readerMno);
 		
 		return "mypage/mypage_chattingDetail";
 	}

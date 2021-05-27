@@ -7,126 +7,155 @@ import com.google.gson.Gson;
 
 public class MessageDto {
 
-	private int msgNo;					//메시지 번호 (PK)
+	private int msgNo;					//메시지의 숫자
 	private int msgSenderNo;			//메시지 보낸 사람
 	private int msgReceiverNo;			//메시지 받는 사람
 	private String msgContent;			//메시지 내용
 	private Date msgSendtime;			//메시지 보낸 시간
-	private int chatroomNo;				//채팅방 번호
-	private int chatRequesterNo;		//1:1 채팅 요청자
-	private int chatResponsorNo;		//1:1 채팅 수신자 (요청 받은 자)
-	
+	private Date msgReadTime;			//메시지 읽은 시간
+	private int chatroomId;				//채팅방 id
+	private int readerMno;				//입양공고 읽고 1:1채팅 건 사용자 mno
+	private int writerMno;				//입양공고 올린 사용자 mno
 	private String senderMnick;			//메세지 발신자 닉네임
 	private String receiverMnick;		//메세지 수신자 닉네임
-	private String chatRequesterMnick;	//1:1 채팅 요청자 닉네임
-	private String chatResponsorMnick;	//1:1 채팅 수신자 닉네임
-	
+	private String readerMnick;			//입양공고 읽고 1:1채팅 건 사용자의 닉네임
+	private String writerMnick;			//입양공고 올린 사용자의 닉네임
 	
 	public MessageDto() {
 		super();
 	}
+
 	public MessageDto(int msgNo, int msgSenderNo, int msgReceiverNo, String msgContent, Date msgSendtime,
-			int chatroomNo, int chatRequesterNo, int chatResponsorNo, String senderMnick, String receiverMnick,
-			String chatRequesterMnick, String chatResponsorMnick) {
+			Date msgReadTime, int chatroomId, int readerMno, int writerMno, String readerMnick, String writerMnick) {
 		super();
 		this.msgNo = msgNo;
 		this.msgSenderNo = msgSenderNo;
 		this.msgReceiverNo = msgReceiverNo;
 		this.msgContent = msgContent;
 		this.msgSendtime = msgSendtime;
-		this.chatroomNo = chatroomNo;
-		this.chatRequesterNo = chatRequesterNo;
-		this.chatResponsorNo = chatResponsorNo;
-		this.senderMnick = senderMnick;
-		this.receiverMnick = receiverMnick;
-		this.chatRequesterMnick = chatRequesterMnick;
-		this.chatResponsorMnick = chatResponsorMnick;
+		this.msgReadTime = msgReadTime;
+		this.chatroomId = chatroomId;
+		this.readerMno = readerMno;
+		this.writerMno = writerMno;
+		this.readerMnick = readerMnick;
+		this.writerMnick = writerMnick;
 	}
-	
+
 	public int getMsgNo() {
 		return msgNo;
 	}
+
 	public void setMsgNo(int msgNo) {
 		this.msgNo = msgNo;
 	}
+
 	public int getMsgSenderNo() {
 		return msgSenderNo;
 	}
+
 	public void setMsgSenderNo(int msgSenderNo) {
 		this.msgSenderNo = msgSenderNo;
 	}
+
 	public int getMsgReceiverNo() {
 		return msgReceiverNo;
 	}
+
 	public void setMsgReceiverNo(int msgReceiverNo) {
 		this.msgReceiverNo = msgReceiverNo;
 	}
+
 	public String getMsgContent() {
 		return msgContent;
 	}
+
 	public void setMsgContent(String msgContent) {
 		this.msgContent = msgContent;
 	}
+
 	public Date getMsgSendtime() {
 		return msgSendtime;
 	}
+
 	public void setMsgSendtime(Date msgSendtime) {
 		this.msgSendtime = msgSendtime;
 	}
-	public int getChatroomNo() {
-		return chatroomNo;
+
+	public Date getMsgReadTime() {
+		return msgReadTime;
 	}
-	public void setChatroomNo(int chatroomNo) {
-		this.chatroomNo = chatroomNo;
+
+	public void setMsgReadTime(Date msgReadTime) {
+		this.msgReadTime = msgReadTime;
 	}
-	public int getChatRequesterNo() {
-		return chatRequesterNo;
+
+	public int getChatroomId() {
+		return chatroomId;
 	}
-	public void setChatRequesterNo(int chatRequesterNo) {
-		this.chatRequesterNo = chatRequesterNo;
+
+	public void setChatroomId(int chatroomId) {
+		this.chatroomId = chatroomId;
 	}
-	public int getChatResponsorNo() {
-		return chatResponsorNo;
+
+	public int getReaderMno() {
+		return readerMno;
 	}
-	public void setChatResponsorNo(int chatResponsorNo) {
-		this.chatResponsorNo = chatResponsorNo;
+
+	public void setReaderMno(int readerMno) {
+		this.readerMno = readerMno;
 	}
+
+	public int getWriterMno() {
+		return writerMno;
+	}
+
+	public void setWriterMno(int writerMno) {
+		this.writerMno = writerMno;
+	}
+
+	public String getReaderMnick() {
+		return readerMnick;
+	}
+
+	public void setReaderMnick(String readerMnick) {
+		this.readerMnick = readerMnick;
+	}
+
+	public String getWriterMnick() {
+		return writerMnick;
+	}
+
+	public void setWriterMnick(String writerMnick) {
+		this.writerMnick = writerMnick;
+	}
+	
+
 	public String getSenderMnick() {
 		return senderMnick;
 	}
+
 	public void setSenderMnick(String senderMnick) {
 		this.senderMnick = senderMnick;
 	}
+
 	public String getReceiverMnick() {
 		return receiverMnick;
 	}
+
 	public void setReceiverMnick(String receiverMnick) {
 		this.receiverMnick = receiverMnick;
 	}
-	public String getChatRequesterMnick() {
-		return chatRequesterMnick;
-	}
-	public void setChatRequesterMnick(String chatRequesterMnick) {
-		this.chatRequesterMnick = chatRequesterMnick;
-	}
-	public String getChatResponsorMnick() {
-		return chatResponsorMnick;
-	}
-	public void setChatResponsorMnick(String chatResponsorMnick) {
-		this.chatResponsorMnick = chatResponsorMnick;
-	}
 
-
+	
+	
 	@Override
 	public String toString() {
 		return "MessageDto [msgNo=" + msgNo + ", msgSenderNo=" + msgSenderNo + ", msgReceiverNo=" + msgReceiverNo
-				+ ", msgContent=" + msgContent + ", msgSendtime=" + msgSendtime + ", chatroomNo=" + chatroomNo
-				+ ", chatRequesterNo=" + chatRequesterNo + ", chatResponsorNo=" + chatResponsorNo + ", senderMnick="
-				+ senderMnick + ", receiverMnick=" + receiverMnick + ", chatRequesterMnick=" + chatRequesterMnick
-				+ ", chatResponsorMnick=" + chatResponsorMnick + "]";
+				+ ", msgContent=" + msgContent + ", msgSendtime=" + msgSendtime + ", msgReadTime=" + msgReadTime
+				+ ", chatroomId=" + chatroomId + ", readerMno=" + readerMno + ", writerMno=" + writerMno
+				+ ", senderMnick=" + senderMnick + ", receiverMnick=" + receiverMnick + ", readerMnick=" + readerMnick
+				+ ", writerMnick=" + writerMnick + "]";
 	}
-
-
 
 	public static MessageDto convertMessage(String source) {
 		MessageDto message = new MessageDto();
