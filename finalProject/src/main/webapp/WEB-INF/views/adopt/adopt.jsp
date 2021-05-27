@@ -44,7 +44,7 @@
 			<div class="card h-100" style="width:550px;">
 										<a href="adoptDetail.do?aNo=${dto.aNo}"> 
 				<img src="resources/${dto.aThumbImg }" class="card-img-top"
-					alt="..."></a>
+					alt="..." style="width:550px;height:350px; border:none; object-fit:cover;"></a>
 												<div>
 							
 		 	<img src="resources/images/adopt_count.png" style="width:30px;">${dto.aCount }
