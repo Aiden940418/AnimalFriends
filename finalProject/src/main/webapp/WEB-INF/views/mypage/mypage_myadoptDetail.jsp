@@ -150,16 +150,17 @@
 		
 		<!-- 댓글 태그 종료 -->
 		
-		<div class="container mt-2" style="margin-left:400px"> 
+		<div class="container mt-2" style="margin-left:150px"> 
 		<h3>Comments</h3>
 		
 
 		
-		<div class="container text-center mt-4">	
+		<div class="container mt-4">	
 		
 	<c:choose>
 			<c:when test="${empty reply}">
-				<h3>작성된 댓글이 없습니다.</h3>
+				<h3 class="ms-5">작성된 댓글이 없습니다.</h3>
+			
 		
 			
 			</c:when>

@@ -22,7 +22,7 @@
 		</div>
 		
 		<!-- 세로줄 -->
-		<hr style="border:groove;backgroundColor:black;">
+		<hr>
 
 		<!-- 입양공고 그리드 시작 -->
 	
@@ -37,16 +37,19 @@
 		<c:otherwise>
 		
 
-		<div class="container mt-5" >
+		<div class="container ms-5 mt-5" >
 			<div class="row">
 	<c:forEach items="${list}" var="dto">
 					<div class="col-sm mt-5">
-			<div class="card h-100" style="width:350px;">
-				<a href="#"><img src="resources/${dto.aThumbImg }" class="card-img-top"
-					alt="..."></a>
+			<div class="card h-100 ms-4" style="width:400px;">
+				<a href="myAdoptDetail.do?aNo=${dto.aNo}"><img src="resources/${dto.aThumbImg }" class="card-img-top"
+					alt="..."style="width:400px;height:350px; border:none; object-fit:cover;"></a>	
 				<div class="card-body">
-					<h5 class="card-title"><a href="myAdoptDetail.do?aNo=${dto.aNo}">${dto.aTitle}</a></h5>
-					<p class="card-text">${dto.aMemo}</p>
+					<h4 class="card-title text-center">${dto.anmName}를 소개합니다.<br>
+					
+					</h4>
+					<p class="card-text text-center">${dto.aMemo}</p>
+					
 				</div>
 			</div>
 			</div>
