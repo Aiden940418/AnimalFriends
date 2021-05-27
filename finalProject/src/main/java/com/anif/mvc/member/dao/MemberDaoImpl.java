@@ -208,6 +208,15 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 
+
+	@Override
+	public void memberDelete(String mId) {
+		System.out.println("너 왜 안되니?");
+		sqlSession.update(NAMESPACE+"memberDelete",mId);
+		
+	}
+
+
 	
 	
 	

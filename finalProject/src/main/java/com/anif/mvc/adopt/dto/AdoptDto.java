@@ -22,12 +22,16 @@ public class AdoptDto {
 		private String aPhone;
 		private String aMemo;
 		
-		//이미지관련 
 		
 		//이미지 관련
 		private String aImg;
 		private String aThumbImg;
 		
+		
+		
+		//페이징 관련 
+		
+		private int rnum;
 		
 		public AdoptDto() {
 			super();
@@ -40,7 +44,7 @@ public class AdoptDto {
 
 		public AdoptDto(int aNo, String aMNo, String aArea, String aType, String aTitle, Date aDate, int aCount,
 				String anmName, int anmAge, String anmBreed, String anmGender, String anmVcnYn, String anmNtrYn,
-				String aPhone, String aMemo, String aImg, String aThumbImg) {
+				String aPhone, String aMemo, String aImg, String aThumbImg, int rnum) {
 			super();
 			this.aNo = aNo;
 			this.aMNo = aMNo;
@@ -59,6 +63,7 @@ public class AdoptDto {
 			this.aMemo = aMemo;
 			this.aImg = aImg;
 			this.aThumbImg = aThumbImg;
+			this.rnum = rnum;
 		}
 
 
@@ -277,6 +282,27 @@ public class AdoptDto {
 			this.aThumbImg = aThumbImg;
 		}
 
+
+
+
+
+
+		public int getRnum() {
+			return rnum;
+		}
+
+
+
+
+
+
+		public void setRnum(int rnum) {
+			this.rnum = rnum;
+		}
+
+		
+		
+		
 
 
 

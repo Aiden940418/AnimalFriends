@@ -5,11 +5,12 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.anif.mvc.adopt.dto.AdoptDto;
+import com.anif.mvc.common.pagination.Criteria;
 
 public interface AdoptBiz {
 
 	//전체 입양공고 리스트 
-	public List<AdoptDto> adoptList();
+	public List<AdoptDto> adoptList(Criteria cri);
 	
 	//전체 입양공고 상세 
 	public AdoptDto adoptDetail(int aNo);
@@ -37,6 +38,12 @@ public interface AdoptBiz {
 	
 	//카운트 
 	public void viewCount(int aNo);
+	
+	
+	//페이징 처리
+	
+	public int adoptListCnt();
+	
 	
 	
 

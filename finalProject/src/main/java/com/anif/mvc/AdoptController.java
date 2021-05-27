@@ -24,6 +24,7 @@ import com.anif.mvc.adopt.ACommentBiz.ACommentBiz;
 import com.anif.mvc.adopt.ACommentDto.ACommentDto;
 import com.anif.mvc.adopt.biz.AdoptBiz;
 import com.anif.mvc.adopt.dto.AdoptDto;
+import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.diary.dto.DiaryDto;
 import com.anif.mvc.goods.dto.GoodsDto;
 import com.anif.mvc.member.dto.MemberDto;
@@ -48,9 +49,9 @@ public class AdoptController {
 	
 	// 입양공고 목록보기 
 	@RequestMapping(value = "/adopt.do")
-	public String adopt(Model model) {
+	public String adopt(Model model,Criteria cri) {
 		
-		model.addAttribute("list",biz.adoptList());
+		model.addAttribute("list",biz.adoptList(cri));
 		
 		
 		return "adopt/adopt";
@@ -327,9 +328,9 @@ public class AdoptController {
 	
 	// admin입양공고 목록보기 
 	@RequestMapping(value = "/adminAdopt.do")
-	public String adminAdopt(Model model) {
+	public String adminAdopt(Model model,Criteria cri) {
 		
-		model.addAttribute("list",biz.adoptList());
+		model.addAttribute("list",biz.adoptList(cri));
 		
 		
 		return "admin/admin_adoptList";

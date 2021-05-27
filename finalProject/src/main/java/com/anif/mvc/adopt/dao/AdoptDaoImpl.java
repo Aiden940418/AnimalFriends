@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.anif.mvc.adopt.dto.AdoptDto;
+import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.goods.dto.GoodsDto;
 
 @Repository
@@ -20,16 +21,16 @@ public class AdoptDaoImpl implements AdoptDao {
 	//전체 입양공고 리스트 
 	
 	@Override
-	public List<AdoptDto> adoptList() {
+	public List<AdoptDto> adoptList(Criteria cri) {
 
 		List<AdoptDto> list = new ArrayList<AdoptDto>();
 			
 			
 		try {
-			list = sqlSession.selectList(NAMESPACE+"adoptList");
+			list = sqlSession.selectList(NAMESPACE+"adoptList",cri);
 			
 		} catch (Exception e) {
-			System.out.println("[error: select list" );
+			System.out.println("[error: adopt select list" );
 			e.printStackTrace();
 		}
 		
@@ -157,6 +158,26 @@ public class AdoptDaoImpl implements AdoptDao {
 	public void viewCount(int aNo) {
 		sqlSession.update(NAMESPACE+"viewCount",aNo);
 		
+	}
+
+
+	
+	//페이징 처리 
+	@Override
+	public int adoptListCnt() {
+		
+		int cnt = 0;
+		try {
+			cnt = sqlSession.selectOne(NAMESPACE+"adoptListCnt");
+		} catch (Exception e) {
+				
+			System.out.println("[error: adoptListCnt]");
+			
+			e.printStackTrace();
+		}
+		
+		
+		return cnt;
 	}
 
 

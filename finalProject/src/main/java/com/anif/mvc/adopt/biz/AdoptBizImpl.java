@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.anif.mvc.adopt.dao.AdoptDao;
 import com.anif.mvc.adopt.dto.AdoptDto;
+import com.anif.mvc.common.pagination.Criteria;
 
 @Service
 public class AdoptBizImpl implements AdoptBiz {
@@ -23,10 +24,10 @@ public class AdoptBizImpl implements AdoptBiz {
 
 	//전체 입양공고 리스트 
 	@Override
-	public List<AdoptDto> adoptList() {
+	public List<AdoptDto> adoptList(Criteria cri) {
 		
 
-		return dao.adoptList();
+		return dao.adoptList(cri);
 	}
 
 	//전체 입양공고 상세 
@@ -80,6 +81,13 @@ public class AdoptBizImpl implements AdoptBiz {
 	@Override
 	public int multiDeleteAdopt(AdoptDto dto) {
 		return dao.multiDeleteAdopt(dto);
+	}
+
+	
+	//페이징 처리 
+	@Override
+	public int adoptListCnt() {
+		return dao.adoptListCnt();
 	}
 
 	

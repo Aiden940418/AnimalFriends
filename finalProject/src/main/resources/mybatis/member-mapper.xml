@@ -32,7 +32,7 @@
   	SELECT MNO, MROLE, MJOINYN, MID, MPW, MADDR1, MADDR2, MADDR3, MNAME, MNICK, MPHONE, SBISNUM, SSELLNUM
   	FROM MEMBER
   	WHERE MID = #{mId}
-  	AND MPW = #{mPw}
+  	AND MPW = #{mPw} AND MJOINYN = 'Y'
   
   </select>
   
@@ -113,6 +113,18 @@
   	SELECT * FROM MEMBER
   	WHERE MJOINYN = 'N'
   	</select>
+  	
+  	
+  	
+  	
+  	<!-- 회원탈퇴 -->
+  	<update id="memberDelete" >
+  	
+  	UPDATE MEMBER SET MJOINYN = 'N' 
+  	WHERE MID = #{mId}
+  	
+  	
+  	</update>
   	
   	
    
