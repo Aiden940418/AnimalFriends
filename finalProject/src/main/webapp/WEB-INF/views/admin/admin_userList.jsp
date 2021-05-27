@@ -7,55 +7,7 @@
 <!-- 제이쿼리 사용 위한 코드 -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
-/*
-	var itemArr = new Array();
-	
-	$(function () {
-		$("#totalMember").show();
-		$("#member").hide();
-		$("#sMember").hide();
-		$("#qMember").hide();
-		
-		$('#memberSelect li > a').on('click',function(){
-			//회원 선택
-			$('memberSelectBtn').text($(this).text());
-		});
-		
-		 회원 선택 시 value 가져오는 function들 
-		 유형별 회원 선택
-		$('#memberSelect li > a').on('click',function(){
-			$('#memberSelectBtn').text($(this).text());
-			var mem = $(this).attr('value');
-			
-		})
-	})
-/회원유형 선택 시 버튼 보여주는 용도
-	function totalMember() {
-		$("#totalMember").show();
-		$("#member").hide();
-		$("#sMember").hide();
-		$("#qMember").hide();
-	}
-	function member() {
-		$("#member").show();
-		$("#totalMember").hide();
-		$("#sMember").hide();
-		$("#qMember").hide();
-	}
-	function sMember() {
-		$("#sMember").show();
-		$("#member").hide();
-		$("#totalMember").hide();
-		$("#qMember").hide();
-	}
-	function qMember() {
-		$("#qMember").show();
-		$("#member").hide();
-		$("#sMember").hide();
-		$("#totalMember").hide();
-	}
 
-*/
 </script>
 
 
@@ -174,22 +126,7 @@
 		</div>
 	</div>
 	
-	<!-- footer -->
-	<%@ include file="../includes/footer.jsp"%>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+	<!-- footer -->
+	<%@ include file="../includes/footer.jsp"%>

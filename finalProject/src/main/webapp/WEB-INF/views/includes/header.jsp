@@ -34,6 +34,38 @@
 	
 	}
 	
+	html{
+		height: 100%;
+	}
+	
+	body{
+  		margin:0; 
+  		width:100%; 
+  		height:100%
+	}
+	
+	.contentDiv {
+		min-height: 100%;
+		position: relative;
+		padding-bottom: 19px;
+		
+	}
+	
+	footer{
+	 	position: relative;
+	 	bottom: 0;
+		left: 0;
+		right: 0;
+  		background: #333;
+	  	color:#fff;
+	}
+	
+	* {
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	}
+	
 	
 </style>
   <head>

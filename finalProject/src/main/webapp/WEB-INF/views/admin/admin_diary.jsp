@@ -9,7 +9,24 @@
 <%@ include file="../includes/admin_leftMenuBar.jsp"%>
 
 <style type="text/css">
-
+	#DrManage {
+		    position: relative;
+    		top: 80px;
+	
+	}
+	
+	#horisonLine {
+	 	    height: 10px;
+		    border-bottom: groove;
+		    position: relative;
+		    top: 145px;
+		    width: 98%;
+	 }
+	 
+	 #secCtn{
+		    position: absolute;
+		    top: 215px;	 		
+	 }
 
 
 </style>
@@ -78,20 +95,17 @@
 <!-- 페이지 내용 부분 -->
 <div class="contentDiv">
 
-	<div style="margin-top: 100px;">
-		<div class="container">
-			<h1 class="text-center">입양일기 관리</h1>
-		</div>
-
+	<div class="container" id="DrManage">
+		<h1 class="text-center">입양일기 관리</h1>
 	</div>
+
 
 	<!-- 가로줄 -->
-	<div
-		style="border-bottom: groove; margin-top: 80px; margin-left: 20px; margin-right: 50px;">
-	</div>
+	<div id="horisonLine"></div>
+
 
 	<!-- 입양일기 그리드 시작 -->
-	<div class="container">
+	<div class="container" id="secCtn">
 			<div class="row">
 			
 				<c:forEach items="${list }" var="dto">		
@@ -117,10 +131,7 @@
 			</div>
 		</div>
 	<!-- 입양일기 그리드 끝 -->
-
-
+</div>
 
 	<!-- footer -->
 	<%@ include file="../includes/footer.jsp"%>
-</div>
-</html>
