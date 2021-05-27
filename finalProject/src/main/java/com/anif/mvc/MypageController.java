@@ -40,11 +40,19 @@ public class MypageController {
 	private String uploadPath;  //이미지 업로드 화면출력 관련 
 	
 	
-	
+	//마이페이지에서 1:1 대화를 눌러 목록을 볼 때
 	@RequestMapping("/chattingList.do")
 	public String chatList() {
+		//채팅방 목록 뿌려줘야 함
+		return "mypage/mypage_chattingList";
+	}
+	
+	@RequestMapping("/adoptToChatList.do")
+	public String adoptToChatList(int aMno, HttpSession session) {
+		//공고 상세에서 넘어온 정보값을 채팅방을 생성하고 화면 목록에 채팅방 뿌릴 수 있게 해야 함
 		
-		
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		System.out.println("공고에서 넘어온 aMno: "+ aMno + " 로그인해서 1:1채팅 걸려는 Mno: "+ memberDto.getmNo());
 		return "mypage/mypage_chattingList";
 	}
 	
