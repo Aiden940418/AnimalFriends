@@ -133,7 +133,8 @@ a.button:hover {
 		<br>
 		<br>
 			<div class="wrap">
-  		<a href="chattingList.do" class="button">1:1채팅 요청</a>
+		<!-- 공고 작성자의 정보를 같이 넘겨 컨트롤러에서 1:1채팅방 생성 -->
+  		<a href="chattingList.do?writerMno=${dto.aMNo }" class="button">1:1채팅 요청</a>
   		</div>
 
 		<!--  1:1 채팅 요청 종료 -->

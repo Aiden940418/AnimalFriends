@@ -40,13 +40,14 @@
 		},
 		receiveMessage: function(str) {
 			var msg = JSON.parse(str);
-			
+			console.log("메시지 수신~~~~~~~~~~~~~~~~~~~~~~~~~"+msg);
 			//현재 채팅방의 참여자일 때만 append
 			//(메시지 보낸 사람이 reader고, 메시지 받는 사람이 writer) 혹은 (메시지 보낸 사람이 writer고, 메시지 받는 사람이 writer)
-			//	= 메시지를 주고받는 사람이 정확하다면 append
+			//	= 메시지를 주고받는 사람이 방에 저장된 값들과 일치하다면 append
+			// 결국 roomDto에 담긴 reader, writer와 msgDto에 담긴 sender, receiver의 정보가 잘 짝지어 질 때만 append되는 것  
 			if(		 (msg.msgSenderNo == '${readerMno}' && msg.msgReceiverNo == '${writerMno}') 
 													||
-					 (msg.msgReceiverNo == '${writerMno}' && msg.msgSenderNo == '${readerMno}') ) {
+					 (msg.msgReceiverNo == '${readerMno}' && msg.msgSenderNo == '${writerMno}') ) {
 				
 				console.log(msg);
 				$('#divChatData').append('<div>' + msg.senderMnick + " : " + msg.msgContent + '</div>');
