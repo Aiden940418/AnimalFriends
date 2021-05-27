@@ -104,11 +104,11 @@ Resources
 <div class="container dropdown ms-5 mt-4">
 		<button type="button"
 			class="btn btn-outline-success dropdown-toggle mt-3"
-			data-bs-toggle="dropdown" aria-expanded="false" style="width:200px; ">카테고리</button>
+			data-bs-toggle="dropdown" aria-expanded="false" style="width:150px; ">카테고리</button>
 		<ul class="dropdown-menu">
-			<li><a class="dropdown-item" href="#">가방</a></li>
-			<li><a class="dropdown-item" href="#">옷</a></li>
-			<li><a class="dropdown-item" href="#">악세사리</a></li>
+			<li><a class="dropdown-item" href="goodsBagList.do" value="가방">가방</a></li>
+			<li><a class="dropdown-item" href="goodsClothList.do" value="옷">옷</a></li>
+			<li><a class="dropdown-item" href="goodsAccList.do" value="악세사리">악세사리</a></li>
 		</ul>
 	
 	
