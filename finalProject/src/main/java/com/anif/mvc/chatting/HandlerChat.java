@@ -75,6 +75,7 @@ public class HandlerChat extends TextWebSocketHandler {
 //			s.sendMessage(new TextMessage(nickName + "님이 입장 했습니다."));
 //		}
 	}
+	
 
 	// 클라이언트가 서버로 메세지 전송 처리
 	@Override
@@ -92,11 +93,11 @@ public class HandlerChat extends TextWebSocketHandler {
 		
 
 		ChatRoomDto roomDto = new ChatRoomDto();
-		roomDto.setWriterMno(MsgDto.getWriterMno()); // 공고 올린 사람
-		roomDto.setReaderMno(MsgDto.getReaderMno()); // 공고 보고 메세지 보낸 사람
+		roomDto.setChatResponsorNo(MsgDto.getChatResponsorNo()); // 공고 올린 사람
+		roomDto.setChatRequesterNo(MsgDto.getChatRequesterNo()); // 공고 보고 메세지 보낸 사람
 
 		ChatRoomDto croom = null;
-		if (MsgDto.getReaderMno() != MsgDto.getWriterMno()) {
+		if (MsgDto.getChatRequesterNo() != MsgDto.getChatResponsorNo()) {
 			// 공고 올린 사람 != 보고 메세지 보낸 사람이라면
 			System.out.println("a");
 
@@ -118,13 +119,13 @@ public class HandlerChat extends TextWebSocketHandler {
 			croom = dao.isRoom(roomDto);
 		}
 
-		MsgDto.setChatroomId(croom.getChatroomId());
-		if (croom.getReaderMno() == MsgDto.getMsgSenderNo()) {
+		MsgDto.setChatroomNo(croom.getChatroomNo());
+		if (croom.getChatRequesterNo() == MsgDto.getMsgSenderNo()) {
 			// 메시지 보낸 사람 = 공고를 읽은 사람이면 메시지 받는 사람 = 공고를 쓴 사람으로 설정
-			MsgDto.setMsgReceiverNo(roomDto.getWriterMno());
+			MsgDto.setMsgReceiverNo(roomDto.getChatResponsorNo());
 		} else {
 			// 메시지 보낸 사람 = 공고를 쓴 사람이면 메시지 받는 사람 = 공고를 읽은 사람
-			MsgDto.setMsgReceiverNo(roomDto.getReaderMno());
+			MsgDto.setMsgReceiverNo(roomDto.getChatRequesterNo());
 		}
 		
 		

@@ -31,16 +31,16 @@
 		<!-- 채팅방 -->
 		 <c:forEach items="${list }" var="chatroomDto">
 			
-			<a href="" style="color:black; text-decoration:none; !important">
-			<div class="col border border-success" style="height:100px;">
-			<span style="justify-content: center; align-items: center">채팅방 참여자:${chatroomDto.readerMnick}, ${chatroomDto.writerMnick }</span>
-			</div>
+			<a href="chattingDetail.do?chatroomNo=${chatroomDto.chatroomNo}&chatRequesterNo=${chatroomDto.chatRequesterNo}&chatResponsorNo=${chatroomDto.chatResponsorNo}" 
+					style="color:black; text-decoration:none; !important">
+				<div class="col border border-success" style="height:100px;">
+					<span style="justify-content: center; align-items: center">채팅방 참여자:${chatroomDto.chatRequesterMnick}, ${chatroomDto.chatResponsorMnick }</span>
+				</div>
 			</a>
 		
 		</c:forEach> 	
 	
 	
-		</a>
 		
 		
 		</div>
