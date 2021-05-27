@@ -129,8 +129,6 @@ public class HandlerChat extends TextWebSocketHandler {
 		
 		
 		
-
-		
 		for (WebSocketSession websocketSession : connectedUsers) {
 			map = websocketSession.getAttributes();
 			MemberDto login = (MemberDto) map.get("login");

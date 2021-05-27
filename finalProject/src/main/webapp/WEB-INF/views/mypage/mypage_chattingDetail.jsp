@@ -37,10 +37,10 @@
 			this._sendMessage(JSON.stringify(message));
 			$('#message').val('');
 			
+			
 		},
 		receiveMessage: function(str) {
 			var msg = JSON.parse(str);
-			console.log("메시지 수신~~~~~~~~~~~~~~~~~~~~~~~~~"+msg);
 			//현재 채팅방의 참여자일 때만 append
 			//(메시지 보낸 사람이 reader고, 메시지 받는 사람이 writer) 혹은 (메시지 보낸 사람이 writer고, 메시지 받는 사람이 writer)
 			//	= 메시지를 주고받는 사람이 방에 저장된 값들과 일치하다면 append
@@ -52,8 +52,12 @@
 				console.log(msg);
 				$('#divChatData').append('<div>' + msg.senderMnick + " : " + msg.msgContent + '</div>');
 				
-			}
+				//채팅창 스크롤 밑으로 내리기
+				scrollDown();
 				
+			}
+			
+			
 			
 		},
 		closeMessage: function(str) {
@@ -79,8 +83,17 @@
 
 	$(document).ready(function() {
 		webSocket.init({ url: '<c:url value="/chat" />' });	
+		
+		
+		//페이지 처음 로드 시 채팅창의 스크롤바 맨 밑으로 내리기
+		$("#chatDiv").scrollTop($("#chatDiv")[0].scrollHeight);
 	});
 	
+	
+	//채팅창의 스크롤바 맨 밑으로 내리기
+	function scrollDown(){
+		$("#chatDiv").scrollTop($("#chatDiv")[0].scrollHeight);
+	}
 	
 	
 	
@@ -120,17 +133,11 @@
 				
 				
 				<!-- 채팅창 영역 -->
-				<div style="width: 460px; height: 500px; border: 1px solid black;" >
+				<div id="chatDiv" style="width: 460px; height: 500px; border: 1px solid black; overflow-y: scroll;" >
 					
-					<div style="width: 400px; height: 400px; padding: 10px; border: solid 1px #e1e3e9;">
-						<div id="divChatData"></div>
+					<div style="width: 400px; height: 400px; padding: 10px; border: solid 1px #e1e3e9; ">
+						<div id="divChatData" ></div>
 					</div>
-					<div style="width: 390px; height: 10%; padding: 10px;">
-						<input type="text" id="message" onkeypress="if(event.keyCode==13){webSocket.sendChat();}" /> 
-						<input type="button" id="btnSend" value="채팅 전송" onclick="webSocket.sendChat()" />
-					</div>
-
-
 
 
 
@@ -140,9 +147,9 @@
 				<!-- 메세지 전송 입력 부분 -->
 				<div style="position: absolute; bottom: 0px; width: 470px;">
 					<div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder="메세지를 입력해주세요" aria-label="Recipient's username" aria-describedby="button-addon2">
-						<button class="btn btn-outline-secondary" type="button" id="button-addon2"
-						  		style="color: #fff; background-color: #6c757d; border-color: #6c757d;">전송</button>
+						<input type="text" class="form-control" placeholder="메세지를 입력해주세요" id="message" onkeypress="if(event.keyCode==13){webSocket.sendChat();}" /> 
+						<input type="button" class="btn btn-outline-secondary" id="btnSend" value="전송" onclick="webSocket.sendChat()" style="color: #fff; background-color: #6c757d; border-color: #6c757d;" />
+						
 					</div>
 				</div>
 
