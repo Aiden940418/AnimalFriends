@@ -109,7 +109,10 @@
   	WHERE MJOINYN = 'N'
   	</select>
   	
-  	
+  	<select id="selectOneMember" parameterType="int" resultType="memberDto">
+	  	SELECT * FROM MEMBER
+	  	WHERE MNO = #{mNo}
+  	</select>
    
    
     

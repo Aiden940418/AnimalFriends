@@ -32,6 +32,8 @@ public interface MemberDao {
 	public List<MemberDto> sMemberList();
 
 	public List<MemberDto> qMemberList();
+
+	public MemberDto selectOneMember(int mNo);
 	
 	
 	
