@@ -401,7 +401,7 @@ public class GoodsController {
 			model.addAttribute("url", "/mygoodsReviewWriteForm.do");
 		}
 		
-		return "reviewDetails.do?gNo=gNo();";
+		return "mypage/mypage_mygoodsBuyList";
 	}
 	
 	//리뷰 수정 가져오기

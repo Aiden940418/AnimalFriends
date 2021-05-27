@@ -94,7 +94,7 @@ SELECT * FROM GOODSORDER;
 
 DELETE FROM GOODSORDER WHERE ORDERID = '관리자';
 
-<!-- 이부분 새로추가 -->
+-- 이부분 새로추가 --
 alter table goodsorder 
     add GNO NUMBER;
     
