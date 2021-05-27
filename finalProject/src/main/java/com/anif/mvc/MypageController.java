@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.anif.mvc.chatting.dao.ChatDao;
 import com.anif.mvc.common.image.UploadFileUtils;
 import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
@@ -34,6 +35,8 @@ public class MypageController {
 	private QnaBoardBiz biz;
 	@Autowired
 	private DiaryBiz diaryBiz;
+	@Autowired
+	private ChatDao chatDao;
 	
 
 	@Resource(name="uploadPath")
@@ -42,15 +45,16 @@ public class MypageController {
 	
 	//마이페이지에서 1:1 대화를 눌러 목록을 볼 때
 	@RequestMapping("/chattingList.do")
-	public String chatList() {
+	public String chatList(Model model, HttpSession session) {
 		//채팅방 목록 뿌려줘야 함
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		model.addAttribute("list", chatDao.selectChatroom(memberDto.getmNo()) );
 		return "mypage/mypage_chattingList";
 	}
 	
 	@RequestMapping("/adoptToChatList.do")
 	public String adoptToChatList(int aMno, HttpSession session) {
 		//공고 상세에서 넘어온 정보값을 채팅방을 생성하고 화면 목록에 채팅방 뿌릴 수 있게 해야 함
-		
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
 		System.out.println("공고에서 넘어온 aMno: "+ aMno + " 로그인해서 1:1채팅 걸려는 Mno: "+ memberDto.getmNo());
 		return "mypage/mypage_chattingList";

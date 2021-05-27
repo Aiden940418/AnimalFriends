@@ -17,6 +17,7 @@ public class MessageDto {
 	private int readerMno;				//입양공고 읽고 1:1채팅 건 사용자 mno
 	private int writerMno;				//입양공고 올린 사용자 mno
 	private String senderMnick;			//메세지 발신자 닉네임
+	private String receiverMnick;		//메세지 수신자 닉네임
 	private String readerMnick;			//입양공고 읽고 1:1채팅 건 사용자의 닉네임
 	private String writerMnick;			//입양공고 올린 사용자의 닉네임
 	
@@ -137,14 +138,25 @@ public class MessageDto {
 		this.senderMnick = senderMnick;
 	}
 
+	public String getReceiverMnick() {
+		return receiverMnick;
+	}
+
+	public void setReceiverMnick(String receiverMnick) {
+		this.receiverMnick = receiverMnick;
+	}
+
+	
+	
 	@Override
 	public String toString() {
 		return "MessageDto [msgNo=" + msgNo + ", msgSenderNo=" + msgSenderNo + ", msgReceiverNo=" + msgReceiverNo
 				+ ", msgContent=" + msgContent + ", msgSendtime=" + msgSendtime + ", msgReadTime=" + msgReadTime
 				+ ", chatroomId=" + chatroomId + ", readerMno=" + readerMno + ", writerMno=" + writerMno
-				+ ", readerMnick=" + readerMnick + ", writerMnick=" + writerMnick + "]";
+				+ ", senderMnick=" + senderMnick + ", receiverMnick=" + receiverMnick + ", readerMnick=" + readerMnick
+				+ ", writerMnick=" + writerMnick + "]";
 	}
-	
+
 	public static MessageDto convertMessage(String source) {
 		MessageDto message = new MessageDto();
 		Gson gson = new Gson();

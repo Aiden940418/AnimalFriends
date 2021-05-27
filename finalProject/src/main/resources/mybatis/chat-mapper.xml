@@ -6,8 +6,8 @@
   <mapper namespace="chat">
   
 	<insert id="createRoom" parameterType="ChatRoomDto">
-		insert into CHATROOM
-		values(CHATROOMID.NEXTVAL, #{readerMno}, #{writerMno})
+		INSERT INTO CHATROOM
+		VALUES(CHATROOMID.NEXTVAL, #{readerMno}, #{writerMno}, #{readerMnick}, #{writerMnick})
 	</insert>
 
 
@@ -17,7 +17,11 @@
 		WHERE READERMNO = #{readerMno} and WRITERMNO = #{writerMno}
 	</select>
 	  	
-  	
+  	<select id="selectChatroomList" parameterType="int" resultType="ChatRoomDto">
+		SELECT * 
+		FROM CHATROOM 
+		WHERE READERMNO = #{mNo} OR WRITERMNO = #{mNo}
+	</select>
   	
   	
   	

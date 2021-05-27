@@ -27,7 +27,7 @@ public interface MemberBiz {
 
 	public List<MemberDto> qMemberList();
 
-
+	public MemberDto selectOneMember(int mNo);
 	
 
 

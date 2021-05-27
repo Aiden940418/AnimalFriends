@@ -74,4 +74,9 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.qMemberList();
 	}
 
+	@Override
+	public MemberDto selectOneMember(int mNo) {
+		return dao.selectOneMember(mNo);
+	}
+
 }

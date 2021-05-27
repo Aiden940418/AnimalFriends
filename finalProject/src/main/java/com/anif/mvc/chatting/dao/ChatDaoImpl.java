@@ -1,31 +1,49 @@
 package com.anif.mvc.chatting.dao;
 
-import java.util.HashMap;
 import java.util.List;
 
-import javax.inject.Inject;
-
-import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.anif.mvc.chatting.dto.ChatRoomDto;
-import com.anif.mvc.chatting.dto.MessageDto;
+import com.anif.mvc.member.biz.MemberBiz;
+import com.anif.mvc.member.dto.MemberDto;
 
 @Repository
 public class ChatDaoImpl implements ChatDao{
 
 	@Autowired
-	private SqlSession session;
+	private SqlSessionTemplate sqlSession;
+	@Autowired
+	 private MemberBiz memberBiz;
 
 	private static String namespace = "chat.";
 
 	
 	
 	@Override
-	public void createRoom(ChatRoomDto vo) throws Exception {
-
-		session.insert(namespace+"createRoom" , vo);
+	public void createRoom(ChatRoomDto chatroomDto) throws Exception {
+		
+		//chatroomDto에 chatroomid, readermno, writermno만 들어간 상태
+		
+		//각각의 mno로 MemberDto를 가져와서
+		MemberDto readerDto = memberBiz.selectOneMember(chatroomDto.getReaderMno());
+		MemberDto writerDto = memberBiz.selectOneMember(chatroomDto.getWriterMno());
+		
+		//비어있는 chatroomDto의 rederMnick, writerMnick에 set
+		chatroomDto.setReaderMnick(readerDto.getmNick());
+		chatroomDto.setWriterMnick(writerDto.getmNick());
+		
+		//다 채워진 chatroomDto로 DB에 chatroom 생성
+		try {
+			sqlSession.insert(namespace+"createRoom" , chatroomDto);
+		} catch (Exception e) {
+			System.out.println("[error] : INSERT CHATROOM");
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 
@@ -34,11 +52,28 @@ public class ChatDaoImpl implements ChatDao{
 	public ChatRoomDto isRoom(ChatRoomDto vo) throws Exception {
 		
 		ChatRoomDto roomvo = null;
-		roomvo = session.selectOne(namespace+"isRoom", vo);
+		roomvo = sqlSession.selectOne(namespace+"isRoom", vo);
 		System.out.println("ss");
 		System.out.println(roomvo);
 		
 		return roomvo;
+	}
+
+
+
+	@Override
+	public List<ChatRoomDto> selectChatroom(int mNo) {
+		
+		List<ChatRoomDto> roomDtoList = null;
+		
+		try {
+			roomDtoList = sqlSession.selectList(namespace+"selectChatroomList", mNo);
+		} catch (Exception e) {
+			System.out.println("[error] : ChatroomList select list");
+			e.printStackTrace();
+		}
+		System.out.println(roomDtoList);
+		return roomDtoList;
 	}
 
 

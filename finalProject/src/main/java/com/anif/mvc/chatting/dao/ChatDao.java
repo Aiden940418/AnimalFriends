@@ -29,5 +29,6 @@ public interface ChatDao {
 //	public int getUnReadCountTutor(String TUTOR_USER_user_id, int class_id, String user_id)throws Exception;
 //	
 //	public int getAllCount(String str);
+	public List<ChatRoomDto> selectChatroom(int mNo);
 	
 }

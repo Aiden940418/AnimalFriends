@@ -38,6 +38,6 @@ CREATE TABLE ADOPT(
 
 SELECT * FROM ADOPT;
 
-commit;
+commit
 
 
