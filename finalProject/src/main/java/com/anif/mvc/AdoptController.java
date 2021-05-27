@@ -25,6 +25,7 @@ import com.anif.mvc.adopt.ACommentDto.ACommentDto;
 import com.anif.mvc.adopt.biz.AdoptBiz;
 import com.anif.mvc.adopt.dto.AdoptDto;
 import com.anif.mvc.common.pagination.Criteria;
+import com.anif.mvc.common.pagination.PageMaker;
 import com.anif.mvc.diary.dto.DiaryDto;
 import com.anif.mvc.goods.dto.GoodsDto;
 import com.anif.mvc.member.dto.MemberDto;
@@ -52,6 +53,14 @@ public class AdoptController {
 	public String adopt(Model model,Criteria cri) {
 		
 		model.addAttribute("list",biz.adoptList(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		int listCount = biz.adoptListCnt();
+		pageMaker.setTotalCount(listCount);
+		
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("listCount", listCount);
 		
 		
 		return "adopt/adopt";
