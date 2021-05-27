@@ -73,7 +73,8 @@
 				border-radius: 30%;
 				overflow: hidden;
 				border: 3px	solid #54BD54;
-					
+				position:absolute;
+				left:300px;
 			}
 	
 		.profile {
@@ -91,13 +92,32 @@
 		}
 		
 		#MidMnickDiv {
-			position:relative;
-			top:30px;
+			position:absolute;
+			top:150px;
+			left:500px;
 			padding:0px;
 			margin:0px;
-		
+			width:300px;
 		
 		}
+				
+ 		#RorUdiv {
+			width:150px;
+			position:absolute;
+			top:290px;
+			left:320px;
+		
+		}
+		
+		 #DRicon {
+			width:100px;
+    		position: relative;
+    		left: 1300px;
+ 		
+		}
+		
+	 
+	 
 
 </style>
 
@@ -106,17 +126,14 @@
 	
 	<!-- 페이지 내용 부분 -->
 	<div class="contentDiv">
-	
-		<div class="row" style="margin-top: 100px; margin-left: 100px;">
-			 <div class="myProfileImgDiv col-6">
+		
+		<div class="container">
+		<br><br><br>
+		<div class="row align-items-center" style="postion:relative;">
+			 <div class="col-md-6 myProfileImgDiv">
 				<img class="profile" src="resources/${prf.profileImg }">
-     						
 			</div>
-			<div class="col-1 ">
-     			<button type="button" onclick="location.href='/mvc/RgstOrUpdate.do'"class="btn btn-outline-success btn-sm rounded-pill">등록 or 수정</button>
-<!--      			<button type="button" onclick="location.href='/mvc/myDrPrfUpdate.do'"class="btn btn-outline-success btn-sm rounded-pill">수정</button>
- -->			</div>
-			<div class="col-3" id="MidMnickDiv">
+			<div class="col" id="MidMnickDiv">
 				<table style="height:100px; font-size:20px;">
 					<tr>
 						<td><label> 나의 ID는? '${memberDto.mId } '</label></td>
@@ -126,23 +143,28 @@
 					</tr>
 				</table>
 			</div>
-			<div class="col-2" style="float: right; margin-right: 200px;">
+			<!-- <div id="followIconDiv float-end" class="col">
 				<button type="button" class="btn btn-secondary">팔로워</button>
 				<button type="button" class="btn btn-secondary">팔로우</button>
+			</div> -->
+			<!-- 나의 입양일기 등록( + 아이콘) -->
+			<div id="DRicon" class>
+				<a href="mydiaryWriteForm.do" style="color: black;">
+					<ion-icon name="add-circle-outline" style="font-size:60px;"></ion-icon>
+				</a>
 			</div>
+			<div class="col mb-4" id="RorUdiv">
+     			<button type="button" onclick="location.href='/mvc/RgstOrUpdate.do'"class="btn btn-outline-success btn-sm rounded-pill">등록 or 수정</button>			
+ 			</div>
 		</div>
 		
+		
+	</div>	
+	<br>
+	<br>
 		<!-- 가로줄 -->
 		<div style="border-bottom: groove; margin-top: 80px; margin-left: 25px; margin-right: 95px;">
 		</div>
-		
-		<!-- + 아이콘 -->
-		<div style="margin-left: 50px; margin-top: 30px;">
-			<a href="mydiaryWriteForm.do" style="color: black;">
-				<ion-icon name="add-circle-outline" style="font-size:60px;"></ion-icon>
-			</a>
-		</div>
-		
 		
 		<!-- 입양일기 그리드 시작 -->
 		<div class="container">
@@ -167,16 +189,6 @@
                         </div>
                     </div>
 				</c:forEach>	
-				
-				
-
-			
-
-
-
-
-
-				
 			</div>
 				
 		</div>
