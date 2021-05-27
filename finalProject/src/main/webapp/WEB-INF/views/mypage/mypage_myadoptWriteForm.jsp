@@ -38,15 +38,12 @@
 							<th><button type="button" class="btn btn-outline-success"
 									style="width:130px; pointer-events: none;">지역설정</button></th>
 							<td><select name="aArea" class="form-control ms-2" style="width:200px">
-						<option value="서울동부">서울동부</option>
+						<option value="서울동부">서울북부</option>
 						<option value="서울서부">서울서부</option>
 						<option value="서울남부">서울남부</option>
-						<option value="서울북부">서울북부</option>
+						<option value="서울북부">서울동부</option>
 						<option value="경기인천">경기인천</option>
-						<option value="강원도">강원도</option>
-						<option value="충청도">충청도</option>
-						<option value="경상도">경상도</option>
-						<option value="전라도">전라도</option>
+
 						
 					</select></td>
 						</tr>
@@ -58,9 +55,7 @@
 							<td><select name="aType" class="form-control ms-2 mt-2" style="width:200px">
 						<option value="강아지">강아지</option>
 						<option value="고양이">고양이</option>
-						<option value="도마뱀">도마뱀</option>
-						<option value="거북이">거북이</option>
-						<option value="기타">기타</option>
+
 
 						
 					</select></td>

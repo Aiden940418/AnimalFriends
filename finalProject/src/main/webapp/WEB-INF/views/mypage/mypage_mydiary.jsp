@@ -112,7 +112,7 @@
 		 #DRicon {
 			width:100px;
     		position: relative;
-    		left: 1300px;
+    		left: 900px;
  		
 		}
 		
@@ -148,7 +148,7 @@
 				<button type="button" class="btn btn-secondary">팔로우</button>
 			</div> -->
 			<!-- 나의 입양일기 등록( + 아이콘) -->
-			<div id="DRicon" class>
+			<div id="DRicon">
 				<a href="mydiaryWriteForm.do" style="color: black;">
 					<ion-icon name="add-circle-outline" style="font-size:60px;"></ion-icon>
 				</a>
@@ -176,7 +176,9 @@
 					<div class="col-sm">
                         <div class="card text-center" style="width: 22rem; margin-top: 20px;">
                             <img class="card-img-top"
-                                src="resources/${dto.diaryImg }" alt="Card image cap">
+                                src="resources/${dto.diaryImg }" alt="Card image cap"
+                                style="width:22rem;height:15rem; border:none; object-fit:cover;"
+                                >
                             <div class="card-body box">
                                 <p class="card-text content">${dto.dcontent }</p>
                             </div>

@@ -12,25 +12,13 @@
 
 <!-- Example single danger button -->
 <div class="container mt-5">
-	<div class="btn-group">
-		<button type="button"
-			class="btn btn-outline-success dropdown-toggle mt-3"
-			data-bs-toggle="dropdown" aria-expanded="false">지역</button>
-		<ul class="dropdown-menu">
-			<li><a class="dropdown-item" href="#">서울</a></li>
-			<li><a class="dropdown-item" href="#">인천</a></li>
-			<li><a class="dropdown-item" href="#">경기</a></li>
-		</ul>
-	</div>
-	<div class="btn-group ">
-		<button type="button"
-			class="btn btn-outline-success dropdown-toggle mt-3"
-			data-bs-toggle="dropdown" aria-expanded="false">동물 종류</button>
-		<ul class="dropdown-menu">
-			<li><a class="dropdown-item" href="#">강아지</a></li>
-			<li><a class="dropdown-item" href="#">고양이</a></li>
-		</ul>
-	</div>
+<button type="button" class="btn btn-outline-success mt-3  ">전체지역</button>
+<button type="button" class="btn btn-outline-success mt-3  ">서울동부</button>
+<button type="button" class="btn btn-outline-success mt-3  ">서울남부</button>
+<button type="button" class="btn btn-outline-success mt-3  ">서울북부</button>
+<button type="button" class="btn btn-outline-success mt-3  ">서울서부</button>
+<button type="button" class="btn btn-outline-success mt-3  ">경기인천</button>
+
 	<c:if test="${login != null }">
 	<div class="btn-group float-end">
 		<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='myAdoptList.do?mNo=${login.mNo}'">
@@ -49,18 +37,30 @@
 		<c:otherwise>
 		
 
-		<div class="container mt-5" >
+	<div class="container mt-5 ms-5" > 
 			<div class="row">
 	<c:forEach items="${list}" var="dto">
-					<div class="col-sm mt-5">
-			<div class="card h-100" style="width:350px;">
-				<a href="#"><img src="resources/${dto.aThumbImg }" class="card-img-top"
-					alt="..."></a>
-				<div class="card-body">
-					<h5 class="card-title"><a href="adoptDetail.do?aNo=${dto.aNo}">${dto.aTitle}</a></h5>
-					<p class="card-text">${dto.aMemo}</p>
-				</div>
+			<div class="col-sm mt-5" >
+			<div class="card h-100" style="width:550px;">
+										<a href="adoptDetail.do?aNo=${dto.aNo}"> 
+				<img src="resources/${dto.aThumbImg }" class="card-img-top"
+					alt="..." style="width:550px;height:350px; border:none; object-fit:cover;"></a>
+												<div>
+							
+		 	<img src="resources/images/adopt_count.png" style="width:30px;">${dto.aCount }
+		 	지역:${dto.aArea }
+
 			</div>
+				<div class="card-body">
+					<h4 class="card-title text-center">${dto.anmName}를 소개합니다.<br>
+					
+					</h4>
+					<p class="card-text text-center">${dto.aMemo}</p>
+					
+				</div>
+
+			</div>
+
 			</div>
 			
 							</c:forEach>

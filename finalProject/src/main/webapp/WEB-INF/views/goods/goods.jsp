@@ -102,31 +102,25 @@ Resources
 
 <!-- dropDown1-start -->
 <div class="container dropdown ms-5 mt-4">
-  <a class="btn btn-outline-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-    상품카테고리
-  </a>
+		<button type="button"
+			class="btn btn-outline-success dropdown-toggle mt-3"
+			data-bs-toggle="dropdown" aria-expanded="false" style="width:200px; ">카테고리</button>
+		<ul class="dropdown-menu">
+			<li><a class="dropdown-item" href="#">가방</a></li>
+			<li><a class="dropdown-item" href="#">옷</a></li>
+			<li><a class="dropdown-item" href="#">악세사리</a></li>
+		</ul>
+	
+	
+		<div class="btn-group float-end">
+		<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='cartList.do?mNo=${login.mNo}'">
+		나의 장바구니 보기</button>
+	</div>
 
-  <ul class="btn btn-outline-success dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <li><a class="dropdown-item" href="#">가방</a></li>
-    <li><a class="dropdown-item" href="#">옷</a></li>
-    <li><a class="dropdown-item" href="#">몰라..</a></li>
-  </ul>
-
-
+</div>
 <!-- dropDown1-end -->
 
-<!-- dropDown2-start -->
-  <a class="btn btn-outline-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-    상품카테고리
-  </a>
 
-  <ul class="btn btn-outline-success dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <li><a class="dropdown-item" href="#">가방</a></li>
-    <li><a class="dropdown-item" href="#">옷</a></li>
-    <li><a class="dropdown-item" href="#">몰라..</a></li>
-  </ul>
-</div>
-<!-- dropDown2-end -->
 
 
 	<c:choose>
@@ -145,24 +139,22 @@ Resources
               
               
           <c:forEach items="${list}" var="dto">
-          		<div class="col-sm mt-5 ms-5">
-          		<div class="card h-100 " style="width:550px;">
           
-                <h3 class="card-header text-center ">
-                  	${dto.gName}
-                </h3>
+          
+          
+          		<div class="col-sm mt-5 ms-5">
+          		<div class="card h-100 " style="width:550px; height:550px;">
+          
                 <div class="card-body text-cente">
-                 	<img style="width:400px;height:100;" src="resources/${dto.gImg}" class="img-thumbnail" alt="...">
-                <p class="container mt-2">상품가격:${dto.gPrice}
+                 <a href="goodsDetails.do?gNo=${dto.gNo}">	<img style="width:500px;height:350px; border:none; object-fit:cover;" 
+                 src="resources/${dto.gImg}" class="img-thumbnail" alt="..."> </a><br>
+                 <br>
+                 <br>
+              	<h2>${dto.gName}</h2>
+                <p class="container mt-2">상품가격:${dto.gPrice}원
                   </p>
                 </div>
-               <div class="card-footer">
-                  <a href="goodsDetails.do?gNo=${dto.gNo}" class="btn btn-outline-success">구매하기</a>
-                  <a href="#" class="btn btn-outline-success">장바구니</a>
-                  
 
-                  
-              </div>
               </div>
               </div>
               

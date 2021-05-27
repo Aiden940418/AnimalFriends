@@ -38,6 +38,16 @@ CREATE TABLE ADOPT(
 
 SELECT * FROM ADOPT;
 
+
+select a.amno, (select m.mNick from adopt a, member m where a.amno = m.mno)
+from adopt a;
+
+select a.anmName , m.mNick
+from adopt a, (select m.mNick from adopt a, member m where a.amno = m.mno) m
+where ano = 6;
+
 commit;
+
+
 
 

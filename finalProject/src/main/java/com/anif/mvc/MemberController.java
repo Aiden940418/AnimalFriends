@@ -39,7 +39,7 @@ public class MemberController {
 	private Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	
-	// 전체멤버 목록보기  
+	// 전체멤버 목록보기 
 	@RequestMapping(value = "/memberList.do")
 	public String memberList(Model model) {
 		
@@ -48,13 +48,12 @@ public class MemberController {
 	}
 	
 	// 일반멤버 목록보기 
-		@RequestMapping(value = "/iMemberList.do")
-		public String iMemberList(Model model) {
-			
-			model.addAttribute("list",biz.iMemberList());	
-			return "admin/admin_userList";
-		}
-	
+	@RequestMapping(value = "/iMemberList.do")
+	public String iMemberList(Model model) {
+		
+		model.addAttribute("list",biz.iMemberList());	
+		return "admin/admin_userList";
+	}
 	
 	
 	// 보호소멤버 목록보기 

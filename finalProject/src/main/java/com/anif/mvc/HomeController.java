@@ -11,11 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.anif.mvc.adopt.biz.AdoptBiz;
+
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class HomeController {
+	
+	private AdoptBiz biz;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -41,6 +45,7 @@ public class HomeController {
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String main(Model model) {
 
+
 		
 		return "main";
 	}
@@ -64,6 +69,8 @@ public class HomeController {
 	
 	@RequestMapping(value = "/logo.do", method = RequestMethod.GET)
 	public String logo(Model model) {
+		
+
 		return "main";
 	}
 	
