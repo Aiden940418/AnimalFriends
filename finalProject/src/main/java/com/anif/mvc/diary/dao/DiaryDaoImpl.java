@@ -302,7 +302,6 @@ public class DiaryDaoImpl implements DiaryDao{
 			return register;
 		
 		}else {
-			System.out.println("여긴가?");
 			update = sqlSession.update(NAMESPACE + "update", dto);
 			return update;
 		}

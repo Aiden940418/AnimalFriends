@@ -94,8 +94,9 @@
 						</tr>
 
 						<tr>
-							<td colspan="2"><input type="button" value="취소"
-								class="btn btn-outline-success my-1" onclick="location.href='myQnaList.do'"
+							<th></th>
+							<td><input type="button" value="취소"
+								class="btn btn-outline-success my-1" onclick="location.href='mydiary.do'"
 								style="width: 90px; float: right;"> 
 								<input type="submit"
 								value="작성" class="btn btn-outline-success mx-3 my-1"

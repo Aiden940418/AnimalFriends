@@ -92,31 +92,22 @@
 								   }
 								  });
 						</script>
-						
-						<tr >
-							<td colspan="2">
-								<input type="submit" value="작성" class="btn btn-outline-success"
+						<tr>
+							<th></th>
+							<td height="150">
+								<input type="submit" value="완료" class="btn btn-outline-success"
 										style="width: 90px; ">
 								<input type="button" value="취소" class="btn btn-outline-success" onclick="location.href='mydiary.do'"
 										style="width: 90px;"> 
 							</td>
-
 						</tr>
 					</table>
 				</form>
 			</div>
 
-
-				
-
-				
-
-
-
-
 		</div>
+	</div>
+	</div>
+	<br><br>
 		<!-- footer -->
 		<%@ include file="../includes/footer.jsp"%>
-	</div>
-	</div>
-	
