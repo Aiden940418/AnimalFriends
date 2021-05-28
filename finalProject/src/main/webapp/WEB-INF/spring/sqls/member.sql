@@ -45,4 +45,11 @@ INSERT INTO MEMBER VALUES(
 MNO.NEXTVAL,1,'Y','user2','1234','1234','경상북도','아파트','홍길동','호이','01012314124','55534343211','213255213'
 );
 
+
+
 commit
+
+
+
+SELECT * FROM MEMBER
+	  	WHERE MNO = 3;

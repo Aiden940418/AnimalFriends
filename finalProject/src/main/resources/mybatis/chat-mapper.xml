@@ -12,9 +12,11 @@
 
 
 	<select id="isRoom" resultType="ChatRoomDto">
-		select * 
-		from CHATROOM 
-		WHERE CHATREQUESTERNO = #{chatRequesterNo} and CHATRESPONSORNO = #{chatResponsorNo}
+		SELECT * 
+		FROM CHATROOM 
+		WHERE ( CHATREQUESTERNO = #{chatRequesterNo} and CHATRESPONSORNO = #{chatResponsorNo} )
+				OR 
+			  ( CHATREQUESTERNO = #{chatResponsorNo} and CHATRESPONSORNO = #{chatRequesterNo} )
 	</select>
 	  	
   	<select id="selectChatroomList" parameterType="int" resultType="ChatRoomDto">
