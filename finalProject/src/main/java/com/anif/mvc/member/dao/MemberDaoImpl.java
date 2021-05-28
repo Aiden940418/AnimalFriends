@@ -195,9 +195,9 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public MemberDto selectOneMember(int mNo) {
 		MemberDto dto = null;
-		
+		System.out.println("잘 넘어왔나?: "+ mNo);
 		try {
-			dto = sqlSession.selectOne(NAMESPACE, mNo);
+			dto = sqlSession.selectOne(NAMESPACE + "selectOneMember", mNo);
 		} catch (Exception e) {
 			System.out.println("[error]: select one member" );
 			e.printStackTrace();

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.anif.mvc.chatting.dao.ChatDao;
+import com.anif.mvc.chatting.dto.ChatRoomDto;
 import com.anif.mvc.common.image.UploadFileUtils;
 import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
@@ -46,22 +47,32 @@ public class MypageController {
 	//마이페이지에서 1:1 대화를 눌러 목록을 볼 때
 	@RequestMapping("/chattingList.do")
 	public String chatList(Model model, HttpSession session) {
-		//채팅방 목록 뿌려줘야 함
+		//세션에서 로그인  dto 받아와서 채팅방 목록 뿌려주기
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
 		model.addAttribute("list", chatDao.selectChatroom(memberDto.getmNo()) );
 		return "mypage/mypage_chattingList";
 	}
 	
 	@RequestMapping("/adoptToChatList.do")
-	public String adoptToChatList(int aMno, HttpSession session) {
+	public String adoptToChatList(int chatResponsorNo, HttpSession session, Model model) throws Exception {
 		//공고 상세에서 넘어온 정보값을 채팅방을 생성하고 화면 목록에 채팅방 뿌릴 수 있게 해야 함
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
-		System.out.println("공고에서 넘어온 aMno: "+ aMno + " 로그인해서 1:1채팅 걸려는 Mno: "+ memberDto.getmNo());
+		System.out.println("공고에서 넘어온 aMno: "+ chatResponsorNo + " 로그인해서 1:1채팅 걸려는 Mno: "+ memberDto.getmNo());
 		
+		ChatRoomDto crDto = new ChatRoomDto();
+		crDto.setChatRequesterNo(memberDto.getmNo());
+		crDto.setChatResponsorNo(chatResponsorNo);
+		System.out.println("%%%%%%%%%%%%%%%% 세팅된 crDto: "+crDto);
+		System.out.println(chatDao.isRoom(crDto));
 		
+		if( chatDao.isRoom(crDto) == null ) {
+			//넘겨준 정보로 방이 없다면 방을 새로 생성
+			chatDao.createRoom(crDto);
+			System.out.println("조건문 실행되었나");
+		}
 		
-		
-		
+		//세션에서 로그인  dto 받아와서 채팅방 목록 뿌려주기
+		model.addAttribute("list", chatDao.selectChatroom(memberDto.getmNo()) );
 		
 		return "mypage/mypage_chattingList";
 	}
