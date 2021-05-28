@@ -33,4 +33,6 @@ public interface ChatDao {
 	public int insertMessage(MessageDto mDto);
 	public List<MessageDto> selectPrevMessage(int chatroomNo);
 	
+	public String selectRecentMsg(int roomNumber);
+	
 }

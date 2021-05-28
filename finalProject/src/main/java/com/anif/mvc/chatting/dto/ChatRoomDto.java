@@ -8,20 +8,24 @@ public class ChatRoomDto {
 	private String chatRequesterMnick;	//1:1 채팅 요청자 닉네임
 	private String chatResponsorMnick;	//1:1 채팅 수신자 닉네임
 	
+	private String recentMessage;		//채팅방의 가장 최근 메세지
+	
 	
 	public ChatRoomDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public ChatRoomDto(int chatroomNo, int chatRequesterNo, int chatResponsorNo, String chatRequesterMnick,
-			String chatResponsorMnick) {
+			String chatResponsorMnick, String recentMessage) {
 		super();
 		this.chatroomNo = chatroomNo;
 		this.chatRequesterNo = chatRequesterNo;
 		this.chatResponsorNo = chatResponsorNo;
 		this.chatRequesterMnick = chatRequesterMnick;
 		this.chatResponsorMnick = chatResponsorMnick;
+		this.recentMessage = recentMessage;
 	}
+	
 	
 	public int getChatroomNo() {
 		return chatroomNo;
@@ -53,6 +57,13 @@ public class ChatRoomDto {
 	public void setChatResponsorMnick(String chatResponsorMnick) {
 		this.chatResponsorMnick = chatResponsorMnick;
 	}
+	public String getRecentMessage() {
+		return recentMessage;
+	}
+	public void setRecentMessage(String recentMessage) {
+		this.recentMessage = recentMessage;
+	}
+	
 	
 	@Override
 	public String toString() {

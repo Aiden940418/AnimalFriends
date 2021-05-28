@@ -38,6 +38,15 @@
 	</select>
   	
   	
+  	<select id="selectRecentMsg" parameterType="int" resultType="MessageDto">
+  		SELECT * 
+		FROM MESSAGE
+		WHERE CHATROOMNO = #{roomNumber}
+		ORDER BY MSGSENDTIME DESC
+  	</select>
+  	
+  	
+  	
   	
   
   </mapper>
