@@ -45,6 +45,8 @@ public interface AdoptDao {
 	//조회수
 	public void viewCount(int aNo);
 	
+	//입양공고 지역 리스트
+	public List<AdoptDto> totalAreaList();
 	
 	//페이징 처리 
 	
@@ -52,8 +54,24 @@ public interface AdoptDao {
 	
 	
 	
+	public List<AdoptDto> seoulEastList();
+	
+	public List<AdoptDto> seoulWestList();
+		
+	public List<AdoptDto> seoulSouthList(); 
+
+	public List<AdoptDto> seoulNorthList(); 
+	
+	public List<AdoptDto> GyeonggiList();
+	
+	public List<AdoptDto> adoptSelect(AdoptDto dto);
+	
+	}
+
+	
+	
 	
 	
 
 
-}
+

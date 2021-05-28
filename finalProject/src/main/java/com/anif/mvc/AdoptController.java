@@ -66,7 +66,7 @@ public class AdoptController {
 		return "adopt/adopt";
 	}
 	
-	
+
 	// 입양공고 상세보기
 	@RequestMapping(value="adoptDetail.do", method = RequestMethod.GET)
 	public String adoptDetail(Model model, int aNo) {
@@ -90,6 +90,7 @@ public class AdoptController {
 		return "adopt/adopt_detail";
 
 	}
+	
 	
 	
 	//나의 입양공고 상세보기 
@@ -177,8 +178,26 @@ public class AdoptController {
 		}
 		
 	
-	
+
+		
+		
+		
 	}
+	//관리자 입양공고 지역-종 카테고리 선택
+	@RequestMapping(value="/adminAdoptCtgy.do", method=RequestMethod.GET)
+	public String adminAdoptCtgy(Model model) {
+		model.addAttribute("list",biz.adoptList());
+		System.out.println(model);
+		
+		return "admin/admin_adoptList";
+		
+		
+	}
+	
+	
+	
+	
+	
 	
 	
 	
@@ -228,6 +247,14 @@ public class AdoptController {
 		
 		
 	}
+
+	
+	
+	
+	
+	
+	
+	
 	//관리자 입양공고 다중삭제
 	@ResponseBody 
 	@RequestMapping(value="/multiDeleteAdopt.do", method= RequestMethod.POST)
@@ -346,5 +373,9 @@ public class AdoptController {
 	}
 	
 
+	
+	
+	
+	
 
 }

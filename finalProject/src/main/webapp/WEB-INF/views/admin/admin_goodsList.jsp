@@ -34,25 +34,14 @@ zoom: 1.5;
 			aria-expanded="false"> 상품카테고리 </a>
 
 		<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-			<li><a class="dropdown-item" href="#">가방</a></li>
-			<li><a class="dropdown-item" href="#">옷</a></li>
-			<li><a class="dropdown-item" href="#">몰라..</a></li>
+			<li><a class="dropdown-item" href="adminGoodsBagList.do">가방</a></li>
+			<li><a class="dropdown-item" href="adminGoodsClothList.do">옷</a></li>
+			<li><a class="dropdown-item" href="adminGoodsAccList.do">악세사리</a></li>
 		</ul>
 
 
 		<!-- dropDown1-end -->
 
-		<!-- dropDown2-start -->
-		<a class="btn btn-outline-success dropdown-toggle" href="#"
-			role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
-			aria-expanded="false"> 상품카테고리 </a>
-			
-
-		<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-			<li><a class="dropdown-item" href="#">가방</a></li>
-			<li><a class="dropdown-item" href="#">옷</a></li>
-			<li><a class="dropdown-item" href="#">몰라..</a></li>
-		</ul>
 
 		<div class="btn-group float-end me-4">
 	

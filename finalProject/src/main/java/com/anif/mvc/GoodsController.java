@@ -87,6 +87,31 @@ public class GoodsController {
 		
 		
 	}
+	//굿즈 카테고리 리스트 보기
+	@RequestMapping(value = "/goodsBagList.do")
+	public String goodsBagList(Model model) {
+				
+		model.addAttribute("list",biz.goodsBagList());
+		return "goods/goods";	
+	}
+	@RequestMapping(value = "/goodsClothList.do")
+	public String goodsClothList(Model model) {
+				
+		model.addAttribute("list",biz.goodsClothList());
+		return "goods/goods";	
+	}
+	@RequestMapping(value = "/goodsAccList.do")
+	public String goodsAccList(Model model) {
+				
+		model.addAttribute("list",biz.goodsAccList());
+		return "goods/goods";	
+	}
+	
+	
+	
+	
+	
+	
 	
 	//관리자 페이지에서 굿즈 리스트 상세
 	@RequestMapping(value = "adminGoodsDetail.do", method = RequestMethod.GET)

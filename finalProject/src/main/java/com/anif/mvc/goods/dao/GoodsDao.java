@@ -31,6 +31,24 @@ public interface GoodsDao {
 	
 	//관리자 페이지에서 굿즈 다중 삭제
 	public int multiDeleteGoods(GoodsDto dto);
+
+	//굿즈 카테고리 가방 선택
+	public List<GoodsDto> goodsBagList();
+
+	//굿즈 카테고리 옷 선택
+	public List<GoodsDto> goodsClothList();
+	
+	//굿즈 카테고리 악세사리 선택
+	public List<GoodsDto> goodsAccList();
+
+	//관리자 굿즈 카테고리 가방 선택
+	public List<GoodsDto> adminGoodsBagList();
+
+	//관리자 굿즈 카테고리 옷 선택
+	public List<GoodsDto> adminGoodsClothList();
+	
+	//관리자 굿즈 카테고리 악세사리 선택
+	public List<GoodsDto> adminGoodsAccList();
 	
 	
 

@@ -38,10 +38,10 @@
 							<th><button type="button" class="btn btn-outline-success"
 									style="width:130px; pointer-events: none;">지역설정</button></th>
 							<td><select name="aArea" class="form-control ms-2" style="width:200px">
-						<option value="서울동부">서울북부</option>
+						<option value="서울동부">서울동부</option>
 						<option value="서울서부">서울서부</option>
 						<option value="서울남부">서울남부</option>
-						<option value="서울북부">서울동부</option>
+						<option value="서울북부">서울북부</option>
 						<option value="경기인천">경기인천</option>
 
 						

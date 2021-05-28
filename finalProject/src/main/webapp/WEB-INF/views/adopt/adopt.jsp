@@ -12,12 +12,12 @@
 
 <!-- Example single danger button -->
 <div class="container mt-5">
-<button type="button" class="btn btn-outline-success mt-3  ">전체지역</button>
-<button type="button" class="btn btn-outline-success mt-3  ">서울동부</button>
-<button type="button" class="btn btn-outline-success mt-3  ">서울남부</button>
-<button type="button" class="btn btn-outline-success mt-3  ">서울북부</button>
-<button type="button" class="btn btn-outline-success mt-3  ">서울서부</button>
-<button type="button" class="btn btn-outline-success mt-3  ">경기인천</button>
+<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='totalAreaList.do'">전체지역</button>
+<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='seoulEastList.do'">서울동부</button>
+<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='seoulSouthList.do'">서울남부</button>
+<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='seoulNorthList.do'">서울북부</button>
+<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='seoulWestList.do'">서울서부</button>
+<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='GyeonggiList.do'">경기인천</button>
 
 	<c:if test="${login != null }">
 	<div class="btn-group float-end">
