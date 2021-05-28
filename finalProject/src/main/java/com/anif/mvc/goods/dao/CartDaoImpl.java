@@ -69,6 +69,12 @@ public class CartDaoImpl implements CartDao {
 		return sqlSession.selectList(NAMESPACE+"orderList",order);
 	
 	}
+
+
+	@Override
+	public int orderInfoStatusUpdate(int orderId) {
+		return sqlSession.update(NAMESPACE+"orderInfoStatusUpdate",orderId);
+	}
 	
 	
 	

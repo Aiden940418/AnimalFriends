@@ -80,23 +80,24 @@ CREATE TABLE GOODSORDER (
     ORDERADDR3  varchar2(50) not null,
     ORDERPHONE  varchar2(30) not null,
     AMOUNT      number       not null,
-    ORDERDATE   Date         default sysdate,   
-    primary key(orderId)
+    ORDERDATE   Date         default sysdate, 
+    GNO		NUMBER,
+    GREVIEWSTATUS VARCHAR2(50) not null,
+    primary key(orderId),
+    CONSTRAINT GREVIEWSTATUS_CHK CHECK(GREVIEWSTATUS IN('false','true'))
 
 
 
 );
 
---굿즈오더 더미데이터     
-INSERT INTO GOODSORDER VALUES( '2', 1, '관리자', 'TEST', 'TEST', 'TEST', '010-1111-2222', 10000, SYSDATE );
-    
-SELECT * FROM GOODSORDER;
-
-DELETE FROM GOODSORDER WHERE ORDERID = '관리자';
-
 -- 이부분 새로추가 --
 alter table goodsorder 
     add GNO NUMBER;
+    
+-- 이부분 추가 필요! --
+ALTER TABLE GOODSORDER
+	ADD GREVIEWSTATUS VARCHAR2(2)
+	CONSTRAINT GREVIEWSTATUS_CHK CHECK(GREVIEWSTATUS IN('false','true'));
     
     
     select * from goodsorder;

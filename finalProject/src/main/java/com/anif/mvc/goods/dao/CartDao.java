@@ -26,5 +26,6 @@ public interface CartDao {
 	
 	public List<GoodsOrderDto> orderList(GoodsOrderDto order);
 	
+	public int orderInfoStatusUpdate(int orderId);
 
 }

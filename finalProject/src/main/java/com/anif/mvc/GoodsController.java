@@ -396,6 +396,7 @@ public class GoodsController {
 		if (res > 0) { // 글 insert 성공 시
 			model.addAttribute("msg", "글 등록 성공!");
 			model.addAttribute("url", "/reviewDetails.do?gRewNo=gRewNo();");
+			int res2 = 
 		} else {  //글 insert 실패 시
 			model.addAttribute("msg", "글 등록 실패!");
 			model.addAttribute("url", "/mygoodsReviewWriteForm.do");
