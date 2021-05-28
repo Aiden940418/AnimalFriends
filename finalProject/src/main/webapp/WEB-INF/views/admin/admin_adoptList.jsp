@@ -43,12 +43,7 @@
    
 	
 </style>
-<script type="text/javascript">
-	function adminAdoptAreaCheck(){
-		
-	}
 
-</script>
 
 <!-- header -->
 <%@ include file="../includes/header.jsp"%>
@@ -58,9 +53,8 @@
 
 
 <div class="contentDiv">
-<!-- Example single danger button -->
-<div class="container mt-5">
 
+	
 	<div class="container text-center" id="adtNotiMng">
 		<h1 class="">입양공고 관리</h1>
 	</div>
@@ -68,55 +62,32 @@
 	<!-- 가로줄 -->
 	<div id="horisonLine"></div>
 	
-		<form action="adminAdoptCtgy.do" method="GET">
-	<div class="btn-group">
-			<select id="aArea" name="aArea" class="form-control ms-2 text-center" style="width: 100px ">
-				<option value="0">지역</option>
-				<option value="서울동부">서울동부</option>
-				<option value="서울서부">서울서부</option>
-				<option value="서울남부">서울남부</option>
-				<option value="서울북부">서울북부</option>
-				<option value="경기인천">경기인천</option>
-			</select>
-
-	</div>
-	<div class="btn-group " >
-			<select id="aType" name="aType" class="form-control ms-2 text-center" style="width: 100px ">
-				<option value="0">동물종류</option>
-				<option value="강아지">강아지</option>
-				<option value="고양이">고양이</option>
-				
-			</select>
-	</div>
-	<div class="btn-group" >
-		<button type="submit" class="btn btn-outline-success mt-3" id="search">찾기</button>
-		
-		
-		<script>
-		
-		$("#search").click(function() {
-									
-				var aArea = $("#aArea").val();
-				var aType = $("#aType").val();
-
-				
-				if(aArea == "0" || aType == "0") {
-					
-					alert("검색오류 선택해주세요");
-					
-				
-				}
-				
-			
-		});							
-		</script>
-	</div>
-	</form>
-	
-	
 
 <!-- Example single danger button -->
 	<div class="container" id="secCtn">
+		<div class="btn-group">
+			<button type="button"
+				class="btn btn-outline-success dropdown-toggle mt-3"
+				data-bs-toggle="dropdown" aria-expanded="false">지역</button>
+			<ul class="dropdown-menu">
+				<li><a class="dropdown-item" href="#">서울</a></li>
+				<li><a class="dropdown-item" href="#">인천</a></li>
+				<li><a class="dropdown-item" href="#">경기</a></li>
+			</ul>
+		</div>
+		<div class="btn-group ">
+			<button type="button"
+				class="btn btn-outline-success dropdown-toggle mt-3"
+				data-bs-toggle="dropdown" aria-expanded="false">동물 종류</button>
+			<ul class="dropdown-menu">
+				<li><a class="dropdown-item" href="#">강아지</a></li>
+				<li><a class="dropdown-item" href="#">고양이</a></li>
+			</ul>
+		</div>
+		<div class="btn-group">
+			<button type="submit" class="btn btn-outline-success mt-3 ">찾기</button>
+		</div>
+	
 		
 			<div class="delBtnNallCheck">
 					
