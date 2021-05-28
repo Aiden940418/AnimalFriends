@@ -375,42 +375,26 @@ public class GoodsController {
 		return "goods/goods_review";
 	}
 	
-	//리뷰등록 가져오기
-	@RequestMapping(value = "/mygoodsReviewWriteForm.do")
-	public String mygoodsReviewWriteForm(int gNo) {
-		
-		return "mypage/mypage_mygoodsReviewWriteForm";
-		
-	}
-	
 	//리뷰 등록하기
 	@RequestMapping(value = "/mypageReviewWrite.do")
-	public String mypageReviewWrite(ReviewDto dto, HttpSession session, Model model) throws IOException, Exception {
+	public String mypageReviewWrite(ReviewDto dto, String orderId, HttpSession session, Model model) throws IOException, Exception {
 		logger.info("mypageReviewWrite INSERT");
 		
 		//현재 로그인 되어있는 계정의 회원번호를 가져와서 dto에 세팅해주기
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
 		
 		int res = reviewBiz.mypageReviewWrite(dto);
-
+		
 		if (res > 0) { // 글 insert 성공 시
 			model.addAttribute("msg", "글 등록 성공!");
 			model.addAttribute("url", "/reviewDetails.do?gRewNo=gRewNo();");
-			int res2 = 
+			cartBiz.orderInfoStatusUpdate(orderId);
 		} else {  //글 insert 실패 시
 			model.addAttribute("msg", "글 등록 실패!");
 			model.addAttribute("url", "/mygoodsReviewWriteForm.do");
 		}
 		
 		return "mypage/mypage_mygoodsBuyList";
-	}
-	
-	//리뷰 수정 가져오기
-	@RequestMapping(value = "mygoodsRevewUpdateForm.do",method = RequestMethod.GET)
-	public String mygoodsRevewUpdateForm(Model model/*, int gNo*/) {		
-
-		//model.addAttribute("dto",biz.adminGoodsDetail(gNo));
-		return "mypage/mypage_mygoodsReviewUpdateForm";
 	}
 	
 	//리뷰 수정 

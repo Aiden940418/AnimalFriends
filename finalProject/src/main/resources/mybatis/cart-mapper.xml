@@ -88,6 +88,12 @@
      from goodsorder
      where mNo = #{mNo}
 </select>
-  	
+
+	<!-- status update -->
+  	<update id="orderInfoStatusUpdate">
+  		UPDATE GOODSORDER
+  		SET GREVIEWSTATUS = 'true'
+  		WHERE ORDERID = #{orderId}
+  	</update>
   	
  </mapper>

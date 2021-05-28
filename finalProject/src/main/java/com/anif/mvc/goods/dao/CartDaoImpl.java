@@ -72,7 +72,7 @@ public class CartDaoImpl implements CartDao {
 
 
 	@Override
-	public int orderInfoStatusUpdate(int orderId) {
+	public int orderInfoStatusUpdate(String orderId) {
 		return sqlSession.update(NAMESPACE+"orderInfoStatusUpdate",orderId);
 	}
 	
