@@ -36,6 +36,8 @@
 					style="color:black; text-decoration:none; !important">
 				<div class="col border border-success" style="height:100px;">
 					<span style="justify-content: center; align-items: center">채팅방 참여자:${chatroomDto.chatRequesterMnick}, ${chatroomDto.chatResponsorMnick }</span>
+					<br>
+					<span style="justify-content: center; align-items: center">최근 메세지 : ${chatroomDto.recentMessage}</span>
 				</div>
 			</a>
 		

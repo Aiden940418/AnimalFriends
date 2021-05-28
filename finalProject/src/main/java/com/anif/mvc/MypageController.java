@@ -2,6 +2,7 @@ package com.anif.mvc;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -49,7 +50,18 @@ public class MypageController {
 	public String chatList(Model model, HttpSession session) {
 		//세션에서 로그인  dto 받아와서 채팅방 목록 뿌려주기
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
-		model.addAttribute("list", chatDao.selectChatroom(memberDto.getmNo()) );
+		
+		List<ChatRoomDto> chatRoomList = chatDao.selectChatroom(memberDto.getmNo());
+		
+		//반복문 돌면서 리스트 하나의 요소씩 채팅방 번호로 최근 메세지 조회해서 list에 세팅해주기
+		for(int i=0; i<chatRoomList.size(); i++) {
+			int roomNumber = chatRoomList.get(i).getChatroomNo();
+			String recentMsg = chatDao.selectRecentMsg(roomNumber); 
+			chatRoomList.get(i).setRecentMessage(recentMsg);
+		}
+		
+		model.addAttribute("list", chatRoomList);
+		
 		return "mypage/mypage_chattingList";
 	}
 	

@@ -114,6 +114,24 @@ public class ChatDaoImpl implements ChatDao{
 	}
 
 
+	@Override
+	public String selectRecentMsg(int roomNumber) {
+		List<MessageDto> list = null;
+		String recentMsg = "";
+		
+		try {
+			list = sqlSession.selectList(namespace + "selectRecentMsg", roomNumber);
+			recentMsg = list.get(0).getMsgContent();
+			
+		} catch (Exception e) {
+			System.out.println("[error] : SELECT selectRecentMsg");
+			e.printStackTrace();
+		}
+		
+		return recentMsg;
+	}
+
+
 
 //	@Override
 //	public void insertMessage(MessageDto vo) throws Exception {
