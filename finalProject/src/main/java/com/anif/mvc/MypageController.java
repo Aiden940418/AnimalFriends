@@ -84,7 +84,7 @@ public class MypageController {
 //		model.addAttribute("chatResponsorNo", chatResponsorNo);
 		
 		model.addAttribute("chatroomDto", chatroomDto);
-		
+		model.addAttribute("prevMsg", chatDao.selectPrevMessage( chatroomDto.getChatroomNo() ));
 		return "mypage/mypage_chattingDetail";
 	}
 	

@@ -25,10 +25,17 @@
 		WHERE CHATREQUESTERNO = #{mNo} OR CHATRESPONSORNO = #{mNo}
 	</select>
   	
+  	<insert id="insertMsg" parameterType="MessageDto">
+		INSERT INTO MESSAGE
+		VALUES( MSGNO.NEXTVAL, #{msgSenderNo}, #{msgReceiverNo}, #{msgContent}, SYSDATE, #{chatroomNo}, #{chatRequesterNo}, #{chatResponsorNo}, #{senderMnick})
+	</insert>
   	
-  	
-  	
-  	
+  	<select id="selectPrevMsg" parameterType="int" resultType="MessageDto">
+		SELECT * 
+		FROM MESSAGE
+		WHERE CHATROOMNO = #{chatroomNo}
+		ORDER BY MSGSENDTIME ASC
+	</select>
   	
   	
   	

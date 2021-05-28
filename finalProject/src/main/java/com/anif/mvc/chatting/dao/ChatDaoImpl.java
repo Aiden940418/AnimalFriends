@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.anif.mvc.chatting.dto.ChatRoomDto;
+import com.anif.mvc.chatting.dto.MessageDto;
 import com.anif.mvc.member.biz.MemberBiz;
 import com.anif.mvc.member.dto.MemberDto;
 
@@ -77,6 +78,39 @@ public class ChatDaoImpl implements ChatDao{
 		}
 		System.out.println("@@@@@@@@@ roomDtoList : "+roomDtoList.toString());
 		return roomDtoList;
+	}
+
+
+
+	@Override
+	public int insertMessage(MessageDto mDto) {
+		int res = 0;
+		
+		System.out.println("DB에 넣을 메세지: "+mDto);
+		try {
+			res = sqlSession.insert(namespace+"insertMsg", mDto);
+		} catch (Exception e) {
+			System.out.println("[error] : INSERT Message");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+
+
+	@Override
+	public List<MessageDto> selectPrevMessage(int chatroomNo) {
+		List<MessageDto> msgList = null;
+		
+		try {
+			msgList = sqlSession.selectList(namespace+"selectPrevMsg", chatroomNo);
+		} catch (Exception e) {
+			System.out.println("[error] : SELECT Previous Message");
+			e.printStackTrace();
+		}
+		
+		return msgList;
 	}
 
 
