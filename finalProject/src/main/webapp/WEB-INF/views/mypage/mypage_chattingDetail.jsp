@@ -44,7 +44,10 @@
 				var seconds = today.getSeconds();  // 초
 				var msgSendtimeScript = month + "월" + date + "일 " + hours + ":" + minutes + ":" + seconds;
 			  	message.msgSendtimeScript = msgSendtimeScript  //만든 시간 메세지 json객체에 넣어주기
+			  }else{
+				return false;	  
 			  }
+			
 			
 			this._sendMessage(JSON.stringify(message));
 			$('#message').val('');
@@ -150,7 +153,7 @@
 					<div style="width: 400px; height: 400px; padding: 10px; border: solid 1px #e1e3e9; ">
 						<div id="divChatData" >
 							<c:forEach items="${prevMsg }" var="msgDto">
-								<div> ${msgDto.senderMnick } : ${msgDto.msgContent } </div>
+								<div> ${msgDto.senderMnick } : ${msgDto.msgContent } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${msgDto.msgSendtimeScript }</div>
 							</c:forEach> 	
 						
 						</div>
