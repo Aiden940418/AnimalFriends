@@ -125,8 +125,8 @@
 	<div class="contentDiv">
 		
 		<!-- 1:1 채팅창 박스 영역 -->
-		<div style="margin-left: 300px; margin-top: 70px;">
-			<div class="alert alert-primary" style="width: 500px; height: 700px; color:black;">
+		<div class="row">
+			<div class="alert alert-success mt-2" style="width: 1000px; height: 700px; color:black; float:none; margin:0 auto">
 				
 				<!-- 상단영역(프로필, userName, nickName, 화상채팅) -->
 				<div class="row">
@@ -136,24 +136,25 @@
 					<div class="col">
 						채팅 참여자 <br>[${chatroomDto.chatRequesterMnick }, ${chatroomDto.chatResponsorMnick }]
 					</div>
-					<!-- 화상채팅 아이콘 -->
-					<div class="col" style="max-width: 100px;">
-						<a href="#">
-							<ion-icon name="videocam-outline" style="font-size:50px; color:black;"></ion-icon>
-						</a>
-					</div>
 				</div>
 				
 				<hr> <!-- 가로선 -->
 				
 				
 				<!-- 채팅창 영역 -->
-				<div id="chatDiv" style="width: 460px; height: 500px; border: 1px solid black; overflow-y: scroll;" >
+				<div id="chatDiv" class="border border-success border-2" style="width: 965px; height: 500px; overflow-y: scroll;" >
 					
-					<div style="width: 400px; height: 400px; padding: 10px; border: solid 1px #e1e3e9; ">
+					<div style="width: 400px; height: 400px; padding: 10px; ">
 						<div id="divChatData" >
 							<c:forEach items="${prevMsg }" var="msgDto">
-								<div> ${msgDto.senderMnick } : ${msgDto.msgContent } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${msgDto.msgSendtimeScript }</div>
+							
+							<!-- 조건문을 써서 다르게 띄워준다. -->
+							<%-- <c:if test=""> --%>
+								<div>${msgDto.senderMnick }<br>
+									 <p class="btn btn-light">${msgDto.msgContent }</p>
+									 	<span class="float-end">${msgDto.msgSendtimeScript }</span></div>
+									 	
+							<%-- </c:if>	 --%>	 	
 							</c:forEach> 	
 						
 						</div>
@@ -165,10 +166,10 @@
 				
 				
 				<!-- 메세지 전송 입력 부분 -->
-				<div style="position: absolute; bottom: 0px; width: 470px;">
-					<div class="input-group mb-3">
+				<div style="position: absolute; bottom: 0px; width: 965px;">
+					<div class="input-group mb-2">
 						<input type="text" class="form-control" placeholder="메세지를 입력해주세요" id="message" onkeypress="if(event.keyCode==13){webSocket.sendChat();}" /> 
-						<input type="button" class="btn btn-outline-secondary" id="btnSend" value="전송" onclick="webSocket.sendChat()" style="color: #fff; background-color: #6c757d; border-color: #6c757d;" />
+						<input type="button" class="btn btn-success" id="btnSend" value="전송" onclick="webSocket.sendChat()" />
 						
 					</div>
 				</div>
@@ -177,19 +178,13 @@
 
 		</div>
 		
-		
-		
-		
-		
+	<!-- footer -->
+	<%@ include file="../includes/footer.jsp" %>
 
 	</div>
 	
-	
-	
 
-	<br><br><br>
-	<!-- footer -->
-	<%@ include file="../includes/footer.jsp" %>
+
 
 </body>
 </html>
