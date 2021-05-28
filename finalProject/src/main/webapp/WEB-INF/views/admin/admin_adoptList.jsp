@@ -9,11 +9,7 @@
 	
 	}
 	
-	#adtNotiMng {
-		position: relative;
-    	top: 80px;
 	
-	}
 	
 	#horisonLine {
  	    height: 10px;
@@ -23,14 +19,19 @@
 	    width: 98%;
 	 }
 	 
+	 #adtNotiMng {
+		position: relative;
+    	top: 80px;
+	
+	}
+	 
 	 #secCtn {
 	 	position: absolute;
 		top: 215px;	 	
 	 }
 	 
 	 #thrCtn {
-	 	position: absolute;
-	 	top:290px;
+	 	 margin-top: 195px;
 	 }
 	 
 	 .delBtnNallCheck {
@@ -60,7 +61,6 @@
 	
 	<!-- 가로줄 -->
 	<div id="horisonLine"></div>
-	
 	
 
 <!-- Example single danger button -->
@@ -146,13 +146,15 @@
 	
 
 
-		<c:choose>
-			<c:when test="${empty list }">
-				<p>작성된 글이 없습니다</p>
-			</c:when>
-		<c:otherwise>
 				<div class="container" id="thrCtn">
 					<div class="row">
+					<c:choose>
+						<c:when test="${empty list }">
+							<div class="col text-center mt-5">
+								<p>작성된 글이 없습니다</p>
+							</div>
+						</c:when>
+					<c:otherwise>
 						<c:forEach items="${list}" var="dto">
 							<div class="col-sm mt-5">
 					
@@ -172,14 +174,14 @@
 									</div>
 								</div>
 							</div>
-						</c:forEach>
-					</div>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 				</div>
-		</c:otherwise>
-		</c:choose>
+			</div>
 		
 </div>
 
 	<!-- footer -->
-<%@ include file="../includes/footer.jsp"%>
+	<%@ include file="../includes/footer.jsp"%>
 

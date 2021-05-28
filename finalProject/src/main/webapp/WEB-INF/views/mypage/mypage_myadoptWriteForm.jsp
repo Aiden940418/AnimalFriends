@@ -9,6 +9,29 @@
 	
 	<!-- leftMenuBar -->
 	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>	
+<style>
+		.box {
+			width: 300px;
+			height: 300px; 
+			border-radius: 20%;
+			overflow: hidden;
+			border: 3px	solid #54BD54;
+			position:relative;
+			left:110px;
+				
+		}
+	
+		.profile {
+		    width: 100%;
+		    height: 100%;
+		    object-fit: cover;
+		}
+
+</style>	
+	
+	
+	
+	
 	<!-- 페이지 내용 부분 -->
 	
 	<div class="contentDiv">
@@ -163,7 +186,9 @@
 							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
 									style="width: 130px; pointer-events: none;">이미지 미리보기</button></th>
 							<td id="select_img" style="table-layout:auto; float: left; text-algin:center;" >
-									<img src=""/>
+									<div class="box my-3">
+										<img class="profile" src=""/>
+							        </div>
 							
 							</td>
 							
