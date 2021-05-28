@@ -85,6 +85,7 @@ public class MypageController {
 		return "mypage/mypage_mydiary";
 	}
 	
+	//나의 입양 일기_프로필 사진 등록 및 수정
 	@RequestMapping("/RgstOrUpdate.do")
 	public String RgstOrUpdate(Model model, HttpSession session) {
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
@@ -95,17 +96,6 @@ public class MypageController {
 		return "mypage/mypage_mydiaryProfileRgstOrUpdate";
 	}
 	
-//	@RequestMapping("/myDrPrfUpdate.do")
-//	public String myDrPrfUpdate(Model model, HttpSession session) {
-//		
-//		MemberDto memberDto = (MemberDto) session.getAttribute("login");
-//		int mNo = memberDto.getmNo();
-//		model.addAttribute("prf", diaryBiz.profileImgSelect(mNo)); 
-//
-//		
-//		return "mypage/mypage_mydiaryProfileUpdate";
-//	}
-
 	@RequestMapping("/myDrPrfRorURes.do")
 	public String myDrPrfRorURes(ProfileImgDto dto, HttpSession session, @RequestParam(value = "file", required = false) MultipartFile file, Model model) throws IOException, Exception {
 		logger.info("Profile Img Register");

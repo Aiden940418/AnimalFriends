@@ -85,87 +85,78 @@
     top: 0;
     transition: all ease-in-out .35s;
   }
+  
   p {
   	font-size: 13pt;
   }
-
-
-Resources
+  
+  	#horisonLine {
+ 	    height: 10px;
+	    border-bottom: groove;
+	    position: relative;
+		top: 20px;
+    	width: 100%;
+	 }
 
 </style>
 
-<div class="container text-center">
-<h1 class="display-3 mt-5">GOODS</h1>
-<hr>
-</div>
+<div class="contentDiv">
 
-
-<!-- dropDown1-start -->
-<div class="container dropdown ms-5 mt-4">
-		<button type="button"
-			class="btn btn-outline-success dropdown-toggle mt-3"
-			data-bs-toggle="dropdown" aria-expanded="false" style="width:200px; ">카테고리</button>
-		<ul class="dropdown-menu">
-			<li><a class="dropdown-item" href="#">가방</a></li>
-			<li><a class="dropdown-item" href="#">옷</a></li>
-			<li><a class="dropdown-item" href="#">악세사리</a></li>
-		</ul>
-	
-	
-		<div class="btn-group float-end">
-		<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='cartList.do?mNo=${login.mNo}'">
-		나의 장바구니 보기</button>
+	<div class="container text-center">
+		<h1 class="mt-5">GOODS</h1>
+		<div id="horisonLine"></div>
 	</div>
-
-</div>
-<!-- dropDown1-end -->
-
-
-
-
-	<c:choose>
-		<c:when test="${empty list}">
-		
-		<h2>등록된 글이 없습니다. </h2>
-		</c:when>
+	<!-- 가로줄 -->
 	
-	
-		<c:otherwise>
-		
-		
-				
-          	<div class="container mt-5 text-center ms-5">
-            <div class="row">
-              
-              
-          <c:forEach items="${list}" var="dto">
-          
-          
-          
-          		<div class="col-sm mt-5 ms-5">
-          		<div class="card h-100 " style="width:550px; height:550px;">
-          
-                <div class="card-body text-cente">
-                 <a href="goodsDetails.do?gNo=${dto.gNo}">	<img style="width:500px;height:350px; border:none; object-fit:cover;" 
-                 src="resources/${dto.gImg}" class="img-thumbnail" alt="..."> </a><br>
-                 <br>
-                 <br>
-              	<h2>${dto.gName}</h2>
-                <p class="container mt-2">상품가격:${dto.gPrice}원
-                  </p>
-                </div>
 
-              </div>
-              </div>
-              
-                        </c:forEach>
-              
-              </div>
-              </div>
-              
+		<!-- dropDown1-start -->
+		<div class="container dropdown ms-5 mt-4">
+			<div class="row">
+				<div class="col-6">
+					<button type="button"
+						class="btn btn-outline-success dropdown-toggle mt-3"
+						data-bs-toggle="dropdown" aria-expanded="false" style="width:200px; ">카테고리</button>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="#">가방</a></li>
+						<li><a class="dropdown-item" href="#">옷</a></li>
+						<li><a class="dropdown-item" href="#">악세사리</a></li>
+					</ul>
+				</div>
+				<div class="col-6">
+					<div class="btn-group float-end">
+						<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='cartList.do?mNo=${login.mNo}'">
+							나의 장바구니 보기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- dropDown1-end -->
+
+
+       	<div class="container mt-5 text-center ms-5">
+           <div class="row">
+				<c:choose>
+					<c:when test="${empty list}">
+						<h2>등록된 글이 없습니다. </h2>
+					</c:when>
+					<c:otherwise>
+		         		<c:forEach items="${list}" var="dto">
+			          		<div class="col-sm mt-5 ms-5">
+				          		<div class="card h-100 " style="width:550px; height:550px;">
+				                <div class="card-body text-cente">
+				                 	<a href="goodsDetails.do?gNo=${dto.gNo}">	<img style="width:500px;height:350px; border:none; object-fit:cover;" 
+				                 		src="resources/${dto.gImg}" class="img-thumbnail" alt="..."> </a><br>
+				                 	<br><br>
+					              	<h2>${dto.gName}</h2>
+					                <p class="container mt-2">상품가격:${dto.gPrice}원</p>
+				                </div>
+				              	</div>
+			              	</div>
+		        		</c:forEach>
+			    	</c:otherwise>
+				</c:choose>
             </div>
-    </c:otherwise>
-
-	</c:choose>
+        </div>
+</div>
 				
  <%@ include file="../includes/footer.jsp" %>   

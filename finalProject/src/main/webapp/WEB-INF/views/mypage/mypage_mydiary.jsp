@@ -74,7 +74,8 @@
 				overflow: hidden;
 				border: 3px	solid #54BD54;
 				position:absolute;
-				left:300px;
+				left:20px;
+				top:50px;
 			}
 	
 		.profile {
@@ -84,17 +85,11 @@
 		}
 		
 		
-		.contentDiv {
-		
-		font-family: 'Do Hyeon', sans-serif;
-		color: #696767;
-		
-		}
-		
+	
 		#MidMnickDiv {
-			position:absolute;
-			top:150px;
-			left:500px;
+			position: absolute;
+		    top: 70px;
+		    left: 220px;
 			padding:0px;
 			margin:0px;
 			width:300px;
@@ -104,20 +99,26 @@
  		#RorUdiv {
 			width:150px;
 			position:absolute;
-			top:290px;
-			left:320px;
+			top: 220px;
+    		left: 40px;
 		
 		}
 		
 		 #DRicon {
 			width:100px;
-    		position: relative;
-    		left: 900px;
+    		position: absolute;
+    		right: 12px;
  		
 		}
 		
-	 
-	 
+	 	#horisonLine {
+	 	    height: 10px;
+		    border-bottom: groove;
+		    position: relative;
+		    top: 145px;
+		    width: 98%;
+	 	}
+	
 
 </style>
 
@@ -163,50 +164,37 @@
 	<br>
 	<br>
 		<!-- 가로줄 -->
-		<div style="border-bottom: groove; margin-top: 80px; margin-left: 25px; margin-right: 95px;">
-		</div>
+		<div id="horisonLine"></div>
 		
 		<!-- 입양일기 그리드 시작 -->
-		<div class="container">
-			<div class="row">
-			
-			
-				<c:forEach items="${list }" var="dto">		
-					<!-- 글 박스 카드 -->
-					<div class="col-sm">
-                        <div class="card text-center" style="width: 22rem; margin-top: 20px;">
-                            <img class="card-img-top"
-                                src="resources/${dto.diaryImg }" alt="Card image cap"
-                                style="width:22rem;height:15rem; border:none; object-fit:cover;"
-                                >
-                            <div class="card-body box">
-                                <p class="card-text content">${dto.dcontent }</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">작성일 [ ${dto.ddateToChar } ]</li>
-                             </ul>
-                            <div class="d-grid gap-2">
-                                <button class="btn btn-outline-success" id="deleteBtn" value="${dto.dno }">글 삭제</button>
-                            </div>
-                        </div>
-                    </div>
-				</c:forEach>	
-			</div>
-				
+	<div class="container">
+		<div class="row">
+			<c:forEach items="${list }" var="dto">		
+				<!-- 글 박스 카드 -->
+				<div class="col-sm">
+                       <div class="card text-center" style="width: 22rem; margin-top: 20px;">
+                           <img class="card-img-top"
+                               src="resources/${dto.diaryImg }" alt="Card image cap"
+                               style="width:22rem;height:15rem; border:none; object-fit:cover;"
+                               >
+                           <div class="card-body box">
+                               <p class="card-text content">${dto.dcontent }</p>
+                           </div>
+                           <ul class="list-group list-group-flush">
+                               <li class="list-group-item">작성일 [ ${dto.ddateToChar } ]</li>
+                            </ul>
+                           <div class="d-grid gap-2">
+                               <button class="btn btn-outline-success" id="deleteBtn" value="${dto.dno }">글 삭제</button>
+                           </div>
+                       </div>
+                   </div>
+			</c:forEach>	
 		</div>
-		
-		
-		
-		
-		
-		
+			
 	</div>
+		
+</div>
 
-
-	
-
-
-	<br><br><br>
 	<!-- footer -->
 	<%@ include file="../includes/footer.jsp" %>
 	

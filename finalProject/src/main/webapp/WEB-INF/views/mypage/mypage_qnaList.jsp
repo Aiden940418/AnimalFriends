@@ -108,22 +108,6 @@
 
 		</div>
 	</div>
+</div>
 	<!-- footer -->
 	<%@ include file="../includes/footer.jsp"%>
-</div>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
