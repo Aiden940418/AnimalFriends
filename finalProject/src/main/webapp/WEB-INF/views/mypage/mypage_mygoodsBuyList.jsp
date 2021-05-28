@@ -25,6 +25,13 @@
 						<h5 class="card-title">주문번호 : <a>${orderList.orderId }</a> </h5><br>
 						<p class="card-text">주문자 : ${orderList.orderName }</p>
 						<p class="card-text">결제금액 : <fmt:formatNumber pattern="###,###,###" value="${orderList.amount}" /> 원</p>
+						<!--
+						<c:set var="gReviewStatus" value="${orderList.gReviewStatus }" />
+
+						<c:if test="${gReviewStatus eq 'false'}">
+						
+						</c:if>
+						-->
 						<button type="button" class="reviewOpen_btn">상품 리뷰 입력</button>
 						<script>
 							$(".reviewOpen_btn").click(function(){
@@ -32,6 +39,7 @@
 								$(".reviewOpen_btn").slideUp();
 							});
 						</script>
+						
 					</div>
 				</div>
 				
@@ -47,6 +55,7 @@
          			<div class="ms-5 container mt-2 boarder=1" id="sameAddr" >
          				<form action="mypageReviewWrite.do" method="post">
          					<input type="hidden" name="gRewWriter" value="${login.mNick }">
+         					<input type="hidden" name="orderId" value="${orderList.orderId }">
          					<input type="hidden" name="gNo" value="${orderList.gNo }">
          					<table>
          						<tr>

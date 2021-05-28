@@ -60,7 +60,7 @@ public class CartBizImpl implements CartBiz{
 		
 	}
 	@Override
-	public int orderInfoStatusUpdate(int orderId) {
+	public int orderInfoStatusUpdate(String orderId) {
 		return dao.orderInfoStatusUpdate(orderId);
 	}
 	
