@@ -31,7 +31,8 @@
 		<!-- 채팅방 -->
 		 <c:forEach items="${list }" var="chatroomDto">
 			
-			<a href="chattingDetail.do?chatroomNo=${chatroomDto.chatroomNo}&chatRequesterNo=${chatroomDto.chatRequesterNo}&chatResponsorNo=${chatroomDto.chatResponsorNo}" 
+			<a href="chattingDetail.do?chatroomNo=${chatroomDto.chatroomNo}&chatRequesterNo=${chatroomDto.chatRequesterNo}&chatResponsorNo=${chatroomDto.chatResponsorNo}
+						&chatRequesterMnick=${chatroomDto.chatRequesterMnick}&chatResponsorMnick=${chatroomDto.chatResponsorMnick}" 
 					style="color:black; text-decoration:none; !important">
 				<div class="col border border-success" style="height:100px;">
 					<span style="justify-content: center; align-items: center">채팅방 참여자:${chatroomDto.chatRequesterMnick}, ${chatroomDto.chatResponsorMnick }</span>

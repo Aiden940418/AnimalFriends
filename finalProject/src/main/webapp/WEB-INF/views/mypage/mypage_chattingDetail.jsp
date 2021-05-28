@@ -28,10 +28,10 @@
 				var message = {};
 			  	message.msgSenderNo = '${login.mNo}'
 				message.msgContent = $("#message").val()
-			  	message.chatroomNo = '${chatroomNo}'
+			  	message.chatroomNo = '${chatroomDto.chatroomNo}'
 			  	message.senderMnick = '${login.mNick}'
-			  	message.chatRequesterNo = '${chatRequesterNo}'
-			  	message.chatResponsorNo = '${chatResponsorNo}'
+			  	message.chatRequesterNo = '${chatroomDto.chatRequesterNo}'
+			  	message.chatResponsorNo = '${chatroomDto.chatResponsorNo}'
 			  }
 			
 			this._sendMessage(JSON.stringify(message));
@@ -45,9 +45,9 @@
 			//(메시지 보낸 사람이 reader고, 메시지 받는 사람이 writer) 혹은 (메시지 보낸 사람이 writer고, 메시지 받는 사람이 writer)
 			//	= 메시지를 주고받는 사람이 방에 저장된 값들과 일치하다면 append
 			// 결국 roomDto에 담긴 reader, writer와 msgDto에 담긴 sender, receiver의 정보가 잘 짝지어 질 때만 append되는 것  
-			if(		 (msg.msgSenderNo == '${chatRequesterNo}' && msg.msgReceiverNo == '${chatResponsorNo}') 
+			if(		 (msg.msgSenderNo == '${chatroomDto.chatRequesterNo}' && msg.msgReceiverNo == '${chatroomDto.chatResponsorNo}') 
 													||
-					 (msg.msgReceiverNo == '${chatRequesterNo}' && msg.msgSenderNo == '${chatResponsorNo}') ) {
+					 (msg.msgReceiverNo == '${chatroomDto.chatRequesterNo}' && msg.msgSenderNo == '${chatroomDto.chatResponsorNo}') ) {
 				
 				console.log(msg);
 				$('#divChatData').append('<div>' + msg.senderMnick + " : " + msg.msgContent + '</div>');
@@ -118,11 +118,10 @@
 						<ion-icon name="person-circle-outline" style="font-size:70px;"></ion-icon>
 					</div>
 					<div class="col">
-						userName<br>
-						nickName
+						채팅 참여자 <br>[${chatroomDto.chatRequesterMnick }, ${chatroomDto.chatResponsorMnick }]
 					</div>
 					<!-- 화상채팅 아이콘 -->
-					<div class="col" style="margin-left: 200px;">
+					<div class="col" style="max-width: 100px;">
 						<a href="#">
 							<ion-icon name="videocam-outline" style="font-size:50px; color:black;"></ion-icon>
 						</a>
