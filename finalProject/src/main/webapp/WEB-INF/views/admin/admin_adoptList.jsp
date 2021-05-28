@@ -69,7 +69,7 @@
 	
 		<form action="adminAdoptCtgy.do" method="GET">
 	<div class="btn-group">
-			<select id="aArea" name="aArea" class="form-control ms-2 text-center" style="width: 100px ">
+			<select id="aArea" name="aArea" class="btn btn-outline-success mt-3" style="width: 100px ">
 				<option value="0">지역</option>
 				<option value="서울동부">서울동부</option>
 				<option value="서울서부">서울서부</option>
@@ -80,7 +80,7 @@
 
 	</div>
 	<div class="btn-group " >
-			<select id="aType" name="aType" class="form-control ms-2 text-center" style="width: 100px ">
+			<select id="aType" name="aType" class="btn btn-outline-success mt-3" style="width: 100px ">
 				<option value="0">동물종류</option>
 				<option value="강아지">강아지</option>
 				<option value="고양이">고양이</option>
@@ -88,7 +88,7 @@
 			</select>
 	</div>
 	<div class="btn-group" >
-		<button type="submit" class="btn btn-outline-success mt-3" id="search">찾기</button>
+		<button type="submit" class="btn btn-outline-success mt-3" id="search" >찾기</button>
 		
 		
 		<script>
@@ -101,7 +101,7 @@
 				
 				if(aArea == "0" || aType == "0") {
 					
-					alert("검색오류 선택해주세요");
+					alert("검색오류:카테고리를 선택해주세요");
 					
 				
 				}
@@ -111,7 +111,7 @@
 		</script>
 	</div>
 	</form>
-	
+	</div>
 	
 
 <!-- Example single danger button -->

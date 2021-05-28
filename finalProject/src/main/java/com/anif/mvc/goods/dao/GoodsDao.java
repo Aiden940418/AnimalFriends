@@ -49,6 +49,8 @@ public interface GoodsDao {
 	
 	//관리자 굿즈 카테고리 악세사리 선택
 	public List<GoodsDto> adminGoodsAccList();
+
+	public List<GoodsDto> goodsSelect(GoodsDto dto);
 	
 	
 

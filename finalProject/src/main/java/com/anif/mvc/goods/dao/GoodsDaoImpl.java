@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.anif.mvc.adopt.dto.AdoptDto;
 import com.anif.mvc.goods.dto.GoodsDto;
 
 @Repository
@@ -215,6 +216,18 @@ public class GoodsDaoImpl implements GoodsDao {
 		return list;
 	}
 
+	@Override
+	public List<GoodsDto> goodsSelect(GoodsDto dto) {
+		List<GoodsDto> list = new ArrayList<GoodsDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"goodsSelect",dto);
+		} catch (Exception e) {
+			System.out.println("[error: goodsSelect list" );
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	
 

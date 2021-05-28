@@ -91,6 +91,10 @@
  	 WHERE GCTGY = '악세사리'
  	 </select>
  	 
+ 	 <select id="goodsSelect" resultType="goodsDto">
+ 	 SELECT * FROM GOODS
+ 	 WHERE GCTGY = #{gCtgy}
+ 	 </select>
  	 
  	 <!-- 장바구니 담기 -->
  	 
