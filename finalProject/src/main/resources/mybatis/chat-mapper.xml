@@ -27,7 +27,7 @@
   	
   	<insert id="insertMsg" parameterType="MessageDto">
 		INSERT INTO MESSAGE
-		VALUES( MSGNO.NEXTVAL, #{msgSenderNo}, #{msgReceiverNo}, #{msgContent}, SYSDATE, #{chatroomNo}, #{chatRequesterNo}, #{chatResponsorNo}, #{senderMnick})
+		VALUES( MSGNO.NEXTVAL, #{msgSenderNo}, #{msgReceiverNo}, #{msgContent}, SYSDATE, #{chatroomNo}, #{chatRequesterNo}, #{chatResponsorNo}, #{senderMnick}, #{msgSendtimeScript})
 	</insert>
   	
   	<select id="selectPrevMsg" parameterType="int" resultType="MessageDto">
