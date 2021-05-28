@@ -21,13 +21,15 @@ public class MessageDto {
 	private String chatRequesterMnick;	//1:1 채팅 요청자 닉네임
 	private String chatResponsorMnick;	//1:1 채팅 수신자 닉네임
 	
+	private String msgSendtimeScript;   //메세지 보낸 시간 포맷변환해서 저장하기 위한 필드
+	
 	
 	public MessageDto() {
 		super();
 	}
 	public MessageDto(int msgNo, int msgSenderNo, int msgReceiverNo, String msgContent, Date msgSendtime,
 			int chatroomNo, int chatRequesterNo, int chatResponsorNo, String senderMnick, String receiverMnick,
-			String chatRequesterMnick, String chatResponsorMnick) {
+			String chatRequesterMnick, String chatResponsorMnick, String msgSendtimeScript) {
 		super();
 		this.msgNo = msgNo;
 		this.msgSenderNo = msgSenderNo;
@@ -41,8 +43,10 @@ public class MessageDto {
 		this.receiverMnick = receiverMnick;
 		this.chatRequesterMnick = chatRequesterMnick;
 		this.chatResponsorMnick = chatResponsorMnick;
+		this.msgSendtimeScript = msgSendtimeScript;
 	}
 	
+
 	public int getMsgNo() {
 		return msgNo;
 	}
@@ -115,8 +119,14 @@ public class MessageDto {
 	public void setChatResponsorMnick(String chatResponsorMnick) {
 		this.chatResponsorMnick = chatResponsorMnick;
 	}
-
-
+	public String getMsgSendtimeScript() {
+		return msgSendtimeScript;
+	}
+	public void setMsgSendtimeScript(String msgSendtimeScript) {
+		this.msgSendtimeScript = msgSendtimeScript;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "MessageDto [msgNo=" + msgNo + ", msgSenderNo=" + msgSenderNo + ", msgReceiverNo=" + msgReceiverNo

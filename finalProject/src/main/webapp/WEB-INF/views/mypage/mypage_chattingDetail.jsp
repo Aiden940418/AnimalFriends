@@ -17,6 +17,7 @@
 
 <script type="text/javascript">
 
+	
 	var webSocket = {
 		init: function(param) {
 			this._url = param.url;
@@ -32,6 +33,17 @@
 			  	message.senderMnick = '${login.mNick}'
 			  	message.chatRequesterNo = '${chatroomDto.chatRequesterNo}'
 			  	message.chatResponsorNo = '${chatroomDto.chatResponsorNo}'
+			  	
+			  	//채팅 메세지 보낸 시간 찍기
+			  	var today = new Date();   
+				var year = today.getFullYear(); // 년
+				var month = today.getMonth() + 1;  // 월
+				var date = today.getDate();  // 일
+				var hours = today.getHours(); // 시
+				var minutes = today.getMinutes();  // 분
+				var seconds = today.getSeconds();  // 초
+				var msgSendtimeScript = month + "월" + date + "일 " + hours + ":" + minutes + ":" + seconds;
+			  	message.msgSendtimeScript = msgSendtimeScript  //만든 시간 메세지 json객체에 넣어주기
 			  }
 			
 			this._sendMessage(JSON.stringify(message));
@@ -50,14 +62,15 @@
 					 (msg.msgReceiverNo == '${chatroomDto.chatRequesterNo}' && msg.msgSenderNo == '${chatroomDto.chatResponsorNo}') ) {
 				
 				console.log(msg);
-				$('#divChatData').append('<div>' + msg.senderMnick + " : " + msg.msgContent + '</div>');
+				
+				//채팅창에 메세지 append
+				$('#divChatData').append('<div>' + msg.senderMnick + " : " + msg.msgContent + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+											+ msg.msgSendtimeScript + '</div>');
 				
 				//채팅창 스크롤 밑으로 내리기
 				scrollDown();
 				
 			}
-			
-			
 			
 		},
 		closeMessage: function(str) {
