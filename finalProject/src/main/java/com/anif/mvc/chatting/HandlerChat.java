@@ -129,7 +129,7 @@ public class HandlerChat extends TextWebSocketHandler {
 		}
 		
 		
-		
+		dao.insertMessage(MsgDto);
 		for (WebSocketSession websocketSession : connectedUsers) {
 			map = websocketSession.getAttributes();
 			MemberDto login = (MemberDto) map.get("login");
