@@ -24,10 +24,9 @@
 	 }
 	 
 	 #secCtn{
-		    position: absolute;
-		    top: 215px;	 		
-	 }
-
+	    position: relative;
+    	margin-top: 150px; 	
+	}
 
 </style>
 
@@ -127,7 +126,6 @@
                         </div>
                     </div>
 				</c:forEach>	
-				
 			</div>
 		</div>
 	<!-- 입양일기 그리드 끝 -->

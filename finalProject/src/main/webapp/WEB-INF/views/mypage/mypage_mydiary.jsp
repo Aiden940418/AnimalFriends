@@ -118,6 +118,11 @@
 		    top: 145px;
 		    width: 98%;
 	 	}
+	 	
+ 		 #secCtn{
+		    position: relative;
+	    	margin-top: 150px; 		
+		 }
 	
 
 </style>
@@ -128,7 +133,7 @@
 	<!-- 페이지 내용 부분 -->
 	<div class="contentDiv">
 		
-		<div class="container">
+		<div class="container" id="DrManage">
 		<br><br><br>
 		<div class="row align-items-center" style="postion:relative;">
 			 <div class="col-md-6 myProfileImgDiv">
@@ -167,7 +172,7 @@
 		<div id="horisonLine"></div>
 		
 		<!-- 입양일기 그리드 시작 -->
-	<div class="container">
+	<div class="container" id="secCtn">
 		<div class="row">
 			<c:forEach items="${list }" var="dto">		
 				<!-- 글 박스 카드 -->
@@ -197,4 +202,3 @@
 
 	<!-- footer -->
 	<%@ include file="../includes/footer.jsp" %>
-	

@@ -41,8 +41,8 @@
 	body{
   		margin:0; 
   		width:100%; 
-  		height:100%
-	}
+  		height:100%;
+ 	}
 	
 	.contentDiv {
 		min-height: 100%;
