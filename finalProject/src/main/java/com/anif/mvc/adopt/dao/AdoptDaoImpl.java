@@ -174,6 +174,14 @@ public class AdoptDaoImpl implements AdoptDao {
 				
 			System.out.println("[error: adoptListCnt]");
 			
+			
+			
+		}
+		
+			return cnt;
+		
+	}
+			
 	@Override
 	public List<AdoptDto> totalAreaList() {
 		List<AdoptDto> list = new ArrayList<AdoptDto>();

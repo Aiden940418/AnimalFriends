@@ -185,8 +185,8 @@ public class AdoptController {
 	}
 	//관리자 입양공고 지역-종 카테고리 선택
 	@RequestMapping(value="/adminAdoptCtgy.do", method=RequestMethod.GET)
-	public String adminAdoptCtgy(Model model) {
-		model.addAttribute("list",biz.adoptList());
+	public String adminAdoptCtgy(Model model,AdoptDto dto) {
+		model.addAttribute("list",biz.adoptSelect(dto));
 		System.out.println(model);
 		
 		return "admin/admin_adoptList";

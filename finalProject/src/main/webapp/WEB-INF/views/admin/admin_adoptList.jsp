@@ -59,7 +59,15 @@
 <div class="contentDiv">
 <!-- Example single danger button -->
 <div class="container mt-5">
-	<form action="adminAdoptCtgy.do" method="GET">
+
+	<div class="container text-center" id="adtNotiMng">
+		<h1 class="">입양공고 관리</h1>
+	</div>
+	
+	<!-- 가로줄 -->
+	<div id="horisonLine"></div>
+	
+		<form action="adminAdoptCtgy.do" method="GET">
 	<div class="btn-group">
 			<select name="aArea" class="form-control ms-2 text-center" style="width: 100px ">
 				<option value="0">지역</option>
@@ -83,42 +91,11 @@
 		<button type="submit" class="btn btn-outline-success mt-3 ">찾기</button>
 	</div>
 	</form>
-
-	
-	<div class="container text-center" id="adtNotiMng">
-		<h1 class="">입양공고 관리</h1>
-	</div>
-	
-	<!-- 가로줄 -->
-	<div id="horisonLine"></div>
 	
 	
 
 <!-- Example single danger button -->
 	<div class="container" id="secCtn">
-		<div class="btn-group">
-			<button type="button"
-				class="btn btn-outline-success dropdown-toggle mt-3"
-				data-bs-toggle="dropdown" aria-expanded="false">지역</button>
-			<ul class="dropdown-menu">
-				<li><a class="dropdown-item" href="#">서울</a></li>
-				<li><a class="dropdown-item" href="#">인천</a></li>
-				<li><a class="dropdown-item" href="#">경기</a></li>
-			</ul>
-		</div>
-		<div class="btn-group ">
-			<button type="button"
-				class="btn btn-outline-success dropdown-toggle mt-3"
-				data-bs-toggle="dropdown" aria-expanded="false">동물 종류</button>
-			<ul class="dropdown-menu">
-				<li><a class="dropdown-item" href="#">강아지</a></li>
-				<li><a class="dropdown-item" href="#">고양이</a></li>
-			</ul>
-		</div>
-		<div class="btn-group">
-			<button type="submit" class="btn btn-outline-success mt-3 ">찾기</button>
-		</div>
-	
 		
 			<div class="delBtnNallCheck">
 					
