@@ -99,6 +99,22 @@ public class ChatDaoImpl implements ChatDao{
 
 
 
+	@Override
+	public List<MessageDto> selectPrevMessage(int chatroomNo) {
+		List<MessageDto> msgList = null;
+		
+		try {
+			msgList = sqlSession.selectList(namespace+"selectPrevMsg", chatroomNo);
+		} catch (Exception e) {
+			System.out.println("[error] : SELECT Previous Message");
+			e.printStackTrace();
+		}
+		
+		return msgList;
+	}
+
+
+
 //	@Override
 //	public void insertMessage(MessageDto vo) throws Exception {
 //

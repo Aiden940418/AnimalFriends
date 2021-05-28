@@ -135,7 +135,12 @@
 				<div id="chatDiv" style="width: 460px; height: 500px; border: 1px solid black; overflow-y: scroll;" >
 					
 					<div style="width: 400px; height: 400px; padding: 10px; border: solid 1px #e1e3e9; ">
-						<div id="divChatData" ></div>
+						<div id="divChatData" >
+							<c:forEach items="${prevMsg }" var="msgDto">
+								<div> ${msgDto.senderMnick } : ${msgDto.msgContent } </div>
+							</c:forEach> 	
+						
+						</div>
 					</div>
 
 

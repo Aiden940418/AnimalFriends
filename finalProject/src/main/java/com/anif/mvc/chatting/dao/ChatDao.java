@@ -31,5 +31,6 @@ public interface ChatDao {
 //	public int getAllCount(String str);
 	public List<ChatRoomDto> selectChatroom(int mNo);
 	public int insertMessage(MessageDto mDto);
+	public List<MessageDto> selectPrevMessage(int chatroomNo);
 	
 }
