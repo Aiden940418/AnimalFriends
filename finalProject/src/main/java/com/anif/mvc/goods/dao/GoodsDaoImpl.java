@@ -171,8 +171,49 @@ public class GoodsDaoImpl implements GoodsDao {
 			e.printStackTrace();
 		}		
 		return list;
-	}	
+	}
+
+	//관리자 굿즈 카테고리 가방 선택
+	@Override
+	public List<GoodsDto> adminGoodsBagList() {
+		List<GoodsDto> list = new ArrayList<GoodsDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"adminGoodsBagList");
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}		
+		return list;
+	}
 	
+	//관리자 굿즈 카테고리 옷 선택
+	@Override
+	public List<GoodsDto> adminGoodsClothList() {
+		List<GoodsDto> list = new ArrayList<GoodsDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"adminGoodsClothList");
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}		
+		return list;
+	}
+
+	//관리자 굿즈 카테고리 악세사리 선택
+	@Override
+	public List<GoodsDto> adminGoodsAccList() {
+		List<GoodsDto> list = new ArrayList<GoodsDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"adminGoodsAccList");
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}		
+		return list;
+	}
 
 
 	

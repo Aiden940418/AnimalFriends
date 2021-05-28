@@ -40,6 +40,15 @@ public interface GoodsDao {
 	
 	//굿즈 카테고리 악세사리 선택
 	public List<GoodsDto> goodsAccList();
+
+	//관리자 굿즈 카테고리 가방 선택
+	public List<GoodsDto> adminGoodsBagList();
+
+	//관리자 굿즈 카테고리 옷 선택
+	public List<GoodsDto> adminGoodsClothList();
+	
+	//관리자 굿즈 카테고리 악세사리 선택
+	public List<GoodsDto> adminGoodsAccList();
 	
 	
 

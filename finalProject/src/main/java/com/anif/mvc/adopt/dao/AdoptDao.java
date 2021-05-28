@@ -57,6 +57,7 @@ public interface AdoptDao {
 	
 	public List<AdoptDto> GyeonggiList();
 	
+	public List<AdoptDto> adoptSelect(AdoptDto dto);
 	
 	}
 

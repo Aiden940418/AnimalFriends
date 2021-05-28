@@ -115,6 +115,12 @@ public class AdoptBizImpl implements AdoptBiz {
 		return dao.GyeonggiList();
 	}
 
+	@Override
+	public List<AdoptDto> adoptSelect(AdoptDto dto) {
+		return dao.adoptSelect(dto);
+
+	}
+
 	
 
 }

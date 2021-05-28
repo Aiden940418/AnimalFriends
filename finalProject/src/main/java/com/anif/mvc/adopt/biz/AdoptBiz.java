@@ -57,6 +57,9 @@ public interface AdoptBiz {
 	//입양공고 경기인천 보기
 	public List<AdoptDto> GyeonggiList();
 
+	
+	public List<AdoptDto> adoptSelect(AdoptDto dto);
+
 
 
 	}

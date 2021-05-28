@@ -9,13 +9,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
-import com.anif.mvc.member.biz.MemberBiz;
 import com.anif.mvc.diary.biz.DiaryBiz;
+import com.anif.mvc.goods.biz.GoodsBiz;
+import com.anif.mvc.member.biz.MemberBiz;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.qnaBoardAdmin.biz.QnaBoardAdminBiz;
 import com.anif.mvc.qnaBoardAdmin.dto.QnaBoardAdminDto;
@@ -31,12 +31,14 @@ public class AdminController {
 	@Autowired
 	private DiaryBiz diaryBiz;
 
+	@Autowired
+	private GoodsBiz bizG;
 	
 	//adminAdopt
-	
 	@Autowired
 	private MemberBiz bizM;
 
+	
 	
 
 	
@@ -251,4 +253,30 @@ public class AdminController {
 	
 	//Admin QnA End
 	
+
+	/*admin goods category*/
+	
+	//bag list
+	@RequestMapping("/adminGoodsBagList.do")
+	public String adminGoodsBagList(Model model) {
+		model.addAttribute("list",bizG.adminGoodsBagList());
+		return "admin/admin_goodsList" ;
+	}
+	
+	//cloth list
+	@RequestMapping("/adminGoodsClothList.do")
+	public String adminGoodsClothList(Model model) {
+		model.addAttribute("list",bizG.adminGoodsClothList());
+		return "admin/admin_goodsList" ;
+	}
+	
+	//acc list
+	@RequestMapping("/adminGoodsAccList.do")
+	public String adminGoodsAccList(Model model) {
+		model.addAttribute("list",bizG.adminGoodsAccList());
+		return "admin/admin_goodsList" ;
+	}
+	
 }
+
+

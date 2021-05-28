@@ -136,7 +136,7 @@
   	WHERE AAREA = '서울동부'
   	</select>
   	
-  	  	<select id="seoulWestList" resultType="adoptDto">
+  	<select id="seoulWestList" resultType="adoptDto">
   	SELECT * FROM ADOPT 
   	WHERE AAREA = '서울서부'
   	</select>
@@ -148,10 +148,16 @@
   	SELECT * FROM ADOPT 
   	WHERE AAREA = '서울북부'
   	</select>
-  	  	<select id="GyeonggiList" resultType="adoptDto">
+  	<select id="GyeonggiList" resultType="adoptDto">
   	SELECT * FROM ADOPT 
   	WHERE AAREA = '경기인천'
   	</select>
+  
+  	<select id="adoptSelect" resultType="adoptDto">
+	SELECT * FROM ADOPT
+	WHERE AAREA=#{aArea} AND ATYPE=#{aType}  	
+  	</select>
+  	
   
   
   

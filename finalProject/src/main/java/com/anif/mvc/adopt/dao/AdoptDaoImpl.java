@@ -263,6 +263,22 @@ public class AdoptDaoImpl implements AdoptDao {
 	}
 
 
+	@Override
+	public List<AdoptDto> adoptSelect(AdoptDto dto) {
+		List<AdoptDto> list = new ArrayList<AdoptDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"adoptSelect",dto);
+		} catch (Exception e) {
+			System.out.println("[error: adoptSelect list" );
+			e.printStackTrace();
+		}
+		
+		
+		return list;
+	}
+
+
 
 	
 	
