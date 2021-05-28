@@ -300,7 +300,7 @@ public class AdoptController {
 	public String aCommentInsert(ACommentDto comDto) {
 		
 		int res = abiz.aCommentInsert(comDto);
-
+ 
 		
 		if(res>0) {
 			return "redirect:adoptDetail.do?aNo="+comDto.getaNo();

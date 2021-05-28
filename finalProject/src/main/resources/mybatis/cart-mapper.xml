@@ -54,7 +54,7 @@
 	
 	INSERT INTO GOODSORDER VALUES(
 	
-	 #{orderId}, #{mNo}, #{orderName}, #{orderAddr1}, #{orderAddr2}, #{orderAddr3}, #{orderPhone}, #{amount}, SYSDATE, #{gNo}
+	 #{orderId}, #{mNo}, #{orderName}, #{orderAddr1}, #{orderAddr2}, #{orderAddr3}, #{orderPhone}, #{amount}, SYSDATE, #{gNo}, 'false'
 	
 	
 	)
