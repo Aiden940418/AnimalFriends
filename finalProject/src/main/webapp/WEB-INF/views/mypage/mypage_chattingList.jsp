@@ -34,10 +34,16 @@
 			<a href="chattingDetail.do?chatroomNo=${chatroomDto.chatroomNo}&chatRequesterNo=${chatroomDto.chatRequesterNo}&chatResponsorNo=${chatroomDto.chatResponsorNo}
 						&chatRequesterMnick=${chatroomDto.chatRequesterMnick}&chatResponsorMnick=${chatroomDto.chatResponsorMnick}" 
 					style="color:black; text-decoration:none; !important">
-				<div class="col border border-success" style="height:100px;">
-					<span style="justify-content: center; align-items: center">채팅방 참여자:${chatroomDto.chatRequesterMnick}, ${chatroomDto.chatResponsorMnick }</span>
-					<br>
-					<span style="justify-content: center; align-items: center">최근 메세지 : ${chatroomDto.recentMessage}</span>
+				<div class="col border border-success row btn-outline-success" style="height:100px; width:490px;">
+					<div class="col mt-4 ms-4" style="max-width:51px;">
+						<ion-icon name="chatbubble-ellipses-outline" style="font-size:50px;"></ion-icon>
+					</div>
+						
+					<div class="col mt-2 me-5">
+						<span style="justify-content: center; align-items: center">[ ${chatroomDto.chatRequesterMnick}, ${chatroomDto.chatResponsorMnick } ] 님의 채팅방</span>
+						<br><br>
+						<span style="justify-content: center; align-items: center">최근 메세지 : ${chatroomDto.recentMessage}</span>
+					</div>
 				</div>
 			</a>
 		
