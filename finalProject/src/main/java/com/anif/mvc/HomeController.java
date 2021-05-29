@@ -4,14 +4,19 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.anif.mvc.adopt.biz.AdoptBiz;
+import com.anif.mvc.diary.biz.DiaryBiz;
+import com.anif.mvc.member.dto.MemberDto;
 
 /**
  * Handles requests for the application home page.
@@ -19,7 +24,10 @@ import com.anif.mvc.adopt.biz.AdoptBiz;
 @Controller
 public class HomeController {
 	
+	@Autowired
 	private AdoptBiz biz;
+	
+
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -43,11 +51,15 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
-	public String main(Model model) {
-
+	public String main(Model model, HttpSession session) {
+		
+//			MemberDto memberDto = (MemberDto) session.getAttribute("login");
+//			mNo = memberDto.getmNo();
+//			
+//			model.addAttribute("prf", diaryBiz.profileImgSelect(mNo)); 
 
 		
-		return "main";
+		return "main_A";
 	}
 	
 
@@ -71,7 +83,7 @@ public class HomeController {
 	public String logo(Model model) {
 		
 
-		return "main";
+		return "main_A";
 	}
 	
 	

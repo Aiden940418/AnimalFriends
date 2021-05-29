@@ -1,0 +1,201 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+<!doctype html>
+<html lang="en">
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+
+
+<!-- ionicons 사용 위한 코드 -->
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+<!-- 제이쿼리 사용 위한 코드 -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- 하트 아이콘 사용을 위한 코드 -->
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
+ <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 	<link rel="stylesheet" href="resources/css/style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Yeon+Sung&display=swap');
+ 	body > * {
+ 		font-family: 'Do Hyeon', sans-serif;
+ 	}
+ 	
+ 	.navbar, .container, .wrap
+	, .thumnailright , .footer {
+	
+	font-family: 'Do Hyeon', sans-serif;
+	color: #696767;
+	
+	}
+	
+	.myProfileImgDiv {
+				width: 150px;
+				height: 125px; 
+				border-radius: 50%;
+				overflow: hidden;
+				border: 3px	solid #54BD54;
+				position: relative;
+   				left: 60px;
+    			top: -17px;
+			}
+	
+		.profile {
+		    width: 100%;
+		    height: 100%;
+		    object-fit: cover;
+		}
+		
+		#idNnickDiv {
+			
+		}
+	
+</style>
+<body>
+	<div class="wrapper d-flex align-items-stretch">
+		<nav id="sidebar" class="" style="">
+			<div class="p-4 pt-5">
+			
+				<c:if test="${empty prf }">
+					 <a class="navbar-brand img logo rounded-circle mb-5 text-center" href="logo.do"><img src="resources/images/logo.png" style="width:85px; height:85px;"></a>
+				</c:if>
+						<div class="col-md-6 myProfileImgDiv">
+							<c:if test="${!empty prf }">
+								<a href="mydiary.do"><img class="profile" src="resources/${prf.profileImg }"></a> 
+							</c:if>
+						</div>
+				<c:if test="${!empty login}">
+						<div class="text-center">
+       					 <p style="color: #288C28; font-size:22px;"><b>ID_${login.mId}</b> / <b>닉냄_${login.mNick}</b></p>
+						</div>
+				</c:if>
+				
+<!-- 		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
+		  		<a class="navbar-brand img logo rounded-circle mb-5 text-center" href="logo.do"><img src="resources/images/logo.png" style="width:85px; height:85px;"></a>
+ --> 		  		
+	        <ul class="list-unstyled components mt-5" style="margin-top:300px;">
+	          <!-- <li class="active">
+	            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Home</a>
+		            <ul class="list-unstyled collapse show" id="homeSubmenu" style="">
+	                <li>
+	                    <a href="#">Home 1</a>
+	                </li>
+	                <li>
+	                    <a href="#">Home 2</a>
+	                </li>
+	                <li>
+	                    <a href="#">Home 3</a>
+	                </li>
+		            </ul>
+	          </li> -->
+	          <li>
+	              <a href="adopt.do">입양공고</a>
+	          </li>
+	          <li>
+	              <a href="shelter.do">동물보호시설</a>
+	          </li>
+	          <li>
+	              <a href="goodsList.do">GOODS</a>
+	          </li>
+	          <li>
+	              <a href="diaryList.do">입양일기</a>
+	          </li>
+	          <li>
+	          <c:if test="${login.mRole == 3 }">
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">관리자</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="adminAdopt.do">입양공고 관리</a>
+                </li>
+                <li>
+                    <a href="adminGoodsList.do">GOODS 관리</a>
+                </li>
+                <li>
+                    <a href="adminDiary.do">입양일기 관리</a>
+                </li>
+                <li>
+                    <a href="adminUserList.do">회원 관리</a>
+                </li>
+                <li>
+                    <a href="adminQnaList.do">QnA</a>
+                </li>
+                
+              </ul>
+              </c:if>
+	          </li>
+	          
+	        </ul>
+			
+			<!-- footer -->
+	        <div class="container-fluid navbar-fixed-bottom">
+	        	<p>Copyright ©<script>document.write(new Date().getFullYear());</script>2021 All rights reserved | This template is made with </p>
+	        </div>
+
+	      </div>
+    	</nav>
+
+        <!-- 페이지 상단 메뉴바 start -->
+      <div id="content" class="p-4 p-md-5">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+			<div id="loginBtn">
+          
+	          <c:if test="${login == null }">
+	
+	          <a class="btn btn-outline-success mx-2" href="loginForm.do" id="loginBtn" role="button">로그인</a>
+	          </c:if>
+	          <c:if test="${login !=null }">
+	          <label><b>${login.mNick}</b>님 로그인 되었습니다.</label>
+	          <a class="btn btn-outline-success mx-2" href="logout.do" id="logoutBtn" role="button">로그아웃</a>
+	          </c:if>
+	          <c:if test="${login !=null }">
+	          <a class="btn btn-outline-success" href="mydiary.do" role="button">마이페이지</a>
+	          </c:if>
+       		</div>
+
+
+
+<!--             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+              </ul>
+            </div> -->
+          </div>
+        </nav>
+        <!-- 페이지 상단 메뉴바 end -->
+
+        
