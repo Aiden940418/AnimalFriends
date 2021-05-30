@@ -6,10 +6,6 @@
 <!doctype html>
 <html lang="en">
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="resources/js/jquery.min.js"></script>
-<script src="resources/js/bootstrap.min.js"></script>
-
 
 <!-- ionicons 사용 위한 코드 -->
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
@@ -22,6 +18,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- 메뉴 사이드바 style.css 저장 링크 선언 -->
  	<link rel="stylesheet" href="resources/css/style.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -54,16 +51,43 @@
     			top: -17px;
 			}
 	
-		.profile {
-		    width: 100%;
-		    height: 100%;
-		    object-fit: cover;
-		}
-		
-		#idNnickDiv {
-			
-		}
+	.profile {
+	    width: 100%;
+	    height: 100%;
+	    object-fit: cover;
+	}
 	
+	html{
+		height: 100%;
+	}
+	
+	body{
+  		margin:0; 
+  		width:100%; 
+  		height:100%;
+ 	}
+	
+/* 	.contentDiv {
+		min-height: 100%;
+		position: relative;
+		padding-bottom: 19px;
+		
+	} */
+	
+		
+	footer{
+	 	position: relative;
+	 	bottom: 0;
+		left: 0;
+		right: 0;
+	}
+	
+/* 	* {
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	}
+	 */
 </style>
 <body>
 	<div class="wrapper d-flex align-items-stretch">
@@ -73,20 +97,17 @@
 				<c:if test="${empty prf }">
 					 <a class="navbar-brand img logo rounded-circle mb-5 text-center" href="logo.do"><img src="resources/images/logo.png" style="width:85px; height:85px;"></a>
 				</c:if>
+				<c:if test="${!empty prf }">
 						<div class="col-md-6 myProfileImgDiv">
-							<c:if test="${!empty prf }">
 								<a href="mydiary.do"><img class="profile" src="resources/${prf.profileImg }"></a> 
-							</c:if>
 						</div>
+				</c:if>
 				<c:if test="${!empty login}">
 						<div class="text-center">
        					 <p style="color: #288C28; font-size:22px;"><b>ID_${login.mId}</b> / <b>닉냄_${login.mNick}</b></p>
 						</div>
 				</c:if>
-				
-<!-- 		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
-		  		<a class="navbar-brand img logo rounded-circle mb-5 text-center" href="logo.do"><img src="resources/images/logo.png" style="width:85px; height:85px;"></a>
- --> 		  		
+						  		
 	        <ul class="list-unstyled components mt-5" style="margin-top:300px;">
 	          <!-- <li class="active">
 	            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Home</a>
@@ -140,17 +161,13 @@
 	          
 	        </ul>
 			
-			<!-- footer -->
-	        <div class="container-fluid navbar-fixed-bottom">
-	        	<p>Copyright ©<script>document.write(new Date().getFullYear());</script>2021 All rights reserved | This template is made with </p>
-	        </div>
 
 	      </div>
     	</nav>
 
+	<!-- Page 내용 시작 -->
+      <div id="contentDiv" class="p-4 p-md-5">
         <!-- 페이지 상단 메뉴바 start -->
-      <div id="content" class="p-4 p-md-5">
-
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
 

@@ -151,9 +151,17 @@
             </div>
         </section>
    
-	  
-	  
-<!-- 	  </div>
-	</div>   -->
+  <!--      <footer class="container-fluid navbar-fixed-bottom">
+       	<div class="container navbar-fixed-bottom mt-5" style="text-align:center">
+       		<p>Copyright ©<script>document.write(new Date().getFullYear());</script>2021 All rights reserved</p>
+       	 </div>
+   -->
+	<!-- footer -->
+	<%@ include file="includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
 </body>
 </html>
