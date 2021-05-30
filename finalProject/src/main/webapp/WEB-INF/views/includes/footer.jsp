@@ -2,7 +2,7 @@
     <br>
     
     <footer>
-    <div class="container navbar-fixed-bottom mt-5" style="text-align:center;">
+    <div class="container navbar-fixed-bottom mt-4" style="text-align:center;">
         <p>
             @ 2017-2019 Companny, Inc - Private - Terms
         </p>
