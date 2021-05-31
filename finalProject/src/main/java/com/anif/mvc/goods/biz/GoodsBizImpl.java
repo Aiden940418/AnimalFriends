@@ -60,6 +60,40 @@ public class GoodsBizImpl implements GoodsBiz {
 		return dao.multiDeleteGoods(dto);
 	}
 
+	//굿즈 카테고리 가방 선택
+	@Override
+	public List<GoodsDto> goodsBagList() {
+		return dao.goodsBagList();
+	}
+	//굿즈 카테고리 옷 선택
+	@Override
+	public List<GoodsDto> goodsClothList() {
+		return dao.goodsClothList();
+	}
+	//굿즈 카테고리 악세사리 선택
+	@Override
+	public List<GoodsDto> goodsAccList() {
+		return dao.goodsAccList();
+	}
+
+	//관리자 굿즈 카테고리 가방 선택
+	@Override
+	public List<GoodsDto> adminGoodsBagList() {
+		return dao.adminGoodsBagList();
+	}
+
+	//관리자 굿즈 카테고리 옷 선택
+	@Override
+	public List<GoodsDto> adminGoodsClothList() {
+		return dao.adminGoodsClothList();
+	}
+
+	//관리자 굿즈 카테고리 악세사리 선택
+	@Override
+	public List<GoodsDto> adminGoodsAccList() {
+		return dao.adminGoodsAccList();
+	}
+
 
 
 

@@ -74,6 +74,41 @@ public class MemberController {
 	
 	
 	
+	@RequestMapping(value="/memberDeletePwCheck.do")
+	public String memberDeletePwCheck() {
+		
+		return "mypage/mypage_memberDeletePwCheck";
+			
+	}
+	
+	
+	
+	@RequestMapping(value="/memberDelete.do")
+	public String memberDelete(HttpSession session, String mId, String mPw) {
+		
+		
+		logger.info("passwordCheck");
+		boolean result = biz.pwChk(mId, mPw);
+
+		if(result) {
+			biz.memberDelete(mId);
+			
+			session.invalidate();
+			
+			return "main";
+
+			
+
+		}else {
+			return "mypage/mypage_memberModifyPWCheck";
+		}
+		
+		
+		
+		
+	}
+	
+	
 	
 	
 	

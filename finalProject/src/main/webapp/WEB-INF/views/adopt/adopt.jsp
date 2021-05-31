@@ -12,12 +12,12 @@
 
 <!-- Example single danger button -->
 <div class="container mt-5">
-<button type="button" class="btn btn-outline-success mt-3  ">전체지역</button>
-<button type="button" class="btn btn-outline-success mt-3  ">서울동부</button>
-<button type="button" class="btn btn-outline-success mt-3  ">서울남부</button>
-<button type="button" class="btn btn-outline-success mt-3  ">서울북부</button>
-<button type="button" class="btn btn-outline-success mt-3  ">서울서부</button>
-<button type="button" class="btn btn-outline-success mt-3  ">경기인천</button>
+<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='totalAreaList.do'">전체지역</button>
+<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='seoulEastList.do'">서울동부</button>
+<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='seoulSouthList.do'">서울남부</button>
+<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='seoulNorthList.do'">서울북부</button>
+<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='seoulWestList.do'">서울서부</button>
+<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='GyeonggiList.do'">경기인천</button>
 
 	<c:if test="${login != null }">
 	<div class="btn-group float-end">
@@ -78,23 +78,30 @@
 	</c:choose>
 
 
+<br>
+<br>
+
+			<!-- 페이징 부분 -->
+
+			<div>
+			<nav aria-label="Page navigation example">
+ 				 <ul class="pagination justify-content-center">
+  					
+    				<li class="page-item"><a class="page-link" href="adopt.do${pageMaker.makeQuery(pageMaker.startPage)}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
 
 
-<div class="container">
-	<nav aria-label="Page navigation example ">
-		<ul class="pagination justify-content-center mt-5">
-			<li class="page-item"><a class="page-link" href="#"
-				aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-			</a></li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item"><a class="page-link" href="#"
-				aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-			</a></li>
-		</ul>
-	</nav>
-</div>
+   				 <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+    				<li class="page-item"><a class="page-link" href="adopt.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
+   				 </c:forEach>
+
+
+   				 	<li class="page-item"><a class="page-link" href="adopt.do${pageMaker.makeQuery(pageMaker.endPage)}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+
+  				</ul>
+ 			</nav>
+			</div>
+
+
 
 </div>
 

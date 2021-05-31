@@ -13,7 +13,7 @@
   	
   	<insert id="mypageReviewWrite" parameterType="ReviewDto">
   		INSERT INTO REVIEW
-  		VALUES( GREWNO.NEXTVAL, #{gRewWriter}, #{gNo}, #{gRewTitle}, #{gRewContent}, SYSDATE )
+  		VALUES( GREWNO.NEXTVAL, #{gRewWriter}, #{gNo}, #{gRewTitle}, #{gRewContent}, SYSDATE, #{orderId} )
   	</insert>
   	
   	<update id="mypageReviewUpdate" parameterType="ReviewDto">

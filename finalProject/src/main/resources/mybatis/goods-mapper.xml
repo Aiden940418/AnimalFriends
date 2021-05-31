@@ -59,8 +59,37 @@
  	 	WHERE GNO = #{gNo}
  	 </delete>
  	 
+ 	 <!-- 굿즈 카테고리 리스트 -->
+ 	 <select id="goodsBagList" resultType="goodsDto">
+ 	 SELECT * FROM GOODS
+ 	 WHERE GCTGY = '가방'
+ 	 </select>
  	 
+ 	 <select id="goodsClothList" resultType="goodsDto">
+ 	 SELECT * FROM GOODS
+ 	 WHERE GCTGY = '옷'
+ 	 </select>
  	 
+ 	 <select id="goodsAccList" resultType="goodsDto">
+ 	 SELECT * FROM GOODS
+ 	 WHERE GCTGY = '악세사리'
+ 	 </select> 	 
+ 	 
+ 	 <!-- 관리자 굿즈 카테고리 리스트 -->
+ 	  <select id="adminGoodsBagList" resultType="goodsDto">
+ 	 SELECT * FROM GOODS
+ 	 WHERE GCTGY = '가방'
+ 	 </select>
+ 	 
+ 	  <select id="adminGoodsClothList" resultType="goodsDto">
+ 	 SELECT * FROM GOODS
+ 	 WHERE GCTGY = '옷'
+ 	 </select>
+ 	 
+ 	  <select id="adminGoodsAccList" resultType="goodsDto">
+ 	 SELECT * FROM GOODS
+ 	 WHERE GCTGY = '악세사리'
+ 	 </select>
  	 
  	 
  	 <!-- 장바구니 담기 -->

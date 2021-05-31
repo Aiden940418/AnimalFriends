@@ -35,6 +35,7 @@ public interface MemberDao {
 
 	public List<MemberDto> iMemberList();
 	
+	public void memberDelete(String mId);
 	
 	
 	

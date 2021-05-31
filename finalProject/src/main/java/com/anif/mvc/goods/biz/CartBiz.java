@@ -23,5 +23,6 @@ public interface CartBiz{
 	
 	public List<GoodsOrderDto> orderList(GoodsOrderDto order);
 
+	public int orderInfoStatusUpdate(String orderId);
 	
 }

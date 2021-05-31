@@ -24,6 +24,8 @@ import com.anif.mvc.adopt.ACommentBiz.ACommentBiz;
 import com.anif.mvc.adopt.ACommentDto.ACommentDto;
 import com.anif.mvc.adopt.biz.AdoptBiz;
 import com.anif.mvc.adopt.dto.AdoptDto;
+import com.anif.mvc.common.pagination.Criteria;
+import com.anif.mvc.common.pagination.PageMaker;
 import com.anif.mvc.diary.dto.DiaryDto;
 import com.anif.mvc.goods.dto.GoodsDto;
 import com.anif.mvc.member.dto.MemberDto;
@@ -48,15 +50,23 @@ public class AdoptController {
 	
 	// 입양공고 목록보기 
 	@RequestMapping(value = "/adopt.do")
-	public String adopt(Model model) {
+	public String adopt(Model model,Criteria cri) {
 		
-		model.addAttribute("list",biz.adoptList());
+		model.addAttribute("list",biz.adoptList(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		int listCount = biz.adoptListCnt();
+		pageMaker.setTotalCount(listCount);
+		
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("listCount", listCount);
 		
 		
 		return "adopt/adopt";
 	}
 	
-	
+
 	// 입양공고 상세보기
 	@RequestMapping(value="adoptDetail.do", method = RequestMethod.GET)
 	public String adoptDetail(Model model, int aNo) {
@@ -80,6 +90,7 @@ public class AdoptController {
 		return "adopt/adopt_detail";
 
 	}
+	
 	
 	
 	//나의 입양공고 상세보기 
@@ -167,8 +178,26 @@ public class AdoptController {
 		}
 		
 	
-	
+
+		
+		
+		
 	}
+	//관리자 입양공고 지역-종 카테고리 선택
+	@RequestMapping(value="/adminAdoptCtgy.do", method=RequestMethod.GET)
+	public String adminAdoptCtgy(Model model,AdoptDto dto) {
+		model.addAttribute("list",biz.adoptSelect(dto));
+		System.out.println(model);
+		
+		return "admin/admin_adoptList";
+		
+		
+	}
+	
+	
+	
+	
+	
 	
 	
 	
@@ -218,6 +247,14 @@ public class AdoptController {
 		
 		
 	}
+
+	
+	
+	
+	
+	
+	
+	
 	//관리자 입양공고 다중삭제
 	@ResponseBody 
 	@RequestMapping(value="/multiDeleteAdopt.do", method= RequestMethod.POST)
@@ -263,7 +300,7 @@ public class AdoptController {
 	public String aCommentInsert(ACommentDto comDto) {
 		
 		int res = abiz.aCommentInsert(comDto);
-
+ 
 		
 		if(res>0) {
 			return "redirect:adoptDetail.do?aNo="+comDto.getaNo();
@@ -327,14 +364,18 @@ public class AdoptController {
 	
 	// admin입양공고 목록보기 
 	@RequestMapping(value = "/adminAdopt.do")
-	public String adminAdopt(Model model) {
+	public String adminAdopt(Model model,Criteria cri) {
 		
-		model.addAttribute("list",biz.adoptList());
+		model.addAttribute("list",biz.adoptList(cri));
 		
 		
 		return "admin/admin_adoptList";
 	}
 	
 
+	
+	
+	
+	
 
 }

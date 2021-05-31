@@ -246,6 +246,34 @@ function execPostCode() {
          <div class="container text-center mt-5" style="margin-right:600px;">
          <button type="submit">완료</button>
          <button type="button">취소</button>
+         <button type="button" id="delete">회원탈퇴</button>
+         
+         <script type="text/javascript">
+         
+         $("#delete").on("click", function(){
+			  var confirm_val1 = confirm("정말 탈퇴하시겠습니까?");
+        	  
+			  console.log(confirm_val1);
+        	 if(confirm_val1) {
+        		 location.href="memberDeletePwCheck.do";
+        	 
+        	 }else {
+        		 
+        		 location.href="main.do";
+        		 
+        		 
+        		 }
+        	 
+        	 
+        	 
+ 
+        	});
+         
+         
+         
+         </script>
+         
+         
          </div>
             </form>   
          

@@ -28,6 +28,9 @@ public interface MemberBiz {
 	public List<MemberDto> sMemberList();
 
 	public List<MemberDto> qMemberList();
+	
+	public void memberDelete(String mId);
+	
 
 
 

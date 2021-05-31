@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.anif.mvc.adopt.dto.AdoptDto;
+import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.goods.dto.GoodsDto;
 
 public interface AdoptDao {
@@ -17,7 +18,7 @@ public interface AdoptDao {
 
 	
 	//전체 입양공고 리스트 
-	public List<AdoptDto> adoptList();
+	public List<AdoptDto> adoptList(Criteria cri);
 	
 	//전체 입양공고 상세 
 	public AdoptDto adoptDetail(int aNo);
@@ -44,9 +45,33 @@ public interface AdoptDao {
 	//조회수
 	public void viewCount(int aNo);
 	
+	//입양공고 지역 리스트
+	public List<AdoptDto> totalAreaList();
+	
+	//페이징 처리 
+	
+	public int adoptListCnt();
+	
+	
+	
+	public List<AdoptDto> seoulEastList();
+	
+	public List<AdoptDto> seoulWestList();
+		
+	public List<AdoptDto> seoulSouthList(); 
+
+	public List<AdoptDto> seoulNorthList(); 
+	
+	public List<AdoptDto> GyeonggiList();
+	
+	public List<AdoptDto> adoptSelect(AdoptDto dto);
+	
+	}
+
+	
 	
 	
 	
 
 
-}
+

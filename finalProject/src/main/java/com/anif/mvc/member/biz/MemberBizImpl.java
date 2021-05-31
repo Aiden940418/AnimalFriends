@@ -79,5 +79,11 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.qMemberList();
 	}
 
+	@Override
+	public void memberDelete(String mId) {
+		dao.memberDelete(mId);
+		
+	}
+
 
 }

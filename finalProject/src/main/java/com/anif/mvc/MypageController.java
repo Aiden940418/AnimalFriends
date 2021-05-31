@@ -226,6 +226,24 @@ public class MypageController {
 	}
 	
 	
+	//아이디 비밀번호 체크 
+	
+	@RequestMapping(value="/pwChk.do", method = RequestMethod.POST)
+	public String pwCheck(String mId, String mPw) {
+		
+		logger.info("passwordCheck");
+		boolean result = memberBiz.pwChk(mId, mPw);
+		if(result) {
+			
+			
+			return "mypage/mypage_memberModify";
+		}else {
+			return "mypage/mypage_memberModifyPWCheck";
+		}
+		
+	}
+	
+	
 	
 	//회원정보 수정 
 	
@@ -233,9 +251,7 @@ public class MypageController {
 	public String memberUpdate(Model model, MemberDto dto, HttpSession session) {
 		
 		int res = memberBiz.memberUpdate(dto);
-		
-		System.out.println("회원정보수정" + dto);
-		System.out.println("회원정보수정 " + res);
+
 		
 		if (res > 0) { // 글 insert 성공 시
 			session.invalidate();
