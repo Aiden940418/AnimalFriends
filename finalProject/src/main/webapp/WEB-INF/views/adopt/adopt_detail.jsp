@@ -48,6 +48,30 @@ a.button:hover {
 </style>
 
 
+<script>
+	//notifySend
+	$('#chatRequestBtn').click(function(e){
+	    var url = '';
+	    // 전송한 정보를 db에 저장	
+	    $.ajax({
+	        type: 'post',
+	        url: 'notice.do',
+	        dataType: 'text',
+	        data: {
+	        },
+	        success: function(){    // db전송 성공시 실시간 알림 전송
+	            // 소켓에 전달되는 메시지
+	            // 위에 기술한 EchoHandler에서 ,(comma)를 이용하여 분리시킨다.
+	            socket.send("알림이 잘 뜨나요?");	
+	        }
+	    });
+	    
+	});
+
+
+</script>
+
+
 <div class="container text-center">
 	<h1 class="display-5 mt-5">입양 공고</h1><br>
 	<hr>
@@ -134,7 +158,7 @@ a.button:hover {
 		<br>
 			<div class="wrap">
 		<!-- 공고 작성자의 정보를 같이 넘겨 컨트롤러에서 1:1채팅방 생성 -->
-  		<a href="adoptToChatList.do?chatResponsorNo=${dto.aMNo }" class="button">1:1채팅 요청</a>
+  		<a href="adoptToChatList.do?chatResponsorNo=${dto.aMNo }" class="button" id="chatRequestBtn">1:1채팅 요청</a>
   		</div>
 
 		<!--  1:1 채팅 요청 종료 -->

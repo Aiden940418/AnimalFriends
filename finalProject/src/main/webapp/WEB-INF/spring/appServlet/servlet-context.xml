@@ -39,8 +39,7 @@
 	<context:component-scan base-package="com.anif.mvc" />
 	<context:component-scan base-package="com.anif.mvc.common.image" />
 	
-	<default-servlet-handler/>
-	<!-- 웹소켓 -->
+	<!-- 웹소켓 채팅 -->
 	<websocket:handlers allowed-origins="*" >
         <websocket:mapping handler="handlerChat" path="/chat" />
         <websocket:handshake-interceptors>
@@ -54,6 +53,17 @@
 	<!-- 이 코드를 해줘야 정적리소스(html, css, js, 이미지 등) 호출시 디폴트서블릿이 알맞게 수행할 수 있게 된다 -->
 	<default-servlet-handler />
 	
+	
+	<!-- 웹소켓 알림 -->
+	<beans:bean id="handlerNotice" class="com.anif.mvc.notice.handlerNotice" />
+	
+	<websocket:handlers>
+	    <websocket:mapping handler="handlerNotice" path="/notice" />
+	    <websocket:handshake-interceptors>
+	        <beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
+	    </websocket:handshake-interceptors>	
+	   <websocket:sockjs />
+	</websocket:handlers>
 	
 	
 	
