@@ -10,12 +10,14 @@ public class ReviewDto {
 	private String gRewTitle;
 	private String gRewContent;
 	private Date gRewDate;
+	private String orderId;
 	
 	public ReviewDto() {
 		super();
 	}
 
-	public ReviewDto(int gRewNo, String gRewWriter, int gNo, String gRewTitle, String gRewContent, Date gRewDate) {
+	public ReviewDto(int gRewNo, String gRewWriter, int gNo, String gRewTitle, String gRewContent, Date gRewDate,
+			String orderId) {
 		super();
 		this.gRewNo = gRewNo;
 		this.gRewWriter = gRewWriter;
@@ -23,6 +25,7 @@ public class ReviewDto {
 		this.gRewTitle = gRewTitle;
 		this.gRewContent = gRewContent;
 		this.gRewDate = gRewDate;
+		this.orderId = orderId;
 	}
 
 	public int getgRewNo() {
@@ -71,6 +74,14 @@ public class ReviewDto {
 
 	public void setgRewDate(Date gRewDate) {
 		this.gRewDate = gRewDate;
+	}
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
 	}
 
 	

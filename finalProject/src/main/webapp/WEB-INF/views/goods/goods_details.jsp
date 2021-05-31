@@ -21,26 +21,32 @@
                   <p class="card-text">
                  <!-- 굿즈 이미지(서버에 업로드된 이미지 화면출력) -->
 
-			<img src="resources/${dto.gImg}" class="rounded float-start mt-4 ms-5" style="width:550px; height:400px">
+			<img src="resources/${dto.gImg}" class="rounded float-start mt-4 ms-5" style="width:550px; height:400px; object-fit:cover;">
  
  				<div>
  				<h1 class="display-4">${dto.gName }</h1>
  				<div class="text-left">상품가격:${dto.gPrice }</div>
- 				<textarea rows="8" cols="40" readonly>${dto.gContent }</textarea><br>
+ 				<textarea class="mt-3" rows="5" cols="50" readonly="readonly" style="border:none; text-align:center;">${dto.gContent } </textarea><br>
    				
-				   				<!-- dropDown1-start -->
+   				
+   				
+   				
+			<!-- dropDown1-start -->
 				<div class="container dropdown ms-5 mt-4">
 
-				
-					 <button type="button" class="btn btn-outline-success"
-							style="width:100px; pointer-events: none;">수량선택</button>
-					<select id="cartStock" class="form-control ms-2" style="width:200px" name="수량선택" style="margin-left:300px">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select>
+		
+					<select id="cartStock" class="form-control ms-2 btn btn-outline-success btn-lg text-center" style="width:120px; text-align-last: center; vertical-align: middle;" name="수량선택">
+						<option value="0" >&nbsp;&nbsp;수량선택</option>
+						<option value="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1개</option>
+						<option value="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2개</option>
+						<option value="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3개</option>
+						<option value="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4개</option>
+						<option value="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5개</option>
+					</select><br>
+					<a href="" class="btn btn-outline-success btn-lg mt-4 "style="width:200px" id="addCart_btn">장바구니</a>
+						</div>
+					
+					
 					
 				<input type="hidden" id="mNo" name="mNo" value="${login.mNo}">
                 <input type="hidden" id="gNo" name="gNo" value="${dto.gNo}">
@@ -50,8 +56,6 @@
 <!-- dropDown1-end -->
    				<br>
    				<br>
-   				<a href="goodsPurchase.do" class="btn btn-outline-success btn-lg" style="width:200px">결제하기</a>
-   				<a href="" class="btn btn-outline-success btn-lg ms-3"style="width:200px" id="addCart_btn">장바구니</a>
    				
    				</div>
    				</div>
@@ -93,41 +97,75 @@
 	<div class="container mt-5 text-center	">
 	
 
-<a href="#.detail" class="btn btn-outline-success ms-5"style="width:200px">상세보기</a>
-<a href="#review" class="btn btn-outline-success ms-5"style="width:200px">리뷰보기</a>
-<a href="#" class="btn btn-outline-success ms-5"style="width:200px">Q&A</a>	
-<a href="#" class="btn btn-outline-success ms-5"style="width:200px">업체소개</a>	
+<button onclick="fnMove();" class="btn btn-outline-success ms-5"style="width:200px;">상세보기 </button>
+
+<script>
+    function fnMove(){
+        var offset = $("#detail").offset();
+        $('html, body').animate({scrollTop : offset.top}, 400);
+    }
+</script>
+
+
+
+
+
+
+<button onclick="reviewMove();" class="btn btn-outline-success ms-5"style="width:200px">리뷰보기</button>
+<script>
+    function reviewMove(){
+        var offset = $("#review").offset();
+        $('html, body').animate({scrollTop : offset.top}, 400);
+    }
+</script>
+<a href="#qna" class="btn btn-outline-success ms-5"style="width:200px">Q&A</a>	
+<a href="#company" class="btn btn-outline-success ms-5"style="width:200px">업체소개</a>	
 	
 	
 	
 	</div>
 	
-	<div>
- 	<h1 id="detail" class="detail display-4 mt-5">상세보기</h1>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	<div id="detail">
+ 	<h1 class="display-4 mt-5">상세보기</h1>
+ 	
+ 	<img src="resources/${dto.gImg}" style="width:1000px; height:700px;">
+ 	
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	
+ 	<br>
+ 	<br>
+ 	
+ 	<br><br>
+ 	
+ 	</div>
+
 	
-	</div>
 	
 	
 	
-	<div>
+	
+	<div id="review">
 		<hr>
-	
-	<h1 class="display-3 mt-5 text" id="review">리뷰보기</h1>
+	<h1 class="display-3 mt-5 text">리뷰보기</h1>
+	</div>
+	<div>
 		<table class="table text-center table-hover" >
 		<thead class="table-white">
 			<tr>
@@ -137,6 +175,18 @@
 			</tr>
 		</thead>
 		<tbody>
+		<c:choose>
+		<c:when test="${empty review}">
+				<tbody>
+		
+			<td colspan="3">작성된 리뷰가 없습니다.</td>
+			
+		
+		</c:when>
+	
+	
+		
+		<c:otherwise>
 			<c:forEach items="${review}" var="greview">
 				<tr>
 					<td>${greview.gRewWriter}</td>
@@ -146,21 +196,40 @@
 					<td>${greview.gRewDate}</td>
 				</tr>
 			</c:forEach>
+			</c:otherwise>
+			</c:choose>
 		</tbody>
 	</table>
 	
 	</div>
 	<hr>
 	
-	<div>
-	<br>
 	
-	<h1 class="display-4 mt-3">Q&A</h1>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+
+	<div>		
+	
+	<hr>
+	
+	<h1 class="display-4 mt-3" id="qna">Q&A</h1>
 		<table class="table text-center table-hover" >
-		<thead class="table-dark">
+		<thead class="table">
 			<tr>
-				<th style="width : 10%;">NO.</th>
-				<th style="width : 70%;">제목</th>
+				<th style="width : 20%;">NO.</th>
+				<th style="width : 60%;">제목</th>
 				<th style="width : 20%;">날짜</th>
 			</tr>
 		</thead>
@@ -180,9 +249,23 @@
 	
 	
 	<div>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
 		<hr>
 	
-	<h1 class="display-4 mt-5">업체소개</h1>
+	<h1 class="display-4 mt-5" id="company">업체소개</h1>
 	
 		<table class="table text-center table-bordered border-primary;
 		"  >
@@ -214,7 +297,6 @@
                 </div>
                 </div>
                 </div>
-              	</div>
 
 
 

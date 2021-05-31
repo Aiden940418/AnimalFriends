@@ -31,9 +31,9 @@
 									style="width: 130px; pointer-events: none; ">상품종류</button></th>
 							<td><select name="gCtgy" class="form-control ms-2 text-center"
 								style="width: 100px ">
-									<option value="강아지">옷</option>
-									<option value="고양이">가방</option>
-									<option value="도마뱀">케이스</option>
+									<option value="옷">옷</option>
+									<option value="가방">가방</option>
+									<option value="악세사리">악세사리</option>
 									
 							</select></td>
 						</tr>

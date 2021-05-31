@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.anif.mvc.common.pagination.Criteria;
+import com.anif.mvc.common.pagination.SearchCriteria;
 import com.anif.mvc.qnaBoardAdmin.dao.QnaBoardAdminDao;
 import com.anif.mvc.qnaBoardAdmin.dto.QnaBoardAdminDto;
 
@@ -17,13 +18,24 @@ public class QnaBoardAdminBizImpl implements QnaBoardAdminBiz{
 	
 	
 	@Override
-	public List<QnaBoardAdminDto> selectList(Criteria cri) {
-		return dao.selectList(cri);
+	public List<QnaBoardAdminDto> selectList(SearchCriteria scri) {
+		return dao.selectList(scri);
 	}
+	
+//	@Override
+//	public List<QnaBoardAdminDto> adoptQList() {
+//		return dao.adoptQList();
+//	}
+//	
+//	@Override
+//	public List<QnaBoardAdminDto> drQList() {
+//		return dao.drQList();
+//	}
+
 
 	@Override
-	public int listCount() {
-		return dao.listCount();
+	public int listCount(SearchCriteria scri) {
+		return dao.listCount(scri);
 	}
 
 	@Override
@@ -51,6 +63,8 @@ public class QnaBoardAdminBizImpl implements QnaBoardAdminBiz{
 	public int delete(int qno) {
 		return dao.delete(qno);
 	}
+
+	
 
 
 

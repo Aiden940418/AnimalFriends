@@ -39,13 +39,22 @@ public class MemberController {
 	private Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	
-	// 일반멤버 목록보기 
+	// 전체멤버 목록보기 
 	@RequestMapping(value = "/memberList.do")
 	public String memberList(Model model) {
 		
 		model.addAttribute("list",biz.memberList());	
 		return "admin/admin_userList";
 	}
+	
+	// 일반멤버 목록보기 
+	@RequestMapping(value = "/iMemberList.do")
+	public String iMemberList(Model model) {
+		
+		model.addAttribute("list",biz.iMemberList());	
+		return "admin/admin_userList";
+	}
+	
 	
 	// 보호소멤버 목록보기 
 	@RequestMapping(value = "/sMemberList.do")
@@ -63,6 +72,41 @@ public class MemberController {
 		return "admin/admin_userList";
 		}
 	
+	
+	
+	@RequestMapping(value="/memberDeletePwCheck.do")
+	public String memberDeletePwCheck() {
+		
+		return "mypage/mypage_memberDeletePwCheck";
+			
+	}
+	
+	
+	
+	@RequestMapping(value="/memberDelete.do")
+	public String memberDelete(HttpSession session, String mId, String mPw) {
+		
+		
+		logger.info("passwordCheck");
+		boolean result = biz.pwChk(mId, mPw);
+
+		if(result) {
+			biz.memberDelete(mId);
+			
+			session.invalidate();
+			
+			return "main";
+
+			
+
+		}else {
+			return "mypage/mypage_memberModifyPWCheck";
+		}
+		
+		
+		
+		
+	}
 	
 	
 	

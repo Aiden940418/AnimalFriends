@@ -38,9 +38,33 @@
   		INSERT INTO DIARY
 		VALUES(DNOSEQ.NEXTVAL, #{mno}, #{dcontent}, SYSDATE, #{diaryImg}, #{diaryThumbImg}, 0)
   	</insert>
-  
-  
-  
+	
+	<!-- 나의 입양일기 프로필 사진 등록-->
+	<insert id="register" parameterType="ProfileImgDto">
+  		INSERT INTO PROFILETABLE
+		VALUES(#{mno}, #{profileImg}, #{profileThumbImg})
+  	</insert>  
+  	
+  	<!-- 나의 입양일기 프로필 사진 수정-->
+  	<update id="update" parameterType="ProfileImgDto">
+		UPDATE PROFILETABLE
+		SET PROFILEIMG = #{profileImg}, PROFILETHUMBIMG = #{profileThumbImg}
+		WHERE MNO = #{mno}
+	</update>
+  	
+  	<!-- 나의 입양일기 프로필 사진 조회-->
+  	<select id="profileImgSelect" parameterType="int" resultType="ProfileImgDto">
+  		SELECT *
+  		FROM PROFILETABLE
+  		WHERE MNO = #{mno}
+  	</select>
+  	<!-- 프로필 사진 로우 확인용_DiaryDaoIml -->
+  	<select id="PrlCheck" parameterType="ProfileImgDto" resultType="ProfileImgDto">
+  		SELECT *
+  		FROM PROFILETABLE
+  		WHERE MNO = #{mno}
+  	</select>
+  	
   
   	<!-- 댓글, 댓글의 답글 관련 -->
   	<select id="DRselectList" parameterType="int" resultType="DiaryReplyDto">
@@ -107,6 +131,14 @@
   	</delete>
   	
   	
+  	<!-- 좋아요 -->
+  	
+  	<insert id="insertLike" parameterType="int">
+  		INSERT INTO DIARY
+  		VALUES (LIKENOSEQ.NEXTVAL, #{dno}, #{mno}, Y)
+  	
+  	
+  	</insert>
   	<!-- 관리자 페이지 입양일기 관리 관련 -->
   	<select id="adminDiarySelectList" resultType="diaryDto">
   		SELECT *

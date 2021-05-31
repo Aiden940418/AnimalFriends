@@ -80,16 +80,26 @@ CREATE TABLE GOODSORDER (
     ORDERADDR3  varchar2(50) not null,
     ORDERPHONE  varchar2(30) not null,
     AMOUNT      number       not null,
-    ORDERDATE   Date         default sysdate,   
-    primary key(orderId)
-
-
-
-
-
-
+    ORDERDATE   Date         default sysdate, 
+    GNO		NUMBER,
+    GREVIEWSTATUS VARCHAR2(50) not null,
+    primary key(orderId),
+    CONSTRAINT GREVIEWSTATUS_CHK CHECK(GREVIEWSTATUS IN('false','true'))
 );
 
+SELECT * FROM GOODSORDER;
+
+-- 이부분 새로추가 --
+alter table goodsorder 
+    add GNO NUMBER;
+    
+-- 이부분 추가 필요! --
+ALTER TABLE GOODSORDER
+	ADD GREVIEWSTATUS VARCHAR2(50)
+	CONSTRAINT GREVIEWSTATUS_CHK CHECK(GREVIEWSTATUS IN('false','true'));
+    
+    
+    select * from goodsorder;
 
 alter table goodsorder
     add constraint order_mId foreign key(mno)
@@ -99,7 +109,9 @@ alter table goodsorder
 
 
 --굿즈 주문 상세(결제완료시에 amount등등 데이터 값 저장 )    
-DROP TABLE ORDER_DETAILS;    
+DROP TABLE ORDER_DETAILS;  
+
+create sequence order_details_seq;
 
 create table ORDER_DETAILS (
     ORDERDETAILSNUM number       not null,
@@ -109,8 +121,10 @@ create table ORDER_DETAILS (
     primary key(orderDetailsNum)
 );
 
+SELECT * FROM ORDER_DETAILS;
+
 drop sequence order_details_seq;
-create sequence order_details_seq;
+commit
 -------------------------------------------------------------------------
 
 
@@ -128,6 +142,7 @@ CREATE TABLE REVIEW (
 	GREWTITLE VARCHAR2(2000) NOT NULL,
 	GREWCONTENT VARCHAR2(4000) NOT NULL,
 	GREWDATE DATE DEFAULT SYSDATE NOT NULL,
+	ORDERID VARCHAR2(50) NOT NULL,
 	
 	FOREIGN KEY(GNO) REFERENCES GOODS(GNO) ON DELETE CASCADE
 );
@@ -136,7 +151,7 @@ CREATE TABLE REVIEW (
     
     
 --굿즈리뷰 더미데이터     
-INSERT INTO REVIEW VALUES( GREWNO.NEXTVAL, '관리자',1,'TEST','TEST',SYSDATE );
+INSERT INTO REVIEW VALUES( GREWNO.NEXTVAL, '관리자',2,'TEST','TEST',SYSDATE );
     
 SELECT * FROM REVIEW;
     
@@ -151,8 +166,7 @@ alter table order_details
     
     
 
-
-
+select * from goodsorder;
 
 
 

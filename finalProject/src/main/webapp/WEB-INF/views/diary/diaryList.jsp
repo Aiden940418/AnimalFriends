@@ -20,6 +20,9 @@
 <!-- 제이쿼리 사용 위한 코드 -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
+
 <style type="text/css">
 	h1 {
 		text-align: center;
@@ -81,7 +84,8 @@
 						"<div class='col ms-4 my-3'>"+
 							"<div class='card border-success mb-3 text-dark' style='width: 800px;'>"+
 								"<div class='card-header bg-transparent border-success'>"+result[i].mnick+"</div>"+
-									"<img class='card-img-top' src='resources/" + result[i].diaryImg + "'>"+
+									"<img class='card-img-top' src='resources/"+result[i].diaryImg+"'>"+
+									+
 									"<ul class='list-group list-group-flush'>"+
 										"<li class='list-group-item'>"+
 											"<div class='row'>"+

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,6 +24,8 @@ import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
 import com.anif.mvc.diary.biz.DiaryBiz;
 import com.anif.mvc.diary.dto.DiaryDto;
+import com.anif.mvc.member.biz.MemberBiz;
+import com.anif.mvc.diary.dto.ProfileImgDto;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.qnaBoard.biz.QnaBoardBiz;
 import com.anif.mvc.qnaBoard.dto.QnaBoardDto;
@@ -35,11 +38,14 @@ public class MypageController {
 	
 	@Autowired
 	private QnaBoardBiz biz;
+	
 	@Autowired
 	private DiaryBiz diaryBiz;
 	@Autowired
 	private ChatDao chatDao;
 	
+	@Autowired
+	private MemberBiz memberBiz;
 
 	@Resource(name="uploadPath")
 	private String uploadPath;  //이미지 업로드 화면출력 관련 
@@ -108,7 +114,6 @@ public class MypageController {
 		return "mypage/mypage_mycartList";
 	}
 	
-	// Diary Start 
 	
 	// Diary Start 
 	@RequestMapping("/mydiary.do")
@@ -121,9 +126,60 @@ public class MypageController {
 		
 		model.addAttribute("memberDto", memberDto); 
 		model.addAttribute("list", diaryBiz.myDiarySelectList(mNo)); 
-		
+		model.addAttribute("prf", diaryBiz.profileImgSelect(mNo)); 
 		return "mypage/mypage_mydiary";
 	}
+	
+	//나의 입양 일기_프로필 사진 등록 및 수정
+	@RequestMapping("/RgstOrUpdate.do")
+	public String RgstOrUpdate(Model model, HttpSession session) {
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		int mNo = memberDto.getmNo();
+		
+		model.addAttribute("prf", diaryBiz.profileImgSelect(mNo)); 
+		
+		return "mypage/mypage_mydiaryProfileRgstOrUpdate";
+	}
+	
+	@RequestMapping("/myDrPrfRorURes.do")
+	public String myDrPrfRorURes(ProfileImgDto dto, HttpSession session, @RequestParam(value = "file", required = false) MultipartFile file, Model model) throws IOException, Exception {
+		logger.info("Profile Img Register");
+		
+
+		//현재 로그인 되어있는 계정의 회원번호를 가져와서 dto에 세팅해주기
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		dto.setMno(memberDto.getmNo());
+		
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+		
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+		
+		dto.setProfileImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		dto.setProfileThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+	
+		
+		int res = diaryBiz.myDrPrfRorURes(dto);
+
+		if (res > 0) { // 글 insert 성공 시
+			model.addAttribute("msg", "프로필 등록 or 수정 성공!");
+			model.addAttribute("url", "/mydiary.do");
+		} else {  //글 insert 실패 시
+			model.addAttribute("msg", "프로필 등록 or 수정 실패!");
+			model.addAttribute("url", "/RgstOrUpdate.do");
+		}
+		
+		
+		return "/mypage/alertPage";
+	}
+	
+	
+	
 	
 	
 //	@RequestMapping("/mydiaryDetail.do")
@@ -140,13 +196,17 @@ public class MypageController {
 	@RequestMapping("/mydiaryWriteRes.do")
 	public String mydiaryWriteRes(DiaryDto dto, HttpSession session, @RequestParam(value = "file", required = false) MultipartFile file, Model model) throws IOException, Exception {
 		logger.info("My Diary INSERT");
+		
 
-		//이미지 업로드를 위한 코드
+		//현재 로그인 되어있는 계정의 회원번호를 가져와서 dto에 세팅해주기
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		dto.setMno(memberDto.getmNo());
+		
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
 		
-		if(file != null) {
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
 			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
 		} else {
 			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
@@ -154,10 +214,7 @@ public class MypageController {
 		
 		dto.setDiaryImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		dto.setDiaryThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
-		//현재 로그인 되어있는 계정의 회원번호를 가져와서 dto에 세팅해주기
-		MemberDto memberDto = (MemberDto) session.getAttribute("login");
-		dto.setMno(memberDto.getmNo());
-		
+	
 		
 		int res = diaryBiz.insert(dto);
 
@@ -212,6 +269,51 @@ public class MypageController {
 		
 		return "mypage/mypage_memberModifyPWCheck";
 	}
+	
+	
+	//아이디 비밀번호 체크 
+	
+	@RequestMapping(value="/pwChk.do", method = RequestMethod.POST)
+	public String pwCheck(String mId, String mPw) {
+		
+		logger.info("passwordCheck");
+		boolean result = memberBiz.pwChk(mId, mPw);
+		if(result) {
+			
+			
+			return "mypage/mypage_memberModify";
+		}else {
+			return "mypage/mypage_memberModifyPWCheck";
+		}
+		
+	}
+	
+	
+	
+	//회원정보 수정 
+	
+	@RequestMapping(value="/memberUpdate.do", method = RequestMethod.POST)
+	public String memberUpdate(Model model, MemberDto dto, HttpSession session) {
+		
+		int res = memberBiz.memberUpdate(dto);
+
+		
+		if (res > 0) { // 글 insert 성공 시
+			session.invalidate();
+			model.addAttribute("msg", "회원정보 수정 성공!");
+			model.addAttribute("url", "/loginForm.do");
+		} else {  //글 insert 실패 시
+			model.addAttribute("msg", "회원정보 수정 실패!");
+			model.addAttribute("url", "/main.do");
+		}
+		
+		return "/mypage/alertPage";
+
+	}
+		
+	
+	
+	
 	
 	
 	//QnA Start

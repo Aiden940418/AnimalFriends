@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.anif.mvc.diary.dto.DiaryDto;
 import com.anif.mvc.diary.dto.DiaryReplyDto;
 import com.anif.mvc.diary.dto.LikeTableDto;
+import com.anif.mvc.diary.dto.ProfileImgDto;
 
 @Repository
 public class DiaryDaoImpl implements DiaryDao{
@@ -262,6 +263,50 @@ public class DiaryDaoImpl implements DiaryDao{
 		
 		return dto;
 	}
-	
+
+	//나의 입양일기 프로필 사진 조회MNO)
+	@Override
+	public ProfileImgDto profileImgSelect(int mNo) {
+		ProfileImgDto prf = null;
+		
+			try {
+				prf = sqlSession.selectOne(NAMESPACE + "profileImgSelect", mNo);
+				
+			} catch (Exception e) {
+				System.out.println("[error] : profileImgSelect");
+				e.printStackTrace();
+			}
+			
+			System.out.println(prf);
+		return prf;
+	}
+
+	//나의 입양일기 프로필 사진 등록 및 수정
+	@Override
+	public int myDrPrfRorURes(ProfileImgDto dto) {
+		ProfileImgDto PrlCheck = null;
+		int update = 0;
+		int register = 0;
+		
+		try {
+			PrlCheck = sqlSession.selectOne(NAMESPACE + "PrlCheck", dto);
+			
+		} catch (Exception e) {
+			System.out.println("[error] : PrlCheck");
+			e.printStackTrace();
+		}
+		
+		if(PrlCheck == null) {
+			register = sqlSession.insert(NAMESPACE + "register", dto);
+			
+			return register;
+		
+		}else {
+			update = sqlSession.update(NAMESPACE + "update", dto);
+			return update;
+		}
+		
+	}
+
 
 }

@@ -119,15 +119,18 @@
 					
 					<!--  cartList start -->
 				<c:forEach items="${cartList}" var="cartList">
+				
+				<input type="hidden" name="cgNo" value="${cartList.gNo }">
 					
 
 					
 					
-					<div class="card" style="width: 15rem; margin-top: 20px;">
-										<!-- 카드 부분 체크박스 -->
+						<!-- 카드 부분 체크박스 -->
 					
-					<div class="checkBox mt-5">
+					<div class="checkBox">
 						<input type="checkbox" name="chBox" class="chBox" data-cartNum="${cartList.cartNo }" />
+					<div class="card" style="width: 30rem;">
+									
 					
 					<script>
 						$(".chBox").click(function(){
@@ -141,9 +144,10 @@
 					
 					<!--  카드부분 체크박스 끝  -->
 						<img class="card-img-top"
-							src="resources/${cartList.gImg }" alt="Card image cap">
+							src="resources/${cartList.gImg }" alt="Card image cap" style="width:30rem;">
 						<div class="card-body">
 							<p class="card-text">
+								
 								상품명 :${cartList.gName } <br> 
 								가격 :
 									<fmt:formatNumber pattern="###,###,###" value="${cartList.gPrice}" />원<br>
@@ -183,10 +187,13 @@
 						
 				
 						</div>
+						</div>
+						
+						<c:set var="sum" value="${sum + (cartList.gPrice * cartList.cartStock) }" />
+								</c:forEach>
 					</div>
 					
-					<c:set var="sum" value="${sum + (cartList.gPrice * cartList.cartStock) }" />
-								</c:forEach>
+					
 					
 					
 					
@@ -210,9 +217,6 @@
 							
 							
 						});
-						
-
-						
 						
 						</script>
 					</div>
@@ -254,6 +258,9 @@
               	<form action="goodsOrder.do" method="post">
               	<input type="hidden" name="amount" value="${sum }">
               	<input type="hidden" name="mNo" value="${login.mNo }">
+             <c:forEach items="${cartList}" var="cartList">
+              	<input type="hidden" name="gNo" value="${cartList.gNo }">
+              	</c:forEach>
        		  <table>
 		        
 		        <tr>
@@ -294,30 +301,6 @@
          
        			
 		         <br>
-		         
-	<!-- 	         <hr>
-		        <h1 class="display-8 mt-4 ms-5">결제 정보</h1>
-		        <div class="ms-5 mt-3">
-		        <form method="get" action="">
-		        
-		        <label><input type="radio" name="card" value="payByCard">카드결제</label>
-		        <label><input type="radio" name="cash" value="payByCash">무통장입금</label><br>
-		         <br>
-		        <label>카드선택 </label>
-		 		<select id="cardCompany" name="cardName">
-				    <option value="BC">비씨카드</option>
-				    <option value="hyundea">현대카드</option>
-				    <option value="nh">농협카드</option>
-				    <option value="lotte">롯데카드</option>
-					<option value="woori">우리카드</option>
-				</select>
-		         
-         
-         
-         
-         
-         </form>
-         </div> -->
     
   
   	<br>
@@ -410,7 +393,9 @@
        
        </div>
        
+       
        </form>
+      
       
       </div>
       

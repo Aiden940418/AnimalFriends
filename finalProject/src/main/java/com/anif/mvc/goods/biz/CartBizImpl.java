@@ -59,6 +59,10 @@ public class CartBizImpl implements CartBiz{
 		return dao.orderList(order);
 		
 	}
+	@Override
+	public int orderInfoStatusUpdate(String orderId) {
+		return dao.orderInfoStatusUpdate(orderId);
+	}
 	
 	
 	

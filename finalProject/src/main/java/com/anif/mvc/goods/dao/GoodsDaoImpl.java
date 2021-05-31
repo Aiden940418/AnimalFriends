@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.anif.mvc.adopt.dto.AdoptDto;
 import com.anif.mvc.goods.dto.GoodsDto;
 
 @Repository
@@ -130,8 +131,103 @@ public class GoodsDaoImpl implements GoodsDao {
 		}
 		return res;
 	}
-	
 
+	//굿즈 카테고리 가방 선택
+	@Override
+	public List<GoodsDto> goodsBagList() {
+		List<GoodsDto> list = new ArrayList<GoodsDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"goodsBagList");
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}		
+		return list;
+	}	
+	
+	//굿즈 카테고리 옷 선택
+	@Override
+	public List<GoodsDto> goodsClothList() {
+		List<GoodsDto> list = new ArrayList<GoodsDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"goodsClothList");
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}		
+		return list;
+	}		
+	
+	//굿즈 카테고리 악세사리 선택
+	@Override
+	public List<GoodsDto> goodsAccList() {
+		List<GoodsDto> list = new ArrayList<GoodsDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"goodsAccList");
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}		
+		return list;
+	}
+
+	//관리자 굿즈 카테고리 가방 선택
+	@Override
+	public List<GoodsDto> adminGoodsBagList() {
+		List<GoodsDto> list = new ArrayList<GoodsDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"adminGoodsBagList");
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}		
+		return list;
+	}
+	
+	//관리자 굿즈 카테고리 옷 선택
+	@Override
+	public List<GoodsDto> adminGoodsClothList() {
+		List<GoodsDto> list = new ArrayList<GoodsDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"adminGoodsClothList");
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}		
+		return list;
+	}
+
+	//관리자 굿즈 카테고리 악세사리 선택
+	@Override
+	public List<GoodsDto> adminGoodsAccList() {
+		List<GoodsDto> list = new ArrayList<GoodsDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"adminGoodsAccList");
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}		
+		return list;
+	}
+
+	@Override
+	public List<GoodsDto> goodsSelect(GoodsDto dto) {
+		List<GoodsDto> list = new ArrayList<GoodsDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"goodsSelect",dto);
+		} catch (Exception e) {
+			System.out.println("[error: goodsSelect list" );
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	
 

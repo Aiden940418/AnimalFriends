@@ -21,25 +21,10 @@
 				
 				<!-- 여기서 부터 전송 정보 입력 -->
 				<form action="mypageReviewWrite.do" method="POST" enctype="multipart/form-data">
-					
-					<input type="hidden" name="mNo" value="${login.mNo}" >
-			
+					<input type="hidden" name="gRewWriter" value="${login.mNick }">
 					<table>
 						
-						<!-- 제품이름 보여주기 -->
-						<tr>
-							<th>
-								<button type="button" class="btn btn-outline-success"
-									style="width:130px; pointer-events: none;">제품명</button>
-							</th>
-							<td>
-								<input type="text" class="form-control my-1" name="gNo" id="gNo"
-									style="width:500px; margin:10px;" value="1"
-									readonly="readonly">
-							</td>
-						</tr>
-						
-						<!-- 제목 작성 -->
+		
 						<tr>
 							<th>
 								<button type="button" class="btn btn-outline-success"

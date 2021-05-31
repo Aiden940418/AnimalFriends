@@ -54,8 +54,7 @@
 	
 	INSERT INTO GOODSORDER VALUES(
 	
-	 #{orderId}, #{mNo}, #{orderName}, #{orderAddr1}, #{orderAddr2}, #{orderAddr3}, #{orderPhone}, #{amount}, SYSDATE
-	
+	 #{orderId}, #{mNo}, #{orderName}, #{orderAddr1}, #{orderAddr2}, #{orderAddr3}, #{orderPhone}, #{amount}, SYSDATE, #{gNo}, 'false'
 	
 	
 	)
@@ -85,10 +84,16 @@
   	<!-- 특정 유저의 주문 목록 -->
 <select id="orderList" resultType="GoodsOrderDto">
  select
-     orderId, mNo, orderName, orderAddr1, orderAddr2, orderAddr3, orderPhone, amount, orderDate
- from goodsorder 
+     orderId, mNo, orderName, orderAddr1, orderAddr2, orderAddr3, orderPhone, amount, orderDate, gNo
+     from goodsorder
      where mNo = #{mNo}
 </select>
-  	
+
+	<!-- status update -->
+  	<update id="orderInfoStatusUpdate">
+  		UPDATE GOODSORDER
+  		SET GREVIEWSTATUS = 'true'
+  		WHERE ORDERID = #{orderId}
+  	</update>
   	
  </mapper>

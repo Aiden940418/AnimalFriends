@@ -9,10 +9,23 @@
 	
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <style type="text/css">
-	/* .select_img img {
-		margin:20px 0;
-	} */
-
+		.box {
+			width: 300px;
+			height: 300px; 
+			border-radius: 30%;
+			overflow: hidden;
+			border: 3px	solid #54BD54;
+			position:relative;
+			left:270px;
+				
+		}
+	
+		.profile {
+		    width: 100%;
+		    height: 100%;
+		    object-fit: cover;
+		}
+							      
 </style>
 	
 	
@@ -44,8 +57,11 @@
 							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
 									style="width: 130px; pointer-events: none;">이미지 미리보기</button></th>
 							<td id="select_img" style="table-layout:auto; text-algin:center;">
-									<img src=""/>
-							
+									<div class="box my-3">
+										<img class="profile" src=""/>
+							        </div>
+							      
+							        
 							</td>
 							
 						</tr>
@@ -78,8 +94,9 @@
 						</tr>
 
 						<tr>
-							<td colspan="2"><input type="button" value="취소"
-								class="btn btn-outline-success my-1" onclick="location.href='myQnaList.do'"
+							<th></th>
+							<td><input type="button" value="취소"
+								class="btn btn-outline-success my-1" onclick="location.href='mydiary.do'"
 								style="width: 90px; float: right;"> 
 								<input type="submit"
 								value="작성" class="btn btn-outline-success mx-3 my-1"

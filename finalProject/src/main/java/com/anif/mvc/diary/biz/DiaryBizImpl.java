@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.anif.mvc.diary.dao.DiaryDao;
 import com.anif.mvc.diary.dto.DiaryDto;
 import com.anif.mvc.diary.dto.DiaryReplyDto;
+import com.anif.mvc.diary.dto.ProfileImgDto;
 
 @Service
 public class DiaryBizImpl implements DiaryBiz{
@@ -100,5 +101,24 @@ public class DiaryBizImpl implements DiaryBiz{
 	public DiaryDto selectOne(int dno) {
 		return dao.selectOne(dno);
 	}
+
+	//나의 입양일기 프로필 사진 등록 및 수정
+	@Override
+	public int myDrPrfRorURes(ProfileImgDto dto) {
+		return dao.myDrPrfRorURes(dto);
+	}
+	
+
+	//나의 입양일기 프로필 사진 조회
+	@Override
+	public ProfileImgDto profileImgSelect(int mNo) {
+		return dao.profileImgSelect(mNo);
+	}
+
+
+
+
+
+
 
 }

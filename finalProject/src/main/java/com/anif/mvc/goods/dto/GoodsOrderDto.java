@@ -7,6 +7,7 @@ public class GoodsOrderDto {
 		    
 		    private String orderId;
 		    private int mNo;
+		    private int gNo;
 		    private String orderName;
 		    private String orderAddr1;
 		    private String orderAddr2;
@@ -14,6 +15,7 @@ public class GoodsOrderDto {
 		    private String orderPhone;
 		    private int amount;
 		    private Date orderDate;
+		    private String gReviewStatus;
 		    
 		    
 		    
@@ -24,11 +26,13 @@ public class GoodsOrderDto {
 
 
 
-			public GoodsOrderDto(String orderId, int mNo, String orderName, String orderAddr1, String orderAddr2,
-					String orderAddr3, String orderPhone, int amount, Date orderDate) {
+			public GoodsOrderDto(String orderId, int mNo, int gNo, String orderName, String orderAddr1,
+					String orderAddr2, String orderAddr3, String orderPhone, int amount, Date orderDate,
+					String gReviewStatus) {
 				super();
 				this.orderId = orderId;
 				this.mNo = mNo;
+				this.gNo = gNo;
 				this.orderName = orderName;
 				this.orderAddr1 = orderAddr1;
 				this.orderAddr2 = orderAddr2;
@@ -36,6 +40,19 @@ public class GoodsOrderDto {
 				this.orderPhone = orderPhone;
 				this.amount = amount;
 				this.orderDate = orderDate;
+				this.gReviewStatus = gReviewStatus;
+			}
+
+
+
+			public String getgReviewStatus() {
+				return gReviewStatus;
+			}
+
+
+
+			public void setgReviewStatus(String gReviewStatus) {
+				this.gReviewStatus = gReviewStatus;
 			}
 
 
@@ -60,6 +77,18 @@ public class GoodsOrderDto {
 
 			public void setmNo(int mNo) {
 				this.mNo = mNo;
+			}
+
+
+
+			public int getgNo() {
+				return gNo;
+			}
+
+
+
+			public void setgNo(int gNo) {
+				this.gNo = gNo;
 			}
 
 
@@ -110,8 +139,6 @@ public class GoodsOrderDto {
 				this.orderAddr3 = orderAddr3;
 			}
 
-			
-			
 
 
 			public String getOrderPhone() {
@@ -152,17 +179,20 @@ public class GoodsOrderDto {
 
 			@Override
 			public String toString() {
-				return "GoodsOrderDto [orderId=" + orderId + ", mNo=" + mNo + ", orderName=" + orderName
-						+ ", orderAddr1=" + orderAddr1 + ", orderAddr2=" + orderAddr2 + ", orderAddr3=" + orderAddr3
-						+ ", orderPhone=" + orderPhone + ", amount=" + amount + ", orderDate=" + orderDate + "]";
+				return "GoodsOrderDto [orderId=" + orderId + ", mNo=" + mNo + ", gNo=" + gNo + ", orderName="
+						+ orderName + ", orderAddr1=" + orderAddr1 + ", orderAddr2=" + orderAddr2 + ", orderAddr3="
+						+ orderAddr3 + ", orderPhone=" + orderPhone + ", amount=" + amount + ", orderDate=" + orderDate
+						+ ", gReviewStatus=" + gReviewStatus + "]";
 			}
 
+			
 
+			
+			
+			
+			
 
-		
-		    
-		    
-		    
-		    
-
+			
+			
+			
 }

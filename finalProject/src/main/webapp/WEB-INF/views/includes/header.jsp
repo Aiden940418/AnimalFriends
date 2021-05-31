@@ -5,9 +5,10 @@
     
 <!doctype html>
 <html lang="en">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script type="text/javascript">
-
+	
 
 
 
@@ -23,7 +24,7 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Yeon+Sung&display=swap');
-
+	
 
 	.navbar, .container, .wrap
 	, .thumnailright , .footer {
@@ -32,6 +33,40 @@
 	color: #696767;
 	
 	}
+	
+	html{
+		height: 100%;
+	}
+	
+	body{
+  		margin:0; 
+  		width:100%; 
+  		height:100%;
+ 	}
+	
+	.contentDiv {
+		min-height: 100%;
+		position: relative;
+		padding-bottom: 19px;
+		
+	}
+	
+	footer{
+	 	position: relative;
+	 	bottom: 0;
+		left: 0;
+		right: 0;
+  		background: #333;
+	  	color:#fff;
+	}
+	
+	* {
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	}
+	
+	
 </style>
   <head>
     <!-- Required meta tags -->
@@ -82,7 +117,7 @@
           <a class="btn btn-outline-success mx-2" href="loginForm.do" id="loginBtn" role="button">로그인</a>
           </c:if>
           <c:if test="${login !=null }">
-          <label>${{login.mNick}}님 로그인 되었습니다.</label>
+          <label><b>${login.mNick}</b>님 로그인 되었습니다.</label>
           <a class="btn btn-outline-success mx-2" href="logout.do" id="logoutBtn" role="button">로그아웃</a>
           </c:if>
           <c:if test="${login !=null }">

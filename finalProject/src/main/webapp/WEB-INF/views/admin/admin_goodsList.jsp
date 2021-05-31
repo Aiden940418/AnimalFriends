@@ -4,55 +4,74 @@
 <html>
 
 <style type="text/css">
-.card-body{
-	font-size: 20px;
-}
-input[type=checkbox] {
-
-zoom: 1.5;
-
-}
+		.card-body{
+			font-size: 20px;
+		}
+		
+		input[type=checkbox] {
+		
+			zoom: 1.5;
+		
+		}
+		
+		#horisonLine {
+	 	    height: 10px;
+		    border-bottom: groove;
+		    position: relative;
+		    top: 145px;
+		    width: 98%;
+	 	}
+		
+		#goods {
+			position: relative;
+   			top: 80px;
+		}
+		
+		#secCtn {
+		    position: absolute;
+		    top: 230px;
+    	}
+	 
+	 	#thrCtn {
+	 	 	margin-top: 215px;
+	 	}
+	 	
+	 	
+	 
 
 </style>
 <!-- header -->
 <%@ include file="../includes/header.jsp"%>
 <!-- leftmenubar -->
 <%@ include file="../includes/admin_leftMenuBar.jsp"%>
+
+
 <!-- page -->
 <div class="contentDiv">
 
-	<div class="container text-center">
-		<h1 class="display-3 mt-5">GOODS</h1>
-		<hr>
+	<div class="container text-center" id="goods">
+		<h1 class="">GOODS</h1>
 	</div>
+	
+		<!-- 가로줄 -->
+	<div id="horisonLine"></div>
 
 
 	<!-- dropDown1-start -->
-	<div class="container dropdown  mt-4">
+	<div class="container dropdown" id="secCtn">
 		<a class="btn btn-outline-success dropdown-toggle" href="#"
 			role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
 			aria-expanded="false"> 상품카테고리 </a>
 
 		<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-			<li><a class="dropdown-item" href="#">가방</a></li>
-			<li><a class="dropdown-item" href="#">옷</a></li>
-			<li><a class="dropdown-item" href="#">몰라..</a></li>
+			<li><a class="dropdown-item" href="adminGoodsBagList.do">가방</a></li>
+			<li><a class="dropdown-item" href="adminGoodsClothList.do">옷</a></li>
+			<li><a class="dropdown-item" href="adminGoodsAccList.do">악세사리</a></li>
 		</ul>
 
 
 		<!-- dropDown1-end -->
 
-		<!-- dropDown2-start -->
-		<a class="btn btn-outline-success dropdown-toggle" href="#"
-			role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
-			aria-expanded="false"> 상품카테고리 </a>
-			
-
-		<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-			<li><a class="dropdown-item" href="#">가방</a></li>
-			<li><a class="dropdown-item" href="#">옷</a></li>
-			<li><a class="dropdown-item" href="#">몰라..</a></li>
-		</ul>
 
 		<div class="btn-group float-end me-4">
 	
@@ -121,73 +140,53 @@ zoom: 1.5;
 					</script>
   				  </div> 
   				  
-		
+		  </div>
 	<!-- dropDown2-end -->
 	
-		<c:choose>
-		<c:when test="${empty list}">
-		
-		<h2>등록된 글이 없습니다. </h2>
-		</c:when>
-	
-	
-		<c:otherwise>
-		
 		
 				
-          	<div class="container mt-5">
-            <div class="row">
-           
-
-              
-          <c:forEach items="${list}" var="dto">
-          		<div class="col-sm mt-5  text-center" >
-          		<div class="card h-100 ms-5 text-center" style="width:430px; margin-top: -30px;" >
-          
-                <h3 class="card-header" >
-                    <input type="checkbox" class="chBox" data-cartNum="${ dto.gNo}">
-                    <script>
-						$(".chBox").click(function(){
-						$("#allCheck").prop("checked", false);
-							
-						})
-						
-					
-					</script>
-    				<label for="cb1"></label>
-                </h3>
-                <div class="card-body text-center">
-                 	<img style="width:400px;height:200; " src="resources/${dto.gThumbImg}" class="img-thumbnail" alt="...">
-                 	
-                <a href="adminGoodsDetail.do?gNo=${dto.gNo}">${dto.gName}</a>
-                <p class="container mt-1" >상품가격:${dto.gPrice}</p>
-                </div>
-               <!--<div class="card-footer">
-                    <a href="goodsDetails.do" class="btn btn-outline-success">구매하기</a>
-                  <a href="#" class="btn btn-outline-success">장바구니</a>
-                 
-
-                  
-              </div>
-               -->
-              </div>
-              </div>
-              
-                        </c:forEach>
-              
-              </div>
-              </div>
-              
-            </div>
-    </c:otherwise>
-
-	</c:choose>
-
+          	<div class="container" id="thrCtn">
+           	  <div class="row">
+				  <c:choose>
+					<c:when test="${empty list}">
+						<div class="col text-center mt-5">
+							<p>등록된 글이 없습니다. </p>
+						</div>
+				 	 </c:when>
+					<c:otherwise>
+			          <c:forEach items="${list}" var="dto">
+			          		<div class="col-sm mt-5  text-center" >
+				          		<div class="card h-100 ms-5 text-center" style="width:430px; margin-top: -30px;" >
+					                <h3 class="card-header" >
+					                    <input type="checkbox" class="chBox" data-cartNum="${ dto.gNo}">
+					                    <script>
+											$(".chBox").click(function(){
+												$("#allCheck").prop("checked", false);
+											  })
+										</script>
+					    				<label for="cb1"></label>
+					                </h3>
+					                <div class="card-body text-center">
+					                 	 <a href="adminGoodsDetail.do?gNo=${dto.gNo}"><img style="width:400px;height:350px; border:none; object-fit:cover;" 
+					                 	 src="resources/${dto.gThumbImg}" class="img-thumbnail" alt="..."></a>
+					              			 ${dto.gName}
+					                	 <p class="container mt-1" >상품가격:${dto.gPrice}</p>
+					                </div>
+					               <!--<div class="card-footer">
+						                    <a href="goodsDetails.do" class="btn btn-outline-success">구매하기</a>
+						                  	<a href="#" class="btn btn-outline-success">장바구니</a>
+					              		</div>-->
+				             	 </div>
+			              	</div>
+	          		 	</c:forEach>
+				     </c:otherwise>
+				   </c:choose>
+               	</div>
+             </div>
 
 				
-			</div>
-	<!-- footer -->
-	<%@ include file="../includes/footer.jsp"%>
 </div>
 
-</html>
+	<!-- footer -->
+	<%@ include file="../includes/footer.jsp"%>
+

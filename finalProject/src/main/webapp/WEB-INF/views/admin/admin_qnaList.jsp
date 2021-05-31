@@ -1,48 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<style type="text/css">
-</style>
+<!-- JSTL 사용위한 코드 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<!-- 제이쿼리 사용 위한 코드 -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
 <!-- header -->
 <%@ include file="../includes/header.jsp"%>
 <!-- leftmenubar -->
 <%@ include file="../includes/admin_leftMenuBar.jsp"%>
+
+
+
+
 <!-- page -->
 <div class="contentDiv">
 
 	<div class="container">
-		<div class="row mt-5">
+		<div class="row my-3">
 			<h1>QnA</h1>
 			<br>
 		</div>
-
-		<!-- 카테고리 드롭다운 부분 -->
-
-		<div class="container">
-			
-				<!-- 카테고리 분류 선택 버튼 (추후에) -->
-				<!-- <button type="button"
-					class="btn btn-outline-success dropdown-toggle mt-3"
-					data-bs-toggle="dropdown" aria-expanded="false">카테고리 선택</button>
-				<ul class="dropdown-menu">
-					<li><a class="dropdown-item" href="#">입양공고</a></li>
-					<li><a class="dropdown-item" href="#">입양일기</a></li>
-					<li><a class="dropdown-item" href="#">굿즈</a></li>
-					<li><a class="dropdown-item" href="#">사이트 이용</a></li>
-				</ul> --> 
-			<div class="position-relative">
-				<div class="btn-group position-absolute top-0 end-0">
-					<button type="button" class="btn btn-outline-success mt-3 "
-						onclick="location.href='adminQnaWriteForm.do'">글쓰기</button>
-				</div>
-			</div>
-		</div>
-		<br>
 		
 		<div class="row">
-			<br>
+			
+			
+			<form role="form" method="get">
+			  <div class="search input-group" style="width:500px">
+			    <select class="form-select form-select-sm" style="width:50px" name="searchType">
+			      <option selected>선택</option>
+			      <option value="aQ"<c:out value="${scri.searchType eq 'aQ' ? 'selected' : ''}"/>>입양공고</option>
+			      <option value="dQ"<c:out value="${scri.searchType eq 'dQ' ? 'selected' : ''}"/>>입양일기</option>
+			      <option value="gQ"<c:out value="${scri.searchType eq 'gQ' ? 'selected' : ''}"/>>굿즈</option>
+			      <option value="sQ"<c:out value="${scri.searchType eq 'sQ' ? 'selected' : ''}"/>>사이트이용</option>
+			    </select>
+			    
+    			<input type="text" class="form-control" placeholder="찾고 싶은 제목 입력햇!" name="keyword" id="keywordInput" value="${scri.keyword}"/>
+
+    			<button class="btn btn-outline-success"id="searchBtn" type="button">검색</button>
+				    <script>
+				      $(function(){
+				        $('#searchBtn').click(function() {
+				          self.location = "adminQnaList.do" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+				        });
+				      });   
+				    </script>
+				<button id="writeBtn" type="button" class="btn btn-outline-success"
+			 		onclick="location.href='adminQnaWriteForm.do'">글쓰기</button>
+  			  
+  			  </div>
 			<table class="table text-center table-hover table-striped mt-5" style="font-size:14pt;">
-				<thead class="table-dark">
+				<thead class="table-success">
 					<tr>
 						<!-- <th style="width: 10%;">번호</th> -->
 						<th style="width: 20%;">카테고리</th>
@@ -80,21 +92,23 @@
 
 				</tbody>
 			</table>
+			 
+			</form>
 			<!-- 페이징 부분 -->
 
 			<div>
 			<nav aria-label="Page navigation example">
  				 <ul class="pagination justify-content-center">
   					
-    				<li class="page-item"><a class="page-link" href="adminQnaList.do${pageMaker.makeQuery(pageMaker.startPage)}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+    				<li class="page-item"><a class="page-link" href="adminQnaList.do${pageMaker.makeSearch(pageMaker.startPage)}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
 
 
    				 <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-    				<li class="page-item"><a class="page-link" href="adminQnaList.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
+    				<li class="page-item"><a class="page-link" href="adminQnaList.do${pageMaker.makeSearch(idx)}">${idx}</a></li>
    				 </c:forEach>
 
 
-   				 	<li class="page-item"><a class="page-link" href="adminQnaList.do${pageMaker.makeQuery(pageMaker.endPage)}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+   				 	<li class="page-item"><a class="page-link" href="adminQnaList.do${pageMaker.makeSearch(pageMaker.endPage)}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
 
   				</ul>
  			</nav>
@@ -105,22 +119,8 @@
 
 		</div>
 	</div>
-	<!-- footer -->
-	<%@ include file="../includes/footer.jsp"%>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+	<!-- footer -->
+	<%@ include file="../includes/footer.jsp"%>

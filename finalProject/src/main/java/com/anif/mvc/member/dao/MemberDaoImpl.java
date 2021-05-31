@@ -154,6 +154,23 @@ public class MemberDaoImpl implements MemberDao {
 		return list;
 	}
 
+	
+	@Override
+	public List<MemberDto> iMemberList() {
+		List<MemberDto> list = new ArrayList<MemberDto>();
+		
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"iMemberList");
+			
+		} catch (Exception e) {
+			System.out.println("[error: select list" );
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
 
 
 	@Override
@@ -193,6 +210,13 @@ public class MemberDaoImpl implements MemberDao {
 
 
 	@Override
+	public void memberDelete(String mId) {
+		System.out.println("너 왜 안되니?");
+		sqlSession.update(NAMESPACE+"memberDelete",mId);
+		
+	}
+
+
 	public MemberDto selectOneMember(int mNo) {
 		MemberDto dto = null;
 		System.out.println("잘 넘어왔나?: "+ mNo);

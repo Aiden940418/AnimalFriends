@@ -9,6 +9,29 @@
 	
 	<!-- leftMenuBar -->
 	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>	
+<style>
+		.box {
+			width: 300px;
+			height: 300px; 
+			border-radius: 20%;
+			overflow: hidden;
+			border: 3px	solid #54BD54;
+			position:relative;
+			left:110px;
+				
+		}
+	
+		.profile {
+		    width: 100%;
+		    height: 100%;
+		    object-fit: cover;
+		}
+
+</style>	
+	
+	
+	
+	
 	<!-- 페이지 내용 부분 -->
 	
 	<div class="contentDiv">
@@ -43,10 +66,7 @@
 						<option value="서울남부">서울남부</option>
 						<option value="서울북부">서울북부</option>
 						<option value="경기인천">경기인천</option>
-						<option value="강원도">강원도</option>
-						<option value="충청도">충청도</option>
-						<option value="경상도">경상도</option>
-						<option value="전라도">전라도</option>
+
 						
 					</select></td>
 						</tr>
@@ -58,9 +78,7 @@
 							<td><select name="aType" class="form-control ms-2 mt-2" style="width:200px">
 						<option value="강아지">강아지</option>
 						<option value="고양이">고양이</option>
-						<option value="도마뱀">도마뱀</option>
-						<option value="거북이">거북이</option>
-						<option value="기타">기타</option>
+
 
 						
 					</select></td>
@@ -168,7 +186,9 @@
 							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
 									style="width: 130px; pointer-events: none;">이미지 미리보기</button></th>
 							<td id="select_img" style="table-layout:auto; float: left; text-algin:center;" >
-									<img src=""/>
+									<div class="box my-3">
+										<img class="profile" src=""/>
+							        </div>
 							
 							</td>
 							
