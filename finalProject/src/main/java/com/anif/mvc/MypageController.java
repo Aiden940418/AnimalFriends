@@ -2,6 +2,7 @@ package com.anif.mvc;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.anif.mvc.chatting.dao.ChatDao;
+import com.anif.mvc.chatting.dto.ChatRoomDto;
 import com.anif.mvc.common.image.UploadFileUtils;
 import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
@@ -38,6 +41,8 @@ public class MypageController {
 	
 	@Autowired
 	private DiaryBiz diaryBiz;
+	@Autowired
+	private ChatDao chatDao;
 	
 	@Autowired
 	private MemberBiz memberBiz;
@@ -46,18 +51,58 @@ public class MypageController {
 	private String uploadPath;  //이미지 업로드 화면출력 관련 
 	
 	
-	
+	//마이페이지에서 1:1 대화를 눌러 목록을 볼 때
 	@RequestMapping("/chattingList.do")
-	public String chatList() {
+	public String chatList(Model model, HttpSession session) {
+		//세션에서 로그인  dto 받아와서 채팅방 목록 뿌려주기
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
 		
+		List<ChatRoomDto> chatRoomList = chatDao.selectChatroom(memberDto.getmNo());
+		
+		//반복문 돌면서 리스트 하나의 요소씩 채팅방 번호로 최근 메세지 조회해서 list에 세팅해주기
+		for(int i=0; i<chatRoomList.size(); i++) {
+			int roomNumber = chatRoomList.get(i).getChatroomNo();
+			String recentMsg = chatDao.selectRecentMsg(roomNumber); 
+			chatRoomList.get(i).setRecentMessage(recentMsg);
+		}
+		
+		model.addAttribute("list", chatRoomList);
+		
+		return "mypage/mypage_chattingList";
+	}
+	
+	@RequestMapping("/adoptToChatList.do")
+	public String adoptToChatList(int chatResponsorNo, HttpSession session, Model model) throws Exception {
+		//공고 상세에서 넘어온 정보값을 채팅방을 생성하고 화면 목록에 채팅방 뿌릴 수 있게 해야 함
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		System.out.println("공고에서 넘어온 aMno: "+ chatResponsorNo + " 로그인해서 1:1채팅 걸려는 Mno: "+ memberDto.getmNo());
+		
+		ChatRoomDto crDto = new ChatRoomDto();
+		crDto.setChatRequesterNo(memberDto.getmNo());
+		crDto.setChatResponsorNo(chatResponsorNo);
+		System.out.println("%%%%%%%%%%%%%%%% 세팅된 crDto: "+crDto);
+		System.out.println(chatDao.isRoom(crDto));
+		
+		if( chatDao.isRoom(crDto) == null ) {
+			//넘겨준 정보로 방이 없다면 방을 새로 생성
+			chatDao.createRoom(crDto);
+			System.out.println("조건문 실행되었나");
+		}
+		
+		//세션에서 로그인  dto 받아와서 채팅방 목록 뿌려주기
+		model.addAttribute("list", chatDao.selectChatroom(memberDto.getmNo()) );
 		
 		return "mypage/mypage_chattingList";
 	}
 	
 	@RequestMapping("/chattingDetail.do")
-	public String chatDetail() {
+	public String chatDetail(Model model, ChatRoomDto chatroomDto) {
+//		model.addAttribute("chatroomNo", chatroomNo);
+//		model.addAttribute("chatRequesterNo", chatRequesterNo);
+//		model.addAttribute("chatResponsorNo", chatResponsorNo);
 		
-		
+		model.addAttribute("chatroomDto", chatroomDto);
+		model.addAttribute("prevMsg", chatDao.selectPrevMessage( chatroomDto.getChatroomNo() ));
 		return "mypage/mypage_chattingDetail";
 	}
 	

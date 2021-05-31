@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="chat">
+  
+	<insert id="createRoom" parameterType="ChatRoomDto">
+		INSERT INTO CHATROOM
+		VALUES(CHATROOMNO.NEXTVAL, #{chatRequesterNo}, #{chatResponsorNo}, #{chatRequesterMnick}, #{chatResponsorMnick})
+	</insert>
+
+
+	<select id="isRoom" resultType="ChatRoomDto">
+		SELECT * 
+		FROM CHATROOM 
+		WHERE ( CHATREQUESTERNO = #{chatRequesterNo} and CHATRESPONSORNO = #{chatResponsorNo} )
+				OR 
+			  ( CHATREQUESTERNO = #{chatResponsorNo} and CHATRESPONSORNO = #{chatRequesterNo} )
+	</select>
+	  	
+  	<select id="selectChatroomList" parameterType="int" resultType="ChatRoomDto">
+		SELECT * 
+		FROM CHATROOM 
+		WHERE CHATREQUESTERNO = #{mNo} OR CHATRESPONSORNO = #{mNo}
+	</select>
+  	
+  	<insert id="insertMsg" parameterType="MessageDto">
+		INSERT INTO MESSAGE
+		VALUES( MSGNO.NEXTVAL, #{msgSenderNo}, #{msgReceiverNo}, #{msgContent}, SYSDATE, #{chatroomNo}, #{chatRequesterNo}, #{chatResponsorNo}, #{senderMnick}, #{msgSendtimeScript})
+	</insert>
+  	
+  	<select id="selectPrevMsg" parameterType="int" resultType="MessageDto">
+		SELECT * 
+		FROM MESSAGE
+		WHERE CHATROOMNO = #{chatroomNo}
+		ORDER BY MSGSENDTIME ASC
+	</select>
+  	
+  	
+  	<select id="selectRecentMsg" parameterType="int" resultType="MessageDto">
+  		SELECT * 
+		FROM MESSAGE
+		WHERE CHATROOMNO = #{roomNumber}
+		ORDER BY MSGSENDTIME DESC
+  	</select>
+  	
+  	
+  	
+  	
+  
+  </mapper>

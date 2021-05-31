@@ -33,7 +33,7 @@ public interface MemberBiz {
 	
 
 
-
+	public MemberDto selectOneMember(int mNo);
 	
 
 

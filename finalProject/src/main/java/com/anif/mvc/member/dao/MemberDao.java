@@ -34,6 +34,7 @@ public interface MemberDao {
 	public List<MemberDto> qMemberList();
 
 	public List<MemberDto> iMemberList();
+	public MemberDto selectOneMember(int mNo);
 	
 	public void memberDelete(String mId);
 	

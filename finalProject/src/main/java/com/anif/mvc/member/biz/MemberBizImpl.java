@@ -86,4 +86,8 @@ public class MemberBizImpl implements MemberBiz {
 	}
 
 
+	public MemberDto selectOneMember(int mNo) {
+		return dao.selectOneMember(mNo);
+	}
+
 }

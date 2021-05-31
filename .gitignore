@@ -29,3 +29,6 @@ finalProject/target/m2e-wtp/web-resources/META-INF/maven/com.mapping/mvc/pom.pro
 finalProject/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 finalProject/target/m2e-wtp/web-resources/META-INF/maven/com.mapping/mvc/pom.properties
 finalProject/target/m2e-wtp/web-resources/META-INF/maven/com.mapping/mvc/pom.properties
+finalProject/src/main/webapp/META-INF/MANIFEST.MF
+finalProject/src/main/webapp/META-INF/maven/com.mapping/mvc/pom.properties
+Servers/Tomcat v9.0 Server at localhost-config/server.xml

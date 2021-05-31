@@ -127,6 +127,10 @@
   	</update>
   	
   	
+  	<select id="selectOneMember" parameterType="int" resultType="memberDto">
+	  	SELECT * FROM MEMBER
+	  	WHERE MNO = #{mNo}
+  	</select>
    
    
     
