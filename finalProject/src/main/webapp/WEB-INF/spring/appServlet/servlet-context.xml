@@ -24,7 +24,7 @@
 	<!-- 업로드 패스 설정 --> 
 	<beans:bean class="java.lang.String" id="uploadPath">
  		<beans:constructor-arg 
- 		value="/Users/juh/Documents/GitHub/finalProject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/finalProject//resources" />
+ 		value="/Users/kwanyeol/Documents/GitHub/finalProject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/finalProject/resources" />
 	</beans:bean>
 
 	<!-- 일반 파일 업로드 경로 -->
