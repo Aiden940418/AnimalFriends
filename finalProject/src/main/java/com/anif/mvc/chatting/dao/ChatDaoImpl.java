@@ -23,7 +23,7 @@ public class ChatDaoImpl implements ChatDao{
 	private static String namespace = "chat.";
 
 	
-	
+	//채팅방 생성
 	@Override
 	public void createRoom(ChatRoomDto chatroomDto) throws Exception {
 		
@@ -49,26 +49,22 @@ public class ChatDaoImpl implements ChatDao{
 	}
 
 
-
+	//채팅방이 존재하는 지 확인해서 존재하면 반환
 	@Override
 	public ChatRoomDto isRoom(ChatRoomDto vo) throws Exception {
 		
 		ChatRoomDto roomvo = null;
 		roomvo = sqlSession.selectOne(namespace+"isRoom", vo);
-		System.out.println("ss");
-		System.out.println(roomvo);
 		
 		return roomvo;
 	}
 
 
-
+	//채팅방 목록 조회 반환
 	@Override
 	public List<ChatRoomDto> selectChatroom(int mNo) {
 		
 		List<ChatRoomDto> roomDtoList = null;
-		
-		System.out.println("@@@@@@@@@@@@@@@ "+mNo);
 		
 		try {
 			roomDtoList = sqlSession.selectList(namespace+"selectChatroomList", mNo);
@@ -76,17 +72,16 @@ public class ChatDaoImpl implements ChatDao{
 			System.out.println("[error] : ChatroomList select list");
 			e.printStackTrace();
 		}
-		System.out.println("@@@@@@@@@ roomDtoList : "+roomDtoList.toString());
+		
 		return roomDtoList;
 	}
 
 
-
+	//채팅 메세지 DB에 insert
 	@Override
 	public int insertMessage(MessageDto mDto) {
 		int res = 0;
 		
-		System.out.println("DB에 넣을 메세지: "+mDto);
 		try {
 			res = sqlSession.insert(namespace+"insertMsg", mDto);
 		} catch (Exception e) {
@@ -98,7 +93,7 @@ public class ChatDaoImpl implements ChatDao{
 	}
 
 
-
+	//이전 채팅 기록 조회해서 반환
 	@Override
 	public List<MessageDto> selectPrevMessage(int chatroomNo) {
 		List<MessageDto> msgList = null;
@@ -113,7 +108,8 @@ public class ChatDaoImpl implements ChatDao{
 		return msgList;
 	}
 
-
+	
+	//가장 최근 메세지 조회해서 반환
 	@Override
 	public String selectRecentMsg(int roomNumber) {
 		List<MessageDto> list = null;
@@ -130,166 +126,6 @@ public class ChatDaoImpl implements ChatDao{
 		
 		return recentMsg;
 	}
-
-
-
-//	@Override
-//	public void insertMessage(MessageDto vo) throws Exception {
-//
-//		
-//		session.insert(namespace+".insertMessage" , vo);
-//	}
-//
-//
-//
-////	@Override
-////	public String getPartner(ChatRoomDto vo) throws Exception {
-////
-////		
-////		List<MessageDto> mvo = session.selectList(namespace+".getPartner", vo);
-////		
-////		return mvo.get(0).getUSER_user_id();
-////	}
-//
-//
-//
-//	@Override
-//	public String getProfile(String str) throws Exception {
-//
-//		return session.selectOne(namespace+".getProfile" , str);
-//	}
-//
-//
-//
-//	@Override
-//	public String getName(String str) throws Exception {
-//
-//		return session.selectOne(namespace+".getName" , str);
-//	}
-//
-//
-//
-//	@Override
-//	public List<MessageDto> getMessageList(String str) throws Exception {
-//
-//
-//			return session.selectList(namespace+".getMessageList" , str);
-//		
-//		
-//	}
-//
-//
-//
-//	@Override
-//	public List<ChatRoomDto> getRoomList(String str) throws Exception {
-//
-//		return session.selectList(namespace+".getRoomList",str);
-//	}
-//
-//
-//
-//	@Override
-//	public List<ChatRoomDto> getRoomList2(String str) throws Exception {
-//
-//		return session.selectList(namespace+".getRoomList2" , str);
-//	}
-//
-//
-//
-//	@Override
-//	public MessageDto getRecentMessage(String str) throws Exception {
-//
-//		return session.selectOne(namespace+".getRecentMessage" , str);
-//	}
-//
-//
-//
-//	@Override
-//	public String getTutorId(String str) throws Exception {
-//
-//		return session.selectOne(namespace+".getTutorId" , str) ;
-//	}
-//
-//
-//
-//	@Override
-//	public List<ChatRoomDto> getRoomListTutor(String str) throws Exception {
-//
-//		return session.selectList(namespace+".getRoomListTutor" , str);
-//	}
-//
-//
-//
-//	@Override
-//	public void updateReadTime(int class_id, String user_id, String TUTOR_USER_user_id) throws Exception {
-//
-//		
-//		HashMap<String, Object> map = new HashMap<String, Object> ();
-//		
-//		map.put("TUTOR_USER_user_id", TUTOR_USER_user_id);
-//		map.put("USER_user_id", user_id);
-//		map.put("CLASS_class_id", class_id);
-//		session.update(namespace+".updateReadTime" , map);
-//	}
-//
-//
-//
-//	@Override
-//	public int getUnReadCount(String TUTOR_USER_user_id, int class_id, String user_id) throws Exception {
-//
-//		HashMap<String, Object> map = new HashMap<String, Object> ();
-//		
-//		map.put("TUTOR_USER_user_id", TUTOR_USER_user_id);
-//		map.put("USER_user_id", user_id);
-//		map.put("CLASS_class_id", class_id);
-//		
-//		
-//		return session.selectOne(namespace+".getUnReadCount" , map);
-//	}
-//
-//
-//
-//	@Override
-//	public int getAllCount(String str) {
-//
-//		HashMap<String, Object> map = new HashMap<String, Object> ();
-//		
-//		map.put("USER_user_id", str);
-//		map.put("TUTOR_USER_user_id", str);
-//		if(session.selectOne(namespace+".getAllCount" ,map) ==null) {
-//			return 0;
-//		}else {
-//			
-//			return session.selectOne(namespace+".getAllCount" ,map);
-//		}
-//		
-//	}
-//
-//
-//
-//	@Override
-//	public void updateReadTimeTutor(int class_id , String user_id , String TUTOR_USER_user_id) throws Exception {
-//		HashMap<String, Object> map = new HashMap<String, Object> ();
-//		
-//		map.put("TUTOR_USER_user_id", TUTOR_USER_user_id);
-//		map.put("USER_user_id", user_id);
-//		map.put("CLASS_class_id", class_id);
-//		session.update(namespace+".updateReadTimeTutor" , map);
-//	}
-//
-//
-//
-//	@Override
-//	public int getUnReadCountTutor(String TUTOR_USER_user_id, int class_id, String user_id) throws Exception {
-//		HashMap<String, Object> map = new HashMap<String, Object> ();
-//		
-//		map.put("TUTOR_USER_user_id", TUTOR_USER_user_id);
-//		map.put("USER_user_id", user_id);
-//		map.put("CLASS_class_id", class_id);
-//		
-//		
-//		return session.selectOne(namespace+".getUnReadCountTutor" , map);
-//	}
 
 
 }

@@ -31,7 +31,6 @@ public class HandlerChat extends TextWebSocketHandler {
 	@Autowired
 	private ChatDao dao;
 	
-	
 	private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
 	
 	//웹소켓에 접속한 세션들 리스트
@@ -44,6 +43,7 @@ public class HandlerChat extends TextWebSocketHandler {
 	private Map<String, WebSocketSession> users = new ConcurrentHashMap<String, WebSocketSession>();
 	
 
+	
 	// 클라이언트가 서버로 연결 처리
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
@@ -53,27 +53,6 @@ public class HandlerChat extends TextWebSocketHandler {
 		users.put(session.getId(), session);
 		connectedUsers.add(session);
 		
-		
-		
-		
-		
-//		//우리 프로젝트 로그인 http 세션 가져오기
-//		Map<String, Object> sessions = session.getAttributes();
-//		MemberDto loginSession = (MemberDto)sessions.get("login");
-//		logger.info("=============닉네임 : " + loginSession.getmNick());
-//		String nickName = loginSession.getmNick();
-//		
-//		
-//		
-//		// 채팅방에 접속한 사용자 세션을 리스트에 저장
-//		sessionList.add(session);
-//
-//		// 모든 세션에 채팅 전달
-//		for (int i = 0; i < sessionList.size(); i++) {
-//			WebSocketSession s = sessionList.get(i);
-//			//s.sendMessage(new TextMessage(session.getId() + "님이 입장 했습니다."));
-//			s.sendMessage(new TextMessage(nickName + "님이 입장 했습니다."));
-//		}
 	}
 	
 
@@ -118,7 +97,7 @@ public class HandlerChat extends TextWebSocketHandler {
 			// 나만의 채팅방
 			croom = dao.isRoom(roomDto);
 		}
-
+		
 		MsgDto.setChatroomNo(croom.getChatroomNo());
 		if (croom.getChatRequesterNo() == MsgDto.getMsgSenderNo()) {
 			// 메시지 보낸 사람 = 공고를 읽은 사람이면 메시지 받는 사람 = 공고를 쓴 사람으로 설정
@@ -133,36 +112,17 @@ public class HandlerChat extends TextWebSocketHandler {
 		for (WebSocketSession websocketSession : connectedUsers) {
 			map = websocketSession.getAttributes();
 			MemberDto login = (MemberDto) map.get("login");
-
-			// 받는사람??? 보내는 사람?
-			//if (login.getmNo() == MsgDto.getMsgSenderNo()) {
-				// 메시지를 Json화해서 메시지를 보낸다
-				Gson gson = new Gson();
-				String msgJson = gson.toJson(MsgDto);
-				websocketSession.sendMessage(new TextMessage(msgJson));
-			//}
+			
+			
+			Gson gson = new Gson();
+			String msgJson = gson.toJson(MsgDto);
+			websocketSession.sendMessage(new TextMessage(msgJson));
+			
 		}
 		
-		
-		
-		
-		
-		
-//		//우리 프로젝트 로그인 http 세션 가져오기
-//		Map<String, Object> sessions = session.getAttributes();
-//		MemberDto loginSession = (MemberDto)sessions.get("login");
-//		logger.info("=============닉네임 : " + loginSession.getmNick());
-//		String nickName = loginSession.getmNick();
-//		
-//		
-//
-//		// 모든 세션에 채팅 전달
-//		for (int i = 0; i < sessionList.size(); i++) {
-//			WebSocketSession s = sessionList.get(i);
-//			s.sendMessage(new TextMessage(nickName + " : " + message.getPayload()));
-//		}
 	}
 
+	
 	// 클라이언트가 연결을 끊음 처리
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
@@ -170,24 +130,7 @@ public class HandlerChat extends TextWebSocketHandler {
 		logger.info(session.getId() + " 연결 종료됨");
 		connectedUsers.remove(session);
 		users.remove(session.getId());
-		
-		
-		
-//		//우리 프로젝트 로그인 http 세션 가져오기
-//		Map<String, Object> sessions = session.getAttributes();
-//		MemberDto loginSession = (MemberDto)sessions.get("login");
-//		logger.info("=============닉네임 : " + loginSession.getmNick());
-//		String nickName = loginSession.getmNick();
-//		
-//		
-//		// 채팅방에서 퇴장한 사용자 세션을 리스트에서 제거
-//		sessionList.remove(session);
-//
-//		// 모든 세션에 채팅 전달
-//		for (int i = 0; i < sessionList.size(); i++) {
-//			WebSocketSession s = sessionList.get(i);
-//			s.sendMessage(new TextMessage(nickName + "님이 퇴장 했습니다."));
-//		}
 
 	}
+	
 }

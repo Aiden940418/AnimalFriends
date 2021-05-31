@@ -60,73 +60,7 @@
 		</div>
 		</div>
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 			
-			
-				<!-- <div class="container text-center">
-					<div class="alert alert-primary row" role="alert" style="height: 180px; width: 600px; color:black;">
-						<div class="col" style="max-width: 80px;">
-							<ion-icon name="person-circle-outline" style="font-size:70px; "></ion-icon>
-						</div>
-					
-						<div class="col">
-							userID1 와의 채팅방<br>
-						<label><a href="chattingDetail.do?chatRoomNo=2&writerMno=1&readerMno=2">채팅창으로..</a></label>
-							
-							
-						</div>
-						
-					</div>
-					<div class="alert alert-primary row" role="alert" style="height: 180px; width: 600px; color:black;">
-						<div class="col" style="max-width: 80px;">
-							<ion-icon name="person-circle-outline" style="font-size:70px; "></ion-icon>
-						</div>
-					
-						<div class="col">
-							userID2 와의 채팅방<br>
-						<label><a href="chattingDetail.do?chatRoomNo=2&writerMno=2&readerMno=3">채팅창으로..</a></label>
-							
-							
-						</div>
-						
-					</div>
-						
-					</div>
-			 -->
 
 </body>
 </html>
