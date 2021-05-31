@@ -94,6 +94,11 @@ public class GoodsBizImpl implements GoodsBiz {
 		return dao.adminGoodsAccList();
 	}
 
+	@Override
+	public List<GoodsDto> goodsSelect(GoodsDto dto) {
+		return dao.goodsSelect(dto);
+	}
+
 
 
 

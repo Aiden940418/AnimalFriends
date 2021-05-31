@@ -71,7 +71,13 @@ public class GoodsController {
 		
 		return "goods/goods_details";
 	}
-	
+	//굿즈 카테고리 보기
+	@RequestMapping(value="/goodsCtgy", method=RequestMethod.GET)
+	public String goodsCtgy(Model model, GoodsDto dto) {
+		model.addAttribute("list",biz.goodsSelect(dto));
+		return "goods/goods";
+		
+	}
 	
 	
 	

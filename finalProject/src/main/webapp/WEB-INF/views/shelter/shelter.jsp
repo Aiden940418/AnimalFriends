@@ -36,8 +36,7 @@
 	    border-bottom: groove;
 	    position:absolute;
 		top: 226px;
-   		width: 93%;
-	 }
+    	width: 87%;	 }
 	
 </style>
 

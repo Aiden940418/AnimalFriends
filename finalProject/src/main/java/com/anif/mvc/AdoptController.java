@@ -193,6 +193,16 @@ public class AdoptController {
 		
 		
 	}
+	//입양공고 지역-종 카테고리 선택
+	@RequestMapping(value="/adoptCtgy.do", method=RequestMethod.GET)
+	public String adoptCtgy(Model model,AdoptDto dto) {
+		model.addAttribute("list",biz.adoptSelect(dto));
+		System.out.println(model);
+		
+		return "adopt/adopt";
+		
+		
+	}
 	
 	
 	

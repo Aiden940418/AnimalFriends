@@ -47,6 +47,8 @@ public interface GoodsBiz {
 
 	//관리자 굿즈 카테고리 가방 선택
 	public List<GoodsDto> adminGoodsAccList();
+
+	public List<GoodsDto> goodsSelect(GoodsDto dto);
 	
 	
 	
