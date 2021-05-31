@@ -6,6 +6,9 @@
 <!doctype html>
 <html lang="en">
 
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/popper.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
 
 <!-- ionicons 사용 위한 코드 -->
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
@@ -99,7 +102,7 @@
 				</c:if>
 				<c:if test="${!empty prf }">
 						<div class="col-md-6 myProfileImgDiv">
-								<a href="mydiary.do"><img class="profile" src="resources/${prf.profileImg }"></a> 
+							<a href="mydiary.do"><img class="profile" src="resources/${prf.profileImg }"></a> 
 						</div>
 				</c:if>
 				<c:if test="${!empty login}">
