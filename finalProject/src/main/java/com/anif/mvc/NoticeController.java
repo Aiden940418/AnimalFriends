@@ -24,6 +24,16 @@ public class NoticeController {
 //		
 //	}
 	
+	
+	@RequestMapping("/notice.do")
+	@ResponseBody
+	public void noticeInsert() {
+		
+		
+		
+		
+	}
+	
 		
 		
 

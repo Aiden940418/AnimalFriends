@@ -50,23 +50,35 @@ a.button:hover {
 
 <script>
 	//notifySend
-	$('#chatRequestBtn').click(function(e){
-	    var url = '';
+	function chatRequestBtnClick(){
+		
+	    let targetMNo = '${dto.aMNo}';  //토스트 메세지 받을 사람 (입양공고 작성자 회원번호)
+	    let content = '${login.mNick}님이 1:1 채팅을 요청하였습니다!' //토스트 메세지 내용
+	    let url = '#';  //토스트 메세지 클릭하면 바로가기 이동할 url
+	    
 	    // 전송한 정보를 db에 저장	
 	    $.ajax({
 	        type: 'post',
 	        url: 'notice.do',
 	        dataType: 'text',
 	        data: {
+	            targetMNo: targetMNo,
+	            content: content,
+	            url: url
 	        },
 	        success: function(){    // db전송 성공시 실시간 알림 전송
 	            // 소켓에 전달되는 메시지
 	            // 위에 기술한 EchoHandler에서 ,(comma)를 이용하여 분리시킨다.
-	            socket.send("알림이 잘 뜨나요?");	
+	            socket.send(targetMNo+","+content+","+url);	
 	        }
 	    });
 	    
-	});
+	    
+	    //채팅방 리스트로 페이지 이동
+	    location.href="adoptToChatList.do?chatResponsorNo=${dto.aMNo }";
+	    
+
+	}
 
 
 </script>
@@ -158,7 +170,7 @@ a.button:hover {
 		<br>
 			<div class="wrap">
 		<!-- 공고 작성자의 정보를 같이 넘겨 컨트롤러에서 1:1채팅방 생성 -->
-  		<a href="adoptToChatList.do?chatResponsorNo=${dto.aMNo }" class="button" id="chatRequestBtn">1:1채팅 요청</a>
+  		<button class="button btn btn-success" id="chatRequestBtn" onclick="chatRequestBtnClick();">1:1채팅 요청</button>
   		</div>
 
 		<!--  1:1 채팅 요청 종료 -->
