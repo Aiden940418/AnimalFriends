@@ -109,7 +109,7 @@ public class LoginController {
 			
 			session.invalidate();
 			
-			return "main";
+			return "main_R";
 			
 		}
 		

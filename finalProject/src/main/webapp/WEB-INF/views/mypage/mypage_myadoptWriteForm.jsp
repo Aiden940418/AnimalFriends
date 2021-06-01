@@ -3,12 +3,22 @@
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 
-	
 	<!-- header -->
-	<%@ include file="../includes/header.jsp" %>
-	
-	<!-- leftMenuBar -->
-	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>	
+	<%@ include file="../includes/header_R.jsp" %>
+
+<title>나의 입양 공고 수정</title>
+
+ <!-- 메뉴 사이드바 스크립트 -->
+ <script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+
+ </script>
+
 <style>
 		.box {
 			width: 300px;
@@ -26,41 +36,53 @@
 		    height: 100%;
 		    object-fit: cover;
 		}
+		
+		#secCtn {
+		 	position: relative;
+			top: 150px;	 	
+			margin-bottom: 150px;
+		
+		}
+		
+		#myadtNotiDiv {
+		position: relative;
+	    top: 55px;
+ 
+	}
 
 </style>	
 	
 	
-	
-	
 	<!-- 페이지 내용 부분 -->
 	
-	<div class="contentDiv">
+	<div class="contentDiv text-center">
+		
+		<div class = "container text-center" id="myadtNotiDiv">
+			<h1 class="text-center">나의 입양 공고 등록</h1>
+		</div>
 		
 		
-		 <div class="container mt-5 text-center">
+		 <div class="container" id="secCtn">
 		
-			<h1>입양 공고 등록</h1>
-			<br>
-		
-				<br>
-
-				<div class="container text-center" style="margin-left:130px">
+			 <div class="row">
+				<div class="col-2"></div>
 				
+				<div class="col-10">
 				<form action="myAdoptWriteRes.do" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="aMNo" value="${login.mNo}" >
 			
-					<table>
+					<table style="position: relative; left: 70px; bottom: 35px;">
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width:130px; pointer-events: none;">제목</button></th>
-							<td><input type="text" class="form-control my-1" name="aTitle"
-								style="width:500px; margin:10px;"></td>
+							<td><input type="text" class="form-control my-1 ms-2" name="aTitle"
+								style="width:500px;"></td>
 						</tr>
 						
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width:130px; pointer-events: none;">지역설정</button></th>
-							<td><select name="aArea" class="form-control ms-2" style="width:200px">
+							<td><select name="aArea" class="form-control ms-2" style="width:500px">
 						<option value="서울동부">서울동부</option>
 						<option value="서울서부">서울서부</option>
 						<option value="서울남부">서울남부</option>
@@ -217,12 +239,14 @@
 				
 						
 
-						<tr>
-							<td colspan="2"><button class="btn btn-outline-success mt-5"
-									onclick="location.href='myAdoptDetail.do?aNo=${dto.aNo}'" style="width:130px; pointer-events: none;float: right;margin-right:300px;">취소</button>
+						<tr style="position: relative;right: 107px;">
+							<td colspan="2">
 							 <input type="submit"
-								value="작성" class="btn btn-outline-success mt-5"
-								style="width:130px; float:right; margin-right:10px;"></td>
+								value="작성" class="btn btn-outline-success mt-3"
+								style="width:100px;">
+							<button class="btn btn-outline-success mt-3"
+									onclick="location.href='myAdoptDetail.do?aNo=${dto.aNo}'" style="width:100px; pointer-events: none;">취소</button>
+							</td>
 
 						</tr>
 						
@@ -233,15 +257,23 @@
 					</table>
 					
 					</form>
-				</div>
+			</div>
 			</div>
 		</div>
+	  </div>
+		
 	
-
-	
-	
-	
-
-	<br><br><br>
 	<!-- footer -->
-	<%@ include file="../includes/footer.jsp" %>
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>
+	
+
+	
+	
+	

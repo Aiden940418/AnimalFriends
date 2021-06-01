@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <title>애니멀프랜즈</title>
- <%@ include file="includes/header_A.jsp" %>  
+ <%@ include file="includes/header_R.jsp" %>  
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  
  

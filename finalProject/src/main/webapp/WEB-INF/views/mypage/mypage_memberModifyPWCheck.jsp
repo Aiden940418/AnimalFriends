@@ -3,12 +3,21 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html>
-<head>
+	<!-- header -->
+	<%@ include file="../includes/header_R.jsp" %>
 
-<meta charset="UTF-8">
+<title>회원 정보 수정</title>
 
+ <!-- 메뉴 사이드바 스크립트 -->
+<script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+</script>
+	
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 /* function fn_pwChk(){
@@ -35,40 +44,38 @@
 }; */
 
 </script>
-<title>Insert title here</title>
 
-
-
-</head>
-<body>
-
-	<!-- header -->
-	<%@ include file="../includes/header.jsp" %>
+<style>
+	#infoModf {
+		position: relative;
+	    top: 55px;
 	
-	<!-- leftMenuBar -->
-	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>	
+	}
 	
+	 #secCtn {
+	 	position: relative;
+		top: 150px;
+		height:400px;	 	
+	 }
+	 
+
+
+</style>
+
+
+
 	<!-- 페이지 내용 부분 -->
-	<div class="contentDiv">
+<div class="contentDiv mb-5">
 		
 		<!-- 상단 제목부분 -->
-	<div class="container">
-	<br>
-	<br>
-	<br>
-		<div class="row mt-5 ms-5" style="margin-left:400px;">
-			<h1>회원정보 수정</h1>
-
-		</div>
-		<br><br><br><br>
 		
-		<!-- 비밀번호 입력, 버튼 부분(container, row div class 사용하여 가로 배치) -->
-		
-		
+	<div class = "container text-center" id="infoModf">
+		<h1 class="text-center">회원 정보 수정</h1>
+	</div>
 			
-		<div class="container" style="margin-left: 280px;">
-			<div class="row"  style="width: 400px;">
-				<form action="pwChk.do" method="POST">
+	<div class="container text-center" id="secCtn">
+		<div class="text-center" style="width:400px; margin: 0 auto;">
+			<form action="pwChk.do" method="POST">
 				<input type="hidden" name="mId" value="${login.mId}">
 				<input type="hidden" name="mRole" value="${login.mRole}">
 				<div class="input-group mb-3 col">
@@ -81,26 +88,23 @@
 					<button type="submit" class="btn btn-secondary ms-2" id="pwChk" style="width:70px">확인</button>
 						
 				</div>
-				
-
 				</form>
-	
-			</div>
 		</div>
-
-
-
-
-
-
-
 	</div>
-	</div>
-	<br><br><br><br><br><br><br>
+	<div class="container mb-5"></div>
+
+</div>
+
+
+<!-- footer -->
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>
 
 
 
-
-	<br><br><br>
-	<!-- footer -->
-	<%@ include file="../includes/footer.jsp" %>

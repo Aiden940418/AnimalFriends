@@ -1,9 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../includes/header.jsp"%>
+<%@ include file="../includes/header_R.jsp"%>
 
 <!-- 아이콘 사용 위한 코드 -->
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+ <title>동물 보호소 찾기</title>
+ 
+  <!-- 메뉴 사이드바 스크립트 -->
+ <script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+
+ </script>
+
 
 
 
@@ -35,14 +49,20 @@
  	    height: 10px;
 	    border-bottom: groove;
 	    position:absolute;
-		top: 226px;
+		top: 245px;
    		width: 93%;
 	 }
+	 
+	.dropdown-toggle::after {
+    position: relative;
+    top: 17%;
+    }
 	
 </style>
 
 <!-- 제이쿼리 사용 위한 코드 -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
 
 	var itemArr = new Array();
@@ -250,7 +270,7 @@
 <div class="container">
 
 	<div class="row">
-		<h1 class="mt-5">동물 보호소 찾기</h1>
+		<h1 class="mt-2">동물 보호소 찾기</h1>
 		<div id="horisonLine"></div>
 		
 	</div>
@@ -262,10 +282,10 @@
 			style="height: 700px;">
 
 			<!-- 카테고리 선택 부분 -->
-			<div class="row">
+			<div class="row" >
 
-				<div class="dropdown ms-5 mt-3 col text-left btn-group">
-					<a class="btn btn-success dropdown-toggle" role="button"
+				<div class="dropdown mt-3 col btn-group" style=" margin: 0 auto;">
+					<a class="btn btn-success dropdown-toggle ms-2" role="button" 
 					
 						id="locationSelectBtn" data-bs-toggle="dropdown"
 						aria-expanded="false" data-siordo="">지역 선택</a>
@@ -280,7 +300,7 @@
 					</ul>
 				</div>
 
-				<div class="dropdown ms-auto mt-auto col text-left btn-group" id="seoulSelect">
+				<div class="dropdown mt-auto col text-left btn-group" id="seoulSelect">
 					<a class="btn btn-success dropdown-toggle" href="#" role="button"
 						id="guSelectBtn" data-bs-toggle="dropdown" aria-expanded="false"
 						data-guselect=""> 구 선택 </a>

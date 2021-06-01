@@ -1,17 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<!-- header -->
+<%@ include file="../includes/header_R.jsp" %>
     
 <!-- JSTL 사용위한 코드 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
-	<!-- header -->
-	<%@ include file="../includes/header.jsp" %>
-	<!-- leftMenuBar -->
-	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>	
-	
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
+<title>나의 프로필 사진 등록 및 수정</title>
+
+ <!-- 메뉴 사이드바 스크립트 -->
+ <script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+
+ </script>
+
+	
 <style type="text/css">
 		.box {
 			width: 300px;
@@ -29,6 +40,20 @@
 		    height: 100%;
 		    object-fit: cover;
 		}
+		
+		#myPrfDiv {
+	 	position: relative;
+	    top: 55px;
+ 
+		}
+
+		 #secCtn {
+	 	position: relative;
+		top: 150px;	 	
+		margin-bottom: 100px;
+		
+		}
+		 
 							      
 </style>
 	
@@ -39,13 +64,14 @@
 	<!-- 페이지 내용 부분 -->
 	<div class="contentDiv">
 		
-		<div class="container">
-
-		<div class="row">
-			<!-- title -->
-			<div class="row my-4" style="text-align: center;">
-				<h1>프로필 사진 등록 및 수정</h1>
-			</div>
+		<!-- title -->
+		<div class = "container text-center" id="myPrfDiv">
+			<h1 class="text-center">나의 프로필 사진 등록 및 수정</h1>
+		</div>
+		
+		<div class="container" id="secCtn">
+		  <div class="row">
+			
 			<!-- form -->
 			<div style="margin: auto; text-align: center;">
 				<form action="myDrPrfRorURes.do" method="post" style="display: inline-block;" enctype="multipart/form-data">

@@ -9,7 +9,7 @@
 <script src="resources/js/jquery.min.js"></script>
 <script src="resources/js/popper.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
-
+ 
 <!-- ionicons 사용 위한 코드 -->
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 <!-- 제이쿼리 사용 위한 코드 -->
@@ -25,9 +25,8 @@
  	<link rel="stylesheet" href="resources/css/style.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+ 
 </head>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Yeon+Sung&display=swap');
@@ -43,7 +42,7 @@
 	
 	}
 	
-	.myProfileImgDiv {
+	.HeaderProfileImgDiv {
 				width: 150px;
 				height: 125px; 
 				border-radius: 50%;
@@ -54,7 +53,7 @@
     			top: -17px;
 			}
 	
-	.profile {
+	.Headerprofile {
 	    width: 100%;
 	    height: 100%;
 	    object-fit: cover;
@@ -101,8 +100,8 @@
 					 <a class="navbar-brand img logo rounded-circle mb-5 text-center" href="logo.do"><img src="resources/images/logo.png" style="width:85px; height:85px;"></a>
 				</c:if>
 				<c:if test="${!empty prf }">
-						<div class="col-md-6 myProfileImgDiv">
-							<a href="mydiary.do"><img class="profile" src="resources/${prf.profileImg }"></a> 
+						<div class="col-md-6 HeaderProfileImgDiv">
+							<a href="mydiary.do"><img class="Headerprofile" src="resources/${prf.profileImg }"></a> 
 						</div>
 				</c:if>
 				<c:if test="${!empty login}">
@@ -112,20 +111,6 @@
 				</c:if>
 						  		
 	        <ul class="list-unstyled components mt-5" style="margin-top:300px;">
-	          <!-- <li class="active">
-	            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Home</a>
-		            <ul class="list-unstyled collapse show" id="homeSubmenu" style="">
-	                <li>
-	                    <a href="#">Home 1</a>
-	                </li>
-	                <li>
-	                    <a href="#">Home 2</a>
-	                </li>
-	                <li>
-	                    <a href="#">Home 3</a>
-	                </li>
-		            </ul>
-	          </li> -->
 	          <li>
 	              <a href="adopt.do">입양공고</a>
 	          </li>
@@ -160,6 +145,31 @@
                 
               </ul>
               </c:if>
+              
+	          </li>
+	          <li>
+              <a href="#mypagesubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">MyPage</a>
+              <ul class="collapse list-unstyled" id="mypagesubmenu">
+                <li>
+                    <a href="mydiary.do">나의 입양일기</a>
+                </li>
+                <li>
+                    <a href="myAdoptList.do?mNo=${login.mNo}">내가 쓴 입양공고</a>
+                </li>
+                <li>
+                    <a href="orderList.do">구매내역</a>
+                </li>
+                <li>
+                    <a href="cartList.do?mNo=${login.mNo}">나의 장바구니</a>
+                </li>
+                <li>
+                    <a href="myMemberModityPw.do">회원정보 수정</a>
+                </li>
+                <li>
+                    <a href="myQnaList.do">QnA</a>
+                </li>
+                
+              </ul>
 	          </li>
 	          
 	        </ul>
@@ -169,7 +179,7 @@
     	</nav>
 
 	<!-- Page 내용 시작 -->
-      <div id="contentDiv" class="p-4 p-md-5">
+      <div id="content" class="p-4 p-md-5">
         <!-- 페이지 상단 메뉴바 start -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">

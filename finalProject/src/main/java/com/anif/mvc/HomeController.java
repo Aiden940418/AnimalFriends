@@ -59,7 +59,7 @@ public class HomeController {
 //			model.addAttribute("prf", diaryBiz.profileImgSelect(mNo)); 
 
 		
-		return "main_A";
+		return "main_R";
 	}
 	
 
@@ -83,7 +83,7 @@ public class HomeController {
 	public String logo(Model model) {
 		
 
-		return "main_A";
+		return "main_R";
 	}
 	
 	

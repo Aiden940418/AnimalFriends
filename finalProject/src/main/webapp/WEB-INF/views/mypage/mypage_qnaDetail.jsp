@@ -1,11 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!-- header -->
-<%@ include file="../includes/header.jsp"%>
-<!-- leftmenubar -->
-<%@ include file="../includes/mypage_leftMenuBar.jsp"%>
+	<!-- header -->
+<%@ include file="../includes/header_R.jsp" %>
 
+<title>Q & A 상세보기</title>
+
+ <!-- 메뉴 사이드바 스크립트 -->
+<script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+</script>
+
+	
 <!-- 내용 시작 부분 -->
 <div class="contentDiv">
 
@@ -13,14 +24,14 @@
 		<div class="row">
 
 			<div class="row my-4" style="text-align: center;">
-				<h1>QnA</h1>
+				<h1>Q & A</h1>
 
 			</div>
 
 			<div>
 				<table class="table" style="width: 55%; margin-left: auto; margin-right: auto;">
 					<tr>
-						<td style="text-align: center;" colspan="2"><h3>${dto.qtitle }</h3></td>
+						<td style="text-align: center;" colspan="2"><h2>${dto.qtitle }</h2></td>
 					</tr>
 
 					<tr style="font-size: 14pt;">
@@ -61,8 +72,18 @@
 
 			</div>
 		</div>
-		<!-- footer -->
-		<%@ include file="../includes/footer.jsp"%>
+		
 	</div>
 
 </div>
+
+<!-- footer -->
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>
+
