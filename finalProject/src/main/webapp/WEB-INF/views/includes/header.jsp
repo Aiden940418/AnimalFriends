@@ -92,9 +92,8 @@
 	    //toast 생성
 	    let toast = "<div class='toast' role='alert' aria-live='assertive' aria-atomic='true' id='toast' style='width:300px; height:80px;'>";
 	    toast += "<div class='toast-header'><i class='fas fa-bell mr-2'></i><strong class='me-auto'> 알림</strong>";
-	    toast += "<small>방금</small><button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'>";
-	    toast += "<span aria-hidden='true'>&times;</span></button>";
-	    toast += "</div> <div class='toast-body'>" + data + "</div></div>";
+	    toast += "<small>방금</small><button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button></div>";
+	    toast += "<div class='toast-body'>" + data + "</div></div>";
 	    $("#msgStack").append(toast);   // msgStack div에 생성한 toast 추가
 	    $(".toast").toast({"animation": true, "autohide": false});
 	    $('.toast').toast('show');
