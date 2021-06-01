@@ -23,7 +23,7 @@
 	
 	<!-- 업로드 패스 설정 --> 
 	<beans:bean class="java.lang.String" id="uploadPath">
-		<beans:constructor-arg value="C:\Users\user\Documents\GitHub\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\finalProject\resources" />
+		<beans:constructor-arg value="C:\Users\GwonGyeongJae\Documents\GitHub\finalProject\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\finalProject\resources" />
 		
 
 	</beans:bean>
