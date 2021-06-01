@@ -22,7 +22,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="row my-4" style="text-align: center;">
-				<h1>QnA 수정</h1>
+				<h1>Q & A 수정</h1>
 
 			</div>
 

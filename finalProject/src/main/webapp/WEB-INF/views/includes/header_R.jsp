@@ -84,6 +84,12 @@
 		right: 0;
 	}
 	
+	.dropdown-toggle::after {
+    position: absolute;
+    top: 50%;
+    
+    }
+	
 /* 	* {
 		box-sizing: border-box;
 		-webkit-box-sizing: border-box;

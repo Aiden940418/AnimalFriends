@@ -4,9 +4,9 @@
     
 
 	<!-- header -->
-	<%@ include file="../includes/header_R.jsp" %>
+ 	<%@ include file="../includes/header_R.jsp" %>
 
-<title>나의 입양 공고 수정</title>
+<title>나의 입양 공고 등록</title>
 
  <!-- 메뉴 사이드바 스크립트 -->
  <script>
@@ -136,16 +136,17 @@
 									style="width:130px; pointer-events: none;">동물 성별</button></th>
 							<td>
 							<div class="btn-group btn-group-toggle" data-toggle="buttons" style="width:500px; margin-right:400px">
-							<label class="btn "> 
-							
+							<label class="btn"> 
 								<input type="radio"
 								name="anmGender" value="암컷" autocomplete="off"> 암
+							</label>
+							<label class="btn"> 
 								<input type="radio"
 								name="anmGender" value="수컷" autocomplete="off"> 수
 								
-								</label>
-								</div>
-								</td>
+							</label>
+							</div>
+							</td>
 						</tr>
 						
 						<tr>
@@ -157,14 +158,13 @@
 							
 								<input type="radio"
 								name="anmVcnYn" value="Y" autocomplete="off"> Y
+							</label>
+							<label class="btn"> 
 								<input type="radio"
 								name="anmVcnYn" value="N" autocomplete="off"> N
-	
-								
-								
-								</label>
-								</div>
-								</td>
+							</label>
+							</div>
+							</td>
 						</tr>
 						
 						
@@ -174,16 +174,15 @@
 							<td>
 							<div class="btn-group btn-group-toggle" data-toggle="buttons" style="width:500px; margin-right:400px">
 							<label class="btn"> 
-							
 								<input type="radio"
 								name="anmNtrYn" value="Y" autocomplete="off"> Y
+							</label>	
+							<label class="btn"> 
 								<input type="radio"
 								name="anmNtrYn" value="N" autocomplete="off"> N
-
-								
-								</label>
-								</div>
-								</td>
+							</label>
+							</div>
+							</td>
 						</tr>
 
 						<tr>
@@ -241,11 +240,11 @@
 
 						<tr style="position: relative;right: 107px;">
 							<td colspan="2">
-							 <input type="submit"
-								value="작성" class="btn btn-outline-success mt-3"
+							 <input type="submit" value="작성" class="btn btn-outline-success mt-3"
 								style="width:100px;">
-							<button class="btn btn-outline-success mt-3"
-									onclick="location.href='myAdoptDetail.do?aNo=${dto.aNo}'" style="width:100px; pointer-events: none;">취소</button>
+							<input class="btn btn-outline-success mt-3"
+									onclick="location.href='myAdoptDetail.do?aNo=${dto.aNo}'" 
+									style="width:100px; pointer-events: none;" value="취소">
 							</td>
 
 						</tr>

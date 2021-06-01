@@ -1,7 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<%@ include file="../includes/header_R.jsp" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+ <title>GOODS</title>
+ 
+  <!-- 메뉴 사이드바 스크립트 -->
+ <script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+
+ </script>
+ 
+ 
+
 
 <style type="text/css">
 		.card-body{
@@ -14,13 +30,14 @@
 		
 		}
 		
-		#horisonLine {
+	  	#horisonLine {
 	 	    height: 10px;
 		    border-bottom: groove;
 		    position: relative;
-		    top: 145px;
-		    width: 98%;
-	 	}
+			top: 20px;
+	    	width: 100%;
+		 }
+
 		
 		#goods {
 			position: relative;
@@ -36,116 +53,107 @@
 	 	 	margin-top: 215px;
 	 	}
 	 	
+		.dropdown-toggle::after {
+		    position: absolute;
+		    top: 40%;
+		}
 	 	
 	 
 
 </style>
-<!-- header -->
-<%@ include file="../includes/header.jsp"%>
-<!-- leftmenubar -->
-<%@ include file="../includes/admin_leftMenuBar.jsp"%>
-
 
 <!-- page -->
 <div class="contentDiv">
 
-	<div class="container text-center" id="goods">
-		<h1 class="">GOODS</h1>
+	<div class="container text-center">
+		<h1 class="mt-5">GOODS</h1>
+		<div id="horisonLine"></div>
 	</div>
-	
-		<!-- 가로줄 -->
-	<div id="horisonLine"></div>
 
 
 	<!-- dropDown1-start -->
-	<div class="container dropdown" id="secCtn">
-		<a class="btn btn-outline-success dropdown-toggle" href="#"
-			role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
-			aria-expanded="false"> 상품카테고리 </a>
-
-		<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-			<li><a class="dropdown-item" href="adminGoodsBagList.do">가방</a></li>
-			<li><a class="dropdown-item" href="adminGoodsClothList.do">옷</a></li>
-			<li><a class="dropdown-item" href="adminGoodsAccList.do">악세사리</a></li>
-		</ul>
-
+	<div class="container dropdown mt-4">
+		<div class="row">
+			<div class="col-6">		
+				<a class="btn btn-outline-success dropdown-toggle text-center" href="#"
+					role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" style="width:125px;"
+					aria-expanded="false"> 상품카테고리 </a>
+	
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+					<li><a class="dropdown-item" href="adminGoodsBagList.do">가방</a></li>
+					<li><a class="dropdown-item" href="adminGoodsClothList.do">옷</a></li>
+					<li><a class="dropdown-item" href="adminGoodsAccList.do">악세사리</a></li>
+				</ul>
+			</div>
 
 		<!-- dropDown1-end -->
 
 
-		<div class="btn-group float-end me-4">
-	
-			<div class="delBtn">
-						<button type="button" id="selectDelete_btn" class="btn btn-outline-success" style="float:right">선택 삭제</button>
-					<script>
+		<div class="col-6">
+			<div class="btn-group float-end">
+					<input type="checkbox" class="btn-check btn-outline-success" name="allCheck" id="allCheck" autocomplete="off">
+   						<label class="btn btn-outline-success" for="allCheck" style="margin:0px;">전체 선택</label> 
+									<script>
+									$("#allCheck").click(function() {
+										
+										var chk = $("#allCheck").prop("checked");
+										
+										if(chk) {
+											$(".chBox").prop("checked", true);
+											
+										}else {
+											$(".chBox").prop("checked", false);
+										}
+										
+									});
+									</script>
+					<button type="button" id="selectDelete_btn" class="btn btn-outline-success" style="float:right">선택 삭제</button>
+					<button type="button" class="btn btn-outline-success" onclick="location.href='adminGoodsWriteForm.do'">상품 등록</button>
+						 <script>
+							 $("#selectDelete_btn").click(function(){
+							  var confirm_val = confirm("정말 삭제하시겠습니까?");
+							  
+							  if(confirm_val) {
+							   var checkArr = new Array();
+							   
+							   $("input[class='chBox']:checked").each(function(){
+							    checkArr.push($(this).attr("data-cartNum"));
+							   });
+						
+									
+							   $.ajax({
+								    url : "multiDeleteGoods.do",
+								    type : "post",
+								    data : { chbox : checkArr },
+								    success : function(result){
+								    	
+								    	
+								    	if(result == 1) { 
+								    
+									location.href="adminGoodsList.do";
+		
+								     
+								     
+								    	}else {
+								    		
+								    		alert("삭제 오류");
+								    	}
+								    }
+								   });
+								  } 
+								 });
+							</script>
 					
-					 $("#selectDelete_btn").click(function(){
-					  var confirm_val = confirm("정말 삭제하시겠습니까?");
-					  
-					  if(confirm_val) {
-					   var checkArr = new Array();
-					   
-					   $("input[class='chBox']:checked").each(function(){
-					    checkArr.push($(this).attr("data-cartNum"));
-					   });
-				
-							
-					   $.ajax({
-						    url : "multiDeleteGoods.do",
-						    type : "post",
-						    data : { chbox : checkArr },
-						    success : function(result){
-						    	
-						    	
-						    	if(result == 1) { 
-						    
-							location.href="adminGoodsList.do";
-
-						     
-						     
-						    	}else {
-						    		
-						    		alert("삭제 오류");
-						    	}
-						    }
-						   });
-						  } 
-						 });
-						</script>
-						</div>
-				
-				<button type="button" class="btn btn-outline-success ms-3"
-				onclick="location.href='adminGoodsWriteForm.do'">상품 등록</button>
-				
+				</div>
 		</div>
 		<br><br>
-				  <div class="allCheck" >
-   					<input type="checkbox" name="allCheck" id="allCheck" /><label for="allCheck">&nbsp;전체 선택</label> 
-					<script>
-					$("#allCheck").click(function() {
-						
-						var chk = $("#allCheck").prop("checked");
-						
-						if(chk) {
-							$(".chBox").prop("checked", true);
-							
-						}else {
-							$(".chBox").prop("checked", false);
-						}
-						
-					});
-					
-					
-					
-					</script>
-  				  </div> 
+   					
   				  
 		  </div>
-	<!-- dropDown2-end -->
 	
-		
-				
-          	<div class="container" id="thrCtn">
+	
+	<!-- dropDown2-end -->
+          	<div class="container mt-5 text-center" id="thrCtn">
            	  <div class="row">
 				  <c:choose>
 					<c:when test="${empty list}">
@@ -183,10 +191,18 @@
 				   </c:choose>
                	</div>
              </div>
+          </div>
 
 				
 </div>
 
-	<!-- footer -->
-	<%@ include file="../includes/footer.jsp"%>
+<!-- footer -->
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>
 

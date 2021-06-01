@@ -4,7 +4,7 @@
 <!-- header -->
 <%@ include file="../includes/header_R.jsp" %>
 
-<title>Q & A List</title>
+<title>Q & A 등록</title>
 
  <!-- 메뉴 사이드바 스크립트 -->
 <script>
@@ -80,7 +80,8 @@
 						</tr>
 
 						<tr>
-							<td colspan="2"><input type="button" value="취소"
+							<td colspan="2">
+								<input type="button" value="취소"
 								class="btn btn-outline-success my-1" onclick="location.href='myQnaList.do'"
 								style="width: 90px; float: right;"> 
 								<input type="submit"

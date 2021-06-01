@@ -78,9 +78,9 @@
 									<div class="col-sm mt-5">
 										<div class="card h-100 text-center" style="width:450px; margin: 0 auto; align-items: center;">
 											<a href="myAdoptDetail.do?aNo=${dto.aNo}"><img src="resources/${dto.aThumbImg }" class="card-img-top"
-												alt="..."style="width:450px;height:350px; border:none; object-fit:cover;"></a>	
+												style="width:450px; height:350px; border:none; object-fit:cover;"></a>	
 											<div class="card-body">
-												<h4 class="card-title text-center">${dto.anmName}를 소개합니다.</h4><br>
+												<h4 class="card-title text-center">${dto.aTitle}</h4><br>
 												<p class="card-text text-center">${dto.aMemo}</p>
 											</div>
 										</div>
@@ -90,9 +90,6 @@
 			  </c:choose>
 			</div>
 		</div>
-
-	
-	
 	
 	</div>
 

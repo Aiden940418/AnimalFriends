@@ -2819,7 +2819,7 @@ input[type="button"].btn-block {
   .btn-group-toggle > .btn input[type="checkbox"],
   .btn-group-toggle > .btn-group > .btn input[type="radio"],
   .btn-group-toggle > .btn-group > .btn input[type="checkbox"] {
-    position: absolute;
+    position: relative;
     clip: rect(0, 0, 0, 0);
     pointer-events: none; }
 

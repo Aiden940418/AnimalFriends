@@ -31,7 +31,7 @@
 			<div>
 				<table class="table" style="width: 55%; margin-left: auto; margin-right: auto;">
 					<tr>
-						<td style="text-align: center;" colspan="2"><h2>${dto.qtitle }</h2></td>
+						<td style="text-align: center;" colspan="2"><h3>${dto.qtitle }</h3></td>
 					</tr>
 
 					<tr style="font-size: 14pt;">
