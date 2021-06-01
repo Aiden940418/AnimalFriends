@@ -1,8 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../includes/header.jsp" %>   
+<%@ include file="../includes/header_R.jsp" %>   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+ 
+ <title>GOODS</title>
+ 
+  <!-- 메뉴 사이드바 스크립트 -->
+ <script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+
+ </script>
+ 
+ 
  
  <style type="text/css">
 
@@ -18,55 +33,72 @@
 	 padding-top: 20px;
 	 }
 
-
 </style>
- <title>굿즈</title>
-<div class="container mt-5">
-	<div class="container text-center">
-		<h1 class="mt-5">GOODS</h1>
-	</div>
-	<!-- 가로줄 -->
-		<div id="horisonLine"></div>
-	<div class="container dropdown  mt-5">
-		<a class="btn btn-outline-success dropdown-toggle" href="#"
-			role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
-			aria-expanded="false"> 상품종류 </a>
 
-		<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-			<li><a class="dropdown-item" href="goodsBagList.do">가방</a></li>
-			<li><a class="dropdown-item" href="goodsClothList.do">옷</a></li>
-			<li><a class="dropdown-item" href="goodsAccList.do">악세사리</a></li>
-		</ul>
-					<div class="btn-group float-end">
-						<button type="button" class="btn btn-outline-success  " onclick="location.href='cartList.do?mNo=${login.mNo}'">
-							나의 장바구니 보기</button>
+	<div class="contentDiv">
+	
+		<div class="container text-center">
+			<h1 class="mt-5">GOODS</h1>
+			<div id="horisonLine"></div>
+		</div>
+		
+	
+			<!-- dropDown1-start -->
+			<div class="container dropdown mt-4">
+				<div class="row">
+					<div class="col-6">
+						<button type="button"
+							class="btn btn-outline-success dropdown-toggle mt-3"
+							data-bs-toggle="dropdown" aria-expanded="false" style="width:200px; ">카테고리</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">가방</a></li>
+							<li><a class="dropdown-item" href="#">옷</a></li>
+							<li><a class="dropdown-item" href="#">악세사리</a></li>
+						</ul>
 					</div>
-
-
-				<c:choose>
-					<c:when test="${empty list}">
-						<h2>등록된 글이 없습니다. </h2>
-					</c:when>
-					<c:otherwise>
-       	<div class="container mt-5 text-center ms-5" style="display: inline-block">
-			<div class="row">
-		         		<c:forEach items="${list}" var="dto">
-			          		<div class="col-sm mt-5 ms-5">
-				          		<div class="card h-100 " style="width:550px; height:550px;">
-				                <div class="card-body text-cente">
-				                 	<a href="goodsDetails.do?gNo=${dto.gNo}">	<img style="width:500px;height:350px; border:none; object-fit:cover;" 
-				                 		src="resources/${dto.gImg}" class="img-thumbnail" alt="..."> </a><br>
-				                 	<br><br>
-					              	<h2>${dto.gName}</h2>
-					                <p class="container mt-2">상품가격:${dto.gPrice}원</p>
-				                </div>
+					<div class="col-6">
+						<div class="btn-group float-end">
+							<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='cartList.do?mNo=${login.mNo}'">
+								나의 장바구니 보기</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- dropDown1-end -->
+	
+	
+	       	<div class="container mt-5 text-center">
+	           <div class="row">
+					<c:choose>
+						<c:when test="${empty list}">
+							<h2>등록된 글이 없습니다. </h2>
+						</c:when>
+						<c:otherwise>
+			         		<c:forEach items="${list}" var="dto">
+				          		<div class="col-sm mt-5 ms-5">
+					          		<div class="card h-100 " style="width:550px; height:550px;">
+					                <div class="card-body text-cente">
+					                 	<a href="goodsDetails.do?gNo=${dto.gNo}">	<img style="width:500px;height:350px; border:none; object-fit:cover;" 
+					                 		src="resources/${dto.gImg}" class="img-thumbnail" alt="..."> </a><br>
+					                 	<br><br>
+						              	<h2>${dto.gName}</h2>
+						                <p class="container mt-2">상품가격:${dto.gPrice}원</p>
+					                </div>
+					              	</div>
 				              	</div>
-			              	</div>
-		        		</c:forEach>
-		        		</div>
-		        		</div>
-			    	</c:otherwise>
-				</c:choose>
-            </div>
-				
- <%@ include file="../includes/footer.jsp" %>   
+			        		</c:forEach>
+				    	</c:otherwise>
+					</c:choose>
+	            </div>
+	        </div>
+	</div>
+					
+ <!-- footer -->
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>

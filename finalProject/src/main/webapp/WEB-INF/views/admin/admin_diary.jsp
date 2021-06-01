@@ -1,31 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <!-- header -->
-<%@ include file="../includes/header.jsp"%>
-<!-- leftmenubar -->
-<%@ include file="../includes/admin_leftMenuBar.jsp"%>
+<%@ include file="../includes/header_R.jsp" %>
+
+<title>입양 일기 관리</title>
+
+ <!-- 메뉴 사이드바 스크립트 -->
+<script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+</script>
 
 <style type="text/css">
+
 	#DrManage {
-		    position: relative;
-    		top: 80px;
+		position: relative;
+	    top: 55px;
 	
 	}
 	
 	#horisonLine {
-	 	    height: 10px;
-		    border-bottom: groove;
-		    position: relative;
-		    top: 145px;
-		    width: 98%;
+ 	    height: 10px;
+	    border-bottom: groove;
+	    position: relative;
+	    top: 145px;
+	    width: 98%;
 	 }
 	 
 	 #secCtn{
-	    position: relative;
-    	margin-top: 150px; 	
+		position: relative;
+		top: 150px;	 
 	}
 
 </style>
@@ -94,7 +105,7 @@
 <!-- 페이지 내용 부분 -->
 <div class="contentDiv">
 
-	<div class="container" id="DrManage">
+	<div class="container text-center" id="DrManage">
 		<h1 class="text-center">입양일기 관리</h1>
 	</div>
 
@@ -129,7 +140,16 @@
 			</div>
 		</div>
 	<!-- 입양일기 그리드 끝 -->
+	<div style="height:200px;"></div>
+	
 </div>
 
 	<!-- footer -->
-	<%@ include file="../includes/footer.jsp"%>
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>

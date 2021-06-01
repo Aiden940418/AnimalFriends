@@ -1,8 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ include file="../includes/header.jsp" %> 
  <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>  
  
+ <%@ include file="../includes/header_R.jsp" %>   
+
+	
+ 
+ <title>GOODS Detail(관리자)</title>
+ 
+  <!-- 메뉴 사이드바 스크립트 -->
+ <script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+
+ </script>
  
  
  
@@ -298,6 +313,12 @@
                 </div>
                 </div>
 
-
-
- <%@ include file="../includes/footer.jsp" %>   
+	<!-- footer -->
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>

@@ -1,5 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="../includes/header_R.jsp" %>   
+
+ 
+ <title>결제 완료</title>
+ 
+  <!-- 메뉴 사이드바 스크립트 -->
+ <script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+
+ </script>
+ 
+ 
 
 <style type="text/css">
 .container {
@@ -10,8 +27,6 @@
 }
 </style>
 
-<!-- header -->
-<%@ include file="../includes/header.jsp"%>
 
 <div class="container">
 	<p>
@@ -69,7 +84,12 @@
 
 <br>
 
-
-
 <!-- footer -->
-<%@ include file="../includes/footer.jsp"%>
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>

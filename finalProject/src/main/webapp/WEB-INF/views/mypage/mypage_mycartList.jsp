@@ -4,33 +4,46 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<!-- header -->
+<%@ include file="../includes/header_R.jsp" %>
+    
 
-	<!-- header -->
-	<%@ include file="../includes/header.jsp" %>
+<title>나의 장바구니</title>
+
+ <!-- 메뉴 사이드바 스크립트 -->
+<script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+</script>
+
+<style>
+
+	#horisonLine {
+	 	    height: 10px;
+		    border-bottom: groove;
+		    position: relative;
+			top: 20px;
+	    	width: 100%;
+	}
+
+</style>
 	
-	<!-- leftMenuBar -->
-	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>	
-	
+
 	<!-- 페이지 내용 부분 -->
 	<div class="contentDiv ">
 		
-		<div class="container ms-5">
 		<!-- 상단 제목부분 -->
-		<div class="container text-center mt-5">
-			<h1>${login.mNick}님 장바구니</h1>
-			<br>
+		<div class="container text-center" style="margin-top:20px;">
+			<h1 class="text-center">${login.mNick}님 장바구니</h1><br>
+			<div id="horisonLine"></div>
 		</div>
-		<br>
 		
 		<!-- 찜 목록 그리드 시작 -->
-		<div class="container" style="width: 1200px;">
+		<div class="container mt-5">
 			<div class="row">
 			
 			
@@ -38,8 +51,8 @@
 				<div class="col-sm">
 					<!--모두 선택 체크박스-->
 					<div class="allCheck">
-						<input name="allCheck" type="checkbox" id="allCheck"><label
-							for="allCheck">모두 선택</label><br>
+						<input name="allCheck" type="checkbox" id="allCheck">
+						<label class="ms-1" for="allCheck">모두 선택</label><br>
 					
 					<script>
 					$("#allCheck").click(function() {
@@ -224,7 +237,6 @@
 					
 					</div>
 				</div>
-				</div>
 	
 				<!--  카드박스 끝 -->
 			<div class="orderInfo" style="display:none;">	
@@ -398,20 +410,10 @@
       
       
       </div>
-      
-      
-      
-				
-				
-		
-			
-	
 	
 	
 			
 		</div>
-	
-	
 	
 	
 	
@@ -421,10 +423,13 @@
 	
 	
 	
-	
-	<br><br><br>
-	<!-- footer -->
-	<%@ include file="../includes/footer.jsp" %>
 
+	<!-- footer -->
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
 </body>
 </html>
