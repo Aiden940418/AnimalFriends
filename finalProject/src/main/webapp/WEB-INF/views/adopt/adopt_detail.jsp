@@ -54,7 +54,7 @@ a.button:hover {
 		
 	    let targetMNo = '${dto.aMNo}';  //토스트 메세지 받을 사람 (입양공고 작성자 회원번호)
 	    let content = '${login.mNick}님이 1:1 채팅을 요청하였습니다!' //토스트 메세지 내용
-	    let url = '#';  //토스트 메세지 클릭하면 바로가기 이동할 url
+	    let url = 'chattingList.do';  //토스트 메세지 클릭하면 바로가기 이동할 채팅목록 url
 	    
 	    // 전송한 정보를 db에 저장	
 	    $.ajax({

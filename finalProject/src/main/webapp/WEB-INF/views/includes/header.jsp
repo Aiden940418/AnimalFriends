@@ -78,13 +78,21 @@
 	    
 	});
 	
-	// toast생성 및 추가
+	// toast 생성 및 추가
 	function onMessage(evt){
 	    var data = evt.data;
-	    // toast
-	    let toast = "<div class='toast' role='alert' aria-live='assertive' aria-atomic='true'>";
-	    toast += "<div class='toast-header'><i class='fas fa-bell mr-2'></i><strong class='mr-auto'>알림</strong>";
-	    toast += "<small class='text-muted'>just now</small><button type='button' class='ml-2 mb-1 close' data-dismiss='toast' aria-label='Close'>";
+	    var prevToast = document.getElementById('toast');
+	    
+	    //이전에 뜬 알림이 있다면 지움
+	    if(prevToast != null){
+	    	prevToast.remove();
+	    }
+	    
+	    
+	    //toast 생성
+	    let toast = "<div class='toast' role='alert' aria-live='assertive' aria-atomic='true' id='toast' style='width:300px; height:80px;'>";
+	    toast += "<div class='toast-header'><i class='fas fa-bell mr-2'></i><strong class='me-auto'> 알림</strong>";
+	    toast += "<small>방금</small><button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'>";
 	    toast += "<span aria-hidden='true'>&times;</span></button>";
 	    toast += "</div> <div class='toast-body'>" + data + "</div></div>";
 	    $("#msgStack").append(toast);   // msgStack div에 생성한 toast 추가
@@ -138,6 +146,10 @@
             
             </c:if>
           </ul>
+          
+          <!-- 웹소켓 알림 부분 -->
+      	  <div id="msgStack" ></div>
+      	
           <div id="loginBtn">
           
           <c:if test="${login == null }">
@@ -156,9 +168,11 @@
       </div>
       
       
-		<!-- 웹소켓 알림 부분 -->
-      	<div id="msgStack"></div>
+		
       
       
     </nav>
+    
+    </body>
+    </html>
     
