@@ -10,6 +10,7 @@ import com.anif.mvc.goods.dto.CartDto;
 import com.anif.mvc.goods.dto.CartListDto;
 import com.anif.mvc.goods.dto.GoodsOrderDto;
 import com.anif.mvc.goods.dto.OrderDetailDto;
+import com.anif.mvc.goods.dto.OrderListDto;
 
 
 @Service
@@ -62,6 +63,12 @@ public class CartBizImpl implements CartBiz{
 	@Override
 	public int orderInfoStatusUpdate(String orderId) {
 		return dao.orderInfoStatusUpdate(orderId);
+	}
+	
+	
+	@Override
+	public List<OrderListDto> orderView(GoodsOrderDto order) {
+		return dao.orderView(order);
 	}
 	
 	

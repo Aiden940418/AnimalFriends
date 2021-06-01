@@ -96,4 +96,28 @@
   		WHERE ORDERID = #{orderId}
   	</update>
   	
+  	
+  	
+  	<select id ="orderView" resultType="com.anif.mvc.goods.dto.OrderListDto">
+ 	 
+ 	 	
+ 	select distinct
+ 	 		o.orderId, o.mno, o.orderName, o.orderaddr1, o.orderaddr2,
+ 	 		o.orderaddr3, o.orderphone, o.amount, o.orderDate, o.gno, o.GREVIEWSTATUS,
+ 	 		d.orderDetailsNum, d.gno, d.cartStock,
+ 	 		g.gName, g.gImg, g.gPrice
+ 	 		
+ 	 		
+    from goodsorder o
+ 	 		inner join order_Details d	
+ 	 			on o.orderId = d.orderId
+ 	 		inner join goods g
+ 	 			on d.gNo = g.gNo
+    where o.mno = #{mNo} and o.orderId = #{orderId}
+ 	 		
+ 	 
+ 	 </select>
+ 	 
+  	
+  	
  </mapper>
