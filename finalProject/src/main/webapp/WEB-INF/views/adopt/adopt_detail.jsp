@@ -56,7 +56,7 @@
 
 	<div class="container text-center">
 		<h1 class="mt-5">입양 공고</h1><br>
-		<div id="horisonLine"></div>
+	<div id="horisonLine"></div>
 		
 	</div>
 	
