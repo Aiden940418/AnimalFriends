@@ -415,9 +415,13 @@ function isLogin(){
 
 
 	<!-- 내용 -->
-	<div class="container mt-3">
-	
-	<h1 class="mt-4">입양 일기</h1>
+<div class="container mt-5">
+
+<!-- 상단이름  -->
+<div class="container text-center">
+	<h1 class="mt-5">입양일기</h1>
+</div>
+<div id="horisonLine"></div>
 	
 		
 		<!-- 입양일기 리스트 반복하여 화면에 출력 -->

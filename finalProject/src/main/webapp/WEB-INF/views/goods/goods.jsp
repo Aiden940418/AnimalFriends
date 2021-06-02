@@ -75,10 +75,10 @@
 						</c:when>
 						<c:otherwise>
 			         		<c:forEach items="${list}" var="dto">
-				          		<div class="col-sm mt-5 ms-5">
-					          		<div class="card h-100 " style="width:550px; height:550px;">
+				          		<div class="col-sm mt-5 ms-2">
+					          		<div class="card h-100 " style="width:450px; height:550px;">
 					                <div class="card-body text-cente">
-					                 	<a href="goodsDetails.do?gNo=${dto.gNo}">	<img style="width:500px;height:350px; border:none; object-fit:cover;" 
+					                 	<a href="goodsDetails.do?gNo=${dto.gNo}">	<img style="width:450px;height:350px; border:none; object-fit:cover;" 
 					                 		src="resources/${dto.gImg}" class="img-thumbnail" alt="..."> </a><br>
 					                 	<br><br>
 						              	<h2>${dto.gName}</h2>

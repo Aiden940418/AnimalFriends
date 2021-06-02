@@ -68,15 +68,6 @@
 
 
 <style type="text/css">
-
-	.wrap {
-		
-		top: 50%;
-		left: 50%;
-	
-		text-align: center;
-	}
-	
 	
 	#horisonLine {
 	 	    height: 10px;
@@ -116,7 +107,7 @@
 	
 	<div class="row">
 		
-				<div class="col-2"></div> <!-- 좌우 간격 맞추기 용도 -->
+				<div class="col-3"></div> <!-- 좌우 간격 맞추기 용도 -->
 				
 				<div class="col ms-4 my-3">
 				
@@ -136,7 +127,7 @@
 						</div>
 						
 						<!-- 입양공고 이미지 -->
-						<img class="card-img-top" src="resources/${dto.aImg}"">
+						<img class="card-img-top" src="resources/${dto.aImg}">
 						
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item">

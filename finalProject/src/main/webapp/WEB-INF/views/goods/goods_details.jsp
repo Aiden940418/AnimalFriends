@@ -40,8 +40,8 @@
  
  				<div>
  				<h1 class="display-4">${dto.gName }</h1>
- 				<div class="text-left">상품가격:${dto.gPrice }</div>
- 				<textarea class="mt-3" rows="5" cols="50" readonly="readonly" style="border:none; text-align:center;">${dto.gContent } </textarea><br>
+ 				<div class="">상품가격:${dto.gPrice }</div>
+ 				<textarea class="mt-3" rows="5" cols="30" readonly="readonly" style="border:none; text-align:center;">${dto.gContent } </textarea><br>
    				
    				
    				
@@ -112,7 +112,7 @@
 	<div class="container mt-5 text-center	">
 	
 
-<button onclick="fnMove();" class="btn btn-outline-success ms-5"style="width:200px;">상세보기 </button>
+<button onclick="fnMove();" class="btn btn-outline-success ms-5"style="width:170px;">상세보기 </button>
 
 <script>
     function fnMove(){
@@ -126,17 +126,28 @@
 
 
 
-<button onclick="reviewMove();" class="btn btn-outline-success ms-5"style="width:200px">리뷰보기</button>
+<button onclick="reviewMove();" class="btn btn-outline-success ms-5"style="width:170px">리뷰보기</button>
 <script>
     function reviewMove(){
         var offset = $("#review").offset();
         $('html, body').animate({scrollTop : offset.top}, 400);
     }
 </script>
-<a href="#qna" class="btn btn-outline-success ms-5"style="width:200px">Q&A</a>	
-<a href="#company" class="btn btn-outline-success ms-5"style="width:200px">업체소개</a>	
+<button onclick="qnaMove();" class="btn btn-outline-success ms-5"style="width:170px">Q&A</button>
+<script>
+    function qnaMove(){
+        var offset = $("#qna").offset();
+        $('html, body').animate({scrollTop : offset.top}, 400);
+    }
+</script>	
+<button onclick="companyMove();" class="btn btn-outline-success ms-5"style="width:170px">업체소개</button>	
 	
-	
+<script>
+    function companyMove(){
+        var offset = $("#company").offset();
+        $('html, body').animate({scrollTop : offset.top}, 400);
+    }
+</script>	
 	
 	</div>
 	
@@ -192,7 +203,6 @@
 		<tbody>
 		<c:choose>
 		<c:when test="${empty review}">
-				<tbody>
 		
 			<td colspan="3">작성된 리뷰가 없습니다.</td>
 			

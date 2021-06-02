@@ -49,8 +49,7 @@ $("#check_module").on('click', function() {
 		</div>
 		
 		<!-- 찜 목록 그리드 시작 -->
-		<div class="container mt-5">
-			<div class="row">
+
 			
 			
 				<!-- 카드 박스 (체크박스 포함) -->
@@ -89,10 +88,10 @@ $("#check_module").on('click', function() {
 					<!-- 선택 삭제 버튼  -->
 					
 					<div class="delBtn">
-						<button type="button" class="selectDelete_btn" style="float:right">선택 삭제</button>
+						<button type="button" id="selectDelete_btn"class="btn btn-outline-success" style="float:right">선택 삭제</button>
 					<script>
 					
-					 $(".selectDelete_btn").click(function(){
+					 $("#selectDelete_btn").click(function(){
 					  var confirm_val = confirm("정말 삭제하시겠습니까?");
 					  
 					  if(confirm_val) {
@@ -133,24 +132,26 @@ $("#check_module").on('click', function() {
 					</div>
 					<br>
 					<!-- 선택 삭제 버튼 end -->
-					<hr>
+					
 					
 					
 					<!--  cartList start -->
+			<div class="container" id="thrCtn">
+		<div class="row">
+				<c:choose>
+						<c:when test="${empty cartList }">
+							<div class="col text-center mt-5">
+								<p>장바구니가 비어있습니다.</p>
+							</div>
+						</c:when>
+					<c:otherwise>
 				<c:forEach items="${cartList}" var="cartList">
-				
 				<input type="hidden" name="cgNo" value="${cartList.gNo }">
-					
 
-					
-					
 						<!-- 카드 부분 체크박스 -->
-					
-					<div class="checkBox">
+					<div class="col-sm mt-5">
 						<input type="checkbox" name="chBox" class="chBox" data-cartNum="${cartList.cartNo }" />
-					<div class="card" style="width: 30rem;">
-									
-					
+						
 					<script>
 						$(".chBox").click(function(){
 						$("#allCheck").prop("checked", false);
@@ -159,11 +160,12 @@ $("#check_module").on('click', function() {
 						
 					
 					</script>
-					</div>
-					
 					<!--  카드부분 체크박스 끝  -->
+					
+					
+					<div class="card h-100 text-center" style="width:20rem; margin: 0 auto; align-items: center;">
 						<img class="card-img-top"
-							src="resources/${cartList.gImg }" alt="Card image cap" style="width:30rem;">
+							src="resources/${cartList.gImg }" alt="Card image cap" style="width:20rem;">
 						<div class="card-body">
 							<p class="card-text">
 								
@@ -175,10 +177,10 @@ $("#check_module").on('click', function() {
 								
 							</p>
 							<div class="delete">
-								 <button type="button" class="delete_${cartList.cartNo}_btn" data-cartNum="${cartList.cartNo}">삭제</button>
+								 <button type="button" class="btn btn-outline-success" id="delete_${cartList.cartNo}_btn" data-cartNum="${cartList.cartNo}">삭제</button>
 								 
 								 <script>
-								  $(".delete_${cartList.cartNo}_btn").click(function(){
+								  $("#delete_${cartList.cartNo}_btn").click(function(){
 								   var confirm_val = confirm("정말 삭제하시겠습니까?");
 								   
 								   if(confirm_val) {
@@ -202,26 +204,44 @@ $("#check_module").on('click', function() {
 								  });
 								 </script>
 								</div>
-														
-						
-				
+							</div>		
 						</div>
-						</div>
-						
-						<c:set var="sum" value="${sum + (cartList.gPrice * cartList.cartStock) }" />
-								</c:forEach>
 					</div>
+				<c:set var="sum" value="${sum + (cartList.gPrice * cartList.cartStock) }" />
+					
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>	
+	</div>
+	</div>
+						
+
+
+
+
+
+
+
+
+						
+<!-- 카트 리스트 종료  -->
+						
 					
 					
-					
-					
+					<br>
+					<br>
+					<br>
+					<hr>
 					
 					<div class="listResult">
 					
-						<div class="sum"> 
+						<div class="sum float-sm-end md-5"> 
 						
 							총 합계 : <fmt:formatNumber pattern="###,###,###" value="${sum }"/>원 
 						</div>
+					</div>
+					
+					
 						
 					<div class="orderOpen">
 					
@@ -240,9 +260,7 @@ $("#check_module").on('click', function() {
 						</script>
 					</div>
 					
-					
-					</div>
-				</div>
+		
 	
 				<!--  카드박스 끝 -->
 			<div class="orderInfo" style="display:none;">	
@@ -275,12 +293,13 @@ $("#check_module").on('click', function() {
               <div class="ms-5 container mt-2 boarder=1" id="sameAddr" >
               	<form id="goodsOrder" name="goodsOrder" action="goodsOrder.do" method="post">
               	<input type="hidden" name="amount" value="${sum }">
+              	<input type="hidden" id="test" value="">  
+              	
               	<input type="hidden" name="mNo" value="${login.mNo }">
              <c:forEach items="${cartList}" var="cartList">
               	<input type="hidden" name="gNo" value="${cartList.gNo }">
               	</c:forEach>
        		  <table>
-		      <input type="hidden" id="test" value="">  
 		        <tr>
 		        <th>배송 받는 사람</th>
 		        <td><input type="text" name="orderName" style="width:300px; height:40px"value="${login.mName }" ></td>
