@@ -150,7 +150,6 @@
 	<!-- footer -->
 	<%@ include file="../includes/footer.jsp" %>   
 	<!-- header의 'Page 내용 div' 닫기 태그  -->
-	</div> 
 	
  	<!-- Page 내용 끝 -->
 	
