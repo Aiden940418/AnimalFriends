@@ -1,10 +1,6 @@
 package com.anif.mvc;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-
-import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -15,20 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.anif.mvc.adopt.ACommentBiz.ACommentBiz;
-import com.anif.mvc.adopt.ACommentDto.ACommentDto;
-import com.anif.mvc.adopt.biz.AdoptBiz;
-import com.anif.mvc.adopt.dto.AdoptDto;
-import com.anif.mvc.diary.dto.DiaryDto;
-import com.anif.mvc.goods.dto.GoodsDto;
 import com.anif.mvc.member.biz.MemberBiz;
 import com.anif.mvc.member.dto.MemberDto;
-import com.anif.mvc.utils.UploadFileUtils;
 
 @Controller
 public class MemberController {
@@ -103,11 +88,16 @@ public class MemberController {
 			return "mypage/mypage_memberModifyPWCheck";
 		}
 		
-		
-		
-		
 	}
-	
+	/* 비밀번호 찾기 */
+	@RequestMapping(value = "/findpw.do", method = RequestMethod.GET)
+	public void findPwGET() throws Exception{
+	}
+
+	@RequestMapping(value = "/findpw2.do", method = RequestMethod.POST)
+	public void findPwPOST(@ModelAttribute MemberDto dto, HttpServletResponse response) throws Exception{
+		biz.findPw(response,dto);
+	}
 	
 	
 	

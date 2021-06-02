@@ -211,6 +211,74 @@ function execPostCode() {
 					<div class="col-5">		
             		<form action="memberUpdate.do" method="POST">
 					<input type="hidden" name="mNo" value="${login.mNo }">
+		<input type="hidden" name="mNo" value="${login.mNo }">
+            
+            <table>
+            <tr>
+            <th>아이디</th>
+            <td><input id="mId" type="text"  style="width:300px; height:40px" readonly="readonly" value="${login.mId}">
+            </td>
+            
+            </tr>
+            
+            <tr>
+            <th>비밀번호</th>
+            <td><input class="mPw" type="password" id="pw" style="width:300px; height:40px" value="{login.mPw}" readonly="readonly">
+            </td>
+            </tr>
+   
+            <tr>
+            <th>대표자명</th>
+            <td><input type="text"  id="mName"  value="${login.mName}" readonly="readonly"style="width:300px; height:40px">
+            </td>
+            </tr>
+            
+            <tr>
+			<th>이메일</th>
+			<td><input type="text" id="mEmail"  name="mEmail" value="${login.mEmail }" style="width:300px; height:40px">
+			</td>
+			</tr>
+            
+            <tr>
+            <th>보호소이름</th>
+            <td><input type="text" id="mNick"  name="mNick" value="${login.mNick }" style="width:300px; height:40px">
+            </td>
+            </tr>
+            
+            <tr>
+            <th>보호소주소</th>
+            <td><input type="text" id="mAddr1"     name="mAddr1" value="${login.mAddr1}" style="width:100px; height:40px">
+            <input class="btn btn-outline-success" type="button" name="addrbtn" value="주소검색"
+            onclick="execPostCode();"
+            style="font-size:20px">
+            </td>
+            
+            </tr>
+            
+            <tr>
+            <th>기본주소</th>
+            <td><input type="text"  id="mAddr2" name="mAddr2" value="${login.mAddr2}"style="width:300px; height:40px"></td>
+            </tr>
+            
+            <tr>
+            <th>상세주소</th>
+            <td><input type="text"  id="mAddr3"     name="mAddr3" value="${login.mAddr3}" style="width:300px; height:40px"></td>
+            </tr>
+            
+            <tr>
+            <th>전화번호</th>
+            <td><input type="text" id="mPhone"  name="mPhone" value="${login.mPhone}" style="width:300px; height:40px"></td>
+            </tr>
+            
+            <tr>
+            <th>사업자번호</th>
+            <td><input type="text"  id="sBisNum" name="sBisNum" value="${login.sBisNum }" style="width:300px; height:40px"></td>
+            </tr>
+            
+            <tr>
+            <th>판매업번호</th>
+            <td><input type="text"  id="sSellNum" name="sSellNum" value="${login.sSellNum }"style="width:300px; height:40px"></td>
+            </tr>
             
 		            <table>
 		            <tr>

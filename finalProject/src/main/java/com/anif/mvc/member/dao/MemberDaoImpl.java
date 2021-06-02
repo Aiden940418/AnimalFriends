@@ -229,8 +229,38 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return dto;
 	}
-	
-	
+
+
+
+	//비밀번호변경
+	@Override
+	public int updatemPw(MemberDto dto) throws Exception {
+		return sqlSession.update(NAMESPACE+"updatemPw", dto);
+	}
+
+
+
+	@Override
+	public MemberDto readMember(String mId) {
+		return sqlSession.selectOne(NAMESPACE+"readMember",mId);
+	}
+
+
+
+	@Override
+	public int idCheck(String mId) {
+		return sqlSession.selectOne(NAMESPACE+"idCheck",mId);
+	}
+
+
+
+
+
+
+
+
+
+
 	
 	
 	
