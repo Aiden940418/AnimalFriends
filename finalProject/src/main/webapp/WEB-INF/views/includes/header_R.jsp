@@ -9,6 +9,7 @@
 <script src="resources/js/jquery.min.js"></script>
 <script src="resources/js/popper.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
  
 <!-- ionicons 사용 위한 코드 -->
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
@@ -97,6 +98,43 @@
 	}
 	 */
 </style>
+<script type="text/javascript">
+	// 전역변수 설정
+	var socket  = null;
+	$(document).ready(function(){
+	    // 웹소켓 연결
+	    sock = new SockJS("<c:url value='/notice'/>");
+	    socket = sock;
+	
+	    // 데이터를 전달 받았을때 
+	    sock.onmessage = onMessage; // toast 생성
+	    
+	});
+	
+	// toast 생성 및 추가
+	function onMessage(evt){
+	    var data = evt.data;
+	    var prevToast = document.getElementById('toast');
+	    
+	    //이전에 뜬 알림이 있다면 지움
+	    if(prevToast != null){
+	    	prevToast.remove();
+	    }
+	    
+	    
+	    //toast 생성
+	    /* let toast = "<div class='toast' role='alert' aria-live='assertive' aria-atomic='true' id='toast' style='width:300px; height:60px;'>"; */
+	    let toast = "<div class='toast' role='alert' aria-live='assertive' aria-atomic='true' id='toast' style='width:400px; height:80px; right: 360px;position:absolute;top: -15px;z-index:200;'>";
+	    toast += "<div class='toast-header' style='height:30px;'><i class='fas fa-bell mr-2'></i><strong class='me-auto'> 알림</strong>";
+	    toast += "<small>방금</small><button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button></div>";
+	    toast += "<div class='toast-body' style='height:50px;'>" + data + "</div></div>";
+	    $("#msgStack").append(toast);   // msgStack div에 생성한 toast 추가
+	    $(".toast").toast({"animation": true, "autohide": false});
+	    $('.toast').toast('show');
+	};	
+	
+	
+</script>
 <body>
 	<div class="wrapper d-flex align-items-stretch">
 		<nav id="sidebar" class="" style="">
@@ -112,7 +150,7 @@
 				</c:if>
 				<c:if test="${!empty login}">
 						<div class="text-center">
-       					 <p style="color: #288C28; font-size:22px;"><b>ID_${login.mId}</b> / <b>닉냄_${login.mNick}</b></p>
+       					 <p style="color: #288C28; font-size:22px;"><b>ID : ${login.mId}</b> <br> <b>[${login.mNick}]</b></p>
 						</div>
 				</c:if>
 						  		
@@ -145,17 +183,22 @@
                 <li>
                     <a href="adminUserList.do">회원 관리</a>
                 </li>
-                <li>
-                    <a href="adminQnaList.do">QnA</a>
+                <li class="mngLi">
+                    <a href="adminQnaList.do" class="managerTab">Q&A</a>
                 </li>
                 
               </ul>
               </c:if>
-              
 	          </li>
+	          
+	          
 	          <li>
+	           <c:if test="${login != null }">
               <a href="#mypagesubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">MyPage</a>
               <ul class="collapse list-unstyled" id="mypagesubmenu">
+              	<li>
+                    <a href="chattingList.do">1:1 채팅</a>
+                </li>
                 <li>
                     <a href="mydiary.do">나의 입양일기</a>
                 </li>
@@ -172,10 +215,11 @@
                     <a href="myMemberModityPw.do">회원정보 수정</a>
                 </li>
                 <li>
-                    <a href="myQnaList.do">QnA</a>
+                    <a href="myQnaList.do">Q&A</a>
                 </li>
                 
               </ul>
+                </c:if>
 	          </li>
 	          
 	        </ul>
@@ -183,6 +227,7 @@
 
 	      </div>
     	</nav>
+    	
 
 	<!-- Page 내용 시작 -->
       <div id="content" class="p-4 p-md-5">
@@ -197,6 +242,10 @@
             <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
+           
+            <!-- 웹소켓 알림 부분 -->
+      	 	<div id="msgStack"></div>
+            
 			<div id="loginBtn">
           
 	          <c:if test="${login == null }">
@@ -207,31 +256,11 @@
 	          <label><b>${login.mNick}</b>님 로그인 되었습니다.</label>
 	          <a class="btn btn-outline-success mx-2" href="logout.do" id="logoutBtn" role="button">로그아웃</a>
 	          </c:if>
-	          <c:if test="${login !=null }">
-	          <a class="btn btn-outline-success" href="mydiary.do" role="button">마이페이지</a>
-	          </c:if>
        		</div>
 
-
-
-<!--             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Portfolio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-              </ul>
-            </div> -->
           </div>
         </nav>
+        
         <!-- 페이지 상단 메뉴바 end -->
 
         

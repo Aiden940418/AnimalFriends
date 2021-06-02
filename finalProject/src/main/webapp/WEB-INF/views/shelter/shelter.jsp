@@ -271,8 +271,6 @@
 
 	<div class="row">
 		<h1 class="mt-2">동물 보호소 찾기</h1>
-		<div id="horisonLine"></div>
-		
 	</div>
 	
 	<div class="row">

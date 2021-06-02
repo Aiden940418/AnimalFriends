@@ -21,6 +21,51 @@
 
 
 
+<script>
+	//notifySend
+	function chatRequestBtnClick(){
+		
+	    let noticeSenderNo = '${login.mNo}';   //토스트 메세지 보내는 사람 회원번호
+	    let noticeReceiverNo = '${dto.aMNo}';  //토스트 메세지 받을 사람 (입양공고 작성자 회원번호)
+	    let noticeContent = '${login.mNick}님이 1:1 채팅을 요청하였습니다!' //토스트 메세지 내용
+	    
+		//채팅 메세지 보낸 시간 찍기
+	  	var today = new Date();   
+		var year = today.getFullYear(); // 년
+		var month = today.getMonth() + 1;  // 월
+		var date = today.getDate();  // 일
+		var hours = today.getHours(); // 시
+		var minutes = today.getMinutes();  // 분
+		var seconds = today.getSeconds();  // 초
+		let noticeTimeScript = month + "월" + date + "일 " + hours + ":" + minutes + ":" + seconds;
+	    
+	    // 전송한 정보를 db에 저장	
+	    $.ajax({
+	        type: 'post',
+	        url: 'noticeInsert.do',
+	        dataType: 'text',
+	        data: {
+	            noticeSenderNo: noticeSenderNo, 
+	        	noticeReceiverNo: noticeReceiverNo,
+	        	noticeContent: noticeContent,
+	            noticeTimeScript: noticeTimeScript
+	        },
+	        success: function(){    // db전송 성공시 실시간 알림 전송
+	            // 소켓에 전달되는 메시지
+	            // 위에 기술한 EchoHandler에서 ,(comma)를 이용하여 분리시킨다.
+	            socket.send(noticeReceiverNo+","+noticeContent+","+noticeTimeScript);	
+	        }
+	    });
+	    
+	    //채팅방 리스트로 페이지 이동
+	    location.href="adoptToChatList.do?chatResponsorNo=${dto.aMNo }";
+
+	}
+
+
+</script>
+
+
 
 <style type="text/css">
 
@@ -53,10 +98,11 @@
 
 </style>
 
+<div class="container text-center">
 
 	<div class="container text-center">
-		<h1 class="mt-5">입양 공고</h1><br>
-	<div id="horisonLine"></div>
+		<h1 class="mt-5">입양공고</h1><br>
+		<div id="horisonLine"></div>
 		
 	</div>
 	
@@ -140,7 +186,8 @@
 						<div class="card-footer bg-transparent border-success">
 							<div>
 								<div class="d-grid gap-2">
-									<a href="chattingDetail.do" class="btn btn-success">1:1채팅 요청</a>
+									<!-- 공고 작성자의 정보를 같이 넘겨 컨트롤러에서 1:1채팅방 생성 -->
+  									<button class="button btn btn-success" id="chatRequestBtn" onclick="chatRequestBtnClick();">1:1채팅 요청</button>
 								</div>
 							</div>
 							

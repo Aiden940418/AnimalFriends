@@ -1,22 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<!-- header -->
+<%@ include file="../includes/header_R.jsp"%>
+
+<!-- 아이콘 사용 위한 코드 -->
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+ <title>1:1 채팅</title>
+ 
+ <!-- 메뉴 사이드바 스크립트 -->
+ <script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+
+ </script>
+
 </head>
 <body>
-
-	<!-- header -->
-	<%@ include file="../includes/header.jsp" %>
-	
-	<!-- leftMenuBar -->
-	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>
-		
 	<!-- 페이지 내용 부분 -->
-	
-
 	<div class="contentDiv">
 	
 		
@@ -34,7 +39,7 @@
 			<a href="chattingDetail.do?chatroomNo=${chatroomDto.chatroomNo}&chatRequesterNo=${chatroomDto.chatRequesterNo}&chatResponsorNo=${chatroomDto.chatResponsorNo}
 						&chatRequesterMnick=${chatroomDto.chatRequesterMnick}&chatResponsorMnick=${chatroomDto.chatResponsorMnick}" 
 					style="color:black; text-decoration:none; !important">
-				<div class="col border border-success row btn-outline-success" style="height:100px; width:490px;">
+				<div class="col row btn-outline-success" style="height:100px; width:500px; margin:0px;">
 					<div class="col mt-4 ms-4" style="max-width:51px;">
 						<ion-icon name="chatbubble-ellipses-outline" style="font-size:50px;"></ion-icon>
 					</div>
@@ -46,6 +51,7 @@
 					</div>
 				</div>
 			</a>
+			<hr style="margin:0px;">
 		
 		</c:forEach> 	
 	
@@ -54,13 +60,16 @@
 		
 		</div>
 
-			<!-- footer -->
-			<%@ include file="../includes/footer.jsp" %>
-		
-		</div>
-		</div>
-		
 			
-
+		
+		</div>
+		
+		</div>
+		<!-- footer -->
+		<%@ include file="../includes/footer.jsp" %>
+		<!-- header의 'Page 내용 div' 닫기 태그  -->
+		</div> 
+		
+<!-- Page 내용 끝 -->
 </body>
 </html>

@@ -13,7 +13,7 @@
 <!-- header -->
 <%@ include file="../includes/header_R.jsp" %>
 
-<title>내가 쓴 입양공고</title>
+<title>Q & A List</title>
 
  <!-- 메뉴 사이드바 스크립트 -->
 <script>
