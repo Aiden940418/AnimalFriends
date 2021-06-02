@@ -34,10 +34,24 @@ public interface MemberDao {
 	public List<MemberDto> qMemberList();
 
 	public List<MemberDto> iMemberList();
+	
 	public MemberDto selectOneMember(int mNo);
 	
 	public void memberDelete(String mId);
+
+	public int updatemPw(MemberDto dto)throws Exception;
+
 	
+	
+	public MemberDto readMember(String getmId);
+
+	public int idCheck(String getmId);
+
+
+
+
+
+
 	
 	
 	

@@ -341,6 +341,12 @@ function execPostCode() {
 				</tr>
 				
 				<tr>
+				<th>이메일</th>
+				<td><input type="text" id="mEmail"  name="mEmail" style="width:300px; height:40px">
+				</td>
+				</tr>
+				
+				<tr>
 				<th>주소</th>
 				<td><input type="text" id="mAddr1"	  name="mAddr1" style="width:100px; height:40px">
 				<input class="btn btn-outline-success" type="button" name="idCheck" value="주소검색"
@@ -408,6 +414,12 @@ function execPostCode() {
 				<tr>
 				<th>비밀번호 확인</th>
 				<td><input type="password"  id="pw4" style="width:300px; height:40px"></td>
+				</tr>
+				
+				<tr>
+				<th>이메일</th>
+				<td><input type="text" id="mEmail"  name="mEmail" style="width:300px; height:40px">
+				</td>
 				</tr>
 				
 				<tr>

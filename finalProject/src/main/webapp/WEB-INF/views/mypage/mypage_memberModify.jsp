@@ -135,6 +135,12 @@ function execPostCode() {
             </td>
             </tr>
             
+			<tr>
+			<th>이메일</th>
+			<td><input type="text" id="mEmail"  name="mEmail" value="${login.mEmail }" style="width:300px; height:40px">
+			</td>
+			</tr>	            
+            
             <tr>
             <th>주소</th>
             <td><input type="text" id="mAddr1"     name="mAddr1" value="${login.mAddr1}" style="width:100px; height:40px">
@@ -198,6 +204,12 @@ function execPostCode() {
             <td><input type="text"  id="mName"  value="${login.mName}" readonly="readonly"style="width:300px; height:40px">
             </td>
             </tr>
+            
+            <tr>
+			<th>이메일</th>
+			<td><input type="text" id="mEmail"  name="mEmail" value="${login.mEmail }" style="width:300px; height:40px">
+			</td>
+			</tr>
             
             <tr>
             <th>보호소이름</th>
