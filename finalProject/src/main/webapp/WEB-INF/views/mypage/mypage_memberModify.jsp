@@ -1,28 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>회원정보 수정</title>
+	<!-- header -->
+	<%@ include file="../includes/header_R.jsp" %>
 
+<title>회원 정보 수정</title>
 
-<!-- 우편번호 검색하는 로직  -->
+ <!-- 메뉴 사이드바 스크립트 -->
+<script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
+	});
+</script>
 
-	$(function(){
-	
-	$('input[type=button][name=addrbtn]').on('click',function(){
-		
-    	if($('#mAddr1').val() !=''){
-	    	    $('#mAddr1').val('');
-	    	    $('#mAddr3').val('');
-	    	    
-	
-	}   	
-	</script>
 	
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -76,221 +68,272 @@ function execPostCode() {
 }
 
 //우편로직 끝 
-	
-
 </script>
 
-</head>
-<body>
-
-	<!-- header -->
-	<%@ include file="../includes/header.jsp" %>
+<style>
+	#infoModiDiv {
+		position: relative;
+	    top: 55px;
+ 
+	}
 	
-	<!-- leftMenuBar -->
-	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>	
+	#iMember {
+		position: relative;
+	    top: 40px;
+	    margin-bottom: 150px;
+	    margin: 0 auto;
+		}
+
+</style>
+
 	
    <!-- 페이지 내용 부분 -->
    <div class="contentDiv">
    
       <!-- 상단 제목부분 -->
-      <div class="container text-center mt-5">
-      <input type="hidden" name="mRole" id="mRole" value="${login.mRole }">
-         <h1>회원 정보 수정</h1>
-         <br>
+      <div class="container text-center" id="infoModiDiv">
+	      <input type="hidden" name="mRole" id="mRole" value="${login.mRole }">
+	         <h1 class="text-center">회원 정보 수정</h1>
+	         <br>
       </div>
       <br>
       
       <!-- 회원정보 수정 폼 -->
       <c:set var ="mRole" value="${login.mRole}"/>
-               <c:if test="${mRole == 1}">
-      <div class="container" id="iMember" style="margin-left: 350px; ">
-      
-      <form action="memberUpdate.do" method="POST">
-      <input type="hidden" name="mNo" value="${login.mNo }">
-               
-         <table>
-                  
-            <tr>
-            <th>아이디</th>
-            <td><input id="mId" type="text"  style="width:300px; height:40px" readonly="readonly" value="${login.mId}">
-            </td>
-            
-            </tr>
-            
-            <tr>
-            <th>비밀번호</th>
-            <td><input class="mPw" type="password" id="pw"  style="width:300px; height:40px" value="{login.mPw}" readonly="readonly">
-            </td>
-            </tr>
-   
-            <tr>
-            <th>이름</th>
-            <td><input type="text"  id="mName"  value="${login.mName}" readonly="readonly"style="width:300px; height:40px">
-            </td>
-            </tr>
-            
-            <tr>
-            <th>닉네임</th>
-            <td><input type="text" id="mNick"  name="mNick" value="${login.mNick }" style="width:300px; height:40px">
-            </td>
-            </tr>
-            
-            <tr>
-            <th>주소</th>
-            <td><input type="text" id="mAddr1"     name="mAddr1" value="${login.mAddr1}" style="width:100px; height:40px">
-            <input class="btn btn-outline-success" type="button" name="addrbtn" value="주소검색"
-            onclick="execPostCode();"
-            style="font-size:20px">
-            </td>
-            
-            </tr>
-            
-            <tr>
-            <th>기본주소</th>
-            <td><input type="text"  id="mAddr2" name="mAddr2" value="${login.mAddr2}"style="width:300px; height:40px"></td>
-            </tr>
-            
-            <tr>
-            <th>상세주소</th>
-            <td><input type="text"  id="mAddr3"     name="mAddr3" value="${login.mAddr3}" style="width:300px; height:40px"></td>
-            </tr>
-            
-            <tr>
-            <th>전화번호</th>
-            <td><input type="text" id="mPhone"  name="mPhone" value="${login.mPhone}" style="width:300px; height:40px"></td>
-            
-            </tr>
-         </table>
-         
-         <div class="container text-center mt-5" style="margin-right:600px;">
-         <button type="submit">완료</button>
-         <button type="button">취소</button>
-         </div>
-            </form>   
-         
+        <c:if test="${mRole == 1}">
+        
+      	<div class="container" id="iMember">
+      		<div class="row">
+				<div class="col-4"></div>
+				
+				<div class="col-5">
+			      <form action="memberUpdate.do" method="POST">
+			      	<input type="hidden" name="mNo" value="${login.mNo }">
+			               
+			         <table>
+			                  
+			            <tr>
+			            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">아이디</button></th>
+			            <td colspan="2"><input id="mId" type="text" class="form-control my-1"  style="width:300px; height:40px" readonly="readonly" value="${login.mId}">
+			            </td>
+			            
+			            </tr>
+			            
+			            <tr>
+			            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">비밀번호</button></th>
+			            <td colspan="2"><input class="mPw" type="password" id="pw" class="form-control my-1" style="width:300px; height:40px" value="{login.mPw}" readonly="readonly">
+			            </td>
+			            </tr>
+			   
+			            <tr>
+			            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">이름</button></th>
+			            <td colspan="2"><input type="text"  id="mName" class="form-control my-1" value="${login.mName}" readonly="readonly"style="width:300px; height:40px">
+			            </td>
+			            </tr>
+			            
+			            <tr>
+			            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">닉네임</button></th>
+			            <td colspan="2"><input type="text" id="mNick" class="form-control my-1" name="mNick" value="${login.mNick }" style="width:300px; height:40px">
+			            </td>
+			            </tr>
+			            
+			            <tr>
+			            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">주소</button></th>
+			            <td><input type="text" id="mAddr1" class="form-control my-1 text-center" name="mAddr1" value="${login.mAddr1}" style="width:215px;">
+			            <td><input class="btn btn-outline-success float-end" type="button" name="addrbtn" value="주소검색"
+			            onclick="execPostCode();"></td>
+			            </tr>
+			            
+			            <tr>
+			            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">기본주소</button></th>
+			            <td colspan="2"><input type="text"  id="mAddr2"class="form-control my-1" name="mAddr2" value="${login.mAddr2}"style="width:300px; height:40px"></td>
+			            </tr>
+			            
+			            <tr>
+			            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">상세주소</button></th>
+			            <td colspan="2"><input type="text"  id="mAddr3"  class="form-control my-1" name="mAddr3" value="${login.mAddr3}" style="width:300px; height:40px"></td>
+			            </tr>
+			            
+			            <tr>
+			            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">전화번호</button></th>
+			            <td colspan="2"><input type="text" id="mPhone" class="form-control my-1" name="mPhone" value="${login.mPhone}" style="width:300px; height:40px"></td>
+			            
+			            </tr>
+			         </table>
+			         
+				         <div class="container text-center mt-2 mb-4">
+				         <input type="submit" class="btn btn-outline-success" value="완료">
+				         <input type="button" class="btn btn-outline-success" value="취소" onclick="location.href='myMemberModityPw.do'">
+				         <button type="button" class="btn btn-outline-success" id="delete">회원탈퇴</button>
+					         <script type="text/javascript">
+					         
+					         $("#delete").on("click", function(){
+								  var confirm_val1 = confirm("정말 탈퇴하시겠습니까?");
+					        	  
+								  console.log(confirm_val1);
+					        	 if(confirm_val1) {
+					        		 location.href="memberDeletePwCheck.do";
+					        	 
+					        	 }else {
+					        		 
+					        		 location.href="main.do";
+					        		 
+					        		 }
+					 
+					        	});
+			         
+			        		 </script>
+				         </div>
+			        </form>   
+         	
+         		</div>
+         	</div>
          </div>
          </c:if>
+         
          
          
          <c:set var ="mRole" value="${login.mRole}"/>
-               <c:if test="${mRole != 1}">
-         <div class="container" id="sMember" style="margin-left: 350px; ">
-            <form action="memberUpdate.do" method="POST">
+             <c:if test="${mRole != 1}">
+         	 
+         	 <div class="container" id="sMember">
+         	 	<div class="row">
+					<div class="col-4"></div>
+				
+					<div class="col-5">		
+            		<form action="memberUpdate.do" method="POST">
+					<input type="hidden" name="mNo" value="${login.mNo }">
+            
+		            <table>
+		            <tr>
+		            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">아이디</button></th>
+		            <td colspan="2"><input id="mId" type="text"  class="form-control my-1" style="width:300px; height:40px" readonly="readonly" value="${login.mId}">
+		            </td>
+		            </tr>
+		            
+		            <tr>
+		            <th><button type="button" class="btn btn-outline-success"
+								style="width:130px; pointer-events: none;">비밀번호</button></th>
+		            <td colspan="2"><input class="mPw" type="password" id="pw" style="width:300px; height:40px" value="{login.mPw}" readonly="readonly">
+		            </td>
+		            </tr>
+		   
+		   			<tr>
+		            <th><button type="button" class="btn btn-outline-success"
+								style="width:130px; pointer-events: none;">비밀번호</button></th>
+		            <td colspan="2"><input class="mPw" type="password" id="pw"  style="width:300px; height:40px" value="{login.mPw}" readonly="readonly">
+		            </td>
+		            </tr>
+		   
+		            <tr>
+		            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">대표자명</button></th>
+		            <td colspan="2"><input type="text"  id="mName" class="form-control my-1" value="${login.mName}" readonly="readonly"style="width:300px; height:40px">
+		            </td>
+		            </tr>
+		            
+		            <tr>
+		            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">보호소이름</button></th>
+		            <td colspan="2"><input type="text" id="mNick"  class="form-control my-1" name="mNick" value="${login.mNick }" style="width:300px; height:40px">
+		            </td>
+		            </tr>
+		            
+		            <tr>
+		            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">보호소주소</button></th>
+		            <td><input type="text" id="mAddr1" class="form-control my-1 text-center"  name="mAddr1" value="${login.mAddr1}" style="width:215px;">
+		            <td><input class="btn btn-outline-success float-end" type="button" name="addrbtn" value="주소검색"
+		            onclick="execPostCode();"></td>
+		            </tr>
+		            
+		  
+		            <tr>
+		            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">기본주소</button></th>
+		            <td colspan="2"><input type="text" class="form-control my-1" id="mAddr2" name="mAddr2" value="${login.mAddr2}"style="width:300px; height:40px"></td>
+		            </tr>
+		      
+		            <tr>
+		            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">상세주소</button></th>
+		            <td colspan="2"><input type="text"  id="mAddr3" class="form-control my-1" name="mAddr3" value="${login.mAddr3}" style="width:300px; height:40px"></td>
+		            </tr>
+		            
+		            <tr>
+		            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">전화번호</button></th>
+		            <td colspan="2"><input type="text" id="mPhone" class="form-control my-1" name="mPhone" value="${login.mPhone}" style="width:300px; height:40px"></td>
+		            </tr>
+		            
+		            <tr>
+		            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">사업자번호</button></th>
+		            <td colspan="2"><input type="text"  id="sBisNum" class="form-control my-1" name="sBisNum" value="${login.sBisNum }" style="width:300px; height:40px"></td>
+		            </tr>
+		            
+		            <tr>
+		            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">판매업번호</button></th>
+		            <td colspan="2"><input type="text"  id="sSellNum" class="form-control my-1" name="sSellNum" value="${login.sSellNum }"style="width:300px; height:40px"></td>
+		            </tr>
+		            
+		            </table>
+         				
          
-		<input type="hidden" name="mNo" value="${login.mNo }">
-            
-            <table>
-            <tr>
-            <th>아이디</th>
-            <td><input id="mId" type="text"  style="width:300px; height:40px" readonly="readonly" value="${login.mId}">
-            </td>
-            
-            </tr>
-            
-            <tr>
-            <th>비밀번호</th>
-            <td><input class="mPw" type="password" id="pw" style="width:300px; height:40px" value="{login.mPw}" readonly="readonly">
-            </td>
-            </tr>
-   
-            <tr>
-            <th>대표자명</th>
-            <td><input type="text"  id="mName"  value="${login.mName}" readonly="readonly"style="width:300px; height:40px">
-            </td>
-            </tr>
-            
-            <tr>
-            <th>보호소이름</th>
-            <td><input type="text" id="mNick"  name="mNick" value="${login.mNick }" style="width:300px; height:40px">
-            </td>
-            </tr>
-            
-            <tr>
-            <th>보호소주소</th>
-            <td><input type="text" id="mAddr1"     name="mAddr1" value="${login.mAddr1}" style="width:100px; height:40px">
-            <input class="btn btn-outline-success" type="button" name="addrbtn" value="주소검색"
-            onclick="execPostCode();"
-            style="font-size:20px">
-            </td>
-            
-            </tr>
-            
-            <tr>
-            <th>기본주소</th>
-            <td><input type="text"  id="mAddr2" name="mAddr2" value="${login.mAddr2}"style="width:300px; height:40px"></td>
-            </tr>
-            
-            <tr>
-            <th>상세주소</th>
-            <td><input type="text"  id="mAddr3"     name="mAddr3" value="${login.mAddr3}" style="width:300px; height:40px"></td>
-            </tr>
-            
-            <tr>
-            <th>전화번호</th>
-            <td><input type="text" id="mPhone"  name="mPhone" value="${login.mPhone}" style="width:300px; height:40px"></td>
-            </tr>
-            
-            <tr>
-            <th>사업자번호</th>
-            <td><input type="text"  id="sBisNum" name="sBisNum" value="${login.sBisNum }" style="width:300px; height:40px"></td>
-            </tr>
-            
-            <tr>
-            <th>판매업번호</th>
-            <td><input type="text"  id="sSellNum" name="sSellNum" value="${login.sSellNum }"style="width:300px; height:40px"></td>
-            </tr>
-            
-            </table>
+		         <div class="container text-center mt-2 mb-4">
+				         <input type="submit" class="btn btn-outline-success" value="완료">
+				         <input type="button" class="btn btn-outline-success" value="취소" onclick="location.href='myMemberModityPw.do'">
+		         <button type="button" class="btn btn-outline-success" id="delete">회원탈퇴</button>
          
-         
-         <div class="container text-center mt-5" style="margin-right:600px;">
-         <button type="submit">완료</button>
-         <button type="button">취소</button>
-         <button type="button" id="delete">회원탈퇴</button>
-         
-         <script type="text/javascript">
-         
-         $("#delete").on("click", function(){
-			  var confirm_val1 = confirm("정말 탈퇴하시겠습니까?");
-        	  
-			  console.log(confirm_val1);
-        	 if(confirm_val1) {
-        		 location.href="memberDeletePwCheck.do";
-        	 
-        	 }else {
-        		 
-        		 location.href="main.do";
-        		 
-        		 
-        		 }
-        	 
-        	 
-        	 
- 
-        	});
-         
-         
-         
-         </script>
-         
-         
+			         <script type="text/javascript">
+			         
+			         $("#delete").on("click", function(){
+						  var confirm_val1 = confirm("정말 탈퇴하시겠습니까?");
+			        	  
+						  console.log(confirm_val1);
+			        	 if(confirm_val1) {
+			        		 location.href="memberDeletePwCheck.do";
+			        	 
+			        	 }else {
+			        		 
+			        		 location.href="main.do";
+			        		 
+			        		 }
+			 
+			        	});
+			         
+			         </script>
+         			</div>
+    	        </form>   
+	         </div>
          </div>
-            </form>   
-         
-         </div>
-         </c:if>
+       </div>
+      </c:if>
          
          
    
 
                   
-         </div>
+ </div>
    
    
-
-   <br><br><br>
    <!-- footer -->
-   <%@ include file="../includes/footer.jsp" %>
-
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
 </body>
 </html>
+   

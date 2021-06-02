@@ -1,20 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<style type="text/css">
-</style>
+
 <!-- header -->
-<%@ include file="../includes/header.jsp"%>
-<!-- leftmenubar -->
-<%@ include file="../includes/mypage_leftMenuBar.jsp"%>
+<%@ include file="../includes/header_R.jsp" %>
+
+<title>Q & A 수정</title>
+
+ <!-- 메뉴 사이드바 스크립트 -->
+<script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+</script>
+
 <!-- page -->
 <div class="contentDiv">
 
 	<div class="container">
 		<div class="row">
 			<div class="row my-4" style="text-align: center;">
-				<h1>QnA 수정</h1>
+				<h1>Q & A 수정</h1>
 
 			</div>
 
@@ -58,9 +66,18 @@
 				</form>
 			</div>
 		</div>
-		<!-- footer -->
-		<%@ include file="../includes/footer.jsp"%>
+		
 	</div>
 
 </div>
+
+
+		<!-- footer -->
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
 </html>

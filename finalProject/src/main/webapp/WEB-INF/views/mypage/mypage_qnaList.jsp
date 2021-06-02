@@ -5,53 +5,102 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<!-- header -->
-<%@ include file="../includes/header.jsp"%>
 
-<!-- leftmenubar -->
-<%@ include file="../includes/mypage_leftMenuBar.jsp"%>
+<!-- header -->
+<%@ include file="../includes/header_R.jsp" %>
+
+<title>Q & A List</title>
+
+ <!-- 메뉴 사이드바 스크립트 -->
+<script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+</script>
+
+<style>
+	 
+	 #horisonLine {
+ 	    height: 10px;
+	    border-bottom: groove;
+	    position: relative;
+	    top: 145px;
+	    width: 98%;
+	 }
+	 
+	 	 
+	 #thrCtn {
+ 		margin-top: 120px;
+	 }
+	 
+	 #QnADiv {
+	 	position: relative;
+	    top: 55px;
+ 
+	 }
+	 
+	 #qnaTable {
+	 	position: relative;
+	 	left:95px;
+	 	
+	 }
+	 
+	 #btnWrite {
+	 	position: relative;
+	 	width: 100px;
+	    margin: 0px;
+	    top: 148px;
+	    left: 81px;
+
+	 }
+
+
+</style>
+
+
+
 <!-- page -->
 <div class="contentDiv">
 
-	<div class="container">
-		<div class="row mt-5">
-			<h1>QnA</h1>
-			<br>
+		<div class = "container text-center" id="QnADiv">
+			<h1 class="text-center">Q & A</h1>
 		</div>
+		
+			<!-- 가로줄 -->
+		<div id="horisonLine"></div>
 
-		<!-- 카테고리 드롭다운 부분 -->
-
-		<div class="container">
-			
-				<!-- 카테고리 분류 선택 버튼 (추후에) -->
-				<!-- <button type="button"
-					class="btn btn-outline-success dropdown-toggle mt-3"
-					data-bs-toggle="dropdown" aria-expanded="false">카테고리 선택</button>
-				<ul class="dropdown-menu">
-					<li><a class="dropdown-item" href="#">입양공고</a></li>
-					<li><a class="dropdown-item" href="#">입양일기</a></li>
-					<li><a class="dropdown-item" href="#">굿즈</a></li>
-					<li><a class="dropdown-item" href="#">사이트 이용</a></li>
-				</ul> --> 
+		
+		<div class="container mt-3">
 			<div class="position-relative">
-				<div class="btn-group position-absolute top-0 end-0">
-					<button type="button" class="btn btn-outline-success mt-3 "
+				<div id="btnWrite">
+					<button type="button" class="btn btn-outline-success "
 						onclick="location.href='myQnaWriteForm.do'">글쓰기</button>
 				</div>
 			</div>
 		</div>
-		<br>
+
+
+			
+			<!-- <div class="position-relative">
+				<div class="btn-group position-absolute top-0 end-0">
+				</div>
+			</div> -->
 		
-		<div class="row">
-			<br>
-			<table class="table text-center table-hover table-striped mt-5" style="font-size:14pt;">
-				<thead class="table-dark">
+		
+		<div class="container" id="thrCtn">
+		  		
+			<div class="row">
+			<table class="table text-center table-hover table-striped mt-5" id="qnaTable" style="font-size:14pt; width:85%;">
+				<thead class="table-success ">
 					<tr>
 						<!-- <th style="width: 10%;">번호</th> -->
-						<th style="width: 20%;">카테고리</th>
-						<th style="width: 40%;">제목</th>
-						<th style="width: 15%;">글쓴이</th>
-						<th style="width: 25%;">날짜</th>
+						<th style="width: 30px;">카테고리</th>
+						<th style="width: 60px;">제목</th>
+						<th style="width: 20px;">글쓴이</th>
+						<th style="width: 20px;">날짜</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -83,9 +132,10 @@
 
 				</tbody>
 			</table>
+			</div>
 			<!-- 페이징 부분 -->
 
-			<div>
+			<div class="row mt-5">
 			<nav aria-label="Page navigation example">
  				 <ul class="pagination justify-content-center">
   					
@@ -104,10 +154,15 @@
 			</div>
 
 
-
-
-		</div>
 	</div>
 </div>
-	<!-- footer -->
-	<%@ include file="../includes/footer.jsp"%>
+	
+		<!-- footer -->
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>

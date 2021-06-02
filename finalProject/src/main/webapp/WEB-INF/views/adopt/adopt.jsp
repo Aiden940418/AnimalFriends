@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../includes/header.jsp"%>
+<%@ include file="../includes/header_R.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style type="text/css">
   	#horisonLine {
@@ -146,8 +146,13 @@
 			</div>
 </div>
 
-
-
-
-
-<%@ include file="../includes/footer.jsp"%>
+	
+	<!-- footer -->
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>

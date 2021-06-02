@@ -1,29 +1,73 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<style type="text/css">
-</style>
+
 <!-- 제이쿼리 사용 위한 코드 -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
-
-</script>
-
 
 <!-- header -->
-<%@ include file="../includes/header.jsp"%>
-<!-- leftmenubar -->
-<%@ include file="../includes/admin_leftMenuBar.jsp"%>
-<!-- page -->
-<div class="contentDiv">
+<%@ include file="../includes/header_R.jsp" %>
 
-	<div class="container">
-		<!-- title -->
-		<div class="row mt-5">
-			<h1>회원관리</h1>
-			<br>
-		</div>
+<title>회원 관리</title>
+
+ <!-- 메뉴 사이드바 스크립트 -->
+<script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+</script>
+	
+
+<style>
+	#userList {
+	 	position: relative;
+	    top: 55px;
+ 
+	 }
+	 
+	 #horisonLine {
+ 	    height: 10px;
+	    border-bottom: groove;
+	    position: relative;
+	    top: 145px;
+	    width: 100%;
+	 }
+	 
+	 #secCtn {
+	 	position: relative;
+		top: 138px;
+		left:8px;	 	
+	 }
+	 
+	 #thrCtn {
+ 		margin-top: 225px;
+	 }
+	 
+	 .dropdown-toggle::after {
+	    position: relative;
+	    top: 16%;
+	 }
+
+
+
+</style>
+
+
+
+<!-- page 내용 부분 -->
+<div class="contentDiv">
+	
+	<!-- title -->
+	<div class = "container text-center" id="userList">
+			<h1 class="text-center">회원 관리</h1>
+	</div>
+		
+		<!-- 가로줄 -->
+	<div id="horisonLine"></div>
+	
+	<div class="container mt-3" id="secCtn">
 
 		<!-- button -->
 		<div class="row mt-2" style="float: right;">
@@ -40,29 +84,16 @@
 				<li><a class="dropdown-item" href="sMemberList.do" value="보호소회원">보호소회원</a></li>
 				<li><a class="dropdown-item" href="qMemberList.do" value="탈퇴회원">탈퇴회원</a></li>
 			</ul>
-			
-			
-		 
-	<!-- 		<button type="button" class="btn btn-outline-success mb-3 mx-2"
-				style="width: 150px;" onclick="location.href='memberList.do'" >전체 회원</button>
-			
-			<button type="button" class="btn btn-outline-success mb-3 mx-2"
-				style="width: 150px;" onclick="location.href='sMemberList.do'">보호소 회원</button>
-			
-			<button type="button" class="btn btn-outline-success mb-3 mx-2"
-				style="width: 150px;" onclick="location.href='qMemberList.do'">탈퇴한 회원</button>
-			<button type="button" class="btn btn-outline-success mb-3 mx-2"
-				style="width: 150px;" onclick="location.href='selectQuit.do'">선택회원 탈퇴</button>
-	 -->		
 		</div>
+	</div>
 		  
    				
-		<br> <br> <br>
 		<!-- table -->
+	<div class="container" id="thrCtn" >
 		<div class="row">
 			<table class="table text-center table-hover"
 				style="margin-left: auto; marin-right: auto;">
-				<thead class="table-dark">
+				<thead class="table-success">
 					<tr>
 						<th><input type="checkbox"  name="allCheck" id="allCheck"/></th>
 						<th>번호</th>
@@ -74,25 +105,23 @@
 						<th>가입여부</th>
 					</tr>
 				</thead>
-				<div class="allCheck" >
-					<script>
-					$("#allCheck").click(function() {
-						
-						var chk = $("#allCheck").prop("checked");
-						
-						if(chk) {
-							$(".chBox").prop("checked", true);
+					<div class="allCheck">
+						<script>
+						$("#allCheck").click(function() {
 							
-						}else {
-							$(".chBox").prop("checked", false);
-						}
+							var chk = $("#allCheck").prop("checked");
+							
+							if(chk) {
+								$(".chBox").prop("checked", true);
+								
+							}else {
+								$(".chBox").prop("checked", false);
+							}
+							
+						});
 						
-					});
-					
-					</script>
-  				  </div> 
-				
-				
+						</script>
+  				   </div> 
 				
 				<tbody>
 					<c:choose>
@@ -115,18 +144,25 @@
 							</c:forEach>
 						</c:otherwise>
 					</c:choose>
-					<script>
-						$(".chBox").click(function(){
-						$("#allCheck").prop("checked", false);
-							
-						})
-					</script>
+						<script>
+							$(".chBox").click(function(){
+							$("#allCheck").prop("checked", false);
+								
+							})
+						</script>
 				</tbody>
 			</table>
 		</div>
+	  </div>
 	</div>
 	
-</div>
 
 	<!-- footer -->
-	<%@ include file="../includes/footer.jsp"%>
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>

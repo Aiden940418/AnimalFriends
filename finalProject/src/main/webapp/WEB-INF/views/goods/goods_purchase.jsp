@@ -1,11 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ include file="../includes/header.jsp" %>   
 
-<div class="container text">
-<h1 class="display-6 mt-5 ms-5">주문내역 확인</h1>
-<hr>
-</div>
+<%@ include file="../includes/header_R.jsp" %>   
+	
+ 
+ <title>주문내역 확인</title>
+ 
+  <!-- 메뉴 사이드바 스크립트 -->
+ <script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+
+ </script>
+
+
+
+	<div class="container text">
+		<h1 class="display-6 mt-5 ms-5">주문내역 확인</h1>
+		<hr>
+	</div>
 
      <div class="container mt-5 ms-5">
      
@@ -26,16 +43,20 @@
 				</div>
 			</div>
 		</div>
-         <hr>
+	</div>
+      
 
 
 		
 		
 		
      
-
-
-
-
-      <!-- 여기는 footer -->
-			 <%@ include file="../includes/footer.jsp" %>  
+	<!-- footer -->
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>

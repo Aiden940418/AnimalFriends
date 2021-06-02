@@ -6,6 +6,7 @@ import com.anif.mvc.goods.dto.CartDto;
 import com.anif.mvc.goods.dto.CartListDto;
 import com.anif.mvc.goods.dto.GoodsOrderDto;
 import com.anif.mvc.goods.dto.OrderDetailDto;
+import com.anif.mvc.goods.dto.OrderListDto;
 
 public interface CartDao {
 	
@@ -27,5 +28,8 @@ public interface CartDao {
 	public List<GoodsOrderDto> orderList(GoodsOrderDto order);
 	
 	public int orderInfoStatusUpdate(String orderId);
+	
+	public List<OrderListDto> orderView(GoodsOrderDto order);
+	
 
 }

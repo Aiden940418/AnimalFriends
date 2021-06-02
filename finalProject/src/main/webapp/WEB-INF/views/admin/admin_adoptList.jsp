@@ -1,7 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
+<!-- header -->
+<%@ include file="../includes/header_R.jsp" %>
+
+<title>입양 공고 관리</title>
+
+ <!-- 메뉴 사이드바 스크립트 -->
+<script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+</script>
+
+	
+
 <style type="text/css">
 	input[type=checkbox] {
 	
@@ -21,37 +38,24 @@
 	 
 	 #adtNotiMng {
 		position: relative;
-    	top: 80px;
-	
+	    top: 55px;
+ 
 	}
 	 
 	 #secCtn {
-	 	position: absolute;
-		top: 215px;	 	
+		position: relative;
+		top: 150px;	 
 	 }
 	 
 	 #thrCtn {
-	 	 margin-top: 195px;
-	 }
-	 
-	 .delBtnNallCheck {
-	  position: absolute;
-	  top: 17px;
-	  right: 27px;
-     }
-    
-   
-	
+ 		margin-top: 120px;	
+ 	 }
+
 </style>
 
 
-<!-- header -->
-<%@ include file="../includes/header.jsp"%>
-<!-- leftmenubar -->
-<%@ include file="../includes/admin_leftMenuBar.jsp"%>
-<!-- page -->
 
-
+<!-- 페이지 내용 부분 -->
 <div class="contentDiv">
 
 	
@@ -111,7 +115,7 @@
 
 <!-- Example single danger button -->
 	<div class="container" id="secCtn">
-		<div class="btn-group">
+		<!-- <div class="btn-group">
 			<button type="button"
 				class="btn btn-outline-success dropdown-toggle mt-3"
 				data-bs-toggle="dropdown" aria-expanded="false">지역</button>
@@ -132,12 +136,11 @@
 		</div>
 		<div class="btn-group">
 			<button type="submit" class="btn btn-outline-success mt-3 ">찾기</button>
-		</div>
-	
-		
-			<div class="delBtnNallCheck">
-					
-		   			<input type="checkbox" name="allCheck" id="allCheck" /><label for="allCheck">&nbsp;전체 선택</label> 
+		</div> -->
+	<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+		   			<input type="checkbox" class="btn-check btn-outline-success" name="allCheck" id="allCheck" autocomplete="off">
+		   				<label class="btn btn-outline-success" for="allCheck" style="margin:0px;">전체 선택</label> 
+					<button type="button" id="selectDelete_btn" class="btn btn-outline-success">선택 삭제</button>
 							<script>
 								$("#allCheck").click(function() {
 									
@@ -153,7 +156,6 @@
 								});
 							
 							</script>
-					<button type="button" id="selectDelete_btn" class="btn btn-outline-success ms-3">선택 삭제</button>
 							<script>
 							
 							 $("#selectDelete_btn").click(function(){
@@ -184,12 +186,12 @@
 								   });
 								  } 
 								 });
-								</script>		
+							</script>		
 			</div>
-					
 		
+					
+				
 	</div>
-	
 
 
 				<div class="container" id="thrCtn">
@@ -202,8 +204,7 @@
 						</c:when>
 					<c:otherwise>
 						<c:forEach items="${list}" var="dto">
-							<div class="col-sm mt-5">
-					
+								<div class="col-sm mt-5">
 					    			<label for="cb1"></label>
 										<input type="checkbox" class="chBox" data-cartNum="${ dto.aNo}">
 						            	<script>
@@ -211,23 +212,31 @@
 												$("#allCheck").prop("checked", false);							
 													})
 										</script>
-								<div class="card h-100 ms-4" style="width:400px;">
-									<a href="#"><img src="resources/images/adopt_dog1.png" class="card-img-top"
-										alt="..."style="width:400px;height:350px; border:none; object-fit:cover;"></a>	
-									<div class="card-body">
-										<h5 class="card-title"><a href="adminAdoptDetail.do?aNo=${dto.aNo}">${dto.aTitle}</a></h5>
-										<p class="card-text">${dto.aMemo}</p>		 
+											<div class="card h-100 text-center" style="width:450px; margin: 0 auto; align-items: center;">
+													<a href="myAdoptDetail.do?aNo=${dto.aNo}"><img src="resources/${dto.aThumbImg }" class="card-img-top"
+														style="width:450px; height:350px; border:none; object-fit:cover;"></a>	
+												<div class="card-body">
+													<h4 class="card-title text-center">${dto.aTitle}</h4><br>
+													<p class="card-text text-center">${dto.aMemo}</p>		 
+												</div>
+											</div>
 									</div>
-								</div>
-							</div>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+					</div>
 				</div>
-			</div>
 		
+			<div class="row mb-5"></div>
 </div>
 
+	
 	<!-- footer -->
-	<%@ include file="../includes/footer.jsp"%>
-
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>

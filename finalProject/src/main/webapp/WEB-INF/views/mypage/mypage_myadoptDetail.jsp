@@ -2,45 +2,51 @@
     pageEncoding="UTF-8"%>
 
 	<!-- header -->
-	<%@ include file="../includes/header.jsp" %>
+	<%@ include file="../includes/header_R.jsp" %>
 	
-	<!-- leftMenuBar -->
-	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>
+
+<title>나의 입양 공고 상세</title>
+
+ <!-- 메뉴 사이드바 스크립트 -->
+ <script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+
+ </script>
 	
 	
 <style type="text/css">
 
-.wrap {
+	.wrap {
+		
+		top: 50%;
+		left: 50%;
 	
-	top: 50%;
-	left: 50%;
+		text-align: center;
+	}
 
-	text-align: center;
-}
 
-#chat {
-	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-	-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-	-o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-	transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-	display: block;
-	margin: 20px auto;
-	max-width: 200px;
-	text-decoration: none;
-	border-radius: 4px;
-	padding: 20px 30px;
-}
+	#horisonLine {
+	 	    height: 10px;
+		    border-bottom: groove;
+		    position: relative;
+			top: 20px;
+	    	width: 100%;
+	}
+	
+	#horisonLine2 {
+			height: 10px;
+		    border-bottom: groove;
+		    position: relative;
+	    	width: 100%;
+			margin-bottom: 30px;
+	}
+	
 
-#chat.button {
-	color: rgba(30, 22, 54, 0.6);
-	box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
-}
-
-#chat.button:hover {
-	color: rgba(255, 255, 255, 0.85);
-	box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
-}
 
 
 
@@ -48,150 +54,148 @@
 </style>
 	
 	
-	<!-- 페이지 내용 부분 -->
-	<div class="contentDiv">
-	
-	
-	
-	
+
+<!-- 페이지 내용 부분 -->
 		
 <div class="container text-center">
-	<h1 class="display-5 mt-5">입양 공고 상세</h1><br>
-	<hr>
-	<button type="button" class="btn btn-outline-success float-end ms-1" onclick="location.href='myAdoptDelete.do?aNo=${dto.aNo}'">삭제하기</button>
-	<button type="button" class="btn btn-outline-success md-5 float-end ms-1" onclick="location.href='myAdoptUpdateForm.do?aNo=${dto.aNo}'">수정하기</button>
-	<button type="button" class="btn btn-outline-success md-5 float-end " onclick="location.href='myAdoptList.do?mNo=${login.mNo}'">목록보기</button>
-
 	
-	<!-- header완료 -->
-
-	<br>
+	<div class="container text-center">
+			<h1 class="mt-5">입양 공고 상세</h1><br>
+			<div id="horisonLine"></div>
 	</div>
-	<div class="container text-center mt-5">
-		<h1>${dto.aTitle }</h1><br>
-		
-		</div>
-		<div class="container" style="margin-left:250px;">
-		<span>등록날짜:&nbsp;${dto.aDate}&nbsp;&nbsp;&nbsp;&nbsp;</span><span>조회수:&nbsp;${dto.aCount}&nbsp;&nbsp;&nbsp;</span>
-   		<span>댓글 개수:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		</div>
 	
-		<br>
-		<br>
-		<br>
-
-		<!-- image추가 시작 -->
-		<div class="container text-center">
-		
-			<img src="resources/${dto.aImg }" width="600px" height="600px">
+	<div class="row">
+		<div class="col mt-5">
+			<div class="btn-group float-end">
+				<button type="button" class="btn btn-outline-success float-end ms-1" onclick="location.href='myAdoptDelete.do?aNo=${dto.aNo}'">삭제하기</button>
+				<button type="button" class="btn btn-outline-success md-5 float-end ms-1" onclick="location.href='myAdoptUpdateForm.do?aNo=${dto.aNo}'">수정하기</button>
+				<button type="button" class="btn btn-outline-success md-5 float-end " onclick="location.href='myAdoptList.do?mNo=${login.mNo}'">목록보기</button>
+			</div>
 		</div>
-		<!-- image추가 끝 -->
+	</div>
 	
-		<!-- 본문내용 시작 -->
-	
-		<div class="container text-center mt-5">
-		<textarea class="container text-center display-7 "style=";outline:none; resize: none; 
-		border:none" readonly="readonly" rows="7px">${dto.aMemo }</textarea>
-		</div>
+	<div class="row">
 		
-		
-		<!-- 본문내용 끝  -->
-		
-		<!-- 동물 내용 입력  -->
-		
-		<div class="container text-center">
-		<table align="center">
-		
-		<h2>${dto.anmName }의 신상정보</h2>
+				<div class="col-2"></div> <!-- 좌우 간격 맞추기 용도 -->
+				
+				<div class="col ms-2 my-5">
+				
+					<!-- 입양공고 카드(박스) 부분 -->
+					<div class="card border-success mb-3 text-dark" style="width: 800px;">
+						<div class="card-header bg-transparent border-success">
+						 	<div class="row">
+						 		<table>
+						 			<tr align="center">
+						 				<td><h3>${dto.aTitle }</h3></td>
+						 			</tr>
+						 			<tr align="right">
+						 				<td>등록 날짜: ${dto.aDate } / 조회수: ${dto.aCount} / 댓글 개수: </td>
+						 			</tr>
+						 		</table>
+						 	</div>
+						</div>
+						
+						<!-- 입양공고 이미지 -->
+						<img class="card-img-top" src="resources/${dto.aImg}"">
+						
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">
+								<div class="row">
+									<div class="col text-center">
+										<span class="fs-4">특징 : ${dto.aMemo }</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<hr>
+							
+						<div class="card-body text-dark ">
+							<table align="center">
+								<tr>
+									<td><h3>${dto.anmName}의 정보</h2></td>
+								</tr>
+							</table>
+							<hr>
+							<table align="center">
+								<tr>
+									<th align="left">나  이</th>
+									<td align="center">${dto.anmAge}</td>
+								</tr>
+								<tr>
+									<th align=left>품  종</th>
+									<td align="center">${dto.anmBreed}</td>
+								</tr>
+								<tr>
+									<th align=left>성  별</th>
+									<td align="center">${dto.anmGender}</td>
+								</tr>
+								<tr>
+									<th>예방접종 여부(Y/N)</th>
+									<td align="center">${dto.anmVcnYn }</td>
+								</tr>
+								<tr>
+									<th>중성화 여부(Y/N)</th>
+									<td align="center">${dto.anmNtrYn }</td>
+								</tr>
+								<tr>
+									<th>연락처</th>
+									<td align="center">${dto.aPhone }</td>
+							</table>
+							
+						</div>
+						<div class="card-footer bg-transparent border-success">
+							<div>
+								<div class="d-grid gap-2">
+									<a href="chattingDetail.do" class="btn btn-success">1:1채팅 요청</a>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				
+				
+				</div>
+				
+	</div>
 
-			<tr>
-			<th align="left">나  이</th>
-			<td>${dto.anmAge}</td>
-			</tr>
-			<tr>
-			<th align=left>품  종</th>
-			<td>${dto.anmBreed}</td>
-			</tr>
-			<tr>
-			<th align=left>성  별</th>
-			<td>${dto.anmGender}</td>
-			</tr>
-			<tr>
-			<th>예방접종 여부(Y/N)</th>
-			<td>${dto.anmVcnYn }</td>
-			</tr>
-			<tr>
-			<th>중성화 여부(Y/N)</th>
-			<td>${dto.anmNtrYn }</td>
-			</tr>
-			<tr>
-			<th>연락처</th>
-			<td>${dto.aPhone }</td>
-			
-			 
-		
-		
-		</table>
-		</div>
-		
-		
-		<!-- 동물내용 입력 종료 -->
-		
-		<!-- 1:1채팅 요청 -->
-		<br>
-		<br>
-			<div class="wrap">
-  		<a href="chattingList.do" class="button" id="chat">1:1채팅 요청</a>
-  		</div>
-
-		<!--  1:1 채팅 요청 종료 -->
-		<hr>
-		
-		
 		<!-- 댓글 태그 종료 -->
 		
-		<div class="container mt-2" style="margin-left:150px"> 
-		<h3>Comments</h3>
+		<div class="container text-center mt-4">	
+			<div id="horisonLine2"></div>
 		
-
-		
-		<div class="container mt-4">	
-		
-	<c:choose>
-			<c:when test="${empty reply}">
-				<h3 class="ms-5">작성된 댓글이 없습니다.</h3>
-			
-		
-			
-			</c:when>
-	
-			<c:otherwise>
-			
-			<c:forEach items="${reply}" var="com">
-			
-			<table class="mt-2" style="margin-left:70px;">
-
-			
-				<tr>
-				<th style="width:50px;">${com.writer }</th>
-				<td style="width:400px">${com.aComContent }</td>
-				<td>${com.aComDate}</td>
-				<td><button value="삭제">삭제</button>
-				</tr>
-			
-			</table>
-
-
-			</c:forEach>
-			</c:otherwise>
-
-		
-	</c:choose>
+			<c:choose>
+					<c:when test="${empty reply}">
+						<h3>작성된 댓글이 없습니다.</h3>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${reply}" var="com">
+							<table class="mt-2" style="margin-left:300px;">
+								<tr>
+									<th style="width:50px;">${com.writer }</th>
+									<td style="width:400px">${com.aComContent }</td>
+									<td>${com.aComDate}</td>
+									<td>
+										<c:set var ="mNick" value="${login.mNick }"/>
+										<c:set var ="comNick" value="${com.writer}"/>
+										<c:if test="${mNick == comNick}">
+										<button value="삭제" onclick="location.href='aCommentDelete.do?aComNo=${com.aComNo}&writer=${login.mNick}&aNo=${com.aNo}'">삭제</button>
+										</c:if>
+									</td>
+								</tr>
+					
+							</table>
+						</c:forEach>
+					</c:otherwise>
+			</c:choose>
 		</div>
 		
-		</div>
-	
 
-	<br><br><br>
 	<!-- footer -->
-	<%@ include file="../includes/footer.jsp" %>
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>
