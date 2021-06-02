@@ -61,7 +61,7 @@
 				var hours = today.getHours(); // 시
 				var minutes = today.getMinutes();  // 분
 				var seconds = today.getSeconds();  // 초
-				var msgSendtimeScript = month + "월" + date + "일 " + hours + ":" + minutes + ":" + seconds;
+				var msgSendtimeScript = month + "월 " + date + "일 " + hours + ":" + minutes + ":" + seconds + " ";
 			  	message.msgSendtimeScript = msgSendtimeScript  //만든 시간 메세지 json객체에 넣어주기
 			  }else{
 				return false;	  
