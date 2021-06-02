@@ -97,6 +97,9 @@
 		-moz-box-sizing: border-box;
 	}
 	 */
+	#sidebar ul li a {
+    text-decoration: none;
+	}
 </style>
 <script type="text/javascript">
 	// 전역변수 설정
@@ -187,7 +190,7 @@
                     <a href="adminUserList.do" class="managerTab">회원 관리</a>
                 </li>
                 <li class="mngLi">
-                    <a href="adminQnaList.do" class="managerTab">Q&A</a>
+                    <a href="adminQnaList.do" class="managerTab">Q&A 관리</a>
                 </li>
               </ul>
               </c:if>
