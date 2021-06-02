@@ -18,7 +18,7 @@ public class ChatDaoImpl implements ChatDao{
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	@Autowired
-	 private MemberBiz memberBiz;
+	private MemberBiz memberBiz;
 
 	private static String namespace = "chat.";
 
