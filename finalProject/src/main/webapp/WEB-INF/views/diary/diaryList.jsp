@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+<%@ include file="../includes/header_R.jsp"%>
+	
+    
 <!-- JSTL 사용위한 코드 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -13,7 +16,17 @@
 
 
 
-<title>Insert title here</title>
+<title>입양일기</title>
+
+ <!-- 메뉴 사이드바 스크립트 -->
+<script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+</script>
 
 <!-- ionicons 사용 위한 코드 -->
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
@@ -400,9 +413,7 @@ function isLogin(){
 </head>
 <body>
 
-	<!-- header -->
-	<%@ include file="../includes/header.jsp"%>
-	
+
 	<!-- 내용 -->
 	<div class="container mt-3">
 	
@@ -455,8 +466,8 @@ function isLogin(){
 								<div id="${dto.dno }">
 									<div class="d-grid gap-2">
 									<button class="btn btn-success" id="replyBtn" type="button" value="${dto.dno }">댓글 보기</button>
+									</div>
 								</div>
-							</div>
 							</div>
 							
 						</div>
@@ -470,19 +481,18 @@ function isLogin(){
 		</c:forEach>				
 
 
-
+		<!-- 4번째 일기부터 무한스크롤 div에 표시됨 -->
 		<div id="scrollPrintHere"></div>
-			
-		
-		
-		
-		
-		
-		
-		
 		
 	
 	</div>
-
+	
+	<!-- footer -->
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
 </body>
 </html>

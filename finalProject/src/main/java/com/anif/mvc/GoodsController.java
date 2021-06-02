@@ -30,6 +30,7 @@ import com.anif.mvc.goods.dto.CartListDto;
 import com.anif.mvc.goods.dto.GoodsDto;
 import com.anif.mvc.goods.dto.GoodsOrderDto;
 import com.anif.mvc.goods.dto.OrderDetailDto;
+import com.anif.mvc.goods.dto.OrderListDto;
 import com.anif.mvc.goods.dto.ReviewDto;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.utils.UploadFileUtils;
@@ -352,7 +353,6 @@ public class GoodsController {
 	 cartBiz.orderInfo(order);
 	 
 	 orderDetail.setOrderId(orderId);   
-	 System.out.println(orderId);
 	 cartBiz.orderInfo_Details(orderDetail);
 	 
 	 cartBiz.cartAllDelete(mNo);
@@ -395,6 +395,31 @@ public class GoodsController {
 		
 		
 		return "goods/goods_purchase";
+	}
+	
+	
+	
+	
+	@RequestMapping(value= "/orderReview.do")
+	public String getOrderList(HttpSession session, String orderId, int mNo,  GoodsOrderDto order, Model model) {
+		
+		logger.info("goodsOrder view");
+
+		
+		
+		MemberDto member = (MemberDto)session.getAttribute("login");
+		
+		
+		order.setmNo(mNo);
+		order.setOrderId(orderId);
+		
+		List<OrderListDto> orderView = cartBiz.orderView(order);
+		
+		model.addAttribute("orderView", orderView);
+		
+		
+		return "mypage/mypage_myOrderDetail";
+		
 	}
 	
 	//리뷰 상세보기
@@ -457,6 +482,10 @@ public class GoodsController {
 			return "redirect:goodsDetails.do?gNo="+goodsDto.getgNo();
 		}
 	}
+	
+	
+	
+	
 	
 	
 

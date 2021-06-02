@@ -2,12 +2,21 @@
     pageEncoding="UTF-8"%>
 
 	<!-- header -->
-	<%@ include file="../includes/header.jsp" %>
+	<%@ include file="../includes/header_R.jsp" %>
+
+<title>MyPage</title>
+
+ <!-- 메뉴 사이드바 스크립트 -->
+<script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+</script>
 	
-	<!-- leftMenuBar -->
-	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>	
-	
-	
+
 <script>
 	$(document).ready(function(){
 
@@ -67,15 +76,15 @@
 </script>
 
 <style>
+
 		.myProfileImgDiv {
 				width: 150px;
 				height: 150px; 
 				border-radius: 30%;
 				overflow: hidden;
 				border: 3px	solid #54BD54;
-				position:absolute;
-				left:20px;
-				top:50px;
+				position:relative;
+				top: 5px;
 			}
 	
 		.profile {
@@ -87,9 +96,9 @@
 		
 	
 		#MidMnickDiv {
-			position: absolute;
-		    top: 70px;
-		    left: 220px;
+			position: relative;
+		    top: 5px;
+		    left: 45px;
 			padding:0px;
 			margin:0px;
 			width:300px;
@@ -98,16 +107,17 @@
 				
  		#RorUdiv {
 			width:150px;
-			position:absolute;
-			top: 220px;
-    		left: 40px;
+			position: relative;
+		    top: 12px;
+		    left: 20px;
 		
 		}
 		
 		 #DRicon {
 			width:100px;
     		position: absolute;
-    		right: 12px;
+    		right: 38px;
+  		  	top: 180px;
  		
 		}
 		
@@ -115,13 +125,13 @@
 	 	    height: 10px;
 		    border-bottom: groove;
 		    position: relative;
-		    top: 145px;
-		    width: 98%;
+		    top: 50px;
+		    width: 100%;
 	 	}
 	 	
  		 #secCtn{
 		    position: relative;
-	    	margin-top: 150px; 		
+	    	margin-top: 78px; 		
 		 }
 	
 
@@ -131,10 +141,9 @@
 	
 	
 	<!-- 페이지 내용 부분 -->
-	<div class="contentDiv">
+  <div class="contentDiv">
 		
-		<div class="container" id="DrManage">
-		<br><br><br>
+	<div class="container">
 		<div class="row align-items-center" style="postion:relative;">
 			 <div class="col-md-6 myProfileImgDiv">
 				<img class="profile" src="resources/${prf.profileImg }">
@@ -142,10 +151,10 @@
 			<div class="col" id="MidMnickDiv">
 				<table style="height:100px; font-size:20px;">
 					<tr>
-						<td><label> 나의 ID는? '${memberDto.mId } '</label></td>
+						<td><label> ID _ '${memberDto.mId } '</label></td>
 					</tr>
 					<tr>
-						<td><label> 나의 별칭은? '${memberDto.mNick }'</label></td>
+						<td><label> NickName _ '${memberDto.mNick }'</label></td>
 					</tr>
 				</table>
 			</div>
@@ -154,20 +163,20 @@
 				<button type="button" class="btn btn-secondary">팔로우</button>
 			</div> -->
 			<!-- 나의 입양일기 등록( + 아이콘) -->
-			<div id="DRicon">
+			<div class="col" id="DRicon">
 				<a href="mydiaryWriteForm.do" style="color: black;">
 					<ion-icon name="add-circle-outline" style="font-size:60px;"></ion-icon>
 				</a>
 			</div>
-			<div class="col mb-4" id="RorUdiv">
-     			<button type="button" onclick="location.href='/mvc/RgstOrUpdate.do'"class="btn btn-outline-success btn-sm rounded-pill">등록 or 수정</button>			
- 			</div>
+			<div class="row">	
+				<div class="col" id="RorUdiv">
+	     			<button type="button" onclick="location.href='/mvc/RgstOrUpdate.do'"class="btn btn-outline-success btn-sm rounded-pill">등록 or 수정</button>			
+	 			</div>
+	 		</div>	
 		</div>
 		
-		
 	</div>	
-	<br>
-	<br>
+	
 		<!-- 가로줄 -->
 		<div id="horisonLine"></div>
 		
@@ -198,7 +207,14 @@
 			
 	</div>
 		
-</div>
+ </div>
 
 	<!-- footer -->
-	<%@ include file="../includes/footer.jsp" %>
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>

@@ -3,7 +3,6 @@ package com.anif.mvc;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.anif.mvc.diary.biz.DiaryBiz;
 import com.anif.mvc.member.biz.MemberBiz;
 import com.anif.mvc.member.dto.MemberDto;
 
@@ -28,8 +28,10 @@ public class LoginController {
 	 @Autowired
 	 private MemberBiz biz;
 	 
-	 
-	 //회원가입 페이지로 이동 
+	@Autowired
+	private DiaryBiz diaryBiz;
+	
+	//회원가입 페이지로 이동 
 	 
 	 @RequestMapping("/signUpForm.do")
 	 public String signUpForm(MemberDto dto) {
@@ -107,7 +109,7 @@ public class LoginController {
 			
 			session.invalidate();
 			
-			return "main";
+			return "main_R";
 			
 		}
 		
@@ -125,17 +127,18 @@ public class LoginController {
 			MemberDto res = biz.login(dto);
 			
 			boolean check = false;
+			int mNo = res.getmNo();
 			
 			//제대로된 로그인이 된것 res가 null이 아니면 
 			if(res != null) {
+			
+				session.setAttribute("prf", diaryBiz.profileImgSelect(mNo));
 				session.setAttribute("login", res);
 				
 				//세션 지속시간 짧아서 불편해서 임시로 10시간으로 늘렸습니다. by 김성민
 				session.setMaxInactiveInterval(60*60*10);
 
 				check=true;
-				
-				
 				
 			}
 			
@@ -168,7 +171,7 @@ public class LoginController {
 		 
 		}
 		
-		
+			
 		
 
 

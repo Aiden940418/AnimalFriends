@@ -1,32 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../includes/header_R.jsp" %>   
+
 	
-<!DOCTYPE html>
-<html>
-<style type="text/css">
-#button{
-  float: right;
-  
-}
-</style>
-<!-- header -->
-<%@ include file="../includes/header.jsp"%>
-<!-- leftmenubar -->
-<%@ include file="../includes/admin_leftMenuBar.jsp"%>
+ 
+ <title>GOODS Detail</title>
+ 
+  <!-- 메뉴 사이드바 스크립트 -->
+ <script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+
+ </script>
+ 
+ 
+
 <!-- page -->
-
-
-
 <div class="contentDiv">
 
 	<div class="container">
 
-		<div class="text mt-5 ms-5" >
+		<div class="text-end float-end" >
 			<div id=button>
-			<a href="adminGoodsUpdateForm.do?gNo=${dto.gNo}" class="btn btn-outline-success">수정</a>&nbsp;
-			<a href="adminGoodsDelete.do?gNo=${dto.gNo }" class="btn btn-outline-success">삭제</a>&nbsp;
-			<a href="adminGoodsList.do" class="btn btn-outline-success">목록</a>&nbsp;&nbsp;
+			<a href="adminGoodsUpdateForm.do?gNo=${dto.gNo}" class="btn btn-outline-success">수정</a>
+			<a href="adminGoodsDelete.do?gNo=${dto.gNo }" class="btn btn-outline-success">삭제</a>
+			<a href="adminGoodsList.do" class="btn btn-outline-success">목록</a>
 			</div>
 
 		</div>
@@ -200,11 +203,14 @@
               	</div>
               	
 
-
-	<!-- footer -->
-	<%@ include file="../includes/footer.jsp"%>
 </div>
 
-
-
+	<!-- footer -->
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
 </html>

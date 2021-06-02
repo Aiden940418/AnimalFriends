@@ -10,6 +10,7 @@ import com.anif.mvc.goods.dto.CartDto;
 import com.anif.mvc.goods.dto.CartListDto;
 import com.anif.mvc.goods.dto.GoodsOrderDto;
 import com.anif.mvc.goods.dto.OrderDetailDto;
+import com.anif.mvc.goods.dto.OrderListDto;
 
 
 @Repository
@@ -74,6 +75,15 @@ public class CartDaoImpl implements CartDao {
 	@Override
 	public int orderInfoStatusUpdate(String orderId) {
 		return sqlSession.update(NAMESPACE+"orderInfoStatusUpdate",orderId);
+	}
+
+
+	@Override
+	public List<OrderListDto> orderView(GoodsOrderDto order) {
+		
+		System.out.println("goodsorderview 실행");
+		
+		return sqlSession.selectList(NAMESPACE+"orderView", order);
 	}
 	
 	

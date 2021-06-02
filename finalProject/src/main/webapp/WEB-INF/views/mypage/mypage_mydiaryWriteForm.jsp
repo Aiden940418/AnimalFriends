@@ -3,11 +3,23 @@
 
 
 	<!-- header -->
-	<%@ include file="../includes/header.jsp" %>
-	<!-- leftMenuBar -->
-	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>	
-	
+	<%@ include file="../includes/header_R.jsp" %>
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<title>나의 입양일기 작성</title>
+
+ <!-- 메뉴 사이드바 스크립트 -->
+ <script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+
+ </script>
+
 <style type="text/css">
 		.box {
 			width: 300px;
@@ -25,6 +37,20 @@
 		    height: 100%;
 		    object-fit: cover;
 		}
+		
+		#myDrWriteDiv {
+	 	position: relative;
+	    top: 55px;
+ 
+		}
+
+		 #secCtn {
+	 	position: relative;
+		top: 150px;	 	
+		margin-bottom: 150px;
+		
+		}
+		 
 							      
 </style>
 	
@@ -33,15 +59,17 @@
 	
 	
 	<!-- 페이지 내용 부분 -->
-	<div class="contentDiv">
+	<div class="contentDiv" style="margin-bottom:40px;">
 		
-		<div class="container">
+		<div class = "container text-center" id="myDrWriteDiv">
+			<h1 class="text-center">나의 입양일기 작성</h1>
+		</div>
+		
+
+		<div class="container" id="secCtn">
 
 		<div class="row">
-			<!-- title -->
-			<div class="row my-4" style="text-align: center;">
-				<h1>나의 입양일기 작성</h1>
-			</div>
+			
 			<!-- form -->
 			<div style="margin: auto; text-align: center;">
 				<form action="mydiaryWriteRes.do" method="post" style="display: inline-block;" enctype="multipart/form-data">
@@ -106,18 +134,20 @@
 					</table>
 				</form>
 			</div>
-
-
-				
-
-				
-
-
-
-
 		</div>
-		<!-- footer -->
-		<%@ include file="../includes/footer.jsp"%>
-	</div>
-	</div>
+	</div>	
+</div>
+	
+	
+	<!-- footer -->
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>
+	
+	
 	

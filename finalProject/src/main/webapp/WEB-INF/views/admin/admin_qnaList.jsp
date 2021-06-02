@@ -9,25 +9,57 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 
+
 <!-- header -->
-<%@ include file="../includes/header.jsp"%>
-<!-- leftmenubar -->
-<%@ include file="../includes/admin_leftMenuBar.jsp"%>
+<%@ include file="../includes/header_R.jsp" %>
 
+<title>내가 쓴 입양공고</title>
 
+ <!-- 메뉴 사이드바 스크립트 -->
+<script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
 
+	});
+</script>
+
+<style>
+ 	#horisonLine {
+ 	    height: 10px;
+	    border-bottom: groove;
+	    position: relative;
+	    top: 145px;
+	    width: 100%;
+	 }
+	 
+	 #qnaRow {
+	 	position: relative;
+	 	top:180px;
+	 
+	 }
+	 
+	 #qnaDiv {
+	 	position: relative;
+	    top: 55px;
+ 
+	 }
+	 
+
+</style>
 
 <!-- page -->
 <div class="contentDiv">
 
-	<div class="container">
-		<div class="row my-3">
-			<h1>QnA</h1>
-			<br>
+		<div class="container text-center" id="qnaDiv">
+				<h1>QnA</h1>
 		</div>
 		
-		<div class="row">
-			
+		<div id="horisonLine"></div>
+		
+		<div class="container" id="thrCtn" >
+		<div class="row" id="qnaRow">
 			
 			<form role="form" method="get">
 			  <div class="search input-group" style="width:500px">
@@ -96,7 +128,7 @@
 			</form>
 			<!-- 페이징 부분 -->
 
-			<div>
+			<div class="mt-5">
 			<nav aria-label="Page navigation example">
  				 <ul class="pagination justify-content-center">
   					
@@ -113,14 +145,19 @@
   				</ul>
  			</nav>
 			</div>
-
-
-
-
 		</div>
 	</div>
-</div>
+	</div>
+	
 
+<div style="height:150px;"></div>
 
-	<!-- footer -->
-	<%@ include file="../includes/footer.jsp"%>
+<!-- footer -->
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>

@@ -2,12 +2,25 @@
     pageEncoding="UTF-8"%>
  <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>  
 
-	<!-- header -->
-	<%@ include file="../includes/header.jsp" %>
+<%@ include file="../includes/header_R.jsp" %>   
+
 	
-	<!-- leftMenuBar -->
-	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>
-	
+ 
+ <title>리뷰 보기 상세</title>
+ 
+  <!-- 메뉴 사이드바 스크립트 -->
+ <script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+
+ </script>
+ 
+ 
+
 	
 <style type="text/css">
 
@@ -81,6 +94,12 @@
 	</div>
 	
 
-	<br><br><br>
 	<!-- footer -->
-	<%@ include file="../includes/footer.jsp" %>
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>
