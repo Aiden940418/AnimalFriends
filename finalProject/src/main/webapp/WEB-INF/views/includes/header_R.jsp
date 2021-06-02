@@ -43,13 +43,13 @@
 	}
 	
 	.HeaderProfileImgDiv {
-				width: 104px;
-				height: 110px; 
+				width: 150px;
+				height: 125px; 
 				border-radius: 50%;
 				overflow: hidden;
 				border: 3px	solid #54BD54;
 				position: relative;
-   				left: 52px;
+   				left: 60px;
     			top: -17px;
 			}
 	
@@ -97,17 +97,6 @@
 	}
 	 */
 </style>
-<script>
-
-	$(document).on("click", '.managerTab', function(){
-		  $('#pageSubmenu').attr('class','collapse list-unstyled show');
-		  console.log('왜 안되냐');
-	});
-
-
-</script>
-
-
 <body>
 	<div class="wrapper d-flex align-items-stretch">
 		<nav id="sidebar" class="" style="">
@@ -123,14 +112,11 @@
 				</c:if>
 				<c:if test="${!empty login}">
 						<div class="text-center">
-       					 <p style="color: #288C28; font-size:22px;"><b>ID_${login.mId}</b> <br> <b>닉냄_${login.mNick}</b></p>
+       					 <p style="color: #288C28; font-size:22px;"><b>ID_${login.mId}</b> / <b>닉냄_${login.mNick}</b></p>
 						</div>
 				</c:if>
 						  		
 	        <ul class="list-unstyled components mt-5" style="margin-top:300px;">
-	          <li>
-	              <a href="main.do">Home</a>
-	          </li>
 	          <li>
 	              <a href="adopt.do">입양공고</a>
 	          </li>
@@ -145,23 +131,24 @@
 	          </li>
 	          <li>
 	          <c:if test="${login.mRole == 3 }">
-              <a href="#pageSubmenu" role="button" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">관리자</a>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">관리자</a>
               <ul class="collapse list-unstyled" id="pageSubmenu">
-                <li class="mngLi">
-                    <a href="adminAdopt.do" class="managerTab">입양공고 관리</a>
+                <li>
+                    <a href="adminAdopt.do">입양공고 관리</a>
                 </li>
-                <li class="mngLi">
-                    <a href="adminGoodsList.do" class="managerTab">GOODS 관리</a>
+                <li>
+                    <a href="adminGoodsList.do">GOODS 관리</a>
                 </li>
-                <li class="mngLi">
-                    <a href="adminDiary.do" class="managerTab">입양일기 관리</a>
+                <li>
+                    <a href="adminDiary.do">입양일기 관리</a>
                 </li>
-                <li class="mngLi">
-                    <a href="adminUserList.do" class="managerTab">회원 관리</a>
+                <li>
+                    <a href="adminUserList.do">회원 관리</a>
                 </li>
-                <li class="mngLi">
-                    <a href="adminQnaList.do" class="managerTab">QnA</a>
+                <li>
+                    <a href="adminQnaList.do">QnA</a>
                 </li>
+                
               </ul>
               </c:if>
               
