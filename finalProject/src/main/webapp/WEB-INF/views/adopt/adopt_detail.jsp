@@ -52,31 +52,40 @@ a.button:hover {
 	//notifySend
 	function chatRequestBtnClick(){
 		
-	    let targetMNo = '${dto.aMNo}';  //토스트 메세지 받을 사람 (입양공고 작성자 회원번호)
-	    let content = '${login.mNick}님이 1:1 채팅을 요청하였습니다!' //토스트 메세지 내용
-	    let url = 'chattingList.do';  //토스트 메세지 클릭하면 바로가기 이동할 채팅목록 url
+	    let noticeSenderNo = '${login.mNo}';   //토스트 메세지 보내는 사람 회원번호
+	    let noticeReceiverNo = '${dto.aMNo}';  //토스트 메세지 받을 사람 (입양공고 작성자 회원번호)
+	    let noticeContent = '${login.mNick}님이 1:1 채팅을 요청하였습니다!' //토스트 메세지 내용
+	    
+		//채팅 메세지 보낸 시간 찍기
+	  	var today = new Date();   
+		var year = today.getFullYear(); // 년
+		var month = today.getMonth() + 1;  // 월
+		var date = today.getDate();  // 일
+		var hours = today.getHours(); // 시
+		var minutes = today.getMinutes();  // 분
+		var seconds = today.getSeconds();  // 초
+		let noticeTimeScript = month + "월" + date + "일 " + hours + ":" + minutes + ":" + seconds;
 	    
 	    // 전송한 정보를 db에 저장	
 	    $.ajax({
 	        type: 'post',
-	        url: 'notice.do',
+	        url: 'noticeInsert.do',
 	        dataType: 'text',
 	        data: {
-	            targetMNo: targetMNo,
-	            content: content,
-	            url: url
+	            noticeSenderNo: noticeSenderNo, 
+	        	noticeReceiverNo: noticeReceiverNo,
+	        	noticeContent: noticeContent,
+	            noticeTimeScript: noticeTimeScript
 	        },
 	        success: function(){    // db전송 성공시 실시간 알림 전송
 	            // 소켓에 전달되는 메시지
 	            // 위에 기술한 EchoHandler에서 ,(comma)를 이용하여 분리시킨다.
-	            socket.send(targetMNo+","+content+","+url);	
+	            socket.send(noticeReceiverNo+","+noticeContent+","+noticeTimeScript);	
 	        }
 	    });
 	    
-	    
 	    //채팅방 리스트로 페이지 이동
 	    location.href="adoptToChatList.do?chatResponsorNo=${dto.aMNo }";
-	    
 
 	}
 
