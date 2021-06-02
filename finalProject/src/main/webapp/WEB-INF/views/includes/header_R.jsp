@@ -190,9 +190,11 @@
                 </li>
               </ul>
               </c:if>
-              
 	          </li>
+	          
+	          
 	          <li>
+	           <c:if test="${login != null }">
               <a href="#mypagesubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">MyPage</a>
               <ul class="collapse list-unstyled" id="mypagesubmenu">
               	<li>
@@ -218,6 +220,7 @@
                 </li>
                 
               </ul>
+                </c:if>
 	          </li>
 	          
 	        </ul>
