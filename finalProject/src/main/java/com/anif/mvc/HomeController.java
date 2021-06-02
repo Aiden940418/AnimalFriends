@@ -53,11 +53,6 @@ public class HomeController {
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String main(Model model, HttpSession session) {
 		
-//			MemberDto memberDto = (MemberDto) session.getAttribute("login");
-//			mNo = memberDto.getmNo();
-//			
-//			model.addAttribute("prf", diaryBiz.profileImgSelect(mNo)); 
-
 		
 		return "main_R";
 	}

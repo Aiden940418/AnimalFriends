@@ -8211,15 +8211,15 @@ h1, h2, h3, h4, h5,
   width: 100%; }
 
 #sidebar {
-  min-width: 300px;
-  max-width: 300px;
+  min-width: 260px;
+  max-width: 260px;
   background: #a3cca3;
   color: #fff;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s; }
   #sidebar.active {
-    margin-left: -300px; }
+    margin-left: -260px; }
   #sidebar .logo {
     display: block;
     width: 120px;
@@ -8241,7 +8241,8 @@ h1, h2, h3, h4, h5,
       padding: 10px 0;
       display: block;
       color: rgba(255, 255, 255, 0.8);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+	  text-align: center;}
       #sidebar ul li a:hover {
         color: #288C28; }
 /*    #sidebar ul li.active > a {
