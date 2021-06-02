@@ -190,7 +190,7 @@
 							<div>
 								<div class="d-grid gap-2">
 									<!-- 공고 작성자의 정보를 같이 넘겨 컨트롤러에서 1:1채팅방 생성 -->
-  		<button class="button btn btn-success" id="chatRequestBtn" onclick="chatRequestBtnClick();">1:1채팅 요청</button>
+  									<button class="button btn btn-success" id="chatRequestBtn" onclick="chatRequestBtnClick();">1:1채팅 요청</button>
 								</div>
 							</div>
 							
