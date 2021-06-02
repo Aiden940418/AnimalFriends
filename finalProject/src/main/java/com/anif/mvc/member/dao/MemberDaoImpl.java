@@ -241,8 +241,8 @@ public class MemberDaoImpl implements MemberDao {
 
 
 	@Override
-	public MemberDto readMember(String getmId) {
-		return sqlSession.selectOne(NAMESPACE+"readMember");
+	public MemberDto readMember(String mId) {
+		return sqlSession.selectOne(NAMESPACE+"readMember",mId);
 	}
 
 

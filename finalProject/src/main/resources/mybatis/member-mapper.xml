@@ -136,11 +136,16 @@
 		UPDATE MEMBER SET PW = #{mPw} WHERE ID = #{mId}
 	</update>
     
-   <select id="idCheck" resultType="int">
+   <select id="idCheck">
    		SELECT COUNT(*) FROM MEMBER
    		WHERE MID = #{mId}
    </select>
    
+   <select id="readMember">
+   		SELECT * FROM MEMBER
+   		WHERE MID = #{mId}
+   </select>
+    
    
   
   

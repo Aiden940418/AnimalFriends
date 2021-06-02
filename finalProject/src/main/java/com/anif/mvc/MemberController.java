@@ -94,7 +94,7 @@ public class MemberController {
 	public void findPwGET() throws Exception{
 	}
 
-	@RequestMapping(value = "/findpw.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/findpw2.do", method = RequestMethod.POST)
 	public void findPwPOST(@ModelAttribute MemberDto dto, HttpServletResponse response) throws Exception{
 		biz.findPw(response,dto);
 	}

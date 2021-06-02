@@ -12,7 +12,7 @@
 	$(function(){
 		$("#findBtn").click(function(){
 			$.ajax({
-				url : "/findpw.do",
+				url : "/findpw2.do",
 				type : "POST",
 				data : {
 					id : $("#mId").val(),
