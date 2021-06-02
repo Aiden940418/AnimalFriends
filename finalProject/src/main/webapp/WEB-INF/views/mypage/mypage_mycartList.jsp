@@ -10,8 +10,15 @@
 
 <title>나의 장바구니</title>
 
- <!-- 메뉴 사이드바 스크립트 -->
+
+<!-- 메뉴 사이드바 스크립트 -->
 <script>
+$("#check_module").on('click', function() {
+	if($("#test").val() == 1) {
+		var form = document.goodsOrder;
+		form.submit();
+	}
+});
  	$(function() {
 		$('#sidebarCollapse').on('click', function () {
 	      $('#sidebar').toggleClass('active');
@@ -266,14 +273,14 @@
  			  
  			  	
               <div class="ms-5 container mt-2 boarder=1" id="sameAddr" >
-              	<form id="goodsOrder" action="goodsOrder.do" method="post">
+              	<form id="goodsOrder" name="goodsOrder" action="goodsOrder.do" method="post">
               	<input type="hidden" name="amount" value="${sum }">
               	<input type="hidden" name="mNo" value="${login.mNo }">
              <c:forEach items="${cartList}" var="cartList">
               	<input type="hidden" name="gNo" value="${cartList.gNo }">
               	</c:forEach>
        		  <table>
-		        
+		      <input type="hidden" id="test" value="">  
 		        <tr>
 		        <th>배송 받는 사람</th>
 		        <td><input type="text" name="orderName" style="width:300px; height:40px"value="${login.mName }" ></td>
@@ -317,7 +324,7 @@
   	<br>
   	<br>
        <div class="container text-center">
-       
+       <div id="test2"></div>
      <button type="button" id="check_module">카드 결제하기</button>  
 	<button type="submit" class="btn btn-outline-success btn-lg" id="submit">완료</button>
 	
@@ -374,16 +381,14 @@
 	(카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
 	*/
 	}, function (rsp) {
+		debugger;
 	console.log(rsp);
 	if (rsp.success) {
-		
-		
-	  	$("form").submit();
-
-		
+	$("#test").val("1");
+	$("#test2").append("<p>succes</p>");
+	/*	
+	var msg = '결제가 완료되었습니다. 완료버튼을 눌러주세요';
 	
-		
-	/* var msg = '결제가 완료되었습니다. 완료버튼을 눌러주세요';
 	msg += '고유ID : ' + rsp.imp_uid;
 	msg += '상점 거래ID : ' + rsp.merchant_uid;
 	msg += '결제 금액 : ' + rsp.paid_amount;
