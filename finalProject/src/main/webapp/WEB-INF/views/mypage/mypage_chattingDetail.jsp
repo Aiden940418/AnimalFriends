@@ -1,15 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
 <!-- header -->
-<%@ include file="../includes/header.jsp" %>
-<!-- leftMenuBar -->
-<%@ include file="/WEB-INF/views/includes/mypage_leftMenuBar.jsp"%>
+<%@ include file="../includes/header_R.jsp"%>
+
+<!-- 아이콘 사용 위한 코드 -->
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+ <title>1:1 채팅방</title>
+ 
+ <!-- 메뉴 사이드바 스크립트 -->
+ <script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+
+ </script>
 
 <!-- 웹소켓 사용 관련 코드 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.js"></script>
@@ -215,13 +223,13 @@
 
 		</div>
 		
-	<!-- footer -->
-	<%@ include file="../includes/footer.jsp" %>
 
 	</div>
-	
-
-
-
+	<!-- footer -->
+		<%@ include file="../includes/footer.jsp" %>
+		<!-- header의 'Page 내용 div' 닫기 태그  -->
+		</div> 
+		
+<!-- Page 내용 끝 -->
 </body>
 </html>

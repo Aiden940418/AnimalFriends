@@ -149,7 +149,7 @@
 				</c:if>
 				<c:if test="${!empty login}">
 						<div class="text-center">
-       					 <p style="color: #288C28; font-size:22px;"><b>ID_${login.mId}</b> <br> <b>닉냄_${login.mNick}</b></p>
+       					 <p style="color: #288C28; font-size:22px;"><b>ID : ${login.mId}</b> <br> <b>[${login.mNick}]</b></p>
 						</div>
 				</c:if>
 						  		
@@ -186,7 +186,7 @@
                     <a href="adminUserList.do" class="managerTab">회원 관리</a>
                 </li>
                 <li class="mngLi">
-                    <a href="adminQnaList.do" class="managerTab">QnA</a>
+                    <a href="adminQnaList.do" class="managerTab">Q&A</a>
                 </li>
               </ul>
               </c:if>
@@ -195,6 +195,9 @@
 	          <li>
               <a href="#mypagesubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">MyPage</a>
               <ul class="collapse list-unstyled" id="mypagesubmenu">
+              	<li>
+                    <a href="chattingList.do">1:1 채팅</a>
+                </li>
                 <li>
                     <a href="mydiary.do">나의 입양일기</a>
                 </li>
@@ -211,7 +214,7 @@
                     <a href="myMemberModityPw.do">회원정보 수정</a>
                 </li>
                 <li>
-                    <a href="myQnaList.do">QnA</a>
+                    <a href="myQnaList.do">Q&A</a>
                 </li>
                 
               </ul>
@@ -237,9 +240,9 @@
             <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            
+           
             <!-- 웹소켓 알림 부분 -->
-      	 	<div id="msgStack" ></div>
+      	 	<div id="msgStack"></div>
             
 			<div id="loginBtn">
           
@@ -251,29 +254,8 @@
 	          <label><b>${login.mNick}</b>님 로그인 되었습니다.</label>
 	          <a class="btn btn-outline-success mx-2" href="logout.do" id="logoutBtn" role="button">로그아웃</a>
 	          </c:if>
-	          <c:if test="${login !=null }">
-	          <a class="btn btn-outline-success" href="mydiary.do" role="button">마이페이지</a>
-	          </c:if>
        		</div>
 
-
-
-<!--             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Portfolio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-              </ul>
-            </div> -->
           </div>
         </nav>
         

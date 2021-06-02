@@ -17,7 +17,15 @@
 	 
 	 
 </style>
+ <!-- 메뉴 사이드바 스크립트 -->
+<script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
 
+	});
+</script>
  <title>입양공고</title>
 <div class="container mt-5">
 <div class="container text-center">

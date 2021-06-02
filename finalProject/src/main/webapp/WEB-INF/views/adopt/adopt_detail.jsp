@@ -66,10 +66,6 @@
 </script>
 
 
-<div class="container text-center">
-	<h1 class="display-5 mt-5">입양 공고</h1><br>
-	<hr>
-	<button type="button" class="btn btn-outline-success md-5 float-end" onclick="location.href='adopt.do'">목록보기</button>
 
 <style type="text/css">
 
@@ -102,9 +98,10 @@
 
 </style>
 
+<div class="container text-center">
 
 	<div class="container text-center">
-		<h1 class="mt-5">입양 공고</h1><br>
+		<h1 class="mt-5">입양공고</h1><br>
 		<div id="horisonLine"></div>
 		
 	</div>

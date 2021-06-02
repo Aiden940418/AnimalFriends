@@ -73,13 +73,6 @@
 						</tr>
 
 						<tr>
-							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
-									style="width: 130px; pointer-events: none;">이미지</button></th>
-							<td><input type="text" class="form-control my-1" id=""
-								size="100" placeholder="이미지를 등록해주세요."></td>
-						</tr>
-
-						<tr>
 							<td colspan="2">
 								<input type="button" value="취소"
 								class="btn btn-outline-success my-1" onclick="location.href='myQnaList.do'"
