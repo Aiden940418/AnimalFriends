@@ -242,13 +242,15 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public MemberDto readMember(String mId) {
+		System.out.println("값이 들어가니?"+mId);
 		return sqlSession.selectOne(NAMESPACE+"readMember",mId);
 	}
 
 
 
 	@Override
-	public int idCheck(String mId) {
+	public MemberDto idCheck(String mId) {
+		System.out.println("값이 넘어왔니?" +mId);
 		return sqlSession.selectOne(NAMESPACE+"idCheck",mId);
 	}
 

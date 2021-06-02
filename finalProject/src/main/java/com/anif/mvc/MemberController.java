@@ -96,6 +96,8 @@ public class MemberController {
 
 	@RequestMapping(value = "/findpw2.do", method = RequestMethod.POST)
 	public void findPwPOST(@ModelAttribute MemberDto dto, HttpServletResponse response) throws Exception{
+		System.out.println("작동되는거니?");
+		System.out.println(dto.toString());
 		biz.findPw(response,dto);
 	}
 	

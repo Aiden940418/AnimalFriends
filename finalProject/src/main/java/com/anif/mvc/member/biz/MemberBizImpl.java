@@ -144,7 +144,7 @@ public class MemberBizImpl implements MemberBiz {
 		MemberDto ck = dao.readMember(dto.getmId());
 		PrintWriter out = response.getWriter();
 		// 가입된 아이디가 없으면
-		if(dao.idCheck(dto.getmId()) != 1) {
+		if(dao.idCheck(dto.getmId()) == null ) {
 			out.print("등록되지 않은 아이디입니다.");
 			out.close();
 		}

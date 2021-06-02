@@ -394,7 +394,12 @@ $("#check_module").on('click', function() {
 	msg += '결제 금액 : ' + rsp.paid_amount;
 	msg += '카드 승인번호 : ' + rsp.apply_num;
 	 */
-
+	
+		if($("#test").val() == 1) {
+			var form = $("#goodsOrder");
+			form.submit();
+		}
+	
 
 	
 	

@@ -133,15 +133,15 @@
    
    <!-- 비밀번호 변경 -->
 	<update id="updatemPw" parameterType="memberDto">
-		UPDATE MEMBER SET PW = #{mPw} WHERE ID = #{mId}
+		UPDATE MEMBER SET mPw = #{mPw} WHERE mId = #{mId}
 	</update>
     
-   <select id="idCheck">
-   		SELECT COUNT(*) FROM MEMBER
+   <select id="idCheck" parameterType="String" resultType="MemberDto">
+   		SELECT * FROM MEMBER
    		WHERE MID = #{mId}
    </select>
    
-   <select id="readMember">
+   <select id="readMember" parameterType="String" resultType="MemberDto">
    		SELECT * FROM MEMBER
    		WHERE MID = #{mId}
    </select>

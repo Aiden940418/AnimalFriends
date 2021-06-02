@@ -41,11 +41,9 @@ public interface MemberDao {
 
 	public int updatemPw(MemberDto dto)throws Exception;
 
-	
-	
-	public MemberDto readMember(String getmId);
+	public MemberDto readMember(String mId);
 
-	public int idCheck(String getmId);
+	public MemberDto idCheck(String mId);
 
 
 
