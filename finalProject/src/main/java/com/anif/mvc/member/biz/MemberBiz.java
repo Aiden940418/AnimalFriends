@@ -41,6 +41,10 @@ public interface MemberBiz {
 
 	//비밀번호찾기
 	public void findPw(HttpServletResponse response, MemberDto dto) throws Exception;
+	
+	
+	public int updatemPw(MemberDto dto)throws Exception;
+
 
 
 

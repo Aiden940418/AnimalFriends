@@ -122,10 +122,10 @@
 					<div class="row">
 						<c:forEach items="${list}" var="dto">
 							<div class="col-sm mt-5">
-								<div class="card h-100 text-center" style="width:450px;  margin: 0 auto; align-items: center;">
+								<div class="card h-100 text-center" style="width:430px;  margin: 0 auto; align-items: center;">
 									<a href="adoptDetail.do?aNo=${dto.aNo}"> 
 									<img src="resources/${dto.aThumbImg }" class="card-img-top"
-											alt="..." style="width:450px;height:350px; border:none; object-fit:cover;"></a>
+											alt="..." style="width:430px;height:350px; border:none; object-fit:cover;"></a>
 									<div>
 									 	<img src="resources/images/adopt_count.png" style="width:30px;">${dto.aCount }
 									 	지역:${dto.aArea }

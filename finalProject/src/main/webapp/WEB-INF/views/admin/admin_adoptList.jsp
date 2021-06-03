@@ -215,6 +215,8 @@
 												$("#allCheck").prop("checked", false);							
 													})
 										</script>
+										
+										
 											<div class="card h-100 text-center" style="width:450px; margin: 0 auto; align-items: center;">
 													<a href="myAdoptDetail.do?aNo=${dto.aNo}"><img src="resources/${dto.aThumbImg }" class="card-img-top"
 														style="width:450px; height:350px; border:none; object-fit:cover;"></a>	

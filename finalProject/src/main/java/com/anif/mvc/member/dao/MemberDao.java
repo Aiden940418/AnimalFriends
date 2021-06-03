@@ -44,6 +44,8 @@ public interface MemberDao {
 	public MemberDto readMember(String mId);
 
 	public MemberDto idCheck(String mId);
+	
+	
 
 
 

@@ -25,6 +25,7 @@ import com.anif.mvc.common.pagination.PageMaker;
 import com.anif.mvc.diary.biz.DiaryBiz;
 import com.anif.mvc.diary.dto.DiaryDto;
 import com.anif.mvc.member.biz.MemberBiz;
+import com.anif.mvc.member.dao.MemberDao;
 import com.anif.mvc.diary.dto.ProfileImgDto;
 import com.anif.mvc.member.dto.MemberDto;
 import com.anif.mvc.qnaBoard.biz.QnaBoardBiz;
@@ -47,6 +48,7 @@ public class MypageController {
 	@Autowired
 	private MemberBiz memberBiz;
 
+	
 	@Resource(name="uploadPath")
 	private String uploadPath;  //이미지 업로드 화면출력 관련 
 	
@@ -271,17 +273,58 @@ public class MypageController {
 		
 		logger.info("passwordCheck");
 		boolean result = memberBiz.pwChk(mId, mPw);
+		
+
 		if(result) {
 			
 			
 			return "mypage/mypage_memberModify";
 		}else {
+			
 			return "mypage/mypage_memberModifyPWCheck";
 		}
 		
 	}
 	
 	
+	//비밀번호 변경 페이지 이동 
+	
+	@RequestMapping(value="memberPwupdateCheck.do", method= RequestMethod.GET)
+	public String memberPwupdateCheck(String mId, String mPw) {
+		return "mypage/mypage_memberPwupdateCheck";
+	}
+	
+	
+	//새로운 비밀번호 입력 후 db업데이트 
+	
+	@RequestMapping(value="memberPwUpdate.do", method=RequestMethod.POST)
+	public String memberPwUpdate(MemberDto dto, HttpSession session, Model model) {
+		
+		
+		
+		try {
+			int res = memberBiz.updatemPw(dto);
+			
+			if (res > 0) { // 글 insert 성공 시
+				session.invalidate();
+				model.addAttribute("msg", "비밀번호 변경 성공! 다시 로그인해주세요");
+				model.addAttribute("url", "/loginForm.do");
+			} else {  //글 insert 실패 시
+				model.addAttribute("msg", "비밀번호 변경 실패 ");
+				model.addAttribute("url", "/main.do");
+			}
+			
+				
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return "/mypage/alertPage";
+		
+	}
+
 	
 	//회원정보 수정 
 	
@@ -293,7 +336,8 @@ public class MypageController {
 		
 		if (res > 0) { // 글 insert 성공 시
 			session.invalidate();
-			model.addAttribute("msg", "회원정보 수정 성공!");
+			model.addAttribute("msg", "회원정보 수정 성공!"
+					+ "로그인 화면으로 이동합니다.");
 			model.addAttribute("url", "/loginForm.do");
 		} else {  //글 insert 실패 시
 			model.addAttribute("msg", "회원정보 수정 실패!");

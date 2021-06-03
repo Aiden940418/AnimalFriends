@@ -100,7 +100,7 @@
                     </div>
                     <div class="col-lg-6 order-lg-1">
                         <div class="p-5">
-                            <h2 class="display-5 text-center">매년 증가하는 유기동물</h2>
+                            <h2 class="display-5 text-center">증가하는 유기동물</h2>
                             <p>실종 유기되는 아이들의 수는 증가하지만 구조된 <br>아이들의 절반은 보호소에서 생을 마감합니다.<br>
                             국가에서는 이러한 아이들을 보호하기 위해 매년 유기동물 <br>지원사업을 시행하고 있지만 
                             날이 갈수록 늘어나는 <br>실종 유기되는 아이들의 수를 각 시 보호소에서는 <br>감당할 수 없을 정도입니다.</p>
@@ -133,7 +133,7 @@
         <!-- Content section 3-->
         <section>
             <div class="container px-5">
-                <div class="row gx-5 align-items-center">
+                <div class="row gx-5 align-items-center text-center">
                     <div class="col-lg-6 order-lg-2">
                         <div class="p-5"><img class="img-fluid rounded-circle" src="resources/images/mainBody.jpeg" alt="..." /></div>
                     </div>
@@ -143,7 +143,7 @@
                             <p>사람과 동물이 공존할 수 있는<br>
                             아주 자그마한 틈을 우리가 만들 수 있다면<br>
                             아이들은 또 한번의 기적을 꿈꾸고<br>
-                            우리는 또 한번 아이들에게서 위로 받을 수 있을 것이라는 생각에서<br> 
+                            우리는 또 한번 아이들에게서 위로 받을 수 있을 것이라는 생각에<br> 
                             애니멀프렌즈를 시작하게 되었습니다. </p>
                         </div>
                     </div>

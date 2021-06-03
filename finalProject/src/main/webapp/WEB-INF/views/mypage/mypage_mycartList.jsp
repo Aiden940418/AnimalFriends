@@ -45,7 +45,8 @@ $("#check_module").on('click', function() {
 		<!-- 상단 제목부분 -->
 		<div class="container text-center" style="margin-top:20px;">
 			<h1 class="text-center">${login.mNick}님 장바구니</h1><br>
-			<div id="horisonLine"></div>
+			<div id="horisonLine"></div>				<br>
+			
 		</div>
 		
 		<!-- 찜 목록 그리드 시작 -->
@@ -57,7 +58,9 @@ $("#check_module").on('click', function() {
 					<!--모두 선택 체크박스-->
 					<div class="allCheck">
 						<input name="allCheck" type="checkbox" id="allCheck">
-						<label class="ms-1" for="allCheck">모두 선택</label><br>
+						<label class="ms-1" for="allCheck">모두 선택</label>
+						<button type="button" id="selectDelete_btn"class="btn btn-outline-success" style="float:right">선택 삭제</button>
+						
 					
 					<script>
 					$("#allCheck").click(function() {
@@ -76,20 +79,8 @@ $("#check_module").on('click', function() {
 					
 					
 					</script>		
-							
-							
-							
-					</div>
 					
-			
-					
-					<!-- 모두 선택 체크박스 끝  -->
-					
-					<!-- 선택 삭제 버튼  -->
-					
-					<div class="delBtn">
-						<button type="button" id="selectDelete_btn"class="btn btn-outline-success" style="float:right">선택 삭제</button>
-					<script>
+						<script>
 					
 					 $("#selectDelete_btn").click(function(){
 					  var confirm_val = confirm("정말 삭제하시겠습니까?");
@@ -125,13 +116,16 @@ $("#check_module").on('click', function() {
 						 });
 						</script>
 				
-
-		
-					
+							
+							
+							
 					</div>
+					
+			
+					
+					<!-- 모두 선택 체크박스 끝  -->
 					</div>
 					<br>
-					<!-- 선택 삭제 버튼 end -->
 					
 					
 					
@@ -146,10 +140,10 @@ $("#check_module").on('click', function() {
 						</c:when>
 					<c:otherwise>
 				<c:forEach items="${cartList}" var="cartList">
-				<input type="hidden" name="cgNo" value="${cartList.gNo }">
 
 						<!-- 카드 부분 체크박스 -->
 					<div class="col-sm mt-5">
+					<label for=""></label>
 						<input type="checkbox" name="chBox" class="chBox" data-cartNum="${cartList.cartNo }" />
 						
 					<script>
@@ -163,12 +157,12 @@ $("#check_module").on('click', function() {
 					<!--  카드부분 체크박스 끝  -->
 					
 					
-					<div class="card h-100 text-center" style="width:20rem; margin: 0 auto; align-items: center;">
+					<div class="card h-100 text-center" style="width:30rem; margin: 0 auto; align-items: center;">
 						<img class="card-img-top"
-							src="resources/${cartList.gImg }" alt="Card image cap" style="width:20rem;">
+							src="resources/${cartList.gImg }" alt="Card image cap" style="width:30rem;">
 						<div class="card-body">
 							<p class="card-text">
-								
+								<input type="hidden" name="cgNo" value="${cartList.gNo }">
 								상품명 :${cartList.gName } <br> 
 								가격 :
 									<fmt:formatNumber pattern="###,###,###" value="${cartList.gPrice}" />원<br>
@@ -245,14 +239,13 @@ $("#check_module").on('click', function() {
 						
 					<div class="orderOpen">
 					
-						<button type="button" class="orderOpen_btn">주문 정보 입력</button>
-						
+						<button type="button" id="orderOpen_btn" class="btn btn-outline-success" >주문 정보 입력</button>
 						
 						<script>
-						$(".orderOpen_btn").click(function(){
+						$("#orderOpen_btn").click(function(){
 						
-							$(".orderInfo").slideDown();
-							$(".orderOpen_btn").slideUp();
+							$("#orderInfo").slideDown();
+							$("#orderOpen_btn").slideUp();
 							
 							
 						});
@@ -263,51 +256,32 @@ $("#check_module").on('click', function() {
 		
 	
 				<!--  카드박스 끝 -->
-			<div class="orderInfo" style="display:none;">	
 				
-			<h1 class="display-7 mt-5 ms-5">주문 정보 입력</h1><button id="init_btn">정보초기화</button>
-         
-         				<script>				
-         				
-         				$("#init_btn").click(function(){
-						
-							$("#orderName").val() == "";
-							
-							
-						});
-         				
-         				
-         				
-         				</script>
-       	         <div class="container " style="font-size:30px;">
+			<br>
 			
 			
-				</div>
- 			  
-
- 			  
- 			  
- 			  
- 			  
+			
+			<div class="container ms-5"id="orderInfo" style="display:none;">	
+				
+			<h1 class="display-7 mt-5">주문 정보 입력</h1>
  			  	
-              <div class="ms-5 container mt-2 boarder=1" id="sameAddr" >
+              <div class="container mt-2 boarder=1" id="sameAddr" >
               	<form id="goodsOrder" name="goodsOrder" action="goodsOrder.do" method="post">
               	<input type="hidden" name="amount" value="${sum }">
-              	<input type="hidden" id="test" value="">  
               	
               	<input type="hidden" name="mNo" value="${login.mNo }">
              <c:forEach items="${cartList}" var="cartList">
               	<input type="hidden" name="gNo" value="${cartList.gNo }">
               	</c:forEach>
-       		  <table>
+       		  <table style="">
 		        <tr>
-		        <th>배송 받는 사람</th>
-		        <td><input type="text" name="orderName" style="width:300px; height:40px"value="${login.mName }" ></td>
+		        <th>받는 사람</th>
+		        <td><input type="text" name="orderName" style="width:400px; height:40px"value="${login.mName }" ></td>
 		        </tr>
 		        
 				<tr>
 				<th>주소</th>
-				<td><input type="text" id="mAddr1"	  name="orderAddr1" style="width:100px; height:40px" value="${login.mAddr1 }">
+				<td><input type="text" id="mAddr1"	  name="orderAddr1" style="width:200px; height:40px" value="${login.mAddr1 }">
 				<input class="btn btn-outline-success" type="button" name="idCheck" value="주소검색"
 				onclick="execPostCode();"
 				
@@ -319,17 +293,17 @@ $("#check_module").on('click', function() {
 				
 				<tr>
 				<th>기본주소</th>
-				<td><input type="text"  id="mAddr2"	 name="orderAddr2" style="width:300px; height:40px" value="${login.mAddr2 }"></td>
+				<td><input type="text"  id="mAddr2"	 name="orderAddr2" style="width:400px; height:40px" value="${login.mAddr2 }"></td>
 				</tr>
 				
 				<tr>
 				<th>상세주소</th>
-				<td><input type="text"  id="mAddr3"	  name="orderAddr3" style="width:300px; height:40px" value="${login.mAddr3 }"></td>
+				<td><input type="text"  id="mAddr3"	  name="orderAddr3" style="width:400px; height:40px" value="${login.mAddr3 }"></td>
 				</tr>
 		        
 		        <tr>
 		        <th>연락처</th>
-		        <td><input type="text" name="orderPhone" style="width:300px; height:40px"value="${login.mPhone}"></td>
+		        <td><input type="text" name="orderPhone" style="width:400px; height:40px"value="${login.mPhone}"></td>
 		        </tr>
 
 		        </table>
@@ -344,8 +318,41 @@ $("#check_module").on('click', function() {
   	<br>
        <div class="container text-center">
        <div id="test2"></div>
-     <button type="button" id="check_module">카드 결제하기</button>  
+     <button type="button" id="check_module" class="btn btn-outline-success btn-lg">카드 결제하기</button>
+    <input type="hidden" id="test" value="0">  
+     
 	<button type="submit" class="btn btn-outline-success btn-lg" id="submit">완료</button>
+	<button type="button" class="btn btn-outline-success btn-lg"  onclick="location.href='cartList.do?mNo=${login.mNo}'">취소</button>
+   	
+   								<!-- 완료버튼 눌렀을 시에  -->
+   								
+   								
+   								<script>
+   								$("#submit").on('click', function(){
+   									 
+   									 var payYn = $('#test').val();
+   									 console.log(payYn);
+   									 
+   									if(payYn == '0') {
+   										alert("결제를 진행해 주세요");
+   										return false;
+   									}else{
+   										return true;
+   									}
+   									 
+   								 });
+   								
+   								</script>
+								<script>
+								$("#cancel_btn").click(function(){
+									
+								 $("#orderInfo").slideUp();
+								 $("#orderOpne_btn").slideDown();
+								});      
+								</script>
+       
+	
+	
 	
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
@@ -386,13 +393,13 @@ $("#check_module").on('click', function() {
 	*/
 	name: '애니멀프렌즈',
 	//결제창에서 보여질 이름
-	amount: ${sum},
+	amount: '${sum}',
 	//가격
-	buyer_email: '',
+	buyer_email: '${login.mEmail}',
 	buyer_name: '${login.mName}',
 	buyer_tel: '${login.mPhone}',
-	buyer_addr: '서울특별시 강남구 삼성동',
-	buyer_postcode: '123-456',
+	buyer_addr: '${login.mAddr2}',
+	buyer_postcode: '${login.mAddr1}',
 	m_redirect_url: 'https://www.yourdomain.com/payments/complete'
 	/*
 	모바일 결제시,
@@ -430,16 +437,6 @@ $("#check_module").on('click', function() {
 	});
 	</script>
 
-   	<button type="button" class="btn btn-outline-success btn-lg" id="cancel_btn">취소</button>
-   	
-								<script>
-								$("#cancel_btn").click(function(){
-									
-								 $(".orderInfo").slideUp();
-								 $(".orderOpne_btn").slideDown();
-								});      
-								</script>
-       
        
        </div>
        

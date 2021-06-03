@@ -66,7 +66,7 @@
 <div class="contentDiv">
 
 	<div class="container text-center">
-		<h1 class="mt-5">GOODS</h1>
+		<h1 class="mt-5">GOODS 관리</h1>
 		<div id="horisonLine"></div>
 	</div>
 

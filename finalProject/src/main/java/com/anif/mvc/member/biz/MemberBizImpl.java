@@ -98,12 +98,12 @@ public class MemberBizImpl implements MemberBiz {
 	public void sendEmail(MemberDto dto, String div) throws Exception {
 		// Mail Server 설정
 		String charSet = "utf-8";
-		String hostSMTP = "smtp.naver.com"; //구글 이용시 smtp.gmail.com
-		String hostSMTPid = "guswjd7058@naver.com";
-		String hostSMTPpwd = "1q2w3e4r!";
+		String hostSMTP = "smtp.gmail.com"; //구글 이용시 smtp.gmail.com
+		String hostSMTPid = "aiden940418@gmail.com";
+		String hostSMTPpwd = "Tkfkdgo12!";
 
 		// 보내는 사람 EMail, 제목, 내용
-		String fromEmail = "admin@naver.com";
+		String fromEmail = "admin@gmail.com";
 		String fromName = "Animal Friends";
 		String subject = "";
 		String msg = "";
@@ -125,7 +125,7 @@ public class MemberBizImpl implements MemberBiz {
 			email.setCharset(charSet);
 			email.setSSL(true);
 			email.setHostName(hostSMTP);
-			email.setSmtpPort(587); //구글 이용시 465
+			email.setSmtpPort(465); //구글 이용시 465
 
 			email.setAuthentication(hostSMTPid, hostSMTPpwd);
 			email.setTLS(true);
@@ -168,4 +168,12 @@ public class MemberBizImpl implements MemberBiz {
 			out.close();
 		}
 	}
+
+	@Override
+	public int updatemPw(MemberDto dto) throws Exception {
+		
+		return dao.updatemPw(dto);
+	}
+
+
 }

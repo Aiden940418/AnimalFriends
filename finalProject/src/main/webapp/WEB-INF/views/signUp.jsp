@@ -28,7 +28,7 @@
 
 
 /* 		$("#submit").on("click", function(){
-			if($("#mId").val()==""){
+			if($(''#mId').val()==''){
 				alert("아이디를 입력해주세요.");
 				$("#mId").focus();
 				return false;
@@ -308,9 +308,11 @@ function execPostCode() {
 
 			
 			<table style="margin-left:400px">
+			
 						
 				<tr>
-				<th>아이디</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">아이디</button></th>
 				<td><input id="mId" type="text"  name="mId" style="width:300px; height:40px">
 				</td>
 				<td><button class="idChk btn btn-outline-success" onclick="fn_idChk();" value="N"type="button" name="idChk" id="idChk" style="font-size:20px">중복확인</button>
@@ -318,36 +320,42 @@ function execPostCode() {
 				</tr>
 				
 				<tr>
-				<th>비밀번호</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">비밀번호</button></th>
 				<td><input class="mPw" type="password"  name="mPw" id="pw" style="width:300px; height:40px">
 				</td>
 				</tr>
 				
 				<tr>
-				<th>비밀번호 확인</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">비밀번호 확인</button></th>
 				<td><input type="password"  id="pw2" style="width:300px; height:40px"></td>
 				</tr>
 				
 				<tr>
-				<th>이름</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">이름</button></th>
 				<td><input type="text"  id="mName" name="mName" 	style="width:300px; height:40px">
 				</td>
 				</tr>
 				
 				<tr>
-				<th>닉네임</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">닉네임</button></th>
 				<td><input type="text" id="mNick"  name="mNick" style="width:300px; height:40px">
 				</td>
 				</tr>
 				
 				<tr>
-				<th>이메일</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">이메일</button></th>
 				<td><input type="text" id="mEmail"  name="mEmail" style="width:300px; height:40px">
 				</td>
 				</tr>
 				
 				<tr>
-				<th>주소</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">주소</button></th>
 				<td><input type="text" id="mAddr1"	  name="mAddr1" style="width:100px; height:40px">
 				<input class="btn btn-outline-success" type="button" name="idCheck" value="주소검색"
 				onclick="execPostCode();"
@@ -359,17 +367,20 @@ function execPostCode() {
 				</tr>
 				
 				<tr>
-				<th>기본주소</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">기본주소</button></th>
 				<td><input type="text"  id="mAddr2"	 name="mAddr2" style="width:300px; height:40px"></td>
 				</tr>
 				
 				<tr>
-				<th>상세주소</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">상세주소</button></th>
 				<td><input type="text"  id="mAddr3"	  name="mAddr3" style="width:300px; height:40px"></td>
 				</tr>
 				
 				<tr>
-				<th>전화번호</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">전화번호</button></th>
 				<td><input type="text" id="mPhone"  name="mPhone" style="width:300px; height:40px"></td>
 				
 				</tr>
@@ -398,7 +409,8 @@ function execPostCode() {
 			
 				<table style="margin-left:400px">
 				<tr>
-				<th>아이디</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">아이디</button></th>
 				<td><input class="mId"type="text" id="sId" name="mId" style="width:300px; height:40px">
 				</td>
 				<td><button class="btn btn-outline-success" onclick="fn_sidChk();" id="sidChk" type="button" name="idChk" value="N" style="font-size:20px">중복확인</button>
@@ -406,36 +418,42 @@ function execPostCode() {
 				</tr>
 				
 				<tr>
-				<th>비밀번호</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">비밀번호</button></th>
 				<td><input type="password"  name="mPw" id="pw3" style="width:300px; height:40px">
 				</td>
 				</tr>
 				
 				<tr>
-				<th>비밀번호 확인</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">비밀번호 확인</button></th>
 				<td><input type="password"  id="pw4" style="width:300px; height:40px"></td>
 				</tr>
 				
 				<tr>
-				<th>이메일</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">이메일</button></th>
 				<td><input type="text" id="mEmail"  name="mEmail" style="width:300px; height:40px">
 				</td>
 				</tr>
 				
 				<tr>
-				<th>대표자명</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">대표자명</button></th>
 				<td><input type="text"  name="mName" 	style="width:300px; height:40px">
 				</td>
 				</tr>
 				
 				<tr>
-				<th>보호소이름</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">보호소이름</button></th>
 				<td><input type="text"  name="mNick" style="width:300px; height:40px">
 				</td>
 				</tr>
 				
 				<tr>
-				<th>보호소 주소</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">보호소 주소</button></th>
 				<td><input type="text"  name="mAddr1" style="width:100px; height:40px">
 				<input class="btn btn-outline-success" type="button" name="idCheck" value="주소검색"
 				onclick="execPostCode();" style="font-size:20px">
@@ -444,29 +462,34 @@ function execPostCode() {
 				</tr>
 				
 				<tr>
-				<th>기본주소</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">기본주소</button></th>
 				<td><input type="text"  name="mAddr2" style="width:300px; height:40px"></td>
 				</tr>
 				
 				<tr>
-				<th>상세주소</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">상세주소</button></th>
 				<td><input type="text"  name="mAddr3" style="width:300px; height:40px"></td>
 				</tr>
 				
 				<tr>
-				<th>전화번호</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">전화번호</button></th>
 				<td><input type="text"  name="mPhone" style="width:300px; height:40px"></td>
 				
 				</tr>
 				
 				<tr>
-				<th>사업자번호</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">사업자번호</button></th>
 				<td><input type="text"  id="sBisNum" name="sBisNum" style="width:300px; height:40px"></td>
 				
 				</tr>
 				
 				<tr>
-				<th>판매업번호</th>
+				<th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">판매업번호</button></th>
 				<td><input type="text"  id="sSellNum" name="sSellNum" style="width:300px; height:40px"></td>
 				
 				</tr>

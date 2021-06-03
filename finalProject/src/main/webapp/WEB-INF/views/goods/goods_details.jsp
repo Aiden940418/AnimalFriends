@@ -82,6 +82,10 @@
    var gNo = $("#gNo").val();
    var cartStock = $("#cartStock").val();
       
+   if(cartStock == 0) {
+	   alert("수랑을 선택 해 주세요");
+	   return false;
+   }
    var data = {
 	 mNo : mNo,	   
      gNo : gNo,
