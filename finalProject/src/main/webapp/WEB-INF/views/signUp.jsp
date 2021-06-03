@@ -23,80 +23,25 @@
 	
 </style>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script>
+
+
+ 		$("#submit2").click(function () {
+ 		
+ 			alert("왜 안되니");
+ 		
+		
+		});
+
+
+</script>
+ 
+
+
 <script type="text/javascript">
 
-
-/* 		$("#submit").on("click", function(){
-			if($(''#mId').val()==''){
-				alert("아이디를 입력해주세요.");
-				$("#mId").focus();
-				return false;
-			}
-			if($("#pw").val()==""){
-				alert("비밀번호를 입력해주세요.");
-				$("#mPw").focus();
-				return false;
-			}
-			
-			
-			if($("#pw2").val() == "") {
-				alert("비밀번호 확인을 입력 해주세요");
-				$("#pw2").focus();
-				return false;
-			}
-			if($("#mName").val()==""){
-				alert("성명을 입력해주세요.");
-				$("#mName").focus();
-				return false;
-			}
-			
-			if($("#mNick").val()==""){
-				alert("닉네임을 입력해주세요");
-				$("#mName").focus();
-				return false;
-			}
-			
-			if($("#mAddr1").val()==""){
-				alert("주소를 입력해주세요.");
-				$("#mAddr1").focus();
-				return false;
-			}
-			
-			if($("#mAddr2").val()==""){
-				alert("주소를 입력해주세요.");
-				$("#mAddr2").focus();
-				return false;
-			}
-			
-			if($("#mAddr3").val()==""){
-				alert("상세 주소를 입력해주세요.");
-				$("#mAddr3").focus();
-				return false;
-			}
-			
-			if($("#mPhone").val()==""){
-				alert("전화번호를 입력해주세요.");
-				$("#mPhone").focus();
-				return false;
-			}
-			
-			
-			
-			var idChkVal = $("#idChk").val();
-			if(idChkVal == "N"){
-				alert("중복확인 버튼을 눌러주세요.");
-			}else if(idChkVal == "Y"){
-				$("#submit").submit();
-			}
-		});
-	}) */
-
-
- 
- 
- //아이디 중복체크 ajax
-
+//아이디 중복체크 ajax
 function fn_idChk(){
 	$.ajax({
 		url : "idChk.do",
@@ -391,7 +336,7 @@ function execPostCode() {
 			
 			<div class="container mt-5">
 			
-			<button class="btn btn-outline-success" type="submit" id="submit" value="일반가입하기">일반가입하기</button>
+			<button class="btn btn-outline-success" type="submit" id="submit2" value="일반가입하기">일반가입하기</button>
 			<button class="btn btn-outline-success" type="button" value="뒤로가기" onclick="location.href='loginForm.do'">뒤로가기</button>
 			
 			

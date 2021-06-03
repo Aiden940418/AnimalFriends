@@ -3,6 +3,9 @@
 <%@ include file="../includes/header_R.jsp" %>   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+
  
  <title>GOODS</title>
  
@@ -58,8 +61,16 @@
 					</div>
 					<div class="col-6">
 						<div class="btn-group float-end">
-							<button type="button" class="btn btn-outline-success mt-3  " onclick="location.href='cartList.do?mNo=${login.mNo}'">
+							<button id="goCart" type="button" class="btn btn-outline-success mt-3  " onclick="location.href='cartList.do?mNo=${login.mNo}'">
 								나의 장바구니 보기</button>
+								
+								
+		
+								
+								
+								
+								
+							
 						</div>
 					</div>
 				</div>

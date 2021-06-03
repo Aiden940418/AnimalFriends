@@ -357,7 +357,7 @@ public class GoodsController {
 	 
 	 cartBiz.cartAllDelete(mNo);
 	 
-	 return "mypage/mypage_mygoodsBuyList";  
+	 return "redirect:orderList.do";  
 	}
 	
 	

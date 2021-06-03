@@ -202,6 +202,7 @@ $("#check_module").on('click', function() {
 						</div>
 					</div>
 				<c:set var="sum" value="${sum + (cartList.gPrice * cartList.cartStock) }" />
+			
 					
 			</c:forEach>
 		</c:otherwise>
@@ -230,8 +231,8 @@ $("#check_module").on('click', function() {
 					<div class="listResult">
 					
 						<div class="sum float-sm-end md-5"> 
-						
-							총 합계 : <fmt:formatNumber pattern="###,###,###" value="${sum }"/>원 
+							<input type="text" id="sum"value="${sum}">
+							총 합계 : <fmt:formatNumber pattern="###,###,###"  value="${sum }"/>원 
 						</div>
 					</div>
 					
@@ -358,6 +359,21 @@ $("#check_module").on('click', function() {
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 	<script>
 	$("#check_module").click(function () {
+		
+		var payYn = $('#test').val();
+		if(payYn == 1) {
+			alert("결제가 완료되었습니다.\n 완료버튼을 눌러주세요");
+			return false;
+		}
+		
+		
+		var sumAmount = $('#sum').val();
+		
+			if(sumAmount == '') {
+				alert("장바구니가 비어있습니다. \n 장바구니에 상품을 담아보세요^^");
+				return false;
+			}
+		
 	var IMP = window.IMP; // 생략가능
 	IMP.init('imp87221885');
 	// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -407,34 +423,28 @@ $("#check_module").on('click', function() {
 	(카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
 	*/
 	}, function (rsp) {
-		debugger;
 	console.log(rsp);
 	if (rsp.success) {
-	$("#test").val("1");
-	$("#test2").append("<p>succes</p>");
-	/*	
-	var msg = '결제가 완료되었습니다. 완료버튼을 눌러주세요';
-	
-	msg += '고유ID : ' + rsp.imp_uid;
-	msg += '상점 거래ID : ' + rsp.merchant_uid;
-	msg += '결제 금액 : ' + rsp.paid_amount;
-	msg += '카드 승인번호 : ' + rsp.apply_num;
-	 */
-	
-		if($("#test").val() == 1) {
-			var form = $("#goodsOrder");
-			form.submit();
-		}
-	
+	$("#test").val("1");	
+	var msg = '결제가 완료되었습니다! \n완료버튼을 눌러주세요\n';
+	msg += '<<<----------------------------->>> \n';
+	msg += '구매처 :' + rsp.name+'\n';
+	msg += '구매자 이름 : ' + rsp.buyer_name+'\n';
+	msg += '결제 금액 : ' + rsp.paid_amount+'\n';
+	msg += '<<<----------------------------->>>'
+	 
+		alert(msg);
 
-	
-	
 	} else {
 	var msg = '결제에 실패하였습니다.';
 	msg += '에러내용 : ' + rsp.error_msg;
+	
+		alert(msg);
 	}
+
 	});
 	});
+
 	</script>
 
        
