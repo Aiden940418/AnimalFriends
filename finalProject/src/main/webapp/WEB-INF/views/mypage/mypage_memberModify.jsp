@@ -179,6 +179,8 @@ function execPostCode() {
 				         <input type="submit" class="btn btn-outline-success" value="완료">
 				         <input type="button" class="btn btn-outline-success" value="취소" onclick="location.href='myMemberModityPw.do'">
 				         <button type="button" class="btn btn-outline-success" id="delete">회원탈퇴</button>
+				        <button type="button" class="btn btn-outline-success" id="pwUpdate">비밀번호 변경</button>
+				         
 					         <script type="text/javascript">
 					         
 					         $("#delete").on("click", function(){
@@ -308,11 +310,11 @@ function execPostCode() {
 		          <script type="text/javascript">
 			         
 			         $("#pwUpdate").on("click", function(){
-						  var confirm_val2 = confirm("비밀번호를 변경하시겠습니까?");
+						  var confirm_value = confirm("비밀번호를 변경하시겠습니까?");
 			        	  
-						  console.log(confirm_val2);
-			        	 if(confirm_val2) {
-			        		 location.href="memberPwupdateCheck.do";
+						  console.log(confirm_value);
+			        	 if(confirm_value) {
+			        		 location.href="memberPwUpdateCheck.do";
 			        	 
 			        	 }else {
 			        		 

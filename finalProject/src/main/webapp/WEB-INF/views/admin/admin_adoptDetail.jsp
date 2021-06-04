@@ -60,16 +60,15 @@
 <div class="container text-center">
 	
 	<div class="container text-center">
-			<h1 class="mt-5">입양 공고 상세</h1><br>
+			<h1 class="mt-5">관리자 입양 공고 상세</h1><br>
 			<div id="horisonLine"></div>
 	</div>
 	
 	<div class="row">
 		<div class="col mt-5">
 			<div class="btn-group float-end">
-				<button type="button" class="btn btn-outline-success float-end ms-1" onclick="location.href='myAdoptDelete.do?aNo=${dto.aNo}'">삭제하기</button>
-				<button type="button" class="btn btn-outline-success md-5 float-end ms-1" onclick="location.href='myAdoptUpdateForm.do?aNo=${dto.aNo}'">수정하기</button>
-				<button type="button" class="btn btn-outline-success md-5 ms-1 float-end " onclick="location.href='myAdoptList.do?mNo=${login.mNo}'">목록보기</button>
+				<button type="button" class="btn btn-outline-success float-end ms-1" onclick="location.href='adminAdoptDelete.do?aNo=${dto.aNo}'">삭제하기</button>
+				<button type="button" class="btn btn-outline-success md-5 ms-1 float-end " onclick="location.href='adminAdopt.do'">목록보기</button>
 			</div>
 		</div>
 	</div>
@@ -112,7 +111,7 @@
 						<div class="card-body text-dark ">
 							<table align="center">
 								<tr>
-									<td><h3>${dto.anmName}의 정보</h2></td>
+									<td><h2>${dto.anmName}의 정보</h2></td>
 								</tr>
 							</table>
 							<hr>

@@ -289,7 +289,8 @@ public class MypageController {
 	
 	//비밀번호 변경 페이지 이동 
 	
-	@RequestMapping(value="memberPwupdateCheck.do", method= RequestMethod.GET)
+	
+	@RequestMapping(value="memberPwUpdateCheck.do", method= RequestMethod.GET)
 	public String memberPwupdateCheck() {
 		return "mypage/mypage_memberPwupdateCheck";
 	}
@@ -307,7 +308,7 @@ public class MypageController {
 			
 			if (res > 0) { // 글 insert 성공 시
 				session.invalidate();
-				model.addAttribute("msg", "비밀번호 변경 성공! 다시 로그인해주세요");
+				model.addAttribute("msg", "비밀번호 변경 성공! \n 다시 로그인해주세요");
 				model.addAttribute("url", "/loginForm.do");
 			} else {  //글 insert 실패 시
 				model.addAttribute("msg", "비밀번호 변경 실패 ");

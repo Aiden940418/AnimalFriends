@@ -143,7 +143,7 @@
 	<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
 		   			<input type="checkbox" class="btn-check btn-outline-success" name="allCheck" id="allCheck" autocomplete="off">
 		   				<label class="btn btn-outline-success ms-1" for="allCheck" style="margin:0px;">전체 선택</label> 
-					<button type="button" id="selectDelete_btn ms-1" class="btn btn-outline-success">선택 삭제</button>
+					<button type="button" id="selectDelete_btn" class="btn btn-outline-success ms-1">선택 삭제</button>
 							<script>
 								$("#allCheck").click(function() {
 									

@@ -384,6 +384,30 @@ public class AdoptController {
 		return "admin/admin_adoptList";
 	}
 	
+	
+	//어드민 입양공고 삭제 
+	@RequestMapping("/adminAdoptDelete.do")
+	public String AdminAdoptDelete(int aNo,HttpSession session) {
+		
+		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		
+		
+		
+		int res = biz.myAdoptDelete(aNo);
+		
+		if(res>0) {
+			return "redirect:adminAdopt.do";
+			
+		}else {
+					
+			return "redirect:adminAdoptDetail.do?aNo="+aNo;
+			
+		}
+		
+		
+		
+		
+	}
 
 	
 	

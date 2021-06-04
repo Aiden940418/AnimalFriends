@@ -88,6 +88,10 @@
 	<!-- 입양공고 카테고리 찾기 버튼 -->
 	<div class="btn-group">
 	<button type="submit" class="btn btn-outline-success mt-3" id="search" >찾기</button>
+	<div class="float-end">
+	<button type="button" class="btn btn-outline-success mt-3 float-end "onclick="location.href='myAdoptList.do?mNo=${login.mNo}'">
+					나의 입양공고 보기</button>
+	</div>
 	
 	</div>
 	<!-- 입양공고 카테고리 찾기 버튼 END -->
