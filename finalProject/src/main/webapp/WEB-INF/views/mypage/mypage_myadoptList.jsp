@@ -49,7 +49,6 @@
 
 
 	<!-- 페이지 내용 부분 -->
-	<div class="contentDiv">
 	
 		<div class = "container text-center" id="adtNoti">
 			<h1 class="text-center">내가 쓴 입양 공고</h1>
@@ -91,7 +90,6 @@
 			</div>
 		</div>
 	
-	</div>
 
 
 

@@ -13,6 +13,7 @@
      <result property="mJoinYn" column="MJOINYN" />
      <result property="mId" column="MID"/>
      <result property="mPw" column="MPW"/>
+     <result property="mEmail" column="MEMAIL"/>
      <result property="mArrd1" column="MADDR1"/>
      <result property="mArrd2" column="MADDR2"/>
      <result property="mArrd3" column="MADDR3"/>
@@ -29,7 +30,7 @@
 
    <select id="login" parameterType="memberDto" resultType="memberDto">
   
-  	SELECT MNO, MROLE, MJOINYN, MID, MPW, MADDR1, MADDR2, MADDR3, MNAME, MNICK, MPHONE, SBISNUM, SSELLNUM
+  	SELECT MNO, MROLE, MJOINYN, MID, MPW, MEMAIL, MADDR1, MADDR2, MADDR3, MNAME, MNICK, MPHONE, SBISNUM, SSELLNUM
   	FROM MEMBER
   	WHERE MID = #{mId}
   	AND MPW = #{mPw} AND MJOINYN = 'Y'
@@ -41,7 +42,7 @@
   	
   	
   	INSERT INTO MEMBER
-  	VALUES(MNO.NEXTVAL, #{mRole}, #{mJoinYn}, #{mId}, #{mPw},#{mAddr1}, #{mAddr2}, #{mAddr3},#{mName},#{mNick}, #{mPhone}, NULL,NULL )
+  	VALUES(MNO.NEXTVAL, #{mRole}, #{mJoinYn}, #{mId}, #{mPw}, #{mEmail}, #{mAddr1}, #{mAddr2}, #{mAddr3},#{mName},#{mNick}, #{mPhone}, NULL,NULL )
   	
   	
   	</insert>
@@ -52,7 +53,7 @@
   	
   	INSERT
   	INTO MEMBER
-  	VALUES(MNO.NEXTVAL, #{mRole}, #{mJoinYn}, #{mId}, #{mPw},#{mAddr1}, #{mAddr2}, #{mAddr3},#{mName},#{mNick}, #{mPhone}, #{sBisNum},#{sSellNum} )
+  	VALUES(MNO.NEXTVAL, #{mRole}, #{mJoinYn}, #{mId}, #{mPw}, #{mEmail}, #{mAddr1}, #{mAddr2}, #{mAddr3},#{mName},#{mNick}, #{mPhone}, #{sBisNum},#{sSellNum} )
   	
   	
   	</insert>
@@ -84,7 +85,7 @@
   	
   	<update id="memberUpdate" parameterType="memberDto">
   	
-  	UPDATE MEMBER SET MNICK = #{mNick}, MPHONE = #{mPhone}, MADDR1 = #{mAddr1}, MADDR2 = #{mAddr2}, MADDR3 = #{mAddr3}
+  	UPDATE MEMBER SET MNICK = #{mNick}, MEMAIL = #{mEmail}, MPHONE = #{mPhone}, MADDR1 = #{mAddr1}, MADDR2 = #{mAddr2}, MADDR3 = #{mAddr3}
   	WHERE MNO = #{mNo}
   	
   	
@@ -122,8 +123,6 @@
   	
   	UPDATE MEMBER SET MJOINYN = 'N' 
   	WHERE MID = #{mId}
-  	
-  	
   	</update>
   	
   	
@@ -132,10 +131,24 @@
 	  	WHERE MNO = #{mNo}
   	</select>
    
-   
+   <!-- 비밀번호 변경 -->
+	<update id="updatemPw" parameterType="memberDto">
+		UPDATE MEMBER SET mPw = #{mPw} WHERE mId = #{mId}
+	</update>
     
+   <select id="idCheck" parameterType="String" resultType="MemberDto">
+   		SELECT * FROM MEMBER
+   		WHERE MID = #{mId}
+   </select>
    
-   
+   <select id="readMember" parameterType="String" resultType="MemberDto">
+   		SELECT * FROM MEMBER
+   		WHERE MID = #{mId}
+   </select>
+    
+    
+    
+    
    
   
   
