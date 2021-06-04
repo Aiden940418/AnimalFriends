@@ -5,7 +5,7 @@
 	<%@ include file="../includes/header_R.jsp" %>
 	
 
-<title>나의 입양 공고 상세</title>
+<title>관리자 입양 공고 상세</title>
 
  <!-- 메뉴 사이드바 스크립트 -->
  <script>

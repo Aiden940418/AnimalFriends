@@ -46,8 +46,9 @@ public class AdoptDaoImpl implements AdoptDao {
 		
 		try {
 			res = sqlSession.selectOne(NAMESPACE+"adoptDetail",aNo);
-			System.out.println(res);
+			System.out.println("무엇이 문제인가?"+res);
 		} catch (Exception e) {
+			System.out.println("너의 문제인가?");
 			e.printStackTrace();
 		}
 		

@@ -50,13 +50,13 @@
 				<div class="container dropdown ms-5 mt-4">
 
 		
-					<select id="cartStock" class="form-control ms-2 btn btn-outline-success btn-lg text-center" style="width:120px; text-align-last: center; vertical-align: middle;" name="수량선택">
+					<select id="cartStock" class="form-control ms-2 btn btn-outline-success btn-lg text-center" style="width:200px; text-align-last: center; vertical-align: middle;" name="수량선택">
 						<option value="0" >&nbsp;&nbsp;수량선택</option>
-						<option value="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1개</option>
-						<option value="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2개</option>
-						<option value="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3개</option>
-						<option value="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4개</option>
-						<option value="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5개</option>
+						<option value="1">&nbsp;&nbsp;1개</option>
+						<option value="2">&nbsp;&nbsp;2개</option>
+						<option value="3">&nbsp;&nbsp;3개</option>
+						<option value="4">&nbsp;&nbsp;4개</option>
+						<option value="5">&nbsp;&nbsp;5개</option>
 					</select><br>
 					<a href="" class="btn btn-outline-success btn-lg mt-4 "style="width:200px" id="addCart_btn">장바구니</a>
 						</div>
