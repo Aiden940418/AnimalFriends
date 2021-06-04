@@ -166,7 +166,8 @@
 			          		<div class="col-sm mt-5  text-center" >
 				          		<div class="card h-100 ms-5 text-center" style="width:430px; margin-top: -30px;" >
 					                <h3 class="card-header" >
-					                    <input type="checkbox" class="chBox" data-cartNum="${ dto.gNo}">
+					                    <input type="checkbox" class="chBox" data-cartNum="${ dto.gNo}" 
+					                    	style="position: relative; right: 122px;">
 					                    <script>
 											$(".chBox").click(function(){
 												$("#allCheck").prop("checked", false);
