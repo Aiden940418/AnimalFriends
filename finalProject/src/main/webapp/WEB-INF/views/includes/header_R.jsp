@@ -90,16 +90,16 @@
     top: 50%;
     
     }
-   
-/*    * {
-      box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-   }
-    */
-   #sidebar ul li a {
+	
+/* 	* {
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	}
+	 */
+	#sidebar ul li a {
     text-decoration: none;
-   }
+	}
 </style>
 <script type="text/javascript">
    // 전역변수 설정

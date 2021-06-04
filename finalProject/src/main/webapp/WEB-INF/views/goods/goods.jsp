@@ -33,7 +33,7 @@
     	width: 100%;
 	 }
 	 .btn-group{
-	 padding-top: 20px;
+	 padding-top: 0px;
 	 }
 
 </style>
