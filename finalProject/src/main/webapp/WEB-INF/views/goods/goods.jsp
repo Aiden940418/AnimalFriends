@@ -54,9 +54,9 @@
 							class="btn btn-outline-success dropdown-toggle mt-3"
 							data-bs-toggle="dropdown" aria-expanded="false" style="width:200px; ">카테고리</button>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">가방</a></li>
-							<li><a class="dropdown-item" href="#">옷</a></li>
-							<li><a class="dropdown-item" href="#">악세사리</a></li>
+							<li><a class="dropdown-item" href="goodsBagList.do">가방</a></li>
+							<li><a class="dropdown-item" href="goodsClothList.do">옷</a></li>
+							<li><a class="dropdown-item" href="goodsAccList.do">악세사리</a></li>
 						</ul>
 					</div>
 					<div class="col-6">
