@@ -308,7 +308,7 @@ public class AdoptController {
 	//ADOPT COMMENT INSERT
 
 	
-	@RequestMapping(value="/aCommentInsert.do", method= RequestMethod.GET)
+	@RequestMapping(value="/aCommentInsert.do", method= RequestMethod.POST)
 	public String aCommentInsert(ACommentDto comDto) {
 		
 		int res = abiz.aCommentInsert(comDto);
