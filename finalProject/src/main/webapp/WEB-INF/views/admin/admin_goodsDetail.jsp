@@ -43,33 +43,33 @@
                 <div class="card-body">
                   <p class="card-text">
                  <!-- 굿즈 이미지(서버에 업로드된 이미지 화면출력) -->
-
-			<img src="resources/${dto.gImg}" class="rounded float-start mt-4 ms-5" style="width:550px; height:400px; object-fit:cover;">
- 
+                <div style="width: 1140px; text-align: center;">
+					<div style="width: 600px; height: 400px; display: inline-block;">
+						<img src="resources/${dto.gImg}" class="rounded float-start mt-4 ms-5" style="width:100%; height:100%; object-fit:cover; overflow: hidden;">
+		 			</div>
+	 			</div>
+ 				
+   				</div>
+   				<div>
  				<div>
- 				<h1 class="display-4">${dto.gName }</h1>
- 				<div class="fs-3">상품분류:${dto.gCtgy}</div>
- 				<div class="fs-3">상품가격:${dto.gPrice }</div>
- 				<div class="fs-3">상품재고:${dto.gStock }</div>
- 			
+	 				<h1 class="display-4">${dto.gName }</h1>
+	 				<div class="fs-3">상품분류:${dto.gCtgy}</div>
+	 				<div class="fs-3">상품가격:${dto.gPrice }</div>
+	 				<div class="fs-3">상품재고:${dto.gStock }</div>
+ 				</div>
  				
  				<textarea class="mt-3" rows="5" cols="30" readonly="readonly" style="border:none; text-align:center;">${dto.gContent } </textarea><br>
    				
-   				
-   				
-		
-					
 					
 				<input type="hidden" id="mNo" name="mNo" value="${login.mNo}">
                 <input type="hidden" id="gNo" name="gNo" value="${dto.gNo}">
                  
 
 
-<!-- dropDown1-end -->
+				<!-- dropDown1-end -->
    				<br>
    				<br>
    				
-   				</div>
    				</div>
    
    
