@@ -194,14 +194,22 @@
 		
 		<div class="container text-center mt-4">	
 			<div id="horisonLine2"></div>
+		<h3>Comments</h3>
 		
+		<form action="aCommentInsert.do" method="POST">	
+			<input type="hidden" name="aNo" value="${dto.aNo }"/>
+			<input type="hidden" name="writer" value="${login.mNick}"/>
+				<div class="container mt-2" style="margin: auto; ">
+		<input class="mt-2" type="text" name="aComContent" style="width:650px; height:50px;">
+		<input class="btn btn-outline-success ms-2" type="submit" value="전송">
+	
 			<c:choose>
 					<c:when test="${empty reply}">
 						<h3>작성된 댓글이 없습니다.</h3>
 					</c:when>
 					<c:otherwise>
 						<c:forEach items="${reply}" var="com">
-							<table class="mt-2" style="margin-left:300px;">
+							<table class="mt-2" style="margin: auto;">
 								<tr>
 									<th style="width:50px;">${com.writer }</th>
 									<td style="width:400px">${com.aComContent }</td>
@@ -219,6 +227,8 @@
 						</c:forEach>
 					</c:otherwise>
 			</c:choose>
+				</div>
+			</form>
 		</div>
 		
 
