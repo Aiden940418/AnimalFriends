@@ -27,9 +27,10 @@ import com.anif.mvc.adopt.dto.AdoptDto;
 import com.anif.mvc.common.pagination.Criteria;
 import com.anif.mvc.common.pagination.PageMaker;
 import com.anif.mvc.diary.dto.DiaryDto;
+import com.anif.mvc.goods.biz.CartBizImpl;
 import com.anif.mvc.goods.dto.GoodsDto;
 import com.anif.mvc.member.dto.MemberDto;
-import com.anif.mvc.utils.UploadFileUtils;
+import com.anif.mvc.common.image.UploadFileUtils;
 
 @Controller
 public class AdoptController {
@@ -43,6 +44,8 @@ public class AdoptController {
 
 	@Resource(name="uploadPath")
 	private String uploadPath;  //이미지 업로드 화면출력 관련 
+	
+
 	
 
 	private Logger logger = LoggerFactory.getLogger(AdoptController.class);
@@ -139,7 +142,6 @@ public class AdoptController {
 		}
 		dto.setaImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		dto.setaThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
-		
 		
 		int res = biz.myadoptWrite(dto);
 

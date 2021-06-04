@@ -21,20 +21,10 @@
 	}
 </style>
 
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-
-<script>
-Kakao.init('c61ad7e8be237a7bcda1423bc4fa893e');
-Kakao.isInitialized();
 
 
-console.log(Kakao.isInitialized());
 
-
-</script>
-
-
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   function loginWithKakao() {
     Kakao.Auth.authorize({
       redirectUri: 'http://localhost:8787/mvc/main.do'
@@ -62,12 +52,9 @@ console.log(Kakao.isInitialized());
    
     
   }
-  </script>
+  </script> -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-
-
-
 
 
 
@@ -82,10 +69,6 @@ var loginVal= {
 		"mId":mId,
 		"mPw":mPw
 };
-
-
-
-
 
 
 //ajax를 통해 로그인 처리 
@@ -311,17 +294,17 @@ if(mId == null || mId =="" || mPw ==null || mPw =="") {
 	
 		<section class="Easy-sgin-in-wrap">
 			
-			<a id="custom-login-btn" href="javascript:loginWithKakao()">
+	<!-- 		<a id="custom-login-btn" href="javascript:loginWithKakao()">
   <img
     src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
     width="222"
   />
-</a>
+</a> -->
 <p id="token-result"></p>
 
   
 			<div>			
-				<span class="forget-msg">비밀번호를 잊으셨습니까? | </span>
+				<span class="forget-msg"><a href="findpw.do">비밀번호를 잊으셨습니까? |</a> </span>
 				<span class="register"><a href="signUpForm.do">회원가입</a></span>
 			</div>
 		</section>

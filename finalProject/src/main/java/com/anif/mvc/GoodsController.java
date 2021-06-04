@@ -33,7 +33,7 @@ import com.anif.mvc.goods.dto.OrderDetailDto;
 import com.anif.mvc.goods.dto.OrderListDto;
 import com.anif.mvc.goods.dto.ReviewDto;
 import com.anif.mvc.member.dto.MemberDto;
-import com.anif.mvc.utils.UploadFileUtils;
+import com.anif.mvc.common.image.UploadFileUtils;
 
 @Controller
 public class GoodsController {
@@ -357,7 +357,7 @@ public class GoodsController {
 	 
 	 cartBiz.cartAllDelete(mNo);
 	 
-	 return "mypage/mypage_mygoodsBuyList";  
+	 return "redirect:orderList.do";  
 	}
 	
 	

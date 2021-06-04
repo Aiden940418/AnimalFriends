@@ -48,7 +48,7 @@
 	 }
 	 
 	 #thrCtn {
- 		margin-top: 120px;	
+ 		margin-top: 160px;	
  	 }
 
 </style>
@@ -66,7 +66,8 @@
 	<!-- 가로줄 -->
 	<div id="horisonLine"></div>
 	
-		<form action="adminAdoptCtgy.do" method="GET">
+	<form action="adminAdoptCtgy.do" method="GET">
+	<div style="position: relative; top: 163px;">
 	<div class="btn-group">
 			<select id="aArea" name="aArea" class="btn btn-outline-success mt-3" style="width: 100px ">
 				<option value="0">지역</option>
@@ -109,6 +110,7 @@
 		});							
 		</script>
 	</div>
+	</div>
 	</form>
 	</div>
 	
@@ -137,6 +139,7 @@
 		<div class="btn-group">
 			<button type="submit" class="btn btn-outline-success mt-3 ">찾기</button>
 		</div> -->
+	<div style="position: relative; top: -28px; width: 171px; align-items: center; margit: 0px; left: -5px; float: right;">
 	<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
 		   			<input type="checkbox" class="btn-check btn-outline-success" name="allCheck" id="allCheck" autocomplete="off">
 		   				<label class="btn btn-outline-success" for="allCheck" style="margin:0px;">전체 선택</label> 
@@ -188,7 +191,7 @@
 								 });
 							</script>		
 			</div>
-		
+		</div>
 					
 				
 	</div>

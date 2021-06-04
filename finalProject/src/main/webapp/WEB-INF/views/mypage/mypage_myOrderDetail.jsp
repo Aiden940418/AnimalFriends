@@ -3,10 +3,32 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 	<!-- header -->
-	<%@ include file="../includes/header.jsp" %>
-	
-	<!-- leftMenuBar -->
-	<%@ include file="../includes/mypage_leftMenuBar.jsp"%>	
+	<%@ include file="../includes/header_R.jsp" %>
+
+ <title>나의 구매 리스트</title>
+
+ <!-- 메뉴 사이드바 스크립트 -->
+ <script>
+ 	$(function() {
+		$('#sidebarCollapse').on('click', function () {
+	      $('#sidebar').toggleClass('active');
+	  });
+
+	});
+
+ </script>
+
+<style>
+
+	#horisonLine {
+ 	    height: 10px;
+	    border-bottom: groove;
+	    position: relative;
+		top: 20px;
+    	width: 100%;
+	}
+
+</style>
 	<!-- 페이지 내용 부분 -->
 	<div class="contentDiv">
 	
@@ -123,7 +145,14 @@
 
 	<br><br><br>
 	<!-- footer -->
-	<%@ include file="../includes/footer.jsp" %>
+	<%@ include file="../includes/footer.jsp" %>   
+	<!-- header의 'Page 내용 div' 닫기 태그  -->
+	</div> 
+	
+ 	<!-- Page 내용 끝 -->
+	
+</body>
+</html>
 	
 	
 	
