@@ -93,7 +93,7 @@
 		
 		for(var i=0; i<result.length; i++){
 		var addHtml = "<div class='row'>"+
-						"<div class='col-2'></div>"+ 
+						"<div class='col-1'></div>"+ 
 						"<div class='col ms-4 my-3'>"+
 							"<div class='card border-success mb-3 text-dark' style='width: 800px;'>"+
 								"<div class='card-header bg-transparent border-success'>"+result[i].mnick+"</div>"+
@@ -429,7 +429,7 @@ function isLogin(){
 		
 			<div class="row">
 		
-			<div class="col-2"></div> <!-- 좌우 간격 맞추기 용도 -->
+			<div class="col-1"></div> <!-- 좌우 간격 맞추기 용도 -->
 				
 				<div class="col ms-4 my-3">
 				

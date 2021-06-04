@@ -26,13 +26,16 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script>
 
+$(document).ready(function() {
 
- 		$("#submit2").click(function () {
+ 		$('#submit2').click(function () {
  		
- 			alert("왜 안되니");
+ 		alert("오오오오오오오오");
  		
 		
 		});
+ 		
+};
 
 
 </script>
@@ -263,7 +266,7 @@ function execPostCode() {
 				<td><button class="idChk btn btn-outline-success" onclick="fn_idChk();" value="N"type="button" name="idChk" id="idChk" style="font-size:20px">중복확인</button>
 				</td>
 				</tr>
-				
+					
 				<tr>
 				<th><button type="button" class="btn btn-outline-success"
 									style="width:130px; pointer-events: none;">비밀번호</button></th>

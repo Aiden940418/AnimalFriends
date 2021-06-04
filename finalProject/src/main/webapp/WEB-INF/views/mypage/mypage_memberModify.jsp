@@ -110,7 +110,7 @@ function execPostCode() {
 			      <form action="memberUpdate.do" method="POST">
 			      	<input type="hidden" name="mNo" value="${login.mNo }">
 			               
-			         <table>
+			   <table  style="margin-left: -55px;">
 			                  
 			            <tr>
 			            <th><button type="button" class="btn btn-outline-success"
@@ -160,6 +160,12 @@ function execPostCode() {
 									style="width:130px; pointer-events: none;">상세주소</button></th>
 			            <td colspan="2"><input type="text"  id="mAddr3"  class="form-control my-1" name="mAddr3" value="${login.mAddr3}" style="width:300px; height:40px"></td>
 			            </tr>
+			            
+			            <tr>
+		            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">이메일</button></th>
+		            <td colspan="2"><input type="text" id="mPhone" class="form-control my-1" name="mEmail" value="${login.mEmail}" style="width:300px; height:40px"></td>
+		            </tr>
 			            
 			            <tr>
 			            <th><button type="button" class="btn btn-outline-success"
@@ -213,7 +219,7 @@ function execPostCode() {
 					<input type="hidden" name="mNo" value="${login.mNo }">
 		<input type="hidden" name="mNo" value="${login.mNo }">
            
-		            <table>
+		           <table  style="margin-left: -55px;">
 		            <tr>
 		            <th><button type="button" class="btn btn-outline-success"
 									style="width:130px; pointer-events: none;">아이디</button></th>

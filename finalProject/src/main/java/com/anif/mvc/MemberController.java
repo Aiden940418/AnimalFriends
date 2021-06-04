@@ -80,7 +80,7 @@ public class MemberController {
 			
 			session.invalidate();
 			
-			return "main";
+			return "main_R";
 
 			
 

@@ -290,7 +290,7 @@ public class MypageController {
 	//비밀번호 변경 페이지 이동 
 	
 	@RequestMapping(value="memberPwupdateCheck.do", method= RequestMethod.GET)
-	public String memberPwupdateCheck(String mId, String mPw) {
+	public String memberPwupdateCheck() {
 		return "mypage/mypage_memberPwupdateCheck";
 	}
 	

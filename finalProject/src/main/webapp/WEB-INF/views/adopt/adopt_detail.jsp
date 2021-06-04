@@ -107,12 +107,12 @@
 	
 	<div class="row">
 		
-				<div class="col-3"></div> <!-- 좌우 간격 맞추기 용도 -->
+			<div class="col-1"></div> <!-- 좌우 간격 맞추기 용도 -->
 				
 				<div class="col ms-4 my-3">
 				
 					<!-- 입양공고 카드(박스) 부분 -->
-					<div class="card border-success mb-3 text-dark" style="width: 800px;">
+					<div class="card border-success mb-5 me-1 text-dark" style="width: 800px;">
 						<div class="card-header bg-transparent border-success">
 						 	<div class="row">
 						 		<table>
@@ -120,7 +120,7 @@
 						 				<td><h3>${dto.aTitle }</h3></td>
 						 			</tr>
 						 			<tr align="right">
-						 				<td>등록 날짜: ${dto.aDate } / 조회수: ${dto.aCount} / 댓글 개수: </td>
+						 				<td>등록 날짜: ${dto.aDate } / 조회수: ${dto.aCount}</td>
 						 			</tr>
 						 		</table>
 						 	</div>

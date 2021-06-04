@@ -100,6 +100,7 @@
 	<!--  나의 입양공고 보기 button -->	
 		
 		<c:if test="${login != null }">
+		
 				<div class="btn-group float-end">
 					<button type="button" class="btn btn-outline-success mt-3 " 
 					onclick="location.href='myAdoptList.do?mNo=${login.mNo}'">
@@ -122,10 +123,10 @@
 					<div class="row">
 						<c:forEach items="${list}" var="dto">
 							<div class="col-sm mt-5">
-								<div class="card h-100 text-center" style="width:430px;  margin: 0 auto; align-items: center;">
+								<div class="card h-100 text-center" style="width:400px;  margin: 0 auto; align-items: center;">
 									<a href="adoptDetail.do?aNo=${dto.aNo}"> 
 									<img src="resources/${dto.aThumbImg }" class="card-img-top"
-											alt="..." style="width:430px;height:350px; border:none; object-fit:cover;"></a>
+											alt="..." style="width:400px;height:350px; border:none; object-fit:cover;"></a>
 									<div>
 									 	<img src="resources/images/adopt_count.png" style="width:30px;">${dto.aCount }
 									 	지역:${dto.aArea }
