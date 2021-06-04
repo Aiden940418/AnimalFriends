@@ -48,22 +48,22 @@
  <!-- 입양공고 전체 container  -->
 <div class="container mt-5">
 
-<!-- 입양공고 상단이름  -->
-<div class="container text-center">
-	<h1 class="mt-5">입양공고</h1>
-</div>
-<!-- 입양공고 상단이름 END -->
-
-
-<!--호리즌 라인 -->
-<div id="horisonLine"></div>
+	<!-- 입양공고 상단이름  -->
+	<div class="container text-center">
+		<h1 class="mt-5">입양공고</h1>
+	</div>
+	<!-- 입양공고 상단이름 END -->
+	
+	
+	<!--호리즌 라인 -->
+	<div id="horisonLine"></div>
 
 
 	<!-- 입양공고 지역 카테고리 시작 -->
 	<form action="adoptCtgy.do" method="GET">
 	
-	<div class="btn-group" >
-		<select id="aArea" name="aArea" class="btn btn-outline-success mt-3" style="width: 100px ">
+	<div class="input-group" style="width:400px;position: relative;top: 30px; " >
+		<select id="aArea" name="aArea" class="form-select form-select-sm btn-outline-success mt-3" style="width: 100px ">
 				<option value="0">지역</option>
 				<option value="서울동부">서울동부</option>
 				<option value="서울서부">서울서부</option>
@@ -71,22 +71,15 @@
 				<option value="서울북부">서울북부</option>
 				<option value="경기인천">경기인천</option>
 		</select>
-	</div>
 	<!-- 입양공고 지역 카테고리 끝  -->
 	
 	<!-- 입양공고 동물 카테고리 시작  -->
-	<div class="btn-group">
-		<select id="aType" name="aType" class="btn btn-outline-success mt-3" style="width: 100px ">
+		<select id="aType" name="aType" class="form-select form-select-sm btn-outline-success mt-3" style="width: 100px ">
 				<option value="0">동물종류</option>
 				<option value="강아지">강아지</option>
 				<option value="고양이">고양이</option>
 			</select>
-	</div>
-	
-	<!-- 입양공고 동물 카테고리 끝 -->
-	
 	<!-- 입양공고 카테고리 찾기 버튼 -->
-	<div class="btn-group">
 	<button type="submit" class="btn btn-outline-success mt-3" id="search" >찾기</button>
 	
 	</div>
@@ -101,7 +94,7 @@
 		
 		<c:if test="${login != null }">
 		
-				<div class="btn-group float-end">
+				<div class="btn-group float-end" style="position: relative; top: -46px;">
 					<button type="button" class="btn btn-outline-success mt-3 " 
 					onclick="location.href='myAdoptList.do?mNo=${login.mNo}'">
 					나의 입양공고 보기</button>
@@ -119,7 +112,7 @@
 	
 	
 				<c:otherwise>
-				  <div class="container mt-5" > 
+				  <div class="container mt-5" style="position: relative; right: -35px;"> 
 					<div class="row">
 						<c:forEach items="${list}" var="dto">
 							<div class="col-sm mt-5">

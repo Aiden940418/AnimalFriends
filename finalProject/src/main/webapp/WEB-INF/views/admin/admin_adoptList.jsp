@@ -68,8 +68,8 @@
 	
 	<form action="adminAdoptCtgy.do" method="GET">
 	<div style="position: relative; top: 163px;">
-	<div class="btn-group">
-			<select id="aArea" name="aArea" class="btn btn-outline-success mt-3" style="width: 100px ">
+	<div class="input-group" style="width:400px;">
+			<select id="aArea" name="aArea" class="form-select form-select-sm btn-outline-success mt-3" style="width: 100px ">
 				<option value="0">지역</option>
 				<option value="서울동부">서울동부</option>
 				<option value="서울서부">서울서부</option>
@@ -78,16 +78,12 @@
 				<option value="경기인천">경기인천</option>
 			</select>
 
-	</div>
-	<div class="btn-group " >
-			<select id="aType" name="aType" class="btn btn-outline-success mt-3" style="width: 100px ">
+			<select id="aType" name="aType" class="form-select form-select-sm btn btn-outline-success mt-3" style="width: 100px ">
 				<option value="0">동물종류</option>
 				<option value="강아지">강아지</option>
 				<option value="고양이">고양이</option>
 				
 			</select>
-	</div>
-	<div class="btn-group" >
 		<button type="submit" class="btn btn-outline-success mt-3" id="search" >찾기</button>
 		
 		
@@ -112,33 +108,12 @@
 	</div>
 	</div>
 	</form>
-	</div>
+</div>
 	
 
 <!-- Example single danger button -->
 	<div class="container" id="secCtn">
-		<!-- <div class="btn-group">
-			<button type="button"
-				class="btn btn-outline-success dropdown-toggle mt-3"
-				data-bs-toggle="dropdown" aria-expanded="false">지역</button>
-			<ul class="dropdown-menu">
-				<li><a class="dropdown-item" href="#">서울</a></li>
-				<li><a class="dropdown-item" href="#">인천</a></li>
-				<li><a class="dropdown-item" href="#">경기</a></li>
-			</ul>
-		</div>
-		<div class="btn-group ">
-			<button type="button"
-				class="btn btn-outline-success dropdown-toggle mt-3"
-				data-bs-toggle="dropdown" aria-expanded="false">동물 종류</button>
-			<ul class="dropdown-menu">
-				<li><a class="dropdown-item" href="#">강아지</a></li>
-				<li><a class="dropdown-item" href="#">고양이</a></li>
-			</ul>
-		</div>
-		<div class="btn-group">
-			<button type="submit" class="btn btn-outline-success mt-3 ">찾기</button>
-		</div> -->
+		
 	<div style="position: relative; top: -28px; width: 171px; align-items: center; margit: 0px; left: -5px; float: right;">
 	<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
 		   			<input type="checkbox" class="btn-check btn-outline-success" name="allCheck" id="allCheck" autocomplete="off">
@@ -209,13 +184,13 @@
 						<c:forEach items="${list}" var="dto">
 								<div class="col-sm mt-5">
 					    			<label for="cb1"></label>
-										<input type="checkbox" class="chBox" data-cartNum="${ dto.aNo}">
 						            	<script>
 											$(".chBox").click(function(){
 												$("#allCheck").prop("checked", false);							
 													})
 										</script>
 											<div class="card h-100 text-center" style="width:450px; margin: 0 auto; align-items: center;">
+												<input type="checkbox" class="chBox my-2" data-cartNum="${ dto.aNo}" style="position: relative;left: -132px;">
 													<a href="myAdoptDetail.do?aNo=${dto.aNo}"><img src="resources/${dto.aThumbImg }" class="card-img-top"
 														style="width:450px; height:350px; border:none; object-fit:cover;"></a>	
 												<div class="card-body">
