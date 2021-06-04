@@ -15,28 +15,6 @@
 	  });
 
 	});
- 	
-
-	//카테고리 찾기 버튼 	
-	$("#search").click(function() {
-								
-			var aArea = $("#aArea").val();
-			var aType = $("#aType").val();
-
-			
-			if(aArea == "0" || aType == "0") {
-				
-				alert("검색오류:카테고리를 선택해주세요");
-				
-			
-			}
-			
-		
-	});		
-	
-	
-
-	
 </script>
 
 	
@@ -70,7 +48,7 @@
 	 }
 	 
 	 #thrCtn {
- 		margin-top: 120px;	
+ 		margin-top: 160px;	
  	 }
 
 </style>
@@ -88,11 +66,8 @@
 	<!-- 가로줄 -->
 	<div id="horisonLine"></div>
 	
-	
-	
-	
-	<!-- 관리자 입양공고 지역 카테고리 시작  -->
-		<form action="adminAdoptCtgy.do" method="GET">
+	<form action="adminAdoptCtgy.do" method="GET">
+	<div style="position: relative; top: 163px;">
 	<div class="btn-group">
 			<select id="aArea" name="aArea" class="btn btn-outline-success mt-3" style="width: 100px ">
 				<option value="0">지역</option>
@@ -104,10 +79,6 @@
 			</select>
 
 	</div>
-	<!-- 지역카테고리 END -->
-	
-	
-	<!-- 동물 종 카테고리 START -->
 	<div class="btn-group " >
 			<select id="aType" name="aType" class="btn btn-outline-success mt-3" style="width: 100px ">
 				<option value="0">동물종류</option>
@@ -116,107 +87,134 @@
 				
 			</select>
 	</div>
-	
-	
-	<!-- 동물 종 카테고리 END -->
-	
-	
-	<!-- 카테고리 onclick 버톤 -->
 	<div class="btn-group" >
 		<button type="submit" class="btn btn-outline-success mt-3" id="search" >찾기</button>
+		
+		
+		<script>
+		
+		$("#search").click(function() {
+									
+				var aArea = $("#aArea").val();
+				var aType = $("#aType").val();
+
+				
+				if(aArea == "0" || aType == "0") {
+					
+					alert("검색오류:카테고리를 선택해주세요");
+					
+				
+				}
+				
+			
+		});							
+		</script>
 	</div>
-	<!-- 카테고리 onclick 버튼 END -->
+	</div>
 	</form>
 	</div>
 	
 
+<!-- Example single danger button -->
 	<div class="container" id="secCtn">
-		
+		<!-- <div class="btn-group">
+			<button type="button"
+				class="btn btn-outline-success dropdown-toggle mt-3"
+				data-bs-toggle="dropdown" aria-expanded="false">지역</button>
+			<ul class="dropdown-menu">
+				<li><a class="dropdown-item" href="#">서울</a></li>
+				<li><a class="dropdown-item" href="#">인천</a></li>
+				<li><a class="dropdown-item" href="#">경기</a></li>
+			</ul>
+		</div>
+		<div class="btn-group ">
+			<button type="button"
+				class="btn btn-outline-success dropdown-toggle mt-3"
+				data-bs-toggle="dropdown" aria-expanded="false">동물 종류</button>
+			<ul class="dropdown-menu">
+				<li><a class="dropdown-item" href="#">강아지</a></li>
+				<li><a class="dropdown-item" href="#">고양이</a></li>
+			</ul>
+		</div>
+		<div class="btn-group">
+			<button type="submit" class="btn btn-outline-success mt-3 ">찾기</button>
+		</div> -->
+	<div style="position: relative; top: -28px; width: 171px; align-items: center; margit: 0px; left: -5px; float: right;">
 	<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-		 	<input type="checkbox" class="btn-check btn-outline-success" name="allCheck" id="allCheck" autocomplete="off">
-		   		<label class="btn btn-outline-success" for="allCheck" style="margin:0px;">전체 선택</label> 
-				<button type="button" id="selectDelete_btn" class="btn btn-outline-success">선택 삭제</button>
-				
-				
-				<!-- 삭제 스크립트  -->
-	
-	<script>
-
-	//전체선택 버튼 
-	$("#allCheck").click(function() {
+		   			<input type="checkbox" class="btn-check btn-outline-success" name="allCheck" id="allCheck" autocomplete="off">
+		   				<label class="btn btn-outline-success" for="allCheck" style="margin:0px;">전체 선택</label> 
+					<button type="button" id="selectDelete_btn" class="btn btn-outline-success">선택 삭제</button>
+							<script>
+								$("#allCheck").click(function() {
+									
+									var chk = $("#allCheck").prop("checked");
+									
+									if(chk) {
+										$(".chBox").prop("checked", true);
+										
+									}else {
+										$(".chBox").prop("checked", false);
+									}
+									
+								});
+							
+							</script>
+							<script>
+							
+							 $("#selectDelete_btn").click(function(){
+							  var confirm_val = confirm("정말 삭제하시겠습니까?");
+							  
+							  if(confirm_val) {
+							   var checkArr = new Array();
+							   
+							   $("input[class='chBox']:checked").each(function(){
+							    checkArr.push($(this).attr("data-cartNum"));
+							   });
+						
+							   $.ajax({
+								    url : "multiDeleteAdopt.do",
+								    type : "post",
+								    data : { chbox : checkArr },
+								    success : function(result){
+								    	
+								    	
+								    	if(result == 1) { 
+								    
+									location.href="adminAdopt.do";
 		
-		var chk = $("#allCheck").prop("checked");
-		
-		if(chk) {
-			$(".chBox").prop("checked", true);
-			
-		}else {
-			$(".chBox").prop("checked", false);
-		}
-		
-	});
-	
-	
-	//부분 삭제 
-
- $("#selectDelete_btn").click(function(){
-  var confirm_val = confirm("정말 삭제하시겠습니까?");
-  
-  if(confirm_val) {
-   var checkArr = new Array();
-   
-   $("input[class='chBox']:checked").each(function(){
-    checkArr.push($(this).attr("data-cartNum"));
-   });
-
-   $.ajax({
-	    url : "multiDeleteAdopt.do",
-	    type : "post",
-	    data : { chbox : checkArr },
-	    success : function(result){
-	    	
-	    	
-	    	if(result == 1) { 
-	    
-		location.href="adminAdopt.do";
-
-	    	}else {
-	    		alert("삭제 오류");
-	    	}
-	    }
-	   });
-	  } 
-	 });
-	
-	</script>
-	
-	</div>
-		
+								    	}else {
+								    		alert("삭제 오류");
+								    	}
+								    }
+								   });
+								  } 
+								 });
+							</script>		
+			</div>
+		</div>
 					
 				
 	</div>
 
 
-	<div class="container" id="thrCtn">
-		<div class="row">
-			<c:choose>
-				<c:when test="${empty list }">
-					<div class="col text-center mt-5">
-						<p>작성된 글이 없습니다</p>
-					</div>
-				</c:when>
-			<c:otherwise>
-					<c:forEach items="${list}" var="dto">
-						<div class="col-sm mt-5">
-					    	<label for="cb1"></label>
-								<input type="checkbox" class="chBox" data-cartNum="${ dto.aNo}">
+				<div class="container" id="thrCtn">
+					<div class="row">
+					<c:choose>
+						<c:when test="${empty list }">
+							<div class="col text-center mt-5">
+								<p>작성된 글이 없습니다</p>
+							</div>
+						</c:when>
+					<c:otherwise>
+						<c:forEach items="${list}" var="dto">
+								<div class="col-sm mt-5">
+					    			<label for="cb1"></label>
+										<input type="checkbox" class="chBox" data-cartNum="${ dto.aNo}">
 						            	<script>
 											$(".chBox").click(function(){
 												$("#allCheck").prop("checked", false);							
 													})
 										</script>
-										
-										
 											<div class="card h-100 text-center" style="width:450px; margin: 0 auto; align-items: center;">
 													<a href="myAdoptDetail.do?aNo=${dto.aNo}"><img src="resources/${dto.aThumbImg }" class="card-img-top"
 														style="width:450px; height:350px; border:none; object-fit:cover;"></a>	
@@ -233,11 +231,6 @@
 				</div>
 		
 			<div class="row mb-5"></div>
-
-
-
-
-
 
 	
 	<!-- footer -->

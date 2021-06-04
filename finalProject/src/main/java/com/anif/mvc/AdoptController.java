@@ -30,7 +30,7 @@ import com.anif.mvc.diary.dto.DiaryDto;
 import com.anif.mvc.goods.biz.CartBizImpl;
 import com.anif.mvc.goods.dto.GoodsDto;
 import com.anif.mvc.member.dto.MemberDto;
-import com.anif.mvc.utils.UploadFileUtils;
+import com.anif.mvc.common.image.UploadFileUtils;
 
 @Controller
 public class AdoptController {
