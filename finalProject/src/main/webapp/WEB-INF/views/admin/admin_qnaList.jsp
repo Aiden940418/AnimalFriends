@@ -53,7 +53,7 @@
 <div class="contentDiv">
 
 		<div class="container text-center" id="qnaDiv">
-				<h1>QnA</h1>
+				<h1>Q & A 관리</h1>
 		</div>
 		
 		<div id="horisonLine"></div>
@@ -71,7 +71,7 @@
 			      <option value="sQ"<c:out value="${scri.searchType eq 'sQ' ? 'selected' : ''}"/>>사이트이용</option>
 			    </select>
 			    
-    			<input type="text" class="form-control" placeholder="찾고 싶은 제목 입력햇!" name="keyword" id="keywordInput" value="${scri.keyword}"/>
+    			<input type="text" class="form-control" placeholder="찾고 싶은 제목 입력" name="keyword" id="keywordInput" value="${scri.keyword}"/>
 
     			<button class="btn btn-outline-success" id="searchBtn" type="button">검색</button>
 				    <script>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,10 @@
 	<title>로그인</title>
 	<link rel="stylesheet" href="style.css">
 	<script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>
-	
+	  <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  	 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+ 
 	
 	<style>
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Yeon+Sung&display=swap');
@@ -161,7 +166,6 @@ if(mId == null || mId =="" || mPw ==null || mPw =="") {
     align-items: center;
   }
   .login-input-section-wrap{
-    padding-top: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -179,22 +183,22 @@ if(mId == null || mId =="" || mPw ==null || mPw =="") {
   }
   .login-input-wrap input{
     border: none;
-    width:320px;
-    margin-top: 8px;
+    width: 330px;
+    margin-top: 5px;
     font-size: 14px;
-    margin-left: 10px;
-    height:30px;
+    margin-left: 9px;
+    height: 36px;
   }
   .login-button-wrap {
     padding-top: 13px;
   }
-  .login-button-wrap button{
+   .login-button-wrap button{
     width: 350px;
     height :48px;
     font-size: 18px;
     background: var(--login-color);
     color: #ffffff;
-    
+ 
     
     border: solid 1px var(--login-border-color);
   }
@@ -223,7 +227,6 @@ if(mId == null || mId =="" || mPw ==null || mPw =="") {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 40px;
 
   
   }
@@ -260,13 +263,25 @@ if(mId == null || mId =="" || mPw ==null || mPw =="") {
 
   .Easy-sgin-in-wrap .forget-msg{
     color:var(--font-color);
-    font-size: 12px;
+    font-size: 18px;
 	
   }
     .Easy-sgin-in-wrap .sign-up{
     color:var(--font-color);
-    font-size: 12px;
+    font-size: 18px;
   }
+  
+  a {
+  color : #138962;
+  text-decoration: none;
+  
+  }
+  
+  a:hover {
+  color : black;
+  
+  }
+ 
   
  
 
@@ -278,20 +293,21 @@ if(mId == null || mId =="" || mPw ==null || mPw =="") {
 		<div class="main-wrap">
 		<header>
 			<div class="logo-wrap">
-				<a href="main.do"><img src="resources/images/logo2.jpeg"></a>
+				<a href="main.do"><img src="resources/images/logo.png" 
+					style="width: 200px; height: 200px; position: relative; top: -30px;"></a>
 			</div>
 		</header>
 		<br>
 		
 				<section class="login-input-section-wrap">
 			<div class="login-input-wrap">	
-				<input placeholder="UserId" type="text" id="userId" name="mId"></input>
+				<input placeholder=" ID" type="text" id="userId" name="mId"></input>
 			</div>
 			<div class="login-input-wrap password-wrap">	
-				<input placeholder="Password" type="password" id="userPw" name="mPw"></input>
+				<input placeholder=" Password" type="password" id="userPw" name="mPw"></input>
 			</div>
-			<div class="login-button-wrap">
-				<button type="submit" onclick="login();">로그인</button>
+			<div class="d-grid gap-5 mt-2" style="width: 351px;">
+				<button type="submit" class="btn btn-outline-success" onclick="login();">로그인</button>
 			</div>
 	
 		</section>
@@ -309,8 +325,8 @@ if(mId == null || mId =="" || mPw ==null || mPw =="") {
 
   
 			<div>			
-				<span class="forget-msg"><a href="findpw.do">비밀번호를 잊으셨습니까? |</a> </span>
-				<span class="register"><a href="signUpForm.do">회원가입</a></span>
+				<span class="forget-msg text-success"><a href="findpw.do">비밀번호를 잊으셨습니까? |</a> </span>
+				<span class="register text-success"><a href="signUpForm.do">회원가입</a></span>
 			</div>
 		</section>
 		</div>

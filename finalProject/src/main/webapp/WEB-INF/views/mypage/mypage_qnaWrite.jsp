@@ -16,6 +16,14 @@
 	});
 </script>
 
+<style>
+	.btn-group-single> * {
+    	border-top-right-radius: 4px;
+    	border-bottom-right-radius: 4px;
+	}
+
+
+</style>
 
 <!-- page -->
 <div class="contentDiv">
@@ -38,7 +46,7 @@
 									style="width: 130px; pointer-events: none;">카테고리 선택</button></th>
 							<td style="text-align: left;">
 								<!-- 카테고리 선택 드롭박스 -->
-								<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+								<div class="btn-group-single" role="group" aria-label="Basic radio toggle button group">
 									<input type="radio" class="btn-check" name="qctgy" value="입양공고"
 										id="btnradio1" autocomplete="off" checked>
 										<label class="btn btn-outline-success" for="btnradio1">입양공고</label>

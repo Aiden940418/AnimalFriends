@@ -30,9 +30,6 @@ $(document).ready(function() {
 
  		$('#submit2').click(function () {
  		
- 		alert("오오오오오오오오");
- 		
-		
 		});
  		
 };
@@ -231,7 +228,8 @@ function execPostCode() {
     
 		<!-- 상단 logo  -->
         <div class="mt-5">
-            <img src="resources/images/logo2.jpeg" id="logo" style="width:400px; height:200px" onclick="location.href='main.do'">
+            <img src="resources/images/logo.png" id="logo" style="width: 200px; height: 200px; position: relative; top: -30px;" 
+            	onclick="location.href='main.do'">
         </div>
 
             

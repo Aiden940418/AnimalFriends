@@ -55,7 +55,7 @@
 				<form action="adminGoodsWriteRes.do" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="mNo" value="${login.mNo}">
 
-					<table>
+					<table style="margin-left: -180px;">
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width: 130px; pointer-events: none; ">상품종류</button></th>

@@ -5,14 +5,28 @@
 
 <title>Q & A 답변 등록</title>
 
+<style>
+.btn-group-single > .btn:first-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+</style>
  <!-- 메뉴 사이드바 스크립트 -->
 <script>
  	$(function() {
 		$('#sidebarCollapse').on('click', function () {
 	      $('#sidebar').toggleClass('active');
 	  });
+	 	
+	$('.btn-group').removeClass('btn-group');
+	$('.btn-group').addClass('btn-group-single');
+
 
 	});
+ 	
+
+ 	
 </script>
 
 <!-- page -->
@@ -69,13 +83,6 @@
 									style="width: 130px; pointer-events: none;">내용</button></th>
 							<td><textarea rows="20" cols="100" class="form-control my-1"
 									id="" name="qcontent"></textarea></td>
-						</tr>
-
-						<tr>
-							<th><button type="button" class="btn btn-outline-success mx-3 my-1"
-									style="width: 130px; pointer-events: none;">이미지</button></th>
-							<td><input type="text" class="form-control my-1" id=""
-								size="100" placeholder="이미지를 등록해주세요."></td>
 						</tr>
 
 						<tr>
