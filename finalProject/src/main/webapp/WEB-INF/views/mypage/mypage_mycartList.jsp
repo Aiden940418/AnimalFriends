@@ -143,8 +143,6 @@ $("#check_module").on('click', function() {
 
 						<!-- 카드 부분 체크박스 -->
 					<div class="col-sm mt-5">
-					<label for=""></label>
-						<input type="checkbox" name="chBox" class="chBox" data-cartNum="${cartList.cartNo }" />
 						
 					<script>
 						$(".chBox").click(function(){
@@ -158,6 +156,7 @@ $("#check_module").on('click', function() {
 					
 					
 					<div class="card h-100 text-center" style="width:30rem; margin: 0 auto; align-items: center;">
+						<input type="checkbox" name="chBox" class="chBox my-4" style="position: relative;left: -225px; "data-cartNum="${cartList.cartNo }" />
 						<img class="card-img-top"
 							src="resources/${cartList.gImg }" alt="Card image cap" style="width:30rem;">
 						<div class="card-body">
