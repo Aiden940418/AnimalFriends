@@ -22,12 +22,7 @@
 
 
 <style type="text/css">
-	h1 {
-		text-align: center;
-		margin-top:20px;
-	    margin-bottom:50px;
-		margin-top: 20px;
-		}
+
 	
 	/* 콤보박스 스크롤 만들기 */
 	#guSelect {
@@ -267,12 +262,15 @@
 	
 </script>
 
-<div class="container">
+<div class="container mt-5">
 
-	<div class="row">
-		<h1 class="mt-2">동물 보호소 찾기</h1>
-	</div>
+<div class="container text-center">
+	<h1 class="mt-5">동물 보호소 찾기</h1>
+</div>
+
 	
+<br>
+<br>
 	<div class="row">
 	
 		<!-- 좌측 카테고리 선택 및 검색 영역 -->

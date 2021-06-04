@@ -415,9 +415,13 @@ function isLogin(){
 
 
 	<!-- 내용 -->
-	<div class="container mt-3">
-	
-	<h1 class="mt-4">입양 일기</h1>
+<div class="container mt-5">
+
+<!-- 상단이름  -->
+<div class="container text-center">
+	<h1 class="mt-5">입양일기</h1>
+</div>
+<div id="horisonLine"></div>
 	
 		
 		<!-- 입양일기 리스트 반복하여 화면에 출력 -->
@@ -425,7 +429,7 @@ function isLogin(){
 		
 			<div class="row">
 		
-			<div class="col-2"></div> <!-- 좌우 간격 맞추기 용도 -->
+			<div class="col-1"></div> <!-- 좌우 간격 맞추기 용도 -->
 				
 				<div class="col ms-4 my-3">
 				

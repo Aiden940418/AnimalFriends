@@ -110,7 +110,7 @@ function execPostCode() {
 			      <form action="memberUpdate.do" method="POST">
 			      	<input type="hidden" name="mNo" value="${login.mNo }">
 			               
-			         <table  style="margin-left: -55px;">
+			   <table  style="margin-left: -55px;">
 			                  
 			            <tr>
 			            <th><button type="button" class="btn btn-outline-success"
@@ -162,6 +162,12 @@ function execPostCode() {
 			            </tr>
 			            
 			            <tr>
+		            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">이메일</button></th>
+		            <td colspan="2"><input type="text" id="mPhone" class="form-control my-1" name="mEmail" value="${login.mEmail}" style="width:300px; height:40px"></td>
+		            </tr>
+			            
+			            <tr>
 			            <th><button type="button" class="btn btn-outline-success"
 									style="width:130px; pointer-events: none;">전화번호</button></th>
 			            <td colspan="2"><input type="text" id="mPhone" class="form-control my-1" name="mPhone" value="${login.mPhone}" style="width:300px; height:40px"></td>
@@ -211,8 +217,9 @@ function execPostCode() {
 					<div class="col-5">		
             		<form action="memberUpdate.do" method="POST">
 					<input type="hidden" name="mNo" value="${login.mNo }">
-            
-			        <table  style="margin-left: -55px;">
+		<input type="hidden" name="mNo" value="${login.mNo }">
+           
+		           <table  style="margin-left: -55px;">
 		            <tr>
 		            <th><button type="button" class="btn btn-outline-success"
 									style="width:130px; pointer-events: none;">아이디</button></th>
@@ -226,13 +233,7 @@ function execPostCode() {
 		            <td colspan="2"><input class="mPw" type="password" id="pw" style="width:300px; height:40px" value="{login.mPw}" readonly="readonly">
 		            </td>
 		            </tr>
-		   
-		   			<tr>
-		            <th><button type="button" class="btn btn-outline-success"
-								style="width:130px; pointer-events: none;">비밀번호</button></th>
-		            <td colspan="2"><input class="mPw" type="password" id="pw"  style="width:300px; height:40px" value="{login.mPw}" readonly="readonly">
-		            </td>
-		            </tr>
+		  
 		   
 		            <tr>
 		            <th><button type="button" class="btn btn-outline-success"
@@ -269,6 +270,13 @@ function execPostCode() {
 		            <td colspan="2"><input type="text"  id="mAddr3" class="form-control my-1" name="mAddr3" value="${login.mAddr3}" style="width:300px; height:40px"></td>
 		            </tr>
 		            
+		         	<tr>
+		            <th><button type="button" class="btn btn-outline-success"
+									style="width:130px; pointer-events: none;">이메일</button></th>
+		            <td colspan="2"><input type="text" id="mPhone" class="form-control my-1" name="mEmail" value="${login.mEmail}" style="width:300px; height:40px"></td>
+		            </tr>
+		            
+		            
 		            <tr>
 		            <th><button type="button" class="btn btn-outline-success"
 									style="width:130px; pointer-events: none;">전화번호</button></th>
@@ -294,6 +302,26 @@ function execPostCode() {
 				         <input type="submit" class="btn btn-outline-success" value="완료">
 				         <input type="button" class="btn btn-outline-success" value="취소" onclick="location.href='myMemberModityPw.do'">
 		         <button type="button" class="btn btn-outline-success" id="delete">회원탈퇴</button>
+		         <button type="button" class="btn btn-outline-success" id="pwUpdate">비밀번호 변경</button>
+		         
+		         
+		          <script type="text/javascript">
+			         
+			         $("#pwUpdate").on("click", function(){
+						  var confirm_val2 = confirm("비밀번호를 변경하시겠습니까?");
+			        	  
+						  console.log(confirm_val2);
+			        	 if(confirm_val2) {
+			        		 location.href="memberPwupdateCheck.do";
+			        	 
+			        	 }else {
+			        		 
+			        		 return false;
+			        		 }
+			 
+			        	});
+			         
+			         </script>
          
 			         <script type="text/javascript">
 			         
@@ -306,7 +334,7 @@ function execPostCode() {
 			        	 
 			        	 }else {
 			        		 
-			        		 location.href="main.do";
+			        		 return false;
 			        		 
 			        		 }
 			 

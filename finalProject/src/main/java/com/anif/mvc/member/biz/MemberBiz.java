@@ -2,6 +2,8 @@ package com.anif.mvc.member.biz;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.anif.mvc.member.dto.MemberDto;
 
 public interface MemberBiz {
@@ -31,10 +33,17 @@ public interface MemberBiz {
 	
 	public void memberDelete(String mId);
 	
-
-
 	public MemberDto selectOneMember(int mNo);
+
 	
+	//이메일발송
+	public void sendEmail(MemberDto dto, String div) throws Exception;
+
+	//비밀번호찾기
+	public void findPw(HttpServletResponse response, MemberDto dto) throws Exception;
+	
+	
+	public int updatemPw(MemberDto dto)throws Exception;
 
 
 
