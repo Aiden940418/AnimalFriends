@@ -73,7 +73,7 @@
 			    
     			<input type="text" class="form-control" placeholder="찾고 싶은 제목 입력햇!" name="keyword" id="keywordInput" value="${scri.keyword}"/>
 
-    			<button class="btn btn-outline-success"id="searchBtn" type="button">검색</button>
+    			<button class="btn btn-outline-success" id="searchBtn" type="button">검색</button>
 				    <script>
 				      $(function(){
 				        $('#searchBtn').click(function() {

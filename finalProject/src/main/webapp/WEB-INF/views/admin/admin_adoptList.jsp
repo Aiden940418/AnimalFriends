@@ -48,7 +48,7 @@
 	 }
 	 
 	 #thrCtn {
- 		margin-top: 120px;	
+ 		margin-top: 160px;	
  	 }
 
 </style>
@@ -66,9 +66,10 @@
 	<!-- 가로줄 -->
 	<div id="horisonLine"></div>
 	
-		<form action="adminAdoptCtgy.do" method="GET">
-	<div class="btn-group">
-			<select id="aArea" name="aArea" class="btn btn-outline-success mt-3" style="width: 100px ">
+	<form action="adminAdoptCtgy.do" method="GET">
+	<div style="position: relative; top: 163px;">
+	<div class="input-group" style="width:400px;">
+			<select id="aArea" name="aArea" class="form-select form-select-sm btn-outline-success mt-3" style="width: 100px ">
 				<option value="0">지역</option>
 				<option value="서울동부">서울동부</option>
 				<option value="서울서부">서울서부</option>
@@ -77,16 +78,12 @@
 				<option value="경기인천">경기인천</option>
 			</select>
 
-	</div>
-	<div class="btn-group " >
-			<select id="aType" name="aType" class="btn btn-outline-success mt-3" style="width: 100px ">
+			<select id="aType" name="aType" class="form-select form-select-sm btn btn-outline-success mt-3" style="width: 100px ">
 				<option value="0">동물종류</option>
 				<option value="강아지">강아지</option>
 				<option value="고양이">고양이</option>
 				
 			</select>
-	</div>
-	<div class="btn-group" >
 		<button type="submit" class="btn btn-outline-success mt-3" id="search" >찾기</button>
 		
 		
@@ -108,6 +105,7 @@
 			
 		});							
 		</script>
+	</div>
 	</div>
 	</form>
 	</div>
@@ -137,6 +135,7 @@
 		<div class="btn-group">
 			<button type="submit" class="btn btn-outline-success mt-3 ">찾기</button>
 		</div> -->
+	<div style="position: relative; top: -28px; width: 171px; align-items: center; margit: 0px; left: -5px; float: right;">
 	<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
 		   			<input type="checkbox" class="btn-check btn-outline-success" name="allCheck" id="allCheck" autocomplete="off">
 		   				<label class="btn btn-outline-success" for="allCheck" style="margin:0px;">전체 선택</label> 
@@ -188,7 +187,7 @@
 								 });
 							</script>		
 			</div>
-		
+		</div>
 					
 				
 	</div>

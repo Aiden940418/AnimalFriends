@@ -19,6 +19,11 @@
 	color: #696767;
 	
 	}
+	
+	body > * {
+	font-family: 'Do Hyeon', sans-serif;
+		
+	}
 </style>
 
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
@@ -311,22 +316,19 @@ if(mId == null || mId =="" || mPw ==null || mPw =="") {
 	
 		<section class="Easy-sgin-in-wrap">
 			
-			<a id="custom-login-btn" href="javascript:loginWithKakao()">
-  <img
-    src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
-    width="222"
-  />
-</a>
-<p id="token-result"></p>
+			
+			<p id="token-result"></p>
 
   
-			<div>			
-				<span class="forget-msg">비밀번호를 잊으셨습니까? | </span>
+			<div style="font-size:20px;">			
+				<span class="forget-msg" style="font-size:20px;" >비밀번호를 잊으셨습니까? | </span>
 				<span class="register"><a href="signUpForm.do">회원가입</a></span>
 			</div>
 		</section>
 		</div>
 	</div>
+  
+  
   </body>
   </html>
   <!-- 여기는 footer -->

@@ -110,7 +110,7 @@ function execPostCode() {
 			      <form action="memberUpdate.do" method="POST">
 			      	<input type="hidden" name="mNo" value="${login.mNo }">
 			               
-			         <table>
+			         <table  style="margin-left: -55px;">
 			                  
 			            <tr>
 			            <th><button type="button" class="btn btn-outline-success"
@@ -212,7 +212,7 @@ function execPostCode() {
             		<form action="memberUpdate.do" method="POST">
 					<input type="hidden" name="mNo" value="${login.mNo }">
             
-		            <table>
+			        <table  style="margin-left: -55px;">
 		            <tr>
 		            <th><button type="button" class="btn btn-outline-success"
 									style="width:130px; pointer-events: none;">아이디</button></th>
