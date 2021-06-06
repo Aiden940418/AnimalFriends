@@ -125,6 +125,8 @@ public class GoodsController {
 	public String adminGoodsDetail(Model model, int gNo) {
 		
 		model.addAttribute("dto",biz.adminGoodsDetail(gNo));
+		model.addAttribute("review",reviewBiz.reviewList(gNo));
+
 		return "admin/admin_goodsDetail";
 	}
 	
@@ -357,18 +359,17 @@ public class GoodsController {
 	 
 	 cartBiz.cartAllDelete(mNo);
 	 
-	 return "redirect:orderList.do";  
+	 return "redirect:orderList.do?mNo="+mNo;  
 	}
 	
 	
 	
 	// 주문 목록
 	@RequestMapping(value = "/orderList.do", method = RequestMethod.GET)
-	public String getOrderList(HttpSession session, GoodsOrderDto order, Model model) throws Exception {
+	public String getOrderList(HttpSession session, int mNo, GoodsOrderDto order, Model model) throws Exception {
 	 logger.info("get order list");
 	 
 	 MemberDto member = (MemberDto)session.getAttribute("login");
-	 int mNo = member.getmNo();
 	 
 	 order.setmNo(mNo);
 	 
@@ -438,6 +439,7 @@ public class GoodsController {
 		
 		//현재 로그인 되어있는 계정의 회원번호를 가져와서 dto에 세팅해주기
 		MemberDto memberDto = (MemberDto) session.getAttribute("login");
+		int mNo = memberDto.getmNo();
 		
 		
 		
@@ -445,14 +447,14 @@ public class GoodsController {
 		
 		if (res > 0) { // 글 insert 성공 시
 			model.addAttribute("msg", "글 등록 성공!");
-			model.addAttribute("url", "/reviewDetails.do?gRewNo=gRewNo();");
+			model.addAttribute("url", "/orderReview.do?orderId="+orderId+"&mNo="+mNo);
 			cartBiz.orderInfoStatusUpdate(orderId);
 		} else {  //글 insert 실패 시
 			model.addAttribute("msg", "글 등록 실패!");
 			model.addAttribute("url", "/mygoodsReviewWriteForm.do");
 		}
 		
-		return "mypage/mypage_mygoodsBuyList";
+		return "mypage/alertPage";
 	}
 	
 	//리뷰 수정 

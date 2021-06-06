@@ -81,10 +81,6 @@
 			</select>
 	<!-- 입양공고 카테고리 찾기 버튼 -->
 	<button type="submit" class="btn btn-outline-success mt-3" id="search" >찾기</button>
-	<div class="float-end">
-	<button type="button" class="btn btn-outline-success mt-3 float-end "onclick="location.href='myAdoptList.do?mNo=${login.mNo}'">
-					나의 입양공고 보기</button>
-	</div>
 	
 	</div>
 	<!-- 입양공고 카테고리 찾기 버튼 END -->
@@ -111,7 +107,7 @@
 	<!-- 입양공고 List 시작  -->		
 			<c:choose>
 				<c:when test="${empty list }">
-				<p>작성된 글이 없습니다</p>
+				<h2>작성된 글이 없습니다</h2>
 				</c:when>
 	
 	

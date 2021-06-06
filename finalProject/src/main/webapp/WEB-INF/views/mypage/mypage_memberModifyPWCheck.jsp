@@ -84,7 +84,7 @@
 						<ion-icon name="key-outline" style="font-size:25px; width=:170px;"></ion-icon>
 					 </span>
 					<input name="mPw"type="password" class="form-control" id="mPw" style="width:170px" placeholder="현재 비밀번호를 입력해주세요"><br>
-					<button type="submit" class="btn btn-secondary ms-2" id="pwChk" style="width:70px">확인</button>
+					<button type="submit" class="btn btn-outline-success ms-2" id="pwChk" style="width:70px">확인</button>
 						
 				</div>
 				</form>

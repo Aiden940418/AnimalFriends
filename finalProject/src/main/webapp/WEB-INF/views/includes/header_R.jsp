@@ -211,7 +211,7 @@
                     <a href="myAdoptList.do?mNo=${login.mNo}">내가 쓴 입양공고</a>
                 </li>
                 <li>
-                    <a href="orderList.do">구매내역</a>
+                    <a href="orderList.do?mNo=${login.mNo}">구매내역</a>
                 </li>
                 <li>
                     <a href="cartList.do?mNo=${login.mNo}">나의 장바구니</a>

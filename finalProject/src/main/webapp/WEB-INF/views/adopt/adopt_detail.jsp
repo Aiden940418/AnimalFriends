@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix='c'%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix='fmt' %>
 
 <%@ include file="../includes/header_R.jsp"%>
 
@@ -24,6 +25,14 @@
 <script>
 	//notifySend
 	function chatRequestBtnClick(){
+		
+			var session = '<%=session.getAttribute("login")%>';
+
+			
+			if(session== 'null'){
+				alert("로그인 후 이용 가능합니다!");
+				return false;
+			}
 		
 	    let noticeSenderNo = '${login.mNo}';   //토스트 메세지 보내는 사람 회원번호
 	    let noticeReceiverNo = '${dto.aMNo}';  //토스트 메세지 받을 사람 (입양공고 작성자 회원번호)
@@ -120,7 +129,7 @@
 						 				<td><h3>${dto.aTitle }</h3></td>
 						 			</tr>
 						 			<tr align="right">
-						 				<td>등록 날짜: ${dto.aDate } / 조회수: ${dto.aCount}</td>
+						 				<td>등록 날짜: <fmt:formatDate value="${dto.aDate }" pattern="yyyy.MM.dd"/>/ 조회수: ${dto.aCount}</td>
 						 			</tr>
 						 		</table>
 						 	</div>
@@ -191,21 +200,49 @@
 	</div>
 
 		<!-- 댓글 태그 종료 -->
-		
-		<div class="container text-center mt-4">	
-			<div id="horisonLine2"></div>
-		<h3>Comments</h3>
-		
+		<hr>
+		<div class="container mt-4">	
+			<div id="horisonLine2 "></div>
+		<h2 class="ms-5" style="float:left;">Comments</h2><br><br>
+		</div>
 		<form action="aCommentInsert.do" method="POST">	
 			<input type="hidden" name="aNo" value="${dto.aNo }"/>
 			<input type="hidden" name="writer" value="${login.mNick}"/>
-				<div class="container mt-2" style="margin: auto; ">
-		<input class="mt-2" type="text" name="aComContent" style="width:650px; height:50px;">
-		<input class="btn btn-outline-success ms-2" type="submit" value="전송">
+				<div class="container mt-4" style="margin: auto; ">
+		<input class="mt-2" type="text"  id= "comContent" name="aComContent" style="width:650px; height:50px;">
+		<input class="btn btn-outline-success ms-2" type="submit" id="submit" value="전송">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+
+		<script>
+		
+$(document).ready(function() {
+
+	 		$('#submit').click(function () {
+	
+	var session = '<%=session.getAttribute("login")%>';
+
+	
+	if(session== 'null'){
+		alert("로그인 후 이용 가능합니다!");
+		return false;
+	}
+	
+	
+	var content = $('#comContent').val();
+	
+	if( content == '') {
+		alert("댓글 내용을 입력 해 주세요.");
+		return false;
+	}
+	
+});
+		});
+
+</script>
 	
 			<c:choose>
 					<c:when test="${empty reply}">
-						<h3>작성된 댓글이 없습니다.</h3>
+						<h3 class="mt-5">작성된 댓글이 없습니다.</h3>
 					</c:when>
 					<c:otherwise>
 						<c:forEach items="${reply}" var="com">
@@ -213,7 +250,7 @@
 								<tr>
 									<th style="width:50px;">${com.writer }</th>
 									<td style="width:400px">${com.aComContent }</td>
-									<td>${com.aComDate}</td>
+									<td> <fmt:formatDate value="${com.aComDate}" pattern="yy.MM.dd HH:mm:ss"/></td>
 									<td>
 										<c:set var ="mNick" value="${login.mNick }"/>
 										<c:set var ="comNick" value="${com.writer}"/>
@@ -235,7 +272,7 @@
 	<!-- footer -->
 	<%@ include file="../includes/footer.jsp" %>   
 	<!-- header의 'Page 내용 div' 닫기 태그  -->
-	</div> 
+	</div>
 	
  	<!-- Page 내용 끝 -->
 	

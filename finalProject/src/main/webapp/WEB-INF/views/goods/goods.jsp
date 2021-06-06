@@ -60,6 +60,8 @@
 						</ul>
 					</div>
 					<div class="col-6">
+					
+			<c:if test="${login != null }">
 						<div class="btn-group float-end">
 							<button id="goCart" type="button" class="btn btn-outline-success mt-3  " onclick="location.href='cartList.do?mNo=${login.mNo}'">
 								나의 장바구니 보기</button>
@@ -72,6 +74,8 @@
 								
 							
 						</div>
+						
+			</c:if>
 					</div>
 				</div>
 			</div>

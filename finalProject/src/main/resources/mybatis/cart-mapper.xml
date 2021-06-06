@@ -87,6 +87,7 @@
      orderId, mNo, orderName, orderAddr1, orderAddr2, orderAddr3, orderPhone, amount, orderDate, gNo
      from goodsorder
      where mNo = #{mNo}
+     ORDER BY ORDERDATE DESC
 </select>
 
 	<!-- status update -->
@@ -114,6 +115,7 @@
  	 		inner join goods g
  	 			on d.gNo = g.gNo
     where o.mno = #{mNo} and o.orderId = #{orderId}
+    
  	 		
  	 
  	 </select>
