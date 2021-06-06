@@ -18,22 +18,15 @@ CREATE TABLE GOODS (
 );
 
 
-SELECT * FROM GOODS;
-
-DELETE FROM GOODS where GNO = 1;
-
-commit
-
-
-
-
-
 -------------------------------------------------------------------------
+
+--굿즈 cart 관련 테이블 
+
 DROP TABLE CART;
-
 DROP SEQUENCE CARTNO;
-CREATE SEQUENCE CARTNO;
 
+
+CREATE SEQUENCE CARTNO;
 CREATE TABLE CART (
 
     CARTNO NUMBER NOT NULL,
@@ -42,22 +35,16 @@ CREATE TABLE CART (
     CARTSTOCK NUMBER NOT NULL,
     CARTDATE DATE DEFAULT SYSDATE,
     
-    primary key(CARTNO, MNO)
-
-	
+    primary key(CARTNO, MNO),
+    
+CONSTRAINT CART_MNO FOREIGN KEY(MNO) REFERENCES MEMBER(MNO) ON DELETE CASCADE,
+CONSTRAINT CART_GNO FOREIGN KEY(GNO) REFERENCES GOODS(GNO) ON DELETE CASCADE
 
 );
 
-alter table CART
-    add CONSTRAINT CART_MNO FOREIGN KEY(MNO) REFERENCES MEMBER(MNO) ON DELETE CASCADE;
-    
-alter table CART
-    ADD CONSTRAINT CART_GNO FOREIGN KEY(GNO) REFERENCES GOODS(GNO) ON DELETE CASCADE;
-    
 
 
 
-commit
 
 
 ------------------------------------------------------------------------------------------
@@ -81,32 +68,17 @@ CREATE TABLE GOODSORDER (
     GNO		NUMBER,
     GREVIEWSTATUS VARCHAR2(50) not null,
     primary key(orderId),
-    CONSTRAINT GREVIEWSTATUS_CHK CHECK(GREVIEWSTATUS IN('false','true'))
+    CONSTRAINT GREVIEWSTATUS_CHK CHECK(GREVIEWSTATUS IN('false','true')),
+    CONSTRAINT goodsMNo foreign key(mno) references member(mno) on delete cascade
 );
 
-SELECT * FROM GOODSORDER;
 
--- 이부분 새로추가 --
-alter table goodsorder 
-    add GNO NUMBER;
     
--- 이부분 추가 필요! --
-ALTER TABLE GOODSORDER
-	ADD GREVIEWSTATUS VARCHAR2(50)
-	CONSTRAINT GREVIEWSTATUS_CHK CHECK(GREVIEWSTATUS IN('false','true'));
-    
-    
-    select * from goodsorder;
-
-alter table goodsorder
-    add constraint order_mId foreign key(mno)
-    references member(mno) on delete cascade;
-    
-    
-
+------------------------------------------------------------------------------------------
 
 --굿즈 주문 상세(결제완료시에 amount등등 데이터 값 저장 )    
-DROP TABLE ORDER_DETAILS;  
+DROP TABLE ORDER_DETAILS;
+DROP SEQUENCE ORDER_DETAILS_SEQ;
 
 create sequence order_details_seq;
 
@@ -115,18 +87,15 @@ create table ORDER_DETAILS (
     ORDERID         varchar2(50) not null,
     GNO         number          not null,
     CARTSTOCK       number          not null,
-    primary key(orderDetailsNum)
+    primary key(orderDetailsNum),
+    constraint order_details_orderId foreign key(orderid)
+    references goodsorder(orderId) on delete cascade
 );
 
-SELECT * FROM ORDER_DETAILS;
 
-drop sequence order_details_seq;
-commit
+
+
 -------------------------------------------------------------------------
-
-
-
-
 --굿즈 리뷰 작성
 DROP TABLE REVIEW;
 DROP SEQUENCE GREWNO;
@@ -145,27 +114,6 @@ CREATE TABLE REVIEW (
 );
     
     
-    
-    
---굿즈리뷰 더미데이터     
-INSERT INTO REVIEW VALUES( GREWNO.NEXTVAL, '관리자',2,'TEST','TEST',SYSDATE );
-    
-SELECT * FROM REVIEW;
-    
-    
-    
-
-
-
-alter table order_details
-    add constraint torder_details_orderId foreign key(orderid)
-    references goodsorder(orderId) on delete cascade;
-    
-    
-
-select * from goodsorder;
-
-
 
 
 commit
