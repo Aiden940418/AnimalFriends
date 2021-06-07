@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix='fmt' %> 
+
 <%@ include file="../includes/header_R.jsp" %>   
 
 	
@@ -46,14 +48,14 @@
 
 			<img src="resources/${dto.gImg}" class="rounded float-start mt-4 ms-5" style="width:550px; height:400px; object-fit:cover;">
  
- 				<div>
+ 				<div class="mt-5">
  				<h1 class="display-4">${dto.gName }</h1>
  				<div class="fs-3">상품분류:${dto.gCtgy}</div>
  				<div class="fs-3">상품가격:${dto.gPrice }</div>
  				<div class="fs-3">상품재고:${dto.gStock }</div>
  			
  				
- 				<textarea class="mt-3" rows="5" cols="30" readonly="readonly" style="border:none; text-align:center;">${dto.gContent } </textarea><br>
+ 				<textarea class="mt-3" rows="5" cols="30" readonly="readonly" style="border:none; text-align:center;  resize: none; outline:none;">${dto.gContent } </textarea><br>
    				
    				
    				
@@ -113,6 +115,10 @@
 	<div class="container mt-5 text-center	">
 	
 
+
+
+
+
 <button onclick="fnMove();" class="btn btn-outline-success ms-5"style="width:170px;">상세보기 </button>
 
 <script>
@@ -151,11 +157,30 @@
 </script>	
 	
 	</div>
+
+	<br>
+ 	<br>
+	</div>
 	
-	<div id="detail">
- 	<h1 class="display-4 mt-5">상세보기</h1>
+	<div  class="text-center"id="detail">
+ 	<h1 class="display-4 mt-3">상세보기</h1>
  	
- 	<img src="resources/${dto.gImg}" style="width:1000px; height:700px;">
+ 	<img  class="mt-5"src="resources/${dto.gImg}" style="width:1000px; height:700px;">
+ 	
+ 	
+ 	
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	
+ 	<div class="container text-center fs-1">
+ 		<span> 상품 이름: ${dto.gName } </span> <br>
+ 		<span> 상품 가격: ${dto.gPrice }</span> <br>
+		<span> 상품 설명: ${dto.gContent}</span> <br>
+		
+		 	
+ 	</div>
  	
  	<br>
  	<br>
@@ -165,16 +190,7 @@
  	<br>
  	<br>
  	<br>
- 	<br>
- 	<br>
- 	<br>
- 	<br>
- 	<br>
- 	<br>
- 	<br>
- 	<br>
- 	<br>
- 	<br>
+ 	
  	
  	<br>
  	<br>
@@ -190,14 +206,14 @@
 	
 	<div id="review">
 		<hr>
-	<h1 class="display-3 mt-5 text">리뷰보기</h1>
+	<h1 class="display-3 mt-3">리뷰보기</h1>
 	</div>
 	<div>
 		<table class="table text-center table-hover" >
 		<thead class="table-white">
 			<tr>
 				<th style="width : 20%;">작성자</th>
-				<th style="width : 60%;">제목</th>
+				<th style="width : 60%;">후기내용</th>
 				<th style="width : 20%;">날짜</th>
 			</tr>
 		</thead>
@@ -216,10 +232,9 @@
 			<c:forEach items="${review}" var="greview">
 				<tr>
 					<td>${greview.gRewWriter}</td>
-					<td> 
-	                     <a href="reviewDetails.do?gRewNo=${greview.gRewNo }">${greview.gRewTitle}</a>
+					<td>${greview.gRewContent}
 					</td>
-					<td>${greview.gRewDate}</td>
+					<td><fmt:formatDate value="${greview.gRewDate}" pattern="yy.MM.dd HH:mm:ss"/></td>
 				</tr>
 			</c:forEach>
 			</c:otherwise>
@@ -228,7 +243,7 @@
 	</table>
 	
 	</div>
-	<hr>
+
 	
 	
 					<br>
@@ -291,7 +306,7 @@
 					<br>
 		<hr>
 	
-	<h1 class="display-4 mt-5" id="company">업체소개</h1>
+	<h1 class="display-4 mt-3" id="company">업체소개</h1>
 	
 		<table class="table text-center table-bordered border-primary;
 		"  >

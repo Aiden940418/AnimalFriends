@@ -179,6 +179,29 @@ function execPostCode() {
 				         <input type="submit" class="btn btn-outline-success" value="완료">
 				         <input type="button" class="btn btn-outline-success" value="취소" onclick="location.href='myMemberModityPw.do'">
 				         <button type="button" class="btn btn-outline-success" id="delete">회원탈퇴</button>
+				        <button type="button" class="btn btn-outline-success" id="pwUpdate2">비밀번호 변경</button>
+				         
+				         
+				                 
+		          <script type="text/javascript">
+			         
+			         $("#pwUpdate2").on("click", function(){
+						  var confirm_value1 = confirm("비밀번호를 변경하시겠습니까?");
+			        	  
+						  console.log(confirm_value1);
+			        	 if(confirm_value1) {
+			        		 location.href="pwUpdateCheck.do";
+			        	 
+			        	 }else {
+			        		 
+			        		 return false;
+			        		 }
+			 
+			        	});
+			         
+			         </script>
+				         
+				         
 					         <script type="text/javascript">
 					         
 					         $("#delete").on("click", function(){
@@ -230,7 +253,7 @@ function execPostCode() {
 		            <tr>
 		            <th><button type="button" class="btn btn-outline-success"
 								style="width:130px; pointer-events: none;">비밀번호</button></th>
-		            <td colspan="2"><input class="mPw" type="password" id="pw" style="width:300px; height:40px" value="{login.mPw}" readonly="readonly">
+		            <td colspan="2"><input class="form-control my-1" type="password" id="pw" style="width:300px; height:40px" value="{login.mPw}" readonly="readonly">
 		            </td>
 		            </tr>
 		  
@@ -308,11 +331,11 @@ function execPostCode() {
 		          <script type="text/javascript">
 			         
 			         $("#pwUpdate").on("click", function(){
-						  var confirm_val2 = confirm("비밀번호를 변경하시겠습니까?");
+						  var confirm_value = confirm("비밀번호를 변경하시겠습니까?");
 			        	  
-						  console.log(confirm_val2);
-			        	 if(confirm_val2) {
-			        		 location.href="memberPwupdateCheck.do";
+						  console.log(confirm_value);
+			        	 if(confirm_value) {
+			        		 location.href="pwUpdateCheck.do";
 			        	 
 			        	 }else {
 			        		 

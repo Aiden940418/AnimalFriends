@@ -78,14 +78,13 @@
 			<form action="pwChk.do" method="POST">
 				<input type="hidden" name="mId" value="${login.mId}">
 				<input type="hidden" name="mRole" value="${login.mRole}">
+				
 				<div class="input-group mb-3 col">
-					<span class="input-group-text" id="inputGroup-sizing-default">
-						<ion-icon name="key-outline" style="font-size:25px;"></ion-icon>
-					</span>
-					<input name="mPw"type="password" class="form-control" id="mPw"
-						aria-label="Sizing example input"
-						aria-describedby="inputGroup-sizing-default">
-					<button type="submit" class="btn btn-secondary ms-2" id="pwChk" style="width:70px">확인</button>
+				<span class="input-group-text" id="inputGroup-sizing-default">
+						<ion-icon name="key-outline" style="font-size:25px; width=:170px;"></ion-icon>
+					 </span>
+					<input name="mPw"type="password" class="form-control" id="mPw" style="width:170px" placeholder="현재 비밀번호를 입력해주세요"><br>
+					<button type="submit" class="btn btn-outline-success ms-2" id="pwChk" style="width:70px">확인</button>
 						
 				</div>
 				</form>
