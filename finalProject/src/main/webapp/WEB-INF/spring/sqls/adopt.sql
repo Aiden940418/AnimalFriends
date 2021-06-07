@@ -1,6 +1,5 @@
+--입양공고 관련 테이블 --
 DROP SEQUENCE ANO;
-
-
 DROP TABLE ADOPT;
 
 
@@ -36,18 +35,25 @@ CREATE TABLE ADOPT(
 
 );
 
-SELECT * FROM ADOPT;
+-- adopt comment db table --
 
-  	SELECT * FROM ADOPT 
-  	WHERE AAREA = '서울동부'
+DROP TABLE ADOPTCOMMENT;
+DROP SEQUENCE ACOMNO;
+
+CREATE SEQUENCE ACOMNO;
+CREATE TABLE ADOPTCOMMENT(
+
+    ACOMNO NUMBER PRIMARY KEY,
+    ANO NUMBER NOT NULL,
+    WRITER VARCHAR2(200) NOT NULL,
+    ACOMCONTENT VARCHAR2(2000) NOT NULL,
+    ACOMDATE DATE NOT NULL,
+    
+    FOREIGN KEY(ANO) REFERENCES ADOPT(ANO)ON DELETE CASCADE 
 
 
-select a.amno, (select m.mNick from adopt a, member m where a.amno = m.mno)
-from adopt a;
+);
 
-select a.anmName , m.mNick
-from adopt a, (select m.mNick from adopt a, member m where a.amno = m.mno) m
-where ano = 6;
 
 commit
 

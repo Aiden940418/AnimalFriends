@@ -71,7 +71,7 @@
 				<form action="myAdoptWriteRes.do" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="aMNo" value="${login.mNo}" >
 			
-					<table style="position: relative; left: 70px; bottom: 35px;">
+					<table style="position: relative; bottom: 35px;">
 						<tr>
 							<th><button type="button" class="btn btn-outline-success"
 									style="width:130px; pointer-events: none;">제목</button></th>

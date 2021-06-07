@@ -36,7 +36,7 @@
 	 
 	 #secCtn{
 		position: relative;
-		top: 150px;	 
+		top: 173px;	 
 	}
 
 </style>
@@ -116,7 +116,7 @@
 
 	<!-- 입양일기 그리드 시작 -->
 	<div class="container" id="secCtn">
-			<div class="row">
+			<div class="row" style="margin-left: 51px;">
 			
 				<c:forEach items="${list }" var="dto">		
 					<!-- 글 박스 카드 -->

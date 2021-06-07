@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../includes/header_R.jsp" %>   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -33,7 +33,7 @@
     	width: 100%;
 	 }
 	 .btn-group{
-	 padding-top: 20px;
+	 padding-top: 0px;
 	 }
 
 </style>
@@ -54,12 +54,14 @@
 							class="btn btn-outline-success dropdown-toggle mt-3"
 							data-bs-toggle="dropdown" aria-expanded="false" style="width:200px; ">카테고리</button>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">가방</a></li>
-							<li><a class="dropdown-item" href="#">옷</a></li>
-							<li><a class="dropdown-item" href="#">악세사리</a></li>
+							<li><a class="dropdown-item" href="goodsBagList.do">가방</a></li>
+							<li><a class="dropdown-item" href="goodsClothList.do">옷</a></li>
+							<li><a class="dropdown-item" href="goodsAccList.do">악세사리</a></li>
 						</ul>
 					</div>
 					<div class="col-6">
+					
+			<c:if test="${login != null }">
 						<div class="btn-group float-end">
 							<button id="goCart" type="button" class="btn btn-outline-success mt-3  " onclick="location.href='cartList.do?mNo=${login.mNo}'">
 								나의 장바구니 보기</button>
@@ -72,6 +74,8 @@
 								
 							
 						</div>
+						
+			</c:if>
 					</div>
 				</div>
 			</div>
