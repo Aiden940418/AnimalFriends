@@ -144,7 +144,7 @@
 							  if(confirm_val) {
 							   var checkArr = new Array();
 							   
-							   $("input[class='chBox']:checked").each(function(){
+							   $("input[id='chBox']:checked").each(function(){
 							    checkArr.push($(this).attr("data-cartNum"));
 							   });
 						
@@ -192,7 +192,7 @@
 													})
 										</script>
 											<div class="card h-100 text-center" style="width:450px; margin: 0 auto; align-items: center;">
-												<input type="checkbox" class="chBox my-2" data-cartNum="${ dto.aNo}" style="position: relative;left: -132px;">
+												<input type="checkbox" id="chBox"class="chBox my-2" data-cartNum="${ dto.aNo}" style="position: relative;left: -132px;">
 													<a href="adminAdoptDetail.do?aNo=${dto.aNo}"><img src="resources/${dto.aThumbImg }" class="card-img-top"
 														style="width:450px; height:350px; border:none; object-fit:cover;"></a>	
 												<div class="card-body">
