@@ -97,7 +97,7 @@
          						
          						<tr>
          						<td colspan="2">
-         						<button type="button" class="btn-outline-success" type="submit" style="float:right;">완료</button>
+         						<button class="btn-outline-success" type="submit" style="float:right;">완료</button>
          						
          						</td>
          					</table>
