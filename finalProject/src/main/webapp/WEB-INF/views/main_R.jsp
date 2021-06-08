@@ -41,17 +41,17 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="resources/images/mainImg5.jpeg" class="d-block" style="width:100%; height:550px;" alt="...">
+            <img src="resources/images/mainImg1.jpeg" class="d-block" style="width:100%; height:550px;" alt="...">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
           <div class="carousel-item">
-             <img src="resources/images/mainImg3.jpeg" class="d-block" style="width:100%; height:550px; alt="...">
+             <img src="resources/images/mainImg10.jpeg" class="d-block" style="width:100%; height:550px; alt="...">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
           <div class="carousel-item">
-             <img src="resources/images/mainImg2.jpeg" class="d-block" style="width:100%; height:550px; alt="...">
+             <img src="resources/images/mainImg11.jpeg" class="d-block" style="width:100%; height:550px; alt="...">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
