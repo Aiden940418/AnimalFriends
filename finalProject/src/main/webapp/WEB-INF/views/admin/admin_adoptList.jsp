@@ -116,7 +116,7 @@
 <!-- Example single danger button -->
 	<div class="container" id="secCtn">
 		
-	<div style="position: relative; top: -28px; width: 171px; align-items: center; margit: 0px; left: -5px; float: right;">
+	<div style="position: relative; top: -28px; width: 181px; align-items: center; margit: 0px; left: -5px; float: right;">
 	<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
 		   			<input type="checkbox" class="btn-check btn-outline-success" name="allCheck" id="allCheck" autocomplete="off">
 		   				<label class="btn btn-outline-success ms-1" for="allCheck" style="margin:0px;">전체 선택</label> 
