@@ -292,7 +292,7 @@ public class MypageController {
 	
 	@RequestMapping(value="pwUpdateCheck.do", method= RequestMethod.GET)
 	public String memberPwupdateCheck() {
-		return "mypage/mypage_memberPwupdateCheck";
+		return "mypage/mypage_memberPwUpdateCheck";
 	}
 	
 	

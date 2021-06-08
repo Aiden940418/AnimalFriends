@@ -248,7 +248,7 @@ $(document).ready(function() {
 						<c:forEach items="${reply}" var="com">
 							<table class="mt-2" style="margin: auto;">
 								<tr>
-									<th style="width:50px;">${com.writer }</th>
+									<th style="width:100px;">${com.writer }</th>
 									<td style="width:400px">${com.aComContent }</td>
 									<td> <fmt:formatDate value="${com.aComDate}" pattern="yy.MM.dd HH:mm:ss"/></td>
 									<td>

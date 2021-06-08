@@ -51,7 +51,11 @@
 						</td>
 					</tr>
 					<tr>
+
 						<td colspan="4">
+					<c:set var ="mNick" value="${login.mNick }"/>
+					<c:set var ="dtoNick" value="${dto.mnick}"/>
+					<c:if test="${mNick == dtoNick}">
 						<input type="button" value="삭제하기"
 							class="ms-2 btn btn-outline-success my-1"
 							onclick="location.href='myQnaDelete.do?qno=${dto.qno}&qgroupno=${dto.qgroupno}'"
@@ -60,6 +64,7 @@
 							class="ms-2 btn btn-outline-success my-1"
 							onclick="location.href='myQnaUpdateForm.do?qno=${dto.qno}'"
 							style="width: 90px; float: right;"> 
+					</c:if>
 						<input type="button"
 							value="목록으로" class="btn btn-outline-success my-1"
 							onclick="location.href='myQnaList.do'"
