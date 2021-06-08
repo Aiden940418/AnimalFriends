@@ -39,7 +39,7 @@
 			<img src="resources/${dto.gImg}" class="rounded float-start mt-4 ms-5" style="width:550px; height:400px; object-fit:cover;">
  
  				<div class="mt-5">
- 				<h1 class="display-4">${dto.gName }</h1>
+ 				<h1 class="display-5">${dto.gName }</h1>
  				<div class="">상품가격:${dto.gPrice }</div>
  				<textarea class="mt-3" rows="5" cols="30" readonly="readonly" style="border:none; text-align:center; resize: none; outline:none;">${dto.gContent } </textarea><br>
    				
