@@ -1,3 +1,5 @@
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <!-- footer -->
     <br>
     
@@ -5,7 +7,7 @@
     <footer class="container-fluid navbar-fixed-bottom">
 	    <div class="container navbar-fixed-bottom mt-5" style="text-align:center">
 	        <p>
-	            @ 2017-2019 Companny, Inc - Private - Terms
+	            COPYRIGHT 애니멀프렌즈 2021. ALL RIGHTS RESERVED.
 	        </p>
 	    </div>
     </footer>

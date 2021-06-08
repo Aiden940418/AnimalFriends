@@ -107,7 +107,7 @@
 	<!-- 입양공고 List 시작  -->		
 			<c:choose>
 				<c:when test="${empty list }">
-				<p>작성된 글이 없습니다</p>
+				<h2>작성된 글이 없습니다</h2>
 				</c:when>
 	
 	

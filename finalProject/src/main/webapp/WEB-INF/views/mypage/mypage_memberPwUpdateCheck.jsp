@@ -75,16 +75,16 @@
 				<input type="hidden" name="mId" value="${login.mId}">
 				<div class="input-group mb-3 col">
 					<span class="input-group-text" id="inputGroup-sizing-default">
-						<ion-icon name="key-outline" style="font-size:25px; width=:170px;"></ion-icon>
+						<ion-icon name="key-outline" style="font-size:25px; width:40px;"></ion-icon>
 					새로운 비밀번호 </span>
 					<input name="mPw"type="password" class="form-control" id="mPw" style="width:170px"><br>
 								<span class="input-group-text" id="inputGroup-sizing-default">
-						<ion-icon name="key-outline" style="font-size:25px;"></ion-icon>
+						<ion-icon name="key-outline" style="font-size:25px; width:40px;"></ion-icon>
 					새로운 비밀번호 확인</span>
-					<input name="mPw2"type="password" class="form-control" id="mPw2" style="width:200px">
+					<input name="mPw2"type="password" class="form-control" id="mPw2" style="width:170px">
 					
 					
-					<button type="submit" class="btn btn-secondary ms-2" id="pwChk" style="width:70px" onclick="button_event();">확인</button>
+					<button type="submit" class="btn btn-outline-success ms-2" id="pwChk" style="width:70px" onclick="button_event();">확인</button>
 						
 						<script>
 						$(function(){
