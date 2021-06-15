@@ -1,11 +1,10 @@
+--회원 로그인 관련 테이블 
 drop table MEMBER;
 DROP SEQUENCE MNO;
-
 
 --넘버테이블 안지워지면 실행 
 DROP TABLE MEMBER CASCADE CONSTRAINTS;
 
-SELECT * FROM MEMBER;
 
 
 CREATE SEQUENCE MNO NOCACHE;
@@ -33,24 +32,10 @@ CREATE TABLE MEMBER (
 );
 
 
-
 --관리자 더미데이터 
 INSERT INTO MEMBER VALUES(
 MNO.NEXTVAL,3,'Y','admin','1234','admin@naver.com','서울시','강남구','아파트','관리자','관리자','01088349078','23241213','213213213'
 );
 
-INSERT INTO MEMBER VALUES(
-MNO.NEXTVAL,1,'Y','user1','1234','user1@naver.com','11111','경기도 구리시','**아파트','이순신','거북선대왕','010-1234-1234','',''
-);
 
 COMMIT
-
-SELECT * FROM MEMBER;
-
-
-commit
- 
-SELECT COUNT(*) FROM MEMBER WHERE MID = 'admin';
-
-SELECT * FROM MEMBER
-	  	WHERE MNO = 3;

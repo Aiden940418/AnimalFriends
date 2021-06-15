@@ -289,20 +289,19 @@ public class MypageController {
 	
 	//비밀번호 변경 페이지 이동 
 	
-	@RequestMapping(value="memberPwupdateCheck.do", method= RequestMethod.GET)
+	
+	@RequestMapping(value="pwUpdateCheck.do", method= RequestMethod.GET)
 	public String memberPwupdateCheck() {
-		return "mypage/mypage_memberPwupdateCheck";
+		return "mypage/mypage_memberPwUpdateCheck";
 	}
 	
 	
 	//새로운 비밀번호 입력 후 db업데이트 
 	
 	@RequestMapping(value="memberPwUpdate.do", method=RequestMethod.POST)
-	public String memberPwUpdate(MemberDto dto, HttpSession session, Model model) {
+	public String memberPwUpdate(MemberDto dto, HttpSession session, Model model) throws Exception {
 		
 		
-		
-		try {
 			int res = memberBiz.updatemPw(dto);
 			
 			if (res > 0) { // 글 insert 성공 시
@@ -314,13 +313,6 @@ public class MypageController {
 				model.addAttribute("url", "/main.do");
 			}
 			
-				
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
 		return "/mypage/alertPage";
 		
 	}
@@ -336,8 +328,7 @@ public class MypageController {
 		
 		if (res > 0) { // 글 insert 성공 시
 			session.invalidate();
-			model.addAttribute("msg", "회원정보 수정 성공!"
-					+ "로그인 화면으로 이동합니다.");
+			model.addAttribute("msg", "회원정보 수정 성공! 로그인 화면으로 이동합니다.");
 			model.addAttribute("url", "/loginForm.do");
 		} else {  //글 insert 실패 시
 			model.addAttribute("msg", "회원정보 수정 실패!");

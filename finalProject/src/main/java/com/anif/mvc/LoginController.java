@@ -56,6 +56,7 @@ public class LoginController {
 			
 			return "redirect:loginForm.do";
 			
+			
 		}else {
 			return "redirect:signUpForm.do";
 		}
@@ -76,6 +77,7 @@ public class LoginController {
 		
 		res = biz.signUpSmember(dto);
 		
+
 		if(res>0) {
 			
 			return "redirect:loginForm.do";

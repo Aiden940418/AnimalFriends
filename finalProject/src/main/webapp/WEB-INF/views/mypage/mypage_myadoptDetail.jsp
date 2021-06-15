@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix='fmt' %>
+    
 
 	<!-- header -->
 	<%@ include file="../includes/header_R.jsp" %>
@@ -69,7 +71,7 @@
 			<div class="btn-group float-end">
 				<button type="button" class="btn btn-outline-success float-end ms-1" onclick="location.href='myAdoptDelete.do?aNo=${dto.aNo}'">삭제하기</button>
 				<button type="button" class="btn btn-outline-success md-5 float-end ms-1" onclick="location.href='myAdoptUpdateForm.do?aNo=${dto.aNo}'">수정하기</button>
-				<button type="button" class="btn btn-outline-success md-5 float-end " onclick="location.href='myAdoptList.do?mNo=${login.mNo}'">목록보기</button>
+				<button type="button" class="btn btn-outline-success md-5 ms-1 float-end " onclick="location.href='myAdoptList.do?mNo=${login.mNo}'">목록보기</button>
 			</div>
 		</div>
 	</div>
@@ -162,18 +164,23 @@
 		
 		<div class="container text-center mt-4">	
 			<div id="horisonLine2"></div>
+		<h2 class="ms-5" style="float:left;">Comments</h2><br><br>
 		
+		</div>
 			<c:choose>
 					<c:when test="${empty reply}">
 						<h3>작성된 댓글이 없습니다.</h3>
 					</c:when>
+
 					<c:otherwise>
+					
+					
 						<c:forEach items="${reply}" var="com">
-							<table class="mt-2" style="margin-left:300px;">
+							<table class="mt-2" style="margin-left:200px;">
 								<tr>
 									<th style="width:50px;">${com.writer }</th>
 									<td style="width:400px">${com.aComContent }</td>
-									<td>${com.aComDate}</td>
+									<td><fmt:formatDate value="${com.aComDate}" pattern="yy.MM.dd HH:mm:ss"/></td>
 									<td>
 										<c:set var ="mNick" value="${login.mNick }"/>
 										<c:set var ="comNick" value="${com.writer}"/>

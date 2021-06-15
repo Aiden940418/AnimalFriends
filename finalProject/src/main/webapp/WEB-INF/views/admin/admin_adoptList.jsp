@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix='fmt' %>
+
 	
 <!-- header -->
 <%@ include file="../includes/header_R.jsp" %>
@@ -117,8 +119,8 @@
 	<div style="position: relative; top: -28px; width: 171px; align-items: center; margit: 0px; left: -5px; float: right;">
 	<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
 		   			<input type="checkbox" class="btn-check btn-outline-success" name="allCheck" id="allCheck" autocomplete="off">
-		   				<label class="btn btn-outline-success" for="allCheck" style="margin:0px;">전체 선택</label> 
-					<button type="button" id="selectDelete_btn" class="btn btn-outline-success">선택 삭제</button>
+		   				<label class="btn btn-outline-success ms-1" for="allCheck" style="margin:0px;">전체 선택</label> 
+					<button type="button" id="selectDelete_btn" class="btn btn-outline-success ms-1">선택 삭제</button>
 							<script>
 								$("#allCheck").click(function() {
 									
@@ -142,7 +144,7 @@
 							  if(confirm_val) {
 							   var checkArr = new Array();
 							   
-							   $("input[class='chBox']:checked").each(function(){
+							   $("input[id='chBox']:checked").each(function(){
 							    checkArr.push($(this).attr("data-cartNum"));
 							   });
 						
@@ -190,8 +192,8 @@
 													})
 										</script>
 											<div class="card h-100 text-center" style="width:450px; margin: 0 auto; align-items: center;">
-												<input type="checkbox" class="chBox my-2" data-cartNum="${ dto.aNo}" style="position: relative;left: -132px;">
-													<a href="myAdoptDetail.do?aNo=${dto.aNo}"><img src="resources/${dto.aThumbImg }" class="card-img-top"
+												<input type="checkbox" id="chBox"class="chBox my-2" data-cartNum="${ dto.aNo}" style="position: relative;left: -132px;">
+													<a href="adminAdoptDetail.do?aNo=${dto.aNo}"><img src="resources/${dto.aThumbImg }" class="card-img-top"
 														style="width:450px; height:350px; border:none; object-fit:cover;"></a>	
 												<div class="card-body">
 													<h4 class="card-title text-center">${dto.aTitle}</h4><br>

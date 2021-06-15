@@ -41,17 +41,17 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="resources/images/mainImg5.jpeg" class="d-block" style="width:100%; height:550px;" alt="...">
+            <img src="resources/images/mainImg1.jpeg" class="d-block" style="width:100%; height:550px;" alt="...">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
           <div class="carousel-item">
-             <img src="resources/images/mainImg3.jpeg" class="d-block" style="width:100%; height:550px; alt="...">
+             <img src="resources/images/mainImg10.jpeg" class="d-block" style="width:100%; height:550px; alt="...">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
           <div class="carousel-item">
-             <img src="resources/images/mainImg2.jpeg" class="d-block" style="width:100%; height:550px; alt="...">
+             <img src="resources/images/mainImg11.jpeg" class="d-block" style="width:100%; height:550px; alt="...">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
@@ -83,7 +83,8 @@
         
         <div class="container text-center mt-3">
         
-       애니멀 프렌즈는 간편하고 쉽게 개인간의 입양을 도와주는 사이트입니다.<p>
+     <p>애니멀프렌즈는 간편하고 쉽게 개인간의 입양을 도와주는 사이트입니다.<br>
+파양, 유기된 동물들이 안전하게 보호받고 생활할 수 있도록 따뜻한 보금자리가 되어주고 싶습니다.</p>
        
         
         </div>

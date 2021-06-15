@@ -377,8 +377,10 @@
 
 
 	<!-- 카카오 지도 api 사용 위한 script 코드 -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3fdd8e02dcb3d23798f0ddaa0d9352bf&libraries=services,clusterer,drawing"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c61ad7e8be237a7bcda1423bc4fa893e&libraries=services,clusterer,drawing"></script>
 	
+	<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3fdd8e02dcb3d23798f0ddaa0d9352bf&libraries=services,clusterer,drawing"></script>
+ -->	
 	<!-- 지도 부분 -->
 	<script type="text/javascript">
 		

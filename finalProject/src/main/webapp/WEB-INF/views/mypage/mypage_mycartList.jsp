@@ -230,7 +230,7 @@ $("#check_module").on('click', function() {
 					<div class="listResult">
 					
 						<div class="sum float-sm-end md-5"> 
-							<input type="text" id="sum"value="${sum}">
+							<input type="hidden" id="sum"value="${sum}">
 							총 합계 : <fmt:formatNumber pattern="###,###,###"  value="${sum }"/>원 
 						</div>
 					</div>
