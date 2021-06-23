@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.anif.mvc.diary.biz.DiaryBiz;
+import com.anif.mvc.goods.biz.CartBiz;
 import com.anif.mvc.member.biz.MemberBiz;
 import com.anif.mvc.member.dto.MemberDto;
 
@@ -30,6 +31,9 @@ public class LoginController {
 	 
 	@Autowired
 	private DiaryBiz diaryBiz;
+	
+	@Autowired
+	private CartBiz cartBiz;
 	
 	//회원가입 페이지로 이동 
 	 
@@ -106,8 +110,12 @@ public class LoginController {
 	// logout버튼 누르면 session 초기화 
 		
 		@RequestMapping(value="/logout.do")
-		public String logout(HttpSession session, HttpServletResponse response) {
+		public String logout(HttpSession session, HttpServletResponse response, int mNo) {
 			
+		
+			
+			 cartBiz.cartAllDelete(mNo);
+
 			
 			session.invalidate();
 			

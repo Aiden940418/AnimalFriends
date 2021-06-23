@@ -18,6 +18,7 @@ CREATE TABLE GOODS (
 );
 
 
+
 -------------------------------------------------------------------------
 
 --굿즈 cart 관련 테이블 
@@ -25,6 +26,7 @@ CREATE TABLE GOODS (
 DROP TABLE CART;
 DROP SEQUENCE CARTNO;
 
+select * from cart;
 
 CREATE SEQUENCE CARTNO;
 CREATE TABLE CART (
@@ -60,9 +62,9 @@ CREATE TABLE GOODSORDER (
     MNO     NUMBER not null,
     ORDERNAME   varchar2(50) not null,
     ORDERADDR1  varchar2(20) not null,
-    ORDERADDR2  varchar2(50) not null,
-    ORDERADDR3  varchar2(50) not null,
-    ORDERPHONE  varchar2(30) not null,
+    ORDERADDR2  varchar2(4000) not null,
+    ORDERADDR3  varchar2(4000) not null,
+    ORDERPHONE  varchar2(4000) not null,
     AMOUNT      number       not null,
     ORDERDATE   Date         default sysdate, 
     GNO		NUMBER,
@@ -70,7 +72,10 @@ CREATE TABLE GOODSORDER (
     primary key(orderId),
     CONSTRAINT GREVIEWSTATUS_CHK CHECK(GREVIEWSTATUS IN('false','true')),
     CONSTRAINT goodsMNo foreign key(mno) references member(mno) on delete cascade
+    
 );
+
+
 
 
     
@@ -114,6 +119,20 @@ CREATE TABLE REVIEW (
 );
     
     
+    
+    
+    
+    			 select
+			     row_number() over(order by c.cartNO desc) as num,
+			     c.CARTNO, c.MNO, c.gNO, c.CARTSTOCK, c.CARTDATE,
+			     g.gNAME, g.gPRICE, g.gImg
+			 from cart c
+			     inner join goods g
+			         on c.gNo = g.gNo   
+			     where c.mNo = 1;
+                 
+                 
+                 select * from cart;
 
 
 commit

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.anif.mvc.goods.biz.CartBiz;
 import com.anif.mvc.member.biz.MemberBiz;
 import com.anif.mvc.member.dto.MemberDto;
 
@@ -20,6 +21,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberBiz biz;
+	
+	@Autowired
+	private CartBiz cartBiz;
 	
 	private Logger logger = LoggerFactory.getLogger(MemberController.class);
 

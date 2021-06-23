@@ -259,7 +259,7 @@
              </c:if>
              <c:if test="${login !=null }">
              <label><b>${login.mNick}</b>님 로그인 되었습니다.</label>
-             <a class="btn btn-outline-success mx-2" href="logout.do" id="logoutBtn" role="button">로그아웃</a>
+             <a class="btn btn-outline-success mx-2" href="logout.do?mNo=${login.mNo}" id="logoutBtn" role="button">로그아웃</a>
              </c:if>
              </div>
 

@@ -46,3 +46,5 @@ VALUES (QNOSEQ.NEXTVAL, 2, 2, 1, '굿즈', '답변입니다', '답변 글 내용
 
 
 COMMIT
+
+select * from QUESTIONBOARD;
