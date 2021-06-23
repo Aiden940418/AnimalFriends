@@ -382,13 +382,7 @@ public class GoodsController {
 	}
 	
 	
-	@RequestMapping("/goodsPayment.do")
-	public String goodsPayment(Model model) {
-		
-		
-		
-		return "goods/goods_payment";
-	}
+
 	
 	@RequestMapping("/goodsPurchase.do")
 	public String goodsPurchase(Model model) {

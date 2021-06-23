@@ -205,12 +205,74 @@
 			<div id="horisonLine2 "></div>
 		<h2 class="ms-5" style="float:left;">Comments</h2><br><br>
 		</div>
-		<form action="aCommentInsert.do" method="POST">	
-			<input type="hidden" name="aNo" value="${dto.aNo }"/>
-			<input type="hidden" name="writer" value="${login.mNick}"/>
+		
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+
+
+
+function comSend() {
+	
+	var aNo = $("#aNo").val();
+	var writer = $("#writer").val();
+	var aComContent = $("#comContent").val();
+	
+	
+var commentsVal = {
+		"aNo":aNo,
+		"writer":writer,
+		"aComContent":aComContent
+};
+
+console.log(commentsVal);
+
+
+
+if(aComContent == "") {
+	
+	alert("내용을 입력해주세요! ");
+	
+}else{
+	
+	$.ajax({
+		
+		type:"post",
+		url:"aCommentInsert.do",
+		data: JSON.stringify(commentsVal),
+		contentType:"application/json",
+		dataType:"json",
+		success:function(result) {
+			
+			if(result == true) {
+				
+				alert("댓글작성 성공!");
+				location.href="adoptDetail.do?aNo="+${dto.aNo};
+
+				
+			}else{
+				alert("댓글작성 실패");
+			}
+		},
+		
+		error:function() {
+			alert("통신실패");	
+		}
+	});
+}
+
+}
+
+
+
+
+
+</script>
+		
+			<input type="hidden" id="aNo" name="aNo" value="${dto.aNo }"/>
+			<input type="hidden" id="writer" name="writer" value="${login.mNick}"/>
 				<div class="container mt-4" style="margin: auto; ">
-		<input class="mt-2" type="text"  id= "comContent" name="aComContent" style="width:650px; height:50px;">
-		<input class="btn btn-outline-success ms-2" type="submit" id="submit" value="전송">
+		<input class="mt-2" type="text"  id="comContent" name="aComContent" style="width:650px; height:50px;">
+		<input class="btn btn-outline-success ms-2" type="submit" id="submit" onclick="comSend();" value="전송">
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 
 		<script>
@@ -224,14 +286,6 @@ $(document).ready(function() {
 	
 	if(session== 'null'){
 		alert("로그인 후 이용 가능합니다!");
-		return false;
-	}
-	
-	
-	var content = $('#comContent').val();
-	
-	if( content == '') {
-		alert("댓글 내용을 입력 해 주세요.");
 		return false;
 	}
 	
@@ -265,7 +319,6 @@ $(document).ready(function() {
 					</c:otherwise>
 			</c:choose>
 				</div>
-			</form>
 		</div>
 		
 

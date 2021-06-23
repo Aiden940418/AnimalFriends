@@ -12,6 +12,7 @@ public class Criteria {
 		this.perPageNum = 10;
 	}
 	
+	// 페이지 번호 설정 (페이지 번호가 없을시 1로 맞춰줌 )
 	public void setPage(int page) {
 		if (page <= 0) {
 			this.page = 1;
@@ -19,6 +20,9 @@ public class Criteria {
 		}
 		this.page = page;
 	}
+	
+	
+	
 	
 	public void setPerPageNum(int perPageNum) {
 		if (perPageNum <= 0 || perPageNum > 100) {

@@ -8,12 +8,12 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 public class PageMaker {
 
-	private int totalCount;
-	private int startPage;
-	private int endPage;
+	private int totalCount; //총 몇페이지인지 알려주는 변수 
+	private int startPage; //시작행 
+	private int endPage; //끝 행 
 	private boolean prev;
 	private boolean next;
-	private int displayPageNum = 10;
+	private int displayPageNum = 10; //한페이지에 몇개가 출력된걸지 
 	private Criteria cri;
 	
 	public void setCri(Criteria cri) {
